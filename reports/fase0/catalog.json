@@ -1,0 +1,578 @@
+{
+  "fonte": {
+    "manifest": "/mnt/d/Dev/toll-analytics-platform/dbt-toll-analytics/target/manifest.json",
+    "semantic_manifest": "/mnt/d/Dev/toll-analytics-platform/dbt-toll-analytics/target/semantic_manifest.json",
+    "duckdb": "/mnt/d/Dev/toll-analytics-platform/dbt-toll-analytics/toll_analytics.duckdb",
+    "projeto_dbt": "toll_analytics"
+  },
+  "tabelas": {
+    "agg_daily_revenue_by_plaza": {
+      "schema": "main",
+      "materializacao": "table",
+      "access": "public",
+      "descricao": "GOLD — receita diária por praça (só cobranças legítimas).",
+      "n_linhas": 13,
+      "colunas": [
+        {
+          "nome": "event_date",
+          "tipo": "DATE",
+          "descricao": ""
+        },
+        {
+          "nome": "plaza_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "total_transactions",
+          "tipo": "BIGINT",
+          "descricao": ""
+        },
+        {
+          "nome": "billable_transactions",
+          "tipo": "BIGINT",
+          "descricao": ""
+        },
+        {
+          "nome": "revenue_brl",
+          "tipo": "DOUBLE",
+          "descricao": ""
+        }
+      ]
+    },
+    "audit_suspect_transactions": {
+      "schema": "main",
+      "materializacao": "table",
+      "access": "public",
+      "descricao": "GOLD — PRODUTO: transações sinalizadas pela auditoria (tarifa divergente, cobrança em falha, valor inválido, possível duplicidade).",
+      "n_linhas": 9,
+      "colunas": [
+        {
+          "nome": "transaction_id",
+          "tipo": "VARCHAR",
+          "descricao": "Transação suspeita (pode repetir? não — grão de 1 transação)."
+        },
+        {
+          "nome": "event_ts",
+          "tipo": "TIMESTAMP",
+          "descricao": ""
+        },
+        {
+          "nome": "event_date",
+          "tipo": "DATE",
+          "descricao": ""
+        },
+        {
+          "nome": "plaza_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "plaza_name",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "vehicle_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "plate_masked",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "category",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "category_description",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "status",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "payment_method",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "is_duplicate",
+          "tipo": "BOOLEAN",
+          "descricao": ""
+        },
+        {
+          "nome": "amount_cents",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "expected_amount_cents",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "amount_diff_cents",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "amount_brl",
+          "tipo": "DOUBLE",
+          "descricao": ""
+        },
+        {
+          "nome": "expected_brl",
+          "tipo": "DOUBLE",
+          "descricao": ""
+        },
+        {
+          "nome": "audit_flag",
+          "tipo": "VARCHAR",
+          "descricao": "Classificação da auditoria, por ordem de prioridade:\r\n\r\n- **VALOR_INVALIDO** — valor nulo ou ≤ 0 (nem dá para avaliar tarifa).\r\n- **COBRANCA_EM_FALHA** — status `FAILED`/`REVERSED` mas com valor cobrado (> 0).\r\n- **TARIFA_DIVERGENTE** — valor cobrado ≠ tarifa esperada (point-in-time).\r\n- **POSSIVEL_DUPLICIDADE** — mesma passagem na janela de N segundos.\r\n- **OK** — nada a sinalizar (não aparece no produto de auditoria)."
+        }
+      ]
+    },
+    "dim_date": {
+      "schema": "main",
+      "materializacao": "table",
+      "access": "public",
+      "descricao": "GOLD — dimensão de calendário, faixa derivada do min/max real das transações (robusto a datas fora de 2026).",
+      "n_linhas": 365,
+      "colunas": [
+        {
+          "nome": "date_key",
+          "tipo": "INTEGER",
+          "descricao": "PK inteira yyyymmdd."
+        },
+        {
+          "nome": "date_day",
+          "tipo": "DATE",
+          "descricao": ""
+        },
+        {
+          "nome": "year",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "month",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "day",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "day_of_week",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "day_name",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "is_weekend",
+          "tipo": "BOOLEAN",
+          "descricao": ""
+        }
+      ]
+    },
+    "dim_plaza": {
+      "schema": "main",
+      "materializacao": "table",
+      "access": "public",
+      "descricao": "GOLD — dimensão de praça de pedágio.",
+      "n_linhas": 5,
+      "colunas": [
+        {
+          "nome": "plaza_sk",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "plaza_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "plaza_name",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "highway",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "uf",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        }
+      ]
+    },
+    "dim_vehicle": {
+      "schema": "main",
+      "materializacao": "table",
+      "access": "public",
+      "descricao": "GOLD — dimensão de veículo (placa mascarada).",
+      "n_linhas": 8,
+      "colunas": [
+        {
+          "nome": "vehicle_sk",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "vehicle_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "plate_masked",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "category",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "category_description",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "fare_multiplier",
+          "tipo": "DOUBLE",
+          "descricao": ""
+        },
+        {
+          "nome": "account_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        }
+      ]
+    },
+    "fct_toll_transactions": {
+      "schema": "main",
+      "materializacao": "incremental",
+      "access": "public",
+      "descricao": "GOLD — fato de transações de pedágio (grão = 1 transação). Incremental.",
+      "n_linhas": 26,
+      "colunas": [
+        {
+          "nome": "transaction_sk",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "transaction_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "date_key",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "event_ts",
+          "tipo": "TIMESTAMP",
+          "descricao": ""
+        },
+        {
+          "nome": "event_date",
+          "tipo": "DATE",
+          "descricao": ""
+        },
+        {
+          "nome": "vehicle_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "plaza_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "category",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "payment_method",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "status",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "is_duplicate",
+          "tipo": "BOOLEAN",
+          "descricao": ""
+        },
+        {
+          "nome": "amount_cents",
+          "tipo": "INTEGER",
+          "descricao": "Valor cobrado, em **centavos inteiros** (exato). A conversão para BRL acontece só\r\nna exibição (`cents_to_brl`), nunca somando reais arredondados — ver ADR-15."
+        },
+        {
+          "nome": "expected_amount_cents",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "amount_diff_cents",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "amount_brl",
+          "tipo": "DOUBLE",
+          "descricao": ""
+        },
+        {
+          "nome": "expected_brl",
+          "tipo": "DOUBLE",
+          "descricao": ""
+        },
+        {
+          "nome": "audit_flag",
+          "tipo": "VARCHAR",
+          "descricao": "Classificação de auditoria (OK ou a anomalia)."
+        }
+      ]
+    },
+    "py_plaza_audit_stats": {
+      "schema": "main",
+      "materializacao": "table",
+      "access": "public",
+      "descricao": "GOLD — Python model (dbt-duckdb): total, suspeitas, taxa de suspeita, vazamento e z-score da taxa entre praças. Lógica em pandas (estatística).",
+      "n_linhas": 5,
+      "colunas": [
+        {
+          "nome": "plaza_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "total_transactions",
+          "tipo": "BIGINT",
+          "descricao": ""
+        },
+        {
+          "nome": "suspect_transactions",
+          "tipo": "BIGINT",
+          "descricao": ""
+        },
+        {
+          "nome": "leakage_cents",
+          "tipo": "INTEGER",
+          "descricao": ""
+        },
+        {
+          "nome": "suspect_rate",
+          "tipo": "DOUBLE",
+          "descricao": ""
+        },
+        {
+          "nome": "suspect_rate_zscore",
+          "tipo": "DOUBLE",
+          "descricao": ""
+        }
+      ]
+    },
+    "rpt_plaza_revenue_v1": {
+      "schema": "main",
+      "materializacao": "table",
+      "access": "public",
+      "descricao": "GOLD (report) — receita por praça. Model VERSIONADO: a v2 adiciona ticket médio; a v1 fica deprecada até a data, dando tempo aos consumidores migrarem. ref('rpt_plaza_revenue') resolve para a latest_version (v2).",
+      "n_linhas": 5,
+      "colunas": [
+        {
+          "nome": "plaza_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "revenue_brl",
+          "tipo": "DOUBLE",
+          "descricao": ""
+        }
+      ]
+    },
+    "rpt_plaza_revenue_v2": {
+      "schema": "main",
+      "materializacao": "table",
+      "access": "public",
+      "descricao": "GOLD (report) — receita por praça. Model VERSIONADO: a v2 adiciona ticket médio; a v1 fica deprecada até a data, dando tempo aos consumidores migrarem. ref('rpt_plaza_revenue') resolve para a latest_version (v2).",
+      "n_linhas": 5,
+      "colunas": [
+        {
+          "nome": "plaza_id",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "revenue_brl",
+          "tipo": "DOUBLE",
+          "descricao": ""
+        },
+        {
+          "nome": "avg_ticket_brl",
+          "tipo": "DOUBLE",
+          "descricao": ""
+        }
+      ]
+    }
+  },
+  "metricas": [
+    {
+      "nome": "transactions",
+      "label": "Transações",
+      "descricao": "Total de transações.",
+      "tipo": "simple"
+    },
+    {
+      "nome": "revenue_cents",
+      "label": "Receita (centavos)",
+      "descricao": "Receita total em centavos inteiros (base exata).",
+      "tipo": "simple"
+    },
+    {
+      "nome": "revenue",
+      "label": "Receita (BRL)",
+      "descricao": "Receita total de cobranças legítimas — centavos convertidos no final.",
+      "tipo": "derived"
+    },
+    {
+      "nome": "revenue_leakage_cents",
+      "label": "Vazamento (centavos)",
+      "descricao": "Soma das subcobranças em centavos inteiros.",
+      "tipo": "simple"
+    },
+    {
+      "nome": "revenue_leakage_brl",
+      "label": "Vazamento de receita (BRL)",
+      "descricao": "Perda potencial de receita — centavos convertidos no final.",
+      "tipo": "derived"
+    },
+    {
+      "nome": "suspect_transactions",
+      "label": "Transações suspeitas",
+      "descricao": "Total de transações suspeitas.",
+      "tipo": "simple"
+    },
+    {
+      "nome": "suspect_rate",
+      "label": "Taxa de suspeita",
+      "descricao": "Proporção de transações sinalizadas pela auditoria (suspeitas / total).",
+      "tipo": "ratio"
+    }
+  ],
+  "dimensoes": [
+    {
+      "nome": "event_date",
+      "tipo": "time",
+      "granularidade": "day"
+    },
+    {
+      "nome": "status",
+      "tipo": "categorical",
+      "granularidade": null
+    },
+    {
+      "nome": "audit_flag",
+      "tipo": "categorical",
+      "granularidade": null
+    },
+    {
+      "nome": "payment_method",
+      "tipo": "categorical",
+      "granularidade": null
+    }
+  ],
+  "entidades": [
+    {
+      "nome": "transaction",
+      "tipo": "primary",
+      "expr": "transaction_id"
+    },
+    {
+      "nome": "plaza",
+      "tipo": "foreign",
+      "expr": "plaza_id"
+    },
+    {
+      "nome": "vehicle",
+      "tipo": "foreign",
+      "expr": "vehicle_id"
+    }
+  ],
+  "valores_categoricos": {
+    "status": [
+      "COMPLETED",
+      "FAILED",
+      "REVERSED"
+    ],
+    "audit_flag": [
+      "COBRANCA_EM_FALHA",
+      "OK",
+      "POSSIVEL_DUPLICIDADE",
+      "TARIFA_DIVERGENTE",
+      "VALOR_INVALIDO"
+    ],
+    "payment_method": [
+      "AUTOMATIC_TAG",
+      "CARD",
+      "CASH"
+    ]
+  },
+  "saved_queries": [
+    {
+      "nome": "revenue_daily",
+      "metrics": [
+        "revenue",
+        "suspect_rate"
+      ],
+      "group_by": [
+        "TimeDimension('metric_time', 'day')"
+      ],
+      "order_by": [],
+      "limit": null,
+      "where": null
+    }
+  ],
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "98e20d6",
+    "git_dirty": true,
+    "git_diff_sha1": "f07337b9b98e",
+    "timestamp_utc": "2026-07-15T23:20:35+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}
