@@ -1,0 +1,19 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Dados / modelos / DuckDB (regeneráveis; via DVC nas fases seguintes)
+*.duckdb
+*.duckdb.wal
+data/
+models/
+
+# Ambiente
+.env
+
+# Catálogo/manifesto vendorizado da fundação (gerado; ver docs)
+# (mantemos o gerador versionado, não o artefato pesado)
