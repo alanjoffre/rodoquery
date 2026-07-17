@@ -38,6 +38,7 @@ from sqlglot import exp
 from rodoquery.config import REPO_ROOT, settings
 
 SCHEMA_SERVING = "main"
+DATABASE_SERVING = "toll_analytics"  # o único catálogo que o agente pode referenciar
 LIMITE_LINHAS_PADRAO = 1_000
 TIMEOUT_S_PADRAO = 15.0
 
@@ -46,6 +47,7 @@ TIMEOUT_S_PADRAO = 15.0
 _FUNCOES_TIPADAS_PROIBIDAS = {
     "read_parquet", "parquet_scan", "read_csv", "read_csv_auto", "csv_scan",
     "read_json", "read_json_auto", "read_text", "read_blob", "glob",
+    "current_version",  # version() → nó exp.CurrentVersion: disclosure de versão do engine
 }
 # ALLOWLIST de funções ANÔNIMAS (que o sqlglot NÃO tipa). Deny-by-default: qualquer anônima fora
 # desta lista é REJEITADA. É isto que mata `query`/`query_table` (exfiltra dado in-process),
@@ -136,6 +138,9 @@ def validar_sql(sql: str, allowlist: set[str]) -> Veredito:
         schema = (t.db or "").lower()
         if not nome or (nome in ctes and not schema):
             continue
+        catalogo_ref = (t.catalog or "").lower()
+        if catalogo_ref and catalogo_ref != DATABASE_SERVING:
+            return Veredito(False, f"catálogo fora do contrato: {catalogo_ref}")
         if schema and schema != SCHEMA_SERVING:
             return Veredito(False, f"schema fora do contrato: {schema}.{nome}")
         if nome not in allowlist:

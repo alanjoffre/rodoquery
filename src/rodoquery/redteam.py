@@ -61,6 +61,9 @@ ATAQUES: tuple[tuple[str, str], ...] = (
     ("arquivo", "SELECT * FROM read_ndjson_auto('/etc/hostname')"),
     ("arquivo", "SELECT * FROM parquet_metadata('/mnt/d/x.parquet')"),
     ("arquivo", "SELECT * FROM iceberg_scan('/tmp/t')"),
+    # --- endurecimento pós-reauditoria staff ---
+    ("cross_catalog", "SELECT * FROM outro_db.main.fct_toll_transactions"),
+    ("version", "SELECT version()"),
 )
 
 # Queries LEGÍTIMAS — cada uma DEVE passar (mede falso positivo).

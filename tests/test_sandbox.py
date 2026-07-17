@@ -105,6 +105,19 @@ def test_permite_legitimas_sem_falso_positivo(sql):
     assert v, f"falso positivo: {v.motivo}"
 
 
+@pytest.mark.parametrize("sql", [
+    "SELECT * FROM outro_db.main.fct_toll_transactions",   # cross-catalog
+    "SELECT version()",                                    # disclosure de versão
+])
+def test_endurecimento_pos_reauditoria(sql):
+    assert not validar_sql(sql, ALLOW)
+
+
+def test_permite_catalogo_esperado():
+    # o catálogo conhecido (toll_analytics) totalmente qualificado é legítimo
+    assert validar_sql("SELECT count(*) FROM toll_analytics.main.fct_toll_transactions", ALLOW)
+
+
 def test_sql_vazio_e_lixo():
     assert not validar_sql("", ALLOW)
     assert not validar_sql("isso não é sql", ALLOW)
