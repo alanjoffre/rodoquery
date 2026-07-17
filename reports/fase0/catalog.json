@@ -564,10 +564,10 @@
     "seed": 42,
     "modelo_sut": "qwen2.5-coder:7b",
     "temperatura": 0.0,
-    "git_sha": "98e20d6",
+    "git_sha": "db68699",
     "git_dirty": true,
-    "git_diff_sha1": "f07337b9b98e",
-    "timestamp_utc": "2026-07-15T23:20:35+00:00",
+    "git_diff_sha1": "d741a2b4decb",
+    "timestamp_utc": "2026-07-17T15:28:08+00:00",
     "versoes": {
       "duckdb": "1.5.4",
       "sqlglot": "30.12.0",

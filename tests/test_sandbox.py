@@ -62,6 +62,36 @@ def test_bloqueia_raw_escondido_em_cte():
 
 
 @pytest.mark.parametrize("sql", [
+    # P0 achado pela auditoria staff: table-valued functions leem o banco in-process (exfil PII)
+    "SELECT * FROM query_table('landing.raw_vehicles')",
+    "SELECT * FROM query('SELECT * FROM landing.raw_vehicles')",
+    # P1: introspecção (schema/config/path) — funções anônimas fora da allowlist
+    "SELECT * FROM duckdb_tables()",
+    "SELECT * FROM duckdb_columns()",
+    "SELECT * FROM duckdb_databases()",
+    "SELECT * FROM pragma_table_info('fct_toll_transactions')",
+    "SELECT current_setting('memory_limit')",
+    "SELECT * FROM read_ndjson_auto('/etc/hostname')",
+    "SELECT * FROM iceberg_scan('/tmp/t')",
+])
+def test_bloqueia_funcoes_exoticas_deny_by_default(sql):
+    # regressão do bypass: anônima fora da allowlist falha FECHADO
+    v = validar_sql(sql, ALLOW)
+    assert not v and "deny-by-default" in v.motivo
+
+
+@pytest.mark.parametrize("sql", [
+    "SELECT plaza_id FROM main.dim_plaza EXCEPT SELECT plaza_id FROM main.fct_toll_transactions",
+    "SELECT plaza_id FROM main.dim_plaza INTERSECT SELECT plaza_id FROM main.dim_plaza",
+    "SELECT date_trunc('month', event_date), sum(amount_cents) "
+    "FROM main.fct_toll_transactions GROUP BY 1",
+])
+def test_permite_setops_e_funcoes_de_analytics(sql):
+    v = validar_sql(sql, ALLOW)
+    assert v, f"falso positivo: {v.motivo}"
+
+
+@pytest.mark.parametrize("sql", [
     "SELECT count(*) FROM main.fct_toll_transactions",
     "SELECT count(*) FROM fct_toll_transactions",                       # sem schema = main
     "SELECT plaza_id, sum(amount_cents) FROM main.fct_toll_transactions GROUP BY 1",

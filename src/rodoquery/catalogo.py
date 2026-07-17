@@ -32,6 +32,7 @@ def _marts_do_projeto(manifest: dict) -> dict[str, dict]:
             v.get("resource_type") == "model"
             and v.get("package_name") == PROJETO_DBT
             and "marts" in "/".join(v.get("fqn", []))
+            and v.get("access") == "public"  # só o que o dbt marca como público entra na allowlist
         ):
             alias = v.get("alias") or v["name"]
             out[alias] = {
@@ -112,8 +113,10 @@ def gerar_catalogo(
                     f'where "{dim}" is not null order by 1'
                 ).fetchall()
                 valores_cat[dim] = [r[0] for r in vals]
-            except duckdb.Error:
-                pass
+            except duckdb.Error as e:
+                # numa "fonte de verdade gerada", engolir drift de coluna seria cegueira — avisa.
+                import sys
+                print(f"  aviso: dimensão categórica '{dim}' não lida: {e}", file=sys.stderr)
     finally:
         con.close()
 

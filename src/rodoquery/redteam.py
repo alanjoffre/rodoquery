@@ -50,6 +50,17 @@ ATAQUES: tuple[tuple[str, str], ...] = (
     # --- ofuscação ---
     ("ofuscacao", "SELECT 1 /* comentário */ ; DROP TABLE main.dim_plaza"),
     ("ofuscacao", "WITH x AS (SELECT * FROM landing.raw_vehicles) SELECT * FROM x"),
+    # --- P0/P1 achados pela auditoria staff (2026-07): funções table-valued / introspecção ---
+    ("tvf_exfil", "SELECT * FROM query_table('landing.raw_vehicles')"),
+    ("tvf_exfil", "SELECT * FROM query('SELECT * FROM landing.raw_vehicles')"),
+    ("introspec", "SELECT * FROM duckdb_tables()"),
+    ("introspec", "SELECT * FROM duckdb_columns()"),
+    ("introspec", "SELECT * FROM duckdb_databases()"),
+    ("introspec", "SELECT * FROM pragma_table_info('fct_toll_transactions')"),
+    ("introspec", "SELECT current_setting('memory_limit')"),
+    ("arquivo", "SELECT * FROM read_ndjson_auto('/etc/hostname')"),
+    ("arquivo", "SELECT * FROM parquet_metadata('/mnt/d/x.parquet')"),
+    ("arquivo", "SELECT * FROM iceberg_scan('/tmp/t')"),
 )
 
 # Queries LEGÍTIMAS — cada uma DEVE passar (mede falso positivo).
@@ -66,6 +77,10 @@ LEGITIMAS: tuple[tuple[str, str], ...] = (
                "FROM main.fct_toll_transactions"),
     ("mart_agg", "SELECT * FROM main.agg_daily_revenue_by_plaza LIMIT 10"),
     ("subquery", "SELECT * FROM (SELECT plaza_id FROM main.fct_toll_transactions) t"),
+    ("set_op", "SELECT plaza_id FROM main.dim_plaza "
+               "EXCEPT SELECT plaza_id FROM main.fct_toll_transactions"),
+    ("data", "SELECT date_trunc('month', event_date), sum(amount_cents) "
+             "FROM main.fct_toll_transactions GROUP BY 1"),
 )
 
 
