@@ -50,6 +50,18 @@ def bootstrap_diff_ic(
     return [round(float(lo), 4), round(float(hi), 4)]
 
 
+def cohen_kappa(a: list, b: list) -> float:
+    """κ de Cohen — concordância entre 2 anotadores (rótulos categóricos), corrigida pelo acaso.
+    Usado na Fase 2 para o mapeamento pergunta→spec do 2º anotador (limiar pré-registrado ≥ 0,8)."""
+    n = len(a)
+    if n == 0 or len(b) != n:
+        return 0.0
+    cats = set(a) | set(b)
+    p_obs = sum(1 for x, y in zip(a, b, strict=True) if x == y) / n
+    p_esp = sum((a.count(c) / n) * (b.count(c) / n) for c in cats)
+    return round((p_obs - p_esp) / (1 - p_esp), 4) if p_esp < 1 else 1.0
+
+
 def mcnemar(a: list[bool], b: list[bool]) -> dict:
     """Teste de McNemar EXATO (binomial) entre dois sistemas nos mesmos itens.
 

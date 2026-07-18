@@ -25,7 +25,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 from rodoquery.canonizacao import hash_resultado
-from rodoquery.config import REPO_ROOT
+from rodoquery.config import REPO_ROOT, settings
+from rodoquery.estat import cohen_kappa
 from rodoquery.gold import Spec, compilar_spec, executar_gold
 
 ESTRATOS = (
@@ -84,6 +85,62 @@ def resumo_estratos(itens: list[ItemGolden]) -> dict[str, int]:
     for it in itens:
         out[it.estrato] += 1
     return out
+
+
+def canonizar_spec(spec: Spec) -> str:
+    """Forma canônica da spec (métricas/group-by ordenados) — para comparar dois mapeamentos.
+    Ignora `ordenado`/`limit` (metadados de forma, não de conteúdo semântico)."""
+    m = ",".join(sorted(spec.metrics))
+    g = ",".join(sorted(spec.group_by))
+    w = (spec.where or "").strip()
+    return f"metrics=[{m}] group_by=[{g}] where={w}"
+
+
+def validar_item(item: ItemGolden, duckdb_path: Path | None = None) -> tuple[bool, str]:
+    """Um item é válido se a spec COMPILA no MetricFlow e o gold é NÃO-VAZIO (pergunta respondível).
+    Roda na autoria para pegar spec inválida antes de selar o golden set."""
+    db = duckdb_path or settings.toll_duckdb
+    try:
+        sql = compilar_spec(item.spec)
+    except Exception as e:
+        return False, f"spec não compila: {str(e)[:120]}"
+    linhas = executar_gold(sql, db)
+    if not linhas:
+        return False, "gold vazio (pergunta não-respondível nestes dados)"
+    return True, "ok"
+
+
+def concordancia_mapeamento(anotador_a: list[ItemGolden], anotador_b: list[ItemGolden]) -> dict:
+    """κ do 2º anotador: dois humanos mapeiam as MESMAS perguntas → spec, independentes.
+
+    Reporta concordância bruta (mesma spec canônica), κ de Cohen sobre a métrica primária e a
+    concordância por campo. O especialista alertou: com marginais enviesadas (quase tudo cai em
+    1-2 métricas), o κ deflaciona — por isso a concordância bruta também é reportada.
+    """
+    a = {it.id: it for it in anotador_a}
+    b = {it.id: it for it in anotador_b}
+    ids = sorted(set(a) & set(b))
+    if not ids:
+        raise SystemExit("nenhum id em comum entre os dois anotadores")
+
+    spec_igual = [canonizar_spec(a[i].spec) == canonizar_spec(b[i].spec) for i in ids]
+    metrica_a = [",".join(sorted(a[i].spec.metrics)) for i in ids]
+    metrica_b = [",".join(sorted(b[i].spec.metrics)) for i in ids]
+    gb_igual = [sorted(a[i].spec.group_by) == sorted(b[i].spec.group_by) for i in ids]
+    where_igual = [(a[i].spec.where or "") == (b[i].spec.where or "") for i in ids]
+
+    n = len(ids)
+    metrica_igual = sum(x == y for x, y in zip(metrica_a, metrica_b, strict=True))
+    return {
+        "n_pares": n,
+        "concordancia_spec_canonica": round(sum(spec_igual) / n, 4),
+        "cohen_kappa_metrica": cohen_kappa(metrica_a, metrica_b),
+        "concordancia_metrica": round(metrica_igual / n, 4),
+        "concordancia_group_by": round(sum(gb_igual) / n, 4),
+        "concordancia_where": round(sum(where_igual) / n, 4),
+        "limiar_pre_registrado": {"cohen_kappa_metrica": 0.8, "concordancia_spec_canonica": 0.8},
+        "discordantes": [i for i, ok in zip(ids, spec_igual, strict=True) if not ok],
+    }
 
 
 def gerar_respostas(itens: list[ItemGolden], dbs: dict[str, Path]) -> list[dict]:
