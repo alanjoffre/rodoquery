@@ -11,8 +11,9 @@ from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-# A plataforma-fonte fica ao lado do repo (../toll-analytics-platform) por padrão.
-_TOLL = REPO_ROOT.parent / "toll-analytics-platform" / "dbt-toll-analytics"
+# Fundação buildada em filesystem WSL-NATIVO (não /mnt/d — lá o dbt/mf ficam lentos e flaky por
+# I/O 9P). Ver docs/FUNDACAO.md. Sobrescrevível por env (RODOQUERY_TOLL_*).
+_TOLL = Path.home() / "toll-foundation" / "dbt-toll-analytics"
 
 
 class Settings(BaseSettings):
