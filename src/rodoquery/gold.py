@@ -14,6 +14,7 @@ positivo). O MetricFlow do dbt Core só expõe a CLI `mf query` (não há API) �
 from __future__ import annotations
 
 import os
+import re
 import subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -26,7 +27,9 @@ from rodoquery.config import settings
 # Diretório do dbt (onde vive o `mf`) e o binário do MetricFlow, derivados da fundação.
 _DBT_DIR = settings.toll_duckdb.parent
 _MF_BIN = _DBT_DIR / ".venv" / "bin" / "mf"
-_CATALOGO_DBT = "toll_analytics"  # o nome de banco que o MetricFlow qualifica no SQL gerado
+# Remove o catálogo qualificado (`"<db>"."main"."x"` → `"main"."x"`), AGNÓSTICO ao nome do banco:
+# o build do test-suite clobbera o manifesto e o mf pode qualificar com `"toll_seed2"` etc.
+_RE_CATALOGO = re.compile(r'"[^"]+"\.(?="main"\.)')
 
 
 @dataclass(frozen=True)
@@ -51,11 +54,11 @@ def _extrair_sql(saida: str) -> str:
 
 
 def portabilizar(sql: str) -> str:
-    """Remove o prefixo de catálogo (`"toll_analytics"."main"."x"` → `"main"."x"`) para o SQL rodar
-    em qualquer DuckDB conectado (as variantes têm nomes de banco diferentes). Remoção TEXTUAL de
+    """Remove o prefixo de catálogo (`"<db>"."main"."x"` → `"main"."x"`) para o SQL rodar em
+    qualquer DuckDB conectado (as variantes têm nomes de banco diferentes). Remoção por regex de
     propósito: o SQL do MetricFlow para multi-métrica/ratio é complexo demais para reparsear com
-    segurança — e o mf sempre qualifica como `"toll_analytics".`."""
-    return sql.replace(f'"{_CATALOGO_DBT}".', "")
+    segurança; e o nome do catálogo varia (o build do suite clobbera o manifesto)."""
+    return _RE_CATALOGO.sub("", sql)
 
 
 def compilar_spec(spec: Spec) -> str:

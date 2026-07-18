@@ -1,36 +1,30 @@
 {
   "proposito": "bancos variantes p/ Test-Suite Execution Accuracy: acerto só conta se o predito bate a gold em TODAS as variantes (mata falso positivo)",
-  "escala_transacoes": 3000,
-  "n_variantes": 3,
+  "escala_transacoes": 2000,
+  "n_variantes": 2,
   "variantes": [
     {
       "seed": 1,
       "duckdb": "/tmp/rodoquery_suite/toll_seed1.duckdb",
       "bytes": 21508096,
-      "segundos": 97.9
+      "segundos": 19.6
     },
     {
       "seed": 2,
       "duckdb": "/tmp/rodoquery_suite/toll_seed2.duckdb",
       "bytes": 21508096,
-      "segundos": 80.3
-    },
-    {
-      "seed": 3,
-      "duckdb": "/tmp/rodoquery_suite/toll_seed3.duckdb",
-      "bytes": 21508096,
-      "segundos": 85.2
+      "segundos": 21.7
     }
   ],
-  "segundos_total": 263.3,
+  "segundos_total": 41.3,
   "_proveniencia": {
     "seed": 42,
     "modelo_sut": "qwen2.5-coder:7b",
     "temperatura": 0.0,
-    "git_sha": "9d61a03",
+    "git_sha": "248dc75",
     "git_dirty": true,
-    "git_diff_sha1": "0e02ece417b1",
-    "timestamp_utc": "2026-07-17T11:43:19+00:00",
+    "git_diff_sha1": "5a60e588c135",
+    "timestamp_utc": "2026-07-18T20:40:35+00:00",
     "versoes": {
       "duckdb": "1.5.4",
       "sqlglot": "30.12.0",

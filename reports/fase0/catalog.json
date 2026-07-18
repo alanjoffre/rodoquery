@@ -1,8 +1,8 @@
 {
   "fonte": {
-    "manifest": "/mnt/d/Dev/toll-analytics-platform/dbt-toll-analytics/target/manifest.json",
-    "semantic_manifest": "/mnt/d/Dev/toll-analytics-platform/dbt-toll-analytics/target/semantic_manifest.json",
-    "duckdb": "/mnt/d/Dev/toll-analytics-platform/dbt-toll-analytics/toll_analytics.duckdb",
+    "manifest": "/home/alan/toll-foundation/dbt-toll-analytics/target/manifest.json",
+    "semantic_manifest": "/home/alan/toll-foundation/dbt-toll-analytics/target/semantic_manifest.json",
+    "duckdb": "/home/alan/toll-foundation/dbt-toll-analytics/toll_analytics.duckdb",
     "projeto_dbt": "toll_analytics"
   },
   "tabelas": {
@@ -564,10 +564,10 @@
     "seed": 42,
     "modelo_sut": "qwen2.5-coder:7b",
     "temperatura": 0.0,
-    "git_sha": "db68699",
-    "git_dirty": true,
-    "git_diff_sha1": "d741a2b4decb",
-    "timestamp_utc": "2026-07-17T15:28:08+00:00",
+    "git_sha": "248dc75",
+    "git_dirty": false,
+    "git_diff_sha1": "",
+    "timestamp_utc": "2026-07-18T20:40:11+00:00",
     "versoes": {
       "duckdb": "1.5.4",
       "sqlglot": "30.12.0",

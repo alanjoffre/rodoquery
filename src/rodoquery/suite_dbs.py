@@ -58,8 +58,11 @@ def construir_variante(seed: int, escala: int, destino: Path) -> Path:
         env_extra={"TOLL_LANDING_DIR": str(landing), "DBT_DUCKDB_PATH": str(db)},
     )
     _rodar(
+        # --target-path isolado: NÃO clobbera o target/ canônico (senão o mf compilaria o gold
+        # com o catálogo da variante — bug achado na 1ª validação da Fase 2).
         [str(DBT / ".venv/bin/dbt"), "build", "--exclude", "tag:observability",
-         "--no-partial-parse", "--profiles-dir", "."],
+         "--no-partial-parse", "--profiles-dir", ".",
+         "--target-path", str(destino / f"target_seed{seed}")],
         cwd=DBT,
         env_extra={"DBT_DUCKDB_PATH": str(db)},
     )
