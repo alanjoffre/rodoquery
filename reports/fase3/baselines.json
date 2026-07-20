@@ -1,0 +1,852 @@
+{
+  "fase": "3b_baselines",
+  "split": "DEV",
+  "n_dev": 23,
+  "n_variantes_test_suite": 3,
+  "ressalva_N": "N por estrato abaixo da meta pré-registrada (≥25). ICs largos de propósito; expandir o golden é backlog. TEST (53 itens) segue selado p/ a avaliação final.",
+  "referencia_oraculo_semantico": "teto por construção: EX=1.0 nos respondíveis (o gold É a saída do Semantic Layer). Head-to-head real Tier-A × sql_cru = Fase 4.",
+  "sistemas": {
+    "sql_cru": {
+      "sistema": "sql_cru",
+      "n_total": 23,
+      "execution_accuracy_respondiveis": {
+        "n": 19,
+        "acertos": 5,
+        "taxa": 0.2632,
+        "wilson_ic95": [
+          0.1181,
+          0.4879
+        ]
+      },
+      "acuracia_abstencao": {
+        "n": 4,
+        "acertos": 3,
+        "taxa": 0.75,
+        "wilson_ic95": [
+          0.3006,
+          0.9544
+        ]
+      },
+      "ex_por_estrato": {
+        "metrica_filtrada": {
+          "n": 4,
+          "acertos": 0,
+          "taxa": 0.0,
+          "wilson_ic95": [
+            0.0,
+            0.4899
+          ]
+        },
+        "coalesce_nulo": {
+          "n": 2,
+          "acertos": 0,
+          "taxa": 0.0,
+          "wilson_ic95": [
+            0.0,
+            0.6576
+          ]
+        },
+        "join_grao": {
+          "n": 2,
+          "acertos": 2,
+          "taxa": 1.0,
+          "wilson_ic95": [
+            0.3424,
+            1.0
+          ]
+        },
+        "metrica_derivada": {
+          "n": 3,
+          "acertos": 0,
+          "taxa": 0.0,
+          "wilson_ic95": [
+            0.0,
+            0.5615
+          ]
+        },
+        "grao_temporal": {
+          "n": 3,
+          "acertos": 1,
+          "taxa": 0.3333,
+          "wilson_ic95": [
+            0.0615,
+            0.7923
+          ]
+        },
+        "valor_categorico": {
+          "n": 3,
+          "acertos": 0,
+          "taxa": 0.0,
+          "wilson_ic95": [
+            0.0,
+            0.5615
+          ]
+        },
+        "controle_trivial": {
+          "n": 2,
+          "acertos": 2,
+          "taxa": 1.0,
+          "wilson_ic95": [
+            0.3424,
+            1.0
+          ]
+        }
+      },
+      "abstencao_indevida_em_respondiveis": 0
+    },
+    "sempre_abster": {
+      "sistema": "sempre_abster",
+      "n_total": 23,
+      "execution_accuracy_respondiveis": {
+        "n": 19,
+        "acertos": 0,
+        "taxa": 0.0,
+        "wilson_ic95": [
+          0.0,
+          0.1682
+        ]
+      },
+      "acuracia_abstencao": {
+        "n": 4,
+        "acertos": 4,
+        "taxa": 1.0,
+        "wilson_ic95": [
+          0.5101,
+          1.0
+        ]
+      },
+      "ex_por_estrato": {
+        "metrica_filtrada": {
+          "n": 4,
+          "acertos": 0,
+          "taxa": 0.0,
+          "wilson_ic95": [
+            0.0,
+            0.4899
+          ]
+        },
+        "coalesce_nulo": {
+          "n": 2,
+          "acertos": 0,
+          "taxa": 0.0,
+          "wilson_ic95": [
+            0.0,
+            0.6576
+          ]
+        },
+        "join_grao": {
+          "n": 2,
+          "acertos": 0,
+          "taxa": 0.0,
+          "wilson_ic95": [
+            0.0,
+            0.6576
+          ]
+        },
+        "metrica_derivada": {
+          "n": 3,
+          "acertos": 0,
+          "taxa": 0.0,
+          "wilson_ic95": [
+            0.0,
+            0.5615
+          ]
+        },
+        "grao_temporal": {
+          "n": 3,
+          "acertos": 0,
+          "taxa": 0.0,
+          "wilson_ic95": [
+            0.0,
+            0.5615
+          ]
+        },
+        "valor_categorico": {
+          "n": 3,
+          "acertos": 0,
+          "taxa": 0.0,
+          "wilson_ic95": [
+            0.0,
+            0.5615
+          ]
+        },
+        "controle_trivial": {
+          "n": 2,
+          "acertos": 0,
+          "taxa": 0.0,
+          "wilson_ic95": [
+            0.0,
+            0.6576
+          ]
+        }
+      },
+      "abstencao_indevida_em_respondiveis": 19
+    }
+  },
+  "mcnemar_respondiveis_sqlcru_vs_piso": {
+    "b_only": 5,
+    "c_only": 0,
+    "p_valor": 0.0625,
+    "delta_acuracia": 0.2632,
+    "n": 19
+  },
+  "resultados_por_item": {
+    "sql_cru": [
+      {
+        "id": "abstencao_07",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT vehicle_id, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nWHERE audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY vehicle_id\nORDER BY transaction_count DESC;\n```"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_08",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "ABSTENHO"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "abstencao_09",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "ABSTENHO"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "abstencao_14",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "ABSTENHO"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "coalesce_nulo_02",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT \n    date_trunc('day', event_date) AS event_day,\n    COUNT(*) AS suspicious_transactions\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY \n    date_trunc('day', event_date)\nORDER BY \n    event_day;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT \n    date_trunc('day', event_date) AS event_day,\n    COUNT(*) AS suspicious_transactions\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY \n    date_trunc('day', event_date)\nORDER BY \n    event_day;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "coalesce_nulo_03",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT \n    date_trunc('day', event_date) AS day,\n    SUM(amount_diff_cents / 100.0) AS revenue_leakage_brl\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'FAILED'\nGROUP BY \n    date_trunc('day', event_date)\nORDER BY \n    day;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT \n    date_trunc('day', event_date) AS day,\n    SUM(amount_diff_cents / 100.0) AS revenue_leakage_brl\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'FAILED'\nGROUP BY \n    date_trunc('day', event_date)\nORDER BY \n    day;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "controle_trivial_04",
+        "estrato": "controle_trivial",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT payment_method, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY payment_method;\n```"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT payment_method, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY payment_method;",
+        "variantes_batem": {
+          "seed1": true,
+          "seed2": true,
+          "seed3": true
+        }
+      },
+      {
+        "id": "controle_trivial_06",
+        "estrato": "controle_trivial",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT date_trunc('month', event_date) AS month, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY month;\n```"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT date_trunc('month', event_date) AS month, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY month;",
+        "variantes_batem": {
+          "seed1": true,
+          "seed2": true,
+          "seed3": true
+        }
+      },
+      {
+        "id": "grao_temporal_06",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT date_trunc('month', event_date) AS month, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY month;\n```"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT date_trunc('month', event_date) AS month, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY month;",
+        "variantes_batem": {
+          "seed1": true,
+          "seed2": true,
+          "seed3": true
+        }
+      },
+      {
+        "id": "grao_temporal_07",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT \n    date_trunc('day', event_date) AS day,\n    SUM(CASE WHEN audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO') THEN 1 ELSE 0 END) / COUNT(*) * 100 AS suspicious_rate\nFROM \n    fct_toll_transactions\nGROUP BY \n    date_trunc('day', event_date)\nORDER BY \n    day;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT \n    date_trunc('day', event_date) AS day,\n    SUM(CASE WHEN audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO') THEN 1 ELSE 0 END) / COUNT(*) * 100 AS suspicious_rate\nFROM \n    fct_toll_transactions\nGROUP BY \n    date_trunc('day', event_date)\nORDER BY \n    day;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "grao_temporal_09",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT \n    date_trunc('month', event_date) AS month,\n    audit_flag,\n    COUNT(*) AS total_transactions,\n    SUM(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) AS failed_transactions,\n    ROUND(SUM(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS failure_rate\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVE"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT \n    date_trunc('month', event_date) AS month,\n    audit_flag,\n    COUNT(*) AS total_transactions,\n    SUM(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) AS failed_transactions,\n    ROUND(SUM(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS failure_rate\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY \n    date_trunc('month', event_date), audit_flag\nORDER BY \n    month, audit_flag;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "join_grao_04",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT plaza_id, status, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY plaza_id, status;\n```"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT plaza_id, status, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY plaza_id, status;",
+        "variantes_batem": {
+          "seed1": true,
+          "seed2": true,
+          "seed3": true
+        }
+      },
+      {
+        "id": "join_grao_05",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT plaza_id, COUNT(*) AS num_suspect_transactions\nFROM fct_toll_transactions\nWHERE audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY plaza_id;\n```"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT plaza_id, COUNT(*) AS num_suspect_transactions\nFROM fct_toll_transactions\nWHERE audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY plaza_id;",
+        "variantes_batem": {
+          "seed1": true,
+          "seed2": true,
+          "seed3": true
+        }
+      },
+      {
+        "id": "metrica_derivada_01",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT \n    audit_flag,\n    COUNT(*) AS total_transactions,\n    SUM(amount_brl) AS total_amount_brl,\n    ROUND(SUM(amount_brl) / COUNT(*), 2) AS average_amount_brl_per_transaction\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY \n    audit_flag;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT \n    audit_flag,\n    COUNT(*) AS total_transactions,\n    SUM(amount_brl) AS total_amount_brl,\n    ROUND(SUM(amount_brl) / COUNT(*), 2) AS average_amount_brl_per_transaction\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY \n    audit_flag;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "metrica_derivada_04",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT \n    date_trunc('month', event_date) AS month,\n    SUM(CASE WHEN audit_flag = 'POSSIVEL_DUPLICIDADE' THEN 1 ELSE 0 END) / COUNT(*) * 100 AS suspicious_rate\nFROM \n    fct_toll_transactions\nGROUP BY \n    date_trunc('month', event_date)\nORDER BY \n    month;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT \n    date_trunc('month', event_date) AS month,\n    SUM(CASE WHEN audit_flag = 'POSSIVEL_DUPLICIDADE' THEN 1 ELSE 0 END) / COUNT(*) * 100 AS suspicious_rate\nFROM \n    fct_toll_transactions\nGROUP BY \n    date_trunc('month', event_date)\nORDER BY \n    month;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "metrica_derivada_09",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT \n    date_trunc('month', event_date) AS month,\n    SUM(amount_diff_brl) AS total_loss\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'FAILED'\nGROUP BY \n    date_trunc('month', event_date)\nORDER BY \n    month;\n```"
+        },
+        "correto": false,
+        "motivo": "sandbox: erro de execução: BinderException: Binder Error: Referenced column \"amount_diff_brl\" not found in FROM clause!\nCandidate bindings: \"amount_brl\", \"amount_di",
+        "sql": "SELECT \n    date_trunc('month', event_date) AS month,\n    SUM(amount_diff_brl) AS total_loss\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'FAILED'\nGROUP BY \n    date_trunc('month', event_date)\nORDER BY \n    month;"
+      },
+      {
+        "id": "metrica_filtrada_01",
+        "estrato": "metrica_filtrada",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT SUM(amount_brl) AS total_revenue FROM fct_toll_transactions;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT SUM(amount_brl) AS total_revenue FROM fct_toll_transactions;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "metrica_filtrada_03",
+        "estrato": "metrica_filtrada",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT payment_method, SUM(amount_brl) AS total_revenue\nFROM fct_toll_transactions\nGROUP BY payment_method;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT payment_method, SUM(amount_brl) AS total_revenue\nFROM fct_toll_transactions\nGROUP BY payment_method;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "metrica_filtrada_04",
+        "estrato": "metrica_filtrada",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT \n    status,\n    SUM(amount_brl) AS total_revenue\nFROM \n    fct_toll_transactions\nGROUP BY \n    status;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT \n    status,\n    SUM(amount_brl) AS total_revenue\nFROM \n    fct_toll_transactions\nGROUP BY \n    status;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "metrica_filtrada_12",
+        "estrato": "metrica_filtrada",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT \n    status,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    status;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT \n    status,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    status;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "valor_categorico_04",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT \n    plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    SUM(amount_brl) AS total_revenue_brl\nFROM \n    fct_toll_transactions\nWHERE \n    payment_method = 'AUTOMATIC_TAG' AND status = 'COMPLETED'\nGROUP BY \n    plaza_id, status, payment_method, audit_flag;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT \n    plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    SUM(amount_brl) AS total_revenue_brl\nFROM \n    fct_toll_transactions\nWHERE \n    payment_method = 'AUTOMATIC_TAG' AND status = 'COMPLETED'\nGROUP BY \n    plaza_id, status, payment_method, audit_flag;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "valor_categorico_05",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT \n    plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    SUM(amount_brl) AS total_revenue_brl\nFROM \n    fct_toll_transactions\nWHERE \n    payment_method = 'CARD'\nGROUP BY \n    plaza_id, status, payment_method, audit_flag;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT \n    plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    SUM(amount_brl) AS total_revenue_brl\nFROM \n    fct_toll_transactions\nWHERE \n    payment_method = 'CARD'\nGROUP BY \n    plaza_id, status, payment_method, audit_flag;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      },
+      {
+        "id": "valor_categorico_07",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "qwen2.5-coder:7b",
+          "raw": "```sql\nSELECT plaza_id, status, payment_method, audit_flag, vehicle_id, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nWHERE audit_flag = 'OK'\nGROUP BY plaza_id, status, payment_method, audit_flag, vehicle_id;\n```"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT plaza_id, status, payment_method, audit_flag, vehicle_id, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nWHERE audit_flag = 'OK'\nGROUP BY plaza_id, status, payment_method, audit_flag, vehicle_id;",
+        "variantes_batem": {
+          "seed1": false,
+          "seed2": false,
+          "seed3": false
+        }
+      }
+    ],
+    "sempre_abster": [
+      {
+        "id": "abstencao_07",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "abstencao_08",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "abstencao_09",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "abstencao_14",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "coalesce_nulo_02",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "coalesce_nulo_03",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "controle_trivial_04",
+        "estrato": "controle_trivial",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "controle_trivial_06",
+        "estrato": "controle_trivial",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "grao_temporal_06",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "grao_temporal_07",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "grao_temporal_09",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "join_grao_04",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "join_grao_05",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "metrica_derivada_01",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "metrica_derivada_04",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "metrica_derivada_09",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "metrica_filtrada_01",
+        "estrato": "metrica_filtrada",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "metrica_filtrada_03",
+        "estrato": "metrica_filtrada",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "metrica_filtrada_04",
+        "estrato": "metrica_filtrada",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "metrica_filtrada_12",
+        "estrato": "metrica_filtrada",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "valor_categorico_04",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "valor_categorico_05",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "valor_categorico_07",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "trivial"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      }
+    ]
+  },
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "24cf02d",
+    "git_dirty": true,
+    "git_diff_sha1": "4fa9bb9b2ee2",
+    "timestamp_utc": "2026-07-20T19:07:47+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}
