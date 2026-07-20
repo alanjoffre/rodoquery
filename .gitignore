@@ -18,6 +18,7 @@ models/
 # Catálogo/manifesto vendorizado da fundação (gerado; ver docs)
 # (mantemos o gerador versionado, não o artefato pesado)
 
-# Anotações do golden set (fill-ins dos 2 anotadores) — versionadas só quando REAIS,
-# humanas e revisadas (como evidência). O demo/dry-run da ferramenta NÃO entra no Git.
+# Slots de fill-in HUMANO do 2º anotador (backlog do κ humano) — versionados só quando forem
+# anotações humanas REAIS e revisadas. O κ de MÁQUINA (2º LLM) é evidência versionada:
+# golden/kappa_maquina_b.jsonl e golden/sonda_kappa_maquina_b.jsonl SÃO commitados.
 golden/anotador_*.jsonl

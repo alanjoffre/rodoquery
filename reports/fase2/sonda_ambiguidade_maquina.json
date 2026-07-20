@@ -1,0 +1,35 @@
+{
+  "tipo": "sonda_ambiguidade_kappa_MAQUINA",
+  "proposito": "estressar o kappa com perguntas naturais/ambiguas — verificar que a metrica discrimina",
+  "n_itens": 10,
+  "concordancia": {
+    "n_pares": 10,
+    "concordancia_spec_canonica": 0.9,
+    "cohen_kappa_metrica": 0.875,
+    "concordancia_metrica": 0.9,
+    "concordancia_group_by": 1.0,
+    "concordancia_where": 1.0,
+    "limiar_pre_registrado": {
+      "cohen_kappa_metrica": 0.8,
+      "concordancia_spec_canonica": 0.8
+    },
+    "discordantes": [
+      "amb_05"
+    ]
+  },
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "fb9391d",
+    "git_dirty": true,
+    "git_diff_sha1": "0fd571e4301a",
+    "timestamp_utc": "2026-07-20T18:23:20+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

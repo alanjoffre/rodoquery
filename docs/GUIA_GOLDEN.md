@@ -1,12 +1,39 @@
 # Guia de autoria do golden set (Fase 2)
 
-Este é o roteiro humano para construir o conjunto de referência do RodoQuery. A máquina já faz a
-parte automática (o *gold* sai do MetricFlow); o que **só um humano pode fazer** — e que é o núcleo
-anti-vazamento — é **escrever as perguntas** e **mapeá-las para uma spec**.
+Este é o roteiro para construir o conjunto de referência do RodoQuery. A máquina já faz a parte
+automática (o *gold* sai do MetricFlow); a parte que carrega o valor anti-vazamento é **escrever as
+perguntas** e **mapeá-las para uma spec** — sem nunca escrever SQL à mão.
 
-> **Por que humano?** Se a mesma pessoa escreve a pergunta, o SQL-gold *e* o prompt do agente, o
-> benchmark mede "o agente reproduz meu SQL", não "acerta a resposta" — e a tese fica infalsificável.
-> Ver a auditoria staff que blindou esta fase.
+> **A circularidade que importa** é o *gold*: se quem escreve a pergunta também escreve o SQL-gold, o
+> benchmark mede "o agente reproduz meu SQL", não "acerta a resposta". Aqui isso **não acontece** — o
+> gold sai do MetricFlow a partir da spec, nunca de SQL escrito à mão. Ver a auditoria staff da fase.
+
+## Estado atual (v1) — o que foi feito, sem maquiagem
+
+> Esta seção é deliberadamente explícita porque o portfólio é sobre **rigor**, e rigor inclui não
+> vender evidência que não existe.
+
+| Etapa | Padrão documentado (ideal) | O que a v1 realmente fez |
+|---|---|---|
+| Autoria das perguntas | humano (analista de auditoria) | **modelo** — `golden/gerar_autor.py`, estratificado, `seed=42` |
+| Mapeamento pergunta→spec | humano | **modelo** (mesmo gerador) |
+| 2º anotador (κ) | 2º **humano** independente | **2º LLM** independente, cego às specs do autor — **κ de MÁQUINA** |
+| κ humano | ≥ 0,8 entre humanos | **backlog declarado** (ainda não coletado) |
+
+**Por que isto ainda vale como evidência forte:**
+- A anti-circularidade real (gold = MetricFlow, nunca SQL à mão) está **intacta**.
+- O κ de máquina é medido com um 2º LLM **cego** e **rotulado como máquina** — não é apresentado
+  como concordância humana. Resultados: **κ = 1,0** no golden limpo (61 itens, mapeamento
+  inequívoco) e **κ = 0,875** numa *sonda de ambiguidade* de 10 perguntas naturais — ou seja, a
+  métrica **discrimina** (cai quando há ambiguidade real; ver `reports/fase2/`).
+- A divergência da sonda (`amb_05`, *"Como está a fraude, mês a mês?"* → `suspect_rate` vs
+  `suspect_transactions`) é uma **lacuna de guideline** genuína, exatamente o que o κ existe para achar.
+
+**Limitação honesta do κ de máquina:** dois LLMs da mesma família compartilham *prior*; o κ mede
+sobretudo se as perguntas são **inequívocas dado o catálogo** — não substitui o κ humano, que
+capturaria a bagunça de perguntas reais. Por isso o κ humano fica como **backlog**, não como
+"feito". Um κ = 1,0 no golden limpo é, por si só, **fraco** (mede templates sem ambiguidade); é a
+sonda que dá dentes à métrica.
 
 ## O modelo mental
 
@@ -79,9 +106,13 @@ perguntas por estrato** (~200 no total) para o IC ser útil. Exemplos em `golden
    olhando as falhas do agente — isso vaza).
 2. **Validação (automática).** Rode `validar_item` em cada uma: a spec **compila** no MetricFlow e o
    gold é **não-vazio**? Corrija as inválidas.
-3. **2º anotador (κ).** Uma 2ª pessoa mapeia as MESMAS perguntas → spec, **independente**. Rode
-   `concordancia_mapeamento`: **κ de Cohen ≥ 0,8** e concordância de spec canônica ≥ 0,8. Itens
-   discordantes são adjudicados ou **removidos antes de selar**.
+3. **2º anotador (κ).** Um 2º anotador mapeia as MESMAS perguntas → spec, **independente e cego** às
+   specs do 1º. Rode `concordancia_mapeamento`: **κ de Cohen ≥ 0,8** e concordância de spec canônica
+   ≥ 0,8. Itens discordantes são adjudicados ou **removidos antes de selar**.
+   - **v1 (feito):** o 2º anotador é um **LLM** diferente, cego → **κ de máquina** (rotulado como
+     tal). Ver `reports/fase2/concordancia_maquina.json` e `.../sonda_ambiguidade_maquina.json`.
+   - **backlog:** repetir com um 2º **humano** para o κ humano. A ferramenta é a mesma — só troca o
+     arquivo do anotador B.
 4. **Split e selamento.** Divida DEV (visível, ~30%) / TEST (selado, ~70%). Commite o **sha256 do
    TEST antes de rodar qualquer sistema** — pré-registro anti-vazamento (não dá pra editar depois).
 5. **Gerar respostas.** `gerar_respostas` faz o hash do gold em cada variante do test-suite.
@@ -100,13 +131,32 @@ perguntas por estrato** (~200 no total) para o IC ser útil. Exemplos em `golden
 ```python
 from rodoquery.golden import carregar, validar_item, concordancia_mapeamento, GOLDEN_DIR
 
-itens = carregar(GOLDEN_DIR / "candidates.jsonl")
+itens = carregar(GOLDEN_DIR / "golden.jsonl")   # 61 itens validados (autor = modelo)
 for it in itens:
-    ok, motivo = validar_item(it)          # spec compila + gold não-vazio?
+    ok, motivo = validar_item(it)               # spec compila + gold não-vazio?
     print(it.id, ok, motivo)
 
-# κ do 2º anotador (dois arquivos com os mesmos ids, specs independentes):
-a = carregar(GOLDEN_DIR / "anotador_a.jsonl")
-b = carregar(GOLDEN_DIR / "anotador_b.jsonl")
-print(concordancia_mapeamento(a, b))
+# κ do 2º anotador (mesmos ids, specs independentes). v1 = anotador B é um 2º LLM cego:
+a = carregar(GOLDEN_DIR / "golden.jsonl")            # anotador A (autor)
+b = carregar(GOLDEN_DIR / "kappa_maquina_b.jsonl")  # anotador B (2º LLM, cego) → κ de máquina
+print(concordancia_mapeamento(a, b))                # κ = 1.0 (golden limpo)
+# sonda de ambiguidade (dá dentes ao κ): golden/sonda_ambiguidade.jsonl vs sonda_kappa_maquina_b.jsonl → κ = 0.875
+```
+
+## Reprodução do κ de máquina (v1)
+
+```bash
+# 1) (re)gerar o golden do autor (modelo), estratificado e determinístico
+python golden/gerar_autor.py > golden/autor.jsonl
+
+# 2) validar (compila no mf + gold não-vazio) e salvar só os válidos
+python golden/validar_golden.py              # -> golden/golden.jsonl (61/61)
+
+# 3) o 2º anotador-LLM é rodado como subagente CEGO (só perguntas + catálogo, sem as specs do autor);
+#    a saída dele vira golden/_maquina_b_raw.jsonl. Então:
+python golden/kappa_maquina.py               # -> reports/fase2/concordancia_maquina.json  (κ=1.0)
+python golden/kappa_sonda.py                 # -> reports/fase2/sonda_ambiguidade_maquina.json (κ=0.875)
+
+# 4) gerar o gold com Test-Suite EX (reconstrói 3 variantes + hash por variante) e selar o golden
+python gerar_gold_fase2.py                   # -> reports/fase2/gold_respostas.json + golden/golden.sha256
 ```

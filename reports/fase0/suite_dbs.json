@@ -1,30 +1,36 @@
 {
   "proposito": "bancos variantes p/ Test-Suite Execution Accuracy: acerto só conta se o predito bate a gold em TODAS as variantes (mata falso positivo)",
   "escala_transacoes": 2000,
-  "n_variantes": 2,
+  "n_variantes": 3,
   "variantes": [
     {
       "seed": 1,
-      "duckdb": "/tmp/rodoquery_suite/toll_seed1.duckdb",
+      "duckdb": "/home/alan/rodoquery_suite/toll_seed1.duckdb",
       "bytes": 21508096,
-      "segundos": 19.6
+      "segundos": 28.4
     },
     {
       "seed": 2,
-      "duckdb": "/tmp/rodoquery_suite/toll_seed2.duckdb",
+      "duckdb": "/home/alan/rodoquery_suite/toll_seed2.duckdb",
       "bytes": 21508096,
-      "segundos": 21.7
+      "segundos": 18.9
+    },
+    {
+      "seed": 3,
+      "duckdb": "/home/alan/rodoquery_suite/toll_seed3.duckdb",
+      "bytes": 21508096,
+      "segundos": 18.5
     }
   ],
-  "segundos_total": 41.3,
+  "segundos_total": 65.8,
   "_proveniencia": {
     "seed": 42,
     "modelo_sut": "qwen2.5-coder:7b",
     "temperatura": 0.0,
-    "git_sha": "248dc75",
+    "git_sha": "fb9391d",
     "git_dirty": true,
-    "git_diff_sha1": "5a60e588c135",
-    "timestamp_utc": "2026-07-18T20:40:35+00:00",
+    "git_diff_sha1": "65ccc62bfe9b",
+    "timestamp_utc": "2026-07-20T18:25:30+00:00",
     "versoes": {
       "duckdb": "1.5.4",
       "sqlglot": "30.12.0",

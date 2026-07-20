@@ -1,0 +1,61 @@
+{"id": "metrica_filtrada_01", "spec": {"metrics": ["revenue"], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_filtrada_02", "spec": {"metrics": ["revenue"], "group_by": ["transaction__plaza"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_filtrada_03", "spec": {"metrics": ["revenue"], "group_by": ["transaction__payment_method"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_filtrada_04", "spec": {"metrics": ["revenue"], "group_by": ["transaction__status"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_filtrada_05", "spec": {"metrics": ["suspect_transactions"], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_filtrada_06", "spec": {"metrics": ["suspect_transactions"], "group_by": ["transaction__plaza"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_filtrada_07", "spec": {"metrics": ["suspect_transactions"], "group_by": ["transaction__payment_method"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_filtrada_08", "spec": {"metrics": ["suspect_transactions"], "group_by": ["transaction__status"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_filtrada_09", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_filtrada_10", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["transaction__plaza"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_filtrada_11", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["transaction__payment_method"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_filtrada_12", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["transaction__status"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_derivada_01", "spec": {"metrics": ["suspect_rate"], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_derivada_02", "spec": {"metrics": ["suspect_rate"], "group_by": ["transaction__payment_method"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_derivada_03", "spec": {"metrics": ["suspect_rate"], "group_by": ["transaction__plaza"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_derivada_04", "spec": {"metrics": ["suspect_rate"], "group_by": ["metric_time__month"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "metrica_derivada_05", "spec": {"metrics": ["suspect_rate"], "group_by": ["transaction__status"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_derivada_06", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_derivada_07", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["transaction__payment_method"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_derivada_08", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["transaction__plaza"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "metrica_derivada_09", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["metric_time__month"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "metrica_derivada_10", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["transaction__status"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_01", "spec": {"metrics": ["revenue"], "group_by": ["metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_02", "spec": {"metrics": ["revenue"], "group_by": ["metric_time__week"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_03", "spec": {"metrics": ["revenue"], "group_by": ["metric_time__month"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_04", "spec": {"metrics": ["transactions"], "group_by": ["metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_05", "spec": {"metrics": ["transactions"], "group_by": ["metric_time__week"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_06", "spec": {"metrics": ["transactions"], "group_by": ["metric_time__month"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_07", "spec": {"metrics": ["suspect_rate"], "group_by": ["metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_08", "spec": {"metrics": ["suspect_rate"], "group_by": ["metric_time__week"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_09", "spec": {"metrics": ["suspect_rate"], "group_by": ["metric_time__month"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_01", "spec": {"metrics": ["revenue"], "group_by": ["metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_02", "spec": {"metrics": ["suspect_transactions"], "group_by": ["metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_03", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_04", "spec": {"metrics": ["transactions"], "group_by": ["metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_05", "spec": {"metrics": ["suspect_rate"], "group_by": ["metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_06", "spec": {"metrics": ["revenue"], "group_by": ["metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "join_grao_01", "spec": {"metrics": ["revenue"], "group_by": ["transaction__plaza"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "join_grao_02", "spec": {"metrics": ["revenue"], "group_by": ["transaction__plaza", "transaction__status"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "join_grao_03", "spec": {"metrics": ["transactions"], "group_by": ["transaction__plaza"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "join_grao_04", "spec": {"metrics": ["transactions"], "group_by": ["transaction__plaza", "transaction__status"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "join_grao_05", "spec": {"metrics": ["suspect_transactions"], "group_by": ["transaction__plaza"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "join_grao_06", "spec": {"metrics": ["suspect_transactions"], "group_by": ["transaction__plaza", "transaction__status"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "join_grao_07", "spec": {"metrics": ["revenue"], "group_by": ["transaction__vehicle"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "join_grao_08", "spec": {"metrics": ["transactions"], "group_by": ["transaction__vehicle"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_01", "spec": {"metrics": ["revenue"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_02", "spec": {"metrics": ["revenue"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'FAILED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_03", "spec": {"metrics": ["revenue"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'REVERSED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_04", "spec": {"metrics": ["revenue"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_05", "spec": {"metrics": ["revenue"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_06", "spec": {"metrics": ["revenue"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_07", "spec": {"metrics": ["transactions"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'OK'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_08", "spec": {"metrics": ["transactions"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_09", "spec": {"metrics": ["transactions"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_01", "spec": {"metrics": ["transactions"], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_02", "spec": {"metrics": ["suspect_transactions"], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_03", "spec": {"metrics": ["transactions"], "group_by": ["transaction__status"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_04", "spec": {"metrics": ["transactions"], "group_by": ["transaction__payment_method"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_05", "spec": {"metrics": ["transactions"], "group_by": ["transaction__plaza"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_06", "spec": {"metrics": ["transactions"], "group_by": ["metric_time__month"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_07", "spec": {"metrics": ["transactions"], "group_by": ["transaction__vehicle"], "where": null, "order_by": [], "limit": null, "ordenado": false}}

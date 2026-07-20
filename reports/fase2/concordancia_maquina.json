@@ -1,0 +1,72 @@
+{
+  "tipo": "concordancia_inter_anotador_MAQUINA",
+  "aviso": "2 anotadores = LLMs (autor + 2o anotador independente, cego). kappa de MAQUINA, nao humano. kappa humano = backlog declarado.",
+  "anotador_a": "autor_modelo (golden/gerar_autor.py)",
+  "anotador_b": "2o_anotador_LLM_cego (general-purpose subagent, so perguntas+catalogo)",
+  "n_itens": 61,
+  "concordancia": {
+    "n_pares": 61,
+    "concordancia_spec_canonica": 1.0,
+    "cohen_kappa_metrica": 1.0,
+    "concordancia_metrica": 1.0,
+    "concordancia_group_by": 1.0,
+    "concordancia_where": 1.0,
+    "limiar_pre_registrado": {
+      "cohen_kappa_metrica": 0.8,
+      "concordancia_spec_canonica": 0.8
+    },
+    "discordantes": []
+  },
+  "por_estrato": {
+    "coalesce_nulo": {
+      "n": 6,
+      "iguais": 6,
+      "taxa": 1.0
+    },
+    "controle_trivial": {
+      "n": 7,
+      "iguais": 7,
+      "taxa": 1.0
+    },
+    "grao_temporal": {
+      "n": 9,
+      "iguais": 9,
+      "taxa": 1.0
+    },
+    "join_grao": {
+      "n": 8,
+      "iguais": 8,
+      "taxa": 1.0
+    },
+    "metrica_derivada": {
+      "n": 10,
+      "iguais": 10,
+      "taxa": 1.0
+    },
+    "metrica_filtrada": {
+      "n": 12,
+      "iguais": 12,
+      "taxa": 1.0
+    },
+    "valor_categorico": {
+      "n": 9,
+      "iguais": 9,
+      "taxa": 1.0
+    }
+  },
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "fb9391d",
+    "git_dirty": true,
+    "git_diff_sha1": "bf338b21a260",
+    "timestamp_utc": "2026-07-20T18:20:33+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

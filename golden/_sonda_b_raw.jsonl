@@ -1,0 +1,10 @@
+{"id": "amb_01", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "amb_02", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["transaction__plaza"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "amb_03", "spec": {"metrics": ["suspect_transactions"], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "amb_04", "spec": {"metrics": ["revenue"], "group_by": ["transaction__plaza"], "where": null, "order_by": ["revenue"], "limit": 1, "ordenado": true}}
+{"id": "amb_05", "spec": {"metrics": ["suspect_transactions"], "group_by": ["metric_time__month"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "amb_06", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "amb_07", "spec": {"metrics": ["transactions"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "amb_08", "spec": {"metrics": ["transactions"], "group_by": ["metric_time__day"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "amb_09", "spec": {"metrics": ["revenue"], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "amb_10", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["transaction__plaza"], "where": null, "order_by": ["revenue_leakage_brl"], "limit": 1, "ordenado": true}}
