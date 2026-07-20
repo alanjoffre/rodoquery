@@ -17,3 +17,7 @@ models/
 
 # Catálogo/manifesto vendorizado da fundação (gerado; ver docs)
 # (mantemos o gerador versionado, não o artefato pesado)
+
+# Anotações do golden set (fill-ins dos 2 anotadores) — versionadas só quando REAIS,
+# humanas e revisadas (como evidência). O demo/dry-run da ferramenta NÃO entra no Git.
+golden/anotador_*.jsonl
