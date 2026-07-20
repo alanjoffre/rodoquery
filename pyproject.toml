@@ -32,6 +32,7 @@ target-version = "py312"
 select = ["E", "F", "I", "UP", "B"]
 
 [tool.ruff.lint.per-file-ignores]
-# baselines.py embute o dicionário de schema + o prompt do baseline como strings: o comprimento de
-# linha desses dados é irrelevante (o LLM lê texto corrido), então E501 é ruído só neste arquivo.
+# Estes arquivos embutem o dicionário de schema / prompt do LLM como strings: o comprimento de linha
+# desses dados é irrelevante (o modelo lê texto corrido), então E501 é ruído só aqui.
 "src/rodoquery/baselines.py" = ["E501"]
+"src/rodoquery/sistema.py" = ["E501"]

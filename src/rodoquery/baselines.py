@@ -65,7 +65,10 @@ _FENCE = re.compile(r"```(?:sql)?\s*(.*?)\s*```", re.DOTALL | re.IGNORECASE)
 def _chamar_ollama(prompt: str, modelo: str, temperatura: float, timeout: float = 120.0) -> str:
     corpo = json.dumps({
         "model": modelo, "prompt": prompt, "stream": False,
-        "options": {"temperature": temperatura, "seed": 42},   # determinismo
+        # determinismo: greedy (temp 0 + top_k 1) e seed fixa. Reduz a variância run-a-run do
+        # llama.cpp — mas NÃO a elimina (não-associatividade de float na GPU). Por isso as predições
+        # são CONGELADAS num arquivo (ver avaliacao/relatório): o número reportado é reprodutível.
+        "options": {"temperature": temperatura, "seed": 42, "top_k": 1, "top_p": 1.0},
     }).encode("utf-8")
     req = urllib.request.Request(OLLAMA_URL, data=corpo,
                                  headers={"Content-Type": "application/json"})

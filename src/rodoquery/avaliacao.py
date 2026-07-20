@@ -17,33 +17,62 @@ from __future__ import annotations
 
 import json
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 from rodoquery.canonizacao import hash_resultado
 from rodoquery.config import REPO_ROOT
 from rodoquery.estat import wilson
+from rodoquery.gold import Spec, compilar_spec, executar_gold
 from rodoquery.golden import ESTRATOS_RESPONDIVEIS, ItemGolden
 from rodoquery.sandbox import carregar_allowlist, executar
 
 
 @dataclass(frozen=True)
 class Predicao:
-    """O que um sistema devolve para uma pergunta."""
-    tipo: str                       # "sql" | "abster"
+    """O que um sistema devolve para uma pergunta.
+
+    Três formas, refletindo a arquitetura:
+      - `sql`    → SQL cru (Tier-B / baseline): passa pelo SANDBOX (não-confiável).
+      - `spec`   → spec do Semantic Layer (Tier-A): o LLM NUNCA escreve SQL; o MetricFlow gera.
+                   Roda pelo caminho GOVERNADO (compilar_spec), sem sandbox (sem injeção).
+      - `abster` → não responde.
+    """
+    tipo: str                       # "sql" | "spec" | "abster"
     sql: str | None = None
+    spec: Spec | None = None
     meta: dict = field(default_factory=dict)   # latência, texto cru, etc.
 
     @classmethod
     def abster(cls, **meta) -> Predicao:
-        return cls("abster", None, meta)
+        return cls("abster", None, None, meta)
 
     @classmethod
     def com_sql(cls, sql: str, **meta) -> Predicao:
-        return cls("sql", sql, meta)
+        return cls("sql", sql, None, meta)
+
+    @classmethod
+    def com_spec(cls, spec: Spec, **meta) -> Predicao:
+        return cls("spec", None, spec, meta)
 
 
 Sistema = Callable[[str], Predicao]
+
+
+def predicao_para_dict(p: Predicao) -> dict:
+    return {"tipo": p.tipo, "sql": p.sql,
+            "spec": asdict(p.spec) if p.spec else None, "meta": p.meta}
+
+
+def predicao_de_dict(d: dict) -> Predicao:
+    spec = Spec(**d["spec"]) if d.get("spec") else None
+    return Predicao(d["tipo"], d.get("sql"), spec, d.get("meta", {}))
+
+
+def coletar_predicoes(itens: list[ItemGolden], sistema: Sistema) -> dict[str, dict]:
+    """Roda o sistema UMA vez e CONGELA as predições (o SUT é estocástico; isto torna o número
+    reprodutível e auditável — o scoring vira determinístico a partir daqui)."""
+    return {it.id: predicao_para_dict(sistema(it.pergunta_nl)) for it in itens}
 
 
 def carregar_hashes_gold(caminho: Path | None = None) -> dict[str, dict[str, str]]:
@@ -74,21 +103,34 @@ def avaliar_item(
     if pred.tipo == "abster":
         return {**base, "correto": False, "motivo": "absteve numa pergunta respondível"}
 
+    # Executa o predito em cada variante e coleta o hash canônico. Dois caminhos:
+    #   spec (Tier-A) → compila no MetricFlow e roda no caminho GOVERNADO (confiável, sem sandbox);
+    #   sql (Tier-B)  → passa pelo SANDBOX (não-confiável).
+    # Em ambos, canoniza com o `ordenado` do GOLD (a pergunta define se a ordem é resposta).
     hashes_pred: dict[str, str] = {}
-    for nome, db in dbs.items():
-        v, linhas = executar(pred.sql, allowlist, db)
-        if not v:
-            return {**base, "correto": False, "motivo": f"sandbox: {v.motivo}",
-                    "sql": pred.sql}
-        hashes_pred[nome] = hash_resultado(linhas, ordenado=item.spec.ordenado)
+    if pred.tipo == "spec":
+        try:
+            sql = compilar_spec(pred.spec)
+        except Exception as e:
+            return {**base, "correto": False, "motivo": f"spec não compila: {str(e)[:100]}"}
+        for nome, db in dbs.items():
+            linhas = executar_gold(sql, db)
+            hashes_pred[nome] = hash_resultado(linhas, ordenado=item.spec.ordenado)
+    else:  # pred.tipo == "sql"
+        for nome, db in dbs.items():
+            v, linhas = executar(pred.sql, allowlist, db)
+            if not v:
+                return {**base, "correto": False, "motivo": f"sandbox: {v.motivo}",
+                        "sql": pred.sql}
+            hashes_pred[nome] = hash_resultado(linhas, ordenado=item.spec.ordenado)
 
     # Test-Suite EX: tem de bater em TODAS as variantes
     bateram = {n: hashes_pred[n] == hashes_gold.get(n) for n in dbs}
     correto = all(bateram.values())
     n_bate = sum(bateram.values())
     motivo = "EX em todas as variantes" if correto else f"bateu {n_bate}/{len(dbs)} variantes"
-    return {**base, "correto": correto, "motivo": motivo, "sql": pred.sql,
-            "variantes_batem": bateram}
+    return {**base, "correto": correto, "motivo": motivo,
+            "sql": pred.sql, "variantes_batem": bateram}
 
 
 def _bloco_metricas(resultados: list[dict]) -> dict:
@@ -101,16 +143,21 @@ def _bloco_metricas(resultados: list[dict]) -> dict:
 
 def avaliar_sistema(
     itens: list[ItemGolden],
-    sistema: Sistema,
+    sistema: Sistema | None,
     hashes_gold: dict[str, dict[str, str]],
     dbs: dict[str, Path],
     nome_sistema: str = "sistema",
+    predicoes: dict[str, dict] | None = None,
 ) -> dict:
-    """Roda o sistema em todos os itens e agrega — separando os dois eixos e por estrato."""
+    """Roda o sistema em todos os itens e agrega — separando os dois eixos e por estrato.
+
+    Se `predicoes` (congeladas) for dado, usa-as em vez de chamar o sistema → scoring 100%
+    determinístico e reprodutível (o SUT é estocástico; ver `coletar_predicoes`)."""
     allowlist = carregar_allowlist()
     resultados: list[dict] = []
     for it in itens:
-        pred = sistema(it.pergunta_nl)
+        pred = (predicao_de_dict(predicoes[it.id]) if predicoes is not None
+                else sistema(it.pergunta_nl))
         resultados.append(avaliar_item(it, pred, hashes_gold.get(it.id, {}), dbs, allowlist))
 
     respondiveis = [r for r in resultados if not r["abstencao"]]

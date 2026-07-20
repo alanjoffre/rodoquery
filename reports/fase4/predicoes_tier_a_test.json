@@ -1,0 +1,933 @@
+{
+  "abstencao_01": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_02": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_03": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_04": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_05": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_06": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_10": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_11": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_12": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_13": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_15": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "coalesce_nulo_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [
+        "metric_time__day"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__day\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "coalesce_nulo_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "coalesce_nulo_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [
+        "metric_time__day"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__day\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "coalesce_nulo_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [
+        "metric_time__day"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__day\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "controle_trivial_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "controle_trivial_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "controle_trivial_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__status"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "controle_trivial_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "controle_trivial_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "grao_temporal_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [
+        "metric_time__day"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__day\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "grao_temporal_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "grao_temporal_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [
+        "metric_time__month"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__month\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "grao_temporal_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "grao_temporal_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "grao_temporal_08": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "join_grao_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "join_grao_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__status"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "join_grao_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "join_grao_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__status"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "join_grao_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "join_grao_08": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_derivada_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__payment_method"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_derivada_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_derivada_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__status"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_derivada_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_derivada_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__payment_method"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_derivada_08": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_derivada_10": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__status"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_filtrada_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_filtrada_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_filtrada_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_filtrada_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__payment_method"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_filtrada_08": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__status"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_filtrada_09": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_filtrada_10": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "metrica_filtrada_11": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__payment_method"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "valor_categorico_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "valor_categorico_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "valor_categorico_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [],
+      "where": "{{ Dimension('transaction__status') }} = 'REVERSED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'REVERSED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "valor_categorico_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__payment_method"
+      ],
+      "where": "transaction__payment_method='CASH'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": \"transaction__payment_method='CASH'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "valor_categorico_08": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  },
+  "valor_categorico_09": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```"
+    }
+  }
+}

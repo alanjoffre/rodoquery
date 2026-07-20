@@ -1,0 +1,479 @@
+{
+  "abstencao_01": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_02": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_03": {
+    "tipo": "sql",
+    "sql": "SELECT \n    plaza_id,\n    SUM(amount_brl) AS total_cost\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    plaza_id,\n    SUM(amount_brl) AS total_cost\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id;\n```"
+    }
+  },
+  "abstencao_04": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_05": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_06": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_10": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_11": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_12": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_13": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "abstencao_15": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO"
+    }
+  },
+  "coalesce_nulo_01": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', event_date) AS event_day, SUM(amount_brl) AS total_revenue\nFROM fct_toll_transactions\nGROUP BY date_trunc('day', event_date)\nORDER BY event_day;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('day', event_date) AS event_day, SUM(amount_brl) AS total_revenue\nFROM fct_toll_transactions\nGROUP BY date_trunc('day', event_date)\nORDER BY event_day;\n```"
+    }
+  },
+  "coalesce_nulo_04": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', event_date) AS event_day, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY date_trunc('day', event_date)\nORDER BY event_day;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('day', event_date) AS event_day, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY date_trunc('day', event_date)\nORDER BY event_day;\n```"
+    }
+  },
+  "coalesce_nulo_05": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', event_date) AS day,\n    SUM(CASE WHEN audit_flag = 'POSSIVEL_DUPLICIDADE' THEN 1 ELSE 0 END) / COUNT(*) * 100 AS suspicious_rate\nFROM \n    fct_toll_transactions\nGROUP BY \n    date_trunc('day', event_date)\nORDER BY \n    day;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', event_date) AS day,\n    SUM(CASE WHEN audit_flag = 'POSSIVEL_DUPLICIDADE' THEN 1 ELSE 0 END) / COUNT(*) * 100 AS suspicious_rate\nFROM \n    fct_toll_transactions\nGROUP BY \n    date_trunc('day', event_date)\nORDER BY \n    day;\n```"
+    }
+  },
+  "coalesce_nulo_06": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', event_date) AS event_day, SUM(amount_brl) AS total_revenue\nFROM fct_toll_transactions\nGROUP BY date_trunc('day', event_date)\nORDER BY event_day;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('day', event_date) AS event_day, SUM(amount_brl) AS total_revenue\nFROM fct_toll_transactions\nGROUP BY date_trunc('day', event_date)\nORDER BY event_day;\n```"
+    }
+  },
+  "controle_trivial_01": {
+    "tipo": "sql",
+    "sql": "SELECT COUNT(*) AS total_transactions FROM fct_toll_transactions;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT COUNT(*) AS total_transactions FROM fct_toll_transactions;\n```"
+    }
+  },
+  "controle_trivial_02": {
+    "tipo": "sql",
+    "sql": "SELECT COUNT(*) AS total_suspeitas FROM fct_toll_transactions WHERE audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO');",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT COUNT(*) AS total_suspeitas FROM fct_toll_transactions WHERE audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO');\n```"
+    }
+  },
+  "controle_trivial_03": {
+    "tipo": "sql",
+    "sql": "SELECT status, COUNT(*) AS transaction_count FROM fct_toll_transactions GROUP BY status;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT status, COUNT(*) AS transaction_count FROM fct_toll_transactions GROUP BY status;\n```"
+    }
+  },
+  "controle_trivial_05": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_id, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY plaza_id;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT plaza_id, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY plaza_id;\n```"
+    }
+  },
+  "controle_trivial_07": {
+    "tipo": "sql",
+    "sql": "SELECT vehicle_id, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY vehicle_id;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT vehicle_id, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY vehicle_id;\n```"
+    }
+  },
+  "grao_temporal_01": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', event_date) AS event_day, SUM(amount_brl) AS total_revenue\nFROM fct_toll_transactions\nGROUP BY date_trunc('day', event_date)\nORDER BY event_day;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('day', event_date) AS event_day, SUM(amount_brl) AS total_revenue\nFROM fct_toll_transactions\nGROUP BY date_trunc('day', event_date)\nORDER BY event_day;\n```"
+    }
+  },
+  "grao_temporal_02": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', event_date) AS week_start,\n    SUM(amount_brl) AS total_revenue_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    date_trunc('week', event_date)\nORDER BY \n    week_start;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', event_date) AS week_start,\n    SUM(amount_brl) AS total_revenue_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    date_trunc('week', event_date)\nORDER BY \n    week_start;\n```"
+    }
+  },
+  "grao_temporal_03": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('month', event_date) AS month, SUM(amount_brl) AS total_revenue\nFROM fct_toll_transactions\nGROUP BY month;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('month', event_date) AS month, SUM(amount_brl) AS total_revenue\nFROM fct_toll_transactions\nGROUP BY month;\n```"
+    }
+  },
+  "grao_temporal_04": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', event_date) AS event_day, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY date_trunc('day', event_date)\nORDER BY event_day;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('day', event_date) AS event_day, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY date_trunc('day', event_date)\nORDER BY event_day;\n```"
+    }
+  },
+  "grao_temporal_05": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', event_date) AS week_start, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY date_trunc('week', event_date)\nORDER BY week_start;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('week', event_date) AS week_start, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY date_trunc('week', event_date)\nORDER BY week_start;\n```"
+    }
+  },
+  "grao_temporal_08": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', event_date) AS week,\n    audit_flag,\n    COUNT(*) AS total_transactions,\n    SUM(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) AS failed_transactions,\n    ROUND(SUM(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS failure_rate\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY \n    date_trunc('week', event_date), audit_flag\nORDER BY \n    week, audit_flag;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', event_date) AS week,\n    audit_flag,\n    COUNT(*) AS total_transactions,\n    SUM(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) AS failed_transactions,\n    ROUND(SUM(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS failure_rate\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_"
+    }
+  },
+  "join_grao_01": {
+    "tipo": "sql",
+    "sql": "SELECT \n    plaza_id,\n    SUM(amount_brl) AS total_revenue\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    plaza_id,\n    SUM(amount_brl) AS total_revenue\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id;\n```"
+    }
+  },
+  "join_grao_02": {
+    "tipo": "sql",
+    "sql": "SELECT \n    plaza_id,\n    status,\n    SUM(amount_brl) AS total_revenue\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id, \n    status;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    plaza_id,\n    status,\n    SUM(amount_brl) AS total_revenue\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id, \n    status;\n```"
+    }
+  },
+  "join_grao_03": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_id, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY plaza_id;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT plaza_id, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY plaza_id;\n```"
+    }
+  },
+  "join_grao_06": {
+    "tipo": "sql",
+    "sql": "SELECT \n    plaza_id,\n    status,\n    COUNT(*) AS transaction_count\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY \n    plaza_id, status;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    plaza_id,\n    status,\n    COUNT(*) AS transaction_count\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY \n    plaza_id, status;\n```"
+    }
+  },
+  "join_grao_07": {
+    "tipo": "sql",
+    "sql": "SELECT \n    vehicle_id,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    vehicle_id;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    vehicle_id,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    vehicle_id;\n```"
+    }
+  },
+  "join_grao_08": {
+    "tipo": "sql",
+    "sql": "SELECT vehicle_id, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY vehicle_id;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT vehicle_id, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nGROUP BY vehicle_id;\n```"
+    }
+  },
+  "metrica_derivada_02": {
+    "tipo": "sql",
+    "sql": "SELECT \n    payment_method,\n    SUM(CASE WHEN audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO') THEN 1 ELSE 0 END) / COUNT(*) AS tax_suspeita\nFROM \n    fct_toll_transactions\nGROUP BY \n    payment_method;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    payment_method,\n    SUM(CASE WHEN audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO') THEN 1 ELSE 0 END) / COUNT(*) AS tax_suspeita\nFROM \n    fct_toll_transactions\nGROUP BY \n    payment_method;\n```"
+    }
+  },
+  "metrica_derivada_03": {
+    "tipo": "sql",
+    "sql": "SELECT \n    plaza_id,\n    date_trunc('day', event_date) AS event_date,\n    SUM(CASE WHEN audit_flag = 'POSSIVEL_DUPLICIDADE' THEN 1 ELSE 0 END) / COUNT(*) * 100 AS suspicious_rate\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id, date_trunc('day', event_date)\nORDER BY \n    plaza_id, event_date;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    plaza_id,\n    date_trunc('day', event_date) AS event_date,\n    SUM(CASE WHEN audit_flag = 'POSSIVEL_DUPLICIDADE' THEN 1 ELSE 0 END) / COUNT(*) * 100 AS suspicious_rate\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id, date_trunc('day', event_date)\nORDER BY \n    plaza_id, event_date;\n```"
+    }
+  },
+  "metrica_derivada_05": {
+    "tipo": "sql",
+    "sql": "SELECT \n    status,\n    SUM(CASE WHEN audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO') THEN 1 ELSE 0 END) / COUNT(*) AS tax_suspeita\nFROM \n    fct_toll_transactions\nGROUP BY \n    status;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    status,\n    SUM(CASE WHEN audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO') THEN 1 ELSE 0 END) / COUNT(*) AS tax_suspeita\nFROM \n    fct_toll_transactions\nGROUP BY \n    status;\n```"
+    }
+  },
+  "metrica_derivada_06": {
+    "tipo": "sql",
+    "sql": "SELECT \n    'Geral' AS plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    NULL AS vehicle_id,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    status, \n    payment_method, \n    audit_flag;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    'Geral' AS plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    NULL AS vehicle_id,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    status, \n    payment_method, \n    audit_flag;\n```"
+    }
+  },
+  "metrica_derivada_07": {
+    "tipo": "sql",
+    "sql": "SELECT \n    payment_method,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    payment_method;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    payment_method,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    payment_method;\n```"
+    }
+  },
+  "metrica_derivada_08": {
+    "tipo": "sql",
+    "sql": "SELECT \n    plaza_id,\n    date_trunc('day', event_date) AS event_date,\n    SUM(amount_diff_cents / 100.0) AS amount_diff_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id, \n    date_trunc('day', event_date)\nORDER BY \n    plaza_id, \n    event_date;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    plaza_id,\n    date_trunc('day', event_date) AS event_date,\n    SUM(amount_diff_cents / 100.0) AS amount_diff_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id, \n    date_trunc('day', event_date)\nORDER BY \n    plaza_id, \n    event_date;\n```"
+    }
+  },
+  "metrica_derivada_10": {
+    "tipo": "sql",
+    "sql": "SELECT \n    status,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    status;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    status,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    status;\n```"
+    }
+  },
+  "metrica_filtrada_02": {
+    "tipo": "sql",
+    "sql": "SELECT \n    plaza_id,\n    SUM(amount_brl) AS total_revenue\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    plaza_id,\n    SUM(amount_brl) AS total_revenue\nFROM \n    fct_toll_transactions\nGROUP BY \n    plaza_id;\n```"
+    }
+  },
+  "metrica_filtrada_05": {
+    "tipo": "sql",
+    "sql": "SELECT COUNT(*) AS total_suspect_transactions\nFROM fct_toll_transactions\nWHERE audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO');",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT COUNT(*) AS total_suspect_transactions\nFROM fct_toll_transactions\nWHERE audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO');\n```"
+    }
+  },
+  "metrica_filtrada_06": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_id, COUNT(*) AS num_suspect_transactions\nFROM fct_toll_transactions\nWHERE audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY plaza_id;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT plaza_id, COUNT(*) AS num_suspect_transactions\nFROM fct_toll_transactions\nWHERE audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY plaza_id;\n```"
+    }
+  },
+  "metrica_filtrada_07": {
+    "tipo": "sql",
+    "sql": "SELECT payment_method, COUNT(*) AS num_transactions\nFROM fct_toll_transactions\nWHERE audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY payment_method;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT payment_method, COUNT(*) AS num_transactions\nFROM fct_toll_transactions\nWHERE audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY payment_method;\n```"
+    }
+  },
+  "metrica_filtrada_08": {
+    "tipo": "sql",
+    "sql": "SELECT \n    status,\n    COUNT(*) AS transaction_count\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY \n    status;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    status,\n    COUNT(*) AS transaction_count\nFROM \n    fct_toll_transactions\nWHERE \n    audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO')\nGROUP BY \n    status;\n```"
+    }
+  },
+  "metrica_filtrada_09": {
+    "tipo": "sql",
+    "sql": "SELECT SUM(amount_brl) AS total_revenue_loss FROM fct_toll_transactions WHERE status = 'FAILED' OR audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO');",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT SUM(amount_brl) AS total_revenue_loss FROM fct_toll_transactions WHERE status = 'FAILED' OR audit_flag IN ('COBRANCA_EM_FALHA', 'TARIFA_DIVERGENTE', 'POSSIVEL_DUPLICIDADE', 'VALOR_INVALIDO');\n```"
+    }
+  },
+  "metrica_filtrada_10": {
+    "tipo": "sql",
+    "sql": "SELECT \n    plaza_id,\n    date_trunc('month', event_date) AS month,\n    SUM(amount_diff_cents / 100.0) AS revenue_loss_brl\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'FAILED'\nGROUP BY \n    plaza_id, \n    date_trunc('month', event_date)\nORDER BY \n    plaza_id, \n    month;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    plaza_id,\n    date_trunc('month', event_date) AS month,\n    SUM(amount_diff_cents / 100.0) AS revenue_loss_brl\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'FAILED'\nGROUP BY \n    plaza_id, \n    date_trunc('month', event_date)\nORDER BY \n    plaza_id, \n    month;\n```"
+    }
+  },
+  "metrica_filtrada_11": {
+    "tipo": "sql",
+    "sql": "SELECT \n    payment_method,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    payment_method;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    payment_method,\n    SUM(amount_brl) AS total_amount_brl\nFROM \n    fct_toll_transactions\nGROUP BY \n    payment_method;\n```"
+    }
+  },
+  "valor_categorico_01": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', event_date) AS event_date,\n    SUM(amount_brl) AS total_revenue\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'COMPLETED'\nGROUP BY \n    date_trunc('day', event_date)\nORDER BY \n    event_date;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', event_date) AS event_date,\n    SUM(amount_brl) AS total_revenue\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'COMPLETED'\nGROUP BY \n    date_trunc('day', event_date)\nORDER BY \n    event_date;\n```"
+    }
+  },
+  "valor_categorico_02": {
+    "tipo": "sql",
+    "sql": "SELECT \n    plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    SUM(amount_brl) AS total_revenue_brl\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'FAILED'\nGROUP BY \n    plaza_id, status, payment_method, audit_flag;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    SUM(amount_brl) AS total_revenue_brl\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'FAILED'\nGROUP BY \n    plaza_id, status, payment_method, audit_flag;\n```"
+    }
+  },
+  "valor_categorico_03": {
+    "tipo": "sql",
+    "sql": "SELECT \n    plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    SUM(amount_brl) AS total_receita_estornada\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'REVERSED'\nGROUP BY \n    plaza_id, status, payment_method, audit_flag;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    SUM(amount_brl) AS total_receita_estornada\nFROM \n    fct_toll_transactions\nWHERE \n    status = 'REVERSED'\nGROUP BY \n    plaza_id, status, payment_method, audit_flag;\n```"
+    }
+  },
+  "valor_categorico_06": {
+    "tipo": "sql",
+    "sql": "SELECT \n    plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    SUM(amount_brl) AS total_revenue_brl\nFROM \n    fct_toll_transactions\nWHERE \n    payment_method = 'CASH'\nGROUP BY \n    plaza_id, status, payment_method, audit_flag;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    plaza_id,\n    status,\n    payment_method,\n    audit_flag,\n    SUM(amount_brl) AS total_revenue_brl\nFROM \n    fct_toll_transactions\nWHERE \n    payment_method = 'CASH'\nGROUP BY \n    plaza_id, status, payment_method, audit_flag;\n```"
+    }
+  },
+  "valor_categorico_08": {
+    "tipo": "sql",
+    "sql": "SELECT audit_flag, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nWHERE audit_flag = 'COBRANCA_EM_FALHA'\nGROUP BY audit_flag;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT audit_flag, COUNT(*) AS transaction_count\nFROM fct_toll_transactions\nWHERE audit_flag = 'COBRANCA_EM_FALHA'\nGROUP BY audit_flag;\n```"
+    }
+  },
+  "valor_categorico_09": {
+    "tipo": "sql",
+    "sql": "SELECT COUNT(*) FROM fct_toll_transactions WHERE audit_flag = 'TARIFA_DIVERGENTE';",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT COUNT(*) FROM fct_toll_transactions WHERE audit_flag = 'TARIFA_DIVERGENTE';\n```"
+    }
+  }
+}
