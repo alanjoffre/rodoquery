@@ -1,0 +1,67 @@
+{
+  "fase": "6_load_test",
+  "gpu": "NVIDIA RTX 4050 Laptop, 6 GB VRAM",
+  "cache_aquecido": true,
+  "niveis": [
+    {
+      "concorrencia": 1,
+      "requisicoes": 12,
+      "parede_s": 47.82,
+      "vazao_req_por_s": 0.251,
+      "latencia_p50_s": 4.04,
+      "latencia_p95_s": 4.36,
+      "latencia_media_s": 3.985
+    },
+    {
+      "concorrencia": 2,
+      "requisicoes": 12,
+      "parede_s": 42.97,
+      "vazao_req_por_s": 0.279,
+      "latencia_p50_s": 6.955,
+      "latencia_p95_s": 8.242,
+      "latencia_media_s": 6.859
+    },
+    {
+      "concorrencia": 4,
+      "requisicoes": 12,
+      "parede_s": 63.55,
+      "vazao_req_por_s": 0.189,
+      "latencia_p50_s": 21.534,
+      "latencia_p95_s": 23.073,
+      "latencia_media_s": 18.335
+    },
+    {
+      "concorrencia": 8,
+      "requisicoes": 12,
+      "parede_s": 62.65,
+      "vazao_req_por_s": 0.192,
+      "latencia_p50_s": 38.115,
+      "latencia_p95_s": 43.124,
+      "latencia_media_s": 30.236
+    }
+  ],
+  "ganho_de_vazao_vs_c1": {
+    "1": 1.0,
+    "2": 1.11,
+    "4": 0.75,
+    "8": 0.76
+  },
+  "hipotese_roadmap": "em 6GB a inferencia serializa (vazao nao escala com concorrencia)",
+  "hipotese_confirmada": true,
+  "leitura": "Se a vazao fica ~constante e o p95 cresce com a concorrencia, o gargalo e a GPU processando uma geracao por vez: concorrencia so enfileira.",
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "d570154",
+    "git_dirty": true,
+    "git_diff_sha1": "a8fcb466a954",
+    "timestamp_utc": "2026-07-22T17:59:24+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

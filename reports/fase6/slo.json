@@ -1,0 +1,55 @@
+{
+  "fase": "6_slo",
+  "slo": {
+    "latencia_p95_s_ate_c2": 10.0,
+    "ex_canario_minimo": 0.85,
+    "taxa_erro_maxima": 0.05,
+    "concorrencia_admitida": 2
+  },
+  "justificativa_dos_alvos": "p95: medido 4,36s em c=1 e 8,24s em c=2 -> alvo 10s com folga. concorrencia admitida = 2 porque o load test mostrou vazao caindo (0,75x) e p95 explodindo (43s) em c=4/8: admitir mais so enfileira. EX de canario e sinal OPERACIONAL (roda no DEV); a metrica cientifica e o TEST selado.",
+  "medido": {
+    "p95_c1_s": 4.36,
+    "p95_c2_s": 8.242,
+    "vazao_c1_req_s": 0.251,
+    "ex_canario": 1.0,
+    "taxa_erro": 0.0
+  },
+  "checagens": [
+    {
+      "nome": "latencia_p95_c1",
+      "ok": true,
+      "detalhe": "p95=4.36s (alvo <= 10.0s)"
+    },
+    {
+      "nome": "latencia_p95_c2",
+      "ok": true,
+      "detalhe": "p95=8.242s (alvo <= 10.0s)"
+    },
+    {
+      "nome": "ex_canario",
+      "ok": true,
+      "detalhe": "EX canário=1.0 (alvo >= 0.85)"
+    },
+    {
+      "nome": "taxa_erro",
+      "ok": true,
+      "detalhe": "erros=0.0 (alvo <= 0.05)"
+    }
+  ],
+  "slo_atendido": true,
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "d570154",
+    "git_dirty": true,
+    "git_diff_sha1": "338d9c447438",
+    "timestamp_utc": "2026-07-22T18:14:11+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

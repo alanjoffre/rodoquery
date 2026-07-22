@@ -1,0 +1,53 @@
+{
+  "fase": "6_controle_admissao",
+  "carga": {
+    "requisicoes": 12,
+    "concorrencia_clientes": 8,
+    "limite_servico": 1,
+    "espera_max_s": 5.0
+  },
+  "sem_limitador": {
+    "p95_s": 43.124,
+    "vazao_req_s": 0.192,
+    "rejeitadas": 0
+  },
+  "com_limitador": {
+    "p95_atendidas_s": 8.854,
+    "p50_atendidas_s": 8.433,
+    "atendidas": 3,
+    "rejeitadas_503": 9,
+    "taxa_recusa": 0.75,
+    "vazao_atendidas_req_s": 0.225
+  },
+  "slo_p95_alvo_s": 10.0,
+  "slo_respeitado_nas_atendidas": true,
+  "metricas_servico": {
+    "contadores": {
+      "total": 7,
+      "respostas": 7,
+      "abstencoes": 0,
+      "erros": 0,
+      "rejeitadas": 9,
+      "cache_hit": 3,
+      "cache_miss": 4
+    },
+    "taxa_erro": 0.0,
+    "cache_hit_rate": 0.4286
+  },
+  "leitura": "O limitador NAO cria vazao (a GPU e o teto). O que ele faz e trocar 'aceitar tudo e violar o SLO' por 'atender dentro do SLO e RECUSAR o excesso'. A recusa e a degradacao honesta: o cliente sabe na hora, em vez de esperar 37s.",
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "d570154",
+    "git_dirty": true,
+    "git_diff_sha1": "acd052a01e0e",
+    "timestamp_utc": "2026-07-22T18:13:07+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "fase": "6_canario",
+  "split_usado": "DEV (o TEST segue selado para a avaliacao final)",
+  "banco": "toll_analytics.duckdb",
+  "n_respondiveis": 8,
+  "n_abstencoes": 2,
+  "acertos": 10,
+  "n": 10,
+  "ex_canario": 1.0,
+  "resultados": [
+    {
+      "id": "coalesce_nulo_02",
+      "ok": true,
+      "motivo": "bate o gold"
+    },
+    {
+      "id": "coalesce_nulo_03",
+      "ok": true,
+      "motivo": "bate o gold"
+    },
+    {
+      "id": "controle_trivial_04",
+      "ok": true,
+      "motivo": "bate o gold"
+    },
+    {
+      "id": "controle_trivial_06",
+      "ok": true,
+      "motivo": "bate o gold"
+    },
+    {
+      "id": "grao_temporal_06",
+      "ok": true,
+      "motivo": "bate o gold"
+    },
+    {
+      "id": "grao_temporal_07",
+      "ok": true,
+      "motivo": "bate o gold"
+    },
+    {
+      "id": "grao_temporal_09",
+      "ok": true,
+      "motivo": "bate o gold"
+    },
+    {
+      "id": "join_grao_04",
+      "ok": true,
+      "motivo": "bate o gold"
+    },
+    {
+      "id": "abstencao_07",
+      "ok": true,
+      "motivo": "absteve (correto)"
+    },
+    {
+      "id": "abstencao_08",
+      "ok": true,
+      "motivo": "absteve (correto)"
+    }
+  ],
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "d570154",
+    "git_dirty": true,
+    "git_diff_sha1": "52d3c8ce1b86",
+    "timestamp_utc": "2026-07-22T18:05:03+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

@@ -24,6 +24,11 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.pytest.ini_options]
+# Só coleta a suíte em tests/. Sem isto, scripts de raiz como `load_test.py` casam com o padrão
+# `*_test.py` e o pytest tenta importá-los (eles leem sys.argv e quebram a coleta).
+testpaths = ["tests"]
+
 [tool.ruff]
 line-length = 100
 target-version = "py312"
