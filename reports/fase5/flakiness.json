@@ -1,0 +1,44 @@
+{
+  "fase": "5_flakiness",
+  "K_runs": 5,
+  "n_itens_dev": 23,
+  "ex_por_run": [
+    0.9474,
+    0.9474,
+    0.9474,
+    0.9474,
+    0.9474
+  ],
+  "ex_media": 0.9474,
+  "ex_desvio": 0.0,
+  "ex_min": 0.9474,
+  "ex_max": 0.9474,
+  "amplitude_pp": 0.0,
+  "itens_instaveis": {},
+  "n_itens_instaveis": 0,
+  "latencia_s": {
+    "p50": 4.507,
+    "p95": 7.935,
+    "media": 4.551
+  },
+  "tokens_por_run": {
+    "prompt": 16295,
+    "saida_media": 1083
+  },
+  "leitura": "Se amplitude_pp > 0, um gate de limiar fixo colado no EX observado FLAKA. O gate tem de ter margem >= a variância medida (ver src/rodoquery/regressao.py).",
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "182f630",
+    "git_dirty": true,
+    "git_diff_sha1": "9d243e906c51",
+    "timestamp_utc": "2026-07-22T17:37:45+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

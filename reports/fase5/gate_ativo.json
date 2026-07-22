@@ -1,0 +1,89 @@
+{
+  "fase": "5_gate_ativo",
+  "proposito": "provar que o gate REPROVA regressoes reais (gate que so fica verde e decoracao)",
+  "limiares": {
+    "ex_minimo": 0.9,
+    "abstencao_minima": 0.9,
+    "vantagem_minima_pp": 30.0
+  },
+  "cenarios": [
+    {
+      "cenario": "integro (deve PASSAR)",
+      "gate_passou": true,
+      "esperado": true,
+      "gate_se_comportou": true,
+      "checagens_que_falharam": []
+    },
+    {
+      "cenario": "EX do Tier-A despenca",
+      "gate_passou": false,
+      "esperado": false,
+      "gate_se_comportou": true,
+      "checagens_que_falharam": [
+        "ex_minimo",
+        "vantagem_sobre_baseline"
+      ]
+    },
+    {
+      "cenario": "agregado adulterado (nao bate com os itens)",
+      "gate_passou": false,
+      "esperado": false,
+      "gate_se_comportou": true,
+      "checagens_que_falharam": [
+        "coerencia[tier_a]"
+      ]
+    },
+    {
+      "cenario": "baseline alcanca o sistema (vantagem some)",
+      "gate_passou": false,
+      "esperado": false,
+      "gate_se_comportou": true,
+      "checagens_que_falharam": [
+        "vantagem_sobre_baseline"
+      ]
+    },
+    {
+      "cenario": "McNemar deixa de ser significante",
+      "gate_passou": false,
+      "esperado": false,
+      "gate_se_comportou": true,
+      "checagens_que_falharam": [
+        "mcnemar_significante"
+      ]
+    },
+    {
+      "cenario": "abstencao desaba (passa a alucinar)",
+      "gate_passou": false,
+      "esperado": false,
+      "gate_se_comportou": true,
+      "checagens_que_falharam": [
+        "abstencao_minima"
+      ]
+    },
+    {
+      "cenario": "golden TEST editado apos o selo",
+      "gate_passou": false,
+      "esperado": false,
+      "gate_se_comportou": true,
+      "checagens_que_falharam": [
+        "selo_golden_test"
+      ]
+    }
+  ],
+  "gate_ativo_comprovado": true,
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "182f630",
+    "git_dirty": true,
+    "git_diff_sha1": "03d9ea2b28a6",
+    "timestamp_utc": "2026-07-22T17:20:40+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

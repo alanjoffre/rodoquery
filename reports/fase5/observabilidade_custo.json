@@ -1,0 +1,66 @@
+{
+  "fase": "5_observabilidade_custo",
+  "latencia_s": {
+    "p50": 4.507,
+    "p95": 7.935,
+    "media": 4.551
+  },
+  "tokens_por_consulta": {
+    "entrada": 708.5,
+    "saida": 47.1
+  },
+  "vazao_consultas_por_min": 13.2,
+  "custo_local_energia": {
+    "modelo_de_custo": "energia (execução local)",
+    "medido": {
+      "latencia_media_s": 4.551
+    },
+    "premissas": {
+      "potencia_gpu_w": 115.0,
+      "tarifa_rs_kwh": 0.85
+    },
+    "kwh_por_1k": 0.145379,
+    "rs_por_consulta": 0.000124,
+    "rs_por_1k": 0.1236,
+    "ressalva": "ignora amortização de hardware e ociosidade; potência/tarifa são PREMISSAS (não medidas com wattímetro). Vale a ordem de grandeza."
+  },
+  "custo_api_equivalente_ILUSTRATIVO": {
+    "modelo_de_custo": "API por token",
+    "medido": {
+      "tokens_entrada_por_consulta": 708.5,
+      "tokens_saida_por_consulta": 47.1
+    },
+    "parametros": {
+      "usd_por_milhao_entrada": 0.3,
+      "usd_por_milhao_saida": 1.2,
+      "usd_brl": 5.4
+    },
+    "usd_por_1k": 0.269,
+    "rs_por_1k": 1.4529,
+    "ressalva": "tarifas são parâmetros ilustrativos; substitua pelas vigentes do fornecedor."
+  },
+  "estabilidade": {
+    "ex_media": 0.9474,
+    "ex_desvio": 0.0,
+    "amplitude_pp": 0.0,
+    "margem_para_gate_live": 0.0526,
+    "margem_justificativa": "max(amplitude medida 0.0pp, 1 item de 19) — 5 runs mostram variância baixa, não nula",
+    "n_itens_instaveis": 0
+  },
+  "leitura": "Custo local é ENERGIA sob premissas rotuladas; o valor honesto é a ordem de grandeza e a comparação estrutural com API por token.",
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "182f630",
+    "git_dirty": true,
+    "git_diff_sha1": "f1217f31b733",
+    "timestamp_utc": "2026-07-22T17:40:11+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

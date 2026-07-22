@@ -1,0 +1,37 @@
+name: CI
+
+# O CI roda só o que é DETERMINÍSTICO e não precisa de GPU/banco/LLM:
+# lint, testes e o gate de regressão NÍVEL A (contrato). Os níveis B (replay contra o gold) e
+# C (live, com o LLM) rodam na máquina que tem a fundação/GPU — ver docs/FASE5_MLOPS.md.
+# Motivo: um CI que depende de LLM em GPU flaka, e gate que flaka é gate que o time ignora.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  qualidade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Lint (ruff)
+        run: ruff check .
+
+      - name: Testes
+        run: pytest -q
+
+      - name: Gate de regressão (nível A — contrato)
+        # Falha o build se: o selo do golden TEST mudou, os agregados do relatório não batem
+        # com os itens, o EX/abstenção regrediram ou a vantagem sobre o baseline sumiu.
+        run: python gate_regressao.py

@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import json
 import re
+import time
 import urllib.request
 
 from rodoquery.avaliacao import Predicao
@@ -62,18 +63,33 @@ SQL:"""
 _FENCE = re.compile(r"```(?:sql)?\s*(.*?)\s*```", re.DOTALL | re.IGNORECASE)
 
 
-def _chamar_ollama(prompt: str, modelo: str, temperatura: float, timeout: float = 120.0) -> str:
+def _chamar_ollama(
+    prompt: str, modelo: str, temperatura: float, timeout: float = 120.0,
+) -> tuple[str, dict]:
+    """Devolve (texto, telemetria). A telemetria alimenta observabilidade e custo (Fase 5)."""
     corpo = json.dumps({
         "model": modelo, "prompt": prompt, "stream": False,
-        # determinismo: greedy (temp 0 + top_k 1) e seed fixa. Reduz a variância run-a-run do
-        # llama.cpp — mas NÃO a elimina (não-associatividade de float na GPU). Por isso as predições
-        # são CONGELADAS num arquivo (ver avaliacao/relatório): o número reportado é reprodutível.
+        # determinismo: greedy (temp 0 + top_k 1) e seed fixa. MEDIDO na Fase 5: com estas opções e
+        # o modelo quente, 5 runs deram EX idêntico (amplitude 0,0pp, 0 itens instáveis) — ver
+        # reports/fase5/flakiness.json. As predições ainda são CONGELADAS em disco como seguro
+        # barato (5 runs não provam variância zero, e houve uma anomalia não explicada antes do
+        # top_k=1); isso torna o número reportado reprodutível independentemente disso.
         "options": {"temperature": temperatura, "seed": 42, "top_k": 1, "top_p": 1.0},
     }).encode("utf-8")
     req = urllib.request.Request(OLLAMA_URL, data=corpo,
                                  headers={"Content-Type": "application/json"})
+    t0 = time.perf_counter()
     with urllib.request.urlopen(req, timeout=timeout) as r:   # noqa: S310 (localhost)
-        return json.loads(r.read())["response"]
+        d = json.loads(r.read())
+    telemetria = {
+        "latencia_s": round(time.perf_counter() - t0, 3),
+        "tokens_prompt": d.get("prompt_eval_count"),
+        "tokens_saida": d.get("eval_count"),
+        # nanosegundos → segundos (o Ollama reporta assim)
+        "eval_s": round((d.get("eval_duration") or 0) / 1e9, 3),
+        "carga_modelo_s": round((d.get("load_duration") or 0) / 1e9, 3),
+    }
+    return d["response"], telemetria
 
 
 def _extrair_sql(texto: str) -> str:
@@ -85,11 +101,11 @@ def sql_cru(pergunta: str, modelo: str | None = None, temperatura: float | None 
     """Baseline: LLM escreve SQL direto sobre o schema cru (sem Semantic Layer)."""
     modelo = modelo or settings.modelo_sut
     temp = settings.temperatura if temperatura is None else temperatura
-    resp = _chamar_ollama(PROMPT.format(schema=SCHEMA_DOC, pergunta=pergunta), modelo, temp)
+    resp, tel = _chamar_ollama(PROMPT.format(schema=SCHEMA_DOC, pergunta=pergunta), modelo, temp)
     sql = _extrair_sql(resp)
     if sql.strip().upper().rstrip(".") == "ABSTENHO" or sql.strip().upper().startswith("ABSTENHO"):
-        return Predicao.abster(modelo=modelo, raw=resp[:400])
-    return Predicao.com_sql(sql, modelo=modelo, raw=resp[:400])
+        return Predicao.abster(modelo=modelo, raw=resp[:400], **tel)
+    return Predicao.com_sql(sql, modelo=modelo, raw=resp[:400], **tel)
 
 
 def sempre_abster(pergunta: str) -> Predicao:

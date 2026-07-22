@@ -41,11 +41,14 @@ Onde o SQL cru desabava (métrica filtrada/derivada, coalesce), o Semantic Layer
 - ✅ **Sem overfitting.** O prompt do Tier-A foi desenvolvido no **DEV** (94,7%); o TEST **cego** deu
   **97,6%** — dentro do IC, sem queda. As regras adicionadas ao prompt eram gerais (não coladas a
   itens do TEST, que nunca foi inspecionado durante o desenvolvimento).
-- ✅ **Reprodutível apesar de estocástico.** O SUT tem variância run-a-run (não-associatividade de
-  float na GPU do llama.cpp, mesmo com greedy+seed — descoberto quando um item de fronteira
-  virava/desvirava entre runs). Por isso as **predições são congeladas** em
-  `reports/fase4/predicoes_*.json`: o scoring é 100% determinístico a partir delas, e cada predição
-  (spec/SQL cru) é **auditável**.
+- ✅ **Reprodutível.** As **predições são congeladas** em `reports/fase4/predicoes_*.json`: o
+  scoring é 100% determinístico a partir delas e cada predição (spec/SQL cru) é **auditável**.
+  > **Correção honesta (feita na Fase 5).** Ao construir esta fase eu observei um item de fronteira
+  > mudando de veredito entre execuções e **atribuí isso a não-determinismo de GPU**. Depois medi:
+  > 5 runs com greedy + `top_k=1` e modelo quente deram **EX idêntico (amplitude 0,0pp, 0 itens
+  > instáveis)** — ver [FASE5](FASE5_MLOPS.md). Logo **eu não comprovei aquela causa**; a anomalia
+  > ocorreu antes de fixar `top_k=1` e ficou sem explicação confirmada. Mantive o congelamento como
+  > seguro barato, não como remédio para uma instabilidade demonstrada.
 - ✅ **O scorer não é viciado.** `controle_trivial` = 5/5 para os DOIS sistemas (count simples: ambos
   acertam). O piso `sempre_abster` (Fase 3) tira 0% no eixo respondível.
 - ⚠️ **Ressalva de N.** 42 respondíveis / 11 abstenção no TEST; abaixo da meta de ≥25/estrato. O IC

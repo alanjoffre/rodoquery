@@ -70,8 +70,11 @@ def predicao_de_dict(d: dict) -> Predicao:
 
 
 def coletar_predicoes(itens: list[ItemGolden], sistema: Sistema) -> dict[str, dict]:
-    """Roda o sistema UMA vez e CONGELA as predições (o SUT é estocástico; isto torna o número
-    reprodutível e auditável — o scoring vira determinístico a partir daqui)."""
+    """Roda o sistema UMA vez e CONGELA as predições: o scoring vira determinístico e auditável.
+
+    Nota honesta: a Fase 5 MEDIU a estabilidade do SUT (5 runs, greedy+top_k=1, modelo quente) e
+    achou amplitude 0,0pp — ou seja, congelar não foi *necessário* nesta configuração. Fica como
+    seguro barato: garante reprodutibilidade do número mesmo se o ambiente mudar."""
     return {it.id: predicao_para_dict(sistema(it.pergunta_nl)) for it in itens}
 
 

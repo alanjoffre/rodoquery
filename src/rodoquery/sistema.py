@@ -94,11 +94,11 @@ def tier_a(pergunta: str, modelo: str | None = None, temperatura: float | None =
     """Sistema semântico: NL → spec (LLM) → MetricFlow. Abstém fora do vocabulário do catálogo."""
     modelo = modelo or settings.modelo_sut
     temp = settings.temperatura if temperatura is None else temperatura
-    resp = _chamar_ollama(PROMPT.format(catalogo=CATALOGO, pergunta=pergunta), modelo, temp)
+    resp, tel = _chamar_ollama(PROMPT.format(catalogo=CATALOGO, pergunta=pergunta), modelo, temp)
     if "ABSTENHO" in resp.upper():
-        return Predicao.abster(modelo=modelo, raw=resp[:400])
+        return Predicao.abster(modelo=modelo, raw=resp[:400], **tel)
     spec = _parse_spec(resp)
     if spec is None:
-        # não produziu spec válida: numa respondível conta erro; numa abstenção não "responde" mesmo.
-        return Predicao.abster(modelo=modelo, raw=resp[:400], falha_parse=True)
-    return Predicao.com_spec(spec, modelo=modelo, raw=resp[:400])
+        # sem spec válida: numa respondível conta erro; numa abstenção não "responde" mesmo.
+        return Predicao.abster(modelo=modelo, raw=resp[:400], falha_parse=True, **tel)
+    return Predicao.com_spec(spec, modelo=modelo, raw=resp[:400], **tel)
