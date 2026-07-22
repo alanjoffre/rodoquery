@@ -1,0 +1,53 @@
+{"id": "abstencao_01", "parafrase": "Fecha pra mim: quanto sobrou de lucro líquido no período?"}
+{"id": "abstencao_02", "parafrase": "Me quebra a margem de lucro praça a praça."}
+{"id": "abstencao_03", "parafrase": "Quanto cada praça custa pra operar?"}
+{"id": "abstencao_04", "parafrase": "Que hora do dia o movimento bomba mais?"}
+{"id": "abstencao_05", "parafrase": "Em média, quanto tempo o motorista fica parado na cabine do pedágio?"}
+{"id": "abstencao_06", "parafrase": "Qual a média de idade da frota que passou?"}
+{"id": "abstencao_10", "parafrase": "A receita tá batendo a meta do orçamento do ano?"}
+{"id": "abstencao_11", "parafrase": "Me diz o número de funcionários lotados em cada praça."}
+{"id": "abstencao_12", "parafrase": "Quanto a gente deve faturar no mês que vem?"}
+{"id": "abstencao_13", "parafrase": "Como tá o preço da gasolina nos arredores das praças?"}
+{"id": "abstencao_15", "parafrase": "Qual a velocidade média dos veículos em cada trecho?"}
+{"id": "coalesce_nulo_01", "parafrase": "Me passa o faturamento dia a dia dentro do período."}
+{"id": "coalesce_nulo_04", "parafrase": "Quantas passagens foram cobradas em cada dia do período?"}
+{"id": "coalesce_nulo_05", "parafrase": "Quero a taxa de suspeita dia a dia ao longo do período."}
+{"id": "coalesce_nulo_06", "parafrase": "Abre o valor arrecadado por dia dentro do período todo."}
+{"id": "controle_trivial_01", "parafrase": "No total, quantas passagens temos registradas?"}
+{"id": "controle_trivial_02", "parafrase": "Quantas transações a auditoria marcou como suspeitas, somando tudo?"}
+{"id": "controle_trivial_03", "parafrase": "Quebra a contagem de transações por status."}
+{"id": "controle_trivial_05", "parafrase": "Quantas passagens cada praça registrou?"}
+{"id": "controle_trivial_07", "parafrase": "Me dá o número de transações por veículo."}
+{"id": "grao_temporal_01", "parafrase": "Como ficou o faturamento no dia a dia?"}
+{"id": "grao_temporal_02", "parafrase": "Me mostra o faturamento semana a semana."}
+{"id": "grao_temporal_03", "parafrase": "Quanto entrou de receita mês a mês?"}
+{"id": "grao_temporal_04", "parafrase": "Quantidade de transações por dia, por favor."}
+{"id": "grao_temporal_05", "parafrase": "Conta as passagens agrupando por semana."}
+{"id": "grao_temporal_08", "parafrase": "Semana a semana, qual o percentual de transações suspeitas?"}
+{"id": "join_grao_01", "parafrase": "Quanto cada praça de pedágio arrecadou?"}
+{"id": "join_grao_02", "parafrase": "Abre a arrecadação cruzando praça com status da transação."}
+{"id": "join_grao_03", "parafrase": "Número de passagens em cada praça de pedágio."}
+{"id": "join_grao_06", "parafrase": "Me dá as suspeitas contadas por praça e por status."}
+{"id": "join_grao_07", "parafrase": "Quanto cada veículo gerou de faturamento?"}
+{"id": "join_grao_08", "parafrase": "Quero a contagem de passagens de cada veículo."}
+{"id": "metrica_derivada_02", "parafrase": "Taxa de suspeita separada por forma de pagamento, por favor."}
+{"id": "metrica_derivada_03", "parafrase": "Me mostra o percentual de suspeitas de cada praça."}
+{"id": "metrica_derivada_05", "parafrase": "Como fica a taxa de suspeita quando abro por status?"}
+{"id": "metrica_derivada_06", "parafrase": "Quanto a gente perdeu de receita por subcobrança no geral?"}
+{"id": "metrica_derivada_07", "parafrase": "Abre o vazamento de receita por forma de pagamento."}
+{"id": "metrica_derivada_08", "parafrase": "Quanto de receita vazou em cada praça?"}
+{"id": "metrica_derivada_10", "parafrase": "Vazamento de receita quebrado por status da transação."}
+{"id": "metrica_filtrada_02", "parafrase": "Arrecadação por praça, me passa esse número."}
+{"id": "metrica_filtrada_05", "parafrase": "Soma tudo: quantas transações suspeitas no total?"}
+{"id": "metrica_filtrada_06", "parafrase": "Quantas suspeitas cada praça acumulou?"}
+{"id": "metrica_filtrada_07", "parafrase": "Contagem de transações suspeitas por meio de pagamento."}
+{"id": "metrica_filtrada_08", "parafrase": "Me abre as suspeitas por status."}
+{"id": "metrica_filtrada_09", "parafrase": "Total de vazamento de receita, quanto deu?"}
+{"id": "metrica_filtrada_10", "parafrase": "Vazamento de receita praça a praça."}
+{"id": "metrica_filtrada_11", "parafrase": "Quanto vazou de receita em cada forma de pagamento?"}
+{"id": "valor_categorico_01", "parafrase": "Quanto entrou considerando só as passagens concluídas?"}
+{"id": "valor_categorico_02", "parafrase": "E a receita das transações que ficaram com falha?"}
+{"id": "valor_categorico_03", "parafrase": "Quanto de receita está nas transações estornadas?"}
+{"id": "valor_categorico_06", "parafrase": "Receita só do que foi pago em dinheiro."}
+{"id": "valor_categorico_08", "parafrase": "Quantas cobranças falharam?"}
+{"id": "valor_categorico_09", "parafrase": "Quantas passagens saíram com tarifa divergente?"}

@@ -116,9 +116,15 @@ def avaliar_item(
             sql = compilar_spec(pred.spec)
         except Exception as e:
             return {**base, "correto": False, "motivo": f"spec não compila: {str(e)[:100]}"}
-        for nome, db in dbs.items():
-            linhas = executar_gold(sql, db)
-            hashes_pred[nome] = hash_resultado(linhas, ordenado=item.spec.ordenado)
+        # O mf pode devolver SQL sintaticamente quebrado para uma spec estranha (visto na Fase 7).
+        # Isso é ERRO do predito, não motivo para derrubar a avaliação: falha fechada.
+        try:
+            for nome, db in dbs.items():
+                linhas = executar_gold(sql, db)
+                hashes_pred[nome] = hash_resultado(linhas, ordenado=item.spec.ordenado)
+        except Exception as e:
+            return {**base, "correto": False,
+                    "motivo": f"SQL da spec não executa: {type(e).__name__}: {str(e)[:80]}"}
     else:  # pred.tipo == "sql"
         for nome, db in dbs.items():
             v, linhas = executar(pred.sql, allowlist, db)

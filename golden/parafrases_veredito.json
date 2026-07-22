@@ -1,0 +1,11 @@
+{
+  "proposito": "Validacao de equivalencia semantica das parafrases, feita por um LLM revisor INDEPENDENTE e CEGO ao desempenho do sistema (rodou antes de qualquer execucao do Tier-A nas parafrases). Excluir as SUSPEITAS evita medir 'parafrase ruim' em vez de fragilidade do modelo.",
+  "aprovadas": 50,
+  "suspeitas": 3,
+  "excluidas": {
+    "coalesce_nulo_04": "'passagens foram cobradas' insinua filtro status=COMPLETED, ausente no gabarito (transactions sem where)",
+    "valor_categorico_02": "'transacoes que ficaram com falha' confunde status=FAILED com audit_flag=COBRANCA_EM_FALHA",
+    "valor_categorico_08": "'Quantas cobrancas falharam?' le-se como status=FAILED, mas o gabarito e audit_flag=COBRANCA_EM_FALHA"
+  },
+  "nota_honesta": "As 3 exclusoes sao todas de itens RESPONDIVEIS, entao o held-out de parafrase roda com 39 respondiveis + 11 abstencoes = 50 itens. A comparacao com o original e PAREADA nos mesmos 50 ids."
+}

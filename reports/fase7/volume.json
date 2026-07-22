@@ -1,0 +1,99 @@
+{
+  "fase": "7c_volume",
+  "escopo_honesto": "No Tier-A a spec NAO depende do volume, entao volume nao testa a correcao do mapeamento (o EX seria trivialmente igual). Este teste mede o CUSTO DE EXECUCAO do SQL governado e a boa-formacao dos resultados.",
+  "linhas_fato": {
+    "pequeno": 2005,
+    "grande": 20102,
+    "fator_dados": 10.03
+  },
+  "medidas": [
+    {
+      "id": "controle_trivial_01",
+      "estrato": "controle_trivial",
+      "execucao_s": {
+        "pequeno": 0.0484,
+        "grande": 0.0512
+      },
+      "fator_tempo": 1.06,
+      "linhas_resultado": {
+        "pequeno": 1,
+        "grande": 1
+      },
+      "resultado_bem_formado": true
+    },
+    {
+      "id": "coalesce_nulo_01",
+      "estrato": "coalesce_nulo",
+      "execucao_s": {
+        "pequeno": 0.0522,
+        "grande": 0.0495
+      },
+      "fator_tempo": 0.95,
+      "linhas_resultado": {
+        "pequeno": 180,
+        "grande": 180
+      },
+      "resultado_bem_formado": true
+    },
+    {
+      "id": "join_grao_02",
+      "estrato": "join_grao",
+      "execucao_s": {
+        "pequeno": 0.0453,
+        "grande": 0.0468
+      },
+      "fator_tempo": 1.03,
+      "linhas_resultado": {
+        "pequeno": 14,
+        "grande": 15
+      },
+      "resultado_bem_formado": true
+    },
+    {
+      "id": "metrica_derivada_02",
+      "estrato": "metrica_derivada",
+      "execucao_s": {
+        "pequeno": 0.0515,
+        "grande": 0.0524
+      },
+      "fator_tempo": 1.02,
+      "linhas_resultado": {
+        "pequeno": 3,
+        "grande": 3
+      },
+      "resultado_bem_formado": true
+    },
+    {
+      "id": "valor_categorico_01",
+      "estrato": "valor_categorico",
+      "execucao_s": {
+        "pequeno": 0.0512,
+        "grande": 0.0493
+      },
+      "fator_tempo": 0.96,
+      "linhas_resultado": {
+        "pequeno": 1,
+        "grande": 1
+      },
+      "resultado_bem_formado": true
+    }
+  ],
+  "fator_tempo_mediano": 1.02,
+  "escala_sublinear": true,
+  "todos_bem_formados": true,
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "528387c",
+    "git_dirty": true,
+    "git_diff_sha1": "3bf6fd764017",
+    "timestamp_utc": "2026-07-22T18:36:53+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

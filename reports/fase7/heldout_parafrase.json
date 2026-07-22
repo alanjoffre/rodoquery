@@ -1,0 +1,1157 @@
+{
+  "fase": "7a_heldout_parafrase",
+  "protocolo": "parafrases por LLM diferente; equivalencia validada por revisor CEGO ao desempenho; 3 suspeitas excluidas ANTES de rodar; comparacao pareada nos mesmos ids contra as predicoes congeladas da Fase 4.",
+  "n_itens": 50,
+  "excluidas_por_equivalencia": {
+    "coalesce_nulo_04": "'passagens foram cobradas' insinua filtro status=COMPLETED, ausente no gabarito (transactions sem where)",
+    "valor_categorico_02": "'transacoes que ficaram com falha' confunde status=FAILED com audit_flag=COBRANCA_EM_FALHA",
+    "valor_categorico_08": "'Quantas cobrancas falharam?' le-se como status=FAILED, mas o gabarito e audit_flag=COBRANCA_EM_FALHA"
+  },
+  "execution_accuracy": {
+    "original": {
+      "n": 39,
+      "acertos": 38,
+      "taxa": 0.9744,
+      "wilson_ic95": [
+        0.8682,
+        0.9955
+      ]
+    },
+    "parafrase": {
+      "n": 39,
+      "acertos": 35,
+      "taxa": 0.8974,
+      "wilson_ic95": [
+        0.7642,
+        0.9594
+      ]
+    },
+    "delta_pp": -7.7
+  },
+  "abstencao": {
+    "original": {
+      "n": 11,
+      "acertos": 11,
+      "taxa": 1.0,
+      "wilson_ic95": [
+        0.7412,
+        1.0
+      ]
+    },
+    "parafrase": {
+      "n": 11,
+      "acertos": 9,
+      "taxa": 0.8182,
+      "wilson_ic95": [
+        0.523,
+        0.9486
+      ]
+    },
+    "delta_pp": -18.18
+  },
+  "mcnemar_original_vs_parafrase": {
+    "b_only": 4,
+    "c_only": 1,
+    "p_valor": 0.375,
+    "delta_acuracia": 0.0769,
+    "n": 39
+  },
+  "quebrou_com_parafrase": [
+    "controle_trivial_02",
+    "join_grao_02",
+    "metrica_derivada_06",
+    "metrica_filtrada_08"
+  ],
+  "consertou_com_parafrase": [
+    "valor_categorico_06"
+  ],
+  "resultados": [
+    {
+      "id": "abstencao_01",
+      "estrato": "abstencao",
+      "abstencao": true,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 14.66,
+        "tokens_prompt": 712,
+        "tokens_saida": 51,
+        "eval_s": 2.871,
+        "carga_modelo_s": 11.061
+      },
+      "correto": false,
+      "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+    },
+    {
+      "id": "abstencao_02",
+      "estrato": "abstencao",
+      "abstencao": true,
+      "predicao": "abster",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "ABSTENHO",
+        "latencia_s": 0.801,
+        "tokens_prompt": 711,
+        "tokens_saida": 5,
+        "eval_s": 0.202,
+        "carga_modelo_s": 0.251
+      },
+      "correto": true,
+      "motivo": "absteve (correto)"
+    },
+    {
+      "id": "abstencao_03",
+      "estrato": "abstencao",
+      "abstencao": true,
+      "predicao": "abster",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "ABSTENHO",
+        "latencia_s": 0.782,
+        "tokens_prompt": 707,
+        "tokens_saida": 5,
+        "eval_s": 0.266,
+        "carga_modelo_s": 0.236
+      },
+      "correto": true,
+      "motivo": "absteve (correto)"
+    },
+    {
+      "id": "abstencao_04",
+      "estrato": "abstencao",
+      "abstencao": true,
+      "predicao": "abster",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "ABSTENHO",
+        "latencia_s": 0.672,
+        "tokens_prompt": 707,
+        "tokens_saida": 5,
+        "eval_s": 0.203,
+        "carga_modelo_s": 0.214
+      },
+      "correto": true,
+      "motivo": "absteve (correto)"
+    },
+    {
+      "id": "abstencao_05",
+      "estrato": "abstencao",
+      "abstencao": true,
+      "predicao": "abster",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "ABSTENHO",
+        "latencia_s": 0.952,
+        "tokens_prompt": 716,
+        "tokens_saida": 5,
+        "eval_s": 0.241,
+        "carga_modelo_s": 0.226
+      },
+      "correto": true,
+      "motivo": "absteve (correto)"
+    },
+    {
+      "id": "abstencao_06",
+      "estrato": "abstencao",
+      "abstencao": true,
+      "predicao": "abster",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "ABSTENHO",
+        "latencia_s": 0.906,
+        "tokens_prompt": 709,
+        "tokens_saida": 5,
+        "eval_s": 0.326,
+        "carga_modelo_s": 0.228
+      },
+      "correto": true,
+      "motivo": "absteve (correto)"
+    },
+    {
+      "id": "abstencao_10",
+      "estrato": "abstencao",
+      "abstencao": true,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.826,
+        "tokens_prompt": 711,
+        "tokens_saida": 46,
+        "eval_s": 3.228,
+        "carga_modelo_s": 0.218
+      },
+      "correto": false,
+      "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+    },
+    {
+      "id": "abstencao_11",
+      "estrato": "abstencao",
+      "abstencao": true,
+      "predicao": "abster",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "ABSTENHO",
+        "latencia_s": 0.795,
+        "tokens_prompt": 709,
+        "tokens_saida": 5,
+        "eval_s": 0.204,
+        "carga_modelo_s": 0.244
+      },
+      "correto": true,
+      "motivo": "absteve (correto)"
+    },
+    {
+      "id": "abstencao_12",
+      "estrato": "abstencao",
+      "abstencao": true,
+      "predicao": "abster",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "ABSTENHO",
+        "latencia_s": 0.867,
+        "tokens_prompt": 710,
+        "tokens_saida": 5,
+        "eval_s": 0.215,
+        "carga_modelo_s": 0.23
+      },
+      "correto": true,
+      "motivo": "absteve (correto)"
+    },
+    {
+      "id": "abstencao_13",
+      "estrato": "abstencao",
+      "abstencao": true,
+      "predicao": "abster",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "ABSTENHO",
+        "latencia_s": 1.105,
+        "tokens_prompt": 711,
+        "tokens_saida": 5,
+        "eval_s": 0.468,
+        "carga_modelo_s": 0.239
+      },
+      "correto": true,
+      "motivo": "absteve (correto)"
+    },
+    {
+      "id": "abstencao_15",
+      "estrato": "abstencao",
+      "abstencao": true,
+      "predicao": "abster",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "ABSTENHO",
+        "latencia_s": 0.933,
+        "tokens_prompt": 710,
+        "tokens_saida": 5,
+        "eval_s": 0.362,
+        "carga_modelo_s": 0.243
+      },
+      "correto": true,
+      "motivo": "absteve (correto)"
+    },
+    {
+      "id": "coalesce_nulo_01",
+      "estrato": "coalesce_nulo",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__day\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.88,
+        "tokens_prompt": 710,
+        "tokens_saida": 56,
+        "eval_s": 3.329,
+        "carga_modelo_s": 0.237
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "coalesce_nulo_05",
+      "estrato": "coalesce_nulo",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__day\"],\n  \"limit\": null,\n  \"ordenado\": true\n}\n```",
+        "latencia_s": 3.671,
+        "tokens_prompt": 713,
+        "tokens_saida": 57,
+        "eval_s": 2.983,
+        "carga_modelo_s": 0.245
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "coalesce_nulo_06",
+      "estrato": "coalesce_nulo",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.174,
+        "tokens_prompt": 711,
+        "tokens_saida": 51,
+        "eval_s": 2.622,
+        "carga_modelo_s": 0.242
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "controle_trivial_01",
+      "estrato": "controle_trivial",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.216,
+        "tokens_prompt": 708,
+        "tokens_saida": 45,
+        "eval_s": 2.622,
+        "carga_modelo_s": 0.252
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "controle_trivial_02",
+      "estrato": "controle_trivial",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 4.257,
+        "tokens_prompt": 714,
+        "tokens_saida": 64,
+        "eval_s": 3.645,
+        "carga_modelo_s": 0.231
+      },
+      "correto": false,
+      "motivo": "bateu 0/3 variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": false,
+        "seed2": false,
+        "seed3": false
+      }
+    },
+    {
+      "id": "controle_trivial_03",
+      "estrato": "controle_trivial",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.309,
+        "tokens_prompt": 707,
+        "tokens_saida": 49,
+        "eval_s": 2.768,
+        "carga_modelo_s": 0.238
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "controle_trivial_05",
+      "estrato": "controle_trivial",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.476,
+        "tokens_prompt": 706,
+        "tokens_saida": 50,
+        "eval_s": 2.938,
+        "carga_modelo_s": 0.239
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "controle_trivial_07",
+      "estrato": "controle_trivial",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.294,
+        "tokens_prompt": 706,
+        "tokens_saida": 49,
+        "eval_s": 2.788,
+        "carga_modelo_s": 0.243
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "grao_temporal_01",
+      "estrato": "grao_temporal",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__day\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.613,
+        "tokens_prompt": 708,
+        "tokens_saida": 56,
+        "eval_s": 3.026,
+        "carga_modelo_s": 0.239
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "grao_temporal_02",
+      "estrato": "grao_temporal",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__week\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.827,
+        "tokens_prompt": 706,
+        "tokens_saida": 56,
+        "eval_s": 3.292,
+        "carga_modelo_s": 0.248
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "grao_temporal_03",
+      "estrato": "grao_temporal",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__month\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 4.029,
+        "tokens_prompt": 709,
+        "tokens_saida": 56,
+        "eval_s": 3.454,
+        "carga_modelo_s": 0.242
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "grao_temporal_04",
+      "estrato": "grao_temporal",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__day\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.94,
+        "tokens_prompt": 707,
+        "tokens_saida": 55,
+        "eval_s": 3.378,
+        "carga_modelo_s": 0.257
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "grao_temporal_05",
+      "estrato": "grao_temporal",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.369,
+        "tokens_prompt": 707,
+        "tokens_saida": 50,
+        "eval_s": 2.815,
+        "carga_modelo_s": 0.265
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "grao_temporal_08",
+      "estrato": "grao_temporal",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.582,
+        "tokens_prompt": 712,
+        "tokens_saida": 52,
+        "eval_s": 2.961,
+        "carga_modelo_s": 0.265
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "join_grao_01",
+      "estrato": "join_grao",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 4.034,
+        "tokens_prompt": 710,
+        "tokens_saida": 51,
+        "eval_s": 3.33,
+        "carga_modelo_s": 0.249
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "join_grao_02",
+      "estrato": "join_grao",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"transactions\", \"revenue\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 4.184,
+        "tokens_prompt": 713,
+        "tokens_saida": 59,
+        "eval_s": 3.527,
+        "carga_modelo_s": 0.285
+      },
+      "correto": false,
+      "motivo": "SQL da spec não executa: ParserException: Parser Error: syntax error at or near \")\"\n\nLINE 7: )\n        ^"
+    },
+    {
+      "id": "join_grao_03",
+      "estrato": "join_grao",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.533,
+        "tokens_prompt": 710,
+        "tokens_saida": 50,
+        "eval_s": 2.925,
+        "carga_modelo_s": 0.251
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "join_grao_06",
+      "estrato": "join_grao",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 4.843,
+        "tokens_prompt": 711,
+        "tokens_saida": 57,
+        "eval_s": 4.082,
+        "carga_modelo_s": 0.33
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "join_grao_07",
+      "estrato": "join_grao",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.959,
+        "tokens_prompt": 707,
+        "tokens_saida": 50,
+        "eval_s": 3.257,
+        "carga_modelo_s": 0.337
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "join_grao_08",
+      "estrato": "join_grao",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.744,
+        "tokens_prompt": 708,
+        "tokens_saida": 49,
+        "eval_s": 3.034,
+        "carga_modelo_s": 0.357
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_derivada_02",
+      "estrato": "metrica_derivada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 3.935,
+        "tokens_prompt": 712,
+        "tokens_saida": 52,
+        "eval_s": 3.089,
+        "carga_modelo_s": 0.331
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_derivada_03",
+      "estrato": "metrica_derivada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 4.345,
+        "tokens_prompt": 710,
+        "tokens_saida": 52,
+        "eval_s": 3.488,
+        "carga_modelo_s": 0.4
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_derivada_05",
+      "estrato": "metrica_derivada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 4.187,
+        "tokens_prompt": 710,
+        "tokens_saida": 51,
+        "eval_s": 3.312,
+        "carga_modelo_s": 0.392
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_derivada_06",
+      "estrato": "metrica_derivada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'SUBCOBRANCA'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 6.288,
+        "tokens_prompt": 714,
+        "tokens_saida": 66,
+        "eval_s": 5.286,
+        "carga_modelo_s": 0.407
+      },
+      "correto": false,
+      "motivo": "bateu 0/3 variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": false,
+        "seed2": false,
+        "seed3": false
+      }
+    },
+    {
+      "id": "metrica_derivada_07",
+      "estrato": "metrica_derivada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 6.345,
+        "tokens_prompt": 709,
+        "tokens_saida": 56,
+        "eval_s": 5.31,
+        "carga_modelo_s": 0.469
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_derivada_08",
+      "estrato": "metrica_derivada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 6.692,
+        "tokens_prompt": 708,
+        "tokens_saida": 56,
+        "eval_s": 5.443,
+        "carga_modelo_s": 0.564
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_derivada_10",
+      "estrato": "metrica_derivada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 7.359,
+        "tokens_prompt": 711,
+        "tokens_saida": 55,
+        "eval_s": 6.042,
+        "carga_modelo_s": 0.599
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_filtrada_02",
+      "estrato": "metrica_filtrada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 7.602,
+        "tokens_prompt": 710,
+        "tokens_saida": 51,
+        "eval_s": 6.388,
+        "carga_modelo_s": 0.519
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_filtrada_05",
+      "estrato": "metrica_filtrada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 5.375,
+        "tokens_prompt": 710,
+        "tokens_saida": 47,
+        "eval_s": 4.15,
+        "carga_modelo_s": 0.557
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_filtrada_06",
+      "estrato": "metrica_filtrada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 6.044,
+        "tokens_prompt": 708,
+        "tokens_saida": 52,
+        "eval_s": 4.905,
+        "carga_modelo_s": 0.559
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_filtrada_07",
+      "estrato": "metrica_filtrada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 5.726,
+        "tokens_prompt": 709,
+        "tokens_saida": 52,
+        "eval_s": 4.461,
+        "carga_modelo_s": 0.549
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_filtrada_08",
+      "estrato": "metrica_filtrada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\", \"suspect_rate\"],\n  \"group_by\": [\"transaction__status\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 6.188,
+        "tokens_prompt": 705,
+        "tokens_saida": 56,
+        "eval_s": 5.088,
+        "carga_modelo_s": 0.528
+      },
+      "correto": false,
+      "motivo": "SQL da spec não executa: ParserException: Parser Error: syntax error at or near \")\"\n\nLINE 6: )\n        ^"
+    },
+    {
+      "id": "metrica_filtrada_09",
+      "estrato": "metrica_filtrada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 5.739,
+        "tokens_prompt": 708,
+        "tokens_saida": 51,
+        "eval_s": 4.655,
+        "carga_modelo_s": 0.555
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_filtrada_10",
+      "estrato": "metrica_filtrada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 6.633,
+        "tokens_prompt": 708,
+        "tokens_saida": 56,
+        "eval_s": 5.408,
+        "carga_modelo_s": 0.531
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "metrica_filtrada_11",
+      "estrato": "metrica_filtrada",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 5.845,
+        "tokens_prompt": 709,
+        "tokens_saida": 56,
+        "eval_s": 4.802,
+        "carga_modelo_s": 0.49
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "valor_categorico_01",
+      "estrato": "valor_categorico",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 6.592,
+        "tokens_prompt": 710,
+        "tokens_saida": 57,
+        "eval_s": 5.297,
+        "carga_modelo_s": 0.585
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "valor_categorico_03",
+      "estrato": "valor_categorico",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'REVERSED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 6.769,
+        "tokens_prompt": 709,
+        "tokens_saida": 60,
+        "eval_s": 5.543,
+        "carga_modelo_s": 0.545
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "valor_categorico_06",
+      "estrato": "valor_categorico",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CASH'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 6.561,
+        "tokens_prompt": 706,
+        "tokens_saida": 58,
+        "eval_s": 5.358,
+        "carga_modelo_s": 0.556
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    },
+    {
+      "id": "valor_categorico_09",
+      "estrato": "valor_categorico",
+      "abstencao": false,
+      "predicao": "spec",
+      "meta": {
+        "modelo": "qwen2.5-coder:7b",
+        "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+        "latencia_s": 7.016,
+        "tokens_prompt": 710,
+        "tokens_saida": 64,
+        "eval_s": 5.817,
+        "carga_modelo_s": 0.542
+      },
+      "correto": true,
+      "motivo": "EX em todas as variantes",
+      "sql": null,
+      "variantes_batem": {
+        "seed1": true,
+        "seed2": true,
+        "seed3": true
+      }
+    }
+  ],
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "528387c",
+    "git_dirty": true,
+    "git_diff_sha1": "2e259c1c36be",
+    "timestamp_utc": "2026-07-22T18:31:09+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

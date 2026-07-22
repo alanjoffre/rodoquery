@@ -41,3 +41,4 @@ select = ["E", "F", "I", "UP", "B"]
 # desses dados é irrelevante (o modelo lê texto corrido), então E501 é ruído só aqui.
 "src/rodoquery/baselines.py" = ["E501"]
 "src/rodoquery/sistema.py" = ["E501"]
+"src/rodoquery/perturbacao.py" = ["E501"]
