@@ -1,0 +1,11 @@
+{"id": "valor_categorico_v2_r01", "spec": {"metrics": ["revenue_cents"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_r02", "spec": {"metrics": ["revenue_cents"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_r03", "spec": {"metrics": ["revenue_cents"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_r04", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_r05", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_r06", "spec": {"metrics": ["revenue_cents"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'OK'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_r07", "spec": {"metrics": ["transactions"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_r08", "spec": {"metrics": ["suspect_transactions"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_r09", "spec": {"metrics": ["transactions"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_r10", "spec": {"metrics": ["suspect_transactions"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_r11", "spec": {"metrics": ["revenue_cents"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'", "order_by": [], "limit": null, "ordenado": false}}

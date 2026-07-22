@@ -1,0 +1,490 @@
+{
+  "fase": "8_analise",
+  "auditoria_gold_degenerado_v1": {
+    "ids": [
+      "valor_categorico_02",
+      "valor_categorico_03"
+    ],
+    "achado": "2 itens do TEST-v1 tem gold constante entre as 3 variantes (receita de transacoes FAILED/REVERSED = sempre 0), entao o Test-Suite EX nao protegia contra falso positivo neles.",
+    "sensibilidade": "comparar 'TEST-v1' com 'TEST-v1 SEM degenerados' abaixo."
+  },
+  "replicacao_7_estratos_originais": {
+    "fase4_v1": {
+      "rotulo": "TEST-v1 (Fase 4, ja consumido)",
+      "tier_a": {
+        "execution_accuracy": {
+          "n": 42,
+          "acertos": 41,
+          "taxa": 0.9762,
+          "wilson_ic95": [
+            0.8768,
+            0.9958
+          ],
+          "largura_ic_pp": 11.9
+        },
+        "abstencao": {
+          "n": 11,
+          "acertos": 11,
+          "taxa": 1.0,
+          "wilson_ic95": [
+            0.7412,
+            1.0
+          ],
+          "largura_ic_pp": 25.9
+        }
+      },
+      "sql_cru": {
+        "execution_accuracy": {
+          "n": 42,
+          "acertos": 18,
+          "taxa": 0.4286,
+          "wilson_ic95": [
+            0.2912,
+            0.5779
+          ],
+          "largura_ic_pp": 28.7
+        },
+        "abstencao": {
+          "n": 11,
+          "acertos": 10,
+          "taxa": 0.9091,
+          "wilson_ic95": [
+            0.6226,
+            0.9838
+          ],
+          "largura_ic_pp": 36.1
+        }
+      },
+      "mcnemar_sqlcru_vs_tiera": {
+        "b_only": 0,
+        "c_only": 23,
+        "p_valor": 0.0,
+        "delta_acuracia": -0.5476,
+        "n": 42
+      },
+      "delta_pp": 54.76
+    },
+    "fase4_v1_sem_degenerados": {
+      "rotulo": "TEST-v1 SEM os 2 itens de gold degenerado",
+      "tier_a": {
+        "execution_accuracy": {
+          "n": 40,
+          "acertos": 39,
+          "taxa": 0.975,
+          "wilson_ic95": [
+            0.8712,
+            0.9956
+          ],
+          "largura_ic_pp": 12.4
+        },
+        "abstencao": {
+          "n": 11,
+          "acertos": 11,
+          "taxa": 1.0,
+          "wilson_ic95": [
+            0.7412,
+            1.0
+          ],
+          "largura_ic_pp": 25.9
+        }
+      },
+      "sql_cru": {
+        "execution_accuracy": {
+          "n": 40,
+          "acertos": 18,
+          "taxa": 0.45,
+          "wilson_ic95": [
+            0.3071,
+            0.6017
+          ],
+          "largura_ic_pp": 29.5
+        },
+        "abstencao": {
+          "n": 11,
+          "acertos": 10,
+          "taxa": 0.9091,
+          "wilson_ic95": [
+            0.6226,
+            0.9838
+          ],
+          "largura_ic_pp": 36.1
+        }
+      },
+      "mcnemar_sqlcru_vs_tiera": {
+        "b_only": 0,
+        "c_only": 21,
+        "p_valor": 0.0,
+        "delta_acuracia": -0.525,
+        "n": 40
+      },
+      "delta_pp": 52.5
+    },
+    "fase8_v2": {
+      "rotulo": "TEST-v2 (holdout fresco, specs ineditas)",
+      "tier_a": {
+        "execution_accuracy": {
+          "n": 167,
+          "acertos": 123,
+          "taxa": 0.7365,
+          "wilson_ic95": [
+            0.6649,
+            0.7975
+          ],
+          "largura_ic_pp": 13.3
+        },
+        "abstencao": {
+          "n": 27,
+          "acertos": 15,
+          "taxa": 0.5556,
+          "wilson_ic95": [
+            0.3731,
+            0.7241
+          ],
+          "largura_ic_pp": 35.1
+        }
+      },
+      "sql_cru": {
+        "execution_accuracy": {
+          "n": 167,
+          "acertos": 25,
+          "taxa": 0.1497,
+          "wilson_ic95": [
+            0.1035,
+            0.2117
+          ],
+          "largura_ic_pp": 10.8
+        },
+        "abstencao": {
+          "n": 27,
+          "acertos": 11,
+          "taxa": 0.4074,
+          "wilson_ic95": [
+            0.2451,
+            0.5927
+          ],
+          "largura_ic_pp": 34.8
+        }
+      },
+      "mcnemar_sqlcru_vs_tiera": {
+        "b_only": 6,
+        "c_only": 104,
+        "p_valor": 0.0,
+        "delta_acuracia": -0.5868,
+        "n": 167
+      },
+      "delta_pp": 58.68
+    }
+  },
+  "cobertura_nova_ranking": {
+    "rotulo": "estrato ranking (nunca avaliado ate aqui)",
+    "tier_a": {
+      "execution_accuracy": {
+        "n": 29,
+        "acertos": 5,
+        "taxa": 0.1724,
+        "wilson_ic95": [
+          0.076,
+          0.3455
+        ],
+        "largura_ic_pp": 26.9
+      },
+      "abstencao": {
+        "n": 0,
+        "acertos": 0,
+        "taxa": null,
+        "wilson_ic95": [
+          0.0,
+          0.0
+        ],
+        "largura_ic_pp": 0.0
+      }
+    },
+    "sql_cru": {
+      "execution_accuracy": {
+        "n": 29,
+        "acertos": 7,
+        "taxa": 0.2414,
+        "wilson_ic95": [
+          0.1222,
+          0.4211
+        ],
+        "largura_ic_pp": 29.9
+      },
+      "abstencao": {
+        "n": 0,
+        "acertos": 0,
+        "taxa": null,
+        "wilson_ic95": [
+          0.0,
+          0.0
+        ],
+        "largura_ic_pp": 0.0
+      }
+    },
+    "mcnemar_sqlcru_vs_tiera": {
+      "b_only": 5,
+      "c_only": 3,
+      "p_valor": 0.7266,
+      "delta_acuracia": 0.069,
+      "n": 29
+    },
+    "delta_pp": -6.9
+  },
+  "pooled": {
+    "rotulo": "POOLED v1+v2 (7 estratos originais) — poder maximo",
+    "ressalva": "o TEST-v1 ja havia sido consumido na Fase 4 e nos deltas da Fase 7.",
+    "tier_a": {
+      "execution_accuracy": {
+        "n": 209,
+        "acertos": 164,
+        "taxa": 0.7847,
+        "wilson_ic95": [
+          0.7241,
+          0.835
+        ],
+        "largura_ic_pp": 11.1
+      },
+      "abstencao": {
+        "n": 38,
+        "acertos": 26,
+        "taxa": 0.6842,
+        "wilson_ic95": [
+          0.5254,
+          0.8092
+        ],
+        "largura_ic_pp": 28.4
+      }
+    },
+    "sql_cru": {
+      "execution_accuracy": {
+        "n": 209,
+        "acertos": 43,
+        "taxa": 0.2057,
+        "wilson_ic95": [
+          0.1565,
+          0.2656
+        ],
+        "largura_ic_pp": 10.9
+      },
+      "abstencao": {
+        "n": 38,
+        "acertos": 21,
+        "taxa": 0.5526,
+        "wilson_ic95": [
+          0.3971,
+          0.6985
+        ],
+        "largura_ic_pp": 30.1
+      }
+    },
+    "mcnemar_sqlcru_vs_tiera": {
+      "b_only": 6,
+      "c_only": 127,
+      "p_valor": 0.0,
+      "delta_acuracia": -0.5789,
+      "n": 209
+    }
+  },
+  "poder_estatistico": {
+    "o_que_o_N_comprou": "O ganho honesto de aumentar N nao e um EX mais alto — e um IC mais estreito. Abaixo, a largura do IC de Wilson (em pontos percentuais).",
+    "ex_global_largura_ic_pp": {
+      "v1": 11.9,
+      "v2": 13.3,
+      "pooled": 11.1
+    },
+    "largura_ic_por_estrato_pp": {
+      "v1_mediana": 39.0,
+      "v2_mediana": 26.9,
+      "v1": {
+        "metrica_filtrada": 32.4,
+        "coalesce_nulo": 49.0,
+        "join_grao": 39.0,
+        "metrica_derivada": 35.4,
+        "grao_temporal": 39.0,
+        "valor_categorico": 53.3,
+        "controle_trivial": 43.5
+      },
+      "v2": {
+        "metrica_filtrada": 12.9,
+        "coalesce_nulo": 26.6,
+        "join_grao": 22.8,
+        "metrica_derivada": 34.4,
+        "grao_temporal": 22.8,
+        "valor_categorico": 28.5,
+        "controle_trivial": 79.3,
+        "ranking": 26.9
+      }
+    }
+  },
+  "ex_por_estrato": {
+    "v1": {
+      "metrica_filtrada": {
+        "n": 8,
+        "acertos": 8,
+        "taxa": 1.0,
+        "wilson_ic95": [
+          0.6756,
+          1.0
+        ],
+        "largura_ic_pp": 32.4
+      },
+      "coalesce_nulo": {
+        "n": 4,
+        "acertos": 4,
+        "taxa": 1.0,
+        "wilson_ic95": [
+          0.5101,
+          1.0
+        ],
+        "largura_ic_pp": 49.0
+      },
+      "join_grao": {
+        "n": 6,
+        "acertos": 6,
+        "taxa": 1.0,
+        "wilson_ic95": [
+          0.6097,
+          1.0
+        ],
+        "largura_ic_pp": 39.0
+      },
+      "metrica_derivada": {
+        "n": 7,
+        "acertos": 7,
+        "taxa": 1.0,
+        "wilson_ic95": [
+          0.6457,
+          1.0
+        ],
+        "largura_ic_pp": 35.4
+      },
+      "grao_temporal": {
+        "n": 6,
+        "acertos": 6,
+        "taxa": 1.0,
+        "wilson_ic95": [
+          0.6097,
+          1.0
+        ],
+        "largura_ic_pp": 39.0
+      },
+      "valor_categorico": {
+        "n": 6,
+        "acertos": 5,
+        "taxa": 0.8333,
+        "wilson_ic95": [
+          0.4365,
+          0.9699
+        ],
+        "largura_ic_pp": 53.3
+      },
+      "controle_trivial": {
+        "n": 5,
+        "acertos": 5,
+        "taxa": 1.0,
+        "wilson_ic95": [
+          0.5655,
+          1.0
+        ],
+        "largura_ic_pp": 43.5
+      }
+    },
+    "v2": {
+      "metrica_filtrada": {
+        "n": 26,
+        "acertos": 26,
+        "taxa": 1.0,
+        "wilson_ic95": [
+          0.8713,
+          1.0
+        ],
+        "largura_ic_pp": 12.9
+      },
+      "coalesce_nulo": {
+        "n": 27,
+        "acertos": 4,
+        "taxa": 0.1481,
+        "wilson_ic95": [
+          0.0592,
+          0.3248
+        ],
+        "largura_ic_pp": 26.6
+      },
+      "join_grao": {
+        "n": 29,
+        "acertos": 26,
+        "taxa": 0.8966,
+        "wilson_ic95": [
+          0.7361,
+          0.9642
+        ],
+        "largura_ic_pp": 22.8
+      },
+      "metrica_derivada": {
+        "n": 26,
+        "acertos": 17,
+        "taxa": 0.6538,
+        "wilson_ic95": [
+          0.4622,
+          0.8059
+        ],
+        "largura_ic_pp": 34.4
+      },
+      "grao_temporal": {
+        "n": 29,
+        "acertos": 26,
+        "taxa": 0.8966,
+        "wilson_ic95": [
+          0.7361,
+          0.9642
+        ],
+        "largura_ic_pp": 22.8
+      },
+      "valor_categorico": {
+        "n": 29,
+        "acertos": 23,
+        "taxa": 0.7931,
+        "wilson_ic95": [
+          0.6161,
+          0.9015
+        ],
+        "largura_ic_pp": 28.5
+      },
+      "controle_trivial": {
+        "n": 1,
+        "acertos": 1,
+        "taxa": 1.0,
+        "wilson_ic95": [
+          0.2065,
+          1.0
+        ],
+        "largura_ic_pp": 79.3
+      },
+      "ranking": {
+        "n": 29,
+        "acertos": 5,
+        "taxa": 0.1724,
+        "wilson_ic95": [
+          0.076,
+          0.3455
+        ],
+        "largura_ic_pp": 26.9
+      }
+    }
+  },
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "36cbcba",
+    "git_dirty": true,
+    "git_diff_sha1": "c9dcf853cf81",
+    "timestamp_utc": "2026-07-22T20:46:44+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

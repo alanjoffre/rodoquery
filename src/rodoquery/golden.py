@@ -30,10 +30,13 @@ from rodoquery.config import REPO_ROOT, settings
 from rodoquery.estat import cohen_kappa
 from rodoquery.gold import Spec, compilar_spec, executar_gold
 
-# Os 7 mecanismos onde o SQL cru erra e o Semantic Layer acerta (itens RESPONDÍVEIS).
+# Os mecanismos onde o SQL cru erra e o Semantic Layer acerta (itens RESPONDÍVEIS).
+# `ranking` entrou na Fase 8: auditando o catálogo contra o golden, ficou claro que NENHUM item da
+# v1 usa order_by+limit+ordenado — apesar de o prompt do sistema ter uma regra sobre ranking.
+# Regra de prompt nunca avaliada é risco não medido, então virou estrato próprio.
 ESTRATOS_RESPONDIVEIS = (
     "metrica_filtrada", "coalesce_nulo", "join_grao", "metrica_derivada",
-    "grao_temporal", "valor_categorico", "controle_trivial",
+    "grao_temporal", "valor_categorico", "controle_trivial", "ranking",
 )
 # 8º estrato = eixo DIFERENTE: a pergunta NÃO é respondível com o catálogo → o certo é ABSTER.
 # É onde o vocabulário fechado do Semantic Layer vira vantagem (sabe dizer "não sei") e onde o SQL

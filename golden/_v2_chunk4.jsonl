@@ -1,0 +1,11 @@
+{"id": "valor_categorico_v2_r01", "pergunta_nl": "Qual a receita em centavos das transações pagas com tag automática?"}
+{"id": "valor_categorico_v2_r02", "pergunta_nl": "Qual a receita em centavos das transações pagas em dinheiro?"}
+{"id": "valor_categorico_v2_r03", "pergunta_nl": "Qual a receita em centavos das transações concluídas?"}
+{"id": "valor_categorico_v2_r04", "pergunta_nl": "Qual a perda de receita das transações pagas em dinheiro?"}
+{"id": "valor_categorico_v2_r05", "pergunta_nl": "Qual a perda de receita das transações pagas com tag automática?"}
+{"id": "valor_categorico_v2_r06", "pergunta_nl": "Qual a receita em centavos das transações sem apontamento de auditoria?"}
+{"id": "valor_categorico_v2_r07", "pergunta_nl": "Quantas transações pagas com cartão houve?"}
+{"id": "valor_categorico_v2_r08", "pergunta_nl": "Quantas transações suspeitas com valor inválido houve?"}
+{"id": "valor_categorico_v2_r09", "pergunta_nl": "Quantas transações com valor inválido houve?"}
+{"id": "valor_categorico_v2_r10", "pergunta_nl": "Quantas transações suspeitas com possível duplicidade houve?"}
+{"id": "valor_categorico_v2_r11", "pergunta_nl": "Qual a receita em centavos das transações pagas com cartão?"}

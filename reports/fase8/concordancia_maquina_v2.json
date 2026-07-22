@@ -1,0 +1,87 @@
+{
+  "tipo": "concordancia_inter_anotador_MAQUINA_v2",
+  "aviso": "2 anotadores = LLMs (autor + 2o anotador cego, so perguntas+catalogo). kappa de MAQUINA, nao humano. kappa humano segue no backlog declarado.",
+  "anotador_a": "autor_modelo (golden/gerar_autor_v2.py)",
+  "anotador_b": "2o_anotador_LLM_cego (4 subagents, chunks disjuntos, so perguntas+catalogo)",
+  "n_itens": 264,
+  "sem_anotacao_b": [],
+  "decisao_respondivel_x_fora": {
+    "n": 264,
+    "acordo": 264,
+    "taxa": 1.0,
+    "cohen_kappa": 1.0,
+    "abstencoes_contestadas": [],
+    "respondiveis_contestados": [],
+    "leitura": "abstencoes_contestadas = o autor disse 'fora do catalogo' e o anotador cego discordou; sao os rotulos frageis do estrato de abstencao."
+  },
+  "concordancia_spec_respondiveis": {
+    "n_pares": 232,
+    "concordancia_spec_canonica": 1.0,
+    "cohen_kappa_metrica": 1.0,
+    "concordancia_metrica": 1.0,
+    "concordancia_group_by": 1.0,
+    "concordancia_where": 1.0,
+    "limiar_pre_registrado": {
+      "cohen_kappa_metrica": 0.8,
+      "concordancia_spec_canonica": 0.8
+    },
+    "discordantes": []
+  },
+  "por_estrato": {
+    "coalesce_nulo": {
+      "n": 32,
+      "iguais": 32,
+      "taxa": 1.0
+    },
+    "controle_trivial": {
+      "n": 2,
+      "iguais": 2,
+      "taxa": 1.0
+    },
+    "grao_temporal": {
+      "n": 34,
+      "iguais": 34,
+      "taxa": 1.0
+    },
+    "join_grao": {
+      "n": 34,
+      "iguais": 34,
+      "taxa": 1.0
+    },
+    "metrica_derivada": {
+      "n": 31,
+      "iguais": 31,
+      "taxa": 1.0
+    },
+    "metrica_filtrada": {
+      "n": 31,
+      "iguais": 31,
+      "taxa": 1.0
+    },
+    "ranking": {
+      "n": 34,
+      "iguais": 34,
+      "taxa": 1.0
+    },
+    "valor_categorico": {
+      "n": 34,
+      "iguais": 34,
+      "taxa": 1.0
+    }
+  },
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "36cbcba",
+    "git_dirty": true,
+    "git_diff_sha1": "373d7920a064",
+    "timestamp_utc": "2026-07-22T19:43:44+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

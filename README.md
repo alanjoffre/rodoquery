@@ -14,14 +14,16 @@ Data Engineering × AI Engineering · avaliação com rigor · R$0 · dados sint
 
 > **Tese:** o valor não é *"LLM gera SQL"*. É provar, **com número e intervalo de confiança**, que servir sobre o **Semantic Layer governado** (dbt/MetricFlow) dá a resposta **certa** onde o SQL cru dá uma resposta **plausível e errada**.
 
-**A tese foi comprovada.** No TEST selado, com **o mesmo modelo** (`qwen2.5-coder:7b`) — muda só a interface:
+**A tese foi comprovada — e replicada num holdout maior.** Mesmo modelo (`qwen2.5-coder:7b`) nas duas pontas; muda só a interface:
 
-| Sistema | Execution Accuracy (respondíveis, n=42) | Abstenção (n=11) |
-|---|---|---|
-| **Tier-A — spec governada → MetricFlow** | **97,6%** [87,7; 99,6] | **100%** [74,1; 100] |
-| Baseline — SQL cru | 42,9% | — |
+| Conjunto selado | Tier-A (spec → MetricFlow) | Baseline SQL cru | Δ | McNemar |
+|---|---|---|---|---|
+| TEST-v1 (n=42) | 97,6% [87,7; 99,6] | 42,9% | +54,8 pp | 23 × 0, p≈0 |
+| **TEST-v2 (n=167, specs inéditas)** | **73,7%** [66,5; 79,8] | 15,0% | **+58,7 pp** | **104 × 6, p≈0** |
 
-**McNemar pareado: b=23, c=0, p≈0, Δ = +54,8 pp.** Vinte e três itens que o SQL cru erra e a spec governada acerta; **zero** no sentido contrário. Como o SUT é idêntico, o ganho é atribuível **à interface**, não ao modelo.
+Como o SUT é idêntico, o ganho é atribuível **à interface**, não ao modelo. A vantagem **cresce** com o conjunto maior.
+
+> ⚠️ **Leia o segundo número, não o primeiro.** O 97,6% da Fase 4 **não replica**: num conjunto 4× maior, cobrindo superfície do catálogo que a v1 nunca tocou, o Tier-A faz 73,7%. A tese sobrevive com folga; o valor absoluto, não. Ver [Fase 8](docs/FASE8_PODER.md).
 
 RodoQuery é o irmão de [**RodoIA**](https://github.com/alanjoffre/rodoia) no eixo de dados: um agente que traduz linguagem natural em consultas **seguras** sobre a plataforma [**toll-analytics-platform**](https://github.com/alanjoffre/toll-analytics-platform) (lakehouse de auditoria de pedágio, dados sintéticos, DuckDB dev → Databricks prod), reusando o **dbt Semantic Layer** já modelado.
 
@@ -54,6 +56,7 @@ O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com
 | **5** · MLOps | gate ativo comprovado | ✅ gate em 3 níveis **pega 6/6 regressões injetadas** · p50 4,5 s / p95 7,9 s · **R$ 0,12/1k** |
 | **6** · Serving + SLO | p95, throughput em 1 GPU, EX de canário | ✅ SLO atendido (p95 4,36 s em c=1) · canário 10/10 · capacidade real **~0,25 req/s** |
 | **7** · Robustez | quanto o EX cai (com IC) | ⚠️ paráfrase −7,7 pp (**p=0,375, não significativo**) · **schema opaco −14,3 pp (p=0,031)** |
+| **8** · Poder estatístico | **≥25 itens/estrato** (meta da Fase 2) | ✅ 223 no TEST-v2, 26–29/estrato · ⚠️ **o EX de 97,6% não replica: 73,7%** · 3 modos de falha novos |
 
 ## 🔬 Previsões que a medição **refutou**
 
@@ -64,6 +67,7 @@ Este é o item de que mais me orgulho no projeto. Cada fase tinha um "achado hon
 | *"flakiness do LLM desestabiliza o gate"* (F5) | **Refutada.** 5 execuções com greedy + `top_k=1` e modelo quente deram EX **idêntico** (amplitude 0,0 pp). Eu havia escrito na doc da Fase 4 que uma falha vinha de não-determinismo de GPU — **sem ter medido**. Medi, estava errado, e **corrigi a doc**. |
 | *"o held-out de paráfrase derruba memorização"* (F7) | **Não confirmada.** Queda de 7,7 pp com **p=0,375**: com n=39 não dá para rejeitar "não houve diferença". O que **de fato** quebra é trocar `revenue` por `m03` mantendo a mesma descrição: **−14,3 pp, p=0,031**. A fragilidade é **lexical nos identificadores**, não no fraseado. |
 | *"em 6 GB a inferência serializa"* (F6) | **Confirmada — e pior.** Vazão cai 25% em c=4/8 e o p95 vai de 4,4 s para **43 s**. O ótimo de vazão (c=2) **não** é o ótimo de SLO: o controle de admissão certo foi semáforo **1** + espera 5 s, recusando o excesso com 503 em vez de enfileirar. |
+| *"o EX de 97,6% descreve o sistema"* (implícito, F4) | **Refutada pela Fase 8.** Com N 4× maior e superfície nova, o EX é **73,7%**. Três buracos que o conjunto pequeno escondia: a regra `where`-vs-`group_by` **não compõe** com agrupamento (`coalesce_nulo` 15%); a regra de ranking **nunca fora avaliada** e não funciona (17%, sintaxe SQL em vez de MetricFlow); e a abstenção de 100% era artefato de perguntas óbvias — com *near-miss* cai para **55,6%**, errando por **substituição semântica silenciosa** ("taxa de estorno" → `suspect_rate`). |
 
 Bônus: **a abstenção ficou 100% intacta** sob perturbação de schema. Reconhecer "não existe métrica para isto" depende de o catálogo **não ter** algo, não do nome que as métricas têm — duas competências separadas, e a de segurança é a robusta.
 
@@ -82,10 +86,12 @@ Bônus: **a abstenção ficou 100% intacta** sob perturbação de schema. Reconh
 
 Nenhum destes é surpresa: todos foram declarados na fase em que apareceram.
 
+- **Documentar a sintaxe de ordenação (`-metrica`) e a composição filtro+`group_by` no prompt** — os dois modos de falha que a Fase 8 isolou. É a maior melhoria disponível hoje. Protocolo obrigatório: validar no DEV-v2 e medir em **holdout novo** — consertar e remedir no TEST-v2 seria ajustar ao teste.
+- **Abstenção contra vizinho semântico** — o catálogo precisa dizer o que uma métrica **não** é (`suspect_rate` ≠ estorno ≠ conversão ≠ inadimplência).
 - **κ humano** do golden set — hoje só há concordância entre modelos, **rotulada como de máquina**.
-- **Expandir N para ≥25/estrato** — com 42 respondíveis, só efeitos **≥14 pp** ficam significativos.
 - **Ligar o Tier-B** no roteador — o fallback de SQL cru está construído e o sandbox validado, mas desligado.
 - **Conjunto de robustez próprio** — a Fase 7 reusou o TEST para medir deltas. Nenhum ajuste foi feito com base nesses resultados, mas cada reuso erode um holdout.
+- ~~Expandir N para ≥25/estrato~~ — **feito na Fase 8** (223 itens no TEST-v2, 26–29 por estrato).
 
 ## 🚀 Setup
 
@@ -99,7 +105,7 @@ uvicorn rodoquery.servico:app --port 8077 # serving do Tier-A
 
 Pré-requisito: a fundação de dados vem do **toll-analytics-platform** buildado (`dbt build` → DuckDB + `manifest.json`). Ver [`docs/FUNDACAO.md`](docs/FUNDACAO.md).
 
-**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md)
+**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md)
 
 ## 📄 Licença
 MIT. Dados sintéticos (nenhum dado real).

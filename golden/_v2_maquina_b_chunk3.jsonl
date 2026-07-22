@@ -1,0 +1,89 @@
+{"id": "valor_categorico_v2_12", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_13", "spec": {"metrics": ["revenue"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_14", "spec": {"metrics": ["suspect_transactions"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'REVERSED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_15", "spec": {"metrics": ["suspect_rate"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_16", "spec": {"metrics": ["suspect_rate"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_17", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_18", "spec": {"metrics": ["transactions"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'FAILED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_19", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'REVERSED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_20", "spec": {"metrics": ["revenue_leakage_cents"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_21", "spec": {"metrics": ["revenue_leakage_cents"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_22", "spec": {"metrics": ["suspect_rate"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'FAILED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_23", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'OK'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_24", "spec": {"metrics": ["transactions"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_25", "spec": {"metrics": ["suspect_rate"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_26", "spec": {"metrics": ["suspect_rate"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'REVERSED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_27", "spec": {"metrics": ["revenue_cents"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'REVERSED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_28", "spec": {"metrics": ["suspect_transactions"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_29", "spec": {"metrics": ["suspect_rate"], "group_by": [], "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_30", "spec": {"metrics": ["revenue_cents"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_31", "spec": {"metrics": ["suspect_rate"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_32", "spec": {"metrics": ["suspect_rate"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_33", "spec": {"metrics": ["revenue_leakage_cents"], "group_by": [], "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "valor_categorico_v2_34", "spec": {"metrics": ["revenue"], "group_by": [], "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'", "order_by": [], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_01", "spec": {"metrics": ["suspect_transactions"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_02", "spec": {"metrics": ["revenue"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__status') }} = 'FAILED'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_03", "spec": {"metrics": ["transactions"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_04", "spec": {"metrics": ["revenue_leakage_cents"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_05", "spec": {"metrics": ["revenue_cents"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_06", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__status') }} = 'FAILED'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_07", "spec": {"metrics": ["revenue"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_08", "spec": {"metrics": ["revenue_cents"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_09", "spec": {"metrics": ["revenue_cents"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'OK'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_10", "spec": {"metrics": ["revenue_leakage_cents"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_11", "spec": {"metrics": ["suspect_rate"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_12", "spec": {"metrics": ["suspect_transactions"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_13", "spec": {"metrics": ["transactions"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_14", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'OK'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_15", "spec": {"metrics": ["suspect_transactions"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_16", "spec": {"metrics": ["revenue_cents"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__status') }} = 'FAILED'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_17", "spec": {"metrics": ["suspect_rate"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_18", "spec": {"metrics": ["revenue_leakage_cents"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__status') }} = 'REVERSED'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_19", "spec": {"metrics": ["suspect_transactions"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__status') }} = 'REVERSED'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_20", "spec": {"metrics": ["suspect_rate"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_21", "spec": {"metrics": ["revenue_leakage_cents"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_22", "spec": {"metrics": ["revenue_cents"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_23", "spec": {"metrics": ["revenue_leakage_cents"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'OK'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_24", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__status') }} = 'REVERSED'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_25", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_26", "spec": {"metrics": ["suspect_rate"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_27", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_28", "spec": {"metrics": ["transactions"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_29", "spec": {"metrics": ["revenue"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_30", "spec": {"metrics": ["revenue_cents"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_31", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_32", "spec": {"metrics": ["suspect_rate"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_33", "spec": {"metrics": ["transactions"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_v2_34", "spec": {"metrics": ["revenue_leakage_brl"], "group_by": ["metric_time__day"], "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_01", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_02", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_03", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_04", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_05", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_06", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_07", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_08", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_09", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_10", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_11", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_12", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_13", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_14", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_15", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_16", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_17", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_18", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_19", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_20", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_21", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_22", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_23", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_24", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_25", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_26", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_27", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_28", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_29", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_30", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_31", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_v2_32", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}

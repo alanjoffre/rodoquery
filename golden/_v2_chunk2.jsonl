@@ -1,0 +1,90 @@
+{"id": "metrica_derivada_v2_24", "pergunta_nl": "Qual o vazamento de receita em centavos das transações estornadas por veículo?"}
+{"id": "metrica_derivada_v2_25", "pergunta_nl": "Qual a taxa de suspeita das transações com cobrança em falha em cada veículo?"}
+{"id": "metrica_derivada_v2_26", "pergunta_nl": "Qual a taxa de suspeita das transações com possível duplicidade em cada praça?"}
+{"id": "metrica_derivada_v2_27", "pergunta_nl": "Qual o vazamento de receita em centavos das transações pagas em dinheiro por veículo?"}
+{"id": "metrica_derivada_v2_28", "pergunta_nl": "Qual a taxa de suspeita das transações estornadas em cada veículo?"}
+{"id": "metrica_derivada_v2_29", "pergunta_nl": "Qual a taxa de suspeita das transações sem apontamento de auditoria por veículo?"}
+{"id": "metrica_derivada_v2_30", "pergunta_nl": "Qual o vazamento de receita em centavos das transações que falharam por praça de pedágio?"}
+{"id": "metrica_derivada_v2_31", "pergunta_nl": "Qual a taxa de suspeita semana a semana?"}
+{"id": "metrica_derivada_v2_32", "pergunta_nl": "Qual o percentual de transações suspeitas por marcação de auditoria?"}
+{"id": "metrica_derivada_v2_33", "pergunta_nl": "Qual a perda de receita das transações que falharam por veículo?"}
+{"id": "metrica_derivada_v2_34", "pergunta_nl": "Qual a taxa de suspeita das transações com possível duplicidade em cada veículo?"}
+{"id": "join_grao_v2_01", "pergunta_nl": "Qual a perda de receita em centavos em cada praça e por status?"}
+{"id": "join_grao_v2_02", "pergunta_nl": "Qual a perda de receita em centavos em cada praça e por marcação de auditoria?"}
+{"id": "join_grao_v2_03", "pergunta_nl": "Qual a receita em centavos em cada veículo e por flag de auditoria?"}
+{"id": "join_grao_v2_04", "pergunta_nl": "Qual o faturamento em centavos por praça e por veículo?"}
+{"id": "join_grao_v2_05", "pergunta_nl": "Qual o faturamento em centavos em cada praça e por status?"}
+{"id": "join_grao_v2_06", "pergunta_nl": "Quanto foi arrecadado em cada praça e por método de pagamento?"}
+{"id": "join_grao_v2_07", "pergunta_nl": "Quantas transações houve por praça e por forma de pagamento?"}
+{"id": "join_grao_v2_08", "pergunta_nl": "Qual o volume de transações por veículo e por forma de pagamento?"}
+{"id": "join_grao_v2_09", "pergunta_nl": "Qual a perda de receita por veículo e por marcação de auditoria?"}
+{"id": "join_grao_v2_10", "pergunta_nl": "Qual a perda de receita por praça de pedágio e por marcação de auditoria?"}
+{"id": "join_grao_v2_11", "pergunta_nl": "Qual o volume de transações por veículo e por marcação de auditoria?"}
+{"id": "join_grao_v2_12", "pergunta_nl": "Qual o vazamento de receita em cada praça e por status?"}
+{"id": "join_grao_v2_13", "pergunta_nl": "Qual a perda de receita por praça e por método de pagamento?"}
+{"id": "join_grao_v2_14", "pergunta_nl": "Quantas transações suspeitas houve em cada praça e em cada veículo?"}
+{"id": "join_grao_v2_15", "pergunta_nl": "Qual o número de transações suspeitas em cada veículo e por flag de auditoria?"}
+{"id": "join_grao_v2_16", "pergunta_nl": "Qual o faturamento em centavos em cada praça e por forma de pagamento?"}
+{"id": "join_grao_v2_17", "pergunta_nl": "Qual o número de transações suspeitas em cada veículo e por método de pagamento?"}
+{"id": "join_grao_v2_18", "pergunta_nl": "Quantas transações suspeitas houve por praça e por forma de pagamento?"}
+{"id": "join_grao_v2_19", "pergunta_nl": "Qual a taxa de suspeita em cada praça e por forma de pagamento?"}
+{"id": "join_grao_v2_20", "pergunta_nl": "Qual o faturamento em centavos em cada veículo e por status?"}
+{"id": "join_grao_v2_21", "pergunta_nl": "Qual a perda de receita em centavos em cada veículo e por método de pagamento?"}
+{"id": "join_grao_v2_22", "pergunta_nl": "Qual o vazamento de receita em centavos por praça e por veículo?"}
+{"id": "join_grao_v2_23", "pergunta_nl": "Qual o faturamento por veículo e por status?"}
+{"id": "join_grao_v2_24", "pergunta_nl": "Qual o número de transações suspeitas em cada praça e por marcação de auditoria?"}
+{"id": "join_grao_v2_25", "pergunta_nl": "Qual a perda de receita por veículo e por método de pagamento?"}
+{"id": "join_grao_v2_26", "pergunta_nl": "Qual a proporção de transações suspeitas em cada veículo e por marcação de auditoria?"}
+{"id": "join_grao_v2_27", "pergunta_nl": "Qual o vazamento de receita em centavos por veículo e por flag de auditoria?"}
+{"id": "join_grao_v2_28", "pergunta_nl": "Qual a proporção de transações suspeitas por praça de pedágio e em cada veículo?"}
+{"id": "join_grao_v2_29", "pergunta_nl": "Qual a receita em centavos por praça de pedágio e por marcação de auditoria?"}
+{"id": "join_grao_v2_30", "pergunta_nl": "Qual a proporção de transações suspeitas em cada praça e por status?"}
+{"id": "join_grao_v2_31", "pergunta_nl": "Qual o faturamento em centavos por veículo e por método de pagamento?"}
+{"id": "join_grao_v2_32", "pergunta_nl": "Qual o prejuízo de receita em cada veículo e por situação?"}
+{"id": "join_grao_v2_33", "pergunta_nl": "Qual o número de transações por veículo e por situação?"}
+{"id": "join_grao_v2_34", "pergunta_nl": "Qual o faturamento por veículo e por flag de auditoria?"}
+{"id": "grao_temporal_v2_01", "pergunta_nl": "Qual a proporção de transações suspeitas por semana e por marcação de auditoria?"}
+{"id": "grao_temporal_v2_02", "pergunta_nl": "Qual a receita em centavos semana a semana e por marcação de auditoria?"}
+{"id": "grao_temporal_v2_03", "pergunta_nl": "Quantas transações suspeitas houve em cada mês e por forma de pagamento?"}
+{"id": "grao_temporal_v2_04", "pergunta_nl": "Qual o percentual de transações suspeitas dia a dia e por situação?"}
+{"id": "grao_temporal_v2_05", "pergunta_nl": "Qual o faturamento em cada mês e por método de pagamento?"}
+{"id": "grao_temporal_v2_06", "pergunta_nl": "Qual a perda de receita em centavos dia a dia e por situação?"}
+{"id": "grao_temporal_v2_07", "pergunta_nl": "Qual o vazamento de receita em centavos semana a semana e por método de pagamento?"}
+{"id": "grao_temporal_v2_08", "pergunta_nl": "Qual a perda de receita em centavos por dia?"}
+{"id": "grao_temporal_v2_09", "pergunta_nl": "Quantas transações suspeitas houve por dia e por forma de pagamento?"}
+{"id": "grao_temporal_v2_10", "pergunta_nl": "Qual a perda de receita em centavos em cada mês e por método de pagamento?"}
+{"id": "grao_temporal_v2_11", "pergunta_nl": "Qual foi a receita por semana e por status?"}
+{"id": "grao_temporal_v2_12", "pergunta_nl": "Quantas transações suspeitas houve semana a semana e por marcação de auditoria?"}
+{"id": "grao_temporal_v2_13", "pergunta_nl": "Qual o prejuízo de receita em cada dia e por situação?"}
+{"id": "grao_temporal_v2_14", "pergunta_nl": "Qual a perda de receita em centavos em cada mês e por situação?"}
+{"id": "grao_temporal_v2_15", "pergunta_nl": "Qual o faturamento em centavos por dia e por forma de pagamento?"}
+{"id": "grao_temporal_v2_16", "pergunta_nl": "Qual o vazamento de receita semana a semana e por método de pagamento?"}
+{"id": "grao_temporal_v2_17", "pergunta_nl": "Quantas transações suspeitas houve dia a dia e por marcação de auditoria?"}
+{"id": "grao_temporal_v2_18", "pergunta_nl": "Qual o vazamento de receita por mês e por situação?"}
+{"id": "grao_temporal_v2_19", "pergunta_nl": "Qual o número de transações suspeitas por semana e por forma de pagamento?"}
+{"id": "grao_temporal_v2_20", "pergunta_nl": "Quantas transações suspeitas houve por mês?"}
+{"id": "grao_temporal_v2_21", "pergunta_nl": "Qual o vazamento de receita semana a semana e por situação?"}
+{"id": "grao_temporal_v2_22", "pergunta_nl": "Qual a perda de receita dia a dia e por marcação de auditoria?"}
+{"id": "grao_temporal_v2_23", "pergunta_nl": "Qual foi a receita em cada dia e por forma de pagamento?"}
+{"id": "grao_temporal_v2_24", "pergunta_nl": "Qual a perda de receita em centavos semana a semana e por flag de auditoria?"}
+{"id": "grao_temporal_v2_25", "pergunta_nl": "Qual a receita em centavos por semana e por situação?"}
+{"id": "grao_temporal_v2_26", "pergunta_nl": "Qual o vazamento de receita semana a semana?"}
+{"id": "grao_temporal_v2_27", "pergunta_nl": "Qual o vazamento de receita em centavos por dia e por forma de pagamento?"}
+{"id": "grao_temporal_v2_28", "pergunta_nl": "Quanto foi arrecadado por dia e por marcação de auditoria?"}
+{"id": "grao_temporal_v2_29", "pergunta_nl": "Quanto foi arrecadado semana a semana e por método de pagamento?"}
+{"id": "grao_temporal_v2_30", "pergunta_nl": "Qual o volume de transações semana a semana e por flag de auditoria?"}
+{"id": "grao_temporal_v2_31", "pergunta_nl": "Quantas transações houve por dia e por método de pagamento?"}
+{"id": "grao_temporal_v2_32", "pergunta_nl": "Qual o faturamento em centavos em cada dia e por status?"}
+{"id": "grao_temporal_v2_33", "pergunta_nl": "Qual a receita em centavos em cada mês e por status?"}
+{"id": "grao_temporal_v2_34", "pergunta_nl": "Qual o número de transações por dia e por status?"}
+{"id": "valor_categorico_v2_01", "pergunta_nl": "Quantas transações suspeitas com cobrança em falha houve?"}
+{"id": "valor_categorico_v2_02", "pergunta_nl": "Qual a receita em centavos das transações que falharam?"}
+{"id": "valor_categorico_v2_03", "pergunta_nl": "Quantas transações suspeitas sem apontamento de auditoria houve?"}
+{"id": "valor_categorico_v2_04", "pergunta_nl": "Qual o faturamento das transações com possível duplicidade?"}
+{"id": "valor_categorico_v2_05", "pergunta_nl": "Qual foi a receita das transações sem apontamento de auditoria?"}
+{"id": "valor_categorico_v2_06", "pergunta_nl": "Quantas transações pagas com tag automática houve?"}
+{"id": "valor_categorico_v2_07", "pergunta_nl": "Qual a receita em centavos das transações com tarifa divergente?"}
+{"id": "valor_categorico_v2_08", "pergunta_nl": "Qual o vazamento de receita das transações concluídas?"}
+{"id": "valor_categorico_v2_09", "pergunta_nl": "Quantas transações pagas em dinheiro houve?"}
+{"id": "valor_categorico_v2_10", "pergunta_nl": "Quantas transações estornadas houve?"}
+{"id": "valor_categorico_v2_11", "pergunta_nl": "Qual foi a receita das transações com valor inválido?"}
