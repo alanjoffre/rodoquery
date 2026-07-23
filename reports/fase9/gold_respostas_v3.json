@@ -1,0 +1,2396 @@
+{
+  "tipo": "gold_golden_v3_fase9",
+  "papel": "holdout INTEGRAL p/ medir o conserto do prompt; gerado apos o texto estar fechado.",
+  "n_autorados": 240,
+  "n_validos": 211,
+  "n_descartados": 22,
+  "descartados": [
+    {
+      "id": "ranking_v3_22",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "ranking_v3_27",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "metrica_derivada_v3_03",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "metrica_derivada_v3_06",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "metrica_derivada_v3_09",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "metrica_derivada_v3_13",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "metrica_derivada_v3_15",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "metrica_derivada_v3_17",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "metrica_derivada_v3_18",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "metrica_derivada_v3_20",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "metrica_derivada_v3_25",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "metrica_derivada_v3_30",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "grao_temporal_v3_08",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "grao_temporal_v3_11",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "grao_temporal_v3_18",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "valor_categorico_v3_05",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "valor_categorico_v3_14",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "valor_categorico_v3_18",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "valor_categorico_v3_20",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "valor_categorico_v3_29",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "valor_categorico_v3_30",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "coalesce_nulo_v3_10",
+      "motivo": "gold constante entre variantes (degenerado)"
+    }
+  ],
+  "variantes": [
+    "seed1",
+    "seed2",
+    "seed3"
+  ],
+  "respostas": [
+    {
+      "id": "metrica_filtrada_v3_01",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__payment_method\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , payment_method AS transaction__payment_method\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "6849f33a7e8541b3",
+        "seed2": "565d4d35a834974b",
+        "seed3": "24b4f8ee0751c01b"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_02",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__payment_method\n  , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , payment_method AS transaction__payment_method\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f588c5c4c9518035",
+        "seed2": "3629446cc5d12356",
+        "seed3": "15cca0565f837492"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_03",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__status\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__status\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , status AS transaction__status\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__status\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "e449e14b6b53514e",
+        "seed2": "97eb22e1b76a87c7",
+        "seed3": "84dc6fe58d20933d"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_04",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__payment_method\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__month\n    , transaction__payment_method\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , payment_method AS transaction__payment_method\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , transaction__payment_method\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "22114f2139445fac",
+        "seed2": "09e0b53a466b1a93",
+        "seed3": "ddac28607c626d08"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_05",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__payment_method\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , payment_method AS transaction__payment_method\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__month\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "4ae25205a42c462c",
+        "seed2": "d37c741d19ef5649",
+        "seed3": "5e54c0138f3016d4"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_06",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__audit_flag\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__week\n    , transaction__audit_flag\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "043a2181ba9c9cec",
+        "seed2": "8c4b3c3a81272547",
+        "seed3": "627066040dd6d400"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_07",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__payment_method\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , payment_method AS transaction__payment_method\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__month\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "a963eb99067914ad",
+        "seed2": "a9b7d5a3fd703914",
+        "seed3": "28795ff5973644a4"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_08",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__status\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__month\n    , transaction__status\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , status AS transaction__status\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , transaction__status\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "b2e13f10032b4831",
+        "seed2": "0b07105520f4c734",
+        "seed3": "b37bf02d4a9ead25"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_09",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__status\n  , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , status AS transaction__status\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__status",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "3cd6d07b90e691e4",
+        "seed2": "4450c6dcf334b956",
+        "seed3": "1b5e87be39b31291"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_10",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__status\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , status AS transaction__status\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__status",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "2ba4c1146d282ec9",
+        "seed2": "1c7d945819d02e19",
+        "seed3": "3dfc2725af5ecb84"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_11",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__audit_flag\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__audit_flag\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "bb04fc39f2677e34",
+        "seed2": "a42168432d50d994",
+        "seed3": "0ede1d8cc3551965"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_12",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__status\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , status AS transaction__status\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__status",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "ceb8b8d78d5c0bd6",
+        "seed2": "effabe44dd41de1a",
+        "seed3": "bb18b926ec938165"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_13",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__payment_method\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , payment_method AS transaction__payment_method\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f8f0f9e16f354867",
+        "seed2": "3df361a814f1faf6",
+        "seed3": "3be288744832f32d"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_14",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__status\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__week\n    , transaction__status\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , status AS transaction__status\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , transaction__status\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "fe7e65e854021f36",
+        "seed2": "659c1cd7a049c92d",
+        "seed3": "009493453f46e62a"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_15",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__status\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__week\n    , transaction__status\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , status AS transaction__status\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , transaction__status\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "3d41c814ff375137",
+        "seed2": "c291274f016a9ec8",
+        "seed3": "f06740251e418555"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_16",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__status\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__month\n    , transaction__status\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , status AS transaction__status\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , transaction__status\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "14a690c74bb74c00",
+        "seed2": "01c979281fe697c4",
+        "seed3": "39c87a312853c6cb"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_17",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__payment_method\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , payment_method AS transaction__payment_method\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "3a96159b399e63de",
+        "seed2": "1648c3c34d7c78e5",
+        "seed3": "4e7e7564ef876eac"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_18",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__audit_flag\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__audit_flag\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "de5b396f3d95c812",
+        "seed2": "7ecaceeb00d196ff",
+        "seed3": "96f91765eb5deb18"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_19",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__payment_method\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__payment_method\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , payment_method AS transaction__payment_method\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__payment_method\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "c9f2256f06205f40",
+        "seed2": "b99e43577518ec33",
+        "seed3": "3c760ebce10b0c88"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_20",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__audit_flag\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__month\n    , transaction__audit_flag\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "8644b7ae414dd4a3",
+        "seed2": "bc025a4301ab44d0",
+        "seed3": "a0ba251ce197c8c7"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_21",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__payment_method\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__week\n    , transaction__payment_method\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , payment_method AS transaction__payment_method\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , transaction__payment_method\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "fb419de15780f2d4",
+        "seed2": "7cc4a6b06eff0a34",
+        "seed3": "8d709496c9bdc7d2"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_22",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__payment_method\n  , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , payment_method AS transaction__payment_method\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "ba3dfee79b9910be",
+        "seed2": "c468df7d6ae8f44b",
+        "seed3": "9fe14114f3728723"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_23",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__audit_flag\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , audit_flag AS transaction__audit_flag\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "9569a03b6a126307",
+        "seed2": "b9d4e9e6d1dae228",
+        "seed3": "d8fa689d20bb0712"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_24",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__audit_flag\n  , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , audit_flag AS transaction__audit_flag\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "fd4c3fe26aef3f8c",
+        "seed2": "d1b80fbe5285fc8e",
+        "seed3": "2efffa62b1e9b90f"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_25",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__audit_flag\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "1a47a1747a8f6cb9",
+        "seed2": "e479191ca7ef1359",
+        "seed3": "a6469b0d8179410b"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_26",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__audit_flag\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__month\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f898e3ed268aceca",
+        "seed2": "7d5b1ba34176625c",
+        "seed3": "60e033abffe92b22"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_27",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__audit_flag\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__month\n    , transaction__audit_flag\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "99bf2a441e910428",
+        "seed2": "6bd0ae4231c9a7a3",
+        "seed3": "6643b05172adc065"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_28",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__status\n  , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , status AS transaction__status\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__month\n  , transaction__status",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "28f9224db6b88577",
+        "seed2": "83271cdefda7b7f8",
+        "seed3": "db96d951150531bc"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_29",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__audit_flag\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , audit_flag AS transaction__audit_flag\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__month\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "9cbe4daf0965cb8b",
+        "seed2": "03e6fce2fd60a6fa",
+        "seed3": "300435404af71ee4"
+      }
+    },
+    {
+      "id": "metrica_filtrada_v3_30",
+      "estrato": "metrica_filtrada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__audit_flag\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__week\n    , transaction__audit_flag\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "00b5f1c7fdefae96",
+        "seed2": "c94c9a118037b786",
+        "seed3": "38c43dce4dc7a1c9"
+      }
+    },
+    {
+      "id": "ranking_v3_01",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    transaction__plaza\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      plaza_id AS transaction__plaza\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'VALOR_INVALIDO'\n  GROUP BY\n    transaction__plaza\n) subq_6\nORDER BY revenue_leakage_brl DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "9e1369694504d954",
+        "seed2": "16a50e79b641c5ea",
+        "seed3": "99c0c21edfa98eb4"
+      }
+    },
+    {
+      "id": "ranking_v3_02",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    vehicle_id AS transaction__vehicle\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\nGROUP BY\n  transaction__vehicle\nORDER BY revenue_cents DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "3291ab9841f60b44",
+        "seed2": "f1412d9e5a10d4de",
+        "seed3": "199d9aae9c4aeca0"
+      }
+    },
+    {
+      "id": "ranking_v3_04",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__audit_flag\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    status AS transaction__status\n    , audit_flag AS transaction__audit_flag\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'COMPLETED'\nGROUP BY\n  transaction__audit_flag\nORDER BY revenue_leakage_cents DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "718448a80a2e401c",
+        "seed2": "6e732e33253e8e95",
+        "seed3": "24eaa63d8924f35f"
+      }
+    },
+    {
+      "id": "ranking_v3_05",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    plaza_id AS transaction__plaza\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\nGROUP BY\n  transaction__plaza\nORDER BY revenue_cents DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "7ac0a9ec2c7f2f1b",
+        "seed2": "e29c80fc9a5f372c",
+        "seed3": "22f692b02fdceaa9"
+      }
+    },
+    {
+      "id": "ranking_v3_06",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    transaction__plaza\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      plaza_id AS transaction__plaza\n      , status AS transaction__status\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'COMPLETED'\n  GROUP BY\n    transaction__plaza\n) subq_6\nORDER BY revenue_leakage_brl DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "d4799cf267a1e91a",
+        "seed2": "482d4e23b6468f45",
+        "seed3": "9c459dba855ec77f"
+      }
+    },
+    {
+      "id": "ranking_v3_07",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    vehicle_id AS transaction__vehicle\n    , status AS transaction__status\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'COMPLETED'\nGROUP BY\n  transaction__vehicle\nORDER BY revenue_cents DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "3f8dd566435bad5d",
+        "seed2": "4c40acd1d50d9418",
+        "seed3": "4c2fafff971072ff"
+      }
+    },
+    {
+      "id": "ranking_v3_08",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    plaza_id AS transaction__plaza\n    , payment_method AS transaction__payment_method\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'CARD'\nGROUP BY\n  transaction__plaza\nORDER BY suspect_transactions DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "6ed60fd223c3dc0e",
+        "seed2": "1adcaa6dfa958c60",
+        "seed3": "9c1eab3dbd0bbdee"
+      }
+    },
+    {
+      "id": "ranking_v3_09",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    plaza_id AS transaction__plaza\n    , status AS transaction__status\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'REVERSED'\nGROUP BY\n  transaction__plaza\nORDER BY suspect_transactions DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "8bfd490e9cce2b5c",
+        "seed2": "317591c853ed2913",
+        "seed3": "8c568398c90e4598"
+      }
+    },
+    {
+      "id": "ranking_v3_10",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    vehicle_id AS transaction__vehicle\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  transaction__vehicle\nORDER BY revenue_cents\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "9ff52ecbabc8ca6d",
+        "seed2": "9b434d4eea5c27f0",
+        "seed3": "31f565dff29304b1"
+      }
+    },
+    {
+      "id": "ranking_v3_11",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    vehicle_id AS transaction__vehicle\n    , audit_flag AS transaction__audit_flag\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'OK'\nGROUP BY\n  transaction__vehicle\nORDER BY transactions DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "5a72c2b2c2ec3f15",
+        "seed2": "72d43c275b6f3cfc",
+        "seed3": "6d735fc2d1188644"
+      }
+    },
+    {
+      "id": "ranking_v3_12",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__audit_flag\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    status AS transaction__status\n    , audit_flag AS transaction__audit_flag\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'REVERSED'\nGROUP BY\n  transaction__audit_flag\nORDER BY transactions DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "af2734abb54b7e43",
+        "seed2": "c295326f986c51f3",
+        "seed3": "ec03ea2d81fde4c6"
+      }
+    },
+    {
+      "id": "ranking_v3_13",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    plaza_id AS transaction__plaza\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  transaction__plaza\nORDER BY suspect_transactions\nLIMIT 5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "fa617a574dd113fe",
+        "seed2": "37228ce71c5e0baa",
+        "seed3": "6467733be485f202"
+      }
+    },
+    {
+      "id": "ranking_v3_14",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    plaza_id AS transaction__plaza\n    , payment_method AS transaction__payment_method\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'AUTOMATIC_TAG'\nGROUP BY\n  transaction__plaza\nORDER BY revenue_cents DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "7baca7e13a8a307a",
+        "seed2": "89fde87cd18cbf7d",
+        "seed3": "c683a7fd74224320"
+      }
+    },
+    {
+      "id": "ranking_v3_15",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    vehicle_id AS transaction__vehicle\n    , status AS transaction__status\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'REVERSED'\nGROUP BY\n  transaction__vehicle\nORDER BY transactions DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "e6e53b3a5d38359c",
+        "seed2": "d131a4edc1aa8658",
+        "seed3": "880ac1a9e15b42c7"
+      }
+    },
+    {
+      "id": "ranking_v3_16",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__payment_method\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    transaction__payment_method\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      audit_flag AS transaction__audit_flag\n      , payment_method AS transaction__payment_method\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\n  GROUP BY\n    transaction__payment_method\n) subq_6\nORDER BY revenue_leakage_brl DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "2d645ea9939f9287",
+        "seed2": "c89cac61b5dbe9cb",
+        "seed3": "2d645ea9939f9287"
+      }
+    },
+    {
+      "id": "ranking_v3_17",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    plaza_id AS transaction__plaza\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  transaction__plaza\nORDER BY suspect_transactions DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "03364f1f41c8ed5e",
+        "seed2": "0a0fa9884581079a",
+        "seed3": "6a74f34c109c77d2"
+      }
+    },
+    {
+      "id": "ranking_v3_18",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__status\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    status AS transaction__status\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  transaction__status\nORDER BY suspect_transactions DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "d07d31e9a54558ec",
+        "seed2": "f32d17c8577caa18",
+        "seed3": "aa841c91c02495d1"
+      }
+    },
+    {
+      "id": "ranking_v3_20",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    plaza_id AS transaction__plaza\n    , status AS transaction__status\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'FAILED'\nGROUP BY\n  transaction__plaza\nORDER BY suspect_transactions DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "06b2b7d8b93b1e7d",
+        "seed2": "af39b3d453f19944",
+        "seed3": "4a2cc84d61bd955b"
+      }
+    },
+    {
+      "id": "ranking_v3_21",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__payment_method\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    audit_flag AS transaction__audit_flag\n    , payment_method AS transaction__payment_method\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'VALOR_INVALIDO'\nGROUP BY\n  transaction__payment_method\nORDER BY transactions DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "14d04a2e57bdf162",
+        "seed2": "807032e08f172a27",
+        "seed3": "4f008b917ff3dd3d"
+      }
+    },
+    {
+      "id": "ranking_v3_23",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    transaction__plaza\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      plaza_id AS transaction__plaza\n      , payment_method AS transaction__payment_method\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__payment_method = 'AUTOMATIC_TAG'\n  GROUP BY\n    transaction__plaza\n) subq_6\nORDER BY revenue DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "1cd291e5bc143540",
+        "seed2": "8d3b51f5b89f2968",
+        "seed3": "2af60c64a6c9a0e1"
+      }
+    },
+    {
+      "id": "ranking_v3_24",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__audit_flag\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    transaction__audit_flag\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      status AS transaction__status\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'COMPLETED'\n  GROUP BY\n    transaction__audit_flag\n) subq_6\nORDER BY revenue DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "38a273d0a29ce4ad",
+        "seed2": "6a2a94bc8c552d51",
+        "seed3": "73364d4d9b3f838e"
+      }
+    },
+    {
+      "id": "ranking_v3_25",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    transaction__vehicle\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      vehicle_id AS transaction__vehicle\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    transaction__vehicle\n) subq_5\nORDER BY revenue\nLIMIT 10",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "624a6a3fb86f49ac",
+        "seed2": "d06e69b8d3c84e19",
+        "seed3": "331eda98588eadf8"
+      }
+    },
+    {
+      "id": "ranking_v3_26",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__payment_method\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    audit_flag AS transaction__audit_flag\n    , payment_method AS transaction__payment_method\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\nGROUP BY\n  transaction__payment_method\nORDER BY revenue_leakage_cents DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f3054743f4e9d38a",
+        "seed2": "8055fd47e5a1d87a",
+        "seed3": "d85ad0d3f1186e3c"
+      }
+    },
+    {
+      "id": "ranking_v3_28",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    transaction__vehicle\n    , SUM(suspect_transactions) AS suspect_transactions\n    , SUM(transactions) AS transactions\n  FROM (\n    SELECT\n      vehicle_id AS transaction__vehicle\n      , payment_method AS transaction__payment_method\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__payment_method = 'CARD'\n  GROUP BY\n    transaction__vehicle\n) subq_6\nORDER BY suspect_rate DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "301f8ec9b60a5139",
+        "seed2": "b53a5b639d6568d6",
+        "seed3": "76bd00ae82639e0a"
+      }
+    },
+    {
+      "id": "ranking_v3_29",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    vehicle_id AS transaction__vehicle\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  transaction__vehicle\nORDER BY revenue_cents\nLIMIT 10",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "c86e573f921a9e2b",
+        "seed2": "a6d5059aeb9afbb0",
+        "seed3": "94b392ad8a7f2803"
+      }
+    },
+    {
+      "id": "ranking_v3_30",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  transaction__payment_method\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    audit_flag AS transaction__audit_flag\n    , payment_method AS transaction__payment_method\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\nGROUP BY\n  transaction__payment_method\nORDER BY suspect_transactions DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f7d41126a74f65ac",
+        "seed2": "535f823482d47fbf",
+        "seed3": "2566d7e3a31f36ef"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_01",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    plaza_id AS transaction__plaza\n    , status AS transaction__status\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'REVERSED'\nGROUP BY\n  transaction__plaza",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "150f175804f86207",
+        "seed2": "4c3aaee98b34ca4c",
+        "seed3": "150f175804f86207"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_02",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    transaction__plaza\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      plaza_id AS transaction__plaza\n      , status AS transaction__status\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'REVERSED'\n  GROUP BY\n    transaction__plaza\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "150f175804f86207",
+        "seed2": "1f92d9985a3bbd75",
+        "seed3": "150f175804f86207"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_04",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    transaction__vehicle\n    , SUM(suspect_transactions) AS suspect_transactions\n    , SUM(transactions) AS transactions\n  FROM (\n    SELECT\n      vehicle_id AS transaction__vehicle\n      , status AS transaction__status\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'COMPLETED'\n  GROUP BY\n    transaction__vehicle\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "3cf9048a0362b89f",
+        "seed2": "03c9806b8bdd4c16",
+        "seed3": "c48ccf72590c92bb"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_08",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  transaction__status\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    transaction__status\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      status AS transaction__status\n      , payment_method AS transaction__payment_method\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__payment_method = 'CARD'\n  GROUP BY\n    transaction__status\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "95dd29412ee3a9f0",
+        "seed2": "885493d7edc2f9a5",
+        "seed3": "33d0ed2a0b5b872a"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_10",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , audit_flag AS transaction__audit_flag\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\nGROUP BY\n  metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "982d1f96632012a4",
+        "seed2": "5b69a54ccb66c1af",
+        "seed3": "720e79d480fe88da"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_11",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__week\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'VALOR_INVALIDO'\n  GROUP BY\n    metric_time__week\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f81ed4774460e424",
+        "seed2": "6d4b7e7cf6b4da7c",
+        "seed3": "265bb82fd2373c06"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_12",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  transaction__status\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    transaction__status\n    , SUM(suspect_transactions) AS suspect_transactions\n    , SUM(transactions) AS transactions\n  FROM (\n    SELECT\n      status AS transaction__status\n      , payment_method AS transaction__payment_method\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__payment_method = 'CASH'\n  GROUP BY\n    transaction__status\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "455aabb99a0e8423",
+        "seed2": "86aec90ae9e949e1",
+        "seed3": "5f0b1fb739f22948"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_14",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    transaction__vehicle\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      vehicle_id AS transaction__vehicle\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'VALOR_INVALIDO'\n  GROUP BY\n    transaction__vehicle\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "b2c18c03b39afb53",
+        "seed2": "5cfb248da1edb745",
+        "seed3": "a7bbc947e3772618"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_19",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'\n  GROUP BY\n    metric_time__day\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "327fc640b75b21ee",
+        "seed2": "5b1a5b98aed74af7",
+        "seed3": "c8e536415e22966e"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_21",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , status AS transaction__status\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'COMPLETED'\nGROUP BY\n  metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "1e5a7b5fbb77a39f",
+        "seed2": "2fc1c432d61a2a9d",
+        "seed3": "6ce4ec8f16413b5a"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_22",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__month\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\n  GROUP BY\n    metric_time__month\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f5966fd4b8570bc4",
+        "seed2": "d2d85a073250a38c",
+        "seed3": "f5966fd4b8570bc4"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_24",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    metric_time__month\n    , SUM(suspect_transactions) AS suspect_transactions\n    , SUM(transactions) AS transactions\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , audit_flag AS transaction__audit_flag\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'\n  GROUP BY\n    metric_time__month\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "46d0f69e32dbe4c5",
+        "seed2": "148bd9e44d6ae9ca",
+        "seed3": "f13e3d1c9f682b44"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_26",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  transaction__payment_method\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    status AS transaction__status\n    , payment_method AS transaction__payment_method\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'COMPLETED'\nGROUP BY\n  transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "dbd8e75437c64873",
+        "seed2": "4a8e379d30ff33d6",
+        "seed3": "aa8ce205a49d9fc4"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_27",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    transaction__plaza\n    , SUM(suspect_transactions) AS suspect_transactions\n    , SUM(transactions) AS transactions\n  FROM (\n    SELECT\n      plaza_id AS transaction__plaza\n      , payment_method AS transaction__payment_method\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__payment_method = 'CARD'\n  GROUP BY\n    transaction__plaza\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "59eaebe816bfd4ce",
+        "seed2": "ac956135b344fbb5",
+        "seed3": "cf6d308dc518c7f9"
+      }
+    },
+    {
+      "id": "metrica_derivada_v3_29",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    metric_time__month\n    , SUM(suspect_transactions) AS suspect_transactions\n    , SUM(transactions) AS transactions\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , payment_method AS transaction__payment_method\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__payment_method = 'CASH'\n  GROUP BY\n    metric_time__month\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "d21e0f690c1d91ad",
+        "seed2": "158026a90bc142e0",
+        "seed3": "28b525429f6a853c"
+      }
+    },
+    {
+      "id": "join_grao_v3_01",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__plaza\n  , transaction__audit_flag\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , plaza_id AS transaction__plaza\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__month\n  , transaction__plaza\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "e9efd632d6785fd8",
+        "seed2": "ca7a573eadb001f3",
+        "seed3": "45b9f6bb9d028e83"
+      }
+    },
+    {
+      "id": "join_grao_v3_02",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__vehicle\n  , transaction__audit_flag\n  , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , vehicle_id AS transaction__vehicle\n    , audit_flag AS transaction__audit_flag\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__vehicle\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "a7f9d7c037361213",
+        "seed2": "69e99a40678f53ce",
+        "seed3": "e28e3de99e6c6d12"
+      }
+    },
+    {
+      "id": "join_grao_v3_03",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , transaction__payment_method\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__plaza\n    , transaction__payment_method\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , plaza_id AS transaction__plaza\n      , payment_method AS transaction__payment_method\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__plaza\n    , transaction__payment_method\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "6781dfce289ec413",
+        "seed2": "813d95bc4e95e56f",
+        "seed3": "867675f048205ce0"
+      }
+    },
+    {
+      "id": "join_grao_v3_04",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__vehicle\n  , transaction__audit_flag\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , vehicle_id AS transaction__vehicle\n    , audit_flag AS transaction__audit_flag\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__vehicle\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "ee38150d2f6e32f2",
+        "seed2": "72e1e8eec32fee2b",
+        "seed3": "d58e13067b34289c"
+      }
+    },
+    {
+      "id": "join_grao_v3_05",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , transaction__status\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__plaza\n    , transaction__status\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , plaza_id AS transaction__plaza\n      , status AS transaction__status\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__plaza\n    , transaction__status\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "0f558ebe54cb9804",
+        "seed2": "63e38895c0e1f897",
+        "seed3": "1582134b63957d54"
+      }
+    },
+    {
+      "id": "join_grao_v3_06",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , transaction__audit_flag\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__plaza\n    , transaction__audit_flag\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , plaza_id AS transaction__plaza\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__plaza\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "c966c4ad02ababf6",
+        "seed2": "a86bd1bbfe4afd3d",
+        "seed3": "493c1152560e458e"
+      }
+    },
+    {
+      "id": "join_grao_v3_07",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , transaction__payment_method\n  , SUM(__transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , vehicle_id AS transaction__vehicle\n    , payment_method AS transaction__payment_method\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS __transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__vehicle\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "dcd5c30d8f6d988c",
+        "seed2": "a99fa9eff1dc268e",
+        "seed3": "186b7613eb65822a"
+      }
+    },
+    {
+      "id": "join_grao_v3_08",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , transaction__audit_flag\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__vehicle\n    , transaction__audit_flag\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , vehicle_id AS transaction__vehicle\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__vehicle\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "c7e3fd69f57dd0fe",
+        "seed2": "169c3c451cc7ed38",
+        "seed3": "1c1b709f19c8950a"
+      }
+    },
+    {
+      "id": "join_grao_v3_09",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , transaction__audit_flag\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__vehicle\n    , transaction__audit_flag\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , vehicle_id AS transaction__vehicle\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__vehicle\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "e14960e47414f019",
+        "seed2": "f079128be2c3ce53",
+        "seed3": "de202eef29aff599"
+      }
+    },
+    {
+      "id": "join_grao_v3_10",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__plaza\n  , transaction__payment_method\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , plaza_id AS transaction__plaza\n    , payment_method AS transaction__payment_method\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__month\n  , transaction__plaza\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "9d0b89820b272c41",
+        "seed2": "a6a4840460816b34",
+        "seed3": "8a862db45d0794b4"
+      }
+    },
+    {
+      "id": "join_grao_v3_11",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , transaction__status\n  , SUM(__transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , vehicle_id AS transaction__vehicle\n    , status AS transaction__status\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS __transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__vehicle\n  , transaction__status",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "5764ff250838dd59",
+        "seed2": "887e06d69eaecb7e",
+        "seed3": "98f6d8ec3fff7178"
+      }
+    },
+    {
+      "id": "join_grao_v3_12",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__plaza\n  , transaction__payment_method\n  , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , plaza_id AS transaction__plaza\n    , payment_method AS transaction__payment_method\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__plaza\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "ed03eff3ece36d66",
+        "seed2": "ca957448f76bcc17",
+        "seed3": "aa497bbf657e82ea"
+      }
+    },
+    {
+      "id": "join_grao_v3_13",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , transaction__payment_method\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__vehicle\n    , transaction__payment_method\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , vehicle_id AS transaction__vehicle\n      , payment_method AS transaction__payment_method\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__vehicle\n    , transaction__payment_method\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "a6e6c3b620650653",
+        "seed2": "7b27b8ab868e5636",
+        "seed3": "4d412a8157f38260"
+      }
+    },
+    {
+      "id": "join_grao_v3_14",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , transaction__status\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , vehicle_id AS transaction__vehicle\n    , status AS transaction__status\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__vehicle\n  , transaction__status",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "2f917663de54c414",
+        "seed2": "89e6cffbc0bbd88a",
+        "seed3": "7bf03a78b6f94cc0"
+      }
+    },
+    {
+      "id": "join_grao_v3_15",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , transaction__audit_flag\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , plaza_id AS transaction__plaza\n    , audit_flag AS transaction__audit_flag\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__plaza\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "d2cc4d324784bd1a",
+        "seed2": "938356429507e401",
+        "seed3": "c609ca89f122a4d6"
+      }
+    },
+    {
+      "id": "join_grao_v3_16",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__vehicle\n  , transaction__payment_method\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__week\n    , transaction__vehicle\n    , transaction__payment_method\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , vehicle_id AS transaction__vehicle\n      , payment_method AS transaction__payment_method\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , transaction__vehicle\n    , transaction__payment_method\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "d19bfa68f5ef406b",
+        "seed2": "d446d3ebead9b2ff",
+        "seed3": "a2667e0c17395405"
+      }
+    },
+    {
+      "id": "join_grao_v3_17",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__vehicle\n  , transaction__audit_flag\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    metric_time__week\n    , transaction__vehicle\n    , transaction__audit_flag\n    , SUM(__suspect_transactions) AS suspect_transactions\n    , SUM(__transactions) AS transactions\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , vehicle_id AS transaction__vehicle\n      , audit_flag AS transaction__audit_flag\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS __transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , transaction__vehicle\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "3c7c713e045c87b7",
+        "seed2": "4cd8e2c40c707b8b",
+        "seed3": "c52afed3c0f7f6e5"
+      }
+    },
+    {
+      "id": "join_grao_v3_18",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__vehicle\n  , transaction__audit_flag\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__week\n    , transaction__vehicle\n    , transaction__audit_flag\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , vehicle_id AS transaction__vehicle\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , transaction__vehicle\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "d71a2d76fe7a32b4",
+        "seed2": "e957e96ee57ac187",
+        "seed3": "e60224349957df3b"
+      }
+    },
+    {
+      "id": "join_grao_v3_19",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__plaza\n  , transaction__status\n  , SUM(__transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , plaza_id AS transaction__plaza\n    , status AS transaction__status\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS __transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__plaza\n  , transaction__status",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "2f3c064564adfc00",
+        "seed2": "6d2a6e0c8f7adc1e",
+        "seed3": "48e355167de0d1a2"
+      }
+    },
+    {
+      "id": "join_grao_v3_20",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__plaza\n  , transaction__payment_method\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , plaza_id AS transaction__plaza\n    , payment_method AS transaction__payment_method\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__plaza\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "d4bba0526a42a014",
+        "seed2": "e6ea73b889c600a8",
+        "seed3": "25202fed65e9e556"
+      }
+    },
+    {
+      "id": "join_grao_v3_21",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__vehicle\n  , transaction__status\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__month\n    , transaction__vehicle\n    , transaction__status\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , vehicle_id AS transaction__vehicle\n      , status AS transaction__status\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , transaction__vehicle\n    , transaction__status\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "2b202124f17a027e",
+        "seed2": "1daf0125a8279cb3",
+        "seed3": "5dfee4cf7db7d5cf"
+      }
+    },
+    {
+      "id": "join_grao_v3_22",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__plaza\n  , transaction__payment_method\n  , SUM(__transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , plaza_id AS transaction__plaza\n    , payment_method AS transaction__payment_method\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS __transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__plaza\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "05de1913b60ab063",
+        "seed2": "1c0ebcdac414f6be",
+        "seed3": "8d8642d507b91e35"
+      }
+    },
+    {
+      "id": "join_grao_v3_23",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , transaction__audit_flag\n  , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , vehicle_id AS transaction__vehicle\n    , audit_flag AS transaction__audit_flag\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__vehicle\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f7f7d6cc53a05f49",
+        "seed2": "1ed311330823709f",
+        "seed3": "c953accab7154fde"
+      }
+    },
+    {
+      "id": "join_grao_v3_24",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__vehicle\n  , transaction__audit_flag\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__week\n    , transaction__vehicle\n    , transaction__audit_flag\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , vehicle_id AS transaction__vehicle\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , transaction__vehicle\n    , transaction__audit_flag\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "633e586bb29c3079",
+        "seed2": "a804411c1117912b",
+        "seed3": "da6ba2adfd19b2b3"
+      }
+    },
+    {
+      "id": "join_grao_v3_25",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__plaza\n  , transaction__payment_method\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , plaza_id AS transaction__plaza\n    , payment_method AS transaction__payment_method\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__month\n  , transaction__plaza\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "fcce4e5b5d64954d",
+        "seed2": "49a463a9fb5252ee",
+        "seed3": "b5ad04405b64d064"
+      }
+    },
+    {
+      "id": "join_grao_v3_26",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__plaza\n  , transaction__status\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    metric_time__month\n    , transaction__plaza\n    , transaction__status\n    , SUM(__suspect_transactions) AS suspect_transactions\n    , SUM(__transactions) AS transactions\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , plaza_id AS transaction__plaza\n      , status AS transaction__status\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS __transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , transaction__plaza\n    , transaction__status\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "bb125dd800fa33ec",
+        "seed2": "f158c3be83c25949",
+        "seed3": "313db35d55321b8f"
+      }
+    },
+    {
+      "id": "join_grao_v3_27",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__vehicle\n  , transaction__audit_flag\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , vehicle_id AS transaction__vehicle\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__vehicle\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "03301118bec407b2",
+        "seed2": "0bb33687dac0c743",
+        "seed3": "af710290b9c85282"
+      }
+    },
+    {
+      "id": "join_grao_v3_28",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__vehicle\n  , transaction__payment_method\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , vehicle_id AS transaction__vehicle\n    , payment_method AS transaction__payment_method\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__month\n  , transaction__vehicle\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "e2d095a83e8dbe04",
+        "seed2": "e7e777dea5d9d1db",
+        "seed3": "5b03d2e064068f12"
+      }
+    },
+    {
+      "id": "join_grao_v3_29",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , transaction__payment_method\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , vehicle_id AS transaction__vehicle\n    , payment_method AS transaction__payment_method\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__vehicle\n  , transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "dc7d12f6b2dd507b",
+        "seed2": "feb6fdb25331ef6f",
+        "seed3": "d02acee19bb8a91c"
+      }
+    },
+    {
+      "id": "join_grao_v3_30",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , transaction__audit_flag\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , plaza_id AS transaction__plaza\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__plaza\n  , transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "a70bdc8cf7c4b787",
+        "seed2": "0ecf40015c81cb62",
+        "seed3": "129995a5cabad211"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_01",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__month\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\n  GROUP BY\n    metric_time__month\n) subq_6\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f5966fd4b8570bc4",
+        "seed2": "d2d85a073250a38c",
+        "seed3": "f5966fd4b8570bc4"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_02",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'\n  GROUP BY\n    metric_time__day\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "e665e7b54af0fc0e",
+        "seed2": "3a8752f4c20e02de",
+        "seed3": "210bfdeb28036652"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_03",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , payment_method AS transaction__payment_method\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'AUTOMATIC_TAG'\nGROUP BY\n  metric_time__month\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "90657e45274469e2",
+        "seed2": "394c1ea2adf742c0",
+        "seed3": "a54c7a9882621cc1"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_04",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "3705b044c6af1f24",
+        "seed2": "9533019b8e70c163",
+        "seed3": "3e89b2459337872e"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_05",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__audit_flag\n  , SUM(__transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , audit_flag AS transaction__audit_flag\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS __transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__audit_flag\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "326242fcc5ad56d7",
+        "seed2": "a08f480c48633c65",
+        "seed3": "b97b337a1f85b341"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_06",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , status AS transaction__status\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'FAILED'\nGROUP BY\n  metric_time__month\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "6f41cf8b67aa5813",
+        "seed2": "805143516adc6dc3",
+        "seed3": "f5966fd4b8570bc4"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_07",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , status AS transaction__status\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'FAILED'\nGROUP BY\n  metric_time__week\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "51a0a7c23cbc65fc",
+        "seed2": "6fb59c0f9500e04b",
+        "seed3": "abc49bb1609a0758"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_09",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__week\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'\n  GROUP BY\n    metric_time__week\n) subq_6\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "4a9df3d2dca9ac97",
+        "seed2": "2a540fc59511e654",
+        "seed3": "b2cd85b334f94c38"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_10",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , payment_method AS transaction__payment_method\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'CASH'\nGROUP BY\n  metric_time__week\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "69a052e4db87bdd2",
+        "seed2": "fb28a5c510a4d544",
+        "seed3": "bae269329f9d9a7b"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_12",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__week\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\n  GROUP BY\n    metric_time__week\n) subq_6\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "982d1f96632012a4",
+        "seed2": "13f5c2f865fc39c0",
+        "seed3": "720e79d480fe88da"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_13",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__vehicle\n  , SUM(__suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , vehicle_id AS transaction__vehicle\n    , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__month\n  , transaction__vehicle\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "c2617e066e1b7d0c",
+        "seed2": "6f6ae7bcb024b675",
+        "seed3": "cc3317042df41594"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_14",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'\nGROUP BY\n  metric_time__month\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "d95b5cfdce33c069",
+        "seed2": "b150ee3bd73e1ba7",
+        "seed3": "2b4a59d5cc3af877"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_15",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , audit_flag AS transaction__audit_flag\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'\nGROUP BY\n  metric_time__month\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "e4ca2b0f4e45452e",
+        "seed2": "3fc040b0b4aa4449",
+        "seed3": "fb563f01790690b7"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_16",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__vehicle\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__week\n    , transaction__vehicle\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , vehicle_id AS transaction__vehicle\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , transaction__vehicle\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "6e1e31f309b133c3",
+        "seed2": "c5455370d8ebbfb1",
+        "seed3": "bfa8bf80d80ac41b"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_17",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__vehicle\n    , SUM(__revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , vehicle_id AS transaction__vehicle\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__vehicle\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "eac3827b128fc961",
+        "seed2": "a2b38632e3008831",
+        "seed3": "0ea4f106de718646"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_19",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__week\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('week', event_date) AS metric_time__week\n      , status AS transaction__status\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'REVERSED'\n  GROUP BY\n    metric_time__week\n) subq_6\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "41c508ea4f8fc7a3",
+        "seed2": "c917893ec43e6794",
+        "seed3": "df193011c9cd5b63"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_20",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , audit_flag AS transaction__audit_flag\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'VALOR_INVALIDO'\nGROUP BY\n  metric_time__month\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "45ca290fd97a9e1d",
+        "seed2": "eb221b729fa61ec2",
+        "seed3": "40d49ec7f27b3987"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_21",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , plaza_id AS transaction__plaza\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__day\n  , transaction__plaza\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "ea9d444dacaf5ce4",
+        "seed2": "36526f1638d97a57",
+        "seed3": "bd44fdad2ee7bd4c"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_22",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , status AS transaction__status\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'FAILED'\nGROUP BY\n  metric_time__week\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "51a0a7c23cbc65fc",
+        "seed2": "6fb59c0f9500e04b",
+        "seed3": "abc49bb1609a0758"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_23",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__audit_flag\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__month\n  , transaction__audit_flag\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f898e3ed268aceca",
+        "seed2": "7d5b1ba34176625c",
+        "seed3": "60e033abffe92b22"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_24",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , status AS transaction__status\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'COMPLETED'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "978b1f23d4168a76",
+        "seed2": "a4ad7fa4d9d428d7",
+        "seed3": "396fc17cab9a44f5"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_25",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__payment_method\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__payment_method\n    , SUM(__revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , payment_method AS transaction__payment_method\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS __revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , transaction__payment_method\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "bc8c6da12ed0e97a",
+        "seed2": "50360cbb6eabc7b1",
+        "seed3": "4e62ba80d28f5e9c"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_26",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , transaction__payment_method\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    metric_time__month\n    , transaction__payment_method\n    , SUM(__suspect_transactions) AS suspect_transactions\n    , SUM(__transactions) AS transactions\n  FROM (\n    SELECT\n      DATE_TRUNC('month', event_date) AS metric_time__month\n      , payment_method AS transaction__payment_method\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS __transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS __suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , transaction__payment_method\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "27132a619cccf5da",
+        "seed2": "354081ef534fbd87",
+        "seed3": "176fdbbc0f0a6c81"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_27",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , status AS transaction__status\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'FAILED'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "ceb8dfd6d255bbc4",
+        "seed2": "598e088c2e9a1bfb",
+        "seed3": "f0458310a8eab94d"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_28",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , status AS transaction__status\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'FAILED'\nGROUP BY\n  metric_time__month\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "b8df45c74c593f54",
+        "seed2": "e78db4d1ab8f7c3a",
+        "seed3": "8bc1b3ade24cc6aa"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_29",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , transaction__plaza\n  , SUM(__revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('week', event_date) AS metric_time__week\n    , plaza_id AS transaction__plaza\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS __revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_3\nGROUP BY\n  metric_time__week\n  , transaction__plaza\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "dfed8bdbca71a75f",
+        "seed2": "30d16b1de53d34b7",
+        "seed3": "0cfad51548ca6dcd"
+      }
+    },
+    {
+      "id": "grao_temporal_v3_30",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('month', event_date) AS metric_time__month\n    , audit_flag AS transaction__audit_flag\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'\nGROUP BY\n  metric_time__month\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "e4ca2b0f4e45452e",
+        "seed2": "3fc040b0b4aa4449",
+        "seed3": "fb563f01790690b7"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_01",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    transaction__vehicle\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      vehicle_id AS transaction__vehicle\n      , status AS transaction__status\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'COMPLETED'\n  GROUP BY\n    transaction__vehicle\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "df5b1af8ba8e7f3f",
+        "seed2": "56ebcdd95436707d",
+        "seed3": "fff327345cbe6466"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_02",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    transaction__vehicle\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      vehicle_id AS transaction__vehicle\n      , status AS transaction__status\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'COMPLETED'\n  GROUP BY\n    transaction__vehicle\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "34af66f474402dfe",
+        "seed2": "2a31efa4990819b0",
+        "seed3": "36f4839f81a7d586"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_03",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    transaction__vehicle\n    , SUM(suspect_transactions) AS suspect_transactions\n    , SUM(transactions) AS transactions\n  FROM (\n    SELECT\n      vehicle_id AS transaction__vehicle\n      , status AS transaction__status\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'FAILED'\n  GROUP BY\n    transaction__vehicle\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "0ba100bf099be4fa",
+        "seed2": "69e246d5ffb1473b",
+        "seed3": "0d0b44a9703a165b"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_04",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    transaction__plaza\n    , SUM(suspect_transactions) AS suspect_transactions\n    , SUM(transactions) AS transactions\n  FROM (\n    SELECT\n      plaza_id AS transaction__plaza\n      , status AS transaction__status\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'COMPLETED'\n  GROUP BY\n    transaction__plaza\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "758897d8d3d8a7d7",
+        "seed2": "a84aa569fdb87e7d",
+        "seed3": "888eecb5d97e7a1a"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_06",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    vehicle_id AS transaction__vehicle\n    , status AS transaction__status\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'FAILED'\nGROUP BY\n  transaction__vehicle",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f71e3d72a901349c",
+        "seed2": "c321bb9966258ce7",
+        "seed3": "b0a86dfeb47fb300"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_07",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    transaction__plaza\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      plaza_id AS transaction__plaza\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'\n  GROUP BY\n    transaction__plaza\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "d39bfd57924ecd03",
+        "seed2": "d226e96d9c3613c2",
+        "seed3": "58055fb3f23372f1"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_08",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    vehicle_id AS transaction__vehicle\n    , audit_flag AS transaction__audit_flag\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'\nGROUP BY\n  transaction__vehicle",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "a5753d9310c89041",
+        "seed2": "1e57965afa3a5f7c",
+        "seed3": "91592d7d4850a0ef"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_09",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    vehicle_id AS transaction__vehicle\n    , payment_method AS transaction__payment_method\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'AUTOMATIC_TAG'\nGROUP BY\n  transaction__vehicle",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "aacf0ebdb169d5fb",
+        "seed2": "a2ccd2e36005707a",
+        "seed3": "13e442a5f963b40a"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_10",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__audit_flag\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    transaction__audit_flag\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      status AS transaction__status\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'COMPLETED'\n  GROUP BY\n    transaction__audit_flag\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "2b78111c6d101f65",
+        "seed2": "e1574109da1ad136",
+        "seed3": "e26b9654e90057d6"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_11",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    plaza_id AS transaction__plaza\n    , status AS transaction__status\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'REVERSED'\nGROUP BY\n  transaction__plaza",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "5e81dd46ec4f53ba",
+        "seed2": "f331a3aeb942cb32",
+        "seed3": "66e67ad767393663"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_12",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__status\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    status AS transaction__status\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'OK'\nGROUP BY\n  transaction__status",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "c4aa82153b60232a",
+        "seed2": "ac01e3e267cef61e",
+        "seed3": "f7c2c2fc4616d848"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_13",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    vehicle_id AS transaction__vehicle\n    , status AS transaction__status\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'FAILED'\nGROUP BY\n  transaction__vehicle",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f71e3d72a901349c",
+        "seed2": "c321bb9966258ce7",
+        "seed3": "b0a86dfeb47fb300"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_15",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__audit_flag\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    transaction__audit_flag\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      audit_flag AS transaction__audit_flag\n      , payment_method AS transaction__payment_method\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__payment_method = 'CARD'\n  GROUP BY\n    transaction__audit_flag\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f84f34ce8c491be4",
+        "seed2": "097abbf444131c97",
+        "seed3": "026b07c41419afbb"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_16",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    plaza_id AS transaction__plaza\n    , audit_flag AS transaction__audit_flag\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\nGROUP BY\n  transaction__plaza",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "c9d80ed747a73bbf",
+        "seed2": "50427181912496aa",
+        "seed3": "04b54ab128aee0d8"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_17",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    transaction__plaza\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      plaza_id AS transaction__plaza\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\n  GROUP BY\n    transaction__plaza\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "150f175804f86207",
+        "seed2": "73ed6f8f6d4fcd3d",
+        "seed3": "150f175804f86207"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_19",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__payment_method\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    audit_flag AS transaction__audit_flag\n    , payment_method AS transaction__payment_method\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'\nGROUP BY\n  transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "a3549d27fe8abf38",
+        "seed2": "f4a088258ce80bc0",
+        "seed3": "ef506faab59bcd91"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_21",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__plaza\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    plaza_id AS transaction__plaza\n    , status AS transaction__status\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'FAILED'\nGROUP BY\n  transaction__plaza",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "051ed80b05cc45c1",
+        "seed2": "7f5d8ddcd253f08d",
+        "seed3": "c1ce7cf87682dddc"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_22",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__audit_flag\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    audit_flag AS transaction__audit_flag\n    , payment_method AS transaction__payment_method\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'CASH'\nGROUP BY\n  transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "b05b7f37ea9714c7",
+        "seed2": "0be98b3a8ffce71a",
+        "seed3": "00e406fd845be7f3"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_23",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__payment_method\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    audit_flag AS transaction__audit_flag\n    , payment_method AS transaction__payment_method\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'\nGROUP BY\n  transaction__payment_method",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "a4a56eeaffcd2144",
+        "seed2": "b06acc825ce332f7",
+        "seed3": "d8bd93e7a9d1fdc7"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_24",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__status\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    transaction__status\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      status AS transaction__status\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'\n  GROUP BY\n    transaction__status\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "24adbce72824019e",
+        "seed2": "695c1c945a8fad1a",
+        "seed3": "a3ee827d628ca10c"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_25",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  SUM(transactions) AS transactions\nFROM (\n  SELECT\n    audit_flag AS transaction__audit_flag\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "4317e7ab6bd1e723",
+        "seed2": "546838a5908a66eb",
+        "seed3": "5ce3033e4f9a9d72"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_26",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__vehicle\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    transaction__vehicle\n    , SUM(suspect_transactions) AS suspect_transactions\n    , SUM(transactions) AS transactions\n  FROM (\n    SELECT\n      vehicle_id AS transaction__vehicle\n      , audit_flag AS transaction__audit_flag\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'\n  GROUP BY\n    transaction__vehicle\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "5d90f35f845ab97d",
+        "seed2": "2824a3aabb5131fe",
+        "seed3": "9608e19da30dc7b1"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_27",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  transaction__audit_flag\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    status AS transaction__status\n    , audit_flag AS transaction__audit_flag\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'COMPLETED'\nGROUP BY\n  transaction__audit_flag",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "fca9c4cb462582de",
+        "seed2": "075569ff00137226",
+        "seed3": "5fbb01409ff9227a"
+      }
+    },
+    {
+      "id": "valor_categorico_v3_28",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    audit_flag AS transaction__audit_flag\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "bd7aeccf2e5b50a5",
+        "seed2": "505ad90a56a3ff74",
+        "seed3": "3d77094d7a7dc1c5"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_01",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , plaza_id AS transaction__plaza\n    , audit_flag AS transaction__audit_flag\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'\nGROUP BY\n  metric_time__day\n  , transaction__plaza\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "46e3495829200375",
+        "seed2": "65faca9fb30e38aa",
+        "seed3": "376f6cec314bf63c"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_02",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , status AS transaction__status\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'FAILED'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "33e9b12e0eee5bef",
+        "seed2": "a27fe2a3b8e6bcb7",
+        "seed3": "2a0af445993908b6"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_03",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'\n  GROUP BY\n    metric_time__day\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "5d8f964c64b74d69",
+        "seed2": "fa4bd6fcd1f760b9",
+        "seed3": "7b2aeb50a97e5a3c"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_04",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , plaza_id AS transaction__plaza\n    , audit_flag AS transaction__audit_flag\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'COBRANCA_EM_FALHA'\nGROUP BY\n  metric_time__day\n  , transaction__plaza\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "6075d7d774e571ca",
+        "seed2": "ca1a1f6da9158c2b",
+        "seed3": "99c9ca6c1cd665d5"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_05",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__vehicle\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , vehicle_id AS transaction__vehicle\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'\n  GROUP BY\n    metric_time__day\n    , transaction__vehicle\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "8f8d334d00e7398a",
+        "seed2": "ae3b9e26b9ff8dab",
+        "seed3": "e7eb691fd5be5ffd"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_06",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__plaza\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , plaza_id AS transaction__plaza\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'\n  GROUP BY\n    metric_time__day\n    , transaction__plaza\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "a846f6b0f42610f3",
+        "seed2": "ca9ce04d574e8dc2",
+        "seed3": "219efe1ca08cc0e6"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_07",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , plaza_id AS transaction__plaza\n    , status AS transaction__status\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'COMPLETED'\nGROUP BY\n  metric_time__day\n  , transaction__plaza\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "1ce0b9db041ba65b",
+        "seed2": "4d3c65ff6297d408",
+        "seed3": "48c9696acd986dcf"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_08",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__plaza\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , plaza_id AS transaction__plaza\n      , status AS transaction__status\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'COMPLETED'\n  GROUP BY\n    metric_time__day\n    , transaction__plaza\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "99623a4e96890596",
+        "seed2": "cc8d7dd3c28bcbaa",
+        "seed3": "f7e524145c9334ee"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_09",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , vehicle_id AS transaction__vehicle\n    , audit_flag AS transaction__audit_flag\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'OK'\nGROUP BY\n  metric_time__day\n  , transaction__vehicle\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "b650f7eec77a8c97",
+        "seed2": "e7b13f9c000ca9b2",
+        "seed3": "7be2f71d34f2ed99"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_11",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , vehicle_id AS transaction__vehicle\n    , audit_flag AS transaction__audit_flag\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'\nGROUP BY\n  metric_time__day\n  , transaction__vehicle\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "8f8d334d00e7398a",
+        "seed2": "ae3b9e26b9ff8dab",
+        "seed3": "e7eb691fd5be5ffd"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_12",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , vehicle_id AS transaction__vehicle\n    , status AS transaction__status\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__status = 'COMPLETED'\nGROUP BY\n  metric_time__day\n  , transaction__vehicle\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "5b5c6d5a7ed5d3dc",
+        "seed2": "715b1a3c5fb5edef",
+        "seed3": "7e1c383f48f89c84"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_13",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__plaza\n    , SUM(suspect_transactions) AS suspect_transactions\n    , SUM(transactions) AS transactions\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , plaza_id AS transaction__plaza\n      , status AS transaction__status\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'FAILED'\n  GROUP BY\n    metric_time__day\n    , transaction__plaza\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "af93e3104a187135",
+        "seed2": "9a803c1bbf3e0e33",
+        "seed3": "20809693f8e79a69"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_14",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , payment_method AS transaction__payment_method\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'CARD'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "3d2b11fdcfc4405e",
+        "seed2": "ef22c3549e0b91ea",
+        "seed3": "4e83fb3b084b8271"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_15",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , plaza_id AS transaction__plaza\n    , payment_method AS transaction__payment_method\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'AUTOMATIC_TAG'\nGROUP BY\n  metric_time__day\n  , transaction__plaza\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "542b9a8dad5c1668",
+        "seed2": "94730004468c6275",
+        "seed3": "c6ccbd2dd69860da"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_16",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__plaza\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , plaza_id AS transaction__plaza\n      , status AS transaction__status\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'FAILED'\n  GROUP BY\n    metric_time__day\n    , transaction__plaza\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "7b9852145cd3e1ba",
+        "seed2": "2e453a049c4a8d34",
+        "seed3": "92f751a9d91db38b"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_17",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , CAST(suspect_transactions AS DOUBLE) / CAST(NULLIF(transactions, 0) AS DOUBLE) AS suspect_rate\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__vehicle\n    , SUM(suspect_transactions) AS suspect_transactions\n    , SUM(transactions) AS transactions\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , vehicle_id AS transaction__vehicle\n      , audit_flag AS transaction__audit_flag\n      , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n      , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'VALOR_INVALIDO'\n  GROUP BY\n    metric_time__day\n    , transaction__vehicle\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "8c6198adab7817a4",
+        "seed2": "808ccb2e28ed294e",
+        "seed3": "f528435fd831fd7f"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_18",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , audit_flag AS transaction__audit_flag\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'VALOR_INVALIDO'\n  GROUP BY\n    metric_time__day\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "b195530baf59e9d7",
+        "seed2": "78009742ca493f07",
+        "seed3": "7400e7f1c4d29c35"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_19",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__plaza\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , plaza_id AS transaction__plaza\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'VALOR_INVALIDO'\n  GROUP BY\n    metric_time__day\n    , transaction__plaza\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "b6da20a4257ae7b7",
+        "seed2": "69a401e6fae9c674",
+        "seed3": "e079452748aa42bf"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_20",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , audit_flag AS transaction__audit_flag\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "16fc52f9a29a5893",
+        "seed2": "8c6c5e0b09fa402f",
+        "seed3": "0547f446ca965314"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_21",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , plaza_id AS transaction__plaza\n    , payment_method AS transaction__payment_method\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'CARD'\nGROUP BY\n  metric_time__day\n  , transaction__plaza\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "f27af285d5497eb2",
+        "seed2": "b9a1098482788263",
+        "seed3": "19a5b8aaa7cc40a6"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_22",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__plaza\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , plaza_id AS transaction__plaza\n      , payment_method AS transaction__payment_method\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__payment_method = 'AUTOMATIC_TAG'\n  GROUP BY\n    metric_time__day\n    , transaction__plaza\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "82b3439a490453d5",
+        "seed2": "9e08691b3001eb46",
+        "seed3": "4fd8f2a602177b9a"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_23",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , vehicle_id AS transaction__vehicle\n    , audit_flag AS transaction__audit_flag\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'\nGROUP BY\n  metric_time__day\n  , transaction__vehicle\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "c9478f894dd033ff",
+        "seed2": "4df63ff49fc68046",
+        "seed3": "1b4dfd28d74c73fa"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_24",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , revenue_cents / 100.0 AS revenue\nFROM (\n  SELECT\n    metric_time__day\n    , SUM(revenue_cents) AS revenue_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , status AS transaction__status\n      , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__status = 'COMPLETED'\n  GROUP BY\n    metric_time__day\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "b7449da2f8a71391",
+        "seed2": "e914299c846a1faf",
+        "seed3": "fdc38a745d214a89"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_25",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(revenue_cents) AS revenue_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , payment_method AS transaction__payment_method\n    , case when status = 'COMPLETED' and amount_cents > 0 then amount_cents else 0 end AS revenue_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'AUTOMATIC_TAG'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "9088de76b27c7588",
+        "seed2": "9dc4135f97ea2a15",
+        "seed3": "273094d844c028ce"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_26",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__vehicle\n  , SUM(transactions) AS transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , vehicle_id AS transaction__vehicle\n    , payment_method AS transaction__payment_method\n    , CASE WHEN transaction_id IS NOT NULL THEN 1 ELSE 0 END AS transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'AUTOMATIC_TAG'\nGROUP BY\n  metric_time__day\n  , transaction__vehicle\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "144c3ecb47ee99f7",
+        "seed2": "3b4faedbc0efeca5",
+        "seed3": "7375b6cd77712e4c"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_27",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__plaza\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , plaza_id AS transaction__plaza\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'OK'\n  GROUP BY\n    metric_time__day\n    , transaction__plaza\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "24eac698a0a944ae",
+        "seed2": "0fad76ca7404b53a",
+        "seed3": "1086cb0c6c6ca625"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_28",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , revenue_leakage_cents / 100.0 AS revenue_leakage_brl\nFROM (\n  SELECT\n    metric_time__day\n    , transaction__plaza\n    , SUM(revenue_leakage_cents) AS revenue_leakage_cents\n  FROM (\n    SELECT\n      DATE_TRUNC('day', event_date) AS metric_time__day\n      , plaza_id AS transaction__plaza\n      , audit_flag AS transaction__audit_flag\n      , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n    FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n  ) subq_2\n  WHERE transaction__audit_flag = 'TARIFA_DIVERGENTE'\n  GROUP BY\n    metric_time__day\n    , transaction__plaza\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "beb86e756c207a8e",
+        "seed2": "8ffe781121919c72",
+        "seed3": "0098e2623f48ff85"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_29",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , transaction__plaza\n  , SUM(suspect_transactions) AS suspect_transactions\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , plaza_id AS transaction__plaza\n    , audit_flag AS transaction__audit_flag\n    , case when audit_flag <> 'OK' then 1 else 0 end AS suspect_transactions\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__audit_flag = 'POSSIVEL_DUPLICIDADE'\nGROUP BY\n  metric_time__day\n  , transaction__plaza\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "46e3495829200375",
+        "seed2": "65faca9fb30e38aa",
+        "seed3": "376f6cec314bf63c"
+      }
+    },
+    {
+      "id": "coalesce_nulo_v3_30",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(revenue_leakage_cents) AS revenue_leakage_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', event_date) AS metric_time__day\n    , payment_method AS transaction__payment_method\n    , case when amount_diff_cents < 0 then abs(amount_diff_cents) else 0 end AS revenue_leakage_cents\n  FROM \"main\".\"fct_toll_transactions\" toll_transactions_src_10000\n) subq_2\nWHERE transaction__payment_method = 'CASH'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "seed1": "a3674b42a3d8733c",
+        "seed2": "d04cdb3b4a525c1a",
+        "seed3": "e1c7de40d4bf5f83"
+      }
+    },
+    {
+      "id": "abstencao_v3_01",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_02",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_03",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_04",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_05",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_06",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_07",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_08",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_09",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_10",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_11",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_12",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_13",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_14",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_15",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_16",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_17",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_18",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_19",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_20",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_21",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_22",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_23",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_24",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_25",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_26",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_27",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_28",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_29",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_v3_30",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    }
+  ],
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "56a6e47",
+    "git_dirty": true,
+    "git_diff_sha1": "24d55b6d298f",
+    "timestamp_utc": "2026-07-22T22:15:10+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  },
+  "removidos_por_ambiguidade": [
+    {
+      "id": "ranking_v3_03",
+      "estrato": "ranking",
+      "pergunta_nl": "Entre as transações estornadas, quais as 3 situações com maior vazamento de receita?",
+      "motivo": "filtra e agrupa pela MESMA dimensao (leitura ambigua)"
+    },
+    {
+      "id": "ranking_v3_19",
+      "estrato": "ranking",
+      "pergunta_nl": "Entre as transações pagas em dinheiro, quais os 3 métodos de pagamento com maior vazamento de receita em centavos?",
+      "motivo": "filtra e agrupa pela MESMA dimensao (leitura ambigua)"
+    },
+    {
+      "id": "metrica_derivada_v3_05",
+      "estrato": "metrica_derivada",
+      "pergunta_nl": "Qual a taxa de suspeita das transações pagas com tag automática por forma de pagamento?",
+      "motivo": "filtra e agrupa pela MESMA dimensao (leitura ambigua)"
+    },
+    {
+      "id": "metrica_derivada_v3_07",
+      "estrato": "metrica_derivada",
+      "pergunta_nl": "Qual o vazamento de receita em centavos das transações com cobrança em falha por flag de auditoria?",
+      "motivo": "filtra e agrupa pela MESMA dimensao (leitura ambigua)"
+    },
+    {
+      "id": "metrica_derivada_v3_16",
+      "estrato": "metrica_derivada",
+      "pergunta_nl": "Qual o vazamento de receita em centavos das transações concluídas por situação?",
+      "motivo": "filtra e agrupa pela MESMA dimensao (leitura ambigua)"
+    },
+    {
+      "id": "metrica_derivada_v3_23",
+      "estrato": "metrica_derivada",
+      "pergunta_nl": "Qual o vazamento de receita em centavos das transações estornadas por status?",
+      "motivo": "filtra e agrupa pela MESMA dimensao (leitura ambigua)"
+    },
+    {
+      "id": "metrica_derivada_v3_28",
+      "estrato": "metrica_derivada",
+      "pergunta_nl": "Qual a perda de receita das transações com tarifa divergente por flag de auditoria?",
+      "motivo": "filtra e agrupa pela MESMA dimensao (leitura ambigua)"
+    }
+  ],
+  "origem_do_sinal": "2 anotadores cegos sinalizaram, de forma independente, que itens que filtram e agrupam pela mesma dimensao admitem duas leituras. Removidos ANTES de qualquer sistema rodar.",
+  "sha256_test_v3": "a73742a97e819e877bf8dbc4bb0d9325b63b7d1367b6acea4df6c5e0ed013220"
+}

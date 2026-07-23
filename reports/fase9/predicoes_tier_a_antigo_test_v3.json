@@ -1,0 +1,5314 @@
+{
+  "metrica_filtrada_v3_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__payment_method\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 11.056,
+      "tokens_prompt": 713,
+      "tokens_saida": 58,
+      "eval_s": 3.408,
+      "carga_modelo_s": 6.936
+    }
+  },
+  "metrica_filtrada_v3_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__payment_method\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.66,
+      "tokens_prompt": 716,
+      "tokens_saida": 62,
+      "eval_s": 3.963,
+      "carga_modelo_s": 0.245
+    }
+  },
+  "metrica_filtrada_v3_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__status",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__status\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 3.904,
+      "tokens_prompt": 710,
+      "tokens_saida": 61,
+      "eval_s": 3.411,
+      "carga_modelo_s": 0.242
+    }
+  },
+  "metrica_filtrada_v3_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__payment_method\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.117,
+      "tokens_prompt": 712,
+      "tokens_saida": 62,
+      "eval_s": 3.542,
+      "carga_modelo_s": 0.229
+    }
+  },
+  "metrica_filtrada_v3_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__payment_method\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.386,
+      "tokens_prompt": 715,
+      "tokens_saida": 58,
+      "eval_s": 3.733,
+      "carga_modelo_s": 0.22
+    }
+  },
+  "metrica_filtrada_v3_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__audit_flag\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.116,
+      "tokens_prompt": 710,
+      "tokens_saida": 57,
+      "eval_s": 3.509,
+      "carga_modelo_s": 0.254
+    }
+  },
+  "metrica_filtrada_v3_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__payment_method\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 3.828,
+      "tokens_prompt": 713,
+      "tokens_saida": 59,
+      "eval_s": 3.249,
+      "carga_modelo_s": 0.249
+    }
+  },
+  "metrica_filtrada_v3_08": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__status",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__status\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 3.963,
+      "tokens_prompt": 710,
+      "tokens_saida": 61,
+      "eval_s": 3.369,
+      "carga_modelo_s": 0.241
+    }
+  },
+  "metrica_filtrada_v3_09": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__status",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__status\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.02,
+      "tokens_prompt": 714,
+      "tokens_saida": 61,
+      "eval_s": 3.435,
+      "carga_modelo_s": 0.255
+    }
+  },
+  "metrica_filtrada_v3_10": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__status",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__status\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.358,
+      "tokens_prompt": 711,
+      "tokens_saida": 58,
+      "eval_s": 3.497,
+      "carga_modelo_s": 0.263
+    }
+  },
+  "metrica_filtrada_v3_11": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__audit_flag\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.1,
+      "tokens_prompt": 711,
+      "tokens_saida": 57,
+      "eval_s": 3.603,
+      "carga_modelo_s": 0.237
+    }
+  },
+  "metrica_filtrada_v3_12": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__status",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__status\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.215,
+      "tokens_prompt": 711,
+      "tokens_saida": 58,
+      "eval_s": 3.619,
+      "carga_modelo_s": 0.251
+    }
+  },
+  "metrica_filtrada_v3_13": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__payment_method\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.116,
+      "tokens_prompt": 714,
+      "tokens_saida": 58,
+      "eval_s": 3.473,
+      "carga_modelo_s": 0.272
+    }
+  },
+  "metrica_filtrada_v3_14": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__status",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__status\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.716,
+      "tokens_prompt": 709,
+      "tokens_saida": 61,
+      "eval_s": 4.063,
+      "carga_modelo_s": 0.252
+    }
+  },
+  "metrica_filtrada_v3_15": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__status",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__status\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.006,
+      "tokens_prompt": 707,
+      "tokens_saida": 56,
+      "eval_s": 3.374,
+      "carga_modelo_s": 0.268
+    }
+  },
+  "metrica_filtrada_v3_16": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__status",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__status\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.341,
+      "tokens_prompt": 708,
+      "tokens_saida": 56,
+      "eval_s": 3.757,
+      "carga_modelo_s": 0.352
+    }
+  },
+  "metrica_filtrada_v3_17": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__payment_method\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.133,
+      "tokens_prompt": 712,
+      "tokens_saida": 59,
+      "eval_s": 4.422,
+      "carga_modelo_s": 0.322
+    }
+  },
+  "metrica_filtrada_v3_18": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__audit_flag\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.286,
+      "tokens_prompt": 712,
+      "tokens_saida": 62,
+      "eval_s": 4.469,
+      "carga_modelo_s": 0.344
+    }
+  },
+  "metrica_filtrada_v3_19": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__payment_method\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.932,
+      "tokens_prompt": 709,
+      "tokens_saida": 57,
+      "eval_s": 4.087,
+      "carga_modelo_s": 0.366
+    }
+  },
+  "metrica_filtrada_v3_20": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__audit_flag\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.506,
+      "tokens_prompt": 712,
+      "tokens_saida": 57,
+      "eval_s": 4.708,
+      "carga_modelo_s": 0.384
+    }
+  },
+  "metrica_filtrada_v3_21": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__payment_method\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.142,
+      "tokens_prompt": 710,
+      "tokens_saida": 57,
+      "eval_s": 6.143,
+      "carga_modelo_s": 0.527
+    }
+  },
+  "metrica_filtrada_v3_22": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__payment_method\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.885,
+      "tokens_prompt": 715,
+      "tokens_saida": 62,
+      "eval_s": 7.336,
+      "carga_modelo_s": 0.652
+    }
+  },
+  "metrica_filtrada_v3_23": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__audit_flag\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.612,
+      "tokens_prompt": 714,
+      "tokens_saida": 58,
+      "eval_s": 6.155,
+      "carga_modelo_s": 0.566
+    }
+  },
+  "metrica_filtrada_v3_24": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__audit_flag\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.909,
+      "tokens_prompt": 717,
+      "tokens_saida": 62,
+      "eval_s": 7.161,
+      "carga_modelo_s": 0.593
+    }
+  },
+  "metrica_filtrada_v3_25": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__audit_flag\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.698,
+      "tokens_prompt": 714,
+      "tokens_saida": 59,
+      "eval_s": 6.293,
+      "carga_modelo_s": 0.577
+    }
+  },
+  "metrica_filtrada_v3_26": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__audit_flag\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.591,
+      "tokens_prompt": 714,
+      "tokens_saida": 59,
+      "eval_s": 6.12,
+      "carga_modelo_s": 0.558
+    }
+  },
+  "metrica_filtrada_v3_27": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__audit_flag\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.466,
+      "tokens_prompt": 714,
+      "tokens_saida": 62,
+      "eval_s": 7.017,
+      "carga_modelo_s": 0.563
+    }
+  },
+  "metrica_filtrada_v3_28": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__status",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__status\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.281,
+      "tokens_prompt": 714,
+      "tokens_saida": 61,
+      "eval_s": 7.015,
+      "carga_modelo_s": 0.577
+    }
+  },
+  "metrica_filtrada_v3_29": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__audit_flag\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.148,
+      "tokens_prompt": 716,
+      "tokens_saida": 58,
+      "eval_s": 6.595,
+      "carga_modelo_s": 0.566
+    }
+  },
+  "metrica_filtrada_v3_30": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__audit_flag\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.306,
+      "tokens_prompt": 712,
+      "tokens_saida": 62,
+      "eval_s": 6.798,
+      "carga_modelo_s": 0.603
+    }
+  },
+  "ranking_v3_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'",
+      "order_by": [
+        "revenue_leakage_brl",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'\",\n  \"order_by\": [\"revenue_leakage_brl\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 11.211,
+      "tokens_prompt": 720,
+      "tokens_saida": 82,
+      "eval_s": 9.453,
+      "carga_modelo_s": 0.636
+    }
+  },
+  "ranking_v3_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [
+        "revenue_cents",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [\"revenue_cents\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 10.294,
+      "tokens_prompt": 724,
+      "tokens_saida": 79,
+      "eval_s": 8.694,
+      "carga_modelo_s": 0.581
+    }
+  },
+  "ranking_v3_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [
+        "revenue_leakage_cents",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [\"revenue_leakage_cents\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 9.631,
+      "tokens_prompt": 726,
+      "tokens_saida": 79,
+      "eval_s": 8.695,
+      "carga_modelo_s": 0.594
+    }
+  },
+  "ranking_v3_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [
+        "revenue_cents",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [\"revenue_cents\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 11.356,
+      "tokens_prompt": 724,
+      "tokens_saida": 80,
+      "eval_s": 9.67,
+      "carga_modelo_s": 0.619
+    }
+  },
+  "ranking_v3_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [
+        "revenue_leakage_brl",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [\"revenue_leakage_brl\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 11.214,
+      "tokens_prompt": 719,
+      "tokens_saida": 79,
+      "eval_s": 9.72,
+      "carga_modelo_s": 0.543
+    }
+  },
+  "ranking_v3_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [
+        "revenue_cents",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [\"revenue_cents\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 10.996,
+      "tokens_prompt": 720,
+      "tokens_saida": 72,
+      "eval_s": 9.73,
+      "carga_modelo_s": 0.581
+    }
+  },
+  "ranking_v3_08": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'",
+      "order_by": [
+        "suspect_transactions",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CARD'\",\n  \"order_by\": [\"suspect_transactions\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 10.85,
+      "tokens_prompt": 723,
+      "tokens_saida": 71,
+      "eval_s": 9.144,
+      "carga_modelo_s": 0.586
+    }
+  },
+  "ranking_v3_09": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'REVERSED'",
+      "order_by": [
+        "suspect_transactions",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'REVERSED'\",\n  \"order_by\": [\"suspect_transactions\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 10.124,
+      "tokens_prompt": 721,
+      "tokens_saida": 72,
+      "eval_s": 8.672,
+      "carga_modelo_s": 0.537
+    }
+  },
+  "ranking_v3_10": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": null,
+      "order_by": [
+        "revenue_cents"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [\"revenue_cents\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 8.227,
+      "tokens_prompt": 712,
+      "tokens_saida": 58,
+      "eval_s": 6.813,
+      "carga_modelo_s": 0.554
+    }
+  },
+  "ranking_v3_11": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'OK'",
+      "order_by": [
+        "transactions",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'OK'\",\n  \"order_by\": [\"transactions\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 8.906,
+      "tokens_prompt": 722,
+      "tokens_saida": 66,
+      "eval_s": 8.072,
+      "carga_modelo_s": 0.592
+    }
+  },
+  "ranking_v3_12": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'REVERSED'",
+      "order_by": [
+        "transactions",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'REVERSED'\",\n  \"order_by\": [\"transactions\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 10.92,
+      "tokens_prompt": 721,
+      "tokens_saida": 68,
+      "eval_s": 8.884,
+      "carga_modelo_s": 0.655
+    }
+  },
+  "ranking_v3_13": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [
+        "suspect_transactions"
+      ],
+      "limit": 5,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [\"suspect_transactions\"],\n  \"limit\": 5,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 8.128,
+      "tokens_prompt": 713,
+      "tokens_saida": 57,
+      "eval_s": 6.744,
+      "carga_modelo_s": 0.552
+    }
+  },
+  "ranking_v3_14": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'",
+      "order_by": [
+        "revenue_cents",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'\",\n  \"order_by\": [\"revenue_cents\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 9.433,
+      "tokens_prompt": 723,
+      "tokens_saida": 75,
+      "eval_s": 8.521,
+      "carga_modelo_s": 0.535
+    }
+  },
+  "ranking_v3_15": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'REVERSED'",
+      "order_by": [
+        "transactions",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'REVERSED'\",\n  \"order_by\": [\"transactions\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 8.241,
+      "tokens_prompt": 718,
+      "tokens_saida": 67,
+      "eval_s": 6.787,
+      "carga_modelo_s": 0.581
+    }
+  },
+  "ranking_v3_16": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [
+        "revenue_leakage_brl",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [\"revenue_leakage_brl\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 9.107,
+      "tokens_prompt": 725,
+      "tokens_saida": 86,
+      "eval_s": 8.387,
+      "carga_modelo_s": 0.5
+    }
+  },
+  "ranking_v3_17": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [
+        "suspect_transactions",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [\"suspect_transactions\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 8.34,
+      "tokens_prompt": 713,
+      "tokens_saida": 60,
+      "eval_s": 6.843,
+      "carga_modelo_s": 0.6
+    }
+  },
+  "ranking_v3_18": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [
+        "suspect_transactions",
+        "desc"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [\"suspect_transactions\", \"desc\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 9.959,
+      "tokens_prompt": 714,
+      "tokens_saida": 72,
+      "eval_s": 8.693,
+      "carga_modelo_s": 0.569
+    }
+  },
+  "ranking_v3_20": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [
+        "suspect_transactions",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [\"suspect_transactions\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 8.726,
+      "tokens_prompt": 722,
+      "tokens_saida": 70,
+      "eval_s": 7.759,
+      "carga_modelo_s": 0.588
+    }
+  },
+  "ranking_v3_21": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'",
+      "order_by": [
+        "transactions",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'\",\n  \"order_by\": [\"transactions\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 9.465,
+      "tokens_prompt": 721,
+      "tokens_saida": 70,
+      "eval_s": 7.806,
+      "carga_modelo_s": 0.569
+    }
+  },
+  "ranking_v3_23": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'",
+      "order_by": [
+        "revenue",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'\",\n  \"order_by\": [\"revenue\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 9.64,
+      "tokens_prompt": 719,
+      "tokens_saida": 71,
+      "eval_s": 8.167,
+      "carga_modelo_s": 0.572
+    }
+  },
+  "ranking_v3_24": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [
+        "revenue",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [\"revenue\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 9.558,
+      "tokens_prompt": 719,
+      "tokens_saida": 69,
+      "eval_s": 8.13,
+      "carga_modelo_s": 0.575
+    }
+  },
+  "ranking_v3_25": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": null,
+      "order_by": [
+        "revenue"
+      ],
+      "limit": 10,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [\"revenue\"],\n  \"limit\": 10,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 7.751,
+      "tokens_prompt": 709,
+      "tokens_saida": 55,
+      "eval_s": 6.468,
+      "carga_modelo_s": 0.574
+    }
+  },
+  "ranking_v3_26": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [
+        "revenue_leakage_cents",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [\"revenue_leakage_cents\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 10.628,
+      "tokens_prompt": 729,
+      "tokens_saida": 86,
+      "eval_s": 9.731,
+      "carga_modelo_s": 0.569
+    }
+  },
+  "ranking_v3_28": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'",
+      "order_by": [
+        "suspect_rate",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CARD'\",\n  \"order_by\": [\"suspect_rate\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 10.188,
+      "tokens_prompt": 721,
+      "tokens_saida": 70,
+      "eval_s": 8.748,
+      "carga_modelo_s": 0.59
+    }
+  },
+  "ranking_v3_29": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": null,
+      "order_by": [
+        "revenue_cents"
+      ],
+      "limit": 10,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [\"revenue_cents\"],\n  \"limit\": 10,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 7.303,
+      "tokens_prompt": 713,
+      "tokens_saida": 59,
+      "eval_s": 5.957,
+      "carga_modelo_s": 0.563
+    }
+  },
+  "ranking_v3_30": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [
+        "suspect_transactions",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [\"suspect_transactions\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 8.816,
+      "tokens_prompt": 727,
+      "tokens_saida": 78,
+      "eval_s": 8.094,
+      "carga_modelo_s": 0.493
+    }
+  },
+  "metrica_derivada_v3_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'REVERSED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'REVERSED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.163,
+      "tokens_prompt": 717,
+      "tokens_saida": 68,
+      "eval_s": 6.002,
+      "carga_modelo_s": 0.414
+    }
+  },
+  "metrica_derivada_v3_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'REVERSED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'REVERSED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.516,
+      "tokens_prompt": 714,
+      "tokens_saida": 68,
+      "eval_s": 6.513,
+      "carga_modelo_s": 0.435
+    }
+  },
+  "metrica_derivada_v3_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.017,
+      "tokens_prompt": 712,
+      "tokens_saida": 62,
+      "eval_s": 6.85,
+      "carga_modelo_s": 0.501
+    }
+  },
+  "metrica_derivada_v3_08": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__status",
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__status\", \"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CARD'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.83,
+      "tokens_prompt": 714,
+      "tokens_saida": 72,
+      "eval_s": 9.348,
+      "carga_modelo_s": 0.599
+    }
+  },
+  "metrica_derivada_v3_10": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__week"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.101,
+      "tokens_prompt": 720,
+      "tokens_saida": 74,
+      "eval_s": 8.476,
+      "carga_modelo_s": 0.564
+    }
+  },
+  "metrica_derivada_v3_11": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "metric_time__week"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.5,
+      "tokens_prompt": 713,
+      "tokens_saida": 70,
+      "eval_s": 8.088,
+      "carga_modelo_s": 0.569
+    }
+  },
+  "metrica_derivada_v3_12": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__status",
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__status\", \"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CASH'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.383,
+      "tokens_prompt": 713,
+      "tokens_saida": 69,
+      "eval_s": 7.207,
+      "carga_modelo_s": 0.439
+    }
+  },
+  "metrica_derivada_v3_14": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.727,
+      "tokens_prompt": 714,
+      "tokens_saida": 69,
+      "eval_s": 5.623,
+      "carga_modelo_s": 0.395
+    }
+  },
+  "metrica_derivada_v3_19": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.828,
+      "tokens_prompt": 713,
+      "tokens_saida": 73,
+      "eval_s": 6.044,
+      "carga_modelo_s": 0.411
+    }
+  },
+  "metrica_derivada_v3_21": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__month"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__month\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.884,
+      "tokens_prompt": 718,
+      "tokens_saida": 67,
+      "eval_s": 5.872,
+      "carga_modelo_s": 0.433
+    }
+  },
+  "metrica_derivada_v3_22": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "metric_time__month"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"metric_time__month\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.816,
+      "tokens_prompt": 717,
+      "tokens_saida": 74,
+      "eval_s": 6.751,
+      "carga_modelo_s": 0.454
+    }
+  },
+  "metrica_derivada_v3_24": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"metric_time__month\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.039,
+      "tokens_prompt": 714,
+      "tokens_saida": 75,
+      "eval_s": 7.734,
+      "carga_modelo_s": 0.519
+    }
+  },
+  "metrica_derivada_v3_26": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.894,
+      "tokens_prompt": 718,
+      "tokens_saida": 67,
+      "eval_s": 8.208,
+      "carga_modelo_s": 0.55
+    }
+  },
+  "metrica_derivada_v3_27": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CARD'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.568,
+      "tokens_prompt": 715,
+      "tokens_saida": 69,
+      "eval_s": 9.046,
+      "carga_modelo_s": 0.563
+    }
+  },
+  "metrica_derivada_v3_29": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"metric_time__month\", \"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CASH'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.16,
+      "tokens_prompt": 714,
+      "tokens_saida": 70,
+      "eval_s": 8.088,
+      "carga_modelo_s": 0.584
+    }
+  },
+  "join_grao_v3_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__audit_flag",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__audit_flag\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.709,
+      "tokens_prompt": 720,
+      "tokens_saida": 65,
+      "eval_s": 6.4,
+      "carga_modelo_s": 0.544
+    }
+  },
+  "join_grao_v3_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__audit_flag",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__audit_flag\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.923,
+      "tokens_prompt": 721,
+      "tokens_saida": 67,
+      "eval_s": 7.421,
+      "carga_modelo_s": 0.496
+    }
+  },
+  "join_grao_v3_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__payment_method",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__payment_method\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.089,
+      "tokens_prompt": 714,
+      "tokens_saida": 63,
+      "eval_s": 7.568,
+      "carga_modelo_s": 0.582
+    }
+  },
+  "join_grao_v3_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__audit_flag",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__audit_flag\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.538,
+      "tokens_prompt": 719,
+      "tokens_saida": 63,
+      "eval_s": 8.431,
+      "carga_modelo_s": 0.533
+    }
+  },
+  "join_grao_v3_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__status",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__status\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.325,
+      "tokens_prompt": 715,
+      "tokens_saida": 67,
+      "eval_s": 6.067,
+      "carga_modelo_s": 0.448
+    }
+  },
+  "join_grao_v3_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__audit_flag",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__audit_flag\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.385,
+      "tokens_prompt": 718,
+      "tokens_saida": 68,
+      "eval_s": 6.409,
+      "carga_modelo_s": 0.432
+    }
+  },
+  "join_grao_v3_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__payment_method",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__payment_method\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.948,
+      "tokens_prompt": 713,
+      "tokens_saida": 61,
+      "eval_s": 4.937,
+      "carga_modelo_s": 0.39
+    }
+  },
+  "join_grao_v3_08": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__audit_flag",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__audit_flag\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.13,
+      "tokens_prompt": 717,
+      "tokens_saida": 67,
+      "eval_s": 5.093,
+      "carga_modelo_s": 0.417
+    }
+  },
+  "join_grao_v3_09": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__audit_flag",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__audit_flag\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.226,
+      "tokens_prompt": 714,
+      "tokens_saida": 62,
+      "eval_s": 5.192,
+      "carga_modelo_s": 0.404
+    }
+  },
+  "join_grao_v3_10": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__payment_method",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__payment_method\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.314,
+      "tokens_prompt": 718,
+      "tokens_saida": 65,
+      "eval_s": 5.248,
+      "carga_modelo_s": 0.379
+    }
+  },
+  "join_grao_v3_11": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__status",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__status\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.85,
+      "tokens_prompt": 712,
+      "tokens_saida": 60,
+      "eval_s": 4.871,
+      "carga_modelo_s": 0.4
+    }
+  },
+  "join_grao_v3_12": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__payment_method",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__payment_method\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.539,
+      "tokens_prompt": 719,
+      "tokens_saida": 68,
+      "eval_s": 6.295,
+      "carga_modelo_s": 0.431
+    }
+  },
+  "join_grao_v3_13": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__payment_method",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__payment_method\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.055,
+      "tokens_prompt": 713,
+      "tokens_saida": 62,
+      "eval_s": 6.683,
+      "carga_modelo_s": 0.502
+    }
+  },
+  "join_grao_v3_14": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__status",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__status\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.691,
+      "tokens_prompt": 714,
+      "tokens_saida": 63,
+      "eval_s": 8.438,
+      "carga_modelo_s": 0.596
+    }
+  },
+  "join_grao_v3_15": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__audit_flag",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__audit_flag\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.552,
+      "tokens_prompt": 720,
+      "tokens_saida": 64,
+      "eval_s": 8.014,
+      "carga_modelo_s": 0.538
+    }
+  },
+  "join_grao_v3_16": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__payment_method",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__payment_method\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.663,
+      "tokens_prompt": 716,
+      "tokens_saida": 67,
+      "eval_s": 7.175,
+      "carga_modelo_s": 0.64
+    }
+  },
+  "join_grao_v3_17": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__audit_flag",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__audit_flag\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.737,
+      "tokens_prompt": 716,
+      "tokens_saida": 63,
+      "eval_s": 7.28,
+      "carga_modelo_s": 0.59
+    }
+  },
+  "join_grao_v3_18": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__audit_flag",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__audit_flag\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.413,
+      "tokens_prompt": 715,
+      "tokens_saida": 67,
+      "eval_s": 7.971,
+      "carga_modelo_s": 0.576
+    }
+  },
+  "join_grao_v3_19": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__status",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__status\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.58,
+      "tokens_prompt": 714,
+      "tokens_saida": 61,
+      "eval_s": 6.993,
+      "carga_modelo_s": 0.615
+    }
+  },
+  "join_grao_v3_20": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__payment_method",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__payment_method\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.566,
+      "tokens_prompt": 719,
+      "tokens_saida": 65,
+      "eval_s": 7.804,
+      "carga_modelo_s": 0.57
+    }
+  },
+  "join_grao_v3_21": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__status",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__status\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.855,
+      "tokens_prompt": 715,
+      "tokens_saida": 66,
+      "eval_s": 8.372,
+      "carga_modelo_s": 0.534
+    }
+  },
+  "join_grao_v3_22": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__payment_method",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__payment_method\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.049,
+      "tokens_prompt": 716,
+      "tokens_saida": 62,
+      "eval_s": 8.438,
+      "carga_modelo_s": 0.568
+    }
+  },
+  "join_grao_v3_23": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__audit_flag",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__audit_flag\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.438,
+      "tokens_prompt": 720,
+      "tokens_saida": 67,
+      "eval_s": 6.999,
+      "carga_modelo_s": 0.496
+    }
+  },
+  "join_grao_v3_24": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__audit_flag",
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__audit_flag\", \"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.209,
+      "tokens_prompt": 714,
+      "tokens_saida": 62,
+      "eval_s": 5.956,
+      "carga_modelo_s": 0.481
+    }
+  },
+  "join_grao_v3_25": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__payment_method",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__payment_method\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.471,
+      "tokens_prompt": 719,
+      "tokens_saida": 64,
+      "eval_s": 6.312,
+      "carga_modelo_s": 0.423
+    }
+  },
+  "join_grao_v3_26": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__status",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__status\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.079,
+      "tokens_prompt": 715,
+      "tokens_saida": 63,
+      "eval_s": 6.774,
+      "carga_modelo_s": 0.521
+    }
+  },
+  "join_grao_v3_27": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__audit_flag"
+      ],
+      "where": null,
+      "order_by": [
+        "metric_time__week"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__audit_flag\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__week\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.666,
+      "tokens_prompt": 718,
+      "tokens_saida": 63,
+      "eval_s": 8.041,
+      "carga_modelo_s": 0.606
+    }
+  },
+  "join_grao_v3_28": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__payment_method",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__payment_method\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.597,
+      "tokens_prompt": 717,
+      "tokens_saida": 64,
+      "eval_s": 7.435,
+      "carga_modelo_s": 0.558
+    }
+  },
+  "join_grao_v3_29": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__payment_method",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__payment_method\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.863,
+      "tokens_prompt": 717,
+      "tokens_saida": 63,
+      "eval_s": 5.707,
+      "carga_modelo_s": 0.436
+    }
+  },
+  "join_grao_v3_30": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "transaction__audit_flag",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__plaza\", \"transaction__audit_flag\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.494,
+      "tokens_prompt": 717,
+      "tokens_saida": 65,
+      "eval_s": 5.333,
+      "carga_modelo_s": 0.433
+    }
+  },
+  "grao_temporal_v3_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"metric_time__month\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.27,
+      "tokens_prompt": 718,
+      "tokens_saida": 80,
+      "eval_s": 7.086,
+      "carga_modelo_s": 0.431
+    }
+  },
+  "grao_temporal_v3_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.732,
+      "tokens_prompt": 712,
+      "tokens_saida": 74,
+      "eval_s": 6.692,
+      "carga_modelo_s": 0.441
+    }
+  },
+  "grao_temporal_v3_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"metric_time__month\", \"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.54,
+      "tokens_prompt": 717,
+      "tokens_saida": 72,
+      "eval_s": 7.2,
+      "carga_modelo_s": 0.47
+    }
+  },
+  "grao_temporal_v3_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.374,
+      "tokens_prompt": 718,
+      "tokens_saida": 77,
+      "eval_s": 9.3,
+      "carga_modelo_s": 0.53
+    }
+  },
+  "grao_temporal_v3_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__audit_flag"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__audit_flag\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.86,
+      "tokens_prompt": 713,
+      "tokens_saida": 56,
+      "eval_s": 6.537,
+      "carga_modelo_s": 0.569
+    }
+  },
+  "grao_temporal_v3_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__month"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__month\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.212,
+      "tokens_prompt": 719,
+      "tokens_saida": 66,
+      "eval_s": 7.482,
+      "carga_modelo_s": 0.61
+    }
+  },
+  "grao_temporal_v3_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "metric_time__week"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.771,
+      "tokens_prompt": 715,
+      "tokens_saida": 63,
+      "eval_s": 7.296,
+      "carga_modelo_s": 0.601
+    }
+  },
+  "grao_temporal_v3_09": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__week",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__week\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.811,
+      "tokens_prompt": 714,
+      "tokens_saida": 74,
+      "eval_s": 8.194,
+      "carga_modelo_s": 0.553
+    }
+  },
+  "grao_temporal_v3_10": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "metric_time__week"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED' AND {{ Dimension('transaction__payment_method') }} = 'CASH'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__payment_method\", \"metric_time__week\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED' AND {{ Dimension('transaction__payment_method') }} = 'CASH'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 12.079,
+      "tokens_prompt": 712,
+      "tokens_saida": 84,
+      "eval_s": 10.488,
+      "carga_modelo_s": 0.6
+    }
+  },
+  "grao_temporal_v3_12": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__week",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__week\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.438,
+      "tokens_prompt": 715,
+      "tokens_saida": 75,
+      "eval_s": 8.803,
+      "carga_modelo_s": 0.576
+    }
+  },
+  "grao_temporal_v3_13": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__plaza",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.205,
+      "tokens_prompt": 712,
+      "tokens_saida": 58,
+      "eval_s": 5.055,
+      "carga_modelo_s": 0.485
+    }
+  },
+  "grao_temporal_v3_14": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"metric_time__month\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.421,
+      "tokens_prompt": 718,
+      "tokens_saida": 76,
+      "eval_s": 7.234,
+      "carga_modelo_s": 0.459
+    }
+  },
+  "grao_temporal_v3_15": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__month\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.628,
+      "tokens_prompt": 710,
+      "tokens_saida": 73,
+      "eval_s": 8.699,
+      "carga_modelo_s": 0.387
+    }
+  },
+  "grao_temporal_v3_16": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "metric_time__week",
+        "transaction__vehicle"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"metric_time__week\", \"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.145,
+      "tokens_prompt": 710,
+      "tokens_saida": 61,
+      "eval_s": 8.947,
+      "carga_modelo_s": 0.466
+    }
+  },
+  "grao_temporal_v3_17": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__vehicle"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.769,
+      "tokens_prompt": 709,
+      "tokens_saida": 56,
+      "eval_s": 5.64,
+      "carga_modelo_s": 0.463
+    }
+  },
+  "grao_temporal_v3_19": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__week"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'REVERSED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'REVERSED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 12.608,
+      "tokens_prompt": 710,
+      "tokens_saida": 63,
+      "eval_s": 11.312,
+      "carga_modelo_s": 0.51
+    }
+  },
+  "grao_temporal_v3_20": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__month"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__month\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.98,
+      "tokens_prompt": 718,
+      "tokens_saida": 70,
+      "eval_s": 8.458,
+      "carga_modelo_s": 0.593
+    }
+  },
+  "grao_temporal_v3_21": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.573,
+      "tokens_prompt": 716,
+      "tokens_saida": 62,
+      "eval_s": 6.406,
+      "carga_modelo_s": 0.518
+    }
+  },
+  "grao_temporal_v3_22": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__week"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.412,
+      "tokens_prompt": 717,
+      "tokens_saida": 66,
+      "eval_s": 6.212,
+      "carga_modelo_s": 0.492
+    }
+  },
+  "grao_temporal_v3_23": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "transaction__audit_flag"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"metric_time__month\", \"transaction__audit_flag\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.655,
+      "tokens_prompt": 717,
+      "tokens_saida": 59,
+      "eval_s": 4.63,
+      "carga_modelo_s": 0.422
+    }
+  },
+  "grao_temporal_v3_24": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.558,
+      "tokens_prompt": 709,
+      "tokens_saida": 61,
+      "eval_s": 5.576,
+      "carga_modelo_s": 0.418
+    }
+  },
+  "grao_temporal_v3_25": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__payment_method"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__payment_method\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.835,
+      "tokens_prompt": 711,
+      "tokens_saida": 62,
+      "eval_s": 5.769,
+      "carga_modelo_s": 0.423
+    }
+  },
+  "grao_temporal_v3_26": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "transaction__payment_method"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"metric_time__month\", \"transaction__payment_method\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.823,
+      "tokens_prompt": 713,
+      "tokens_saida": 58,
+      "eval_s": 5.622,
+      "carga_modelo_s": 0.461
+    }
+  },
+  "grao_temporal_v3_27": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.967,
+      "tokens_prompt": 717,
+      "tokens_saida": 66,
+      "eval_s": 6.582,
+      "carga_modelo_s": 0.496
+    }
+  },
+  "grao_temporal_v3_28": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "metric_time__month"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED' AND {{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"metric_time__month\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED' AND {{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 11.034,
+      "tokens_prompt": 714,
+      "tokens_saida": 82,
+      "eval_s": 9.678,
+      "carga_modelo_s": 0.548
+    }
+  },
+  "grao_temporal_v3_29": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "metric_time__week",
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"metric_time__week\", \"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.927,
+      "tokens_prompt": 714,
+      "tokens_saida": 59,
+      "eval_s": 7.559,
+      "carga_modelo_s": 0.577
+    }
+  },
+  "grao_temporal_v3_30": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "metric_time__month"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"metric_time__month\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.503,
+      "tokens_prompt": 713,
+      "tokens_saida": 69,
+      "eval_s": 7.006,
+      "carga_modelo_s": 0.573
+    }
+  },
+  "valor_categorico_v3_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.414,
+      "tokens_prompt": 712,
+      "tokens_saida": 66,
+      "eval_s": 7.901,
+      "carga_modelo_s": 0.621
+    }
+  },
+  "valor_categorico_v3_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.132,
+      "tokens_prompt": 711,
+      "tokens_saida": 61,
+      "eval_s": 7.763,
+      "carga_modelo_s": 0.559
+    }
+  },
+  "valor_categorico_v3_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.44,
+      "tokens_prompt": 714,
+      "tokens_saida": 61,
+      "eval_s": 7.03,
+      "carga_modelo_s": 0.562
+    }
+  },
+  "valor_categorico_v3_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.641,
+      "tokens_prompt": 713,
+      "tokens_saida": 63,
+      "eval_s": 6.556,
+      "carga_modelo_s": 0.613
+    }
+  },
+  "valor_categorico_v3_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.778,
+      "tokens_prompt": 717,
+      "tokens_saida": 65,
+      "eval_s": 6.43,
+      "carga_modelo_s": 0.486
+    }
+  },
+  "valor_categorico_v3_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.471,
+      "tokens_prompt": 716,
+      "tokens_saida": 73,
+      "eval_s": 6.322,
+      "carga_modelo_s": 0.475
+    }
+  },
+  "valor_categorico_v3_08": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "audit_flag"
+      ],
+      "where": "{{ Dimension('audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__vehicle\", \"audit_flag\"],\n  \"where\": \"{{ Dimension('audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.641,
+      "tokens_prompt": 715,
+      "tokens_saida": 70,
+      "eval_s": 5.468,
+      "carga_modelo_s": 0.434
+    }
+  },
+  "valor_categorico_v3_09": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle",
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__vehicle\", \"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.751,
+      "tokens_prompt": 717,
+      "tokens_saida": 71,
+      "eval_s": 5.664,
+      "carga_modelo_s": 0.413
+    }
+  },
+  "valor_categorico_v3_10": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED' AND {{ Dimension('transaction__audit_flag') }} IS NOT NULL",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED' AND {{ Dimension('transaction__audit_flag') }} IS NOT NULL\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.32,
+      "tokens_prompt": 713,
+      "tokens_saida": 71,
+      "eval_s": 6.305,
+      "carga_modelo_s": 0.402
+    }
+  },
+  "valor_categorico_v3_11": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'REVERSED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'REVERSED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.162,
+      "tokens_prompt": 710,
+      "tokens_saida": 62,
+      "eval_s": 6.104,
+      "carga_modelo_s": 0.422
+    }
+  },
+  "valor_categorico_v3_12": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'OK'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'OK'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.242,
+      "tokens_prompt": 717,
+      "tokens_saida": 59,
+      "eval_s": 6.954,
+      "carga_modelo_s": 0.51
+    }
+  },
+  "valor_categorico_v3_13": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.856,
+      "tokens_prompt": 715,
+      "tokens_saida": 62,
+      "eval_s": 7.694,
+      "carga_modelo_s": 0.567
+    }
+  },
+  "valor_categorico_v3_15": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__payment_method\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CARD'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.876,
+      "tokens_prompt": 716,
+      "tokens_saida": 68,
+      "eval_s": 9.356,
+      "carga_modelo_s": 0.596
+    }
+  },
+  "valor_categorico_v3_16": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.535,
+      "tokens_prompt": 716,
+      "tokens_saida": 70,
+      "eval_s": 8.133,
+      "carga_modelo_s": 0.564
+    }
+  },
+  "valor_categorico_v3_17": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.636,
+      "tokens_prompt": 715,
+      "tokens_saida": 69,
+      "eval_s": 7.164,
+      "carga_modelo_s": 0.544
+    }
+  },
+  "valor_categorico_v3_19": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "audit_flag"
+      ],
+      "where": "{{ Dimension('audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__payment_method\", \"audit_flag\"],\n  \"where\": \"{{ Dimension('audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.26,
+      "tokens_prompt": 716,
+      "tokens_saida": 71,
+      "eval_s": 8.554,
+      "carga_modelo_s": 0.655
+    }
+  },
+  "valor_categorico_v3_21": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.823,
+      "tokens_prompt": 710,
+      "tokens_saida": 60,
+      "eval_s": 6.499,
+      "carga_modelo_s": 0.569
+    }
+  },
+  "valor_categorico_v3_22": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__audit_flag",
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__audit_flag\", \"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CASH'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.615,
+      "tokens_prompt": 716,
+      "tokens_saida": 70,
+      "eval_s": 8.16,
+      "carga_modelo_s": 0.586
+    }
+  },
+  "valor_categorico_v3_23": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__payment_method",
+        "audit_flag"
+      ],
+      "where": "{{ Dimension('audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__payment_method\", \"audit_flag\"],\n  \"where\": \"{{ Dimension('audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.183,
+      "tokens_prompt": 711,
+      "tokens_saida": 69,
+      "eval_s": 7.706,
+      "carga_modelo_s": 0.622
+    }
+  },
+  "valor_categorico_v3_24": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__status",
+        "audit_flag"
+      ],
+      "where": "{{ Dimension('audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__status\", \"audit_flag\"],\n  \"where\": \"{{ Dimension('audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.113,
+      "tokens_prompt": 713,
+      "tokens_saida": 69,
+      "eval_s": 5.931,
+      "carga_modelo_s": 0.495
+    }
+  },
+  "valor_categorico_v3_25": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.49,
+      "tokens_prompt": 707,
+      "tokens_saida": 64,
+      "eval_s": 5.484,
+      "carga_modelo_s": 0.456
+    }
+  },
+  "valor_categorico_v3_26": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.355,
+      "tokens_prompt": 715,
+      "tokens_saida": 68,
+      "eval_s": 5.315,
+      "carga_modelo_s": 0.408
+    }
+  },
+  "valor_categorico_v3_27": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.479,
+      "tokens_prompt": 714,
+      "tokens_saida": 63,
+      "eval_s": 4.37,
+      "carga_modelo_s": 0.43
+    }
+  },
+  "valor_categorico_v3_28": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.642,
+      "tokens_prompt": 712,
+      "tokens_saida": 64,
+      "eval_s": 4.863,
+      "carga_modelo_s": 0.409
+    }
+  },
+  "coalesce_nulo_v3_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.939,
+      "tokens_prompt": 714,
+      "tokens_saida": 73,
+      "eval_s": 6.006,
+      "carga_modelo_s": 0.394
+    }
+  },
+  "coalesce_nulo_v3_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.632,
+      "tokens_prompt": 710,
+      "tokens_saida": 60,
+      "eval_s": 4.744,
+      "carga_modelo_s": 0.403
+    }
+  },
+  "coalesce_nulo_v3_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.234,
+      "tokens_prompt": 714,
+      "tokens_saida": 74,
+      "eval_s": 6.933,
+      "carga_modelo_s": 0.441
+    }
+  },
+  "coalesce_nulo_v3_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'COBRANCA_EM_FALHA'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.744,
+      "tokens_prompt": 717,
+      "tokens_saida": 74,
+      "eval_s": 9.112,
+      "carga_modelo_s": 0.624
+    }
+  },
+  "coalesce_nulo_v3_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 11.096,
+      "tokens_prompt": 718,
+      "tokens_saida": 78,
+      "eval_s": 9.38,
+      "carga_modelo_s": 0.548
+    }
+  },
+  "coalesce_nulo_v3_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.358,
+      "tokens_prompt": 716,
+      "tokens_saida": 74,
+      "eval_s": 7.877,
+      "carga_modelo_s": 0.584
+    }
+  },
+  "coalesce_nulo_v3_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.95,
+      "tokens_prompt": 721,
+      "tokens_saida": 73,
+      "eval_s": 9.303,
+      "carga_modelo_s": 0.639
+    }
+  },
+  "coalesce_nulo_v3_08": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.227,
+      "tokens_prompt": 716,
+      "tokens_saida": 68,
+      "eval_s": 7.691,
+      "carga_modelo_s": 0.573
+    }
+  },
+  "coalesce_nulo_v3_09": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'OK'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'OK'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.921,
+      "tokens_prompt": 724,
+      "tokens_saida": 72,
+      "eval_s": 7.025,
+      "carga_modelo_s": 0.587
+    }
+  },
+  "coalesce_nulo_v3_11": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.718,
+      "tokens_prompt": 722,
+      "tokens_saida": 78,
+      "eval_s": 9.502,
+      "carga_modelo_s": 0.598
+    }
+  },
+  "coalesce_nulo_v3_12": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.149,
+      "tokens_prompt": 721,
+      "tokens_saida": 72,
+      "eval_s": 8.938,
+      "carga_modelo_s": 0.62
+    }
+  },
+  "coalesce_nulo_v3_13": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.028,
+      "tokens_prompt": 718,
+      "tokens_saida": 68,
+      "eval_s": 7.58,
+      "carga_modelo_s": 0.558
+    }
+  },
+  "coalesce_nulo_v3_14": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CARD'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.699,
+      "tokens_prompt": 711,
+      "tokens_saida": 67,
+      "eval_s": 7.36,
+      "carga_modelo_s": 0.556
+    }
+  },
+  "coalesce_nulo_v3_15": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.746,
+      "tokens_prompt": 716,
+      "tokens_saida": 69,
+      "eval_s": 7.446,
+      "carga_modelo_s": 0.606
+    }
+  },
+  "coalesce_nulo_v3_16": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'FAILED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'FAILED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.39,
+      "tokens_prompt": 716,
+      "tokens_saida": 67,
+      "eval_s": 7.835,
+      "carga_modelo_s": 0.556
+    }
+  },
+  "coalesce_nulo_v3_17": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_rate"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_rate\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.845,
+      "tokens_prompt": 718,
+      "tokens_saida": 71,
+      "eval_s": 8.375,
+      "carga_modelo_s": 0.559
+    }
+  },
+  "coalesce_nulo_v3_18": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.013,
+      "tokens_prompt": 712,
+      "tokens_saida": 71,
+      "eval_s": 7.684,
+      "carga_modelo_s": 0.593
+    }
+  },
+  "coalesce_nulo_v3_19": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'VALOR_INVALIDO'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.838,
+      "tokens_prompt": 718,
+      "tokens_saida": 76,
+      "eval_s": 6.449,
+      "carga_modelo_s": 0.474
+    }
+  },
+  "coalesce_nulo_v3_20": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__audit_flag"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__audit_flag\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.642,
+      "tokens_prompt": 717,
+      "tokens_saida": 76,
+      "eval_s": 6.462,
+      "carga_modelo_s": 0.423
+    }
+  },
+  "coalesce_nulo_v3_21": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'CARD'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CARD'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.129,
+      "tokens_prompt": 720,
+      "tokens_saida": 70,
+      "eval_s": 7.114,
+      "carga_modelo_s": 0.463
+    }
+  },
+  "coalesce_nulo_v3_22": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.825,
+      "tokens_prompt": 720,
+      "tokens_saida": 75,
+      "eval_s": 8.374,
+      "carga_modelo_s": 0.476
+    }
+  },
+  "coalesce_nulo_v3_23": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.369,
+      "tokens_prompt": 719,
+      "tokens_saida": 74,
+      "eval_s": 8.742,
+      "carga_modelo_s": 0.594
+    }
+  },
+  "coalesce_nulo_v3_24": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": "{{ Dimension('transaction__status') }} = 'COMPLETED'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__day\"],\n  \"where\": \"{{ Dimension('transaction__status') }} = 'COMPLETED'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.056,
+      "tokens_prompt": 711,
+      "tokens_saida": 62,
+      "eval_s": 7.658,
+      "carga_modelo_s": 0.533
+    }
+  },
+  "coalesce_nulo_v3_25": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.396,
+      "tokens_prompt": 717,
+      "tokens_saida": 72,
+      "eval_s": 6.783,
+      "carga_modelo_s": 0.521
+    }
+  },
+  "coalesce_nulo_v3_26": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.618,
+      "tokens_prompt": 716,
+      "tokens_saida": 68,
+      "eval_s": 6.318,
+      "carga_modelo_s": 0.52
+    }
+  },
+  "coalesce_nulo_v3_27": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'OK'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'OK'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.058,
+      "tokens_prompt": 721,
+      "tokens_saida": 73,
+      "eval_s": 6.389,
+      "carga_modelo_s": 0.451
+    }
+  },
+  "coalesce_nulo_v3_28": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'TARIFA_DIVERGENTE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.869,
+      "tokens_prompt": 720,
+      "tokens_saida": 79,
+      "eval_s": 7.723,
+      "carga_modelo_s": 0.501
+    }
+  },
+  "coalesce_nulo_v3_29": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__plaza"
+      ],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__plaza\"],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.629,
+      "tokens_prompt": 718,
+      "tokens_saida": 75,
+      "eval_s": 9.149,
+      "carga_modelo_s": 0.51
+    }
+  },
+  "coalesce_nulo_v3_30": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_cents"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "transaction__payment_method"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'CASH'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_cents\"],\n  \"group_by\": [\"metric_time__day\", \"transaction__payment_method\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'CASH'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 11.815,
+      "tokens_prompt": 718,
+      "tokens_saida": 74,
+      "eval_s": 10.248,
+      "carga_modelo_s": 0.604
+    }
+  },
+  "abstencao_v3_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.273,
+      "tokens_prompt": 710,
+      "tokens_saida": 51,
+      "eval_s": 6.871,
+      "carga_modelo_s": 0.568
+    }
+  },
+  "abstencao_v3_02": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.879,
+      "tokens_prompt": 707,
+      "tokens_saida": 5,
+      "eval_s": 0.711,
+      "carga_modelo_s": 0.543
+    }
+  },
+  "abstencao_v3_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": "{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": \"{{ Dimension('transaction__payment_method') }} = 'AUTOMATIC_TAG'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.268,
+      "tokens_prompt": 707,
+      "tokens_saida": 62,
+      "eval_s": 6.972,
+      "carga_modelo_s": 0.597
+    }
+  },
+  "abstencao_v3_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__week",
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [
+        "metric_time__week"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__week\", \"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__week\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.393,
+      "tokens_prompt": 705,
+      "tokens_saida": 62,
+      "eval_s": 6.313,
+      "carga_modelo_s": 0.491
+    }
+  },
+  "abstencao_v3_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "metric_time__quarter"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"metric_time__quarter\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.957,
+      "tokens_prompt": 704,
+      "tokens_saida": 51,
+      "eval_s": 4.071,
+      "carga_modelo_s": 0.481
+    }
+  },
+  "abstencao_v3_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__audit_flag"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__audit_flag\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.44,
+      "tokens_prompt": 712,
+      "tokens_saida": 51,
+      "eval_s": 5.441,
+      "carga_modelo_s": 0.468
+    }
+  },
+  "abstencao_v3_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.953,
+      "tokens_prompt": 705,
+      "tokens_saida": 51,
+      "eval_s": 5.11,
+      "carga_modelo_s": 0.424
+    }
+  },
+  "abstencao_v3_08": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.161,
+      "tokens_prompt": 703,
+      "tokens_saida": 5,
+      "eval_s": 0.312,
+      "carga_modelo_s": 0.513
+    }
+  },
+  "abstencao_v3_09": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__audit_flag"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__audit_flag\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.105,
+      "tokens_prompt": 706,
+      "tokens_saida": 51,
+      "eval_s": 5.066,
+      "carga_modelo_s": 0.547
+    }
+  },
+  "abstencao_v3_10": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [
+        "transaction__plaza"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [\"transaction__plaza\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.106,
+      "tokens_prompt": 711,
+      "tokens_saida": 51,
+      "eval_s": 5.718,
+      "carga_modelo_s": 0.577
+    }
+  },
+  "abstencao_v3_11": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [],
+      "where": null,
+      "order_by": [
+        "metric_time__month"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [\"metric_time__month\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.96,
+      "tokens_prompt": 710,
+      "tokens_saida": 51,
+      "eval_s": 5.567,
+      "carga_modelo_s": 0.586
+    }
+  },
+  "abstencao_v3_12": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 2.138,
+      "tokens_prompt": 711,
+      "tokens_saida": 5,
+      "eval_s": 0.688,
+      "carga_modelo_s": 0.585
+    }
+  },
+  "abstencao_v3_13": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.069,
+      "tokens_prompt": 707,
+      "tokens_saida": 45,
+      "eval_s": 4.609,
+      "carga_modelo_s": 0.636
+    }
+  },
+  "abstencao_v3_14": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.603,
+      "tokens_prompt": 707,
+      "tokens_saida": 5,
+      "eval_s": 0.579,
+      "carga_modelo_s": 0.479
+    }
+  },
+  "abstencao_v3_15": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.464,
+      "tokens_prompt": 708,
+      "tokens_saida": 5,
+      "eval_s": 0.456,
+      "carga_modelo_s": 0.494
+    }
+  },
+  "abstencao_v3_16": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue_leakage_brl"
+      ],
+      "group_by": [],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue_leakage_brl\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.86,
+      "tokens_prompt": 708,
+      "tokens_saida": 51,
+      "eval_s": 4.66,
+      "carga_modelo_s": 0.5
+    }
+  },
+  "abstencao_v3_17": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.433,
+      "tokens_prompt": 708,
+      "tokens_saida": 5,
+      "eval_s": 0.541,
+      "carga_modelo_s": 0.432
+    }
+  },
+  "abstencao_v3_18": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.237,
+      "tokens_prompt": 708,
+      "tokens_saida": 5,
+      "eval_s": 0.322,
+      "carga_modelo_s": 0.445
+    }
+  },
+  "abstencao_v3_19": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.362,
+      "tokens_prompt": 707,
+      "tokens_saida": 5,
+      "eval_s": 0.426,
+      "carga_modelo_s": 0.489
+    }
+  },
+  "abstencao_v3_20": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "revenue"
+      ],
+      "group_by": [],
+      "where": null,
+      "order_by": [
+        "metric_time__month"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"revenue\"],\n  \"group_by\": [],\n  \"where\": null,\n  \"order_by\": [\"metric_time__month\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.088,
+      "tokens_prompt": 710,
+      "tokens_saida": 51,
+      "eval_s": 4.141,
+      "carga_modelo_s": 0.447
+    }
+  },
+  "abstencao_v3_21": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.346,
+      "tokens_prompt": 711,
+      "tokens_saida": 5,
+      "eval_s": 0.397,
+      "carga_modelo_s": 0.419
+    }
+  },
+  "abstencao_v3_22": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.555,
+      "tokens_prompt": 711,
+      "tokens_saida": 5,
+      "eval_s": 0.51,
+      "carga_modelo_s": 0.434
+    }
+  },
+  "abstencao_v3_23": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.364,
+      "tokens_prompt": 708,
+      "tokens_saida": 5,
+      "eval_s": 0.422,
+      "carga_modelo_s": 0.404
+    }
+  },
+  "abstencao_v3_24": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.39,
+      "tokens_prompt": 707,
+      "tokens_saida": 5,
+      "eval_s": 0.485,
+      "carga_modelo_s": 0.398
+    }
+  },
+  "abstencao_v3_25": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "transactions"
+      ],
+      "group_by": [
+        "transaction__vehicle"
+      ],
+      "where": null,
+      "order_by": [
+        "metric_time__month",
+        "transactions",
+        "DESC"
+      ],
+      "limit": null,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"transactions\"],\n  \"group_by\": [\"transaction__vehicle\"],\n  \"where\": null,\n  \"order_by\": [\"metric_time__month\", \"transactions\", \"DESC\"],\n  \"limit\": null,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 5.82,
+      "tokens_prompt": 707,
+      "tokens_saida": 60,
+      "eval_s": 4.831,
+      "carga_modelo_s": 0.391
+    }
+  },
+  "abstencao_v3_26": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.243,
+      "tokens_prompt": 708,
+      "tokens_saida": 5,
+      "eval_s": 0.43,
+      "carga_modelo_s": 0.383
+    }
+  },
+  "abstencao_v3_27": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.168,
+      "tokens_prompt": 709,
+      "tokens_saida": 5,
+      "eval_s": 0.277,
+      "carga_modelo_s": 0.375
+    }
+  },
+  "abstencao_v3_28": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "suspect_transactions"
+      ],
+      "group_by": [],
+      "where": "{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"suspect_transactions\"],\n  \"group_by\": [],\n  \"where\": \"{{ Dimension('transaction__audit_flag') }} = 'POSSIVEL_DUPLICIDADE'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.938,
+      "tokens_prompt": 706,
+      "tokens_saida": 64,
+      "eval_s": 5.071,
+      "carga_modelo_s": 0.393
+    }
+  },
+  "abstencao_v3_29": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.376,
+      "tokens_prompt": 708,
+      "tokens_saida": 5,
+      "eval_s": 0.46,
+      "carga_modelo_s": 0.416
+    }
+  },
+  "abstencao_v3_30": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.193,
+      "tokens_prompt": 708,
+      "tokens_saida": 5,
+      "eval_s": 0.279,
+      "carga_modelo_s": 0.416
+    }
+  }
+}

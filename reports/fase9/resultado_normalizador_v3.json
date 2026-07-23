@@ -1,0 +1,93 @@
+{
+  "fase": "9_normalizador_ordem",
+  "conserto": "prompt ANTIGO (byte a byte da Fase 4) + normalizador deterministico de order_by. SEM chamada de LLM: reescore de predicoes congeladas.",
+  "motivacao_holdout": "normalizador motivado pela Fase 8 (v2); v3 e o holdout que o mede.",
+  "specs_tocadas_pelo_normalizador": 22,
+  "execution_accuracy": {
+    "cru": {
+      "n": 181,
+      "acertos": 121,
+      "taxa": 0.6685,
+      "wilson_ic95": [
+        0.5971,
+        0.733
+      ]
+    },
+    "com_normalizador": {
+      "n": 181,
+      "acertos": 130,
+      "taxa": 0.7182,
+      "wilson_ic95": [
+        0.6487,
+        0.7787
+      ]
+    },
+    "mcnemar": {
+      "b_only": 0,
+      "c_only": 9,
+      "p_valor": 0.0039,
+      "delta_acuracia": -0.0497,
+      "n": 181
+    }
+  },
+  "por_estrato": {
+    "coalesce_nulo": {
+      "n": 29,
+      "cru": 21,
+      "norm": 21,
+      "delta": 0
+    },
+    "grao_temporal": {
+      "n": 27,
+      "cru": 16,
+      "norm": 16,
+      "delta": 0
+    },
+    "join_grao": {
+      "n": 30,
+      "cru": 28,
+      "norm": 28,
+      "delta": 0
+    },
+    "metrica_derivada": {
+      "n": 15,
+      "cru": 8,
+      "norm": 8,
+      "delta": 0
+    },
+    "metrica_filtrada": {
+      "n": 30,
+      "cru": 30,
+      "norm": 30,
+      "delta": 0
+    },
+    "ranking": {
+      "n": 26,
+      "cru": 4,
+      "norm": 13,
+      "delta": 9
+    },
+    "valor_categorico": {
+      "n": 24,
+      "cru": 14,
+      "norm": 14,
+      "delta": 0
+    }
+  },
+  "regressoes": {},
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "56a6e47",
+    "git_dirty": true,
+    "git_diff_sha1": "a73ddf67c392",
+    "timestamp_utc": "2026-07-23T00:12:01+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

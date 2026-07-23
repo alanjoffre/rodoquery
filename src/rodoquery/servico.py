@@ -30,6 +30,7 @@ from pydantic import BaseModel, Field
 
 from rodoquery.config import settings
 from rodoquery.gold import Spec, compilar_spec
+from rodoquery.normalizacao_spec import normalizar_spec
 from rodoquery.sistema import tier_a
 
 LIMITE_LINHAS = 1_000
@@ -128,9 +129,14 @@ def consulta(req: Consulta, resposta_http: Response) -> Resposta:
                 tipo="abstencao", pergunta=req.pergunta, latencia_s=lat,
                 motivo="Fora do catálogo governado — não há métrica que responda a pergunta.")
 
+        # Normaliza a ordenação estilo-SQL (`["x","DESC"]` → `["-x"]`) ANTES de compilar. É o
+        # conserto de ranking da Fase 9: um endurecimento determinístico do SERVIÇO que provou
+        # +5pp / p=0,004 / zero regressões no holdout v3. O `tier_a` congelado não muda; isto age
+        # sobre a spec que ele devolve, no mesmo ponto onde o `compilar` falharia.
+        spec = normalizar_spec(pred.spec)
         t1 = time.perf_counter()
         try:
-            sql, do_cache = compilar_cacheado(pred.spec)
+            sql, do_cache = compilar_cacheado(spec)
         except Exception:                                    # noqa: BLE001 — falha fechada
             # Spec que não compila = o modelo não conseguiu mapear a pergunta ao catálogo.
             # Em produção isso vira ABSTENÇÃO honesta, não 500: falhar fechado é a postura certa
@@ -140,7 +146,7 @@ def consulta(req: Consulta, resposta_http: Response) -> Resposta:
             lat["total"] = round(time.perf_counter() - t0, 3)
             _registrar("abstencao", lat, False)
             return Resposta(
-                tipo="abstencao", pergunta=req.pergunta, spec=asdict(pred.spec), latencia_s=lat,
+                tipo="abstencao", pergunta=req.pergunta, spec=asdict(spec), latencia_s=lat,
                 motivo="Não consegui mapear a pergunta ao catálogo governado com segurança.")
         lat["compilacao"] = round(time.perf_counter() - t1, 3)
 
@@ -151,7 +157,7 @@ def consulta(req: Consulta, resposta_http: Response) -> Resposta:
 
         truncado = len(linhas) > LIMITE_LINHAS
         _registrar("resposta", lat, do_cache)
-        return Resposta(tipo="resposta", pergunta=req.pergunta, spec=asdict(pred.spec),
+        return Resposta(tipo="resposta", pergunta=req.pergunta, spec=asdict(spec),
                         colunas=colunas, linhas=[list(x) for x in linhas[:LIMITE_LINHAS]],
                         truncado=truncado, latencia_s=lat)
     except Exception as e:                                   # noqa: BLE001 (fronteira do serviço)
