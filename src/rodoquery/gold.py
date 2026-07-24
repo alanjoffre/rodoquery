@@ -61,9 +61,28 @@ def portabilizar(sql: str) -> str:
     return _RE_CATALOGO.sub("", sql)
 
 
-def compilar_spec(spec: Spec) -> str:
-    """Compila a spec semântica → SQL portável, via `mf query --explain` (uma vez, sem dados)."""
-    cmd = [str(_MF_BIN), "query", "--metrics", ",".join(spec.metrics), "--explain"]
+@dataclass(frozen=True)
+class Fundacao:
+    """Onde vive um projeto dbt+MetricFlow. Permite compilar specs contra fundações distintas
+    (sintética das Fases 0–10; real da ANTT a partir da 11) sem duplicar o compilador."""
+    dbt_dir: Path
+    mf_bin: Path
+    profiles_dir: Path | None = None
+
+
+FUNDACAO_SINTETICA = Fundacao(dbt_dir=_DBT_DIR, mf_bin=_MF_BIN)
+# A ANTT reusa o `mf` do venv da fundação sintética e tem o profiles.yml no próprio projeto.
+FUNDACAO_ANTT = Fundacao(dbt_dir=settings.antt_dbt_dir, mf_bin=_MF_BIN,
+                         profiles_dir=settings.antt_dbt_dir)
+
+
+def compilar_spec(spec: Spec, fundacao: Fundacao | None = None) -> str:
+    """Compila a spec semântica → SQL portável, via `mf query --explain` (uma vez, sem dados).
+
+    `fundacao=None` mantém a fundação SINTÉTICA — as Fases 0–10 seguem reproduzíveis byte a byte.
+    """
+    f = fundacao or FUNDACAO_SINTETICA
+    cmd = [str(f.mf_bin), "query", "--metrics", ",".join(spec.metrics), "--explain"]
     if spec.group_by:
         cmd += ["--group-by", ",".join(spec.group_by)]
     if spec.where:
@@ -74,7 +93,9 @@ def compilar_spec(spec: Spec) -> str:
         cmd += ["--limit", str(spec.limit)]
     # Telemetria off: dbt/MetricFlow "telefonam pra casa" e travam ~180s esperando a rede.
     env = {**os.environ, "DO_NOT_TRACK": "1", "DBT_SEND_ANONYMOUS_USAGE_STATS": "false"}
-    r = subprocess.run(cmd, cwd=_DBT_DIR, capture_output=True, text=True, timeout=120, env=env)
+    if f.profiles_dir:
+        env["DBT_PROFILES_DIR"] = str(f.profiles_dir)
+    r = subprocess.run(cmd, cwd=f.dbt_dir, capture_output=True, text=True, timeout=120, env=env)
     if r.returncode != 0:
         raise RuntimeError(f"mf falhou p/ {spec.metrics}:\n{r.stdout[-800:]}\n{r.stderr[-800:]}")
     return portabilizar(_extrair_sql(r.stdout))

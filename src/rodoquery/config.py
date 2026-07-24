@@ -14,6 +14,8 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 # Fundação buildada em filesystem WSL-NATIVO (não /mnt/d — lá o dbt/mf ficam lentos e flaky por
 # I/O 9P). Ver docs/FUNDACAO.md. Sobrescrevível por env (RODOQUERY_TOLL_*).
 _TOLL = Path.home() / "toll-foundation" / "dbt-toll-analytics"
+_ANTT_RAIZ = Path.home() / "antt-foundation"
+_ANTT = _ANTT_RAIZ / "dbt-antt"
 
 
 class Settings(BaseSettings):
@@ -25,10 +27,19 @@ class Settings(BaseSettings):
     modelo_emb: str = "nomic-embed-text"
     temperatura: float = 0.0  # reprodutibilidade: nunca depender de sorte
 
-    # Fundação de dados (toll-analytics buildado).
+    # Fundação de dados SINTÉTICA (toll-analytics buildado) — a das Fases 0–10.
     toll_duckdb: Path = _TOLL / "toll_analytics.duckdb"
     toll_manifest: Path = _TOLL / "target" / "manifest.json"
     toll_semantic_manifest: Path = _TOLL / "target" / "semantic_manifest.json"
+
+    # Fundação de dados REAL (ANTT, CC-BY) — a partir da Fase 11. Projeto dbt SEPARADO de
+    # propósito: mexer no sintético invalidaria a reprodutibilidade das fases anteriores.
+    # Reusa o binário `mf` do venv da fundação sintética (mesmo dbt/MetricFlow).
+    antt_dbt_dir: Path = _ANTT
+    antt_duckdb: Path = _ANTT_RAIZ / "antt_analytics.duckdb"
+    antt_manifest: Path = _ANTT / "target" / "manifest.json"
+    antt_semantic_manifest: Path = _ANTT / "target" / "semantic_manifest.json"
+    antt_suite_dir: Path = Path.home() / "antt_suite"
 
     reports_dir: Path = REPO_ROOT / "reports"
 
