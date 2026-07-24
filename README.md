@@ -24,6 +24,8 @@ Data Engineering × AI Engineering · avaliação com rigor · R$0 · dados sint
 
 Os três conjuntos têm dificuldades diferentes e **não são comparáveis entre si** — o que se repete nos três é a **vantagem da interface governada**: +54,8, +58,7 e +58,1 pp.
 
+**E o baseline não é um espantalho.** O mesmo modelo tira **43,4%** [39,1; 47,8] no [BIRD Mini-Dev](https://bird-bench.github.io/) — 500 perguntas e SQL de referência **humanos**, benchmark público. Ele sabe escrever SQL; o que muda o resultado é a **interface**, não a competência.
+
 Como o SUT é idêntico, o ganho é atribuível **à interface**, não ao modelo. A vantagem **cresce** com o conjunto maior.
 
 > ⚠️ **Leia o segundo número, não o primeiro.** O 97,6% da Fase 4 **não replica**: num conjunto 4× maior, cobrindo superfície do catálogo que a v1 nunca tocou, o Tier-A faz 73,7%. A tese sobrevive com folga; o valor absoluto, não. Ver [Fase 8](docs/FASE8_PODER.md).
@@ -74,6 +76,7 @@ O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com
 | **10** · Catálogo | Δ EX (pareado, determinístico) | ⚠️ limpar o catálogo **empatou** (p=1,0) · ✅ o gargalo real era outro: **+12,7 pp, p≈0, zero regressões** |
 | **11** · Dados reais | fundação ANTT verificada ponta a ponta | ✅ **1,5 M de linhas reais (CC-BY)** substituem 2 mil sintéticas · catálogo nasce com **3 métricas** · 2 armadilhas do dado real pegas antes de virarem número errado |
 | **12** · Tese sobre dado real | Δ EX + McNemar no TEST-ANTT selado | ✅ **86,9% × 28,8%, +58,1 pp, p≈0** · κ de máquina 0,977 · **2 bugs de harness pegos antes de virarem resultado** |
+| **13** · Calibração externa | EX num benchmark público de perguntas **humanas** | ✅ **43,4%** [39,1; 47,8] no BIRD Mini-Dev · prova que o baseline **não é espantalho** · 75% dos erros são silenciosos |
 
 ## 🔬 Previsões que a medição **refutou**
 
@@ -101,13 +104,25 @@ Bônus: **a abstenção ficou 100% intacta** sob perturbação de schema. Reconh
 - Tudo em `reports/<fase>/*.json` carimbado (seed, git_sha, modelo, temperatura, versões).
 - **R$0**, dados **sintéticos**, LLM **local** (Qwen2.5-Coder-7B em 6 GB — teto declarado honestamente).
 
+## 🚫 O que eu decidi **não** medir — e por quê
+
+**[Spider 2.0](https://spider2-sql.github.io/) (ICLR 2025) é o benchmark mais alinhado a esta tese** — tem inclusive uma trilha `Spider2-DBT`, com tarefas em nível de repositório dbt. Seria o alvo natural. Ficou de fora, e a razão é aritmética:
+
+> Modelos de fronteira fazem **17–21%** no Spider 2.0. Este projeto roda um **Qwen2.5-Coder-7B em 6 GB de VRAM**. O resultado esperado é indistinguível de zero.
+
+Um zero não separa "o Semantic Layer ajuda" de "o modelo não dá conta" — não mede a tese, mede o teto de hardware que já declarei na Fase 0. Rodá-lo renderia uma linha bonita no README (*"avaliado no Spider 2.0"*) e **nenhuma informação**.
+
+A escolha honesta foi um benchmark onde o SUT tem sinal mensurável: o **BIRD Mini-Dev**, com 500 perguntas e SQL de referência **humanos** — que é também o que ataca o backlog de κ humano. Ver [Fase 13](docs/FASE13_BIRD.md).
+
+Se o teto de hardware subir, Spider2-DBT é o próximo alvo natural.
+
 ## 🎯 Backlog declarado (o que **não** está feito)
 
 Nenhum destes é surpresa: todos foram declarados na fase em que apareceram.
 
 - **Seleção de métrica em itens multidimensionais** — o gargalo real que a Fase 8 e a 9 apontam (ex.: unidade BRL × centavos). O conserto barato (sintaxe de ordenação) foi feito; este é o caro — exige descrições que separem métricas vizinhas ou um SUT maior.
 - **Abstenção contra vizinho semântico** — o catálogo precisa dizer o que uma métrica **não** é (`suspect_rate` ≠ estorno ≠ conversão ≠ inadimplência).
-- **κ humano** do golden set — hoje só há concordância entre modelos, **rotulada como de máquina**.
+- **κ humano do golden set do RodoQuery** — hoje só há concordância entre modelos, **rotulada como de máquina**. A Fase 13 avalia o SUT contra anotação humana (BIRD), o que é diferente de ter κ humano no *meu* conjunto; o item continua aberto.
 - **Ligar o Tier-B** no roteador — o fallback de SQL cru está construído e o sandbox validado, mas desligado.
 - **Conjunto de robustez próprio** — a Fase 7 reusou o TEST para medir deltas. Nenhum ajuste foi feito com base nesses resultados, mas cada reuso erode um holdout.
 - ~~Expandir N para ≥25/estrato~~ — **feito na Fase 8** (223 itens no TEST-v2, 26–29 por estrato).
@@ -124,7 +139,7 @@ uvicorn rodoquery.servico:app --port 8077 # serving do Tier-A
 
 Pré-requisito: a fundação de dados vem do **toll-analytics-platform** buildado (`dbt build` → DuckDB + `manifest.json`). Ver [`docs/FUNDACAO.md`](docs/FUNDACAO.md).
 
-**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md)
+**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md) · [calibração BIRD](docs/FASE13_BIRD.md)
 
 ## 📄 Licença
 MIT. Dados sintéticos (nenhum dado real).
