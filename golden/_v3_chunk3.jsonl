@@ -1,0 +1,80 @@
+{"id": "valor_categorico_v3_11", "pergunta_nl": "Quantas transações estornadas houve em cada praça?"}
+{"id": "valor_categorico_v3_12", "pergunta_nl": "Qual a receita em centavos das transações sem apontamento de auditoria por situação?"}
+{"id": "valor_categorico_v3_13", "pergunta_nl": "Qual a receita em centavos das transações que falharam em cada veículo?"}
+{"id": "valor_categorico_v3_14", "pergunta_nl": "Qual a taxa de suspeita das transações estornadas?"}
+{"id": "valor_categorico_v3_15", "pergunta_nl": "Qual foi a receita das transações pagas com cartão por marcação de auditoria?"}
+{"id": "valor_categorico_v3_16", "pergunta_nl": "Quantas transações suspeitas com cobrança em falha houve por praça?"}
+{"id": "valor_categorico_v3_17", "pergunta_nl": "Qual foi a receita das transações com cobrança em falha por praça?"}
+{"id": "valor_categorico_v3_18", "pergunta_nl": "Qual foi a receita das transações estornadas por flag de auditoria?"}
+{"id": "valor_categorico_v3_19", "pergunta_nl": "Quantas transações suspeitas com tarifa divergente houve por forma de pagamento?"}
+{"id": "valor_categorico_v3_20", "pergunta_nl": "Qual a taxa de suspeita das transações que falharam?"}
+{"id": "valor_categorico_v3_21", "pergunta_nl": "Quantas transações que falharam houve por praça?"}
+{"id": "valor_categorico_v3_22", "pergunta_nl": "Quantas transações suspeitas pagas em dinheiro houve por marcação de auditoria?"}
+{"id": "valor_categorico_v3_23", "pergunta_nl": "Quantas transações com possível duplicidade houve por forma de pagamento?"}
+{"id": "valor_categorico_v3_24", "pergunta_nl": "Qual foi a receita das transações com tarifa divergente por status?"}
+{"id": "valor_categorico_v3_25", "pergunta_nl": "Quantas transações com possível duplicidade houve?"}
+{"id": "valor_categorico_v3_26", "pergunta_nl": "Qual a taxa de suspeita das transações com tarifa divergente por veículo?"}
+{"id": "valor_categorico_v3_27", "pergunta_nl": "Quantas transações suspeitas concluídas houve por flag de auditoria?"}
+{"id": "valor_categorico_v3_28", "pergunta_nl": "Quantas transações suspeitas com tarifa divergente houve?"}
+{"id": "valor_categorico_v3_29", "pergunta_nl": "Qual a taxa de suspeita das transações sem apontamento de auditoria por praça?"}
+{"id": "valor_categorico_v3_30", "pergunta_nl": "Qual a receita em centavos das transações estornadas por método de pagamento?"}
+{"id": "coalesce_nulo_v3_01", "pergunta_nl": "Quantas transações com possível duplicidade houve em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_02", "pergunta_nl": "Quantas transações que falharam houve em cada dia?"}
+{"id": "coalesce_nulo_v3_03", "pergunta_nl": "Qual o faturamento das transações com tarifa divergente em cada dia?"}
+{"id": "coalesce_nulo_v3_04", "pergunta_nl": "Quantas transações com cobrança em falha houve em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_05", "pergunta_nl": "Qual o vazamento de receita das transações com possível duplicidade em cada dia e em cada veículo?"}
+{"id": "coalesce_nulo_v3_06", "pergunta_nl": "Qual foi a receita das transações com possível duplicidade em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_07", "pergunta_nl": "Qual o vazamento de receita em centavos das transações concluídas em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_08", "pergunta_nl": "Qual foi a receita das transações concluídas em cada dia e em cada praça?"}
+{"id": "coalesce_nulo_v3_09", "pergunta_nl": "Qual o vazamento de receita em centavos das transações sem apontamento de auditoria em cada dia e por veículo?"}
+{"id": "coalesce_nulo_v3_10", "pergunta_nl": "Qual o vazamento de receita em centavos das transações sem apontamento de auditoria em cada dia?"}
+{"id": "coalesce_nulo_v3_11", "pergunta_nl": "Qual o vazamento de receita em centavos das transações com possível duplicidade em cada dia e em cada veículo?"}
+{"id": "coalesce_nulo_v3_12", "pergunta_nl": "Qual o vazamento de receita em centavos das transações concluídas em cada dia e em cada veículo?"}
+{"id": "coalesce_nulo_v3_13", "pergunta_nl": "Qual a taxa de suspeita das transações que falharam em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_14", "pergunta_nl": "Quantas transações pagas com cartão houve em cada dia?"}
+{"id": "coalesce_nulo_v3_15", "pergunta_nl": "Quantas transações pagas com tag automática houve em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_16", "pergunta_nl": "Qual o faturamento das transações que falharam em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_17", "pergunta_nl": "Qual a taxa de suspeita das transações com valor inválido em cada dia e em cada veículo?"}
+{"id": "coalesce_nulo_v3_18", "pergunta_nl": "Qual foi a receita das transações com valor inválido em cada dia?"}
+{"id": "coalesce_nulo_v3_19", "pergunta_nl": "Qual a perda de receita das transações com valor inválido em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_20", "pergunta_nl": "Qual a receita em centavos das transações com tarifa divergente em cada dia?"}
+{"id": "coalesce_nulo_v3_21", "pergunta_nl": "Qual a receita em centavos das transações pagas com cartão em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_22", "pergunta_nl": "Qual o vazamento de receita das transações pagas com tag automática em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_23", "pergunta_nl": "Quantas transações suspeitas com tarifa divergente houve em cada dia e em cada veículo?"}
+{"id": "coalesce_nulo_v3_24", "pergunta_nl": "Qual foi a receita das transações concluídas em cada dia?"}
+{"id": "coalesce_nulo_v3_25", "pergunta_nl": "Qual a receita em centavos das transações pagas com tag automática em cada dia?"}
+{"id": "coalesce_nulo_v3_26", "pergunta_nl": "Quantas transações pagas com tag automática houve em cada dia e em cada veículo?"}
+{"id": "coalesce_nulo_v3_27", "pergunta_nl": "Qual a perda de receita das transações sem apontamento de auditoria em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_28", "pergunta_nl": "Qual a perda de receita das transações com tarifa divergente em cada dia e por praça?"}
+{"id": "coalesce_nulo_v3_29", "pergunta_nl": "Quantas transações suspeitas com possível duplicidade houve em cada dia e em cada praça?"}
+{"id": "coalesce_nulo_v3_30", "pergunta_nl": "Qual o vazamento de receita em centavos das transações pagas em dinheiro em cada dia?"}
+{"id": "abstencao_v3_01", "pergunta_nl": "Qual a receita média por praça de pedágio?"}
+{"id": "abstencao_v3_02", "pergunta_nl": "Qual o valor da maior transação já registrada?"}
+{"id": "abstencao_v3_03", "pergunta_nl": "Quantos veículos diferentes usaram tag automática?"}
+{"id": "abstencao_v3_04", "pergunta_nl": "Qual a receita por dia da semana?"}
+{"id": "abstencao_v3_05", "pergunta_nl": "Qual a receita por trimestre?"}
+{"id": "abstencao_v3_06", "pergunta_nl": "Qual a receita por turno (manhã, tarde, noite)?"}
+{"id": "abstencao_v3_07", "pergunta_nl": "Qual a receita por rodovia?"}
+{"id": "abstencao_v3_08", "pergunta_nl": "Qual a receita por município?"}
+{"id": "abstencao_v3_09", "pergunta_nl": "Qual a receita por categoria tarifária?"}
+{"id": "abstencao_v3_10", "pergunta_nl": "Qual a proporção da receita que cada praça representa no total?"}
+{"id": "abstencao_v3_11", "pergunta_nl": "Quanto a receita cresceu em relação ao ano passado?"}
+{"id": "abstencao_v3_12", "pergunta_nl": "Qual a média móvel de transações dos últimos 7 dias?"}
+{"id": "abstencao_v3_13", "pergunta_nl": "Qual o total acumulado de transações no ano?"}
+{"id": "abstencao_v3_14", "pergunta_nl": "Qual a taxa de abandono das cabines?"}
+{"id": "abstencao_v3_15", "pergunta_nl": "Qual a taxa de erro de leitura das antenas?"}
+{"id": "abstencao_v3_16", "pergunta_nl": "Qual o índice de evasão de pedágio?"}
+{"id": "abstencao_v3_17", "pergunta_nl": "Qual a taxa de ocupação das cabines por hora?"}
+{"id": "abstencao_v3_18", "pergunta_nl": "Qual o custo de cobrança por transação?"}
+{"id": "abstencao_v3_19", "pergunta_nl": "Qual o lucro operacional de cada praça?"}
+{"id": "abstencao_v3_20", "pergunta_nl": "Qual a projeção de receita para o próximo semestre?"}
+{"id": "abstencao_v3_21", "pergunta_nl": "Quais praças estão acima da meta de arrecadação?"}
+{"id": "abstencao_v3_22", "pergunta_nl": "Qual o tempo de permanência médio dos veículos na praça?"}
+{"id": "abstencao_v3_23", "pergunta_nl": "Qual a distância média percorrida por veículo?"}
+{"id": "abstencao_v3_24", "pergunta_nl": "Quantos funcionários há por turno em cada praça?"}
+{"id": "abstencao_v3_25", "pergunta_nl": "Qual o modelo dos veículos que mais passaram?"}
+{"id": "abstencao_v3_26", "pergunta_nl": "Qual a cor predominante dos veículos autuados?"}
+{"id": "abstencao_v3_27", "pergunta_nl": "Qual o telefone de contato da praça P003?"}
+{"id": "abstencao_v3_28", "pergunta_nl": "Quantas multas foram aplicadas no período?"}
+{"id": "abstencao_v3_29", "pergunta_nl": "Qual a idade da infraestrutura de cada praça?"}
+{"id": "abstencao_v3_30", "pergunta_nl": "Qual o consumo de energia das praças por mês?"}

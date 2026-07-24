@@ -4,7 +4,14 @@ A garantia que estes testes protegem: o normalizador só age na forma exata `[ca
 nunca toca em nada mais. É essa propriedade que fez o conserto ter ZERO regressões no holdout v3.
 """
 from rodoquery.gold import Spec
-from rodoquery.normalizacao_spec import normalizar_ordem, normalizar_spec
+from rodoquery.normalizacao_spec import (
+    dimensoes_filtradas_por_igualdade,
+    normalizar_group_by,
+    normalizar_ordem,
+    normalizar_spec,
+)
+
+W_STATUS = "{{ Dimension('transaction__status') }} = 'COMPLETED'"
 
 
 def test_desc_vira_prefixo_menos():
@@ -55,3 +62,47 @@ def test_normalizar_spec_no_op_quando_ja_certo():
     s = Spec(metrics=["revenue"], group_by=["transaction__plaza"],
              order_by=["-revenue"], limit=3, ordenado=True)
     assert normalizar_spec(s) is s        # devolve o MESMO objeto, sem cópia inútil
+
+
+# ---------------------------------------------------------------- group_by (Fase 10)
+def test_extrai_dimensao_de_filtro_de_igualdade():
+    assert dimensoes_filtradas_por_igualdade(W_STATUS) == {"transaction__status"}
+
+
+def test_where_vazio_nao_extrai_nada():
+    assert dimensoes_filtradas_por_igualdade(None) == set()
+
+
+def test_remove_do_group_by_a_dimensao_filtrada():
+    # o modo de falha dominante: filtra status e agrupa por dia E status
+    assert normalizar_group_by(["metric_time__day", "transaction__status"], W_STATUS) == \
+        ["metric_time__day"]
+
+
+def test_preserva_group_by_sem_intersecao():
+    assert normalizar_group_by(["metric_time__day"], W_STATUS) == ["metric_time__day"]
+
+
+def test_nao_esvazia_o_group_by():
+    # se a única dimensão agrupada é a filtrada, remover mudaria o sentido da pergunta:
+    # é o caso AMBÍGUO, que o golden não deve conter — a regra não decide por ele.
+    assert normalizar_group_by(["transaction__status"], W_STATUS) == ["transaction__status"]
+
+
+def test_sem_where_group_by_intacto():
+    assert normalizar_group_by(["transaction__status"], None) == ["transaction__status"]
+
+
+def test_desigualdade_nao_conta_como_filtro_de_valor_unico():
+    # `!=` deixa vários valores possíveis: agrupar continua informativo
+    w = "{{ Dimension('transaction__status') }} != 'COMPLETED'"
+    assert normalizar_group_by(["transaction__status"], w) == ["transaction__status"]
+
+
+def test_normalizar_spec_aplica_ordem_e_group_by_juntos():
+    s = Spec(metrics=["revenue"], group_by=["metric_time__day", "transaction__status"],
+             where=W_STATUS, order_by=["revenue", "DESC"], limit=3, ordenado=True)
+    n = normalizar_spec(s)
+    assert n.group_by == ["metric_time__day"]
+    assert n.order_by == ["-revenue"]
+    assert n.where == W_STATUS and n.metrics == ["revenue"]

@@ -25,6 +25,16 @@ Como o SUT é idêntico, o ganho é atribuível **à interface**, não ao modelo
 
 > ⚠️ **Leia o segundo número, não o primeiro.** O 97,6% da Fase 4 **não replica**: num conjunto 4× maior, cobrindo superfície do catálogo que a v1 nunca tocou, o Tier-A faz 73,7%. A tese sobrevive com folga; o valor absoluto, não. Ver [Fase 8](docs/FASE8_PODER.md).
 
+**Dois normalizadores determinísticos recuperam boa parte disso** — sem trocar de modelo, sem tocar no prompt (holdout v3, n=181, pareado):
+
+| Sistema | EX |
+|---|---|
+| Tier-A cru (Fase 4, congelado) | 66,9% |
+| + normalizar ordenação (`["x","DESC"]` → `["-x"]`) | 71,8% |
+| **+ normalizar `group_by` (remover dimensão já filtrada)** | **84,5%** |
+
+**+17,7 pp em código**, ambos com **zero regressões**. As duas tentativas de ensinar as mesmas regras *pelo prompt* empataram — ver [Fase 9](docs/FASE9_CONSERTO.md) e [Fase 10](docs/FASE10_CATALOGO.md).
+
 RodoQuery é o irmão de [**RodoIA**](https://github.com/alanjoffre/rodoia) no eixo de dados: um agente que traduz linguagem natural em consultas **seguras** sobre a plataforma [**toll-analytics-platform**](https://github.com/alanjoffre/toll-analytics-platform) (lakehouse de auditoria de pedágio, dados sintéticos, DuckDB dev → Databricks prod), reusando o **dbt Semantic Layer** já modelado.
 
 ## 🏗️ Arquitetura — o que de fato está servido
@@ -58,6 +68,7 @@ O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com
 | **7** · Robustez | quanto o EX cai (com IC) | ⚠️ paráfrase −7,7 pp (**p=0,375, não significativo**) · **schema opaco −14,3 pp (p=0,031)** |
 | **8** · Poder estatístico | **≥25 itens/estrato** (meta da Fase 2) | ✅ 223 no TEST-v2, 26–29/estrato · ⚠️ **o EX de 97,6% não replica: 73,7%** · 3 modos de falha novos |
 | **9** · Conserto | Δ EX no holdout v3 (pareado) | ⚠️ reescrever o prompt **empatou** (p=0,89) · ✅ **normalizar em código: +5 pp, p=0,004, zero regressões** |
+| **10** · Catálogo | Δ EX (pareado, determinístico) | ⚠️ limpar o catálogo **empatou** (p=1,0) · ✅ o gargalo real era outro: **+12,7 pp, p≈0, zero regressões** |
 
 ## 🔬 Previsões que a medição **refutou**
 
@@ -70,6 +81,7 @@ Este é o item de que mais me orgulho no projeto. Cada fase tinha um "achado hon
 | *"em 6 GB a inferência serializa"* (F6) | **Confirmada — e pior.** Vazão cai 25% em c=4/8 e o p95 vai de 4,4 s para **43 s**. O ótimo de vazão (c=2) **não** é o ótimo de SLO: o controle de admissão certo foi semáforo **1** + espera 5 s, recusando o excesso com 503 em vez de enfileirar. |
 | *"o EX de 97,6% descreve o sistema"* (implícito, F4) | **Refutada pela Fase 8.** Com N 4× maior e superfície nova, o EX é **73,7%**. Três buracos que o conjunto pequeno escondia: a regra `where`-vs-`group_by` **não compõe** com agrupamento (`coalesce_nulo` 15%); a regra de ranking **nunca fora avaliada** e não funciona (17%, sintaxe SQL em vez de MetricFlow); e a abstenção de 100% era artefato de perguntas óbvias — com *near-miss* cai para **55,6%**, errando por **substituição semântica silenciosa** ("taxa de estorno" → `suspect_rate`). |
 | *"consertar a falha de ranking = melhorar o prompt"* (F9) | **Refutada pela medição.** Reescrever o prompt **empatou** no holdout (p=0,89): consertou ranking mas a prosa extra causou 18 erros novos de seleção de métrica. O **mesmo conserto em código** (normalizar `["x","DESC"]` → `["-x"]`) deu **+5 pp, p=0,004, zero regressões**. Falha mecânica se conserta em código, não com mais texto no prompt. |
+| *"o gargalo é seleção de métrica; limpar o catálogo resolve"* (F10) | **Refutada.** Expor `revenue` e `revenue_cents` (a mesma grandeza) é desenho ruim, mas respondia por só **19%** dos erros — remover empatou (p=1,0). O diagnóstico revelou o gargalo real: em **81%** dos erros a métrica estava **certa** e o modelo **agrupava pela dimensão que já havia filtrado**. Corrigir isso em código deu **+12,7 pp, p≈0, zero regressões** — o maior ganho isolado do projeto. |
 
 Bônus: **a abstenção ficou 100% intacta** sob perturbação de schema. Reconhecer "não existe métrica para isto" depende de o catálogo **não ter** algo, não do nome que as métricas têm — duas competências separadas, e a de segurança é a robusta.
 
@@ -107,7 +119,7 @@ uvicorn rodoquery.servico:app --port 8077 # serving do Tier-A
 
 Pré-requisito: a fundação de dados vem do **toll-analytics-platform** buildado (`dbt build` → DuckDB + `manifest.json`). Ver [`docs/FUNDACAO.md`](docs/FUNDACAO.md).
 
-**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md)
+**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md)
 
 ## 📄 Licença
 MIT. Dados sintéticos (nenhum dado real).

@@ -18,11 +18,15 @@ Ele é motivado inteiramente pela Fase 8 (v2); o v3 é o holdout que o mede pela
 """
 from __future__ import annotations
 
+import re
 from dataclasses import replace
 
 from rodoquery.gold import Spec
 
 _DIRECOES = ("DESC", "ASC")
+# Captura a dimensão de um filtro de IGUALDADE: {{ Dimension('X') }} = 'V'
+# Só igualdade: em `!=` ou `IN (...)` com vários valores o agrupamento continua informativo.
+_EQ = re.compile(r"Dimension\(\s*['\"]([^'\"]+)['\"]\s*\)\s*\}\}\s*=\s*['\"]")
 
 
 def normalizar_ordem(order_by: list[str]) -> list[str]:
@@ -34,7 +38,38 @@ def normalizar_ordem(order_by: list[str]) -> list[str]:
     return order_by
 
 
+def dimensoes_filtradas_por_igualdade(where: str | None) -> set[str]:
+    """Dimensões presas a UM valor por `=` no where."""
+    return set(_EQ.findall(where or ""))
+
+
+def normalizar_group_by(group_by: list[str], where: str | None) -> list[str]:
+    """Remove do `group_by` toda dimensão já presa a um único valor por igualdade no `where`.
+
+    Motivação (Fase 10): este é o modo de falha DOMINANTE do sistema — 22 dos 29 erros de
+    estrutura. Quando a pergunta pede filtro E agrupamento ("receita das transações estornadas em
+    cada dia"), o modelo põe a dimensão filtrada TAMBÉM no group_by.
+
+    Por que é seguro corrigir em código: agrupar por uma coluna restrita a um único valor produz
+    exatamente um grupo — acrescenta uma coluna constante e nenhuma informação. Nas 26 predições do
+    TEST-v3 com esse padrão, o gold NUNCA agrupa pela dimensão filtrada (0 quebras possíveis).
+
+    Ressalva honesta: quando a pergunta é do tipo "entre as transações estornadas, por status", as
+    duas leituras se defendem. Esses itens são AMBÍGUOS e foram removidos do v3 pelos anotadores
+    cegos antes de qualquer medição — não é a regra que os resolve, é o golden que não deve tê-los.
+    """
+    presas = dimensoes_filtradas_por_igualdade(where)
+    if not presas:
+        return group_by
+    limpo = [d for d in group_by if d not in presas]
+    # nunca esvaziar o group_by por completo: sem dimensão nenhuma a pergunta muda de sentido
+    return limpo if limpo else group_by
+
+
 def normalizar_spec(spec: Spec) -> Spec:
-    """Aplica `normalizar_ordem` ao `order_by` da spec, preservando todo o resto."""
-    novo = normalizar_ordem(spec.order_by)
-    return spec if novo == spec.order_by else replace(spec, order_by=novo)
+    """Aplica as normalizações determinísticas, preservando todo o resto da spec."""
+    ordem = normalizar_ordem(spec.order_by)
+    gb = normalizar_group_by(spec.group_by, spec.where)
+    if ordem == spec.order_by and gb == spec.group_by:
+        return spec
+    return replace(spec, order_by=ordem, group_by=gb)

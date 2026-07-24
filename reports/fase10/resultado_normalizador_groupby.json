@@ -1,0 +1,94 @@
+{
+  "fase": "10_normalizador_group_by",
+  "regra": "remove do group_by a dimensao presa a UM valor por igualdade no where: agrupar por coluna constante gera um unico grupo e nenhuma informacao.",
+  "achado_que_motivou": "22 dos 29 erros de estrutura do TEST-v3 tinham a metrica CERTA e a dimensao filtrada indevidamente no group_by.",
+  "ressalva": "TEST-v3 ja inspecionado -> sinal; confirmacao no holdout novo da ANTT.",
+  "specs_tocadas": 27,
+  "execution_accuracy": {
+    "so_ordem": {
+      "n": 181,
+      "acertos": 130,
+      "taxa": 0.7182,
+      "wilson_ic95": [
+        0.6487,
+        0.7787
+      ]
+    },
+    "ordem_e_groupby": {
+      "n": 181,
+      "acertos": 153,
+      "taxa": 0.8453,
+      "wilson_ic95": [
+        0.7855,
+        0.8908
+      ]
+    },
+    "mcnemar": {
+      "b_only": 0,
+      "c_only": 23,
+      "p_valor": 0.0,
+      "delta_acuracia": -0.1271,
+      "n": 181
+    }
+  },
+  "por_estrato": {
+    "coalesce_nulo": {
+      "n": 29,
+      "so_ordem": 21,
+      "com_groupby": 27,
+      "delta": 6
+    },
+    "grao_temporal": {
+      "n": 27,
+      "so_ordem": 16,
+      "com_groupby": 24,
+      "delta": 8
+    },
+    "join_grao": {
+      "n": 30,
+      "so_ordem": 28,
+      "com_groupby": 28,
+      "delta": 0
+    },
+    "metrica_derivada": {
+      "n": 15,
+      "so_ordem": 8,
+      "com_groupby": 12,
+      "delta": 4
+    },
+    "metrica_filtrada": {
+      "n": 30,
+      "so_ordem": 30,
+      "com_groupby": 30,
+      "delta": 0
+    },
+    "ranking": {
+      "n": 26,
+      "so_ordem": 13,
+      "com_groupby": 15,
+      "delta": 2
+    },
+    "valor_categorico": {
+      "n": 24,
+      "so_ordem": 14,
+      "com_groupby": 17,
+      "delta": 3
+    }
+  },
+  "regressoes": {},
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "be38dbf",
+    "git_dirty": true,
+    "git_diff_sha1": "83497e8e34a4",
+    "timestamp_utc": "2026-07-24T12:16:33+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

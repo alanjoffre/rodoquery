@@ -1,0 +1,10 @@
+{
+  "fonte": "ANTT - Portal de Dados Abertos - Volume de Trafego nas Pracas de Pedagio",
+  "url": "https://dados.antt.gov.br/dataset/volume-trafego-praca-pedagio",
+  "licenca": "CC-BY (Creative Commons Atribuicao)",
+  "tem_pii": false,
+  "justificativa_pii": "dados agregados por praca/dia/categoria; nenhum identificador de pessoa ou veiculo individual",
+  "benchmark_humano": null,
+  "atualizacao": "mensal",
+  "cobertura": "diario, jan-mai 2026 (serie historica anual desde 2010)"
+}

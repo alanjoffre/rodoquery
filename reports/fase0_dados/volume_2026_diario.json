@@ -1,0 +1,144 @@
+{
+  "arquivo": "/home/alan/antt_dados/volume_2026_diario.csv",
+  "meta_declarada": {
+    "fonte": "ANTT - Portal de Dados Abertos - Volume de Trafego nas Pracas de Pedagio",
+    "url": "https://dados.antt.gov.br/dataset/volume-trafego-praca-pedagio",
+    "licenca": "CC-BY (Creative Commons Atribuicao)",
+    "tem_pii": false,
+    "justificativa_pii": "dados agregados por praca/dia/categoria; nenhum identificador de pessoa ou veiculo individual",
+    "benchmark_humano": null,
+    "atualizacao": "mensal",
+    "cobertura": "diario, jan-mai 2026 (serie historica anual desde 2010)"
+  },
+  "perfil": {
+    "n_linhas": 1534142,
+    "colunas": [
+      {
+        "coluna": "concessionaria",
+        "tipo": "VARCHAR",
+        "distintos": 30,
+        "nulos": 0,
+        "pct_nulo": 0.0,
+        "texto_numerico": false
+      },
+      {
+        "coluna": "mes_ano",
+        "tipo": "DATE",
+        "distintos": 151,
+        "nulos": 0,
+        "pct_nulo": 0.0,
+        "texto_numerico": false
+      },
+      {
+        "coluna": "sentido",
+        "tipo": "VARCHAR",
+        "distintos": 2,
+        "nulos": 0,
+        "pct_nulo": 0.0,
+        "texto_numerico": false
+      },
+      {
+        "coluna": "praca",
+        "tipo": "VARCHAR",
+        "distintos": 234,
+        "nulos": 0,
+        "pct_nulo": 0.0,
+        "texto_numerico": false
+      },
+      {
+        "coluna": "tipo_cobranca",
+        "tipo": "VARCHAR",
+        "distintos": 3,
+        "nulos": 0,
+        "pct_nulo": 0.0,
+        "texto_numerico": false
+      },
+      {
+        "coluna": "categoria_eixo",
+        "tipo": "BIGINT",
+        "distintos": 19,
+        "nulos": 0,
+        "pct_nulo": 0.0,
+        "texto_numerico": false
+      },
+      {
+        "coluna": "tipo_de_veiculo",
+        "tipo": "VARCHAR",
+        "distintos": 3,
+        "nulos": 0,
+        "pct_nulo": 0.0,
+        "texto_numerico": false
+      },
+      {
+        "coluna": "volume_total",
+        "tipo": "VARCHAR",
+        "distintos": 11372,
+        "nulos": 0,
+        "pct_nulo": 0.0,
+        "texto_numerico": true
+      }
+    ]
+  },
+  "papeis": {
+    "medidas": [
+      "volume_total"
+    ],
+    "tempo": [
+      "mes_ano"
+    ],
+    "entidades": [
+      "praca"
+    ],
+    "categoricas": [
+      "concessionaria",
+      "sentido",
+      "tipo_cobranca",
+      "categoria_eixo",
+      "tipo_de_veiculo"
+    ],
+    "suspeitas_de_id_ou_constante": []
+  },
+  "checks": [
+    {
+      "check": "1_licenca_e_pii",
+      "passou": true,
+      "detalhe": "licenca='CC-BY (Creative Commons Atribuicao)', tem_pii=False"
+    },
+    {
+      "check": "2_benchmark_humano_existente",
+      "passou": false,
+      "detalhe": "NAO existe -> golden set sera de maquina; declarar kappa humano como backlog",
+      "bloqueante": false
+    },
+    {
+      "check": "3_metricas_ambiguas_entre_si",
+      "passou": null,
+      "detalhe": "a decidir no desenho do catalogo: NUNCA expor a mesma grandeza em duas unidades (foi o gargalo do RodoQuery). Uma metrica por conceito.",
+      "bloqueante": false
+    },
+    {
+      "check": "4_filtro_embutido_x_filtro_da_pergunta",
+      "passou": null,
+      "detalhe": "a decidir no desenho: contagem filtrada deve ser `where`, nao metrica propria — senao gera itens degenerados (gold constante).",
+      "bloqueante": false
+    },
+    {
+      "check": "5_riqueza_dimensional",
+      "passou": true,
+      "detalhe": "medidas=['volume_total'] tempo=['mes_ano'] entidades=['praca'] categoricas=['concessionaria', 'sentido', 'tipo_cobranca', 'categoria_eixo', 'tipo_de_veiculo']"
+    },
+    {
+      "check": "6_resultado_varia_com_os_dados",
+      "passou": true,
+      "detalhe": "1534142 linhas; agregados por dimensao devem variar. Confirmar por item na geracao do gold (regra anti-degenerado)."
+    },
+    {
+      "check": "7_divida_de_staging",
+      "passou": false,
+      "bloqueante": false,
+      "detalhe": "medida(s) guardada(s) como TEXTO (precisa cast): ['volume_total']; coluna(s) numerica(s) que sao CATEGORICAS: ['categoria_eixo']"
+    }
+  ],
+  "veredito": "GO",
+  "bloqueantes": []
+}
