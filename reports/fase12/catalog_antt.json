@@ -1,0 +1,211 @@
+{
+  "fonte": {
+    "manifest": "/home/alan/antt-foundation/dbt-antt/target/manifest.json",
+    "semantic_manifest": "/home/alan/antt-foundation/dbt-antt/target/semantic_manifest.json",
+    "duckdb": "/home/alan/antt-foundation/antt_analytics.duckdb",
+    "projeto_dbt": "toll_analytics"
+  },
+  "tabelas": {
+    "dim_date": {
+      "schema": "main",
+      "materializacao": "table",
+      "access": "public",
+      "descricao": "Dimensão de calendário; faixa derivada do min/max real do fato (robusta a anos novos). Declarada como TIME SPINE do Semantic Layer — o MetricFlow a usa para agregar métricas por metric_time em qualquer granularidade.",
+      "n_linhas": 365,
+      "colunas": [
+        {
+          "nome": "date_key",
+          "tipo": "INTEGER",
+          "descricao": "PK inteira yyyymmdd."
+        },
+        {
+          "nome": "date_day",
+          "tipo": "DATE",
+          "descricao": "Data (grão diário) — coluna de granularidade padrão do spine."
+        },
+        {
+          "nome": "ano",
+          "tipo": "BIGINT",
+          "descricao": ""
+        },
+        {
+          "nome": "mes",
+          "tipo": "BIGINT",
+          "descricao": ""
+        },
+        {
+          "nome": "dia",
+          "tipo": "BIGINT",
+          "descricao": ""
+        }
+      ]
+    },
+    "fct_traffic_volume": {
+      "schema": "main",
+      "materializacao": "table",
+      "access": "public",
+      "descricao": "Volume diário de veículos nas praças de pedágio federais (ANTT, CC-BY). Grão: praça × dia × sentido × tipo de cobrança × categoria de eixo × tipo de veículo.",
+      "n_linhas": 1534142,
+      "colunas": [
+        {
+          "nome": "plaza_key",
+          "tipo": "VARCHAR",
+          "descricao": "Chave real da praça: concessionaria::praca (o nome sozinho não é único)."
+        },
+        {
+          "nome": "concessionaria",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "praca",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "data",
+          "tipo": "DATE",
+          "descricao": "Data da passagem."
+        },
+        {
+          "nome": "sentido",
+          "tipo": "VARCHAR",
+          "descricao": "Sentido da via."
+        },
+        {
+          "nome": "tipo_cobranca",
+          "tipo": "VARCHAR",
+          "descricao": "Forma de cobrança na cabine."
+        },
+        {
+          "nome": "categoria_eixo",
+          "tipo": "VARCHAR",
+          "descricao": ""
+        },
+        {
+          "nome": "tipo_de_veiculo",
+          "tipo": "VARCHAR",
+          "descricao": "Classe do veículo."
+        },
+        {
+          "nome": "volume",
+          "tipo": "DOUBLE",
+          "descricao": "Volume de veículos no grão da linha."
+        }
+      ]
+    }
+  },
+  "metricas": [
+    {
+      "nome": "traffic_volume",
+      "label": "Volume de tráfego",
+      "descricao": "Total de veículos que passaram pelas praças de pedágio.",
+      "tipo": "simple"
+    },
+    {
+      "nome": "automated_traffic_volume",
+      "label": "Volume automático (interno)",
+      "descricao": "Numerador de automation_rate. Não oferecer no catálogo de usuário.",
+      "tipo": "simple"
+    },
+    {
+      "nome": "commercial_traffic_volume",
+      "label": "Volume comercial (interno)",
+      "descricao": "Numerador de commercial_share. Não oferecer no catálogo de usuário.",
+      "tipo": "simple"
+    },
+    {
+      "nome": "automation_rate",
+      "label": "Taxa de automação",
+      "descricao": "Proporção do tráfego cobrado automaticamente (tag/AVI) sobre o total.",
+      "tipo": "ratio"
+    },
+    {
+      "nome": "commercial_share",
+      "label": "Participação de veículos comerciais",
+      "descricao": "Proporção do tráfego composta por veículos comerciais sobre o total.",
+      "tipo": "ratio"
+    }
+  ],
+  "dimensoes": [
+    {
+      "nome": "data",
+      "tipo": "time",
+      "granularidade": "day"
+    },
+    {
+      "nome": "praca",
+      "tipo": "categorical",
+      "granularidade": null
+    },
+    {
+      "nome": "concessionaria",
+      "tipo": "categorical",
+      "granularidade": null
+    },
+    {
+      "nome": "sentido",
+      "tipo": "categorical",
+      "granularidade": null
+    },
+    {
+      "nome": "tipo_cobranca",
+      "tipo": "categorical",
+      "granularidade": null
+    },
+    {
+      "nome": "categoria_eixo",
+      "tipo": "categorical",
+      "granularidade": null
+    },
+    {
+      "nome": "tipo_de_veiculo",
+      "tipo": "categorical",
+      "granularidade": null
+    }
+  ],
+  "entidades": [
+    {
+      "nome": "plaza",
+      "tipo": "primary",
+      "expr": "plaza_key"
+    },
+    {
+      "nome": "concessionaire",
+      "tipo": "foreign",
+      "expr": "concessionaria"
+    }
+  ],
+  "valores_categoricos": {
+    "sentido": [
+      "Crescente",
+      "Decrescente"
+    ],
+    "tipo_cobranca": [
+      "Automática",
+      "Manual",
+      "OCR/PLACA"
+    ],
+    "tipo_de_veiculo": [
+      "Comercial",
+      "Moto",
+      "Passeio"
+    ]
+  },
+  "saved_queries": [],
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "bb4781b",
+    "git_dirty": true,
+    "git_diff_sha1": "492118b081c2",
+    "timestamp_utc": "2026-07-24T15:01:07+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

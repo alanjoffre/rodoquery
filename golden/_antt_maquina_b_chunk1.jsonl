@@ -1,0 +1,93 @@
+{"id": "abstencao_antt_01", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_02", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_03", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_04", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_05", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_06", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_07", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day"], "where": null, "order_by": ["-traffic_volume"], "limit": 1, "ordenado": true}}
+{"id": "abstencao_antt_08", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_09", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_10", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_12", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_13", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_14", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_16", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_17", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_18", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_19", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_21", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_22", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_23", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_24", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_25", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_26", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_28", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_29", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "abstencao_antt_30", "spec": {"metrics": [], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_01", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '6'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_02", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__day", "plaza__concessionaria"], "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_04", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__day"], "where": "{{ Dimension('plaza__sentido') }} = 'Decrescente'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_05", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__day"], "where": "{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_06", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__day", "plaza__praca"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '7'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_07", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__day", "plaza__praca"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '2'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_09", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '4'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_10", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__day", "plaza__concessionaria"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '3'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_11", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day", "plaza__concessionaria"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '5'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_12", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__day", "plaza__concessionaria"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '2'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_14", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '8'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_15", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__day", "plaza__concessionaria"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '2'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_16", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day", "plaza__concessionaria"], "where": "{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_17", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day", "plaza__concessionaria"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '7'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_18", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__day", "plaza__praca"], "where": "{{ Dimension('plaza__sentido') }} = 'Decrescente'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_19", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__day", "plaza__praca"], "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'OCR/PLACA'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_20", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__day", "plaza__praca"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '8'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_21", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__day", "plaza__concessionaria"], "where": "{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_23", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day", "plaza__concessionaria"], "where": "{{ Dimension('plaza__tipo_de_veiculo') }} = 'Passeio'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_24", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__day"], "where": "{{ Dimension('plaza__tipo_de_veiculo') }} = 'Passeio'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_25", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '2'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_27", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__day", "plaza__concessionaria"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '7'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_28", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day"], "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Manual'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_29", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day", "plaza__praca"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '5'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "coalesce_nulo_antt_30", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__day", "plaza__concessionaria"], "where": "{{ Dimension('plaza__categoria_eixo') }} = '5'", "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_antt_01", "spec": {"metrics": ["traffic_volume"], "group_by": ["plaza__categoria_eixo"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_antt_02", "spec": {"metrics": ["traffic_volume"], "group_by": ["plaza__sentido"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_antt_03", "spec": {"metrics": ["traffic_volume"], "group_by": ["plaza__praca"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_antt_05", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_antt_06", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__week"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_antt_07", "spec": {"metrics": ["traffic_volume"], "group_by": ["plaza__concessionaria"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_antt_09", "spec": {"metrics": ["traffic_volume"], "group_by": [], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "controle_trivial_antt_10", "spec": {"metrics": ["traffic_volume"], "group_by": ["plaza__tipo_cobranca"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_02", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__week", "plaza__categoria_eixo"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_03", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day", "plaza__tipo_cobranca"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_04", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__day", "plaza__praca"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_06", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__week", "plaza__praca"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_07", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__day", "plaza__sentido"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_08", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__week", "plaza__tipo_de_veiculo"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_09", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__week", "plaza__praca"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_10", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__month", "plaza__categoria_eixo"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_11", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__week", "plaza__tipo_cobranca"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_12", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__week"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_13", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__week", "plaza__categoria_eixo"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_14", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__week", "plaza__concessionaria"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_15", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__week"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_16", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__month", "plaza__concessionaria"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_18", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__month", "plaza__praca"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_19", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__month", "plaza__tipo_cobranca"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_20", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_21", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__month", "plaza__tipo_de_veiculo"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_22", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__month"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_23", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__day", "plaza__tipo_cobranca"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_24", "spec": {"metrics": ["automation_rate"], "group_by": ["metric_time__week", "plaza__categoria_eixo"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_25", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__day", "plaza__categoria_eixo"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_26", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__month", "plaza__praca"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_27", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__day", "plaza__tipo_de_veiculo"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_28", "spec": {"metrics": ["traffic_volume"], "group_by": ["metric_time__week", "plaza__sentido"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "grao_temporal_antt_29", "spec": {"metrics": ["commercial_share"], "group_by": ["metric_time__month", "plaza__categoria_eixo"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "join_grao_antt_02", "spec": {"metrics": ["traffic_volume"], "group_by": ["plaza__praca", "plaza__tipo_cobranca", "metric_time__week"], "where": null, "order_by": ["metric_time__week"], "limit": null, "ordenado": false}}
+{"id": "join_grao_antt_03", "spec": {"metrics": ["traffic_volume"], "group_by": ["plaza__concessionaria", "plaza__categoria_eixo", "metric_time__month"], "where": null, "order_by": ["metric_time__month"], "limit": null, "ordenado": false}}
+{"id": "join_grao_antt_05", "spec": {"metrics": ["commercial_share"], "group_by": ["plaza__concessionaria", "plaza__tipo_cobranca"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "join_grao_antt_06", "spec": {"metrics": ["automation_rate"], "group_by": ["plaza__concessionaria", "plaza__sentido", "metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "join_grao_antt_07", "spec": {"metrics": ["commercial_share"], "group_by": ["plaza__concessionaria", "plaza__tipo_cobranca", "metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "join_grao_antt_08", "spec": {"metrics": ["traffic_volume"], "group_by": ["plaza__praca", "plaza__tipo_cobranca", "metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}
+{"id": "join_grao_antt_09", "spec": {"metrics": ["traffic_volume"], "group_by": ["plaza__concessionaria", "plaza__sentido"], "where": null, "order_by": [], "limit": null, "ordenado": false}}
+{"id": "join_grao_antt_10", "spec": {"metrics": ["automation_rate"], "group_by": ["plaza__concessionaria", "plaza__tipo_de_veiculo", "metric_time__day"], "where": null, "order_by": ["metric_time__day"], "limit": null, "ordenado": false}}

@@ -14,12 +14,15 @@ Data Engineering × AI Engineering · avaliação com rigor · R$0 · dados sint
 
 > **Tese:** o valor não é *"LLM gera SQL"*. É provar, **com número e intervalo de confiança**, que servir sobre o **Semantic Layer governado** (dbt/MetricFlow) dá a resposta **certa** onde o SQL cru dá uma resposta **plausível e errada**.
 
-**A tese foi comprovada — e replicada num holdout maior.** Mesmo modelo (`qwen2.5-coder:7b`) nas duas pontas; muda só a interface:
+**A tese foi comprovada — em dado sintético e replicada em DADO REAL.** Mesmo modelo (`qwen2.5-coder:7b`) nas duas pontas; muda só a interface:
 
 | Conjunto selado | Tier-A (spec → MetricFlow) | Baseline SQL cru | Δ | McNemar |
 |---|---|---|---|---|
-| TEST-v1 (n=42) | 97,6% [87,7; 99,6] | 42,9% | +54,8 pp | 23 × 0, p≈0 |
-| **TEST-v2 (n=167, specs inéditas)** | **73,7%** [66,5; 79,8] | 15,0% | **+58,7 pp** | **104 × 6, p≈0** |
+| **TEST-ANTT (n=160, dados REAIS)** | **86,9%** [80,8; 91,3] | 28,8% | **+58,1 pp** | **97 × 4, p≈0** |
+| TEST-v2 sintético (n=167) | 73,7% [66,5; 79,8] | 15,0% | +58,7 pp | 104 × 6, p≈0 |
+| TEST-v1 sintético (n=42) | 97,6% [87,7; 99,6] | 42,9% | +54,8 pp | 23 × 0, p≈0 |
+
+Os três conjuntos têm dificuldades diferentes e **não são comparáveis entre si** — o que se repete nos três é a **vantagem da interface governada**: +54,8, +58,7 e +58,1 pp.
 
 Como o SUT é idêntico, o ganho é atribuível **à interface**, não ao modelo. A vantagem **cresce** com o conjunto maior.
 
@@ -70,6 +73,7 @@ O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com
 | **9** · Conserto | Δ EX no holdout v3 (pareado) | ⚠️ reescrever o prompt **empatou** (p=0,89) · ✅ **normalizar em código: +5 pp, p=0,004, zero regressões** |
 | **10** · Catálogo | Δ EX (pareado, determinístico) | ⚠️ limpar o catálogo **empatou** (p=1,0) · ✅ o gargalo real era outro: **+12,7 pp, p≈0, zero regressões** |
 | **11** · Dados reais | fundação ANTT verificada ponta a ponta | ✅ **1,5 M de linhas reais (CC-BY)** substituem 2 mil sintéticas · catálogo nasce com **3 métricas** · 2 armadilhas do dado real pegas antes de virarem número errado |
+| **12** · Tese sobre dado real | Δ EX + McNemar no TEST-ANTT selado | ✅ **86,9% × 28,8%, +58,1 pp, p≈0** · κ de máquina 0,977 · **2 bugs de harness pegos antes de virarem resultado** |
 
 ## 🔬 Previsões que a medição **refutou**
 
@@ -120,7 +124,7 @@ uvicorn rodoquery.servico:app --port 8077 # serving do Tier-A
 
 Pré-requisito: a fundação de dados vem do **toll-analytics-platform** buildado (`dbt build` → DuckDB + `manifest.json`). Ver [`docs/FUNDACAO.md`](docs/FUNDACAO.md).
 
-**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md)
+**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md)
 
 ## 📄 Licença
 MIT. Dados sintéticos (nenhum dado real).

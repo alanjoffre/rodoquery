@@ -23,14 +23,15 @@ PROJETO_DBT = "toll_analytics"
 _CATEGORICAS = ("status", "audit_flag", "payment_method")
 
 
-def _marts_do_projeto(manifest: dict) -> dict[str, dict]:
+def _marts_do_projeto(manifest: dict, projeto: str | None = None) -> dict[str, dict]:
     """Allowlist: models do PROJETO sob `marts/` (exclui pacotes evaluator/elementary, testes,
-    staging e landing por construção)."""
+    staging e landing por construção). `projeto=None` = o sintético (Fases 0–10)."""
+    projeto = projeto or PROJETO_DBT
     out = {}
     for v in manifest["nodes"].values():
         if (
             v.get("resource_type") == "model"
-            and v.get("package_name") == PROJETO_DBT
+            and v.get("package_name") == projeto
             and "marts" in "/".join(v.get("fqn", []))
             and v.get("access") == "public"  # só o que o dbt marca como público entra na allowlist
         ):
@@ -76,11 +77,17 @@ def _dimensoes_entidades(sm: dict) -> tuple[list[dict], list[dict]]:
 
 
 def gerar_catalogo(
-    manifest_path: Path, semantic_manifest_path: Path, duckdb_path: Path
+    manifest_path: Path, semantic_manifest_path: Path, duckdb_path: Path,
+    projeto: str | None = None, fato: str | None = None,
+    categoricas: tuple[str, ...] | None = None,
 ) -> dict:
+    """`projeto`/`fato`/`categoricas` = None mantêm a fundação SINTÉTICA (Fases 0–10)."""
+    projeto = projeto or PROJETO_DBT
+    fato = fato or "fct_toll_transactions"
+    cats = categoricas if categoricas is not None else _CATEGORICAS
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     sm = json.loads(semantic_manifest_path.read_text(encoding="utf-8"))
-    marts = _marts_do_projeto(manifest)
+    marts = _marts_do_projeto(manifest, projeto)
 
     con = duckdb.connect(str(duckdb_path), read_only=True)
     try:
@@ -106,10 +113,10 @@ def gerar_catalogo(
             }
         # valores das dimensões categóricas (baixa cardinalidade) a partir do fato
         valores_cat = {}
-        for dim in _CATEGORICAS:
+        for dim in cats:
             try:
                 vals = con.execute(
-                    f'select distinct "{dim}" from "main"."fct_toll_transactions" '
+                    f'select distinct "{dim}" from "main"."{fato}" '
                     f'where "{dim}" is not null order by 1'
                 ).fetchall()
                 valores_cat[dim] = [r[0] for r in vals]

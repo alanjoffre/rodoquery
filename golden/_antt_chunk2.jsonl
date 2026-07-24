@@ -1,0 +1,93 @@
+{"id": "join_grao_antt_11", "pergunta_nl": "Qual a proporção de veículos comerciais por praça, por tipo de cobrança e por dia?"}
+{"id": "join_grao_antt_13", "pergunta_nl": "Qual a participação de veículos comerciais em cada praça, por tipo de cobrança e por mês?"}
+{"id": "join_grao_antt_14", "pergunta_nl": "Qual a participação de veículos comerciais em cada concessionária, por forma de cobrança e por semana?"}
+{"id": "join_grao_antt_15", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente por praça e por concessionária?"}
+{"id": "join_grao_antt_16", "pergunta_nl": "Qual a taxa de automação por concessionária, por sentido e por semana?"}
+{"id": "join_grao_antt_17", "pergunta_nl": "Qual a taxa de automação por concessionária e por tipo de veículo?"}
+{"id": "join_grao_antt_18", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente em cada concessionária, por classe de veículo e por mês?"}
+{"id": "join_grao_antt_19", "pergunta_nl": "Qual a taxa de automação por praça e por número de eixos?"}
+{"id": "join_grao_antt_20", "pergunta_nl": "Qual a taxa de automação em cada praça, por categoria de eixo e por mês?"}
+{"id": "join_grao_antt_22", "pergunta_nl": "Qual o número de veículos por praça de pedágio, por classe de veículo e em cada dia?"}
+{"id": "join_grao_antt_23", "pergunta_nl": "Qual o número de veículos por praça de pedágio, por forma de cobrança e por mês?"}
+{"id": "join_grao_antt_24", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente por praça de pedágio, por tipo de veículo e em cada dia?"}
+{"id": "join_grao_antt_25", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente por praça, por sentido e por semana?"}
+{"id": "join_grao_antt_26", "pergunta_nl": "Qual a proporção de veículos comerciais por concessionária, por categoria de eixo e por semana?"}
+{"id": "join_grao_antt_27", "pergunta_nl": "Qual o número de veículos por praça de pedágio, por sentido e semana a semana?"}
+{"id": "join_grao_antt_28", "pergunta_nl": "Quantos veículos passaram em cada concessionária, por categoria de eixo e semana a semana?"}
+{"id": "join_grao_antt_29", "pergunta_nl": "Qual a taxa de automação por concessionária, por categoria de eixo e em cada mês?"}
+{"id": "join_grao_antt_30", "pergunta_nl": "Quantos veículos passaram por praça, por número de eixos e em cada mês?"}
+{"id": "metrica_derivada_antt_01", "pergunta_nl": "Qual a taxa de automação dos veículos de 3 eixos por praça de pedágio?"}
+{"id": "metrica_derivada_antt_02", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos com cobrança manual em cada concessionária?"}
+{"id": "metrica_derivada_antt_03", "pergunta_nl": "Qual a taxa de automação dos veículos de 4 eixos por praça?"}
+{"id": "metrica_derivada_antt_04", "pergunta_nl": "Qual a taxa de automação dos veículos de 7 eixos em cada praça?"}
+{"id": "metrica_derivada_antt_05", "pergunta_nl": "Qual a taxa de automação dos veículos do tipo moto por praça de pedágio?"}
+{"id": "metrica_derivada_antt_06", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente por sentido?"}
+{"id": "metrica_derivada_antt_07", "pergunta_nl": "Qual a taxa de automação em cada praça?"}
+{"id": "metrica_derivada_antt_09", "pergunta_nl": "Qual a taxa de automação dos veículos de 6 eixos por praça de pedágio?"}
+{"id": "metrica_derivada_antt_10", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos com leitura de placa em cada praça?"}
+{"id": "metrica_derivada_antt_11", "pergunta_nl": "Qual a taxa de automação dos veículos no sentido decrescente em cada praça?"}
+{"id": "metrica_derivada_antt_12", "pergunta_nl": "Qual a taxa de automação dos veículos de 6 eixos em cada concessionária?"}
+{"id": "metrica_derivada_antt_13", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente por número de eixos?"}
+{"id": "metrica_derivada_antt_14", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos de 5 eixos por praça?"}
+{"id": "metrica_derivada_antt_15", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos de 3 eixos por concessionária?"}
+{"id": "metrica_derivada_antt_16", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos de 8 eixos por praça de pedágio?"}
+{"id": "metrica_derivada_antt_17", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos no sentido decrescente em cada praça?"}
+{"id": "metrica_derivada_antt_18", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos no sentido decrescente por concessionária?"}
+{"id": "metrica_derivada_antt_19", "pergunta_nl": "Qual a participação de veículos comerciais por sentido?"}
+{"id": "metrica_derivada_antt_20", "pergunta_nl": "Qual a taxa de automação e a participação de veículos comerciais por sentido?"}
+{"id": "metrica_derivada_antt_21", "pergunta_nl": "Qual a taxa de automação dos veículos no sentido crescente em cada concessionária?"}
+{"id": "metrica_derivada_antt_24", "pergunta_nl": "Qual a taxa de automação e a participação de veículos comerciais por praça?"}
+{"id": "metrica_derivada_antt_25", "pergunta_nl": "Qual a taxa de automação dos veículos de 2 eixos por concessionária?"}
+{"id": "metrica_derivada_antt_26", "pergunta_nl": "Qual a taxa de automação dos veículos de passeio por praça?"}
+{"id": "metrica_derivada_antt_28", "pergunta_nl": "Qual a taxa de automação semana a semana?"}
+{"id": "metrica_derivada_antt_30", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente em cada mês?"}
+{"id": "ranking_antt_01", "pergunta_nl": "Entre os veículos de 7 eixos, quais as 3 concessionárias com maior participação de veículos comerciais?"}
+{"id": "ranking_antt_03", "pergunta_nl": "Entre os veículos no sentido decrescente, quais as 3 formas de cobrança com maior participação de veículos comerciais?"}
+{"id": "ranking_antt_04", "pergunta_nl": "Entre os veículos de 4 eixos, quais as 3 formas de cobrança com maior participação de veículos comerciais?"}
+{"id": "ranking_antt_06", "pergunta_nl": "Entre os veículos de 2 eixos, quais os 3 sentidos com maior taxa de automação?"}
+{"id": "ranking_antt_07", "pergunta_nl": "Entre os veículos com leitura de placa, quais as 3 concessionárias com maior participação de veículos comerciais?"}
+{"id": "ranking_antt_08", "pergunta_nl": "Quais as 10 praças com menor taxa de automação?"}
+{"id": "ranking_antt_09", "pergunta_nl": "Quais as 3 concessionárias com menor volume de tráfego?"}
+{"id": "ranking_antt_10", "pergunta_nl": "Entre os veículos de passeio, quais os 3 sentidos com maior volume de tráfego?"}
+{"id": "ranking_antt_11", "pergunta_nl": "Entre os veículos de 8 eixos, quais os 3 tipos de veículo com maior volume de tráfego?"}
+{"id": "ranking_antt_13", "pergunta_nl": "Entre os veículos de 3 eixos, quais os 3 sentidos com maior volume de tráfego?"}
+{"id": "ranking_antt_14", "pergunta_nl": "Entre os veículos com cobrança automática, quais os 3 tipos de veículo com maior volume de tráfego?"}
+{"id": "ranking_antt_15", "pergunta_nl": "Entre os veículos de 4 eixos, quais as 3 praças com maior taxa de automação?"}
+{"id": "ranking_antt_17", "pergunta_nl": "Quais as 5 concessionárias com maior volume de tráfego?"}
+{"id": "ranking_antt_18", "pergunta_nl": "Quais as 3 praças com menor participação de veículos comerciais?"}
+{"id": "ranking_antt_19", "pergunta_nl": "Entre os veículos de 4 eixos, quais as 3 concessionárias com maior volume de tráfego?"}
+{"id": "ranking_antt_20", "pergunta_nl": "Entre os veículos de 5 eixos, quais as 3 concessionárias com maior participação de veículos comerciais?"}
+{"id": "ranking_antt_22", "pergunta_nl": "Entre os veículos de passeio, quais as 3 categorias de eixo com maior taxa de automação?"}
+{"id": "ranking_antt_23", "pergunta_nl": "Entre os veículos com cobrança manual, quais os 3 sentidos com maior volume de tráfego?"}
+{"id": "ranking_antt_24", "pergunta_nl": "Entre os veículos de 3 eixos, quais as 3 formas de cobrança com maior participação de veículos comerciais?"}
+{"id": "ranking_antt_25", "pergunta_nl": "Entre os veículos com cobrança automática, quais as 3 praças com maior volume de tráfego?"}
+{"id": "ranking_antt_26", "pergunta_nl": "Entre os veículos comerciais, quais as 3 formas de cobrança com maior volume de tráfego?"}
+{"id": "ranking_antt_27", "pergunta_nl": "Entre os veículos comerciais, quais as 3 concessionárias com maior volume de tráfego?"}
+{"id": "ranking_antt_28", "pergunta_nl": "Entre os veículos no sentido crescente, quais os 3 tipos de veículo com maior volume de tráfego?"}
+{"id": "ranking_antt_29", "pergunta_nl": "Entre os veículos de 2 eixos, quais as 3 praças com maior taxa de automação?"}
+{"id": "ranking_antt_30", "pergunta_nl": "Entre os veículos com cobrança automática, quais os 3 sentidos com maior participação de veículos comerciais?"}
+{"id": "valor_categorico_antt_02", "pergunta_nl": "Qual o volume de tráfego dos veículos do tipo moto?"}
+{"id": "valor_categorico_antt_03", "pergunta_nl": "Quantos veículos de 7 eixos passaram por tipo de cobrança?"}
+{"id": "valor_categorico_antt_04", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos no sentido decrescente?"}
+{"id": "valor_categorico_antt_05", "pergunta_nl": "Quantos veículos de passeio passaram por concessionária?"}
+{"id": "valor_categorico_antt_06", "pergunta_nl": "Qual a taxa de automação dos veículos de 4 eixos em cada concessionária?"}
+{"id": "valor_categorico_antt_07", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos com cobrança automática?"}
+{"id": "valor_categorico_antt_08", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos no sentido decrescente por tipo de cobrança?"}
+{"id": "valor_categorico_antt_09", "pergunta_nl": "Qual o volume de tráfego dos veículos no sentido crescente por praça de pedágio?"}
+{"id": "valor_categorico_antt_10", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos com leitura de placa?"}
+{"id": "valor_categorico_antt_11", "pergunta_nl": "Qual o volume de tráfego dos veículos de 4 eixos por sentido?"}
+{"id": "valor_categorico_antt_13", "pergunta_nl": "Quantos veículos do tipo moto passaram por sentido?"}
+{"id": "valor_categorico_antt_14", "pergunta_nl": "Qual a taxa de automação dos veículos de 8 eixos por tipo de veículo?"}
+{"id": "valor_categorico_antt_15", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos com leitura de placa por sentido?"}
+{"id": "valor_categorico_antt_16", "pergunta_nl": "Qual a taxa de automação dos veículos de 8 eixos por concessionária?"}
+{"id": "valor_categorico_antt_17", "pergunta_nl": "Qual o volume de tráfego dos veículos com cobrança automática por sentido?"}
+{"id": "valor_categorico_antt_18", "pergunta_nl": "Qual a taxa de automação dos veículos no sentido crescente por número de eixos?"}
+{"id": "valor_categorico_antt_19", "pergunta_nl": "Quantos veículos de 7 eixos passaram por sentido?"}
+{"id": "valor_categorico_antt_20", "pergunta_nl": "Qual a taxa de automação dos veículos do tipo moto por sentido?"}
+{"id": "valor_categorico_antt_21", "pergunta_nl": "Qual a taxa de automação dos veículos comerciais por concessionária?"}
+{"id": "valor_categorico_antt_22", "pergunta_nl": "Qual a taxa de automação dos veículos de 4 eixos por sentido?"}
+{"id": "valor_categorico_antt_24", "pergunta_nl": "Qual a taxa de automação dos veículos de 3 eixos?"}
+{"id": "valor_categorico_antt_25", "pergunta_nl": "Quantos veículos no sentido crescente passaram por número de eixos?"}
+{"id": "valor_categorico_antt_26", "pergunta_nl": "Qual a taxa de automação dos veículos de 3 eixos por classe de veículo?"}
+{"id": "valor_categorico_antt_27", "pergunta_nl": "Qual a taxa de automação dos veículos no sentido crescente por praça de pedágio?"}
+{"id": "valor_categorico_antt_28", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos no sentido crescente por número de eixos?"}

@@ -92,6 +92,7 @@ def avaliar_item(
     hashes_gold: dict[str, str],
     dbs: dict[str, Path],
     allowlist: set[str],
+    fundacao=None,
 ) -> dict:
     """Avalia UMA predição. Devolve um dict-resultado auditável (por que acertou/errou)."""
     base = {"id": item.id, "estrato": item.estrato, "abstencao": item.eh_abstencao,
@@ -113,7 +114,10 @@ def avaliar_item(
     hashes_pred: dict[str, str] = {}
     if pred.tipo == "spec":
         try:
-            sql = compilar_spec(pred.spec)
+            # `fundacao=None` = sintética (Fases 0–10). A ANTT precisa passar a SUA: sem isso a
+            # spec é compilada contra o projeto dbt ERRADO, nada compila, e o fail-closed da
+            # Fase 7 transforma tudo em 0/N — um zero que parece resultado e é bug de harness.
+            sql = compilar_spec(pred.spec, fundacao=fundacao)
         except Exception as e:
             return {**base, "correto": False, "motivo": f"spec não compila: {str(e)[:100]}"}
         # O mf pode devolver SQL sintaticamente quebrado para uma spec estranha (visto na Fase 7).
@@ -157,17 +161,23 @@ def avaliar_sistema(
     dbs: dict[str, Path],
     nome_sistema: str = "sistema",
     predicoes: dict[str, dict] | None = None,
+    fundacao=None,
+    catalogo: Path | None = None,
 ) -> dict:
     """Roda o sistema em todos os itens e agrega — separando os dois eixos e por estrato.
 
     Se `predicoes` (congeladas) for dado, usa-as em vez de chamar o sistema → scoring 100%
     determinístico e reprodutível (o SUT é estocástico; ver `coletar_predicoes`)."""
-    allowlist = carregar_allowlist()
+    # `catalogo=None` = allowlist da fundação sintética. Numa fundação diferente é OBRIGATÓRIO
+    # passar a dela: com a allowlist errada o sandbox bloqueia 100% do baseline de SQL cru, e o
+    # resultado vira 0/N — um zero que parece a tese sendo comprovada e é bug de harness.
+    allowlist = carregar_allowlist(catalogo)
     resultados: list[dict] = []
     for it in itens:
         pred = (predicao_de_dict(predicoes[it.id]) if predicoes is not None
                 else sistema(it.pergunta_nl))
-        resultados.append(avaliar_item(it, pred, hashes_gold.get(it.id, {}), dbs, allowlist))
+        resultados.append(
+            avaliar_item(it, pred, hashes_gold.get(it.id, {}), dbs, allowlist, fundacao))
 
     respondiveis = [r for r in resultados if not r["abstencao"]]
     abstencoes = [r for r in resultados if r["abstencao"]]

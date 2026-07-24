@@ -1,0 +1,81 @@
+{
+  "tipo": "concordancia_inter_anotador_MAQUINA_antt",
+  "aviso": "kappa de MAQUINA (2 LLMs), nao humano. A base da ANTT nao tem benchmark humano (falha registrada na Fase 0 de Dados); kappa humano segue no backlog.",
+  "n_itens": 186,
+  "sem_anotacao_b": [],
+  "decisao_respondivel_x_fora": {
+    "n": 186,
+    "acordo": 185,
+    "taxa": 0.9946,
+    "cohen_kappa": 0.9773,
+    "abstencoes_contestadas": [
+      "abstencao_antt_07"
+    ],
+    "respondiveis_contestados": []
+  },
+  "concordancia_spec_respondiveis": {
+    "n_pares": 160,
+    "concordancia_spec_canonica": 1.0,
+    "cohen_kappa_metrica": 1.0,
+    "concordancia_metrica": 1.0,
+    "concordancia_group_by": 1.0,
+    "concordancia_where": 1.0,
+    "limiar_pre_registrado": {
+      "cohen_kappa_metrica": 0.8,
+      "concordancia_spec_canonica": 0.8
+    },
+    "discordantes": []
+  },
+  "por_estrato": {
+    "coalesce_nulo": {
+      "n": 25,
+      "iguais": 25,
+      "taxa": 1.0
+    },
+    "controle_trivial": {
+      "n": 8,
+      "iguais": 8,
+      "taxa": 1.0
+    },
+    "grao_temporal": {
+      "n": 26,
+      "iguais": 26,
+      "taxa": 1.0
+    },
+    "join_grao": {
+      "n": 26,
+      "iguais": 26,
+      "taxa": 1.0
+    },
+    "metrica_derivada": {
+      "n": 25,
+      "iguais": 25,
+      "taxa": 1.0
+    },
+    "ranking": {
+      "n": 25,
+      "iguais": 25,
+      "taxa": 1.0
+    },
+    "valor_categorico": {
+      "n": 25,
+      "iguais": 25,
+      "taxa": 1.0
+    }
+  },
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "bb4781b",
+    "git_dirty": true,
+    "git_diff_sha1": "f4c187499667",
+    "timestamp_utc": "2026-07-24T14:19:52+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

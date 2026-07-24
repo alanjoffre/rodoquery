@@ -1,0 +1,2335 @@
+{
+  "tipo": "gold_golden_antt_fase12",
+  "fundacao": "ANTT real (CC-BY), 3 variantes = partições disjuntas por hash",
+  "anti_circularidade": "gold sempre do MetricFlow; nunca SQL escrito à mão",
+  "n_autorados": 220,
+  "n_validos": 216,
+  "n_descartados": 4,
+  "descartados": [
+    {
+      "id": "metrica_derivada_antt_08",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "ranking_antt_21",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "coalesce_nulo_antt_26",
+      "motivo": "gold constante entre variantes (degenerado)"
+    },
+    {
+      "id": "valor_categorico_antt_23",
+      "motivo": "gold constante entre variantes (degenerado)"
+    }
+  ],
+  "variantes": [
+    "p0",
+    "p1",
+    "p2"
+  ],
+  "respostas": [
+    {
+      "id": "controle_trivial_antt_01",
+      "estrato": "controle_trivial",
+      "sql_metricflow": "SELECT\n  categoria_eixo AS plaza__categoria_eixo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  categoria_eixo",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "28b0b40c4106d466",
+        "p1": "6f9dcd3391a14fb5",
+        "p2": "cd234628607018fc"
+      }
+    },
+    {
+      "id": "controle_trivial_antt_02",
+      "estrato": "controle_trivial",
+      "sql_metricflow": "SELECT\n  sentido AS plaza__sentido\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  sentido",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ecf6fffe4c4759d2",
+        "p1": "0e3bf2b4737aefd3",
+        "p2": "d9da3f813adca588"
+      }
+    },
+    {
+      "id": "controle_trivial_antt_03",
+      "estrato": "controle_trivial",
+      "sql_metricflow": "SELECT\n  praca AS plaza__praca\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  praca",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "14565b52f1cbac7e",
+        "p1": "1159369cc6541067",
+        "p2": "b40d0e79dcc50537"
+      }
+    },
+    {
+      "id": "controle_trivial_antt_04",
+      "estrato": "controle_trivial",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('month', data) AS metric_time__month\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('month', data)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "d9c2b987a0e65334",
+        "p1": "5f9021ec8c9a7efc",
+        "p2": "09da5601711a90da"
+      }
+    },
+    {
+      "id": "controle_trivial_antt_05",
+      "estrato": "controle_trivial",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('day', data) AS metric_time__day\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('day', data)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "e7b48c5fa4135d2d",
+        "p1": "409c37b543faf0ad",
+        "p2": "5adee96458b70aeb"
+      }
+    },
+    {
+      "id": "controle_trivial_antt_06",
+      "estrato": "controle_trivial",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('week', data) AS metric_time__week\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('week', data)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "b1ba7e3ef1534026",
+        "p1": "9b99f3132f7d2b68",
+        "p2": "72fa2f0694059f97"
+      }
+    },
+    {
+      "id": "controle_trivial_antt_07",
+      "estrato": "controle_trivial",
+      "sql_metricflow": "SELECT\n  concessionaria AS plaza__concessionaria\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  concessionaria",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "7b36dc6b444f1e70",
+        "p1": "6ac0a39775f8c88e",
+        "p2": "cde597582788fd88"
+      }
+    },
+    {
+      "id": "controle_trivial_antt_08",
+      "estrato": "controle_trivial",
+      "sql_metricflow": "SELECT\n  tipo_de_veiculo AS plaza__tipo_de_veiculo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  tipo_de_veiculo",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "9d97079b792df938",
+        "p1": "8e352fc6b4aa811d",
+        "p2": "03342c713f7eefd2"
+      }
+    },
+    {
+      "id": "controle_trivial_antt_09",
+      "estrato": "controle_trivial",
+      "sql_metricflow": "SELECT\n  SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "68ae88733a95259d",
+        "p1": "dec362e629f6028e",
+        "p2": "696be1c14634fae4"
+      }
+    },
+    {
+      "id": "controle_trivial_antt_10",
+      "estrato": "controle_trivial",
+      "sql_metricflow": "SELECT\n  tipo_cobranca AS plaza__tipo_cobranca\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  tipo_cobranca",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "5ed03440e3a2e33f",
+        "p1": "740daa06cb7a1bf2",
+        "p2": "50a5db393d032990"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_01",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '3'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "bc04a415eea243e4",
+        "p1": "8268f9d3dd5a9543",
+        "p2": "3046e9903047cb19"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_02",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_cobranca = 'Manual'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "77e3cd1de579340d",
+        "p1": "6e5704d75e6e1a7d",
+        "p2": "f34dee4c7361f169"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_03",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '4'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "eaa453671a88c771",
+        "p1": "c77153be1db69c9c",
+        "p2": "e1e25b7543c46131"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_04",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '7'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "dd057d4e0e2cc984",
+        "p1": "575a761d2bb39079",
+        "p2": "983715e99bbbafff"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_05",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Moto'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "5ca66d0d86058858",
+        "p1": "623ca057a1637c78",
+        "p2": "0d1303fe7b06063e"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_06",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__sentido\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__sentido\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "45911f1a1cdf0e1c",
+        "p1": "d82192051f177bc9",
+        "p2": "0fd8ec8943be6651"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_07",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__praca\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "be84c541174ce47a",
+        "p1": "9bb874eb8b5adc2c",
+        "p2": "5836ab1132363f48"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_09",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '6'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "17a1eb93e41a77f3",
+        "p1": "143b7230d3a29544",
+        "p2": "68e208c0cf23daff"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_10",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_cobranca = 'OCR/PLACA'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "0696c84078e67aa8",
+        "p1": "2b49bab7842b0899",
+        "p2": "b6d2b173a2c55902"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_11",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , sentido AS plaza__sentido\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Decrescente'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "45a199117dae2013",
+        "p1": "e7b1e49486247609",
+        "p2": "fbb4795b95e5a734"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_12",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '6'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "7df0e23ca9b40139",
+        "p1": "521c7bd7ddb753eb",
+        "p2": "58c2a760a80936c8"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_13",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__categoria_eixo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__categoria_eixo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      categoria_eixo AS plaza__categoria_eixo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__categoria_eixo\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "c4be3f4946be3699",
+        "p1": "f3aea29b8b611cce",
+        "p2": "bae6ae76336e61ba"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_14",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '5'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "20ffa728807d2c1c",
+        "p1": "7e773a651afe58be",
+        "p2": "20ffa728807d2c1c"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_15",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '3'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "dcfcc8ca3556697e",
+        "p1": "511c87fca7513142",
+        "p2": "2cf9a764fc7a4eab"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_16",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '8'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "aac5c05c00b099ae",
+        "p1": "6db9bca263095f8a",
+        "p2": "c346ac04141d6ed7"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_17",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , sentido AS plaza__sentido\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Decrescente'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "e7fe62dfa0d3b4b3",
+        "p1": "90bba8e2780d8661",
+        "p2": "4b33ebf64d8b9446"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_18",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , sentido AS plaza__sentido\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Decrescente'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "32afe25850149ed1",
+        "p1": "0f747a0b5f0c1cff",
+        "p2": "57b9b28698983014"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_19",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__sentido\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__sentido\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "cb84d5f16a64fbd0",
+        "p1": "b6ff9f935ae3ec9a",
+        "p2": "41f95259c94bc3c3"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_20",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__sentido\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__sentido\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "1ceec88703d58b8d",
+        "p1": "807b1cb1d4f93441",
+        "p2": "4bd5842afb5d3db2"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_21",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , sentido AS plaza__sentido\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Crescente'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "0be3ee521f604ed7",
+        "p1": "c9639a5f29e64238",
+        "p2": "9c1f548823aac30f"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_22",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '3'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "770fccc7c2ce1075",
+        "p1": "9f35179826cb52ac",
+        "p2": "8bccc57d2244bfe8"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_23",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , sentido AS plaza__sentido\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Crescente'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "dc97f9523f1de6dc",
+        "p1": "339ebcb0a1ee9e37",
+        "p2": "8cfe594a5c154516"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_24",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__praca\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "8b7f1f8207a6d392",
+        "p1": "c240d724f4d5511f",
+        "p2": "7ab22eafd2a0cd66"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_25",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '2'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "d369db56f474a4a1",
+        "p1": "92b5deee1aeb3808",
+        "p2": "8707573610af36cb"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_26",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Passeio'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "089ab5f0d7a377de",
+        "p1": "3bc34acaf6dc4720",
+        "p2": "a8ec9f882bc2d2fe"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_27",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "c35f6ca854829b43",
+        "p1": "afc35ed6c6df0ecb",
+        "p2": "a0e5d2ed315e10e8"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_28",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__week\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "2b9ff26c4e46e83c",
+        "p1": "42dcf4aab3d411b1",
+        "p2": "ece9001953e23b68"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_29",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__praca\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "76259b26e9254960",
+        "p1": "b2903568c73c220a",
+        "p2": "e92bd04f2a30ebb2"
+      }
+    },
+    {
+      "id": "metrica_derivada_antt_30",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__month\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "1506822f4e799304",
+        "p1": "a16359669f93b8a5",
+        "p2": "9a9c7444701876d4"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_01",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , plaza__sentido\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__month\n    , plaza__sentido\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , sentido AS plaza__sentido\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , plaza__sentido\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "a22c64e4ebb9b86f",
+        "p1": "a3035d40d0a3043d",
+        "p2": "bd8ea3e2a820109e"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_02",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('week', data) AS metric_time__week\n  , categoria_eixo AS plaza__categoria_eixo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('week', data)\n  , categoria_eixo\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "a6250a89b96f0694",
+        "p1": "ac36b5dc22403224",
+        "p2": "2d539197d6fbf91f"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_03",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('day', data) AS metric_time__day\n  , tipo_cobranca AS plaza__tipo_cobranca\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('day', data)\n  , tipo_cobranca\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "9167f71ee33c5aff",
+        "p1": "bad6604a5839c46d",
+        "p2": "db905b39423b439d"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_04",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__praca\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , praca AS plaza__praca\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , plaza__praca\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "a70f864b313026ea",
+        "p1": "044256aa14fb2f08",
+        "p2": "a965a4f60f42c4bd"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_05",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('day', data) AS metric_time__day\n  , praca AS plaza__praca\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('day', data)\n  , praca\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "c28ffaf6ad74ab04",
+        "p1": "4e30299ac5e0dfea",
+        "p2": "fb315e10e886a946"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_06",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__praca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , praca AS plaza__praca\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__praca\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "32bb84fe416ad7e1",
+        "p1": "033c39d87b0e3499",
+        "p2": "639160185a1f6b28"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_07",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__sentido\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__sentido\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , sentido AS plaza__sentido\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , plaza__sentido\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "a17b19e192e25665",
+        "p1": "f71d61b5e6935cef",
+        "p2": "72a7b55c1bbe3b7c"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_08",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('week', data) AS metric_time__week\n  , tipo_de_veiculo AS plaza__tipo_de_veiculo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('week', data)\n  , tipo_de_veiculo\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "4cbb40c79cb35c2e",
+        "p1": "f3db7373c08bca69",
+        "p2": "89150ec8e6291777"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_09",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__praca\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , praca AS plaza__praca\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__praca\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "d6b4fb964fd2b145",
+        "p1": "33fbdb36f34c45fd",
+        "p2": "b697692bc200898d"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_10",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('month', data) AS metric_time__month\n  , categoria_eixo AS plaza__categoria_eixo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('month', data)\n  , categoria_eixo\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "7e8a6f25dc820042",
+        "p1": "25e08624037786cf",
+        "p2": "2dfa1fd780973a8a"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_11",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__tipo_cobranca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__tipo_cobranca\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "294d1768dfedae84",
+        "p1": "88abdca34d66877c",
+        "p2": "a1cba28cce48a65b"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_12",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('week', data) AS metric_time__week\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('week', data)\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "b1ba7e3ef1534026",
+        "p1": "9b99f3132f7d2b68",
+        "p2": "72fa2f0694059f97"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_13",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__categoria_eixo\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__categoria_eixo\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__categoria_eixo\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "081abceae094ac5f",
+        "p1": "387b43733a324d11",
+        "p2": "c3adb0783d4e6b37"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_14",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__concessionaria\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , concessionaria AS plaza__concessionaria\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__concessionaria\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "250752dc03645dfa",
+        "p1": "d5da820107260dff",
+        "p2": "eeaef0be814c8648"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_15",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__week\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "2b9ff26c4e46e83c",
+        "p1": "42dcf4aab3d411b1",
+        "p2": "ece9001953e23b68"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_16",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__month\n    , plaza__concessionaria\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , concessionaria AS plaza__concessionaria\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , plaza__concessionaria\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "9de7764745b9f756",
+        "p1": "8fb982108d36f05f",
+        "p2": "dd38326612105943"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_17",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__concessionaria\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , concessionaria AS plaza__concessionaria\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__concessionaria\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ec1fcae5d2f6c609",
+        "p1": "d984ba22eb3fa177",
+        "p2": "404fc3ac37ad0261"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_18",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__month\n    , plaza__praca\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , praca AS plaza__praca\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , plaza__praca\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "9756ca092e9bf356",
+        "p1": "cd50ddbebb85c450",
+        "p2": "71fcb12466da706a"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_19",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('month', data) AS metric_time__month\n  , tipo_cobranca AS plaza__tipo_cobranca\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('month', data)\n  , tipo_cobranca\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "e97fce293df083c9",
+        "p1": "cb08c14b8e4d060f",
+        "p2": "70f1dc8052cc01f1"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_20",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "4cc59e58aa05bde5",
+        "p1": "b18cffeaf0f275cd",
+        "p2": "8f2b48b5609f3730"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_21",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , plaza__tipo_de_veiculo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__month\n    , plaza__tipo_de_veiculo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , plaza__tipo_de_veiculo\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "9196cb24d6505904",
+        "p1": "5c3a9d1f6347ed82",
+        "p2": "33415e6864c16ef4"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_22",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__month\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "983a8b41f302efbc",
+        "p1": "42bfa8a85b7e04ae",
+        "p2": "ccccc26fd5a5e683"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_23",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__tipo_cobranca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , plaza__tipo_cobranca\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "2c4d3912c75f5a0b",
+        "p1": "8392d1589fb607b7",
+        "p2": "493224a178601fb1"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_24",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__categoria_eixo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__categoria_eixo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__categoria_eixo\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "06e78893212c7e0d",
+        "p1": "eec1ff18c0dfb185",
+        "p2": "b0e10314cc6ba1b1"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_25",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__categoria_eixo\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__categoria_eixo\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , plaza__categoria_eixo\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "cf626d69e27219a2",
+        "p1": "bfc6032bd7965e70",
+        "p2": "32585e70854b6eb8"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_26",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__month\n    , plaza__praca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , praca AS plaza__praca\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , plaza__praca\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "4ff44b54eef0d85b",
+        "p1": "32a13c514248f498",
+        "p2": "d5a28de4a0b4e343"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_27",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('day', data) AS metric_time__day\n  , tipo_de_veiculo AS plaza__tipo_de_veiculo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('day', data)\n  , tipo_de_veiculo\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "02b0fcb2fd37febc",
+        "p1": "5bb7765400197e2b",
+        "p2": "b1faed81062b927e"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_28",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('week', data) AS metric_time__week\n  , sentido AS plaza__sentido\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('week', data)\n  , sentido\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "10c9dab989b80fd1",
+        "p1": "094c3f90bfa1c5c2",
+        "p2": "2d1804ecc52162e4"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_29",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , plaza__categoria_eixo\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__month\n    , plaza__categoria_eixo\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , plaza__categoria_eixo\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ed9d29f40f7fdb9c",
+        "p1": "1a8a59923f9360c5",
+        "p2": "e91ec0ddc2c5ed27"
+      }
+    },
+    {
+      "id": "grao_temporal_antt_30",
+      "estrato": "grao_temporal",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__tipo_de_veiculo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__tipo_de_veiculo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , plaza__tipo_de_veiculo\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "b1bfd4cb8ae26cbf",
+        "p1": "05587d74b8af4494",
+        "p2": "a4ce485e2ca5249b"
+      }
+    },
+    {
+      "id": "ranking_antt_01",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '7'\n  GROUP BY\n    plaza__concessionaria\n) subq_6\nORDER BY commercial_share DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ea868b2dfd315f87",
+        "p1": "d78909790fd4e5f2",
+        "p2": "d78909790fd4e5f2"
+      }
+    },
+    {
+      "id": "ranking_antt_02",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__tipo_cobranca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      tipo_cobranca AS plaza__tipo_cobranca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '2'\n  GROUP BY\n    plaza__tipo_cobranca\n) subq_6\nORDER BY commercial_share DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "7843ad81addb08ba",
+        "p1": "af43f71ccfee260c",
+        "p2": "2f61a4973dcda2ce"
+      }
+    },
+    {
+      "id": "ranking_antt_03",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__tipo_cobranca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Decrescente'\n  GROUP BY\n    plaza__tipo_cobranca\n) subq_6\nORDER BY commercial_share DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "782695dcb0928f15",
+        "p1": "df4b5911c10c458f",
+        "p2": "0ac2502cbf6552a5"
+      }
+    },
+    {
+      "id": "ranking_antt_04",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__tipo_cobranca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      tipo_cobranca AS plaza__tipo_cobranca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '4'\n  GROUP BY\n    plaza__tipo_cobranca\n) subq_6\nORDER BY commercial_share DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ccb1b64aec516c22",
+        "p1": "20b9d1d113ea35ee",
+        "p2": "021c3988e9fda5c6"
+      }
+    },
+    {
+      "id": "ranking_antt_05",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__tipo_cobranca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Crescente'\n  GROUP BY\n    plaza__tipo_cobranca\n) subq_6\nORDER BY commercial_share DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "7f1e9e56f3d95a13",
+        "p1": "8d491a8e017c2028",
+        "p2": "706c8060009841f0"
+      }
+    },
+    {
+      "id": "ranking_antt_06",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__sentido\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '2'\n  GROUP BY\n    plaza__sentido\n) subq_6\nORDER BY automation_rate DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "3744e50bebbb795b",
+        "p1": "d792facb4725bed1",
+        "p2": "cef5f419e639c06f"
+      }
+    },
+    {
+      "id": "ranking_antt_07",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_cobranca = 'OCR/PLACA'\n  GROUP BY\n    plaza__concessionaria\n) subq_6\nORDER BY commercial_share DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "4ef0668c59f9efb1",
+        "p1": "dd64ad63e119da02",
+        "p2": "1f49687469cee11c"
+      }
+    },
+    {
+      "id": "ranking_antt_08",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__praca\n) subq_5\nORDER BY automation_rate\nLIMIT 10",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "dc6b3d6214c6f8c5",
+        "p1": "8fc57f69d2269b6e",
+        "p2": "19273646df358aa2"
+      }
+    },
+    {
+      "id": "ranking_antt_09",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  concessionaria AS plaza__concessionaria\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  concessionaria\nORDER BY traffic_volume\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "51cc26d5ee832f22",
+        "p1": "8316f8fbc9a8d20c",
+        "p2": "139e0e7f4b0df95e"
+      }
+    },
+    {
+      "id": "ranking_antt_10",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    sentido AS plaza__sentido\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Passeio'\nGROUP BY\n  plaza__sentido\nORDER BY traffic_volume DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "a23370e5ba4b924f",
+        "p1": "f0f1b5f7d297ca5d",
+        "p2": "725bdeb78041d4c9"
+      }
+    },
+    {
+      "id": "ranking_antt_11",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__tipo_de_veiculo\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    categoria_eixo AS plaza__categoria_eixo\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '8'\nGROUP BY\n  plaza__tipo_de_veiculo\nORDER BY traffic_volume DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "2677a527479f0a95",
+        "p1": "9c614491c128257e",
+        "p2": "14dfe1d65335bf69"
+      }
+    },
+    {
+      "id": "ranking_antt_12",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    praca AS plaza__praca\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Comercial'\nGROUP BY\n  plaza__praca\nORDER BY traffic_volume DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "2d5ee9f71ae129b5",
+        "p1": "8b851038e4bb2c59",
+        "p2": "c415a23ee7f33f43"
+      }
+    },
+    {
+      "id": "ranking_antt_13",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    sentido AS plaza__sentido\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '3'\nGROUP BY\n  plaza__sentido\nORDER BY traffic_volume DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "c2f275ea395990fa",
+        "p1": "55b644593139c1e8",
+        "p2": "a947d00b9ef20160"
+      }
+    },
+    {
+      "id": "ranking_antt_14",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__tipo_de_veiculo\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    tipo_cobranca AS plaza__tipo_cobranca\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_cobranca = 'Automática'\nGROUP BY\n  plaza__tipo_de_veiculo\nORDER BY traffic_volume DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "6d8a88a6ce0f4bb9",
+        "p1": "2d620acfa8912253",
+        "p2": "4fcb5214d6a61bf3"
+      }
+    },
+    {
+      "id": "ranking_antt_15",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '4'\n  GROUP BY\n    plaza__praca\n) subq_6\nORDER BY automation_rate DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "2fcf6174c12d752c",
+        "p1": "e4e6845316867b72",
+        "p2": "e030bb80cf8c42f9"
+      }
+    },
+    {
+      "id": "ranking_antt_16",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  praca AS plaza__praca\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  praca\nORDER BY traffic_volume\nLIMIT 10",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "746ed463bf9af1bd",
+        "p1": "78c7bb00018baf50",
+        "p2": "156c9da3538a0f4f"
+      }
+    },
+    {
+      "id": "ranking_antt_17",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  concessionaria AS plaza__concessionaria\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  concessionaria\nORDER BY traffic_volume DESC\nLIMIT 5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "fc3b50133cc39d12",
+        "p1": "9e3d9b7f23847755",
+        "p2": "6ef9474cde1cc99d"
+      }
+    },
+    {
+      "id": "ranking_antt_18",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__praca\n) subq_5\nORDER BY commercial_share\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ed94730702ec9187",
+        "p1": "9b8982efc635e63d",
+        "p2": "ed0e11e7451aa40b"
+      }
+    },
+    {
+      "id": "ranking_antt_19",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    concessionaria AS plaza__concessionaria\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '4'\nGROUP BY\n  plaza__concessionaria\nORDER BY traffic_volume DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "debf7e95fd178124",
+        "p1": "b9a232690ce88462",
+        "p2": "44246a6aefbe41fd"
+      }
+    },
+    {
+      "id": "ranking_antt_20",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '5'\n  GROUP BY\n    plaza__concessionaria\n) subq_6\nORDER BY commercial_share DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "d78909790fd4e5f2",
+        "p1": "d78909790fd4e5f2",
+        "p2": "b6c4bcb0b561516e"
+      }
+    },
+    {
+      "id": "ranking_antt_22",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__categoria_eixo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__categoria_eixo\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      categoria_eixo AS plaza__categoria_eixo\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Passeio'\n  GROUP BY\n    plaza__categoria_eixo\n) subq_6\nORDER BY automation_rate DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "63ea922b5b57e7fa",
+        "p1": "444556ff01605da4",
+        "p2": "ef94b7910bcf0653"
+      }
+    },
+    {
+      "id": "ranking_antt_23",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    sentido AS plaza__sentido\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_cobranca = 'Manual'\nGROUP BY\n  plaza__sentido\nORDER BY traffic_volume DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "2710275cac4d7ea3",
+        "p1": "6c1e934b47fc96f1",
+        "p2": "3491644559e0b1c2"
+      }
+    },
+    {
+      "id": "ranking_antt_24",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__tipo_cobranca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      tipo_cobranca AS plaza__tipo_cobranca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '3'\n  GROUP BY\n    plaza__tipo_cobranca\n) subq_6\nORDER BY commercial_share DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "48e3985dd0725b3b",
+        "p1": "650e26c319a26ff4",
+        "p2": "efca4d75cac3d118"
+      }
+    },
+    {
+      "id": "ranking_antt_25",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    praca AS plaza__praca\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_cobranca = 'Automática'\nGROUP BY\n  plaza__praca\nORDER BY traffic_volume DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "498b2bc43747dd65",
+        "p1": "991cd2ca071cb24c",
+        "p2": "cbae19b912fb0175"
+      }
+    },
+    {
+      "id": "ranking_antt_26",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__tipo_cobranca\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    tipo_cobranca AS plaza__tipo_cobranca\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Comercial'\nGROUP BY\n  plaza__tipo_cobranca\nORDER BY traffic_volume DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "222eee5cafa72c39",
+        "p1": "59781e48e25e3707",
+        "p2": "a41a34a87b2469bb"
+      }
+    },
+    {
+      "id": "ranking_antt_27",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    concessionaria AS plaza__concessionaria\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Comercial'\nGROUP BY\n  plaza__concessionaria\nORDER BY traffic_volume DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "6e5839c7d6a319f4",
+        "p1": "916153ba3cd8aa45",
+        "p2": "47b180b5cb0f0b74"
+      }
+    },
+    {
+      "id": "ranking_antt_28",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__tipo_de_veiculo\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    sentido AS plaza__sentido\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__sentido = 'Crescente'\nGROUP BY\n  plaza__tipo_de_veiculo\nORDER BY traffic_volume DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "37e61441e30cbf26",
+        "p1": "a5de02cb37763015",
+        "p2": "5e850ae4cf31cd82"
+      }
+    },
+    {
+      "id": "ranking_antt_29",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '2'\n  GROUP BY\n    plaza__praca\n) subq_6\nORDER BY automation_rate DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "d073bcc43341bd43",
+        "p1": "516733f8291403c7",
+        "p2": "d54030c76cf524e8"
+      }
+    },
+    {
+      "id": "ranking_antt_30",
+      "estrato": "ranking",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__sentido\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_cobranca = 'Automática'\n  GROUP BY\n    plaza__sentido\n) subq_6\nORDER BY commercial_share DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "8e915c35377e2cba",
+        "p1": "9a74c3f8b029f41b",
+        "p2": "5354e77a30a35c70"
+      }
+    },
+    {
+      "id": "join_grao_antt_01",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__praca\n  , plaza__tipo_de_veiculo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__praca\n    , plaza__tipo_de_veiculo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , praca AS plaza__praca\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__praca\n    , plaza__tipo_de_veiculo\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "c9f5ae6974a7b3bd",
+        "p1": "87c83291cab4656b",
+        "p2": "877c1df0ba17a54a"
+      }
+    },
+    {
+      "id": "join_grao_antt_02",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('week', data) AS metric_time__week\n  , praca AS plaza__praca\n  , tipo_cobranca AS plaza__tipo_cobranca\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('week', data)\n  , praca\n  , tipo_cobranca\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "23ca0207e58cfb6a",
+        "p1": "9e1b802991689f7a",
+        "p2": "2c9c9438c57bd107"
+      }
+    },
+    {
+      "id": "join_grao_antt_03",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('month', data) AS metric_time__month\n  , concessionaria AS plaza__concessionaria\n  , categoria_eixo AS plaza__categoria_eixo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('month', data)\n  , concessionaria\n  , categoria_eixo\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "b820550ce73630d4",
+        "p1": "3397e18f0c45d7ba",
+        "p2": "dc6bc3eae3d76c8c"
+      }
+    },
+    {
+      "id": "join_grao_antt_04",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  concessionaria AS plaza__concessionaria\n  , categoria_eixo AS plaza__categoria_eixo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  concessionaria\n  , categoria_eixo",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "f6cf377a6a9297e4",
+        "p1": "fd5b51d1371d708f",
+        "p2": "9e66de297319e658"
+      }
+    },
+    {
+      "id": "join_grao_antt_05",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__concessionaria\n    , plaza__tipo_cobranca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__concessionaria\n    , plaza__tipo_cobranca\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "c869848f41303054",
+        "p1": "b2a49061f7e50964",
+        "p2": "b32765228aa68a06"
+      }
+    },
+    {
+      "id": "join_grao_antt_06",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , plaza__sentido\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , plaza__sentido\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , sentido AS plaza__sentido\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n    , plaza__sentido\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "0f849bdec6165aaf",
+        "p1": "c8647b322584b785",
+        "p2": "fa5b33a27621f183"
+      }
+    },
+    {
+      "id": "join_grao_antt_07",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , plaza__tipo_cobranca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n    , plaza__tipo_cobranca\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "a2b2dfb5686b752f",
+        "p1": "baaae92029732f0e",
+        "p2": "2370fc2e11a1a6f6"
+      }
+    },
+    {
+      "id": "join_grao_antt_08",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('day', data) AS metric_time__day\n  , praca AS plaza__praca\n  , tipo_cobranca AS plaza__tipo_cobranca\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('day', data)\n  , praca\n  , tipo_cobranca\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "d9680e0be67e3812",
+        "p1": "2b77612b14cc3a9a",
+        "p2": "65ae480d339b7485"
+      }
+    },
+    {
+      "id": "join_grao_antt_09",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  concessionaria AS plaza__concessionaria\n  , sentido AS plaza__sentido\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  concessionaria\n  , sentido",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ddc6150ae11637ef",
+        "p1": "c764a1a7b8fc9feb",
+        "p2": "9c1c6e585c7de090"
+      }
+    },
+    {
+      "id": "join_grao_antt_10",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , plaza__tipo_de_veiculo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , plaza__tipo_de_veiculo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n    , plaza__tipo_de_veiculo\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "a9c8c519e6a818d0",
+        "p1": "6ea93d2f8e917537",
+        "p2": "f87804367fff5eb3"
+      }
+    },
+    {
+      "id": "join_grao_antt_11",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__praca\n  , plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__praca\n    , plaza__tipo_cobranca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , praca AS plaza__praca\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , plaza__praca\n    , plaza__tipo_cobranca\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "4a3a022ea90f5968",
+        "p1": "874d2293e05263e6",
+        "p2": "51e0135ee3969f29"
+      }
+    },
+    {
+      "id": "join_grao_antt_12",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('day', data) AS metric_time__day\n  , concessionaria AS plaza__concessionaria\n  , categoria_eixo AS plaza__categoria_eixo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('day', data)\n  , concessionaria\n  , categoria_eixo\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "82a1440c2d96d0da",
+        "p1": "a46d684dbe83e843",
+        "p2": "a5d7b2643deb5506"
+      }
+    },
+    {
+      "id": "join_grao_antt_13",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , plaza__praca\n  , plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__month\n    , plaza__praca\n    , plaza__tipo_cobranca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , praca AS plaza__praca\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , plaza__praca\n    , plaza__tipo_cobranca\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "4d7fd5704c413cfd",
+        "p1": "5baf56472618ff98",
+        "p2": "d26cbd6d23712ae6"
+      }
+    },
+    {
+      "id": "join_grao_antt_14",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__concessionaria\n  , plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__concessionaria\n    , plaza__tipo_cobranca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , concessionaria AS plaza__concessionaria\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__concessionaria\n    , plaza__tipo_cobranca\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "b3a5e20b2420d5d4",
+        "p1": "6a94992f4505ed22",
+        "p2": "98640b41bf4f4f26"
+      }
+    },
+    {
+      "id": "join_grao_antt_15",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , plaza__concessionaria\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , concessionaria AS plaza__concessionaria\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__praca\n    , plaza__concessionaria\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ff950e818b8ee474",
+        "p1": "74943ca37d2e0f51",
+        "p2": "8c60b8fa685e4bf8"
+      }
+    },
+    {
+      "id": "join_grao_antt_16",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__concessionaria\n  , plaza__sentido\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__concessionaria\n    , plaza__sentido\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , concessionaria AS plaza__concessionaria\n      , sentido AS plaza__sentido\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__concessionaria\n    , plaza__sentido\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ab8f1f685f9ae789",
+        "p1": "193ed5a9f7dd1bc4",
+        "p2": "3f0a7e647308ef7a"
+      }
+    },
+    {
+      "id": "join_grao_antt_17",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , plaza__tipo_de_veiculo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , plaza__tipo_de_veiculo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__concessionaria\n    , plaza__tipo_de_veiculo\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "6873e070d165970e",
+        "p1": "abe34eee88872760",
+        "p2": "2712ff11805cf270"
+      }
+    },
+    {
+      "id": "join_grao_antt_18",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , plaza__concessionaria\n  , plaza__tipo_de_veiculo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__month\n    , plaza__concessionaria\n    , plaza__tipo_de_veiculo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , concessionaria AS plaza__concessionaria\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , plaza__concessionaria\n    , plaza__tipo_de_veiculo\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "e1fb04f68023e169",
+        "p1": "2cd5a48e7122173a",
+        "p2": "03ab3f30f58b8213"
+      }
+    },
+    {
+      "id": "join_grao_antt_19",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , plaza__categoria_eixo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , plaza__categoria_eixo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__praca\n    , plaza__categoria_eixo\n) subq_5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "60d0333f2b84059f",
+        "p1": "35d137cb670cdc3a",
+        "p2": "ad5f428d663f91a2"
+      }
+    },
+    {
+      "id": "join_grao_antt_20",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , plaza__praca\n  , plaza__categoria_eixo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__month\n    , plaza__praca\n    , plaza__categoria_eixo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , plaza__praca\n    , plaza__categoria_eixo\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ac3fc7b23c2377c1",
+        "p1": "b86a8c6e9adffc2f",
+        "p2": "bd425228ad9b9cd5"
+      }
+    },
+    {
+      "id": "join_grao_antt_21",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  praca AS plaza__praca\n  , tipo_de_veiculo AS plaza__tipo_de_veiculo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  praca\n  , tipo_de_veiculo",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "7f9b6a7c0e51f5e9",
+        "p1": "3b645aff91958c2a",
+        "p2": "71e46cbe41d8fa68"
+      }
+    },
+    {
+      "id": "join_grao_antt_22",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('day', data) AS metric_time__day\n  , praca AS plaza__praca\n  , tipo_de_veiculo AS plaza__tipo_de_veiculo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('day', data)\n  , praca\n  , tipo_de_veiculo\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "b34b8ea5e4ee9c29",
+        "p1": "f5e4294fbf0156c4",
+        "p2": "3edeaaebfae534d1"
+      }
+    },
+    {
+      "id": "join_grao_antt_23",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('month', data) AS metric_time__month\n  , praca AS plaza__praca\n  , tipo_cobranca AS plaza__tipo_cobranca\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('month', data)\n  , praca\n  , tipo_cobranca\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "70ff4b8c8d4ac48d",
+        "p1": "8a5e4ff74d67d488",
+        "p2": "d67601bd64e49b87"
+      }
+    },
+    {
+      "id": "join_grao_antt_24",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__praca\n  , plaza__tipo_de_veiculo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__praca\n    , plaza__tipo_de_veiculo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , praca AS plaza__praca\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__day\n    , plaza__praca\n    , plaza__tipo_de_veiculo\n) subq_5\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "fae36e0e72409be2",
+        "p1": "1f48e089760e4088",
+        "p2": "c3b6394e804c9491"
+      }
+    },
+    {
+      "id": "join_grao_antt_25",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__praca\n  , plaza__sentido\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__praca\n    , plaza__sentido\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , praca AS plaza__praca\n      , sentido AS plaza__sentido\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__praca\n    , plaza__sentido\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "7bdc1d144995fc30",
+        "p1": "a94954c6217751de",
+        "p2": "2dcea35a032f6075"
+      }
+    },
+    {
+      "id": "join_grao_antt_26",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__week\n  , plaza__concessionaria\n  , plaza__categoria_eixo\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__week\n    , plaza__concessionaria\n    , plaza__categoria_eixo\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('week', data) AS metric_time__week\n      , concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS __traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__week\n    , plaza__concessionaria\n    , plaza__categoria_eixo\n) subq_5\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "deefd8a380009d1c",
+        "p1": "ac0d6254ecbe8db9",
+        "p2": "1044d4d6207d908d"
+      }
+    },
+    {
+      "id": "join_grao_antt_27",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('week', data) AS metric_time__week\n  , praca AS plaza__praca\n  , sentido AS plaza__sentido\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('week', data)\n  , praca\n  , sentido\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "d2a8caeaecc490c8",
+        "p1": "298ea29a9754eeee",
+        "p2": "1b6d29b57e8ab5a6"
+      }
+    },
+    {
+      "id": "join_grao_antt_28",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('week', data) AS metric_time__week\n  , concessionaria AS plaza__concessionaria\n  , categoria_eixo AS plaza__categoria_eixo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('week', data)\n  , concessionaria\n  , categoria_eixo\nORDER BY metric_time__week",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "e3fcf5fa421f7d19",
+        "p1": "7ee9763ee4d85d43",
+        "p2": "fa19d6f0d61195a7"
+      }
+    },
+    {
+      "id": "join_grao_antt_29",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , plaza__concessionaria\n  , plaza__categoria_eixo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__month\n    , plaza__concessionaria\n    , plaza__categoria_eixo\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('month', data) AS metric_time__month\n      , concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS __traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    metric_time__month\n    , plaza__concessionaria\n    , plaza__categoria_eixo\n) subq_5\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "7b9788406e2a76fb",
+        "p1": "ea956492ae2a531b",
+        "p2": "0b238c0bf4db7c96"
+      }
+    },
+    {
+      "id": "join_grao_antt_30",
+      "estrato": "join_grao",
+      "sql_metricflow": "SELECT\n  DATE_TRUNC('month', data) AS metric_time__month\n  , praca AS plaza__praca\n  , categoria_eixo AS plaza__categoria_eixo\n  , SUM(volume) AS traffic_volume\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000\nGROUP BY\n  DATE_TRUNC('month', data)\n  , praca\n  , categoria_eixo\nORDER BY metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "81c370cbad6a79e2",
+        "p1": "9c96eb824b75cb58",
+        "p2": "bcf5e2eaaf2e94ed"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_01",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '6'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "8c8f5392996e6ccf",
+        "p1": "63d8cd8d702d46ce",
+        "p2": "4b994c3ae9c984b9"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_02",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_cobranca = 'Automática'\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "29db712bf3e043ed",
+        "p1": "b6c2544046e9b0e5",
+        "p2": "25f68ea21f0c4674"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_03",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__praca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '7'\n  GROUP BY\n    metric_time__day\n    , plaza__praca\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "47255ce08febe096",
+        "p1": "062356a53b2c895e",
+        "p2": "e06cc45450af1500"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_04",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , sentido AS plaza__sentido\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Decrescente'\n  GROUP BY\n    metric_time__day\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "63e3ea256f07ae61",
+        "p1": "83004683069ba7e9",
+        "p2": "2f2e24d87e3f2157"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_05",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Comercial'\n  GROUP BY\n    metric_time__day\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "1a11860cbc5b0662",
+        "p1": "b562e19004b63469",
+        "p2": "09b981a28511824c"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_06",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '7'\n  GROUP BY\n    metric_time__day\n    , plaza__praca\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "53de161b3299ab00",
+        "p1": "9852cf084ec0dd9c",
+        "p2": "9f32f69c9268adf2"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_07",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '2'\n  GROUP BY\n    metric_time__day\n    , plaza__praca\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "32734d8a5be43314",
+        "p1": "26bc415d12be8939",
+        "p2": "6432fbb31ced2df7"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_08",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '6'\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "53ca3f888cd6b5ed",
+        "p1": "b61f5738a614a6a4",
+        "p2": "28c48c08590501af"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_09",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '4'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "184a358205263a2a",
+        "p1": "3f155a47782f348d",
+        "p2": "29adaf0a70c2ee70"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_10",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '3'\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "8f1ca0ee74ef3f7d",
+        "p1": "074dfedba8f027cb",
+        "p2": "42dc649a62648dd6"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_11",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , concessionaria AS plaza__concessionaria\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '5'\nGROUP BY\n  metric_time__day\n  , plaza__concessionaria\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ef5907f9e95b45a0",
+        "p1": "4eb3bfa257732f73",
+        "p2": "b96357fcf14d3950"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_12",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '2'\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "172da8dd17d2a92e",
+        "p1": "3ee07d05b0977343",
+        "p2": "da1065d5918bebfa"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_13",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , concessionaria AS plaza__concessionaria\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_cobranca = 'Manual'\nGROUP BY\n  metric_time__day\n  , plaza__concessionaria\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "89e5822ebadb74e3",
+        "p1": "0bc8279d93f6822f",
+        "p2": "a5d72011a7cab2a0"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_14",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '8'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "a8d59e64246525b3",
+        "p1": "05b1b2af5615867d",
+        "p2": "b8625aa9c44a80e1"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_15",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '2'\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "35e0c7a788067e09",
+        "p1": "b54c84810f1a1ac8",
+        "p2": "9cdd9c49a2d566b0"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_16",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , concessionaria AS plaza__concessionaria\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Moto'\nGROUP BY\n  metric_time__day\n  , plaza__concessionaria\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "0c349f34603b6d96",
+        "p1": "9cb508d74a01057d",
+        "p2": "02a8bf97499d0514"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_17",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , concessionaria AS plaza__concessionaria\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '7'\nGROUP BY\n  metric_time__day\n  , plaza__concessionaria\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "e5855dc96bb418b1",
+        "p1": "151bd60f5bca77f2",
+        "p2": "7bf29fed5f20bb6f"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_18",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , praca AS plaza__praca\n      , sentido AS plaza__sentido\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Decrescente'\n  GROUP BY\n    metric_time__day\n    , plaza__praca\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "33c629725a24dfce",
+        "p1": "30223fba854dfed2",
+        "p2": "7cde75e4be69e2d2"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_19",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__praca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , praca AS plaza__praca\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_cobranca = 'OCR/PLACA'\n  GROUP BY\n    metric_time__day\n    , plaza__praca\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "912c14bd3b9d4e09",
+        "p1": "5393c0005cb8fb8a",
+        "p2": "a81a34468e696eb3"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_20",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__praca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , praca AS plaza__praca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '8'\n  GROUP BY\n    metric_time__day\n    , plaza__praca\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ab005e04def55d8c",
+        "p1": "427095379fadb322",
+        "p2": "067cec673860bf13"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_21",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Comercial'\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "0faac4b6c8e017f5",
+        "p1": "20c1062af08624dd",
+        "p2": "8a6b62b3ae4f280f"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_22",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , sentido AS plaza__sentido\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Decrescente'\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "a2062c6ac3e8442e",
+        "p1": "49661d66ab39dec6",
+        "p2": "4a3749b602176d24"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_23",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , concessionaria AS plaza__concessionaria\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Passeio'\nGROUP BY\n  metric_time__day\n  , plaza__concessionaria\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "b7042c8900cf9d37",
+        "p1": "fe2f12af3ebff700",
+        "p2": "5d93d6caa46e6af8"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_24",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Passeio'\n  GROUP BY\n    metric_time__day\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "0c7081476af9b0fc",
+        "p1": "1c36e7d9ec3376f3",
+        "p2": "c324f64cd6e9b76f"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_25",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '2'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "623a40f3fff5a3a8",
+        "p1": "0d043a4fffd7890b",
+        "p2": "bc24feb6f35282f2"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_27",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '7'\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "6539b61f512e184f",
+        "p1": "1d49abefe673d5b3",
+        "p2": "1d2fbfa059ebb814"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_28",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_cobranca = 'Manual'\nGROUP BY\n  metric_time__day\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "9defeac4f95dd180",
+        "p1": "c363c4caf42c049c",
+        "p2": "93f20466a645ec5e"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_29",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__praca\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , praca AS plaza__praca\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '5'\nGROUP BY\n  metric_time__day\n  , plaza__praca\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "81a7c103a4699329",
+        "p1": "977b6373441aa5ad",
+        "p2": "60e7440c34a157a5"
+      }
+    },
+    {
+      "id": "coalesce_nulo_antt_30",
+      "estrato": "coalesce_nulo",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      DATE_TRUNC('day', data) AS metric_time__day\n      , concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '5'\n  GROUP BY\n    metric_time__day\n    , plaza__concessionaria\n) subq_6\nORDER BY metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "310df51bed398bb8",
+        "p1": "a6c5cd0d3b4eab10",
+        "p2": "af6e18019615bf36"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_01",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__tipo_de_veiculo\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    categoria_eixo AS plaza__categoria_eixo\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '2'\nGROUP BY\n  plaza__tipo_de_veiculo",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ebfaae77c1a853c7",
+        "p1": "88474beebddf1f69",
+        "p2": "7fe80ace9206fe84"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_02",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Moto'",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "085d8bff591baae2",
+        "p1": "536231a333583994",
+        "p2": "2174b038c33b1ab1"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_03",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__tipo_cobranca\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    tipo_cobranca AS plaza__tipo_cobranca\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '7'\nGROUP BY\n  plaza__tipo_cobranca",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "4c1af833492f21a7",
+        "p1": "e4fc8cfed7405ca8",
+        "p2": "0d37d99692972656"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_04",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  CAST(SUM(commercial_traffic_volume) AS DOUBLE) / CAST(NULLIF(SUM(traffic_volume), 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    sentido AS plaza__sentido\n    , volume AS traffic_volume\n    , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__sentido = 'Decrescente'",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "730f1c1484c0cd72",
+        "p1": "5370867b5d1b7eb4",
+        "p2": "22e4ae2f3c72d392"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_05",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    concessionaria AS plaza__concessionaria\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Passeio'\nGROUP BY\n  plaza__concessionaria",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "b09bac41d4d0ba88",
+        "p1": "c846fab2ab2b27e0",
+        "p2": "4f46bbf8409cce95"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_06",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '4'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "43bb736211459c3a",
+        "p1": "acd359d230269293",
+        "p2": "737fa835bf00e5df"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_07",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  CAST(SUM(commercial_traffic_volume) AS DOUBLE) / CAST(NULLIF(SUM(traffic_volume), 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    tipo_cobranca AS plaza__tipo_cobranca\n    , volume AS traffic_volume\n    , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_cobranca = 'Automática'",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "236b8ab99725c14e",
+        "p1": "2bd19cdfb4d263d9",
+        "p2": "ee30e80cc58f6a1b"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_08",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__tipo_cobranca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Decrescente'\n  GROUP BY\n    plaza__tipo_cobranca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "3e5fd2503dbce970",
+        "p1": "2de6ec86f0458c3c",
+        "p2": "fc2ac2d5fd336df3"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_09",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    praca AS plaza__praca\n    , sentido AS plaza__sentido\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__sentido = 'Crescente'\nGROUP BY\n  plaza__praca",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "636ea6f462b7c0e0",
+        "p1": "14f2ddb86c14cadd",
+        "p2": "ff8f4f2cb6a72dcc"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_10",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  CAST(SUM(commercial_traffic_volume) AS DOUBLE) / CAST(NULLIF(SUM(traffic_volume), 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    tipo_cobranca AS plaza__tipo_cobranca\n    , volume AS traffic_volume\n    , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_cobranca = 'OCR/PLACA'",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "f280c1cc9dd9c8e3",
+        "p1": "bdf196a5eea1673e",
+        "p2": "539bf549e362cc43"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_11",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    sentido AS plaza__sentido\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '4'\nGROUP BY\n  plaza__sentido",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ce30fc9a3b96d8d9",
+        "p1": "c4585746217d7262",
+        "p2": "c0c9c4ff3d437199"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_12",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_cobranca = 'OCR/PLACA'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "0255df93433bbd9e",
+        "p1": "ee5ada78649811ac",
+        "p2": "63872b751d50952f"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_13",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    sentido AS plaza__sentido\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Moto'\nGROUP BY\n  plaza__sentido",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "3c94aa1c9adc908a",
+        "p1": "6a69c9162639c273",
+        "p2": "68a04839296ceff8"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_14",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__tipo_de_veiculo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__tipo_de_veiculo\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      categoria_eixo AS plaza__categoria_eixo\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '8'\n  GROUP BY\n    plaza__tipo_de_veiculo\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "9a34a9fe5d8d0380",
+        "p1": "838fe765a9ee305d",
+        "p2": "d883f77acef739f3"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_15",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__sentido\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_cobranca = 'OCR/PLACA'\n  GROUP BY\n    plaza__sentido\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "5039773c95220956",
+        "p1": "dd0f42c3a7a167ab",
+        "p2": "c285a76f04311f9d"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_16",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '8'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "4e2f79dc09684653",
+        "p1": "fb1dd603cca23caf",
+        "p2": "33cebbba0bb34a0c"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_17",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    sentido AS plaza__sentido\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_cobranca = 'Automática'\nGROUP BY\n  plaza__sentido",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "ced4c8915ab8a824",
+        "p1": "c9614c132190eed4",
+        "p2": "f660ab1b343dbcde"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_18",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__categoria_eixo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__categoria_eixo\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Crescente'\n  GROUP BY\n    plaza__categoria_eixo\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "7cc9ad74dde78998",
+        "p1": "9917fb6d8a8de5cc",
+        "p2": "2629ef6d38fa3df2"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_19",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    sentido AS plaza__sentido\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '7'\nGROUP BY\n  plaza__sentido",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "aa90ab6722b38877",
+        "p1": "0c285059374f928c",
+        "p2": "aee92561a83b6aa3"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_20",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__sentido\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Moto'\n  GROUP BY\n    plaza__sentido\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "549869c862acd2e0",
+        "p1": "d6e9c0e9371e9714",
+        "p2": "c30fd4047b2f8a67"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_21",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Comercial'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "8ca438c74be1a90b",
+        "p1": "365558efa384069a",
+        "p2": "2105eb65bb21567b"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_22",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__sentido\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '4'\n  GROUP BY\n    plaza__sentido\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "3a98baf72461ac95",
+        "p1": "90d94f31bfbb8f45",
+        "p2": "db8f69d3713c3962"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_24",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  CAST(SUM(automated_traffic_volume) AS DOUBLE) / CAST(NULLIF(SUM(traffic_volume), 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n    , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '3'",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "1d8466c829f68af8",
+        "p1": "32f9ba6d5bda3bb9",
+        "p2": "e3ff160208f12bfb"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_25",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__categoria_eixo\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    sentido AS plaza__sentido\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__sentido = 'Crescente'\nGROUP BY\n  plaza__categoria_eixo",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "eeac46ad303e9dc6",
+        "p1": "b94e592aa7e8f9e1",
+        "p2": "c1db39740cb39769"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_26",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__tipo_de_veiculo\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__tipo_de_veiculo\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      categoria_eixo AS plaza__categoria_eixo\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '3'\n  GROUP BY\n    plaza__tipo_de_veiculo\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "d356f55280c05669",
+        "p1": "4b2a4495f1c85550",
+        "p2": "1050c4147903acef"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_27",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , sentido AS plaza__sentido\n      , volume AS traffic_volume\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Crescente'\n  GROUP BY\n    plaza__praca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "c2ae84fcacb6998c",
+        "p1": "5d72d9b2ec5a2d03",
+        "p2": "38eedb02b2feb34e"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_28",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__categoria_eixo\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__categoria_eixo\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__sentido = 'Crescente'\n  GROUP BY\n    plaza__categoria_eixo\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "3ef05fce96b8b327",
+        "p1": "73974dac7e6db88e",
+        "p2": "00fa9acf0272f8df"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_29",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    concessionaria AS plaza__concessionaria\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '9'\nGROUP BY\n  plaza__concessionaria",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "d0b86f1e15fb62cf",
+        "p1": "a1835f4acc2970fc",
+        "p2": "091257cc976c1f90"
+      }
+    },
+    {
+      "id": "valor_categorico_antt_30",
+      "estrato": "valor_categorico",
+      "sql_metricflow": "SELECT\n  plaza__tipo_cobranca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__tipo_cobranca\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      tipo_cobranca AS plaza__tipo_cobranca\n      , categoria_eixo AS plaza__categoria_eixo\n      , volume AS traffic_volume\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__categoria_eixo = '3'\n  GROUP BY\n    plaza__tipo_cobranca\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "906f6853441ae2de",
+        "p1": "5f9fba15958aae36",
+        "p2": "808b4632fb8ad7fe"
+      }
+    },
+    {
+      "id": "abstencao_antt_01",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_02",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_03",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_04",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_05",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_06",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_07",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_08",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_09",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_10",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_11",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_12",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_13",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_14",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_15",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_16",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_17",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_18",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_19",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_20",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_21",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_22",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_23",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_24",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_25",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_26",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_27",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_28",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_29",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_antt_30",
+      "estrato": "abstencao",
+      "sql_metricflow": null,
+      "n_variantes": 0,
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    }
+  ],
+  "sha256_test": "186209506cf9e0fb155fa9b46ae11758484b54fda4540ce271a56ffecde93801",
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "bb4781b",
+    "git_dirty": true,
+    "git_diff_sha1": "bc3ddc3e4151",
+    "timestamp_utc": "2026-07-24T14:07:47+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

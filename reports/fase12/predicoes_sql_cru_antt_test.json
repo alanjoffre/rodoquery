@@ -1,0 +1,2606 @@
+{
+  "abstencao_antt_01": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.786,
+      "tokens_prompt": 478,
+      "tokens_saida": 5,
+      "eval_s": 0.15,
+      "carga_modelo_s": 0.229
+    }
+  },
+  "abstencao_antt_02": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.489,
+      "tokens_prompt": 473,
+      "tokens_saida": 5,
+      "eval_s": 0.155,
+      "carga_modelo_s": 0.201
+    }
+  },
+  "abstencao_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT \n    dim_date.date_month,\n    fct_traffic_volume.praca,\n    SUM(fct_traffic_volume.volume) AS total_volume\nFROM \n    fct_traffic_volume\nJOIN \n    dim_date ON fct_traffic_volume.data = dim_date.date_day\nGROUP BY \n    dim_date.date_month, fct_traffic_volume.praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    dim_date.date_month,\n    fct_traffic_volume.praca,\n    SUM(fct_traffic_volume.volume) AS total_volume\nFROM \n    fct_traffic_volume\nJOIN \n    dim_date ON fct_traffic_volume.data = dim_date.date_day\nGROUP BY \n    dim_date.date_month, fct_traffic_volume.praca;\n```",
+      "latencia_s": 3.223,
+      "tokens_prompt": 477,
+      "tokens_saida": 74,
+      "eval_s": 2.823,
+      "carga_modelo_s": 0.217
+    }
+  },
+  "abstencao_antt_04": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.562,
+      "tokens_prompt": 475,
+      "tokens_saida": 5,
+      "eval_s": 0.159,
+      "carga_modelo_s": 0.218
+    }
+  },
+  "abstencao_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT praca, AVG(volume) AS volume_medio\nFROM fct_traffic_volume\nGROUP BY praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT praca, AVG(volume) AS volume_medio\nFROM fct_traffic_volume\nGROUP BY praca;\n```",
+      "latencia_s": 1.418,
+      "tokens_prompt": 476,
+      "tokens_saida": 28,
+      "eval_s": 1.035,
+      "carga_modelo_s": 0.227
+    }
+  },
+  "abstencao_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY volume) AS mediana_tráfego_diário\nFROM fct_traffic_volume;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY volume) AS mediana_tráfego_diário\nFROM fct_traffic_volume;\n```",
+      "latencia_s": 1.876,
+      "tokens_prompt": 475,
+      "tokens_saida": 38,
+      "eval_s": 1.47,
+      "carga_modelo_s": 0.228
+    }
+  },
+  "abstencao_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT date_day AS dia_maior_movimento, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nJOIN dim_date ON fct_traffic_volume.data = dim_date.date_day\nGROUP BY date_day\nORDER BY total_volume DESC\nLIMIT 1;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_day AS dia_maior_movimento, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nJOIN dim_date ON fct_traffic_volume.data = dim_date.date_day\nGROUP BY date_day\nORDER BY total_volume DESC\nLIMIT 1;\n```",
+      "latencia_s": 2.789,
+      "tokens_prompt": 472,
+      "tokens_saida": 59,
+      "eval_s": 2.357,
+      "carga_modelo_s": 0.264
+    }
+  },
+  "abstencao_antt_08": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.663,
+      "tokens_prompt": 475,
+      "tokens_saida": 5,
+      "eval_s": 0.179,
+      "carga_modelo_s": 0.288
+    }
+  },
+  "abstencao_antt_09": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.81,
+      "tokens_prompt": 473,
+      "tokens_saida": 5,
+      "eval_s": 0.174,
+      "carga_modelo_s": 0.429
+    }
+  },
+  "abstencao_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('year', f.data) AS ano, SUM(f.volume) AS volume_acumulado\nFROM fct_traffic_volume f\nJOIN dim_date d ON f.data = d.date_day\nGROUP BY date_trunc('year', f.data)\nORDER BY ano;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('year', f.data) AS ano, SUM(f.volume) AS volume_acumulado\nFROM fct_traffic_volume f\nJOIN dim_date d ON f.data = d.date_day\nGROUP BY date_trunc('year', f.data)\nORDER BY ano;\n```",
+      "latencia_s": 2.937,
+      "tokens_prompt": 472,
+      "tokens_saida": 62,
+      "eval_s": 2.453,
+      "carga_modelo_s": 0.308
+    }
+  },
+  "abstencao_antt_12": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', data) AS semana,\n    SUM(volume) AS total_volume_semana,\n    LAG(SUM(volume)) OVER (ORDER BY date_trunc('week', data)) AS volume_semana_anterior,\n    ((SUM(volume) - LAG(SUM(volume)) OVER (ORDER BY date_trunc('week', data))) / LAG(SUM(volume)) OVER (ORDER BY date_trunc('week', data))) * 100 AS variação_percentual\nFROM \n    fct_traffic_volume\nGROUP BY \n    date_trunc('week', data)\nORDER BY \n    semana;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', data) AS semana,\n    SUM(volume) AS total_volume_semana,\n    LAG(SUM(volume)) OVER (ORDER BY date_trunc('week', data)) AS volume_semana_anterior,\n    ((SUM(volume) - LAG(SUM(volume)) OVER (ORDER BY date_trunc('week', data))) / LAG(SUM(volume)) OVER (ORDER BY date_trunc('week', data))) * 100 AS variação_percentual\nFROM \n    fct_traffic_volume\nGROUP BY \n    date",
+      "latencia_s": 5.614,
+      "tokens_prompt": 475,
+      "tokens_saida": 135,
+      "eval_s": 5.179,
+      "carga_modelo_s": 0.249
+    }
+  },
+  "abstencao_antt_13": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.558,
+      "tokens_prompt": 475,
+      "tokens_saida": 5,
+      "eval_s": 0.154,
+      "carga_modelo_s": 0.23
+    }
+  },
+  "abstencao_antt_14": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.591,
+      "tokens_prompt": 479,
+      "tokens_saida": 5,
+      "eval_s": 0.16,
+      "carga_modelo_s": 0.224
+    }
+  },
+  "abstencao_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('quarter', f.data) AS trimestre,\n    SUM(f.volume) AS total_volume\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('quarter', f.data)\nORDER BY \n    trimestre;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('quarter', f.data) AS trimestre,\n    SUM(f.volume) AS total_volume\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('quarter', f.data)\nORDER BY \n    trimestre;\n```",
+      "latencia_s": 3.104,
+      "tokens_prompt": 471,
+      "tokens_saida": 73,
+      "eval_s": 2.757,
+      "carga_modelo_s": 0.226
+    }
+  },
+  "abstencao_antt_17": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.508,
+      "tokens_prompt": 474,
+      "tokens_saida": 5,
+      "eval_s": 0.158,
+      "carga_modelo_s": 0.216
+    }
+  },
+  "abstencao_antt_18": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.518,
+      "tokens_prompt": 472,
+      "tokens_saida": 5,
+      "eval_s": 0.158,
+      "carga_modelo_s": 0.229
+    }
+  },
+  "abstencao_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca AS rodovia,\n    SUM(volume) AS volume_total\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca AS rodovia,\n    SUM(volume) AS volume_total\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca;\n```",
+      "latencia_s": 1.767,
+      "tokens_prompt": 472,
+      "tokens_saida": 38,
+      "eval_s": 1.426,
+      "carga_modelo_s": 0.216
+    }
+  },
+  "abstencao_antt_21": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.533,
+      "tokens_prompt": 475,
+      "tokens_saida": 5,
+      "eval_s": 0.158,
+      "carga_modelo_s": 0.225
+    }
+  },
+  "abstencao_antt_22": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.518,
+      "tokens_prompt": 473,
+      "tokens_saida": 5,
+      "eval_s": 0.16,
+      "carga_modelo_s": 0.219
+    }
+  },
+  "abstencao_antt_23": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.529,
+      "tokens_prompt": 472,
+      "tokens_saida": 5,
+      "eval_s": 0.157,
+      "carga_modelo_s": 0.226
+    }
+  },
+  "abstencao_antt_24": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.562,
+      "tokens_prompt": 476,
+      "tokens_saida": 5,
+      "eval_s": 0.158,
+      "carga_modelo_s": 0.225
+    }
+  },
+  "abstencao_antt_25": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.59,
+      "tokens_prompt": 477,
+      "tokens_saida": 5,
+      "eval_s": 0.161,
+      "carga_modelo_s": 0.239
+    }
+  },
+  "abstencao_antt_26": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.549,
+      "tokens_prompt": 474,
+      "tokens_saida": 5,
+      "eval_s": 0.158,
+      "carga_modelo_s": 0.23
+    }
+  },
+  "abstencao_antt_28": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.55,
+      "tokens_prompt": 473,
+      "tokens_saida": 5,
+      "eval_s": 0.159,
+      "carga_modelo_s": 0.232
+    }
+  },
+  "abstencao_antt_29": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.548,
+      "tokens_prompt": 474,
+      "tokens_saida": 5,
+      "eval_s": 0.157,
+      "carga_modelo_s": 0.234
+    }
+  },
+  "abstencao_antt_30": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "ABSTENHO",
+      "latencia_s": 0.59,
+      "tokens_prompt": 479,
+      "tokens_saida": 5,
+      "eval_s": 0.159,
+      "carga_modelo_s": 0.228
+    }
+  },
+  "coalesce_nulo_antt_01": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', data) AS data, SUM(volume) AS volume_veiculos_6_eixos FROM fct_traffic_volume WHERE categoria_eixo = '6' GROUP BY date_trunc('day', data);",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT date_trunc('day', data) AS data, SUM(volume) AS volume_veiculos_6_eixos FROM fct_traffic_volume WHERE categoria_eixo = '6' GROUP BY date_trunc('day', data);",
+      "latencia_s": 2.277,
+      "tokens_prompt": 480,
+      "tokens_saida": 48,
+      "eval_s": 1.831,
+      "carga_modelo_s": 0.228
+    }
+  },
+  "coalesce_nulo_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT \n    dim_date.date_day,\n    concessionaria,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) AS volume_comercial,\n    SUM(volume) AS total_volume,\n    ROUND(SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100, 2) AS participacao_comercial\nFROM \n    fct_traffic_volume\nJOIN \n    dim_date ON fct_traffic_volume.data = dim_date.date_day\nWHERE \n    tipo_cobranca = 'Automática'\nGROUP BY \n    dim_date.date_day,\n    concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    dim_date.date_day,\n    concessionaria,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) AS volume_comercial,\n    SUM(volume) AS total_volume,\n    ROUND(SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100, 2) AS participacao_comercial\nFROM \n    fct_traffic_volume\nJOIN \n    dim_date ON fct_traffic_volume.data = dim_date.da",
+      "latencia_s": 6.028,
+      "tokens_prompt": 490,
+      "tokens_saida": 144,
+      "eval_s": 5.51,
+      "carga_modelo_s": 0.23
+    }
+  },
+  "coalesce_nulo_antt_04": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / SUM(f.volume) * 100 AS participacao_comerciais\nFROM \n    fct_traffic_volume f\nWHERE \n    f.sentido = 'Decrescente'\nGROUP BY \n    date_trunc('day', f.data)\nORDER BY \n    data;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / SUM(f.volume) * 100 AS participacao_comerciais\nFROM \n    fct_traffic_volume f\nWHERE \n    f.sentido = 'Decrescente'\nGROUP BY \n    date_trunc('day', f.data)\nORDER BY \n    data;\n```",
+      "latencia_s": 4.202,
+      "tokens_prompt": 485,
+      "tokens_saida": 100,
+      "eval_s": 3.824,
+      "carga_modelo_s": 0.218
+    }
+  },
+  "coalesce_nulo_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.tipo_de_veiculo = 'Comercial'\nGROUP BY \n    date_trunc('day', f.data)\nORDER BY \n    data;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.tipo_de_veiculo = 'Comercial'\nGROUP BY \n    date_trunc('day', f.data)\nORDER BY \n    data;\n```",
+      "latencia_s": 4.593,
+      "tokens_prompt": 479,
+      "tokens_saida": 110,
+      "eval_s": 4.192,
+      "carga_modelo_s": 0.22
+    }
+  },
+  "coalesce_nulo_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.volume) AS taxa_automacao\nFROM \n    fct_traffic_volume f\nWHERE \n    f.categoria_eixo = '7'\nGROUP BY \n    date_trunc('day', f.data), f.praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.volume) AS taxa_automacao\nFROM \n    fct_traffic_volume f\nWHERE \n    f.categoria_eixo = '7'\nGROUP BY \n    date_trunc('day', f.data), f.praca;\n```",
+      "latencia_s": 4.342,
+      "tokens_prompt": 487,
+      "tokens_saida": 103,
+      "eval_s": 3.929,
+      "carga_modelo_s": 0.22
+    }
+  },
+  "coalesce_nulo_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '2'\nGROUP BY \n    date_trunc('day', f.data), f.praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '2'\nGROUP BY \n    date_trunc('day', f.data), f.praca;\n```",
+      "latencia_s": 4.93,
+      "tokens_prompt": 488,
+      "tokens_saida": 119,
+      "eval_s": 4.514,
+      "carga_modelo_s": 0.219
+    }
+  },
+  "coalesce_nulo_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', data) AS data, SUM(volume) AS volume_4_eixos FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY date_trunc('day', data);",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT date_trunc('day', data) AS data, SUM(volume) AS volume_4_eixos FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY date_trunc('day', data);",
+      "latencia_s": 2.164,
+      "tokens_prompt": 480,
+      "tokens_saida": 46,
+      "eval_s": 1.735,
+      "carga_modelo_s": 0.221
+    }
+  },
+  "coalesce_nulo_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '3'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '3'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;\n```",
+      "latencia_s": 4.893,
+      "tokens_prompt": 487,
+      "tokens_saida": 114,
+      "eval_s": 4.374,
+      "carga_modelo_s": 0.235
+    }
+  },
+  "coalesce_nulo_antt_11": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nWHERE \n    f.categoria_eixo = '5'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nWHERE \n    f.categoria_eixo = '5'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;\n```",
+      "latencia_s": 3.298,
+      "tokens_prompt": 488,
+      "tokens_saida": 74,
+      "eval_s": 2.806,
+      "carga_modelo_s": 0.22
+    }
+  },
+  "coalesce_nulo_antt_12": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '2'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '2'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;\n```",
+      "latencia_s": 4.871,
+      "tokens_prompt": 487,
+      "tokens_saida": 114,
+      "eval_s": 4.375,
+      "carga_modelo_s": 0.223
+    }
+  },
+  "coalesce_nulo_antt_14": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', data) AS data, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY date_trunc('day', data);",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT date_trunc('day', data) AS data, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY date_trunc('day', data);",
+      "latencia_s": 2.025,
+      "tokens_prompt": 484,
+      "tokens_saida": 42,
+      "eval_s": 1.577,
+      "carga_modelo_s": 0.219
+    }
+  },
+  "coalesce_nulo_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    SUM(CASE WHEN f.categoria_eixo = '2' AND f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / \n    SUM(CASE WHEN f.categoria_eixo = '2' THEN f.volume ELSE 0 END) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    SUM(CASE WHEN f.categoria_eixo = '2' AND f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / \n    SUM(CASE WHEN f.categoria_eixo = '2' THEN f.volume ELSE 0 END) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;\n```",
+      "latencia_s": 5.152,
+      "tokens_prompt": 491,
+      "tokens_saida": 121,
+      "eval_s": 4.617,
+      "carga_modelo_s": 0.231
+    }
+  },
+  "coalesce_nulo_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    SUM(f.volume) AS volume_motos\nFROM \n    fct_traffic_volume f\nWHERE \n    f.tipo_de_veiculo = 'Moto'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    SUM(f.volume) AS volume_motos\nFROM \n    fct_traffic_volume f\nWHERE \n    f.tipo_de_veiculo = 'Moto'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;\n```",
+      "latencia_s": 3.334,
+      "tokens_prompt": 482,
+      "tokens_saida": 76,
+      "eval_s": 2.892,
+      "carga_modelo_s": 0.218
+    }
+  },
+  "coalesce_nulo_antt_17": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nWHERE \n    f.categoria_eixo = '7'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nWHERE \n    f.categoria_eixo = '7'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;\n```",
+      "latencia_s": 3.325,
+      "tokens_prompt": 489,
+      "tokens_saida": 74,
+      "eval_s": 2.818,
+      "carga_modelo_s": 0.22
+    }
+  },
+  "coalesce_nulo_antt_18": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.volume) AS taxa_automacao\nFROM \n    fct_traffic_volume f\nWHERE \n    f.sentido = 'Decrescente'\nGROUP BY \n    date_trunc('day', f.data), f.praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.volume) AS taxa_automacao\nFROM \n    fct_traffic_volume f\nWHERE \n    f.sentido = 'Decrescente'\nGROUP BY \n    date_trunc('day', f.data), f.praca;\n```",
+      "latencia_s": 4.424,
+      "tokens_prompt": 487,
+      "tokens_saida": 103,
+      "eval_s": 3.924,
+      "carga_modelo_s": 0.228
+    }
+  },
+  "coalesce_nulo_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / SUM(f.volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.tipo_cobranca = 'OCR/PLACA'\nGROUP BY \n    date_trunc('day', f.data), f.praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / SUM(f.volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.tipo_cobranca = 'OCR/PLACA'\nGROUP BY \n    date_trunc('day', f.data), f.praca;\n```",
+      "latencia_s": 5.094,
+      "tokens_prompt": 490,
+      "tokens_saida": 120,
+      "eval_s": 4.586,
+      "carga_modelo_s": 0.229
+    }
+  },
+  "coalesce_nulo_antt_20": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.categoria_eixo = '8' AND f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / \n    SUM(CASE WHEN f.categoria_eixo = '8' THEN f.volume ELSE 0 END) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.categoria_eixo = '8' AND f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / \n    SUM(CASE WHEN f.categoria_eixo = '8' THEN f.volume ELSE 0 END) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.praca;\n```",
+      "latencia_s": 5.013,
+      "tokens_prompt": 490,
+      "tokens_saida": 119,
+      "eval_s": 4.599,
+      "carga_modelo_s": 0.221
+    }
+  },
+  "coalesce_nulo_antt_21": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.tipo_de_veiculo = 'Comercial'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.tipo_de_veiculo = 'Comercial'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;\n```",
+      "latencia_s": 4.879,
+      "tokens_prompt": 483,
+      "tokens_saida": 115,
+      "eval_s": 4.412,
+      "carga_modelo_s": 0.238
+    }
+  },
+  "coalesce_nulo_antt_23": {
+    "tipo": "sql",
+    "sql": "SELECT \n    dim_date.date_day AS data,\n    fct_traffic_volume.concessionaria,\n    SUM(fct_traffic_volume.volume) AS volume_de_veiculos\nFROM \n    fct_traffic_volume\nJOIN \n    dim_date ON fct_traffic_volume.data = dim_date.date_day\nWHERE \n    fct_traffic_volume.tipo_de_veiculo = 'Passeio'\nGROUP BY \n    dim_date.date_day, \n    fct_traffic_volume.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    dim_date.date_day AS data,\n    fct_traffic_volume.concessionaria,\n    SUM(fct_traffic_volume.volume) AS volume_de_veiculos\nFROM \n    fct_traffic_volume\nJOIN \n    dim_date ON fct_traffic_volume.data = dim_date.date_day\nWHERE \n    fct_traffic_volume.tipo_de_veiculo = 'Passeio'\nGROUP BY \n    dim_date.date_day, \n    fct_traffic_volume.concessionaria;\n```",
+      "latencia_s": 4.167,
+      "tokens_prompt": 481,
+      "tokens_saida": 99,
+      "eval_s": 3.732,
+      "carga_modelo_s": 0.227
+    }
+  },
+  "coalesce_nulo_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.tipo_de_veiculo = 'Passeio'\nGROUP BY \n    date_trunc('day', f.data)\nORDER BY \n    data;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.tipo_de_veiculo = 'Passeio'\nGROUP BY \n    date_trunc('day', f.data)\nORDER BY \n    data;\n```",
+      "latencia_s": 4.79,
+      "tokens_prompt": 480,
+      "tokens_saida": 111,
+      "eval_s": 4.347,
+      "carga_modelo_s": 0.225
+    }
+  },
+  "coalesce_nulo_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', data) AS data, SUM(volume) AS volume_total\nFROM fct_traffic_volume\nWHERE categoria_eixo = '2'\nGROUP BY date_trunc('day', data);",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('day', data) AS data, SUM(volume) AS volume_total\nFROM fct_traffic_volume\nWHERE categoria_eixo = '2'\nGROUP BY date_trunc('day', data);\n```",
+      "latencia_s": 2.387,
+      "tokens_prompt": 484,
+      "tokens_saida": 48,
+      "eval_s": 1.87,
+      "carga_modelo_s": 0.247
+    }
+  },
+  "coalesce_nulo_antt_27": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    SUM(CASE WHEN f.categoria_eixo = '7' AND f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / \n    SUM(CASE WHEN f.categoria_eixo = '7' THEN f.volume ELSE 0 END) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    SUM(CASE WHEN f.categoria_eixo = '7' AND f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / \n    SUM(CASE WHEN f.categoria_eixo = '7' THEN f.volume ELSE 0 END) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;\n```",
+      "latencia_s": 5.319,
+      "tokens_prompt": 490,
+      "tokens_saida": 121,
+      "eval_s": 4.726,
+      "carga_modelo_s": 0.262
+    }
+  },
+  "coalesce_nulo_antt_28": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', data) AS data, SUM(volume) AS volume_manual FROM fct_traffic_volume WHERE tipo_cobranca = 'Manual' GROUP BY date_trunc('day', data);",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT date_trunc('day', data) AS data, SUM(volume) AS volume_manual FROM fct_traffic_volume WHERE tipo_cobranca = 'Manual' GROUP BY date_trunc('day', data);",
+      "latencia_s": 2.137,
+      "tokens_prompt": 479,
+      "tokens_saida": 44,
+      "eval_s": 1.688,
+      "carga_modelo_s": 0.23
+    }
+  },
+  "coalesce_nulo_antt_29": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nWHERE \n    f.categoria_eixo = '5'\nGROUP BY \n    date_trunc('day', f.data), f.praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nWHERE \n    f.categoria_eixo = '5'\nGROUP BY \n    date_trunc('day', f.data), f.praca;\n```",
+      "latencia_s": 3.298,
+      "tokens_prompt": 489,
+      "tokens_saida": 72,
+      "eval_s": 2.765,
+      "carga_modelo_s": 0.234
+    }
+  },
+  "coalesce_nulo_antt_30": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '5'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.concessionaria,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '5'\nGROUP BY \n    date_trunc('day', f.data), f.concessionaria;\n```",
+      "latencia_s": 4.859,
+      "tokens_prompt": 487,
+      "tokens_saida": 114,
+      "eval_s": 4.377,
+      "carga_modelo_s": 0.223
+    }
+  },
+  "controle_trivial_antt_01": {
+    "tipo": "sql",
+    "sql": "SELECT categoria_eixo, SUM(volume) AS total_veiculos FROM fct_traffic_volume GROUP BY categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT categoria_eixo, SUM(volume) AS total_veiculos FROM fct_traffic_volume GROUP BY categoria_eixo;",
+      "latencia_s": 1.3,
+      "tokens_prompt": 476,
+      "tokens_saida": 24,
+      "eval_s": 0.894,
+      "carga_modelo_s": 0.228
+    }
+  },
+  "controle_trivial_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT sentido, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY sentido;\n```",
+      "latencia_s": 1.328,
+      "tokens_prompt": 473,
+      "tokens_saida": 26,
+      "eval_s": 0.982,
+      "carga_modelo_s": 0.229
+    }
+  },
+  "controle_trivial_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT praca, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT praca, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY praca;\n```",
+      "latencia_s": 1.474,
+      "tokens_prompt": 478,
+      "tokens_saida": 28,
+      "eval_s": 1.038,
+      "carga_modelo_s": 0.238
+    }
+  },
+  "controle_trivial_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', data) AS data, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY date_trunc('day', data);",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('day', data) AS data, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY date_trunc('day', data);\n```",
+      "latencia_s": 1.851,
+      "tokens_prompt": 474,
+      "tokens_saida": 41,
+      "eval_s": 1.525,
+      "carga_modelo_s": 0.219
+    }
+  },
+  "controle_trivial_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY semana;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('week', data) AS semana, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY semana;\n```",
+      "latencia_s": 1.687,
+      "tokens_prompt": 473,
+      "tokens_saida": 35,
+      "eval_s": 1.316,
+      "carga_modelo_s": 0.219
+    }
+  },
+  "controle_trivial_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT concessionaria, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY concessionaria;\n```",
+      "latencia_s": 1.427,
+      "tokens_prompt": 475,
+      "tokens_saida": 28,
+      "eval_s": 1.045,
+      "carga_modelo_s": 0.22
+    }
+  },
+  "controle_trivial_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT SUM(volume) AS total_veiculos FROM fct_traffic_volume;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT SUM(volume) AS total_veiculos FROM fct_traffic_volume;\n```",
+      "latencia_s": 1.064,
+      "tokens_prompt": 473,
+      "tokens_saida": 19,
+      "eval_s": 0.69,
+      "carga_modelo_s": 0.222
+    }
+  },
+  "controle_trivial_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nGROUP BY tipo_cobranca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nGROUP BY tipo_cobranca;\n```",
+      "latencia_s": 1.65,
+      "tokens_prompt": 477,
+      "tokens_saida": 33,
+      "eval_s": 1.229,
+      "carga_modelo_s": 0.23
+    }
+  },
+  "grao_temporal_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    d.categoria_eixo,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('week', f.data), \n    d.categoria_eixo\nORDER BY \n    semana, \n    categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    d.categoria_eixo,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('week', f.data), \n    d.categoria_eixo\nORDER BY \n    semana, \n    categoria_eixo;\n```",
+      "latencia_s": 3.94,
+      "tokens_prompt": 481,
+      "tokens_saida": 92,
+      "eval_s": 3.52,
+      "carga_modelo_s": 0.221
+    }
+  },
+  "grao_temporal_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', data) AS data,\n    tipo_cobranca,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    date_trunc('day', data), \n    tipo_cobranca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', data) AS data,\n    tipo_cobranca,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    date_trunc('day', data), \n    tipo_cobranca;\n```",
+      "latencia_s": 2.86,
+      "tokens_prompt": 480,
+      "tokens_saida": 63,
+      "eval_s": 2.448,
+      "carga_modelo_s": 0.223
+    }
+  },
+  "grao_temporal_antt_04": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.praca;\n```",
+      "latencia_s": 4.039,
+      "tokens_prompt": 483,
+      "tokens_saida": 94,
+      "eval_s": 3.583,
+      "carga_modelo_s": 0.222
+    }
+  },
+  "grao_temporal_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    f.praca,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / SUM(f.volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    semana, praca\nORDER BY \n    semana, praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    f.praca,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / SUM(f.volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    semana, praca\nORDER BY \n    semana, praca;\n```",
+      "latencia_s": 4.472,
+      "tokens_prompt": 483,
+      "tokens_saida": 105,
+      "eval_s": 4.038,
+      "carga_modelo_s": 0.219
+    }
+  },
+  "grao_temporal_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.sentido,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.sentido,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.sentido;\n```",
+      "latencia_s": 4.039,
+      "tokens_prompt": 482,
+      "tokens_saida": 94,
+      "eval_s": 3.606,
+      "carga_modelo_s": 0.218
+    }
+  },
+  "grao_temporal_antt_08": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    f.tipo_de_veiculo,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('week', f.data), \n    f.tipo_de_veiculo\nORDER BY \n    semana, \n    tipo_de_veiculo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    f.tipo_de_veiculo,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('week', f.data), \n    f.tipo_de_veiculo\nORDER BY \n    semana, \n    tipo_de_veiculo;\n```",
+      "latencia_s": 3.447,
+      "tokens_prompt": 480,
+      "tokens_saida": 79,
+      "eval_s": 3.006,
+      "carga_modelo_s": 0.228
+    }
+  },
+  "grao_temporal_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    f.praca,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    semana, praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    f.praca,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    semana, praca;\n```",
+      "latencia_s": 3.964,
+      "tokens_prompt": 479,
+      "tokens_saida": 92,
+      "eval_s": 3.529,
+      "carga_modelo_s": 0.245
+    }
+  },
+  "grao_temporal_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('month', f.data) AS mes,\n    f.categoria_eixo,\n    SUM(f.volume) AS total_volume\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('month', f.data), \n    f.categoria_eixo\nORDER BY \n    mes, \n    categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('month', f.data) AS mes,\n    f.categoria_eixo,\n    SUM(f.volume) AS total_volume\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('month', f.data), \n    f.categoria_eixo\nORDER BY \n    mes, \n    categoria_eixo;\n```",
+      "latencia_s": 3.587,
+      "tokens_prompt": 483,
+      "tokens_saida": 78,
+      "eval_s": 3.08,
+      "carga_modelo_s": 0.247
+    }
+  },
+  "grao_temporal_antt_11": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    f.tipo_cobranca,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS proporcao_comerciais\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('week', f.data), f.tipo_cobranca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    f.tipo_cobranca,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS proporcao_comerciais\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('week', f.data), f.tipo_cobranca;\n```",
+      "latencia_s": 4.715,
+      "tokens_prompt": 484,
+      "tokens_saida": 109,
+      "eval_s": 4.218,
+      "carga_modelo_s": 0.243
+    }
+  },
+  "grao_temporal_antt_12": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY semana;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('week', data) AS semana, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nGROUP BY semana;\n```",
+      "latencia_s": 1.682,
+      "tokens_prompt": 473,
+      "tokens_saida": 35,
+      "eval_s": 1.322,
+      "carga_modelo_s": 0.224
+    }
+  },
+  "grao_temporal_antt_13": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    d.categoria_eixo,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_comerciais\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    semana, categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    d.categoria_eixo,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_comerciais\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    semana, categoria_eixo;\n```",
+      "latencia_s": 4.347,
+      "tokens_prompt": 484,
+      "tokens_saida": 102,
+      "eval_s": 3.913,
+      "carga_modelo_s": 0.206
+    }
+  },
+  "grao_temporal_antt_14": {
+    "tipo": "sql",
+    "sql": "SELECT \n    dim_date.date_week AS semana,\n    fct_traffic_volume.concessionaria,\n    SUM(fct_traffic_volume.volume) AS volume_comercial\nFROM \n    fct_traffic_volume\nJOIN \n    dim_date ON fct_traffic_volume.data = dim_date.date_day\nWHERE \n    fct_traffic_volume.tipo_de_veiculo = 'Comercial'\nGROUP BY \n    dim_date.date_week, \n    fct_traffic_volume.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    dim_date.date_week AS semana,\n    fct_traffic_volume.concessionaria,\n    SUM(fct_traffic_volume.volume) AS volume_comercial\nFROM \n    fct_traffic_volume\nJOIN \n    dim_date ON fct_traffic_volume.data = dim_date.date_day\nWHERE \n    fct_traffic_volume.tipo_de_veiculo = 'Comercial'\nGROUP BY \n    dim_date.date_week, \n    fct_traffic_volume.concessionaria;\n```",
+      "latencia_s": 4.206,
+      "tokens_prompt": 479,
+      "tokens_saida": 97,
+      "eval_s": 3.805,
+      "carga_modelo_s": 0.22
+    }
+  },
+  "grao_temporal_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nGROUP BY \n    semana;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nGROUP BY \n    semana;\n```",
+      "latencia_s": 3.187,
+      "tokens_prompt": 473,
+      "tokens_saida": 70,
+      "eval_s": 2.763,
+      "carga_modelo_s": 0.265
+    }
+  },
+  "grao_temporal_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT \n    d.date_month,\n    a.concessionaria,\n    SUM(CASE WHEN v.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS proporcao_comerciais\nFROM \n    fct_traffic_volume v\nJOIN \n    dim_date d ON v.data = d.date_day\nGROUP BY \n    d.date_month,\n    a.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    d.date_month,\n    a.concessionaria,\n    SUM(CASE WHEN v.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS proporcao_comerciais\nFROM \n    fct_traffic_volume v\nJOIN \n    dim_date d ON v.data = d.date_day\nGROUP BY \n    d.date_month,\n    a.concessionaria;\n```",
+      "latencia_s": 4.283,
+      "tokens_prompt": 482,
+      "tokens_saida": 93,
+      "eval_s": 3.817,
+      "carga_modelo_s": 0.241
+    }
+  },
+  "grao_temporal_antt_18": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('month', f.data) AS mes,\n    f.praca,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    mes, praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('month', f.data) AS mes,\n    f.praca,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    mes, praca;\n```",
+      "latencia_s": 4.122,
+      "tokens_prompt": 479,
+      "tokens_saida": 92,
+      "eval_s": 3.616,
+      "carga_modelo_s": 0.302
+    }
+  },
+  "grao_temporal_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('month', f.data) AS mes,\n    f.tipo_cobranca,\n    SUM(f.volume) AS total_veiculos\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('month', f.data), \n    f.tipo_cobranca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('month', f.data) AS mes,\n    f.tipo_cobranca,\n    SUM(f.volume) AS total_veiculos\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('month', f.data), \n    f.tipo_cobranca;\n```",
+      "latencia_s": 3.136,
+      "tokens_prompt": 481,
+      "tokens_saida": 69,
+      "eval_s": 2.697,
+      "carga_modelo_s": 0.222
+    }
+  },
+  "grao_temporal_antt_20": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', data) AS data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS proporcao_comerciais FROM fct_traffic_volume GROUP BY date_trunc('day', data);",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT date_trunc('day', data) AS data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS proporcao_comerciais FROM fct_traffic_volume GROUP BY date_trunc('day', data);",
+      "latencia_s": 2.842,
+      "tokens_prompt": 477,
+      "tokens_saida": 63,
+      "eval_s": 2.412,
+      "carga_modelo_s": 0.225
+    }
+  },
+  "grao_temporal_antt_21": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('month', f.data) AS mes,\n    f.tipo_de_veiculo,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('month', f.data), f.tipo_de_veiculo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('month', f.data) AS mes,\n    f.tipo_de_veiculo,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('month', f.data), f.tipo_de_veiculo;\n```",
+      "latencia_s": 4.71,
+      "tokens_prompt": 486,
+      "tokens_saida": 112,
+      "eval_s": 4.267,
+      "carga_modelo_s": 0.219
+    }
+  },
+  "grao_temporal_antt_22": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('month', f.data) AS mes,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_comerciais\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('month', f.data)\nORDER BY \n    mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('month', f.data) AS mes,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_comerciais\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('month', f.data)\nORDER BY \n    mes;\n```",
+      "latencia_s": 3.869,
+      "tokens_prompt": 477,
+      "tokens_saida": 90,
+      "eval_s": 3.503,
+      "carga_modelo_s": 0.211
+    }
+  },
+  "grao_temporal_antt_23": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.tipo_cobranca,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_comerciais\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.tipo_cobranca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.tipo_cobranca,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_comerciais\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.tipo_cobranca;\n```",
+      "latencia_s": 4.364,
+      "tokens_prompt": 484,
+      "tokens_saida": 99,
+      "eval_s": 3.929,
+      "carga_modelo_s": 0.247
+    }
+  },
+  "grao_temporal_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    d.categoria_eixo,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    semana, categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    d.categoria_eixo,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    semana, categoria_eixo;\n```",
+      "latencia_s": 4.448,
+      "tokens_prompt": 486,
+      "tokens_saida": 103,
+      "eval_s": 3.988,
+      "carga_modelo_s": 0.222
+    }
+  },
+  "grao_temporal_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.categoria_eixo,\n    SUM(f.volume) AS volume_comercial\nFROM \n    fct_traffic_volume f\nWHERE \n    f.tipo_de_veiculo = 'Comercial'\nGROUP BY \n    date_trunc('day', f.data), \n    f.categoria_eixo\nORDER BY \n    data, \n    categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.categoria_eixo,\n    SUM(f.volume) AS volume_comercial\nFROM \n    fct_traffic_volume f\nWHERE \n    f.tipo_de_veiculo = 'Comercial'\nGROUP BY \n    date_trunc('day', f.data), \n    f.categoria_eixo\nORDER BY \n    data, \n    categoria_eixo;\n```",
+      "latencia_s": 4.024,
+      "tokens_prompt": 482,
+      "tokens_saida": 92,
+      "eval_s": 3.567,
+      "carga_modelo_s": 0.238
+    }
+  },
+  "grao_temporal_antt_26": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('month', f.data) AS mes,\n    f.praca,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / SUM(f.volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('month', f.data), f.praca\nORDER BY \n    mes, praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('month', f.data) AS mes,\n    f.praca,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / SUM(f.volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('month', f.data), f.praca\nORDER BY \n    mes, praca;\n```",
+      "latencia_s": 4.802,
+      "tokens_prompt": 480,
+      "tokens_saida": 113,
+      "eval_s": 4.428,
+      "carga_modelo_s": 0.236
+    }
+  },
+  "grao_temporal_antt_27": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', data) AS data,\n    tipo_de_veiculo,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nGROUP BY \n    date_trunc('day', data), \n    tipo_de_veiculo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', data) AS data,\n    tipo_de_veiculo,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nGROUP BY \n    date_trunc('day', data), \n    tipo_de_veiculo;\n```",
+      "latencia_s": 2.832,
+      "tokens_prompt": 478,
+      "tokens_saida": 60,
+      "eval_s": 2.39,
+      "carga_modelo_s": 0.246
+    }
+  },
+  "grao_temporal_antt_28": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', data) AS semana,\n    sentido,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    date_trunc('week', data), sentido\nORDER BY \n    semana, sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', data) AS semana,\n    sentido,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    date_trunc('week', data), sentido\nORDER BY \n    semana, sentido;\n```",
+      "latencia_s": 2.749,
+      "tokens_prompt": 477,
+      "tokens_saida": 61,
+      "eval_s": 2.342,
+      "carga_modelo_s": 0.217
+    }
+  },
+  "grao_temporal_antt_29": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('month', f.data) AS mes,\n    f.categoria_eixo,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_comerciais\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('month', f.data), \n    f.categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('month', f.data) AS mes,\n    f.categoria_eixo,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(f.plaza_key) AS proporcao_comerciais\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('month', f.data), \n    f.categoria_eixo;\n```",
+      "latencia_s": 4.372,
+      "tokens_prompt": 485,
+      "tokens_saida": 99,
+      "eval_s": 3.835,
+      "carga_modelo_s": 0.273
+    }
+  },
+  "join_grao_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    f.plaza_key,\n    f.tipo_cobranca,\n    SUM(f.volume) AS total_veiculos\nFROM \n    fct_traffic_volume f\nGROUP BY \n    semana, f.plaza_key, f.tipo_cobranca\nORDER BY \n    semana, f.plaza_key, f.tipo_cobranca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    f.plaza_key,\n    f.tipo_cobranca,\n    SUM(f.volume) AS total_veiculos\nFROM \n    fct_traffic_volume f\nGROUP BY \n    semana, f.plaza_key, f.tipo_cobranca\nORDER BY \n    semana, f.plaza_key, f.tipo_cobranca;\n```",
+      "latencia_s": 3.958,
+      "tokens_prompt": 485,
+      "tokens_saida": 89,
+      "eval_s": 3.458,
+      "carga_modelo_s": 0.238
+    }
+  },
+  "join_grao_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    categoria_eixo,\n    date_trunc('month', data) AS mes,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, \n    categoria_eixo, \n    mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    categoria_eixo,\n    date_trunc('month', data) AS mes,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, \n    categoria_eixo, \n    mes;\n```",
+      "latencia_s": 2.892,
+      "tokens_prompt": 485,
+      "tokens_saida": 62,
+      "eval_s": 2.402,
+      "carga_modelo_s": 0.218
+    }
+  },
+  "join_grao_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    tipo_cobranca,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) AS volume_comercial,\n    SUM(volume) AS total_volume,\n    ROUND(SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) * 100.0 / SUM(volume), 2) AS participacao_comercial\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, tipo_cobranca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    tipo_cobranca,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) AS volume_comercial,\n    SUM(volume) AS total_volume,\n    ROUND(SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) * 100.0 / SUM(volume), 2) AS participacao_comercial\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, tipo_cobranca;\n```",
+      "latencia_s": 5.057,
+      "tokens_prompt": 484,
+      "tokens_saida": 116,
+      "eval_s": 4.576,
+      "carga_modelo_s": 0.228
+    }
+  },
+  "join_grao_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT \n    d.date_day,\n    concessionaria,\n    sentido,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica\nFROM \n    fct_traffic_volume ftv\nJOIN \n    dim_date d ON ftv.data = d.date_day\nGROUP BY \n    d.date_day, concessionaria, sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    d.date_day,\n    concessionaria,\n    sentido,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica\nFROM \n    fct_traffic_volume ftv\nJOIN \n    dim_date d ON ftv.data = d.date_day\nGROUP BY \n    d.date_day, concessionaria, sentido;\n```",
+      "latencia_s": 4.114,
+      "tokens_prompt": 488,
+      "tokens_saida": 90,
+      "eval_s": 3.531,
+      "carga_modelo_s": 0.279
+    }
+  },
+  "join_grao_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT \n    d.date_day,\n    t.concessionaria,\n    t.tipo_cobranca,\n    SUM(CASE WHEN t.tipo_de_veiculo = 'Comercial' THEN t.volume ELSE 0 END) AS volume_comercial,\n    SUM(t.volume) AS total_volume,\n    ROUND(SUM(CASE WHEN t.tipo_de_veiculo = 'Comercial' THEN t.volume ELSE 0 END) / SUM(t.volume) * 100, 2) AS participacao_comercial\nFROM \n    fct_traffic_volume t\nJOIN \n    dim_date d ON t.data = d.date_day\nGROUP BY \n    d.date_day,\n    t.concessionaria,\n    t.tipo_cobranca\nORDER BY \n    d.date_day,\n    t.concessionaria,\n    t.tipo_cobranca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    d.date_day,\n    t.concessionaria,\n    t.tipo_cobranca,\n    SUM(CASE WHEN t.tipo_de_veiculo = 'Comercial' THEN t.volume ELSE 0 END) AS volume_comercial,\n    SUM(t.volume) AS total_volume,\n    ROUND(SUM(CASE WHEN t.tipo_de_veiculo = 'Comercial' THEN t.volume ELSE 0 END) / SUM(t.volume) * 100, 2) AS participacao_comercial\nFROM \n    fct_traffic_volume t\nJOIN \n    dim_date d ON t.dat",
+      "latencia_s": 7.296,
+      "tokens_prompt": 487,
+      "tokens_saida": 175,
+      "eval_s": 6.81,
+      "carga_modelo_s": 0.226
+    }
+  },
+  "join_grao_antt_08": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', data) AS data,\n    tipo_cobranca,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    date_trunc('day', data), tipo_cobranca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', data) AS data,\n    tipo_cobranca,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    date_trunc('day', data), tipo_cobranca;\n```",
+      "latencia_s": 2.956,
+      "tokens_prompt": 489,
+      "tokens_saida": 61,
+      "eval_s": 2.389,
+      "carga_modelo_s": 0.243
+    }
+  },
+  "join_grao_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    sentido,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, \n    sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    sentido,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, \n    sentido;\n```",
+      "latencia_s": 2.086,
+      "tokens_prompt": 478,
+      "tokens_saida": 42,
+      "eval_s": 1.683,
+      "carga_modelo_s": 0.245
+    }
+  },
+  "join_grao_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT \n    d.date_day,\n    concessionaria,\n    tipo_de_veiculo,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica\nFROM \n    fct_traffic_volume ftv\nJOIN \n    dim_date d ON ftv.data = d.date_day\nGROUP BY \n    d.date_day, concessionaria, tipo_de_veiculo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    d.date_day,\n    concessionaria,\n    tipo_de_veiculo,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica\nFROM \n    fct_traffic_volume ftv\nJOIN \n    dim_date d ON ftv.data = d.date_day\nGROUP BY \n    d.date_day, concessionaria, tipo_de_veiculo;\n```",
+      "latencia_s": 4.459,
+      "tokens_prompt": 488,
+      "tokens_saida": 96,
+      "eval_s": 3.917,
+      "carga_modelo_s": 0.233
+    }
+  },
+  "join_grao_antt_11": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    tipo_cobranca,\n    date_trunc('day', data) AS data,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS proporcao_comercial\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, \n    tipo_cobranca, \n    date_trunc('day', data)\nORDER BY \n    praca, \n    tipo_cobranca, \n    data;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    tipo_cobranca,\n    date_trunc('day', data) AS data,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS proporcao_comercial\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, \n    tipo_cobranca, \n    date_trunc('day', data)\nORDER BY \n    praca, \n    tipo_cobranca, \n    data;\n```",
+      "latencia_s": 5.255,
+      "tokens_prompt": 487,
+      "tokens_saida": 118,
+      "eval_s": 4.712,
+      "carga_modelo_s": 0.234
+    }
+  },
+  "join_grao_antt_13": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    tipo_cobranca,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, tipo_cobranca, date_trunc('month', data)\nORDER BY \n    praca, tipo_cobranca, mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    tipo_cobranca,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, tipo_cobranca, date_trunc('month', data)\nORDER BY \n    praca, tipo_cobranca, mes;\n```",
+      "latencia_s": 4.951,
+      "tokens_prompt": 488,
+      "tokens_saida": 110,
+      "eval_s": 4.444,
+      "carga_modelo_s": 0.238
+    }
+  },
+  "join_grao_antt_14": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    tipo_cobranca,\n    date_trunc('week', data) AS semana,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, tipo_cobranca, semana\nORDER BY \n    concessionaria, tipo_cobranca, semana;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    tipo_cobranca,\n    date_trunc('week', data) AS semana,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, tipo_cobranca, semana\nORDER BY \n    concessionaria, tipo_cobranca, semana;\n```",
+      "latencia_s": 4.533,
+      "tokens_prompt": 487,
+      "tokens_saida": 104,
+      "eval_s": 4.081,
+      "carga_modelo_s": 0.248
+    }
+  },
+  "join_grao_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT \n    d.date_day,\n    p.praca,\n    c.concessionaria,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN f.volume ELSE 0 END) / SUM(f.volume) AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nJOIN \n    (SELECT DISTINCT plaza_key, praca, concessionaria FROM fct_traffic_volume) p ON f.plaza_key = p.plaza_key\nGROUP BY \n    d.date_day,\n    p.praca,\n    c.concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    d.date_day,\n    p.praca,\n    c.concessionaria,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN f.volume ELSE 0 END) / SUM(f.volume) AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nJOIN \n    (SELECT DISTINCT plaza_key, praca, concessionaria FROM fct_traffic_volume) p ON f.plaza_key = p.plaza_key\nGROUP BY \n    d.date_day,\n  ",
+      "latencia_s": 6.0,
+      "tokens_prompt": 484,
+      "tokens_saida": 133,
+      "eval_s": 5.472,
+      "carga_modelo_s": 0.281
+    }
+  },
+  "join_grao_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    sentido,\n    date_trunc('week', data) AS semana,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, sentido, semana;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    sentido,\n    date_trunc('week', data) AS semana,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, sentido, semana;\n```",
+      "latencia_s": 4.069,
+      "tokens_prompt": 480,
+      "tokens_saida": 82,
+      "eval_s": 3.526,
+      "carga_modelo_s": 0.308
+    }
+  },
+  "join_grao_antt_17": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    tipo_de_veiculo,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, \n    tipo_de_veiculo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    tipo_de_veiculo,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, \n    tipo_de_veiculo;\n```",
+      "latencia_s": 3.295,
+      "tokens_prompt": 479,
+      "tokens_saida": 76,
+      "eval_s": 2.925,
+      "carga_modelo_s": 0.239
+    }
+  },
+  "join_grao_antt_18": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    tipo_de_veiculo,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, \n    tipo_de_veiculo, \n    date_trunc('month', data)\nORDER BY \n    concessionaria, \n    tipo_de_veiculo, \n    mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    tipo_de_veiculo,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, \n    tipo_de_veiculo, \n    date_trunc('month', data)\nORDER BY \n    concessionaria, \n    tipo_de_veiculo, \n    mes;\n```",
+      "latencia_s": 4.884,
+      "tokens_prompt": 490,
+      "tokens_saida": 112,
+      "eval_s": 4.366,
+      "carga_modelo_s": 0.229
+    }
+  },
+  "join_grao_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    categoria_eixo,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, \n    categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    categoria_eixo,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, \n    categoria_eixo;\n```",
+      "latencia_s": 3.451,
+      "tokens_prompt": 481,
+      "tokens_saida": 74,
+      "eval_s": 2.951,
+      "carga_modelo_s": 0.262
+    }
+  },
+  "join_grao_antt_20": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    categoria_eixo,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, categoria_eixo, date_trunc('month', data)\nORDER BY \n    praca, categoria_eixo, mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    categoria_eixo,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, categoria_eixo, date_trunc('month', data)\nORDER BY \n    praca, categoria_eixo, mes;\n```",
+      "latencia_s": 4.675,
+      "tokens_prompt": 485,
+      "tokens_saida": 105,
+      "eval_s": 4.11,
+      "carga_modelo_s": 0.328
+    }
+  },
+  "join_grao_antt_22": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    f.tipo_de_veiculo,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.praca, f.tipo_de_veiculo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    f.tipo_de_veiculo,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.praca, f.tipo_de_veiculo;\n```",
+      "latencia_s": 3.292,
+      "tokens_prompt": 487,
+      "tokens_saida": 73,
+      "eval_s": 2.794,
+      "carga_modelo_s": 0.23
+    }
+  },
+  "join_grao_antt_23": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    tipo_cobranca,\n    date_trunc('month', data) AS mes,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, \n    tipo_cobranca, \n    date_trunc('month', data)\nORDER BY \n    praca, \n    tipo_cobranca, \n    mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    tipo_cobranca,\n    date_trunc('month', data) AS mes,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, \n    tipo_cobranca, \n    date_trunc('month', data)\nORDER BY \n    praca, \n    tipo_cobranca, \n    mes;\n```",
+      "latencia_s": 3.862,
+      "tokens_prompt": 489,
+      "tokens_saida": 91,
+      "eval_s": 3.474,
+      "carga_modelo_s": 0.223
+    }
+  },
+  "join_grao_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    f.tipo_de_veiculo,\n    (f.volume / SUM(f.volume) OVER (PARTITION BY date_trunc('day', f.data), f.praca, f.tipo_de_veiculo)) * 100 AS proporcao\nFROM \n    fct_traffic_volume f\nWHERE \n    f.tipo_cobranca = 'Automática';",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.praca,\n    f.tipo_de_veiculo,\n    (f.volume / SUM(f.volume) OVER (PARTITION BY date_trunc('day', f.data), f.praca, f.tipo_de_veiculo)) * 100 AS proporcao\nFROM \n    fct_traffic_volume f\nWHERE \n    f.tipo_cobranca = 'Automática';\n```",
+      "latencia_s": 4.106,
+      "tokens_prompt": 493,
+      "tokens_saida": 97,
+      "eval_s": 3.725,
+      "carga_modelo_s": 0.221
+    }
+  },
+  "join_grao_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    sentido,\n    date_trunc('week', data) AS semana,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) * 100 AS proporcao_automatica\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, sentido, semana;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    sentido,\n    date_trunc('week', data) AS semana,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) * 100 AS proporcao_automatica\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca, sentido, semana;\n```",
+      "latencia_s": 3.542,
+      "tokens_prompt": 486,
+      "tokens_saida": 83,
+      "eval_s": 3.172,
+      "carga_modelo_s": 0.229
+    }
+  },
+  "join_grao_antt_26": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    categoria_eixo,\n    date_trunc('week', data) AS semana,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS proporcao_comercial\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, categoria_eixo, semana\nORDER BY \n    concessionaria, categoria_eixo, semana;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    categoria_eixo,\n    date_trunc('week', data) AS semana,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS proporcao_comercial\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, categoria_eixo, semana\nORDER BY \n    concessionaria, categoria_eixo, semana;\n```",
+      "latencia_s": 4.261,
+      "tokens_prompt": 486,
+      "tokens_saida": 98,
+      "eval_s": 3.802,
+      "carga_modelo_s": 0.225
+    }
+  },
+  "join_grao_antt_27": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    f.plaza_key,\n    f.sentido,\n    SUM(f.volume) AS total_veiculos\nFROM \n    fct_traffic_volume f\nGROUP BY \n    semana, f.plaza_key, f.sentido\nORDER BY \n    semana, f.plaza_key, f.sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    f.plaza_key,\n    f.sentido,\n    SUM(f.volume) AS total_veiculos\nFROM \n    fct_traffic_volume f\nGROUP BY \n    semana, f.plaza_key, f.sentido\nORDER BY \n    semana, f.plaza_key, f.sentido;\n```",
+      "latencia_s": 3.553,
+      "tokens_prompt": 485,
+      "tokens_saida": 80,
+      "eval_s": 3.067,
+      "carga_modelo_s": 0.232
+    }
+  },
+  "join_grao_antt_28": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    categoria_eixo,\n    date_trunc('week', data) AS semana,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, \n    categoria_eixo, \n    date_trunc('week', data)\nORDER BY \n    concessionaria, \n    categoria_eixo, \n    semana;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    categoria_eixo,\n    date_trunc('week', data) AS semana,\n    SUM(volume) AS total_veiculos\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, \n    categoria_eixo, \n    date_trunc('week', data)\nORDER BY \n    concessionaria, \n    categoria_eixo, \n    semana;\n```",
+      "latencia_s": 3.957,
+      "tokens_prompt": 485,
+      "tokens_saida": 85,
+      "eval_s": 3.477,
+      "carga_modelo_s": 0.227
+    }
+  },
+  "join_grao_antt_29": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    categoria_eixo,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, categoria_eixo, date_trunc('month', data)\nORDER BY \n    concessionaria, categoria_eixo, mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    categoria_eixo,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria, categoria_eixo, date_trunc('month', data)\nORDER BY \n    concessionaria, categoria_eixo, mes;\n```",
+      "latencia_s": 4.959,
+      "tokens_prompt": 485,
+      "tokens_saida": 105,
+      "eval_s": 4.424,
+      "carga_modelo_s": 0.262
+    }
+  },
+  "join_grao_antt_30": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('month', f.data) AS mes,\n    f.categoria_eixo,\n    SUM(f.volume) AS total_veiculos\nFROM \n    fct_traffic_volume f\nGROUP BY \n    mes, categoria_eixo\nORDER BY \n    mes, categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('month', f.data) AS mes,\n    f.categoria_eixo,\n    SUM(f.volume) AS total_veiculos\nFROM \n    fct_traffic_volume f\nGROUP BY \n    mes, categoria_eixo\nORDER BY \n    mes, categoria_eixo;\n```",
+      "latencia_s": 3.993,
+      "tokens_prompt": 486,
+      "tokens_saida": 66,
+      "eval_s": 3.129,
+      "carga_modelo_s": 0.41
+    }
+  },
+  "metrica_derivada_antt_01": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '3'\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '3'\nGROUP BY \n    praca;\n```",
+      "latencia_s": 3.98,
+      "tokens_prompt": 487,
+      "tokens_saida": 68,
+      "eval_s": 3.1,
+      "carga_modelo_s": 0.466
+    }
+  },
+  "metrica_derivada_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    date_trunc('month', data) AS mes_ano,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_cobranca = 'Manual'\nGROUP BY \n    concessionaria, mes_ano\nORDER BY \n    concessionaria, mes_ano;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    date_trunc('month', data) AS mes_ano,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_cobranca = 'Manual'\nGROUP BY \n    concessionaria, mes_ano\nORDER BY \n    concessionaria, mes_ano;\n```",
+      "latencia_s": 4.582,
+      "tokens_prompt": 486,
+      "tokens_saida": 103,
+      "eval_s": 4.071,
+      "carga_modelo_s": 0.249
+    }
+  },
+  "metrica_derivada_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '4'\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '4'\nGROUP BY \n    praca;\n```",
+      "latencia_s": 3.27,
+      "tokens_prompt": 483,
+      "tokens_saida": 68,
+      "eval_s": 2.766,
+      "carga_modelo_s": 0.26
+    }
+  },
+  "metrica_derivada_antt_04": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '7'\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '7'\nGROUP BY \n    praca;\n```",
+      "latencia_s": 3.23,
+      "tokens_prompt": 484,
+      "tokens_saida": 65,
+      "eval_s": 2.715,
+      "carga_modelo_s": 0.302
+    }
+  },
+  "metrica_derivada_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Moto'\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Moto'\nGROUP BY \n    praca;\n```",
+      "latencia_s": 3.291,
+      "tokens_prompt": 484,
+      "tokens_saida": 75,
+      "eval_s": 2.86,
+      "carga_modelo_s": 0.237
+    }
+  },
+  "metrica_derivada_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT \n    sentido,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica\nFROM \n    fct_traffic_volume\nGROUP BY \n    sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    sentido,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica\nFROM \n    fct_traffic_volume\nGROUP BY \n    sentido;\n```",
+      "latencia_s": 2.622,
+      "tokens_prompt": 479,
+      "tokens_saida": 57,
+      "eval_s": 2.192,
+      "carga_modelo_s": 0.245
+    }
+  },
+  "metrica_derivada_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca;\n```",
+      "latencia_s": 2.896,
+      "tokens_prompt": 475,
+      "tokens_saida": 63,
+      "eval_s": 2.456,
+      "carga_modelo_s": 0.259
+    }
+  },
+  "metrica_derivada_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '6'\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '6'\nGROUP BY \n    praca;\n```",
+      "latencia_s": 3.261,
+      "tokens_prompt": 487,
+      "tokens_saida": 68,
+      "eval_s": 2.692,
+      "carga_modelo_s": 0.285
+    }
+  },
+  "metrica_derivada_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_cobranca = 'OCR/PLACA'\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_cobranca = 'OCR/PLACA'\nGROUP BY \n    praca;\n```",
+      "latencia_s": 3.634,
+      "tokens_prompt": 487,
+      "tokens_saida": 77,
+      "eval_s": 3.123,
+      "carga_modelo_s": 0.247
+    }
+  },
+  "metrica_derivada_antt_11": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    date_trunc('day', data) AS data,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Decrescente'\nGROUP BY \n    praca, date_trunc('day', data)\nORDER BY \n    praca, data;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    date_trunc('day', data) AS data,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Decrescente'\nGROUP BY \n    praca, date_trunc('day', data)\nORDER BY \n    praca, data;\n```",
+      "latencia_s": 4.525,
+      "tokens_prompt": 483,
+      "tokens_saida": 102,
+      "eval_s": 4.059,
+      "carga_modelo_s": 0.233
+    }
+  },
+  "metrica_derivada_antt_12": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / \n    SUM(volume) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '6'\nGROUP BY \n    concessionaria, mes\nORDER BY \n    concessionaria, mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / \n    SUM(volume) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '6'\nGROUP BY \n    concessionaria, mes\nORDER BY \n    concessionaria, mes;\n```",
+      "latencia_s": 4.414,
+      "tokens_prompt": 484,
+      "tokens_saida": 98,
+      "eval_s": 3.952,
+      "carga_modelo_s": 0.256
+    }
+  },
+  "metrica_derivada_antt_13": {
+    "tipo": "sql",
+    "sql": "SELECT categoria_eixo, SUM(volume) AS volume_total,\n       SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) AS volume_automático,\n       ROUND(SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume), 2) AS proporção_automática\nFROM fct_traffic_volume\nGROUP BY categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT categoria_eixo, SUM(volume) AS volume_total,\n       SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) AS volume_automático,\n       ROUND(SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume), 2) AS proporção_automática\nFROM fct_traffic_volume\nGROUP BY categoria_eixo;\n```",
+      "latencia_s": 4.204,
+      "tokens_prompt": 483,
+      "tokens_saida": 95,
+      "eval_s": 3.727,
+      "carga_modelo_s": 0.244
+    }
+  },
+  "metrica_derivada_antt_14": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    categoria_eixo,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo BETWEEN '5' AND '20'\nGROUP BY \n    praca, \n    categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    categoria_eixo,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo BETWEEN '5' AND '20'\nGROUP BY \n    praca, \n    categoria_eixo;\n```",
+      "latencia_s": 4.004,
+      "tokens_prompt": 486,
+      "tokens_saida": 88,
+      "eval_s": 3.47,
+      "carga_modelo_s": 0.278
+    }
+  },
+  "metrica_derivada_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    date_trunc('month', data) AS mes_ano,\n    SUM(CASE WHEN categoria_eixo = '3' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_veiculos_3_eixos\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria, mes_ano\nORDER BY \n    concessionaria, mes_ano;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    date_trunc('month', data) AS mes_ano,\n    SUM(CASE WHEN categoria_eixo = '3' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_veiculos_3_eixos\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria, mes_ano\nORDER BY \n    concessionaria, mes_ano;\n```",
+      "latencia_s": 4.567,
+      "tokens_prompt": 486,
+      "tokens_saida": 106,
+      "eval_s": 4.18,
+      "carga_modelo_s": 0.24
+    }
+  },
+  "metrica_derivada_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    SUM(CASE WHEN categoria_eixo = '8' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_veiculos_8_eixos\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    SUM(CASE WHEN categoria_eixo = '8' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_veiculos_8_eixos\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    praca;\n```",
+      "latencia_s": 3.496,
+      "tokens_prompt": 490,
+      "tokens_saida": 77,
+      "eval_s": 3.046,
+      "carga_modelo_s": 0.25
+    }
+  },
+  "metrica_derivada_antt_17": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    date_trunc('day', data) AS data,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Decrescente'\nGROUP BY \n    praca, date_trunc('day', data)\nORDER BY \n    praca, date_trunc('day', data);",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    date_trunc('day', data) AS data,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Decrescente'\nGROUP BY \n    praca, date_trunc('day', data)\nORDER BY \n    praca, date_trunc('day', data);\n```",
+      "latencia_s": 4.78,
+      "tokens_prompt": 486,
+      "tokens_saida": 107,
+      "eval_s": 4.359,
+      "carga_modelo_s": 0.253
+    }
+  },
+  "metrica_derivada_antt_18": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) AS volume_comercial,\n    SUM(volume) AS total_volume,\n    ROUND(SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100, 2) AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Decrescente'\nGROUP BY \n    concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) AS volume_comercial,\n    SUM(volume) AS total_volume,\n    ROUND(SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100, 2) AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Decrescente'\nGROUP BY \n    concessionaria;\n```",
+      "latencia_s": 4.768,
+      "tokens_prompt": 485,
+      "tokens_saida": 112,
+      "eval_s": 4.405,
+      "carga_modelo_s": 0.246
+    }
+  },
+  "metrica_derivada_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT \n    sentido,\n    SUM(volume) AS volume_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    sentido,\n    SUM(volume) AS volume_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    sentido;\n```",
+      "latencia_s": 2.127,
+      "tokens_prompt": 475,
+      "tokens_saida": 45,
+      "eval_s": 1.753,
+      "carga_modelo_s": 0.244
+    }
+  },
+  "metrica_derivada_antt_20": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.sentido,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / SUM(f.volume) * 100 AS participacao_comerciais\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.sentido,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao,\n    SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) / SUM(f.volume) * 100 AS participacao_comerciais\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('day', f.data), f.sentido;\n```",
+      "latencia_s": 5.387,
+      "tokens_prompt": 481,
+      "tokens_saida": 126,
+      "eval_s": 4.899,
+      "carga_modelo_s": 0.265
+    }
+  },
+  "metrica_derivada_antt_21": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Crescente'\nGROUP BY \n    concessionaria, \n    mes\nORDER BY \n    concessionaria, \n    mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Crescente'\nGROUP BY \n    concessionaria, \n    mes\nORDER BY \n    concessionaria, \n    mes;\n```",
+      "latencia_s": 4.362,
+      "tokens_prompt": 482,
+      "tokens_saida": 100,
+      "eval_s": 3.932,
+      "carga_modelo_s": 0.245
+    }
+  },
+  "metrica_derivada_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS participacao_comerciais\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS participacao_comerciais\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca;\n```",
+      "latencia_s": 4.798,
+      "tokens_prompt": 482,
+      "tokens_saida": 100,
+      "eval_s": 4.306,
+      "carga_modelo_s": 0.284
+    }
+  },
+  "metrica_derivada_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / \n    SUM(volume) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '2'\nGROUP BY \n    concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / \n    SUM(volume) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '2'\nGROUP BY \n    concessionaria;\n```",
+      "latencia_s": 3.579,
+      "tokens_prompt": 483,
+      "tokens_saida": 70,
+      "eval_s": 2.942,
+      "carga_modelo_s": 0.383
+    }
+  },
+  "metrica_derivada_antt_26": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Passeio'\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Passeio'\nGROUP BY \n    praca;\n```",
+      "latencia_s": 4.154,
+      "tokens_prompt": 480,
+      "tokens_saida": 76,
+      "eval_s": 3.601,
+      "carga_modelo_s": 0.36
+    }
+  },
+  "metrica_derivada_antt_28": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('week', f.data)\nORDER BY \n    semana;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    date_trunc('week', f.data)\nORDER BY \n    semana;\n```",
+      "latencia_s": 4.766,
+      "tokens_prompt": 474,
+      "tokens_saida": 97,
+      "eval_s": 4.181,
+      "carga_modelo_s": 0.409
+    }
+  },
+  "metrica_derivada_antt_30": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('month', f.data) AS mes,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN f.volume ELSE 0 END) / \n    SUM(f.volume) * 100 AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    mes\nORDER BY \n    mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('month', f.data) AS mes,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN f.volume ELSE 0 END) / \n    SUM(f.volume) * 100 AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    mes\nORDER BY \n    mes;\n```",
+      "latencia_s": 4.405,
+      "tokens_prompt": 481,
+      "tokens_saida": 98,
+      "eval_s": 3.923,
+      "carga_modelo_s": 0.261
+    }
+  },
+  "ranking_antt_01": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '7' \n    AND tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '7' \n    AND tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 3.149,
+      "tokens_prompt": 492,
+      "tokens_saida": 68,
+      "eval_s": 2.718,
+      "carga_modelo_s": 0.269
+    }
+  },
+  "ranking_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE sentido = 'Decrescente' AND tipo_de_veiculo = 'Comercial'\nGROUP BY tipo_cobranca\nORDER BY total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE sentido = 'Decrescente' AND tipo_de_veiculo = 'Comercial'\nGROUP BY tipo_cobranca\nORDER BY total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 3.097,
+      "tokens_prompt": 493,
+      "tokens_saida": 61,
+      "eval_s": 2.48,
+      "carga_modelo_s": 0.274
+    }
+  },
+  "ranking_antt_04": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE categoria_eixo = '4' AND tipo_de_veiculo = 'Comercial'\nGROUP BY tipo_cobranca\nORDER BY total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE categoria_eixo = '4' AND tipo_de_veiculo = 'Comercial'\nGROUP BY tipo_cobranca\nORDER BY total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 3.16,
+      "tokens_prompt": 494,
+      "tokens_saida": 61,
+      "eval_s": 2.564,
+      "carga_modelo_s": 0.262
+    }
+  },
+  "ranking_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM fct_traffic_volume\nWHERE categoria_eixo BETWEEN '2' AND '2'\nGROUP BY sentido\nORDER BY taxa_automacao DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT sentido, AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM fct_traffic_volume\nWHERE categoria_eixo BETWEEN '2' AND '2'\nGROUP BY sentido\nORDER BY taxa_automacao DESC\nLIMIT 3;\n```",
+      "latencia_s": 3.421,
+      "tokens_prompt": 489,
+      "tokens_saida": 70,
+      "eval_s": 2.885,
+      "carga_modelo_s": 0.259
+    }
+  },
+  "ranking_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    SUM(volume) AS total_volume_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_cobranca = 'OCR/PLACA' AND \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume_comercial DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    SUM(volume) AS total_volume_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_cobranca = 'OCR/PLACA' AND \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume_comercial DESC\nLIMIT 3;\n```",
+      "latencia_s": 3.702,
+      "tokens_prompt": 492,
+      "tokens_saida": 77,
+      "eval_s": 3.121,
+      "carga_modelo_s": 0.253
+    }
+  },
+  "ranking_antt_08": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / \n    SUM(volume) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca\nORDER BY \n    taxa_automacao ASC\nLIMIT 10;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / \n    SUM(volume) AS taxa_automacao\nFROM \n    fct_traffic_volume\nGROUP BY \n    praca\nORDER BY \n    taxa_automacao ASC\nLIMIT 10;\n```",
+      "latencia_s": 3.474,
+      "tokens_prompt": 479,
+      "tokens_saida": 75,
+      "eval_s": 3.0,
+      "carga_modelo_s": 0.251
+    }
+  },
+  "ranking_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume ASC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume ASC\nLIMIT 3;\n```",
+      "latencia_s": 2.371,
+      "tokens_prompt": 480,
+      "tokens_saida": 46,
+      "eval_s": 1.899,
+      "carga_modelo_s": 0.276
+    }
+  },
+  "ranking_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY sentido ORDER BY total_volume DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT sentido, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY sentido ORDER BY total_volume DESC LIMIT 3",
+      "latencia_s": 2.108,
+      "tokens_prompt": 487,
+      "tokens_saida": 37,
+      "eval_s": 1.512,
+      "carga_modelo_s": 0.27
+    }
+  },
+  "ranking_antt_11": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_de_veiculo, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE categoria_eixo = '8'\nGROUP BY tipo_de_veiculo\nORDER BY total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT tipo_de_veiculo, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE categoria_eixo = '8'\nGROUP BY tipo_de_veiculo\nORDER BY total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 2.552,
+      "tokens_prompt": 491,
+      "tokens_saida": 49,
+      "eval_s": 1.964,
+      "carga_modelo_s": 0.27
+    }
+  },
+  "ranking_antt_13": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE categoria_eixo BETWEEN '3' AND '3'\nGROUP BY sentido\nORDER BY total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT sentido, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE categoria_eixo BETWEEN '3' AND '3'\nGROUP BY sentido\nORDER BY total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 2.414,
+      "tokens_prompt": 490,
+      "tokens_saida": 47,
+      "eval_s": 1.869,
+      "carga_modelo_s": 0.253
+    }
+  },
+  "ranking_antt_14": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_de_veiculo, SUM(volume) AS total_volume \nFROM fct_traffic_volume \nWHERE tipo_cobranca = 'Automática' \nGROUP BY tipo_de_veiculo \nORDER BY total_volume DESC \nLIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT tipo_de_veiculo, SUM(volume) AS total_volume \nFROM fct_traffic_volume \nWHERE tipo_cobranca = 'Automática' \nGROUP BY tipo_de_veiculo \nORDER BY total_volume DESC \nLIMIT 3",
+      "latencia_s": 2.499,
+      "tokens_prompt": 491,
+      "tokens_saida": 48,
+      "eval_s": 1.925,
+      "carga_modelo_s": 0.26
+    }
+  },
+  "ranking_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '4'\nGROUP BY \n    praca\nORDER BY \n    taxa_automacao DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '4'\nGROUP BY \n    praca\nORDER BY \n    taxa_automacao DESC\nLIMIT 3;\n```",
+      "latencia_s": 10.122,
+      "tokens_prompt": 489,
+      "tokens_saida": 79,
+      "eval_s": 9.549,
+      "carga_modelo_s": 0.273
+    }
+  },
+  "ranking_antt_17": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume DESC\nLIMIT 5;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume DESC\nLIMIT 5;\n```",
+      "latencia_s": 9.259,
+      "tokens_prompt": 480,
+      "tokens_saida": 46,
+      "eval_s": 7.439,
+      "carga_modelo_s": 0.723
+    }
+  },
+  "ranking_antt_18": {
+    "tipo": "sql",
+    "sql": "SELECT praca, SUM(volume) AS total_volume_comerciais\nFROM fct_traffic_volume\nWHERE tipo_de_veiculo = 'Comercial'\nGROUP BY praca\nORDER BY total_volume_comerciais ASC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT praca, SUM(volume) AS total_volume_comerciais\nFROM fct_traffic_volume\nWHERE tipo_de_veiculo = 'Comercial'\nGROUP BY praca\nORDER BY total_volume_comerciais ASC\nLIMIT 3;\n```",
+      "latencia_s": 9.942,
+      "tokens_prompt": 480,
+      "tokens_saida": 53,
+      "eval_s": 8.448,
+      "carga_modelo_s": 0.638
+    }
+  },
+  "ranking_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '4'\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '4'\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 9.263,
+      "tokens_prompt": 491,
+      "tokens_saida": 56,
+      "eval_s": 8.218,
+      "carga_modelo_s": 0.705
+    }
+  },
+  "ranking_antt_20": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '5' \n    AND tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '5' \n    AND tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 13.285,
+      "tokens_prompt": 492,
+      "tokens_saida": 68,
+      "eval_s": 11.355,
+      "carga_modelo_s": 0.721
+    }
+  },
+  "ranking_antt_22": {
+    "tipo": "sql",
+    "sql": "SELECT categoria_eixo, AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM fct_traffic_volume\nWHERE tipo_de_veiculo = 'Passeio'\nGROUP BY categoria_eixo\nORDER BY taxa_automacao DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT categoria_eixo, AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM fct_traffic_volume\nWHERE tipo_de_veiculo = 'Passeio'\nGROUP BY categoria_eixo\nORDER BY taxa_automacao DESC\nLIMIT 3;\n```",
+      "latencia_s": 15.663,
+      "tokens_prompt": 489,
+      "tokens_saida": 73,
+      "eval_s": 13.842,
+      "carga_modelo_s": 0.622
+    }
+  },
+  "ranking_antt_23": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE tipo_cobranca = 'Manual'\nGROUP BY sentido\nORDER BY total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT sentido, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE tipo_cobranca = 'Manual'\nGROUP BY sentido\nORDER BY total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 8.851,
+      "tokens_prompt": 489,
+      "tokens_saida": 45,
+      "eval_s": 7.16,
+      "carga_modelo_s": 0.68
+    }
+  },
+  "ranking_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE categoria_eixo = '3' AND tipo_de_veiculo = 'Comercial'\nGROUP BY tipo_cobranca\nORDER BY total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE categoria_eixo = '3' AND tipo_de_veiculo = 'Comercial'\nGROUP BY tipo_cobranca\nORDER BY total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 11.553,
+      "tokens_prompt": 494,
+      "tokens_saida": 61,
+      "eval_s": 9.458,
+      "carga_modelo_s": 0.733
+    }
+  },
+  "ranking_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT praca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE tipo_cobranca = 'Automática'\nGROUP BY praca\nORDER BY total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT praca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE tipo_cobranca = 'Automática'\nGROUP BY praca\nORDER BY total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 10.123,
+      "tokens_prompt": 490,
+      "tokens_saida": 48,
+      "eval_s": 8.372,
+      "carga_modelo_s": 0.686
+    }
+  },
+  "ranking_antt_26": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE tipo_de_veiculo = 'Comercial'\nGROUP BY tipo_cobranca\nORDER BY total_volume DESC\nLIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE tipo_de_veiculo = 'Comercial'\nGROUP BY tipo_cobranca\nORDER BY total_volume DESC\nLIMIT 3",
+      "latencia_s": 8.6,
+      "tokens_prompt": 489,
+      "tokens_saida": 48,
+      "eval_s": 7.074,
+      "carga_modelo_s": 0.587
+    }
+  },
+  "ranking_antt_27": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 9.638,
+      "tokens_prompt": 487,
+      "tokens_saida": 58,
+      "eval_s": 8.304,
+      "carga_modelo_s": 0.642
+    }
+  },
+  "ranking_antt_28": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_de_veiculo, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE sentido = 'Crescente'\nGROUP BY tipo_de_veiculo\nORDER BY total_volume DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT tipo_de_veiculo, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE sentido = 'Crescente'\nGROUP BY tipo_de_veiculo\nORDER BY total_volume DESC\nLIMIT 3;\n```",
+      "latencia_s": 9.447,
+      "tokens_prompt": 489,
+      "tokens_saida": 49,
+      "eval_s": 7.747,
+      "carga_modelo_s": 0.623
+    }
+  },
+  "ranking_antt_29": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo BETWEEN '2' AND '2'\nGROUP BY \n    praca\nORDER BY \n    taxa_automacao DESC\nLIMIT 3;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo BETWEEN '2' AND '2'\nGROUP BY \n    praca\nORDER BY \n    taxa_automacao DESC\nLIMIT 3;\n```",
+      "latencia_s": 15.493,
+      "tokens_prompt": 489,
+      "tokens_saida": 83,
+      "eval_s": 13.914,
+      "carga_modelo_s": 0.575
+    }
+  },
+  "ranking_antt_30": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_cobranca = 'Automática' AND tipo_de_veiculo = 'Comercial' GROUP BY sentido ORDER BY total_volume DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT sentido, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_cobranca = 'Automática' AND tipo_de_veiculo = 'Comercial' GROUP BY sentido ORDER BY total_volume DESC LIMIT 3",
+      "latencia_s": 7.423,
+      "tokens_prompt": 491,
+      "tokens_saida": 47,
+      "eval_s": 6.011,
+      "carga_modelo_s": 0.456
+    }
+  },
+  "valor_categorico_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT SUM(volume) AS total_volume_motos FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto';",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT SUM(volume) AS total_volume_motos FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto';\n```",
+      "latencia_s": 4.94,
+      "tokens_prompt": 478,
+      "tokens_saida": 29,
+      "eval_s": 3.874,
+      "carga_modelo_s": 0.452
+    }
+  },
+  "valor_categorico_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(volume) AS total_veiculos FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY tipo_cobranca",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT tipo_cobranca, SUM(volume) AS total_veiculos FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY tipo_cobranca",
+      "latencia_s": 5.381,
+      "tokens_prompt": 483,
+      "tokens_saida": 35,
+      "eval_s": 4.258,
+      "carga_modelo_s": 0.431
+    }
+  },
+  "valor_categorico_antt_04": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', data) AS data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comerciais FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY date_trunc('day', data);",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT date_trunc('day', data) AS data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comerciais FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY date_trunc('day', data);",
+      "latencia_s": 9.554,
+      "tokens_prompt": 482,
+      "tokens_saida": 71,
+      "eval_s": 8.453,
+      "carga_modelo_s": 0.524
+    }
+  },
+  "valor_categorico_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(volume) AS total_veiculos_passeio\nFROM fct_traffic_volume\nWHERE tipo_de_veiculo = 'Passeio'\nGROUP BY concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT concessionaria, SUM(volume) AS total_veiculos_passeio\nFROM fct_traffic_volume\nWHERE tipo_de_veiculo = 'Passeio'\nGROUP BY concessionaria;\n```",
+      "latencia_s": 5.482,
+      "tokens_prompt": 477,
+      "tokens_saida": 42,
+      "eval_s": 4.57,
+      "carga_modelo_s": 0.385
+    }
+  },
+  "valor_categorico_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / \n    SUM(volume) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '4'\nGROUP BY \n    concessionaria, mes\nORDER BY \n    concessionaria, mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    date_trunc('month', data) AS mes,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / \n    SUM(volume) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '4'\nGROUP BY \n    concessionaria, mes\nORDER BY \n    concessionaria, mes;\n```",
+      "latencia_s": 11.842,
+      "tokens_prompt": 484,
+      "tokens_saida": 98,
+      "eval_s": 10.648,
+      "carga_modelo_s": 0.386
+    }
+  },
+  "valor_categorico_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', data) AS data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'Automática' GROUP BY date_trunc('day', data);",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT date_trunc('day', data) AS data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'Automática' GROUP BY date_trunc('day', data);",
+      "latencia_s": 11.836,
+      "tokens_prompt": 483,
+      "tokens_saida": 73,
+      "eval_s": 10.755,
+      "carga_modelo_s": 0.345
+    }
+  },
+  "valor_categorico_antt_08": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', data) AS data,\n    tipo_cobranca,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Decrescente'\nGROUP BY \n    date_trunc('day', data), tipo_cobranca\nORDER BY \n    date_trunc('day', data), tipo_cobranca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', data) AS data,\n    tipo_cobranca,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Decrescente'\nGROUP BY \n    date_trunc('day', data), tipo_cobranca\nORDER BY \n    date_trunc('day', data), tipo_cobranca;\n```",
+      "latencia_s": 12.553,
+      "tokens_prompt": 488,
+      "tokens_saida": 116,
+      "eval_s": 11.575,
+      "carga_modelo_s": 0.391
+    }
+  },
+  "valor_categorico_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT praca, SUM(volume) AS total_volume_crescente\nFROM fct_traffic_volume\nWHERE sentido = 'Crescente'\nGROUP BY praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT praca, SUM(volume) AS total_volume_crescente\nFROM fct_traffic_volume\nWHERE sentido = 'Crescente'\nGROUP BY praca;\n```",
+      "latencia_s": 4.901,
+      "tokens_prompt": 486,
+      "tokens_saida": 38,
+      "eval_s": 3.916,
+      "carga_modelo_s": 0.384
+    }
+  },
+  "valor_categorico_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('month', f.data) AS mes, SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) * 100.0 / SUM(f.volume) AS participacao_comercial FROM fct_traffic_volume f JOIN dim_date d ON f.data = d.date_day WHERE f.tipo_cobranca = 'OCR/PLACA' GROUP BY mes ORDER BY mes",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT date_trunc('month', f.data) AS mes, SUM(CASE WHEN f.tipo_de_veiculo = 'Comercial' THEN f.volume ELSE 0 END) * 100.0 / SUM(f.volume) AS participacao_comercial FROM fct_traffic_volume f JOIN dim_date d ON f.data = d.date_day WHERE f.tipo_cobranca = 'OCR/PLACA' GROUP BY mes ORDER BY mes",
+      "latencia_s": 10.561,
+      "tokens_prompt": 483,
+      "tokens_saida": 90,
+      "eval_s": 9.607,
+      "carga_modelo_s": 0.357
+    }
+  },
+  "valor_categorico_antt_11": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', data) AS data,\n    sentido,\n    SUM(volume) AS volume_total\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '4'\nGROUP BY \n    date_trunc('day', data), sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', data) AS data,\n    sentido,\n    SUM(volume) AS volume_total\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '4'\nGROUP BY \n    date_trunc('day', data), sentido;\n```",
+      "latencia_s": 7.41,
+      "tokens_prompt": 483,
+      "tokens_saida": 62,
+      "eval_s": 6.533,
+      "carga_modelo_s": 0.335
+    }
+  },
+  "valor_categorico_antt_13": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(volume) AS total_veiculos_moto FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "SELECT sentido, SUM(volume) AS total_veiculos_moto FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY sentido;",
+      "latencia_s": 3.674,
+      "tokens_prompt": 476,
+      "tokens_saida": 32,
+      "eval_s": 2.876,
+      "carga_modelo_s": 0.352
+    }
+  },
+  "valor_categorico_antt_14": {
+    "tipo": "sql",
+    "sql": "SELECT \n    t1.tipo_de_veiculo,\n    AVG(CASE WHEN t1.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume t1\nJOIN \n    dim_date t2 ON t1.data = t2.date_day\nWHERE \n    t1.categoria_eixo = '8'\nGROUP BY \n    t1.tipo_de_veiculo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    t1.tipo_de_veiculo,\n    AVG(CASE WHEN t1.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume t1\nJOIN \n    dim_date t2 ON t1.data = t2.date_day\nWHERE \n    t1.categoria_eixo = '8'\nGROUP BY \n    t1.tipo_de_veiculo;\n```",
+      "latencia_s": 9.94,
+      "tokens_prompt": 484,
+      "tokens_saida": 97,
+      "eval_s": 9.113,
+      "carga_modelo_s": 0.334
+    }
+  },
+  "valor_categorico_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', data) AS data,\n    sentido,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_cobranca = 'OCR/PLACA'\nGROUP BY \n    date_trunc('day', data), sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', data) AS data,\n    sentido,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) * 100 AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_cobranca = 'OCR/PLACA'\nGROUP BY \n    date_trunc('day', data), sentido;\n```",
+      "latencia_s": 11.211,
+      "tokens_prompt": 485,
+      "tokens_saida": 95,
+      "eval_s": 10.271,
+      "carga_modelo_s": 0.32
+    }
+  },
+  "valor_categorico_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '8'\nGROUP BY \n    concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '8'\nGROUP BY \n    concessionaria;\n```",
+      "latencia_s": 6.633,
+      "tokens_prompt": 483,
+      "tokens_saida": 65,
+      "eval_s": 5.895,
+      "carga_modelo_s": 0.339
+    }
+  },
+  "valor_categorico_antt_17": {
+    "tipo": "sql",
+    "sql": "SELECT \n    sentido,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_cobranca = 'Automática'\nGROUP BY \n    sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    sentido,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_cobranca = 'Automática'\nGROUP BY \n    sentido;\n```",
+      "latencia_s": 4.776,
+      "tokens_prompt": 483,
+      "tokens_saida": 45,
+      "eval_s": 3.848,
+      "carga_modelo_s": 0.291
+    }
+  },
+  "valor_categorico_antt_18": {
+    "tipo": "sql",
+    "sql": "SELECT \n    categoria_eixo,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Crescente'\nGROUP BY \n    categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    categoria_eixo,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Crescente'\nGROUP BY \n    categoria_eixo;\n```",
+      "latencia_s": 7.462,
+      "tokens_prompt": 484,
+      "tokens_saida": 75,
+      "eval_s": 6.689,
+      "carga_modelo_s": 0.292
+    }
+  },
+  "valor_categorico_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('day', data) AS data, sentido, SUM(volume) AS volume_total\nFROM fct_traffic_volume\nWHERE categoria_eixo = '7'\nGROUP BY date_trunc('day', data), sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT date_trunc('day', data) AS data, sentido, SUM(volume) AS volume_total\nFROM fct_traffic_volume\nWHERE categoria_eixo = '7'\nGROUP BY date_trunc('day', data), sentido;\n```",
+      "latencia_s": 5.264,
+      "tokens_prompt": 479,
+      "tokens_saida": 52,
+      "eval_s": 4.527,
+      "carga_modelo_s": 0.273
+    }
+  },
+  "valor_categorico_antt_20": {
+    "tipo": "sql",
+    "sql": "SELECT \n    sentido,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Moto'\nGROUP BY \n    sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    sentido,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Moto'\nGROUP BY \n    sentido;\n```",
+      "latencia_s": 6.901,
+      "tokens_prompt": 479,
+      "tokens_saida": 73,
+      "eval_s": 6.228,
+      "carga_modelo_s": 0.291
+    }
+  },
+  "valor_categorico_antt_21": {
+    "tipo": "sql",
+    "sql": "SELECT \n    concessionaria,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    concessionaria,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria;\n```",
+      "latencia_s": 7.48,
+      "tokens_prompt": 479,
+      "tokens_saida": 75,
+      "eval_s": 6.754,
+      "carga_modelo_s": 0.292
+    }
+  },
+  "valor_categorico_antt_22": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('day', f.data) AS data,\n    f.sentido,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '4'\nGROUP BY \n    date_trunc('day', f.data), f.sentido;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('day', f.data) AS data,\n    f.sentido,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '4'\nGROUP BY \n    date_trunc('day', f.data), f.sentido;\n```",
+      "latencia_s": 11.799,
+      "tokens_prompt": 482,
+      "tokens_saida": 112,
+      "eval_s": 11.137,
+      "carga_modelo_s": 0.314
+    }
+  },
+  "valor_categorico_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT \n    date_trunc('month', f.data) AS mes,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '3'\nGROUP BY \n    mes;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    date_trunc('month', f.data) AS mes,\n    AVG(CASE WHEN f.tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 100 AS taxa_automacao\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nWHERE \n    f.categoria_eixo = '3'\nGROUP BY \n    mes;\n```",
+      "latencia_s": 9.475,
+      "tokens_prompt": 480,
+      "tokens_saida": 96,
+      "eval_s": 8.894,
+      "carga_modelo_s": 0.321
+    }
+  },
+  "valor_categorico_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT categoria_eixo, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nWHERE sentido = 'Crescente'\nGROUP BY categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT categoria_eixo, SUM(volume) AS total_veiculos\nFROM fct_traffic_volume\nWHERE sentido = 'Crescente'\nGROUP BY categoria_eixo;\n```",
+      "latencia_s": 4.474,
+      "tokens_prompt": 481,
+      "tokens_saida": 38,
+      "eval_s": 3.606,
+      "carga_modelo_s": 0.34
+    }
+  },
+  "valor_categorico_antt_26": {
+    "tipo": "sql",
+    "sql": "SELECT \n    tipo_de_veiculo,\n    AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '3'\nGROUP BY \n    tipo_de_veiculo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    tipo_de_veiculo,\n    AVG(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    categoria_eixo = '3'\nGROUP BY \n    tipo_de_veiculo;\n```",
+      "latencia_s": 7.542,
+      "tokens_prompt": 484,
+      "tokens_saida": 69,
+      "eval_s": 6.652,
+      "carga_modelo_s": 0.328
+    }
+  },
+  "valor_categorico_antt_27": {
+    "tipo": "sql",
+    "sql": "SELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Crescente'\nGROUP BY \n    praca;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    praca,\n    SUM(CASE WHEN tipo_cobranca = 'Automática' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS taxa_automacao\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Crescente'\nGROUP BY \n    praca;\n```",
+      "latencia_s": 8.407,
+      "tokens_prompt": 485,
+      "tokens_saida": 73,
+      "eval_s": 7.555,
+      "carga_modelo_s": 0.342
+    }
+  },
+  "valor_categorico_antt_28": {
+    "tipo": "sql",
+    "sql": "SELECT \n    categoria_eixo,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Crescente'\nGROUP BY \n    categoria_eixo;",
+    "spec": null,
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```sql\nSELECT \n    categoria_eixo,\n    SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial\nFROM \n    fct_traffic_volume\nWHERE \n    sentido = 'Crescente'\nGROUP BY \n    categoria_eixo;\n```",
+      "latencia_s": 9.763,
+      "tokens_prompt": 487,
+      "tokens_saida": 69,
+      "eval_s": 8.74,
+      "carga_modelo_s": 0.429
+    }
+  }
+}

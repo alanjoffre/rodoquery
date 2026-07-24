@@ -1,0 +1,93 @@
+{"id": "abstencao_antt_01", "pergunta_nl": "Qual foi a receita de pedágio arrecadada?"}
+{"id": "abstencao_antt_02", "pergunta_nl": "Qual o faturamento por concessionária?"}
+{"id": "abstencao_antt_03", "pergunta_nl": "Quanto cada praça arrecadou no mês?"}
+{"id": "abstencao_antt_04", "pergunta_nl": "Qual o valor da tarifa em cada praça?"}
+{"id": "abstencao_antt_05", "pergunta_nl": "Qual o volume médio de veículos por praça?"}
+{"id": "abstencao_antt_06", "pergunta_nl": "Qual a mediana do tráfego diário?"}
+{"id": "abstencao_antt_07", "pergunta_nl": "Qual o dia de maior movimento?"}
+{"id": "abstencao_antt_08", "pergunta_nl": "Quantos veículos distintos passaram no período?"}
+{"id": "abstencao_antt_09", "pergunta_nl": "Quantas placas diferentes foram registradas?"}
+{"id": "abstencao_antt_10", "pergunta_nl": "Qual o volume acumulado no ano?"}
+{"id": "abstencao_antt_12", "pergunta_nl": "Qual a variação percentual do volume entre semanas?"}
+{"id": "abstencao_antt_13", "pergunta_nl": "Quantos veículos passaram por hora do dia?"}
+{"id": "abstencao_antt_14", "pergunta_nl": "Qual o volume por turno (manhã, tarde, noite)?"}
+{"id": "abstencao_antt_16", "pergunta_nl": "Qual o volume por trimestre?"}
+{"id": "abstencao_antt_17", "pergunta_nl": "Qual o volume de tráfego por UF?"}
+{"id": "abstencao_antt_18", "pergunta_nl": "Qual o tráfego por município?"}
+{"id": "abstencao_antt_19", "pergunta_nl": "Qual o volume por rodovia?"}
+{"id": "abstencao_antt_21", "pergunta_nl": "Qual o custo operacional de cada praça?"}
+{"id": "abstencao_antt_22", "pergunta_nl": "Qual o lucro das concessionárias?"}
+{"id": "abstencao_antt_23", "pergunta_nl": "Quantas multas foram aplicadas?"}
+{"id": "abstencao_antt_24", "pergunta_nl": "Qual o índice de evasão de pedágio?"}
+{"id": "abstencao_antt_25", "pergunta_nl": "Quantos acidentes ocorreram nas rodovias?"}
+{"id": "abstencao_antt_26", "pergunta_nl": "Qual a velocidade média dos veículos?"}
+{"id": "abstencao_antt_28", "pergunta_nl": "Quantas cabines cada praça tem?"}
+{"id": "abstencao_antt_29", "pergunta_nl": "Quantos funcionários trabalham em cada praça?"}
+{"id": "abstencao_antt_30", "pergunta_nl": "Qual a projeção de tráfego para o próximo mês?"}
+{"id": "coalesce_nulo_antt_01", "pergunta_nl": "Quantos veículos de 6 eixos passaram em cada dia?"}
+{"id": "coalesce_nulo_antt_02", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos com cobrança automática em cada dia e por concessionária?"}
+{"id": "coalesce_nulo_antt_04", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos no sentido decrescente em cada dia?"}
+{"id": "coalesce_nulo_antt_05", "pergunta_nl": "Qual a taxa de automação dos veículos comerciais em cada dia?"}
+{"id": "coalesce_nulo_antt_06", "pergunta_nl": "Qual a taxa de automação dos veículos de 7 eixos em cada dia e por praça?"}
+{"id": "coalesce_nulo_antt_07", "pergunta_nl": "Qual a taxa de automação dos veículos de 2 eixos em cada dia e em cada praça?"}
+{"id": "coalesce_nulo_antt_09", "pergunta_nl": "Quantos veículos de 4 eixos passaram em cada dia?"}
+{"id": "coalesce_nulo_antt_10", "pergunta_nl": "Qual a taxa de automação dos veículos de 3 eixos em cada dia e por concessionária?"}
+{"id": "coalesce_nulo_antt_11", "pergunta_nl": "Qual o volume de tráfego dos veículos de 5 eixos em cada dia e por concessionária?"}
+{"id": "coalesce_nulo_antt_12", "pergunta_nl": "Qual a taxa de automação dos veículos de 2 eixos em cada dia e por concessionária?"}
+{"id": "coalesce_nulo_antt_14", "pergunta_nl": "Qual o volume de tráfego dos veículos de 8 eixos em cada dia?"}
+{"id": "coalesce_nulo_antt_15", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos de 2 eixos em cada dia e em cada concessionária?"}
+{"id": "coalesce_nulo_antt_16", "pergunta_nl": "Quantos veículos do tipo moto passaram em cada dia e em cada concessionária?"}
+{"id": "coalesce_nulo_antt_17", "pergunta_nl": "Qual o volume de tráfego dos veículos de 7 eixos em cada dia e em cada concessionária?"}
+{"id": "coalesce_nulo_antt_18", "pergunta_nl": "Qual a taxa de automação dos veículos no sentido decrescente em cada dia e em cada praça?"}
+{"id": "coalesce_nulo_antt_19", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos com leitura de placa em cada dia e por praça?"}
+{"id": "coalesce_nulo_antt_20", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos de 8 eixos em cada dia e por praça?"}
+{"id": "coalesce_nulo_antt_21", "pergunta_nl": "Qual a taxa de automação dos veículos comerciais em cada dia e por concessionária?"}
+{"id": "coalesce_nulo_antt_23", "pergunta_nl": "Quantos veículos de passeio passaram em cada dia e por concessionária?"}
+{"id": "coalesce_nulo_antt_24", "pergunta_nl": "Qual a taxa de automação dos veículos de passeio em cada dia?"}
+{"id": "coalesce_nulo_antt_25", "pergunta_nl": "Qual o volume de tráfego dos veículos de 2 eixos em cada dia?"}
+{"id": "coalesce_nulo_antt_27", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos de 7 eixos em cada dia e por concessionária?"}
+{"id": "coalesce_nulo_antt_28", "pergunta_nl": "Quantos veículos com cobrança manual passaram em cada dia?"}
+{"id": "coalesce_nulo_antt_29", "pergunta_nl": "Qual o volume de tráfego dos veículos de 5 eixos em cada dia e em cada praça?"}
+{"id": "coalesce_nulo_antt_30", "pergunta_nl": "Qual a taxa de automação dos veículos de 5 eixos em cada dia e por concessionária?"}
+{"id": "controle_trivial_antt_01", "pergunta_nl": "Quantos veículos passaram por categoria de eixo?"}
+{"id": "controle_trivial_antt_02", "pergunta_nl": "Quantos veículos passaram por sentido?"}
+{"id": "controle_trivial_antt_03", "pergunta_nl": "Qual o número de veículos por praça de pedágio?"}
+{"id": "controle_trivial_antt_05", "pergunta_nl": "Qual o número de veículos em cada dia?"}
+{"id": "controle_trivial_antt_06", "pergunta_nl": "Quantos veículos passaram por semana?"}
+{"id": "controle_trivial_antt_07", "pergunta_nl": "Qual o número de veículos em cada concessionária?"}
+{"id": "controle_trivial_antt_09", "pergunta_nl": "Quantos veículos passaram no total?"}
+{"id": "controle_trivial_antt_10", "pergunta_nl": "Qual o número de veículos por tipo de cobrança?"}
+{"id": "grao_temporal_antt_02", "pergunta_nl": "Qual o volume de tráfego semana a semana e por categoria de eixo?"}
+{"id": "grao_temporal_antt_03", "pergunta_nl": "Qual o número de veículos por dia e por forma de cobrança?"}
+{"id": "grao_temporal_antt_04", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente por dia e por praça?"}
+{"id": "grao_temporal_antt_06", "pergunta_nl": "Qual a participação de veículos comerciais por semana e por praça de pedágio?"}
+{"id": "grao_temporal_antt_07", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente por dia e por sentido?"}
+{"id": "grao_temporal_antt_08", "pergunta_nl": "Qual o volume de tráfego semana a semana e por classe de veículo?"}
+{"id": "grao_temporal_antt_09", "pergunta_nl": "Qual a taxa de automação semana a semana e em cada praça?"}
+{"id": "grao_temporal_antt_10", "pergunta_nl": "Qual o volume de tráfego em cada mês e por número de eixos?"}
+{"id": "grao_temporal_antt_11", "pergunta_nl": "Qual a proporção de veículos comerciais semana a semana e por tipo de cobrança?"}
+{"id": "grao_temporal_antt_12", "pergunta_nl": "Qual o número de veículos por semana?"}
+{"id": "grao_temporal_antt_13", "pergunta_nl": "Qual a proporção de veículos comerciais semana a semana e por número de eixos?"}
+{"id": "grao_temporal_antt_14", "pergunta_nl": "Qual a participação de veículos comerciais por semana e por concessionária?"}
+{"id": "grao_temporal_antt_15", "pergunta_nl": "Qual a taxa de automação por semana?"}
+{"id": "grao_temporal_antt_16", "pergunta_nl": "Qual a proporção de veículos comerciais por mês e em cada concessionária?"}
+{"id": "grao_temporal_antt_18", "pergunta_nl": "Qual a taxa de automação por mês e em cada praça?"}
+{"id": "grao_temporal_antt_19", "pergunta_nl": "Quantos veículos passaram por mês e por tipo de cobrança?"}
+{"id": "grao_temporal_antt_20", "pergunta_nl": "Qual a proporção de veículos comerciais em cada dia?"}
+{"id": "grao_temporal_antt_21", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente em cada mês e por tipo de veículo?"}
+{"id": "grao_temporal_antt_22", "pergunta_nl": "Qual a proporção de veículos comerciais por mês?"}
+{"id": "grao_temporal_antt_23", "pergunta_nl": "Qual a proporção de veículos comerciais em cada dia e por forma de cobrança?"}
+{"id": "grao_temporal_antt_24", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente por semana e por número de eixos?"}
+{"id": "grao_temporal_antt_25", "pergunta_nl": "Qual a participação de veículos comerciais por dia e por número de eixos?"}
+{"id": "grao_temporal_antt_26", "pergunta_nl": "Qual a participação de veículos comerciais por mês e por praça?"}
+{"id": "grao_temporal_antt_27", "pergunta_nl": "Qual o número de veículos por dia e por tipo de veículo?"}
+{"id": "grao_temporal_antt_28", "pergunta_nl": "Quantos veículos passaram semana a semana e por sentido?"}
+{"id": "grao_temporal_antt_29", "pergunta_nl": "Qual a proporção de veículos comerciais em cada mês e por número de eixos?"}
+{"id": "join_grao_antt_02", "pergunta_nl": "Qual o número de veículos por praça, por tipo de cobrança e semana a semana?"}
+{"id": "join_grao_antt_03", "pergunta_nl": "Quantos veículos passaram por concessionária, por número de eixos e por mês?"}
+{"id": "join_grao_antt_05", "pergunta_nl": "Qual a participação de veículos comerciais em cada concessionária e por forma de cobrança?"}
+{"id": "join_grao_antt_06", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente em cada concessionária, por sentido e em cada dia?"}
+{"id": "join_grao_antt_07", "pergunta_nl": "Qual a participação de veículos comerciais por concessionária, por tipo de cobrança e em cada dia?"}
+{"id": "join_grao_antt_08", "pergunta_nl": "Quantos veículos passaram por praça de pedágio, por forma de cobrança e em cada dia?"}
+{"id": "join_grao_antt_09", "pergunta_nl": "Quantos veículos passaram em cada concessionária e por sentido?"}
+{"id": "join_grao_antt_10", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente por concessionária, por tipo de veículo e por dia?"}
