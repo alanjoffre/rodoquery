@@ -1,0 +1,64 @@
+{
+  "fase": "14_robustez_dedicada_schema_opaco",
+  "conjunto": "DEDICADO, disjunto do TEST-ANTT (specs ineditas vs golden_antt inteiro).",
+  "perturbacao": "identificadores opacos (m1/c2...), MESMAS descricoes; gabarito inalterado.",
+  "execution_accuracy": {
+    "original": {
+      "n": 34,
+      "acertos": 29,
+      "taxa": 0.8529,
+      "wilson_ic95": [
+        0.6987,
+        0.9355
+      ]
+    },
+    "schema_opaco": {
+      "n": 34,
+      "acertos": 19,
+      "taxa": 0.5588,
+      "wilson_ic95": [
+        0.3945,
+        0.7112
+      ]
+    },
+    "delta_pp": -29.41
+  },
+  "mcnemar_original_vs_opaco": {
+    "b_only": 11,
+    "c_only": 1,
+    "p_valor": 0.0063,
+    "delta_acuracia": 0.2941,
+    "n": 34
+  },
+  "quebrou": [
+    "metrica_derivada_rob_01",
+    "metrica_derivada_rob_02",
+    "metrica_derivada_rob_06",
+    "grao_temporal_rob_01",
+    "grao_temporal_rob_03",
+    "grao_temporal_rob_05",
+    "ranking_rob_05",
+    "ranking_rob_06",
+    "coalesce_nulo_rob_01",
+    "valor_categorico_rob_01",
+    "valor_categorico_rob_05"
+  ],
+  "consertou": [
+    "ranking_rob_03"
+  ],
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "a23c307",
+    "git_dirty": true,
+    "git_diff_sha1": "90fd87441d90",
+    "timestamp_utc": "2026-07-25T14:29:54+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

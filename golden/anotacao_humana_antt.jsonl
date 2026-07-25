@@ -1,0 +1,64 @@
+# FOLHA DE ANOTACAO HUMANA — 40 itens
+# Preencha 'spec_humano' em cada linha, cego as specs do autor. Formato:
+#   {"metrics": [...], "group_by": [...], "where": <str|null>, "order_by": [...], "limit": <int|null>, "ordenado": <bool>}  # metrics:[] = ABSTENHO
+# CATALOGO (o unico contexto permitido):
+#   MÉTRICAS (use o `nome` exato; só existem estas 3):
+#   - traffic_volume     — volume de veículos que passaram nas praças de pedágio (contagem).
+#   - automation_rate    — taxa/proporção do tráfego cobrado automaticamente (tag/AVI) sobre o total.
+#   - commercial_share   — participação/proporção de veículos comerciais sobre o tráfego total.
+#   (NÃO existe métrica de receita, faturamento, arrecadação, tarifa, custo, lucro, multa, evasão,
+#   média, mediana, máximo, contagem de veículos distintos, acumulado, crescimento nem previsão.
+#   Os dados são AGREGADOS por praça/dia — não há transação individual, placa nem usuário.)
+#   
+#   TOKENS de group_by (use exatamente estes):
+#   - tempo:       metric_time__day, metric_time__week, metric_time__month
+#   - entidades:   plaza__praca (praça de pedágio), plaza__concessionaria (concessionária)
+#   - categóricos: plaza__sentido, plaza__tipo_cobranca, plaza__categoria_eixo, plaza__tipo_de_veiculo
+#   (NÃO existe dimensão de hora, turno, dia da semana, trimestre, UF, município, rodovia ou faixa.)
+#   
+#   VALORES p/ filtro `where`:
+#   - plaza__tipo_cobranca:   Automática, Manual, OCR/PLACA
+#   - plaza__tipo_de_veiculo: Comercial, Passeio, Moto
+#   - plaza__sentido:         Crescente, Decrescente
+#   - plaza__categoria_eixo:  número de eixos, de '2' a '20' (texto)
+#   Sintaxe de where: {{ Dimension('plaza__tipo_cobranca') }} = 'Automática'
+{"id": "abstencao_antt_20", "estrato": "abstencao", "pergunta_nl": "Quantos quilômetros tem cada trecho concedido?", "spec_humano": null}
+{"id": "abstencao_antt_15", "estrato": "abstencao", "pergunta_nl": "Qual o tráfego por dia da semana?", "spec_humano": null}
+{"id": "abstencao_antt_11", "estrato": "abstencao", "pergunta_nl": "Quanto o tráfego cresceu em relação ao mês anterior?", "spec_humano": null}
+{"id": "abstencao_antt_27", "estrato": "abstencao", "pergunta_nl": "Qual o tempo de espera nas cabines?", "spec_humano": null}
+{"id": "abstencao_antt_23", "estrato": "abstencao", "pergunta_nl": "Quantas multas foram aplicadas?", "spec_humano": null}
+{"id": "coalesce_nulo_antt_03", "estrato": "coalesce_nulo", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos de 7 eixos em cada dia e em cada praça?", "spec_humano": null}
+{"id": "coalesce_nulo_antt_22", "estrato": "coalesce_nulo", "pergunta_nl": "Qual a taxa de automação dos veículos no sentido decrescente em cada dia e por concessionária?", "spec_humano": null}
+{"id": "coalesce_nulo_antt_13", "estrato": "coalesce_nulo", "pergunta_nl": "Quantos veículos com cobrança manual passaram em cada dia e em cada concessionária?", "spec_humano": null}
+{"id": "coalesce_nulo_antt_08", "estrato": "coalesce_nulo", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos de 6 eixos em cada dia e por concessionária?", "spec_humano": null}
+{"id": "coalesce_nulo_antt_20", "estrato": "coalesce_nulo", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos de 8 eixos em cada dia e por praça?", "spec_humano": null}
+{"id": "controle_trivial_antt_08", "estrato": "controle_trivial", "pergunta_nl": "Quantos veículos passaram por classe de veículo?", "spec_humano": null}
+{"id": "controle_trivial_antt_04", "estrato": "controle_trivial", "pergunta_nl": "Qual o número de veículos em cada mês?", "spec_humano": null}
+{"id": "controle_trivial_antt_03", "estrato": "controle_trivial", "pergunta_nl": "Qual o número de veículos por praça de pedágio?", "spec_humano": null}
+{"id": "controle_trivial_antt_07", "estrato": "controle_trivial", "pergunta_nl": "Qual o número de veículos em cada concessionária?", "spec_humano": null}
+{"id": "controle_trivial_antt_01", "estrato": "controle_trivial", "pergunta_nl": "Quantos veículos passaram por categoria de eixo?", "spec_humano": null}
+{"id": "grao_temporal_antt_17", "estrato": "grao_temporal", "pergunta_nl": "Qual a taxa de automação semana a semana e em cada concessionária?", "spec_humano": null}
+{"id": "grao_temporal_antt_01", "estrato": "grao_temporal", "pergunta_nl": "Qual a participação de veículos comerciais por mês e por sentido?", "spec_humano": null}
+{"id": "grao_temporal_antt_05", "estrato": "grao_temporal", "pergunta_nl": "Qual o número de veículos por dia e por praça de pedágio?", "spec_humano": null}
+{"id": "grao_temporal_antt_30", "estrato": "grao_temporal", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente por dia e por tipo de veículo?", "spec_humano": null}
+{"id": "grao_temporal_antt_20", "estrato": "grao_temporal", "pergunta_nl": "Qual a proporção de veículos comerciais em cada dia?", "spec_humano": null}
+{"id": "join_grao_antt_01", "estrato": "join_grao", "pergunta_nl": "Qual a proporção do tráfego cobrado automaticamente em cada praça, por tipo de veículo e semana a semana?", "spec_humano": null}
+{"id": "join_grao_antt_21", "estrato": "join_grao", "pergunta_nl": "Qual o volume de tráfego em cada praça e por classe de veículo?", "spec_humano": null}
+{"id": "join_grao_antt_04", "estrato": "join_grao", "pergunta_nl": "Qual o volume de tráfego em cada concessionária e por número de eixos?", "spec_humano": null}
+{"id": "join_grao_antt_12", "estrato": "join_grao", "pergunta_nl": "Qual o número de veículos em cada concessionária, por categoria de eixo e em cada dia?", "spec_humano": null}
+{"id": "join_grao_antt_20", "estrato": "join_grao", "pergunta_nl": "Qual a taxa de automação em cada praça, por categoria de eixo e por mês?", "spec_humano": null}
+{"id": "metrica_derivada_antt_27", "estrato": "metrica_derivada", "pergunta_nl": "Qual a taxa de automação em cada dia?", "spec_humano": null}
+{"id": "metrica_derivada_antt_23", "estrato": "metrica_derivada", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos no sentido crescente em cada concessionária?", "spec_humano": null}
+{"id": "metrica_derivada_antt_29", "estrato": "metrica_derivada", "pergunta_nl": "Qual a proporção de veículos comerciais por praça?", "spec_humano": null}
+{"id": "metrica_derivada_antt_22", "estrato": "metrica_derivada", "pergunta_nl": "Qual a taxa de automação dos veículos de 3 eixos por concessionária?", "spec_humano": null}
+{"id": "metrica_derivada_antt_24", "estrato": "metrica_derivada", "pergunta_nl": "Qual a taxa de automação e a participação de veículos comerciais por praça?", "spec_humano": null}
+{"id": "ranking_antt_19", "estrato": "ranking", "pergunta_nl": "Entre os veículos de 4 eixos, quais as 3 concessionárias com maior volume de tráfego?", "spec_humano": null}
+{"id": "ranking_antt_29", "estrato": "ranking", "pergunta_nl": "Entre os veículos de 2 eixos, quais as 3 praças com maior taxa de automação?", "spec_humano": null}
+{"id": "ranking_antt_24", "estrato": "ranking", "pergunta_nl": "Entre os veículos de 3 eixos, quais as 3 formas de cobrança com maior participação de veículos comerciais?", "spec_humano": null}
+{"id": "ranking_antt_27", "estrato": "ranking", "pergunta_nl": "Entre os veículos comerciais, quais as 3 concessionárias com maior volume de tráfego?", "spec_humano": null}
+{"id": "ranking_antt_28", "estrato": "ranking", "pergunta_nl": "Entre os veículos no sentido crescente, quais os 3 tipos de veículo com maior volume de tráfego?", "spec_humano": null}
+{"id": "valor_categorico_antt_15", "estrato": "valor_categorico", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos com leitura de placa por sentido?", "spec_humano": null}
+{"id": "valor_categorico_antt_13", "estrato": "valor_categorico", "pergunta_nl": "Quantos veículos do tipo moto passaram por sentido?", "spec_humano": null}
+{"id": "valor_categorico_antt_05", "estrato": "valor_categorico", "pergunta_nl": "Quantos veículos de passeio passaram por concessionária?", "spec_humano": null}
+{"id": "valor_categorico_antt_07", "estrato": "valor_categorico", "pergunta_nl": "Qual a participação de veículos comerciais entre os veículos com cobrança automática?", "spec_humano": null}
+{"id": "valor_categorico_antt_14", "estrato": "valor_categorico", "pergunta_nl": "Qual a taxa de automação dos veículos de 8 eixos por tipo de veículo?", "spec_humano": null}

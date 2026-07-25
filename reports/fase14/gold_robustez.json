@@ -1,0 +1,326 @@
+{
+  "respostas": [
+    {
+      "id": "metrica_derivada_rob_01",
+      "estrato": "metrica_derivada",
+      "hashes_por_variante": {
+        "p0": "653adcdb597bbe3f",
+        "p1": "49d35c0555979981",
+        "p2": "b3fbaecc684be738"
+      }
+    },
+    {
+      "id": "metrica_derivada_rob_02",
+      "estrato": "metrica_derivada",
+      "hashes_por_variante": {
+        "p0": "59411dbd88c9b200",
+        "p1": "4779e9c730cae504",
+        "p2": "bbca54fb9a4a566f"
+      }
+    },
+    {
+      "id": "metrica_derivada_rob_04",
+      "estrato": "metrica_derivada",
+      "hashes_por_variante": {
+        "p0": "8e3fa6ef7014f792",
+        "p1": "89c8a13c009cc031",
+        "p2": "e0222a16a83ca673"
+      }
+    },
+    {
+      "id": "metrica_derivada_rob_05",
+      "estrato": "metrica_derivada",
+      "hashes_por_variante": {
+        "p0": "4ae68eb39942eef7",
+        "p1": "5ca4ce674cdeb9e8",
+        "p2": "354fab70b5e134eb"
+      }
+    },
+    {
+      "id": "metrica_derivada_rob_06",
+      "estrato": "metrica_derivada",
+      "hashes_por_variante": {
+        "p0": "b486101a4bba44bb",
+        "p1": "cbec94350c1b71e3",
+        "p2": "875c57b1c0b5aeb5"
+      }
+    },
+    {
+      "id": "grao_temporal_rob_01",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "e788f2316d4455e3",
+        "p1": "079fa1022725e39e",
+        "p2": "6dd69d6566a2a7fa"
+      }
+    },
+    {
+      "id": "grao_temporal_rob_02",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "6c1c973be2146110",
+        "p1": "82025fb95e656829",
+        "p2": "955874932cbd0e0a"
+      }
+    },
+    {
+      "id": "grao_temporal_rob_03",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "fadfa1d621875665",
+        "p1": "31c4c20e36087f96",
+        "p2": "30d2853284d7f8b2"
+      }
+    },
+    {
+      "id": "grao_temporal_rob_04",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "6ad3c8c79e17d471",
+        "p1": "7c7ec3b3efff43e0",
+        "p2": "6c4fdadef6b410d7"
+      }
+    },
+    {
+      "id": "grao_temporal_rob_05",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "cf290bed10cd9bec",
+        "p1": "30b82829252442c2",
+        "p2": "9b1737864c0f9a87"
+      }
+    },
+    {
+      "id": "grao_temporal_rob_06",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "423a32a5774d88f3",
+        "p1": "189cbedff8f27298",
+        "p2": "1817473f2703b9b4"
+      }
+    },
+    {
+      "id": "ranking_rob_01",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "4b812b6b04ca2de8",
+        "p1": "905785153a646edf",
+        "p2": "4e4677feaba37441"
+      }
+    },
+    {
+      "id": "ranking_rob_02",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "79aac56ae7398ebe",
+        "p1": "3bb067c748d5bb55",
+        "p2": "125bb3845e9a891e"
+      }
+    },
+    {
+      "id": "ranking_rob_03",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "3fc79ed0d75b3cf6",
+        "p1": "390f93cd1fbf5261",
+        "p2": "2ed879e44cc2d435"
+      }
+    },
+    {
+      "id": "ranking_rob_04",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "bc529108a885238e",
+        "p1": "532a63d1bc736858",
+        "p2": "945c4c714ac12b7b"
+      }
+    },
+    {
+      "id": "ranking_rob_05",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "75b99f1bd6c96c34",
+        "p1": "0a20ca6abd82eb8e",
+        "p2": "4d4482fd72660331"
+      }
+    },
+    {
+      "id": "ranking_rob_06",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "231a5f06000f5f9a",
+        "p1": "55f9d3dd5aa84926",
+        "p2": "86bae0118d3441ca"
+      }
+    },
+    {
+      "id": "join_grao_rob_01",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "5fe88aea8ed12c94",
+        "p1": "e728b3c83f139147",
+        "p2": "29bd21d3f1f3b6e0"
+      }
+    },
+    {
+      "id": "join_grao_rob_02",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "30b6ef83334f79fa",
+        "p1": "7912b3dfb8b75b6e",
+        "p2": "3f39d95a97d5e897"
+      }
+    },
+    {
+      "id": "join_grao_rob_03",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "2f78fe75a22c6f50",
+        "p1": "5a6785e0d46caa03",
+        "p2": "3e0beea00bd4bea3"
+      }
+    },
+    {
+      "id": "join_grao_rob_04",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "16f188d2e9323b58",
+        "p1": "ea3cd745c9f18c2f",
+        "p2": "7093072ccad4c16c"
+      }
+    },
+    {
+      "id": "join_grao_rob_05",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "210b359d387455f8",
+        "p1": "a061bf7b2ccb18be",
+        "p2": "11a8a3ff5f4c3ea7"
+      }
+    },
+    {
+      "id": "join_grao_rob_06",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "877b3b57d6a48ce1",
+        "p1": "a80191d7b10088aa",
+        "p2": "84abc7bec88e20b5"
+      }
+    },
+    {
+      "id": "coalesce_nulo_rob_01",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "7ca9b249cd476d76",
+        "p1": "8794d1404d514ea8",
+        "p2": "395e74aac9b6ef36"
+      }
+    },
+    {
+      "id": "coalesce_nulo_rob_02",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "7f1ca23d5d71910e",
+        "p1": "de8ce0f6f62dbfac",
+        "p2": "7ce4b6253b8dfd6d"
+      }
+    },
+    {
+      "id": "coalesce_nulo_rob_03",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "f37eca919ec9a196",
+        "p1": "9db55a49df0376dc",
+        "p2": "2f94ccc0d6a0bfb5"
+      }
+    },
+    {
+      "id": "coalesce_nulo_rob_04",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "a2bc4594856ba1c2",
+        "p1": "768831e358cf3224",
+        "p2": "1359ee446197e556"
+      }
+    },
+    {
+      "id": "coalesce_nulo_rob_05",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "69afe0eccccaf0d6",
+        "p1": "ee0f328cf9786a0d",
+        "p2": "03ce6f1716a37a5d"
+      }
+    },
+    {
+      "id": "coalesce_nulo_rob_06",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "bf15481161a24528",
+        "p1": "a98f48b2c75a58da",
+        "p2": "f025ea57da1d413c"
+      }
+    },
+    {
+      "id": "valor_categorico_rob_01",
+      "estrato": "valor_categorico",
+      "hashes_por_variante": {
+        "p0": "579a91dd3aeb5221",
+        "p1": "45bdd2988256856d",
+        "p2": "b1fd99d2552b47ef"
+      }
+    },
+    {
+      "id": "valor_categorico_rob_02",
+      "estrato": "valor_categorico",
+      "hashes_por_variante": {
+        "p0": "00f1e76b22588d83",
+        "p1": "cc6d42b3c5d56cf7",
+        "p2": "b60fbc3248d777a4"
+      }
+    },
+    {
+      "id": "valor_categorico_rob_04",
+      "estrato": "valor_categorico",
+      "hashes_por_variante": {
+        "p0": "7e773a651afe58be",
+        "p1": "20ffa728807d2c1c",
+        "p2": "20ffa728807d2c1c"
+      }
+    },
+    {
+      "id": "valor_categorico_rob_05",
+      "estrato": "valor_categorico",
+      "hashes_por_variante": {
+        "p0": "f1fb34106f927003",
+        "p1": "ba85525d5b877c0f",
+        "p2": "3e722abf3ff759ae"
+      }
+    },
+    {
+      "id": "valor_categorico_rob_06",
+      "estrato": "valor_categorico",
+      "hashes_por_variante": {
+        "p0": "0b8580faa80dd705",
+        "p1": "94ce9778a862e32c",
+        "p2": "d730c0908c0edd5b"
+      }
+    }
+  ],
+  "sha256": "9e1fdcda7a53761cbe7415d8a445984f84a09882139cad88d398e4bd1f7b255b",
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "a23c307",
+    "git_dirty": true,
+    "git_diff_sha1": "90fd87441d90",
+    "timestamp_utc": "2026-07-25T14:18:57+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

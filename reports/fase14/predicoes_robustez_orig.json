@@ -1,0 +1,908 @@
+{
+  "metrica_derivada_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '9'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '9'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 19.834,
+      "tokens_prompt": 789,
+      "tokens_saida": 74,
+      "eval_s": 6.658,
+      "carga_modelo_s": 12.274
+    }
+  },
+  "metrica_derivada_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__sentido"
+      ],
+      "where": "{{ Dimension('plaza__sentido') }} = 'Decrescente'",
+      "order_by": [
+        "plaza__concessionaria"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__sentido\"],\n  \"where\": \"{{ Dimension('plaza__sentido') }} = 'Decrescente'\",\n  \"order_by\": [\"plaza__concessionaria\"],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.051,
+      "tokens_prompt": 789,
+      "tokens_saida": 81,
+      "eval_s": 6.393,
+      "carga_modelo_s": 0.268
+    }
+  },
+  "metrica_derivada_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__tipo_de_veiculo"
+      ],
+      "where": "{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__tipo_de_veiculo\"],\n  \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.681,
+      "tokens_prompt": 787,
+      "tokens_saida": 77,
+      "eval_s": 6.077,
+      "carga_modelo_s": 0.278
+    }
+  },
+  "metrica_derivada_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '8'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__praca\", \"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '8'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.611,
+      "tokens_prompt": 789,
+      "tokens_saida": 73,
+      "eval_s": 5.981,
+      "carga_modelo_s": 0.284
+    }
+  },
+  "metrica_derivada_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__concessionaria\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.659,
+      "tokens_prompt": 781,
+      "tokens_saida": 53,
+      "eval_s": 5.124,
+      "carga_modelo_s": 0.269
+    }
+  },
+  "grao_temporal_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "plaza__concessionaria"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"metric_time__month\", \"plaza__concessionaria\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.334,
+      "tokens_prompt": 791,
+      "tokens_saida": 59,
+      "eval_s": 4.542,
+      "carga_modelo_s": 0.271
+    }
+  },
+  "grao_temporal_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "metric_time__week",
+        "plaza__concessionaria"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"metric_time__week\", \"plaza__concessionaria\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.185,
+      "tokens_prompt": 785,
+      "tokens_saida": 59,
+      "eval_s": 4.569,
+      "carga_modelo_s": 0.276
+    }
+  },
+  "grao_temporal_rob_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "metric_time__week",
+        "plaza__sentido"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"metric_time__week\", \"plaza__sentido\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.483,
+      "tokens_prompt": 788,
+      "tokens_saida": 58,
+      "eval_s": 4.536,
+      "carga_modelo_s": 0.299
+    }
+  },
+  "grao_temporal_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__categoria_eixo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"metric_time__day\", \"plaza__categoria_eixo\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.997,
+      "tokens_prompt": 785,
+      "tokens_saida": 59,
+      "eval_s": 5.222,
+      "carga_modelo_s": 0.317
+    }
+  },
+  "grao_temporal_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"metric_time__week\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 4.94,
+      "tokens_prompt": 781,
+      "tokens_saida": 51,
+      "eval_s": 4.149,
+      "carga_modelo_s": 0.304
+    }
+  },
+  "grao_temporal_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "plaza__tipo_cobranca"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"metric_time__month\", \"plaza__tipo_cobranca\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 5.707,
+      "tokens_prompt": 790,
+      "tokens_saida": 61,
+      "eval_s": 4.873,
+      "carga_modelo_s": 0.299
+    }
+  },
+  "ranking_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '8'",
+      "order_by": [
+        "plaza__concessionaria",
+        "automation_rate",
+        "desc"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '8'\",\n  \"order_by\": [\"plaza__concessionaria\", \"automation_rate\", \"desc\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 8.84,
+      "tokens_prompt": 796,
+      "tokens_saida": 89,
+      "eval_s": 8.307,
+      "carga_modelo_s": 0.29
+    }
+  },
+  "ranking_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '4'",
+      "order_by": [
+        "commercial_share",
+        "desc"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '4'\",\n  \"order_by\": [\"commercial_share\", \"desc\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 7.945,
+      "tokens_prompt": 798,
+      "tokens_saida": 81,
+      "eval_s": 7.121,
+      "carga_modelo_s": 0.323
+    }
+  },
+  "ranking_rob_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '7'",
+      "order_by": [
+        "plaza__concessionaria",
+        "automation_rate",
+        "desc"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '7'\",\n  \"order_by\": [\"plaza__concessionaria\", \"automation_rate\", \"desc\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 11.228,
+      "tokens_prompt": 796,
+      "tokens_saida": 89,
+      "eval_s": 10.256,
+      "carga_modelo_s": 0.325
+    }
+  },
+  "ranking_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '4'",
+      "order_by": [
+        "commercial_share",
+        "desc"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"plaza__praca\", \"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '4'\",\n  \"order_by\": [\"commercial_share\", \"desc\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 7.918,
+      "tokens_prompt": 797,
+      "tokens_saida": 80,
+      "eval_s": 7.019,
+      "carga_modelo_s": 0.335
+    }
+  },
+  "ranking_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Manual'",
+      "order_by": [
+        "traffic_volume",
+        "DESC"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Manual'\",\n  \"order_by\": [\"traffic_volume\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 7.092,
+      "tokens_prompt": 798,
+      "tokens_saida": 75,
+      "eval_s": 6.131,
+      "carga_modelo_s": 0.376
+    }
+  },
+  "ranking_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__praca"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'",
+      "order_by": [
+        "commercial_share",
+        "desc"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"plaza__praca\"],\n  \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\",\n  \"order_by\": [\"commercial_share\", \"desc\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 7.099,
+      "tokens_prompt": 797,
+      "tokens_saida": 75,
+      "eval_s": 6.222,
+      "carga_modelo_s": 0.333
+    }
+  },
+  "join_grao_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__tipo_cobranca",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__tipo_cobranca\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.722,
+      "tokens_prompt": 790,
+      "tokens_saida": 69,
+      "eval_s": 5.87,
+      "carga_modelo_s": 0.317
+    }
+  },
+  "join_grao_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__concessionaria"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"plaza__praca\", \"plaza__concessionaria\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.036,
+      "tokens_prompt": 788,
+      "tokens_saida": 60,
+      "eval_s": 6.071,
+      "carga_modelo_s": 0.336
+    }
+  },
+  "join_grao_rob_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__tipo_cobranca",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__tipo_cobranca\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.52,
+      "tokens_prompt": 794,
+      "tokens_saida": 69,
+      "eval_s": 8.307,
+      "carga_modelo_s": 0.343
+    }
+  },
+  "join_grao_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__sentido",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__sentido\", \"metric_time__month\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.291,
+      "tokens_prompt": 791,
+      "tokens_saida": 66,
+      "eval_s": 6.545,
+      "carga_modelo_s": 0.365
+    }
+  },
+  "join_grao_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__categoria_eixo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__praca\", \"plaza__categoria_eixo\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.41,
+      "tokens_prompt": 791,
+      "tokens_saida": 60,
+      "eval_s": 6.314,
+      "carga_modelo_s": 0.35
+    }
+  },
+  "join_grao_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__categoria_eixo",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"plaza__praca\", \"plaza__categoria_eixo\", \"metric_time__day\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.573,
+      "tokens_prompt": 792,
+      "tokens_saida": 66,
+      "eval_s": 7.457,
+      "carga_modelo_s": 0.327
+    }
+  },
+  "coalesce_nulo_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__concessionaria"
+      ],
+      "where": "{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"metric_time__day\", \"plaza__concessionaria\"],\n  \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.73,
+      "tokens_prompt": 791,
+      "tokens_saida": 74,
+      "eval_s": 7.74,
+      "carga_modelo_s": 0.345
+    }
+  },
+  "coalesce_nulo_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '9'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"metric_time__day\", \"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '9'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.64,
+      "tokens_prompt": 790,
+      "tokens_saida": 72,
+      "eval_s": 6.716,
+      "carga_modelo_s": 0.334
+    }
+  },
+  "coalesce_nulo_rob_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__concessionaria"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"metric_time__day\", \"plaza__concessionaria\"],\n  \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.821,
+      "tokens_prompt": 792,
+      "tokens_saida": 75,
+      "eval_s": 7.914,
+      "carga_modelo_s": 0.339
+    }
+  },
+  "coalesce_nulo_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__praca"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Manual'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"metric_time__day\", \"plaza__praca\"],\n  \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Manual'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.437,
+      "tokens_prompt": 799,
+      "tokens_saida": 73,
+      "eval_s": 6.621,
+      "carga_modelo_s": 0.345
+    }
+  },
+  "coalesce_nulo_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__praca"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"metric_time__day\", \"plaza__praca\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.387,
+      "tokens_prompt": 786,
+      "tokens_saida": 58,
+      "eval_s": 5.508,
+      "carga_modelo_s": 0.33
+    }
+  },
+  "coalesce_nulo_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__tipo_cobranca"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"metric_time__day\", \"plaza__tipo_cobranca\"],\n  \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.228,
+      "tokens_prompt": 790,
+      "tokens_saida": 77,
+      "eval_s": 7.402,
+      "carga_modelo_s": 0.286
+    }
+  },
+  "valor_categorico_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__sentido",
+        "plaza__tipo_cobranca"
+      ],
+      "where": "{{ Dimension('plaza__sentido') }} = 'Decrescente'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"plaza__sentido\", \"plaza__tipo_cobranca\"],\n  \"where\": \"{{ Dimension('plaza__sentido') }} = 'Decrescente'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.277,
+      "tokens_prompt": 788,
+      "tokens_saida": 76,
+      "eval_s": 7.407,
+      "carga_modelo_s": 0.309
+    }
+  },
+  "valor_categorico_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__sentido",
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '3'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__sentido\", \"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '3'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.686,
+      "tokens_prompt": 788,
+      "tokens_saida": 73,
+      "eval_s": 6.737,
+      "carga_modelo_s": 0.336
+    }
+  },
+  "valor_categorico_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '6'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"plaza__praca\", \"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '6'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.677,
+      "tokens_prompt": 792,
+      "tokens_saida": 73,
+      "eval_s": 7.783,
+      "carga_modelo_s": 0.29
+    }
+  },
+  "valor_categorico_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '5'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '5'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.179,
+      "tokens_prompt": 790,
+      "tokens_saida": 74,
+      "eval_s": 5.394,
+      "carga_modelo_s": 0.326
+    }
+  },
+  "valor_categorico_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '7'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "qwen2.5-coder:7b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"plaza__praca\", \"plaza__categoria_eixo\"],\n  \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '7'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 6.305,
+      "tokens_prompt": 796,
+      "tokens_saida": 73,
+      "eval_s": 5.441,
+      "carga_modelo_s": 0.346
+    }
+  }
+}

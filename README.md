@@ -18,7 +18,7 @@ Data Engineering × AI Engineering · avaliação com rigor · R$0 · dados sint
 
 | Conjunto selado | Tier-A (spec → MetricFlow) | Baseline SQL cru | Δ | McNemar |
 |---|---|---|---|---|
-| **TEST-ANTT (n=160, dados REAIS)** | **86,9%** [80,8; 91,3] | 28,8% | **+58,1 pp** | **97 × 4, p≈0** |
+| **TEST-ANTT (n=150, dados REAIS)** | **88,7%** [82,6; 92,8] | 28,0% | **+60,7 pp** | **95 × 4, p≈0** |
 | TEST-v2 sintético (n=167) | 73,7% [66,5; 79,8] | 15,0% | +58,7 pp | 104 × 6, p≈0 |
 | TEST-v1 sintético (n=42) | 97,6% [87,7; 99,6] | 42,9% | +54,8 pp | 23 × 0, p≈0 |
 
@@ -77,6 +77,7 @@ O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com
 | **11** · Dados reais | fundação ANTT verificada ponta a ponta | ✅ **1,5 M de linhas reais (CC-BY)** substituem 2 mil sintéticas · catálogo nasce com **3 métricas** · 2 armadilhas do dado real pegas antes de virarem número errado |
 | **12** · Tese sobre dado real | Δ EX + McNemar no TEST-ANTT selado | ✅ **86,9% × 28,8%, +58,1 pp, p≈0** · κ de máquina 0,977 · **2 bugs de harness pegos antes de virarem resultado** |
 | **13** · Calibração externa | EX num benchmark público de perguntas **humanas** | ✅ **43,4%** [39,1; 47,8] no BIRD Mini-Dev · prova que o baseline **não é espantalho** · 75% dos erros são silenciosos |
+| **14** · Quitação do backlog | resolver as 4 dívidas declaradas | ✅ gold de ranking corrigido (→**88,7%**) · roteador medido (Tier-B off por evidência) · robustez dedicada **−29,4 pp** · instrumento de κ humano pronto |
 
 ## 🔬 Previsões que a medição **refutou**
 
@@ -118,14 +119,18 @@ Se o teto de hardware subir, Spider2-DBT é o próximo alvo natural.
 
 ## 🎯 Backlog declarado (o que **não** está feito)
 
-Nenhum destes é surpresa: todos foram declarados na fase em que apareceram.
+Nenhum destes é surpresa: todos foram declarados na fase em que apareceram. A [Fase 14](docs/FASE14_BACKLOG.md) quitou as quatro dívidas abertas — ficou o que é genuinamente caro ou depende de humano.
 
-- **Seleção de métrica em itens multidimensionais** — o gargalo real que a Fase 8 e a 9 apontam (ex.: unidade BRL × centavos). O conserto barato (sintaxe de ordenação) foi feito; este é o caro — exige descrições que separem métricas vizinhas ou um SUT maior.
-- **Abstenção contra vizinho semântico** — o catálogo precisa dizer o que uma métrica **não** é (`suspect_rate` ≠ estorno ≠ conversão ≠ inadimplência).
-- **κ humano do golden set do RodoQuery** — hoje só há concordância entre modelos, **rotulada como de máquina**. A Fase 13 avalia o SUT contra anotação humana (BIRD), o que é diferente de ter κ humano no *meu* conjunto; o item continua aberto.
-- **Ligar o Tier-B** no roteador — o fallback de SQL cru está construído e o sandbox validado, mas desligado.
-- **Conjunto de robustez próprio** — a Fase 7 reusou o TEST para medir deltas. Nenhum ajuste foi feito com base nesses resultados, mas cada reuso erode um holdout.
-- ~~Expandir N para ≥25/estrato~~ — **feito na Fase 8** (223 itens no TEST-v2, 26–29 por estrato).
+**Ainda aberto (caro ou humano):**
+- **Seleção de métrica/dimensão em itens multidimensionais** — o gargalo real (Fase 8/9/12). Os consertos mecânicos (ordenação, `group_by` redundante) foram feitos; o que sobra é escolher a métrica/dimensão certa — julgamento, não mecânica. Exige descrições que separem vizinhos ou um SUT maior, medido em holdout novo.
+- **κ humano do golden RodoQuery** — a [Fase 14](docs/FASE14_BACKLOG.md) entrega o **instrumento** (`anotar_humano.py`, que se recusa a inventar); falta ~1h de um anotador humano real. Não é fabricável por máquina, por princípio.
+- **Fragilidade lexical do schema** — a Fase 14 **mediu** (−29,4 pp sob identificadores opacos); mitigar exige descrições mais ricas no semantic layer. Aberto como melhoria, não como incógnita.
+
+**Quitado:**
+- ~~Ligar o Tier-B / roteador~~ — **medido na Fase 14**: fallback conservador captura o ganho sem custo, ingênuo derruba abstenção. Módulo `roteador.py` pronto; off no serving por **escolha baseada em evidência**.
+- ~~Conjunto de robustez próprio~~ — **feito** (Fase 14): conjunto dedicado e selado, disjunto do TEST.
+- ~~Resíduo de ranking~~ — **defeito de gold** (empate na zona de corte) corrigido; EX 86,9% → 88,7%.
+- ~~Expandir N para ≥25/estrato~~ — feito na Fase 8 (223 itens no TEST-v2).
 
 ## 🚀 Setup
 
@@ -139,7 +144,7 @@ uvicorn rodoquery.servico:app --port 8077 # serving do Tier-A
 
 Pré-requisito: a fundação de dados vem do **toll-analytics-platform** buildado (`dbt build` → DuckDB + `manifest.json`). Ver [`docs/FUNDACAO.md`](docs/FUNDACAO.md).
 
-**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md) · [calibração BIRD](docs/FASE13_BIRD.md)
+**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md) · [calibração BIRD](docs/FASE13_BIRD.md) · [quitação do backlog](docs/FASE14_BACKLOG.md)
 
 ## 📄 Licença
 MIT. Dados sintéticos (nenhum dado real).

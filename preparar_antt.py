@@ -17,7 +17,7 @@ from pathlib import Path
 
 from rodoquery.canonizacao import hash_resultado
 from rodoquery.config import settings
-from rodoquery.gold import FUNDACAO_ANTT, compilar_spec, executar_gold
+from rodoquery.gold import FUNDACAO_ANTT, Spec, compilar_spec, executar_gold
 from rodoquery.golden import GOLD_ABSTER, carregar, dividir_dev_test, resumo_estratos, salvar
 from rodoquery.proveniencia import carimbar
 
@@ -27,6 +27,11 @@ DBS = {f"p{v}": settings.antt_suite_dir / f"antt_p{v}.duckdb" for v in range(3)}
 for db in DBS.values():
     if not db.exists():
         raise SystemExit(f"variante ausente: {db}")
+
+def _sem_limit(spec):
+    return Spec(metrics=spec.metrics, group_by=spec.group_by, where=spec.where,
+               order_by=spec.order_by, limit=None, ordenado=spec.ordenado)
+
 
 itens = carregar(G / "autor_antt.jsonl")
 print(f"golden ANTT: {len(itens)} itens autorados", flush=True)
@@ -60,6 +65,21 @@ for i, it in enumerate(itens, 1):
     if len(set(hashes.values())) == 1:
         descartados.append({"id": it.id, "motivo": "gold constante entre variantes (degenerado)"})
         continue
+    # G4 (Fase 14): ranking cujo corte cai num EMPATE → LIMIT sem desempate é não-determinístico;
+    # o modelo pode gerar a spec IDÊNTICA ao gold e "errar" só pela ordem entre iguais.
+    if it.spec.ordenado and it.spec.limit:
+        s2 = compilar_spec(_sem_limit(it.spec), fundacao=FUNDACAO_ANTT)
+        empatado = False
+        for db in DBS.values():
+            vals = [r[-1] for r in executar_gold(s2, db)]
+            n = it.spec.limit
+            if len(vals) < n or len(set(vals[:n])) < min(n, len(vals)) \
+                    or (len(vals) > n and vals[n - 1] == vals[n]):
+                empatado = True
+                break
+        if empatado:
+            descartados.append({"id": it.id, "motivo": "ranking com empate na zona de corte"})
+            continue
     validos.append(it)
     respostas.append({"id": it.id, "estrato": it.estrato, "sql_metricflow": sql,
                       "n_variantes": len(hashes), "hashes_por_variante": hashes})

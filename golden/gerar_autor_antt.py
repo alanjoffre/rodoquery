@@ -45,6 +45,10 @@ VALORES = {
 # G1: métrica → dimensão cujo filtro a torna degenerada (o filtro já está na definição).
 CONFLITO = {"automation_rate": "plaza__tipo_cobranca",
             "commercial_share": "plaza__tipo_de_veiculo"}
+# G4 (Fase 14): cardinalidade das dimensões de baixa contagem. Ranking com limit > cardinalidade
+# é degenerado — "as 3 praças" tem sentido, "os 3 sentidos" (só há 2) não. Entidades de alta
+# cardinalidade (praça=241, concessionária=30) não entram aqui: qualquer limit realista cabe.
+CARDINALIDADE = {"plaza__sentido": 2, "plaza__tipo_cobranca": 3, "plaza__tipo_de_veiculo": 3}
 
 VAL_LABEL = {
     "Automática": "com cobrança automática", "Manual": "com cobrança manual",
@@ -242,12 +246,16 @@ def c_ranking():
             if not permitido([m], [d]):
                 continue
             art, plu = DIM_ARTIGO[d], DIM_PLURAL[d]
-            ks = (3, 5, 10) if d in ENTID else (3,)
+            # G4: só rankeia com limit <= cardinalidade da dimensão (senão o corte é degenerado).
+            card = CARDINALIDADE.get(d)
+            ks = [k for k in ((3, 5, 10) if d in ENTID else (3,)) if card is None or k < card]
             for k in ks:
                 out.append((sp([m], [d], None, [f"-{m}"], k, True),
                             f"Quais {art} {k} {plu} com maior {MET_NOME[m]}?"))
                 out.append((sp([m], [d], None, [m], k, True),
                             f"Quais {art} {k} {plu} com menor {MET_NOME[m]}?"))
+            if card is not None and card <= 3:   # G4: nem o top-3 com filtro cabe aqui
+                continue
             for dim, vals in VALORES.items():
                 for v in vals:
                     if not permitido([m], [d], dim):
@@ -301,37 +309,42 @@ ABSTENCOES = [
 ]
 
 # ------------------------------------------------------------------ montagem
-usados, perguntas = set(), set()
-itens, descartes = [], collections.Counter()
+def montar_e_salvar():
+    usados, perguntas = set(), set()
+    itens, descartes = [], collections.Counter()
 
-for estrato, fn in PLANO:
-    cands = fn()
-    rng.shuffle(cands)
-    n = 0
-    for spec, perg in cands:
-        if n >= ALVO:
-            break
-        if sig(spec) in usados or perg.strip().lower() in perguntas:
-            descartes[estrato] += 1
-            continue
-        usados.add(sig(spec))
-        perguntas.add(perg.strip().lower())
-        n += 1
-        itens.append({"id": f"{estrato}_antt_{n:02d}", "pergunta_nl": perg, "estrato": estrato,
-                      "spec": spec, "revisado_humano": False})
-    if n < ALVO:
-        print(f"AVISO: {estrato} só conseguiu {n}/{ALVO} specs inéditas")
+    for estrato, fn in PLANO:
+        cands = fn()
+        rng.shuffle(cands)
+        n = 0
+        for spec, perg in cands:
+            if n >= ALVO:
+                break
+            if sig(spec) in usados or perg.strip().lower() in perguntas:
+                descartes[estrato] += 1
+                continue
+            usados.add(sig(spec))
+            perguntas.add(perg.strip().lower())
+            n += 1
+            itens.append({"id": f"{estrato}_antt_{n:02d}", "pergunta_nl": perg,
+                          "estrato": estrato, "spec": spec, "revisado_humano": False})
+        if n < ALVO:
+            print(f"AVISO: {estrato} só conseguiu {n}/{ALVO} specs inéditas")
 
-for i, p in enumerate(ABSTENCOES[:ALVO], 1):
-    assert p.strip().lower() not in perguntas, f"abstenção duplicada: {p}"
-    itens.append({"id": f"abstencao_antt_{i:02d}", "pergunta_nl": p, "estrato": "abstencao",
-                  "spec": sp([]), "revisado_humano": False})
+    for i, p in enumerate(ABSTENCOES[:ALVO], 1):
+        assert p.strip().lower() not in perguntas, f"abstenção duplicada: {p}"
+        itens.append({"id": f"abstencao_antt_{i:02d}", "pergunta_nl": p, "estrato": "abstencao",
+                      "spec": sp([]), "revisado_humano": False})
 
-dest = G / "autor_antt.jsonl"
-dest.write_text("".join(json.dumps(it, ensure_ascii=False) + "\n" for it in itens),
-                encoding="utf-8")
-c = collections.Counter(it["estrato"] for it in itens)
-print(f"golden ANTT: {len(itens)} itens  {dict(sorted(c.items()))}")
-print("guardas aplicadas na GERAÇÃO: G1 (filtro x definição da métrica), "
-      "G2 (filtra e agrupa a mesma dim), G3 (sem estrato metrica_filtrada)")
-print(f"-> {dest}")
+    dest = G / "autor_antt.jsonl"
+    dest.write_text("".join(json.dumps(it, ensure_ascii=False) + "\n" for it in itens),
+                    encoding="utf-8")
+    c = collections.Counter(it["estrato"] for it in itens)
+    print(f"golden ANTT: {len(itens)} itens  {dict(sorted(c.items()))}")
+    print("guardas na GERAÇÃO: G1 (filtro x definição), G2 (filtra+agrupa mesma dim), "
+          "G3 (sem metrica_filtrada), G4 (ranking com limit < cardinalidade)")
+    print(f"-> {dest}")
+
+
+if __name__ == "__main__":
+    montar_e_salvar()

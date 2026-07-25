@@ -22,3 +22,4 @@ models/
 # anotações humanas REAIS e revisadas. O κ de MÁQUINA (2º LLM) é evidência versionada:
 # golden/kappa_maquina_b.jsonl e golden/sonda_kappa_maquina_b.jsonl SÃO commitados.
 golden/anotador_*.jsonl
+_*.log
