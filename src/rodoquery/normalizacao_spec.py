@@ -55,15 +55,20 @@ def normalizar_group_by(group_by: list[str], where: str | None) -> list[str]:
     TEST-v3 com esse padrão, o gold NUNCA agrupa pela dimensão filtrada (0 quebras possíveis).
 
     Ressalva honesta: quando a pergunta é do tipo "entre as transações estornadas, por status", as
-    duas leituras se defendem. Esses itens são AMBÍGUOS e foram removidos do v3 pelos anotadores
+    duas leituras se defendem. Esses itens são AMBÍGUOS e foram removidos do golden pelos anotadores
     cegos antes de qualquer medição — não é a regra que os resolve, é o golden que não deve tê-los.
+
+    Correção (Fase 15): a versão anterior "nunca esvaziava" o group_by — se a ÚNICA dimensão
+    agrupada era a filtrada, ela ficava. Isso CONTRADIZ a convenção do gold: um filtro sozinho
+    ("volume dos veículos tipo moto") é um agregado (`group_by=[]`), não uma linha rotulada com o
+    valor constante. Como os itens ambíguos "entre os X, por X" já saem do golden, esvaziar é o
+    comportamento correto e alinhado à convenção — e resolve parte do resíduo de `valor_categorico`.
     """
     presas = dimensoes_filtradas_por_igualdade(where)
     if not presas:
         return group_by
-    limpo = [d for d in group_by if d not in presas]
-    # nunca esvaziar o group_by por completo: sem dimensão nenhuma a pergunta muda de sentido
-    return limpo if limpo else group_by
+    # esvaziar é correto: agrupar SÓ pela dimensão filtrada é um agregado disfarçado.
+    return [d for d in group_by if d not in presas]
 
 
 def normalizar_spec(spec: Spec) -> Spec:

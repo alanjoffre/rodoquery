@@ -8,20 +8,20 @@
     "ordem (F9)",
     "group_by (F10)"
   ],
-  "specs_normalizadas": 78,
-  "n": 175,
+  "specs_normalizadas": 80,
+  "n": 171,
   "n_variantes": 3,
   "sistemas": {
     "tier_a_antt": {
       "sistema": "tier_a_antt",
-      "n_total": 175,
+      "n_total": 171,
       "execution_accuracy_respondiveis": {
-        "n": 150,
-        "acertos": 133,
-        "taxa": 0.8867,
+        "n": 146,
+        "acertos": 131,
+        "taxa": 0.8973,
         "wilson_ic95": [
-          0.826,
-          0.928
+          0.8374,
+          0.9367
         ]
       },
       "acuracia_abstencao": {
@@ -62,21 +62,21 @@
           ]
         },
         "grao_temporal": {
-          "n": 26,
-          "acertos": 26,
+          "n": 25,
+          "acertos": 25,
           "taxa": 1.0,
           "wilson_ic95": [
-            0.8713,
+            0.8668,
             1.0
           ]
         },
         "valor_categorico": {
           "n": 25,
-          "acertos": 18,
-          "taxa": 0.72,
+          "acertos": 20,
+          "taxa": 0.8,
           "wilson_ic95": [
-            0.5242,
-            0.8572
+            0.6087,
+            0.9114
           ]
         },
         "controle_trivial": {
@@ -89,12 +89,12 @@
           ]
         },
         "ranking": {
-          "n": 15,
-          "acertos": 12,
-          "taxa": 0.8,
+          "n": 12,
+          "acertos": 9,
+          "taxa": 0.75,
           "wilson_ic95": [
-            0.5481,
-            0.9295
+            0.4677,
+            0.9111
           ]
         }
       },
@@ -102,14 +102,14 @@
     },
     "sql_cru_antt": {
       "sistema": "sql_cru_antt",
-      "n_total": 175,
+      "n_total": 171,
       "execution_accuracy_respondiveis": {
-        "n": 150,
-        "acertos": 42,
-        "taxa": 0.28,
+        "n": 146,
+        "acertos": 39,
+        "taxa": 0.2671,
         "wilson_ic95": [
-          0.2143,
-          0.3567
+          0.202,
+          0.3442
         ]
       },
       "acuracia_abstencao": {
@@ -150,12 +150,12 @@
           ]
         },
         "grao_temporal": {
-          "n": 26,
-          "acertos": 7,
-          "taxa": 0.2692,
+          "n": 25,
+          "acertos": 6,
+          "taxa": 0.24,
           "wilson_ic95": [
-            0.137,
-            0.4608
+            0.115,
+            0.4343
           ]
         },
         "valor_categorico": {
@@ -177,12 +177,12 @@
           ]
         },
         "ranking": {
-          "n": 15,
-          "acertos": 8,
-          "taxa": 0.5333,
+          "n": 12,
+          "acertos": 6,
+          "taxa": 0.5,
           "wilson_ic95": [
-            0.3012,
-            0.7519
+            0.2538,
+            0.7462
           ]
         }
       },
@@ -190,11 +190,11 @@
     }
   },
   "mcnemar_sqlcru_vs_tiera_respondiveis": {
-    "b_only": 4,
+    "b_only": 3,
     "c_only": 95,
     "p_valor": 0.0,
-    "delta_acuracia": -0.6067,
-    "n": 150
+    "delta_acuracia": -0.6301,
+    "n": 146
   },
   "resultados_por_item": {
     "tier_a_antt": [
@@ -1487,29 +1487,6 @@
           "tokens_saida": 58,
           "eval_s": 3.427,
           "carga_modelo_s": 0.401
-        },
-        "correto": true,
-        "motivo": "EX em todas as variantes",
-        "sql": null,
-        "variantes_batem": {
-          "p0": true,
-          "p1": true,
-          "p2": true
-        }
-      },
-      {
-        "id": "grao_temporal_antt_08",
-        "estrato": "grao_temporal",
-        "abstencao": false,
-        "predicao": "spec",
-        "meta": {
-          "modelo": "qwen2.5-coder:7b",
-          "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"metric_time__week\", \"plaza__tipo_de_veiculo\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
-          "latencia_s": 4.739,
-          "tokens_prompt": 786,
-          "tokens_saida": 60,
-          "eval_s": 3.905,
-          "carga_modelo_s": 0.405
         },
         "correto": true,
         "motivo": "EX em todas as variantes",
@@ -3154,29 +3131,6 @@
         }
       },
       {
-        "id": "ranking_antt_03",
-        "estrato": "ranking",
-        "abstencao": false,
-        "predicao": "spec",
-        "meta": {
-          "modelo": "qwen2.5-coder:7b",
-          "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"plaza__sentido\", \"plaza__tipo_cobranca\"],\n  \"where\": \"{{ Dimension('plaza__sentido') }} = 'Decrescente'\",\n  \"order_by\": [\"commercial_share\", \"desc\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
-          "latencia_s": 6.473,
-          "tokens_prompt": 799,
-          "tokens_saida": 83,
-          "eval_s": 5.916,
-          "carga_modelo_s": 0.375
-        },
-        "correto": true,
-        "motivo": "EX em todas as variantes",
-        "sql": null,
-        "variantes_batem": {
-          "p0": true,
-          "p1": true,
-          "p2": true
-        }
-      },
-      {
         "id": "ranking_antt_04",
         "estrato": "ranking",
         "abstencao": false,
@@ -3235,29 +3189,6 @@
           "tokens_saida": 57,
           "eval_s": 5.066,
           "carga_modelo_s": 0.593
-        },
-        "correto": true,
-        "motivo": "EX em todas as variantes",
-        "sql": null,
-        "variantes_batem": {
-          "p0": true,
-          "p1": true,
-          "p2": true
-        }
-      },
-      {
-        "id": "ranking_antt_14",
-        "estrato": "ranking",
-        "abstencao": false,
-        "predicao": "spec",
-        "meta": {
-          "modelo": "qwen2.5-coder:7b",
-          "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"plaza__tipo_de_veiculo\"],\n  \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\",\n  \"order_by\": [\"traffic_volume\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
-          "latencia_s": 3.388,
-          "tokens_prompt": 797,
-          "tokens_saida": 77,
-          "eval_s": 2.905,
-          "carga_modelo_s": 0.204
         },
         "correto": true,
         "motivo": "EX em todas as variantes",
@@ -3447,29 +3378,6 @@
         }
       },
       {
-        "id": "ranking_antt_28",
-        "estrato": "ranking",
-        "abstencao": false,
-        "predicao": "spec",
-        "meta": {
-          "modelo": "qwen2.5-coder:7b",
-          "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"plaza__sentido\", \"plaza__tipo_de_veiculo\"],\n  \"where\": \"{{ Dimension('plaza__sentido') }} = 'Crescente'\",\n  \"order_by\": [\"traffic_volume\", \"DESC\"],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
-          "latencia_s": 3.656,
-          "tokens_prompt": 795,
-          "tokens_saida": 82,
-          "eval_s": 3.154,
-          "carga_modelo_s": 0.221
-        },
-        "correto": true,
-        "motivo": "EX em todas as variantes",
-        "sql": null,
-        "variantes_batem": {
-          "p0": true,
-          "p1": true,
-          "p2": true
-        }
-      },
-      {
         "id": "ranking_antt_29",
         "estrato": "ranking",
         "abstencao": false,
@@ -3506,13 +3414,13 @@
           "eval_s": 2.66,
           "carga_modelo_s": 0.212
         },
-        "correto": false,
-        "motivo": "bateu 0/3 variantes",
+        "correto": true,
+        "motivo": "EX em todas as variantes",
         "sql": null,
         "variantes_batem": {
-          "p0": false,
-          "p1": false,
-          "p2": false
+          "p0": true,
+          "p1": true,
+          "p2": true
         }
       },
       {
@@ -3960,13 +3868,13 @@
           "eval_s": 2.53,
           "carga_modelo_s": 0.215
         },
-        "correto": false,
-        "motivo": "bateu 0/3 variantes",
+        "correto": true,
+        "motivo": "EX em todas as variantes",
         "sql": null,
         "variantes_batem": {
-          "p0": false,
-          "p1": false,
-          "p2": false
+          "p0": true,
+          "p1": true,
+          "p2": true
         }
       },
       {
@@ -5355,29 +5263,6 @@
           "p0": false,
           "p1": false,
           "p2": false
-        }
-      },
-      {
-        "id": "grao_temporal_antt_08",
-        "estrato": "grao_temporal",
-        "abstencao": false,
-        "predicao": "sql",
-        "meta": {
-          "modelo": "qwen2.5-coder:7b",
-          "raw": "```sql\nSELECT \n    date_trunc('week', f.data) AS semana,\n    f.tipo_de_veiculo,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('week', f.data), \n    f.tipo_de_veiculo\nORDER BY \n    semana, \n    tipo_de_veiculo;\n```",
-          "latencia_s": 3.447,
-          "tokens_prompt": 480,
-          "tokens_saida": 79,
-          "eval_s": 3.006,
-          "carga_modelo_s": 0.228
-        },
-        "correto": true,
-        "motivo": "EX em todas as variantes",
-        "sql": "SELECT \n    date_trunc('week', f.data) AS semana,\n    f.tipo_de_veiculo,\n    SUM(f.volume) AS volume_total\nFROM \n    fct_traffic_volume f\nGROUP BY \n    date_trunc('week', f.data), \n    f.tipo_de_veiculo\nORDER BY \n    semana, \n    tipo_de_veiculo;",
-        "variantes_batem": {
-          "p0": true,
-          "p1": true,
-          "p2": true
         }
       },
       {
@@ -6979,29 +6864,6 @@
         "sql": "SELECT \n    date_trunc('month', f.data) AS mes,\n    SUM(CASE WHEN f.tipo_cobranca = 'Automática' THEN f.volume ELSE 0 END) / \n    SUM(f.volume) * 100 AS proporcao_automatica\nFROM \n    fct_traffic_volume f\nJOIN \n    dim_date d ON f.data = d.date_day\nGROUP BY \n    mes\nORDER BY \n    mes;"
       },
       {
-        "id": "ranking_antt_03",
-        "estrato": "ranking",
-        "abstencao": false,
-        "predicao": "sql",
-        "meta": {
-          "modelo": "qwen2.5-coder:7b",
-          "raw": "```sql\nSELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE sentido = 'Decrescente' AND tipo_de_veiculo = 'Comercial'\nGROUP BY tipo_cobranca\nORDER BY total_volume DESC\nLIMIT 3;\n```",
-          "latencia_s": 3.097,
-          "tokens_prompt": 493,
-          "tokens_saida": 61,
-          "eval_s": 2.48,
-          "carga_modelo_s": 0.274
-        },
-        "correto": false,
-        "motivo": "bateu 0/3 variantes",
-        "sql": "SELECT tipo_cobranca, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE sentido = 'Decrescente' AND tipo_de_veiculo = 'Comercial'\nGROUP BY tipo_cobranca\nORDER BY total_volume DESC\nLIMIT 3;",
-        "variantes_batem": {
-          "p0": false,
-          "p1": false,
-          "p2": false
-        }
-      },
-      {
         "id": "ranking_antt_04",
         "estrato": "ranking",
         "abstencao": false,
@@ -7064,29 +6926,6 @@
         "correto": true,
         "motivo": "EX em todas as variantes",
         "sql": "SELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume ASC\nLIMIT 3;",
-        "variantes_batem": {
-          "p0": true,
-          "p1": true,
-          "p2": true
-        }
-      },
-      {
-        "id": "ranking_antt_14",
-        "estrato": "ranking",
-        "abstencao": false,
-        "predicao": "sql",
-        "meta": {
-          "modelo": "qwen2.5-coder:7b",
-          "raw": "SELECT tipo_de_veiculo, SUM(volume) AS total_volume \nFROM fct_traffic_volume \nWHERE tipo_cobranca = 'Automática' \nGROUP BY tipo_de_veiculo \nORDER BY total_volume DESC \nLIMIT 3",
-          "latencia_s": 2.499,
-          "tokens_prompt": 491,
-          "tokens_saida": 48,
-          "eval_s": 1.925,
-          "carga_modelo_s": 0.26
-        },
-        "correto": true,
-        "motivo": "EX em todas as variantes",
-        "sql": "SELECT tipo_de_veiculo, SUM(volume) AS total_volume \nFROM fct_traffic_volume \nWHERE tipo_cobranca = 'Automática' \nGROUP BY tipo_de_veiculo \nORDER BY total_volume DESC \nLIMIT 3",
         "variantes_batem": {
           "p0": true,
           "p1": true,
@@ -7271,29 +7110,6 @@
         "correto": true,
         "motivo": "EX em todas as variantes",
         "sql": "SELECT \n    concessionaria,\n    SUM(volume) AS total_volume\nFROM \n    fct_traffic_volume\nWHERE \n    tipo_de_veiculo = 'Comercial'\nGROUP BY \n    concessionaria\nORDER BY \n    total_volume DESC\nLIMIT 3;",
-        "variantes_batem": {
-          "p0": true,
-          "p1": true,
-          "p2": true
-        }
-      },
-      {
-        "id": "ranking_antt_28",
-        "estrato": "ranking",
-        "abstencao": false,
-        "predicao": "sql",
-        "meta": {
-          "modelo": "qwen2.5-coder:7b",
-          "raw": "```sql\nSELECT tipo_de_veiculo, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE sentido = 'Crescente'\nGROUP BY tipo_de_veiculo\nORDER BY total_volume DESC\nLIMIT 3;\n```",
-          "latencia_s": 9.447,
-          "tokens_prompt": 489,
-          "tokens_saida": 49,
-          "eval_s": 7.747,
-          "carga_modelo_s": 0.623
-        },
-        "correto": true,
-        "motivo": "EX em todas as variantes",
-        "sql": "SELECT tipo_de_veiculo, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nWHERE sentido = 'Crescente'\nGROUP BY tipo_de_veiculo\nORDER BY total_volume DESC\nLIMIT 3;",
         "variantes_batem": {
           "p0": true,
           "p1": true,
@@ -7894,10 +7710,10 @@
     "seed": 42,
     "modelo_sut": "qwen2.5-coder:7b",
     "temperatura": 0.0,
-    "git_sha": "a23c307",
+    "git_sha": "0c3ee0d",
     "git_dirty": true,
-    "git_diff_sha1": "9266b4e8f8fa",
-    "timestamp_utc": "2026-07-25T13:46:01+00:00",
+    "git_diff_sha1": "28c5f5d26239",
+    "timestamp_utc": "2026-07-25T15:46:37+00:00",
     "versoes": {
       "duckdb": "1.5.4",
       "sqlglot": "30.12.0",

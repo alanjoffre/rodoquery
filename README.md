@@ -18,7 +18,7 @@ Data Engineering × AI Engineering · avaliação com rigor · R$0 · dados sint
 
 | Conjunto selado | Tier-A (spec → MetricFlow) | Baseline SQL cru | Δ | McNemar |
 |---|---|---|---|---|
-| **TEST-ANTT (n=150, dados REAIS)** | **88,7%** [82,6; 92,8] | 28,0% | **+60,7 pp** | **95 × 4, p≈0** |
+| **TEST-ANTT (n=146, dados REAIS)** | **89,7%** [83,7; 93,7] | 26,7% | **+63,0 pp** | **95 × 3, p≈0** |
 | TEST-v2 sintético (n=167) | 73,7% [66,5; 79,8] | 15,0% | +58,7 pp | 104 × 6, p≈0 |
 | TEST-v1 sintético (n=42) | 97,6% [87,7; 99,6] | 42,9% | +54,8 pp | 23 × 0, p≈0 |
 
@@ -78,6 +78,7 @@ O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com
 | **12** · Tese sobre dado real | Δ EX + McNemar no TEST-ANTT selado | ✅ **86,9% × 28,8%, +58,1 pp, p≈0** · κ de máquina 0,977 · **2 bugs de harness pegos antes de virarem resultado** |
 | **13** · Calibração externa | EX num benchmark público de perguntas **humanas** | ✅ **43,4%** [39,1; 47,8] no BIRD Mini-Dev · prova que o baseline **não é espantalho** · 75% dos erros são silenciosos |
 | **14** · Quitação do backlog | resolver as 4 dívidas declaradas | ✅ gold de ranking corrigido (→**88,7%**) · roteador medido (Tier-B off por evidência) · robustez dedicada **−29,4 pp** · instrumento de κ humano pronto |
+| **15** · Seleção + qualidade de label | Δ EX em holdout de ablação fresco | ✅ normalizador corrigido **+33,4 pp** · descrições **+5,5 pp** · ⚠️ **SUT 9B colapsa (5,6%)** · auditoria adversarial acha **7 labels ruins em 60** |
 
 ## 🔬 Previsões que a medição **refutou**
 
@@ -90,6 +91,7 @@ Este é o item de que mais me orgulho no projeto. Cada fase tinha um "achado hon
 | *"em 6 GB a inferência serializa"* (F6) | **Confirmada — e pior.** Vazão cai 25% em c=4/8 e o p95 vai de 4,4 s para **43 s**. O ótimo de vazão (c=2) **não** é o ótimo de SLO: o controle de admissão certo foi semáforo **1** + espera 5 s, recusando o excesso com 503 em vez de enfileirar. |
 | *"o EX de 97,6% descreve o sistema"* (implícito, F4) | **Refutada pela Fase 8.** Com N 4× maior e superfície nova, o EX é **73,7%**. Três buracos que o conjunto pequeno escondia: a regra `where`-vs-`group_by` **não compõe** com agrupamento (`coalesce_nulo` 15%); a regra de ranking **nunca fora avaliada** e não funciona (17%, sintaxe SQL em vez de MetricFlow); e a abstenção de 100% era artefato de perguntas óbvias — com *near-miss* cai para **55,6%**, errando por **substituição semântica silenciosa** ("taxa de estorno" → `suspect_rate`). |
 | *"consertar a falha de ranking = melhorar o prompt"* (F9) | **Refutada pela medição.** Reescrever o prompt **empatou** no holdout (p=0,89): consertou ranking mas a prosa extra causou 18 erros novos de seleção de métrica. O **mesmo conserto em código** (normalizar `["x","DESC"]` → `["-x"]`) deu **+5 pp, p=0,004, zero regressões**. Falha mecânica se conserta em código, não com mais texto no prompt. |
+| *"o resíduo de seleção exige um SUT maior"* (F14) | **Refutada pela medição.** Trocar `qwen2.5-coder:7b` (7B) por `gemma2:9b` (9B), mesmo prompt e mesmos itens, derruba o EX de 86,1% para **5,6%** — o 9B emite `"entidades"`/`"tempo"` (os *rótulos das seções* do catálogo) como se fossem tokens: **23 de 39 specs com vocabulário inválido**, contra **zero** do 7B. Em tarefa de vocabulário fechado, **aderência ao formato vence tamanho**. O resíduo era, em boa parte, um bug meu no normalizador (+33,4 pp ao corrigir). |
 | *"o gargalo é seleção de métrica; limpar o catálogo resolve"* (F10) | **Refutada.** Expor `revenue` e `revenue_cents` (a mesma grandeza) é desenho ruim, mas respondia por só **19%** dos erros — remover empatou (p=1,0). O diagnóstico revelou o gargalo real: em **81%** dos erros a métrica estava **certa** e o modelo **agrupava pela dimensão que já havia filtrado**. Corrigir isso em código deu **+12,7 pp, p≈0, zero regressões** — o maior ganho isolado do projeto. |
 
 Bônus: **a abstenção ficou 100% intacta** sob perturbação de schema. Reconhecer "não existe métrica para isto" depende de o catálogo **não ter** algo, não do nome que as métricas têm — duas competências separadas, e a de segurança é a robusta.
@@ -121,10 +123,13 @@ Se o teto de hardware subir, Spider2-DBT é o próximo alvo natural.
 
 Nenhum destes é surpresa: todos foram declarados na fase em que apareceram. A [Fase 14](docs/FASE14_BACKLOG.md) quitou as quatro dívidas abertas — ficou o que é genuinamente caro ou depende de humano.
 
-**Ainda aberto (caro ou humano):**
-- **Seleção de métrica/dimensão em itens multidimensionais** — o gargalo real (Fase 8/9/12). Os consertos mecânicos (ordenação, `group_by` redundante) foram feitos; o que sobra é escolher a métrica/dimensão certa — julgamento, não mecânica. Exige descrições que separem vizinhos ou um SUT maior, medido em holdout novo.
-- **κ humano do golden RodoQuery** — a [Fase 14](docs/FASE14_BACKLOG.md) entrega o **instrumento** (`anotar_humano.py`, que se recusa a inventar); falta ~1h de um anotador humano real. Não é fabricável por máquina, por princípio.
-- **Fragilidade lexical do schema** — a Fase 14 **mediu** (−29,4 pp sob identificadores opacos); mitigar exige descrições mais ricas no semantic layer. Aberto como melhoria, não como incógnita.
+**Ainda aberto (honestamente):**
+- **κ humano do golden RodoQuery** — o único item que **não é fabricável por máquina**, por princípio. A [Fase 14](docs/FASE14_BACKLOG.md) entrega o instrumento (`anotar_humano.py`, que se recusa a inventar) e a [Fase 15](docs/FASE15_SELECAO.md) submete as labels a uma **auditoria adversarial** (88,3% corretas, 7 defeitos reais achados e removidos). Ainda assim é máquina auditando máquina: falta ~1h de um anotador humano.
+- **Promover o catálogo v2 ao serving** — a Fase 15 mediu **+5,5 pp** em holdout fresco, mas promovê-lo troca o SUT de todas as fases anteriores. Decisão a tomar explicitamente, não de passagem.
+- **Fragilidade lexical do schema** — **medida** (−29,4 pp sob identificadores opacos, Fase 14); mitigar exige descrições mais ricas no semantic layer. Melhoria conhecida, não incógnita.
+
+**Quitado na Fase 15:**
+- ~~Seleção de métrica/dimensão~~ — era **em boa parte bug meu**: o normalizador contradizia a convenção do próprio gold (**+33,4 pp** ao corrigir). Descrições melhores somam **+5,5 pp**. E "SUT maior" foi **refutado**: um 9B generalista colapsa (5,6%) onde o 7B *coder* faz 86,1% — em vocabulário fechado, aderência ao formato vence tamanho.
 
 **Quitado:**
 - ~~Ligar o Tier-B / roteador~~ — **medido na Fase 14**: fallback conservador captura o ganho sem custo, ingênuo derruba abstenção. Módulo `roteador.py` pronto; off no serving por **escolha baseada em evidência**.
@@ -144,7 +149,7 @@ uvicorn rodoquery.servico:app --port 8077 # serving do Tier-A
 
 Pré-requisito: a fundação de dados vem do **toll-analytics-platform** buildado (`dbt build` → DuckDB + `manifest.json`). Ver [`docs/FUNDACAO.md`](docs/FUNDACAO.md).
 
-**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md) · [calibração BIRD](docs/FASE13_BIRD.md) · [quitação do backlog](docs/FASE14_BACKLOG.md)
+**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md) · [calibração BIRD](docs/FASE13_BIRD.md) · [quitação do backlog](docs/FASE14_BACKLOG.md) · [seleção e qualidade de label](docs/FASE15_SELECAO.md)
 
 ## 📄 Licença
 MIT. Dados sintéticos (nenhum dado real).

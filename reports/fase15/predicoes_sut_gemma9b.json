@@ -1,0 +1,1084 @@
+{
+  "metrica_derivada_abl_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "entidades",
+        "plaza__categoria_eixo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\n    \"entidades\",\n    \"plaza__categoria_eixo\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 25.092,
+      "tokens_prompt": 743,
+      "tokens_saida": 75,
+      "eval_s": 7.874,
+      "carga_modelo_s": 15.104
+    }
+  },
+  "metrica_derivada_abl_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__praca"
+      ],
+      "where": "plaza__tipo_cobranca = 'Manual'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"commercial_share\"\n  ],\n  \"group_by\": [\n    \"plaza__praca\"\n  ],\n  \"where\": \"plaza__tipo_cobranca = 'Manual'\",\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.568,
+      "tokens_prompt": 741,
+      "tokens_saida": 83,
+      "eval_s": 8.986,
+      "carga_modelo_s": 0.273
+    }
+  },
+  "metrica_derivada_abl_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "tempo",
+        "week"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"commercial_share\"\n  ],\n  \"group_by\": [\n    \"tempo\",\n    \"week\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.698,
+      "tokens_prompt": 734,
+      "tokens_saida": 75,
+      "eval_s": 8.118,
+      "carga_modelo_s": 0.271
+    }
+  },
+  "metrica_derivada_abl_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__tipo_cobranca"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"commercial_share\"\n  ],\n  \"group_by\": [\n    \"plaza__tipo_cobranca\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.588,
+      "tokens_prompt": 737,
+      "tokens_saida": 76,
+      "eval_s": 8.064,
+      "carga_modelo_s": 0.256
+    }
+  },
+  "metrica_derivada_abl_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "tempo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"commercial_share\"], \"group_by\": [\"tempo\"], \"where\": null, \"order_by\": null, \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 6.189,
+      "tokens_prompt": 734,
+      "tokens_saida": 45,
+      "eval_s": 4.739,
+      "carga_modelo_s": 0.288
+    }
+  },
+  "metrica_derivada_abl_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "tempo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"commercial_share\"\n  ],\n  \"group_by\": [\n    \"tempo\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.647,
+      "tokens_prompt": 734,
+      "tokens_saida": 70,
+      "eval_s": 8.048,
+      "carga_modelo_s": 0.292
+    }
+  },
+  "grao_temporal_abl_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__sentido"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"commercial_share\"\n  ],\n  \"group_by\": [\n    \"tempo\",\n    \"plaza__sentido\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.846,
+      "tokens_prompt": 738,
+      "tokens_saida": 78,
+      "eval_s": 9.182,
+      "carga_modelo_s": 0.298
+    }
+  },
+  "grao_temporal_abl_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__praca"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"tempo\", \"plaza__praca\"], \"where\": null, \"order_by\": null, \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 7.216,
+      "tokens_prompt": 738,
+      "tokens_saida": 51,
+      "eval_s": 5.533,
+      "carga_modelo_s": 0.317
+    }
+  },
+  "grao_temporal_abl_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__tipo_de_veiculo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"tempo\", \"plaza__tipo_de_veiculo\"], \"where\": null, \"order_by\": null, \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 7.75,
+      "tokens_prompt": 740,
+      "tokens_saida": 55,
+      "eval_s": 6.114,
+      "carga_modelo_s": 0.283
+    }
+  },
+  "grao_temporal_abl_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__praca"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"tempo\", \"plaza__praca\"], \"where\": null, \"order_by\": null, \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 7.202,
+      "tokens_prompt": 741,
+      "tokens_saida": 51,
+      "eval_s": 5.575,
+      "carga_modelo_s": 0.287
+    }
+  },
+  "grao_temporal_abl_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__categoria_eixo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"tempo\", \"plaza__categoria_eixo\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.924,
+      "tokens_prompt": 740,
+      "tokens_saida": 66,
+      "eval_s": 7.326,
+      "carga_modelo_s": 0.257
+    }
+  },
+  "grao_temporal_abl_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__sentido"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"tempo\", \"plaza__sentido\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 7.997,
+      "tokens_prompt": 737,
+      "tokens_saida": 64,
+      "eval_s": 6.52,
+      "carga_modelo_s": 0.258
+    }
+  },
+  "ranking_abl_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__categoria_eixo",
+        "plaza__tipo_de_veiculo"
+      ],
+      "where": null,
+      "order_by": [
+        {
+          "column": "automation_rate",
+          "direction": "desc"
+        }
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"automation_rate\"\n  ],\n  \"group_by\": [\n    \"plaza__categoria_eixo\",\n    \"plaza__tipo_de_veiculo\"\n  ],\n  \"where\": null,\n  \"order_by\": [\n    {\n      \"column\": \"automation_rate\",\n      \"direction\": \"desc\"\n    }\n  ],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 14.579,
+      "tokens_prompt": 744,
+      "tokens_saida": 115,
+      "eval_s": 12.978,
+      "carga_modelo_s": 0.26
+    }
+  },
+  "ranking_abl_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria"
+      ],
+      "where": null,
+      "order_by": [
+        {
+          "column": "automation_rate",
+          "direction": "desc"
+        }
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"automation_rate\"\n  ],\n  \"group_by\": [\n    \"plaza__concessionaria\"\n  ],\n  \"where\": null,\n  \"order_by\": [\n    {\n      \"column\": \"automation_rate\",\n      \"direction\": \"desc\"\n    }\n  ],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 13.011,
+      "tokens_prompt": 738,
+      "tokens_saida": 102,
+      "eval_s": 11.473,
+      "carga_modelo_s": 0.228
+    }
+  },
+  "ranking_abl_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__sentido"
+      ],
+      "where": "plaza__sentido = 'Crescente'",
+      "order_by": [
+        {
+          "column": "automation_rate",
+          "direction": "desc"
+        }
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__praca\", \"plaza__sentido\"],\n  \"where\": \"plaza__sentido = 'Crescente'\",\n  \"order_by\": [{\"column\": \"automation_rate\", \"direction\": \"desc\"}],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 12.738,
+      "tokens_prompt": 745,
+      "tokens_saida": 92,
+      "eval_s": 10.939,
+      "carga_modelo_s": 0.287
+    }
+  },
+  "ranking_abl_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__concessionaria"
+      ],
+      "where": null,
+      "order_by": [
+        {
+          "column": "traffic_volume",
+          "direction": "desc"
+        }
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\"plaza__concessionaria\"],\n  \"where\": null,\n  \"order_by\": [{\"column\": \"traffic_volume\", \"direction\": \"desc\"}],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 10.281,
+      "tokens_prompt": 738,
+      "tokens_saida": 78,
+      "eval_s": 8.703,
+      "carga_modelo_s": 0.297
+    }
+  },
+  "ranking_abl_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__sentido"
+      ],
+      "where": "plaza__sentido = 'Decrescente'",
+      "order_by": [
+        {
+          "column": "commercial_share",
+          "direction": "desc"
+        }
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\"plaza__praca\", \"plaza__sentido\"],\n  \"where\": \"plaza__sentido = 'Decrescente'\",\n  \"order_by\": [{\"column\": \"commercial_share\", \"direction\": \"desc\"}],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 11.499,
+      "tokens_prompt": 746,
+      "tokens_saida": 92,
+      "eval_s": 9.839,
+      "carga_modelo_s": 0.284
+    }
+  },
+  "ranking_abl_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__categoria_eixo"
+      ],
+      "where": "plaza__categoria_eixo = '2'",
+      "order_by": [
+        {
+          "column": "automation_rate",
+          "direction": "desc"
+        }
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"automation_rate\"\n  ],\n  \"group_by\": [\n    \"plaza__concessionaria\",\n    \"plaza__categoria_eixo\"\n  ],\n  \"where\": \"plaza__categoria_eixo = '2'\",\n  \"order_by\": [\n    {\n      \"column\": \"automation_rate\",\n      \"direction\": \"desc\"\n    }\n  ],\n  \"limit\": 3,\n  \"ordenado\": true\n}\n```",
+      "latencia_s": 21.637,
+      "tokens_prompt": 747,
+      "tokens_saida": 121,
+      "eval_s": 14.104,
+      "carga_modelo_s": 0.259
+    }
+  },
+  "join_grao_abl_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__categoria_eixo",
+        "tempo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"commercial_share\"\n  ],\n  \"group_by\": [\n    \"plaza__praca\",\n    \"plaza__categoria_eixo\",\n    \"tempo\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.878,
+      "tokens_prompt": 742,
+      "tokens_saida": 88,
+      "eval_s": 9.365,
+      "carga_modelo_s": 0.254
+    }
+  },
+  "join_grao_abl_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__sentido",
+        "tempo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__praca\", \"plaza__sentido\", \"tempo\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.161,
+      "tokens_prompt": 746,
+      "tokens_saida": 70,
+      "eval_s": 7.309,
+      "carga_modelo_s": 0.275
+    }
+  },
+  "join_grao_abl_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "entidades",
+        "categóricos",
+        "tempo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"commercial_share\"\n  ],\n  \"group_by\": [\n    \"entidades\",\n    \"categóricos\",\n    \"tempo\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.365,
+      "tokens_prompt": 741,
+      "tokens_saida": 83,
+      "eval_s": 8.876,
+      "carga_modelo_s": 0.254
+    }
+  },
+  "join_grao_abl_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__sentido",
+        "tempo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__sentido\", \"tempo\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.423,
+      "tokens_prompt": 743,
+      "tokens_saida": 71,
+      "eval_s": 7.964,
+      "carga_modelo_s": 0.253
+    }
+  },
+  "join_grao_abl_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__tipo_cobranca"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__concessionaria\", \"plaza__tipo_cobranca\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 7.842,
+      "tokens_prompt": 739,
+      "tokens_saida": 57,
+      "eval_s": 6.318,
+      "carga_modelo_s": 0.266
+    }
+  },
+  "join_grao_abl_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__tipo_de_veiculo",
+        "tempo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"automation_rate\"\n  ],\n  \"group_by\": [\n    \"plaza__praca\",\n    \"plaza__tipo_de_veiculo\",\n    \"tempo\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 12.564,
+      "tokens_prompt": 747,
+      "tokens_saida": 90,
+      "eval_s": 10.634,
+      "carga_modelo_s": 0.297
+    }
+  },
+  "coalesce_nulo_abl_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__concessionaria",
+        "plaza__sentido"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"tempo\", \"plaza__concessionaria\", \"plaza__sentido\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.736,
+      "tokens_prompt": 744,
+      "tokens_saida": 71,
+      "eval_s": 8.018,
+      "carga_modelo_s": 0.283
+    }
+  },
+  "coalesce_nulo_abl_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__categoria_eixo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"automation_rate\"], \"group_by\": [\"tempo\", \"plaza__categoria_eixo\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 7.098,
+      "tokens_prompt": 742,
+      "tokens_saida": 52,
+      "eval_s": 5.523,
+      "carga_modelo_s": 0.272
+    }
+  },
+  "coalesce_nulo_abl_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__praca"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"tempo\", \"plaza__praca\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 7.234,
+      "tokens_prompt": 745,
+      "tokens_saida": 50,
+      "eval_s": 5.411,
+      "carga_modelo_s": 0.266
+    }
+  },
+  "coalesce_nulo_abl_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__categoria_eixo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"tempo\", \"plaza__categoria_eixo\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 6.872,
+      "tokens_prompt": 742,
+      "tokens_saida": 52,
+      "eval_s": 5.308,
+      "carga_modelo_s": 0.235
+    }
+  },
+  "coalesce_nulo_abl_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__concessionaria",
+        "plaza__categoria_eixo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\n    \"tempo\",\n    \"plaza__concessionaria\",\n    \"plaza__categoria_eixo\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 55.817,
+      "tokens_prompt": 747,
+      "tokens_saida": 83,
+      "eval_s": 54.118,
+      "carga_modelo_s": 0.259
+    }
+  },
+  "coalesce_nulo_abl_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "tempo",
+        "plaza__sentido"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"commercial_share\"\n  ],\n  \"group_by\": [\n    \"tempo\",\n    \"plaza__sentido\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 75.704,
+      "tokens_prompt": 740,
+      "tokens_saida": 78,
+      "eval_s": 72.072,
+      "carga_modelo_s": 0.437
+    }
+  },
+  "valor_categorico_abl_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__categoria_eixo",
+        "plaza__tipo_de_veiculo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\n    \"automation_rate\"\n  ],\n  \"group_by\": [\n    \"plaza__categoria_eixo\",\n    \"plaza__tipo_de_veiculo\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 56.132,
+      "tokens_prompt": 741,
+      "tokens_saida": 87,
+      "eval_s": 52.439,
+      "carga_modelo_s": 0.438
+    }
+  },
+  "valor_categorico_abl_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__categoria_eixo",
+        "plaza__tipo_cobranca"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"traffic_volume\"],\n  \"group_by\": [\n    \"plaza__categoria_eixo\",\n    \"plaza__tipo_cobranca\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 9.209,
+      "tokens_prompt": 742,
+      "tokens_saida": 80,
+      "eval_s": 7.77,
+      "carga_modelo_s": 0.227
+    }
+  },
+  "valor_categorico_abl_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "tempo"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"tempo\"], \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 7.083,
+      "tokens_prompt": 733,
+      "tokens_saida": 59,
+      "eval_s": 5.609,
+      "carga_modelo_s": 0.226
+    }
+  },
+  "valor_categorico_abl_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__sentido",
+        "plaza__categoria_eixo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__sentido\", \"plaza__categoria_eixo\"], \"where\": null, \"order_by\": null, \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 6.847,
+      "tokens_prompt": 736,
+      "tokens_saida": 56,
+      "eval_s": 5.367,
+      "carga_modelo_s": 0.225
+    }
+  },
+  "valor_categorico_abl_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__tipo_de_veiculo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"automation_rate\"],\n  \"group_by\": [\"plaza__concessionaria\", \"plaza__tipo_de_veiculo\"],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 8.697,
+      "tokens_prompt": 739,
+      "tokens_saida": 72,
+      "eval_s": 7.226,
+      "carga_modelo_s": 0.234
+    }
+  },
+  "valor_categorico_abl_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__tipo_cobranca",
+        "plaza__categoria_eixo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\n  \"metrics\": [\"commercial_share\"],\n  \"group_by\": [\n    \"plaza__tipo_cobranca\",\n    \"plaza__categoria_eixo\"\n  ],\n  \"where\": null,\n  \"order_by\": [],\n  \"limit\": null,\n  \"ordenado\": false\n}\n```",
+      "latencia_s": 10.062,
+      "tokens_prompt": 744,
+      "tokens_saida": 80,
+      "eval_s": 8.424,
+      "carga_modelo_s": 0.225
+    }
+  },
+  "abstencao_abl_01": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "ABSTENHO \n",
+      "latencia_s": 1.986,
+      "tokens_prompt": 737,
+      "tokens_saida": 6,
+      "eval_s": 0.494,
+      "carga_modelo_s": 0.232
+    }
+  },
+  "abstencao_abl_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__praca"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__praca\"], \"where\": null, \"order_by\": null, \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 6.205,
+      "tokens_prompt": 735,
+      "tokens_saida": 48,
+      "eval_s": 4.822,
+      "carga_modelo_s": 0.263
+    }
+  },
+  "abstencao_abl_03": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "ABSTENHO \n",
+      "latencia_s": 1.954,
+      "tokens_prompt": 734,
+      "tokens_saida": 6,
+      "eval_s": 0.52,
+      "carga_modelo_s": 0.25
+    }
+  },
+  "abstencao_abl_04": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [], \"group_by\": [], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}\n```",
+      "falha_parse": true,
+      "latencia_s": 5.547,
+      "tokens_prompt": 730,
+      "tokens_saida": 38,
+      "eval_s": 4.03,
+      "carga_modelo_s": 0.306
+    }
+  },
+  "abstencao_abl_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "tempo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "```json\n{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"tempo\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}\n```",
+      "latencia_s": 5.913,
+      "tokens_prompt": 737,
+      "tokens_saida": 44,
+      "eval_s": 4.321,
+      "carga_modelo_s": 0.272
+    }
+  },
+  "abstencao_abl_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "gemma2:9b",
+      "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false} \n",
+      "latencia_s": 5.139,
+      "tokens_prompt": 735,
+      "tokens_saida": 39,
+      "eval_s": 3.767,
+      "carga_modelo_s": 0.251
+    }
+  }
+}

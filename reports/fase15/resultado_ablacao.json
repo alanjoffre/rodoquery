@@ -1,0 +1,124 @@
+{
+  "fase": "15_levers_selecao",
+  "holdout": "ablacao_antt (fresco, disjunto de golden+robustez)",
+  "condicoes": {
+    "A": "catalogo original + normalizador so-ordem (aprox. pre-F15)",
+    "B": "catalogo original + normalizador F15 (esvazia group_by so-filtrado)",
+    "C": "catalogo DESAMBIGUADO (o-que-nao-e + regra group_by) + norm F15",
+    "D": "SUT gemma2:9b (9B) no lugar do qwen2.5-coder:7b (7B)"
+  },
+  "execution_accuracy": {
+    "A_baseline_normF10": {
+      "n": 36,
+      "acertos": 17,
+      "taxa": 0.4722,
+      "wilson_ic95": [
+        0.3199,
+        0.6299
+      ]
+    },
+    "B_norm_corrigido": {
+      "n": 36,
+      "acertos": 29,
+      "taxa": 0.8056,
+      "wilson_ic95": [
+        0.6497,
+        0.9025
+      ]
+    },
+    "C_descricoes_v2": {
+      "n": 36,
+      "acertos": 31,
+      "taxa": 0.8611,
+      "wilson_ic95": [
+        0.7134,
+        0.9392
+      ]
+    },
+    "D_sut_gemma9b": {
+      "n": 36,
+      "acertos": 2,
+      "taxa": 0.0556,
+      "wilson_ic95": [
+        0.0154,
+        0.1814
+      ]
+    }
+  },
+  "abstencao": {
+    "A_baseline_normF10": {
+      "n": 6,
+      "acertos": 5,
+      "taxa": 0.8333,
+      "wilson_ic95": [
+        0.4365,
+        0.9699
+      ]
+    },
+    "B_norm_corrigido": {
+      "n": 6,
+      "acertos": 5,
+      "taxa": 0.8333,
+      "wilson_ic95": [
+        0.4365,
+        0.9699
+      ]
+    },
+    "C_descricoes_v2": {
+      "n": 6,
+      "acertos": 5,
+      "taxa": 0.8333,
+      "wilson_ic95": [
+        0.4365,
+        0.9699
+      ]
+    },
+    "D_sut_gemma9b": {
+      "n": 6,
+      "acertos": 3,
+      "taxa": 0.5,
+      "wilson_ic95": [
+        0.1876,
+        0.8124
+      ]
+    }
+  },
+  "mcnemar_vs_baseline": {
+    "B_norm_corrigido": {
+      "b_only": 0,
+      "c_only": 12,
+      "p_valor": 0.0005,
+      "delta_acuracia": -0.3333,
+      "n": 36
+    },
+    "C_descricoes_v2": {
+      "b_only": 0,
+      "c_only": 14,
+      "p_valor": 0.0001,
+      "delta_acuracia": -0.3889,
+      "n": 36
+    },
+    "D_sut_gemma9b": {
+      "b_only": 15,
+      "c_only": 0,
+      "p_valor": 0.0001,
+      "delta_acuracia": 0.4167,
+      "n": 36
+    }
+  },
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "0c3ee0d",
+    "git_dirty": true,
+    "git_diff_sha1": "f4e79f2cd884",
+    "timestamp_utc": "2026-07-25T15:51:49+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

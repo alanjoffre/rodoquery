@@ -83,10 +83,10 @@ def test_preserva_group_by_sem_intersecao():
     assert normalizar_group_by(["metric_time__day"], W_STATUS) == ["metric_time__day"]
 
 
-def test_nao_esvazia_o_group_by():
-    # se a única dimensão agrupada é a filtrada, remover mudaria o sentido da pergunta:
-    # é o caso AMBÍGUO, que o golden não deve conter — a regra não decide por ele.
-    assert normalizar_group_by(["transaction__status"], W_STATUS) == ["transaction__status"]
+def test_esvazia_quando_so_a_dimensao_filtrada_e_agrupada():
+    # convenção do gold (Fase 15): filtro sozinho é AGREGADO. Agrupar só pela dimensão filtrada
+    # (valor constante) vira group_by=[]. Os itens "entre os X, por X" (ambíguos) saem do golden.
+    assert normalizar_group_by(["transaction__status"], W_STATUS) == []
 
 
 def test_sem_where_group_by_intacto():

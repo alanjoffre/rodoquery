@@ -42,9 +42,12 @@ VALORES = {
     "plaza__sentido": ["Crescente", "Decrescente"],
     "plaza__categoria_eixo": ["2", "3", "4", "5", "6", "7", "8", "9"],
 }
-# G1: métrica → dimensão cujo filtro a torna degenerada (o filtro já está na definição).
-CONFLITO = {"automation_rate": "plaza__tipo_cobranca",
-            "commercial_share": "plaza__tipo_de_veiculo"}
+# G1: métrica → dimensões cujo filtro a torna degenerada.
+# Inclui a dimensão que a métrica usa DIRETAMENTE e as CORRELACIONADAS (achado da auditoria
+# adversarial da Fase 15): filtrar `commercial_share` por `categoria_eixo` alto prende a métrica em
+# 1,0, porque todo veículo de 5+ eixos é comercial — degeneração por correlação, não por definição.
+CONFLITO = {"automation_rate": {"plaza__tipo_cobranca"},
+            "commercial_share": {"plaza__tipo_de_veiculo", "plaza__categoria_eixo"}}
 # G4 (Fase 14): cardinalidade das dimensões de baixa contagem. Ranking com limit > cardinalidade
 # é degenerado — "as 3 praças" tem sentido, "os 3 sentidos" (só há 2) não. Entidades de alta
 # cardinalidade (praça=241, concessionária=30) não entram aqui: qualquer limit realista cabe.
@@ -66,7 +69,9 @@ DIM_SUF = {
     "plaza__sentido": ["por sentido"],
     "plaza__tipo_cobranca": ["por tipo de cobrança", "por forma de cobrança"],
     "plaza__categoria_eixo": ["por categoria de eixo", "por número de eixos"],
-    "plaza__tipo_de_veiculo": ["por tipo de veículo", "por classe de veículo"],
+    # "classe de veículo" saiu (auditoria da Fase 15): no jargão de pedágio "classe" designa a
+    # categoria tarifária por EIXOS, então o termo é ambíguo entre duas dimensões do catálogo.
+    "plaza__tipo_de_veiculo": ["por tipo de veículo"],
 }
 DIM_PLURAL = {"plaza__praca": "praças", "plaza__concessionaria": "concessionárias",
               "plaza__sentido": "sentidos", "plaza__tipo_cobranca": "formas de cobrança",
@@ -102,10 +107,16 @@ def permitido(metrics, group_by, dim_filtrada=None) -> bool:
     dado. Filtrar ou agrupar pela dimensão que a própria métrica já usa produz gold degenerado.
     """
     for m in metrics:
-        conflito = CONFLITO.get(m)
-        if not conflito:
+        conflitos = CONFLITO.get(m)
+        if not conflitos:
             continue
-        if conflito == dim_filtrada or conflito in group_by:
+        if dim_filtrada in conflitos:
+            return False
+        # a dimensão que define a métrica não pode ser agrupada (constante por grupo); as
+        # CORRELACIONADAS só são proibidas no filtro — agrupar por elas ainda carrega sinal.
+        if m == "automation_rate" and "plaza__tipo_cobranca" in group_by:
+            return False
+        if m == "commercial_share" and "plaza__tipo_de_veiculo" in group_by:
             return False
     if dim_filtrada and dim_filtrada in group_by:    # G2: filtra e agrupa pela mesma dimensão
         return False

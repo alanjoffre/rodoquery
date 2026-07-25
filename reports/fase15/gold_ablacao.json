@@ -1,0 +1,379 @@
+{
+  "respostas": [
+    {
+      "id": "metrica_derivada_abl_01",
+      "estrato": "metrica_derivada",
+      "hashes_por_variante": {
+        "p0": "2ee531239034630c",
+        "p1": "44fc3c5e9470ccdc",
+        "p2": "8d2b8b35cc234c1b"
+      }
+    },
+    {
+      "id": "metrica_derivada_abl_02",
+      "estrato": "metrica_derivada",
+      "hashes_por_variante": {
+        "p0": "392e4ab59ac37fe6",
+        "p1": "97722ae7d481b7c7",
+        "p2": "5d2fd4fd81334816"
+      }
+    },
+    {
+      "id": "metrica_derivada_abl_03",
+      "estrato": "metrica_derivada",
+      "hashes_por_variante": {
+        "p0": "cf290bed10cd9bec",
+        "p1": "30b82829252442c2",
+        "p2": "9b1737864c0f9a87"
+      }
+    },
+    {
+      "id": "metrica_derivada_abl_04",
+      "estrato": "metrica_derivada",
+      "hashes_por_variante": {
+        "p0": "0319c5c57e0032ae",
+        "p1": "926fbe85b95d5893",
+        "p2": "cebac975268ad1ad"
+      }
+    },
+    {
+      "id": "metrica_derivada_abl_05",
+      "estrato": "metrica_derivada",
+      "hashes_por_variante": {
+        "p0": "4cc59e58aa05bde5",
+        "p1": "b18cffeaf0f275cd",
+        "p2": "8f2b48b5609f3730"
+      }
+    },
+    {
+      "id": "metrica_derivada_abl_06",
+      "estrato": "metrica_derivada",
+      "hashes_por_variante": {
+        "p0": "983a8b41f302efbc",
+        "p1": "42bfa8a85b7e04ae",
+        "p2": "ccccc26fd5a5e683"
+      }
+    },
+    {
+      "id": "grao_temporal_abl_01",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "091ff0cae828a4a5",
+        "p1": "9fe0e019ea950d68",
+        "p2": "25c10b57137ba210"
+      }
+    },
+    {
+      "id": "grao_temporal_abl_02",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "dbaef3dde8e7437e",
+        "p1": "66a6ad5aa5eaee03",
+        "p2": "2867a32172f380e4"
+      }
+    },
+    {
+      "id": "grao_temporal_abl_03",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "ce8f4b55390f9f54",
+        "p1": "3a08dee8e5712135",
+        "p2": "53e3d0b797b2cbd3"
+      }
+    },
+    {
+      "id": "grao_temporal_abl_04",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "c6c37c337a270226",
+        "p1": "22560b1ff0213d0e",
+        "p2": "2406ee378e9c4b7c"
+      }
+    },
+    {
+      "id": "grao_temporal_abl_05",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "94f96a193eb4e76a",
+        "p1": "ded13ad8c55fe8ff",
+        "p2": "b93088db91bea0a8"
+      }
+    },
+    {
+      "id": "grao_temporal_abl_06",
+      "estrato": "grao_temporal",
+      "hashes_por_variante": {
+        "p0": "aadba77f0ba42df5",
+        "p1": "b2e5f69d08ccc397",
+        "p2": "f0640b6eb12d227a"
+      }
+    },
+    {
+      "id": "ranking_abl_01",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "89732ac2af518b7e",
+        "p1": "ec51cb3f41f64a9a",
+        "p2": "e78f0aa7c346109d"
+      }
+    },
+    {
+      "id": "ranking_abl_02",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "e38f7f0bfd4a0a6e",
+        "p1": "7dc24f093ac87992",
+        "p2": "618cdb45fb6613a9"
+      }
+    },
+    {
+      "id": "ranking_abl_03",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "39ccd73f55229fc3",
+        "p1": "a7bda1bb1e2ee915",
+        "p2": "a68b142f6c183f54"
+      }
+    },
+    {
+      "id": "ranking_abl_04",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "3620a283d92d8733",
+        "p1": "e30f0a22684953ab",
+        "p2": "0f3adb2d1701bae9"
+      }
+    },
+    {
+      "id": "ranking_abl_05",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "970632032b916b63",
+        "p1": "5a5e591e97b218de",
+        "p2": "a159ba96b0c62b8d"
+      }
+    },
+    {
+      "id": "ranking_abl_06",
+      "estrato": "ranking",
+      "hashes_por_variante": {
+        "p0": "f91c48822c5d750b",
+        "p1": "cdb8c849a1bb729b",
+        "p2": "8bf2c0e81d9b64ad"
+      }
+    },
+    {
+      "id": "join_grao_abl_01",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "4fd50b9fdfb1675b",
+        "p1": "f4db07a41c40a687",
+        "p2": "bfc8f6942da5b37c"
+      }
+    },
+    {
+      "id": "join_grao_abl_02",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "67e6abad68ebae20",
+        "p1": "81737df96a828747",
+        "p2": "1f42ee93a350b683"
+      }
+    },
+    {
+      "id": "join_grao_abl_03",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "98167cdff49676c7",
+        "p1": "455f2ecc07b68dca",
+        "p2": "1535083765046168"
+      }
+    },
+    {
+      "id": "join_grao_abl_04",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "56fcaf22de9b4eed",
+        "p1": "854f3bea36836f2f",
+        "p2": "f68ce935d37010ec"
+      }
+    },
+    {
+      "id": "join_grao_abl_05",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "b1286cf4ad592e34",
+        "p1": "96a8d8d85632e2f4",
+        "p2": "2935cd9e164374b9"
+      }
+    },
+    {
+      "id": "join_grao_abl_06",
+      "estrato": "join_grao",
+      "hashes_por_variante": {
+        "p0": "03e2ec8d3c5dcfc6",
+        "p1": "81c51fd54f956223",
+        "p2": "41b6367d252d00e0"
+      }
+    },
+    {
+      "id": "coalesce_nulo_abl_01",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "4ac747a4720241ea",
+        "p1": "426f93cce9c555b2",
+        "p2": "8fbf5259591979c0"
+      }
+    },
+    {
+      "id": "coalesce_nulo_abl_02",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "10111ad5f8db2ce8",
+        "p1": "e51d522392149796",
+        "p2": "ec0994ab77b41254"
+      }
+    },
+    {
+      "id": "coalesce_nulo_abl_03",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "dfa6c2e42f8c177b",
+        "p1": "3b1985bbe167ae45",
+        "p2": "1225d51c99ad813c"
+      }
+    },
+    {
+      "id": "coalesce_nulo_abl_04",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "66a3ce7acb80f0d3",
+        "p1": "7ab866db01c8ebaf",
+        "p2": "831dee8cc92a4f17"
+      }
+    },
+    {
+      "id": "coalesce_nulo_abl_05",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "6de05657c7b3d29d",
+        "p1": "12d2e51f11e629cc",
+        "p2": "1b96281291f2e199"
+      }
+    },
+    {
+      "id": "coalesce_nulo_abl_06",
+      "estrato": "coalesce_nulo",
+      "hashes_por_variante": {
+        "p0": "0d9479c67a4f93d4",
+        "p1": "24117dfbe12f19eb",
+        "p2": "3cdec8532a934de9"
+      }
+    },
+    {
+      "id": "valor_categorico_abl_01",
+      "estrato": "valor_categorico",
+      "hashes_por_variante": {
+        "p0": "3b01ca6d37512c75",
+        "p1": "dc630e26e2b0fb57",
+        "p2": "becee3a7899ccc83"
+      }
+    },
+    {
+      "id": "valor_categorico_abl_02",
+      "estrato": "valor_categorico",
+      "hashes_por_variante": {
+        "p0": "950aed6432eb674e",
+        "p1": "0f35a1ff742cb9ed",
+        "p2": "95fc15b140983c25"
+      }
+    },
+    {
+      "id": "valor_categorico_abl_03",
+      "estrato": "valor_categorico",
+      "hashes_por_variante": {
+        "p0": "75236a422bc7486e",
+        "p1": "631271e7054ad487",
+        "p2": "e1bec3f17430381d"
+      }
+    },
+    {
+      "id": "valor_categorico_abl_04",
+      "estrato": "valor_categorico",
+      "hashes_por_variante": {
+        "p0": "97de9638630225e5",
+        "p1": "7f1ff1e5bd491ac1",
+        "p2": "2565d16ef7117494"
+      }
+    },
+    {
+      "id": "valor_categorico_abl_05",
+      "estrato": "valor_categorico",
+      "hashes_por_variante": {
+        "p0": "83e6fa23fbf7ed9d",
+        "p1": "c040e771779a8066",
+        "p2": "643cb898e4f6695a"
+      }
+    },
+    {
+      "id": "valor_categorico_abl_06",
+      "estrato": "valor_categorico",
+      "hashes_por_variante": {
+        "p0": "eafadd854a165d5e",
+        "p1": "ef1600f37f6810cb",
+        "p2": "e88ca29e728a826f"
+      }
+    },
+    {
+      "id": "abstencao_abl_01",
+      "estrato": "abstencao",
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_abl_02",
+      "estrato": "abstencao",
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_abl_03",
+      "estrato": "abstencao",
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_abl_04",
+      "estrato": "abstencao",
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_abl_05",
+      "estrato": "abstencao",
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    },
+    {
+      "id": "abstencao_abl_06",
+      "estrato": "abstencao",
+      "hashes_por_variante": {},
+      "gold": "__ABSTER__"
+    }
+  ],
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "0c3ee0d",
+    "git_dirty": true,
+    "git_diff_sha1": "69e4d7cde32f",
+    "timestamp_utc": "2026-07-25T15:28:38+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}
