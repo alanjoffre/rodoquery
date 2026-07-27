@@ -51,12 +51,17 @@ PROMPT_ANTT = PROMPT.split("Regras de SAÍDA")[0].replace(
 
 
 def sql_cru_antt(pergunta: str, modelo: str | None = None,
-                 temperatura: float | None = None) -> Predicao:
-    """LLM escreve SQL direto sobre o schema da ANTT — o baseline que a tese precisa bater."""
+                 temperatura: float | None = None, provedor=None) -> Predicao:
+    """LLM escreve SQL direto sobre o schema da ANTT — o baseline que a tese precisa bater.
+
+    `provedor=None` mantém o Ollama das Fases 12–16. O par (Tier-A, sql_cru) tem de rodar SEMPRE
+    no mesmo provedor: comparar Tier-A na API contra baseline no Qwen mediria o modelo, não a
+    interface — exatamente o confundimento que a tese existe para evitar.
+    """
     modelo = modelo or settings.modelo_sut
     temp = settings.temperatura if temperatura is None else temperatura
-    texto, tel = _chamar_ollama(
-        PROMPT_ANTT.format(schema=SCHEMA_ANTT, pergunta=pergunta), modelo, temp)
+    chamar = provedor or _chamar_ollama
+    texto, tel = chamar(PROMPT_ANTT.format(schema=SCHEMA_ANTT, pergunta=pergunta), modelo, temp)
     if "ABSTENHO" in texto.upper():
         return Predicao.abster(modelo=modelo, raw=texto[:400], **tel)
     sql = _extrair_sql(texto)

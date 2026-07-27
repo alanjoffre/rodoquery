@@ -45,12 +45,17 @@ Sintaxe de where: {{ Dimension('plaza__tipo_cobranca') }} = 'Automática'"""
 
 
 def tier_a_antt(pergunta: str, modelo: str | None = None,
-                temperatura: float | None = None) -> Predicao:
-    """Idêntico ao `tier_a` congelado, exceto pelo catálogo (a fundação entra na compilação)."""
+                temperatura: float | None = None, provedor=None) -> Predicao:
+    """Idêntico ao `tier_a` congelado, exceto pelo catálogo (a fundação entra na compilação).
+
+    `provedor` é a costura da Fase 17: `None` chama o Ollama exatamente como sempre — o caminho
+    das Fases 11–16 segue byte a byte o mesmo. Passar um `ProvedorAnthropic` troca SÓ o SUT;
+    prompt, catálogo e parsing ficam intocados, que é o que mantém a comparação honesta.
+    """
     modelo = modelo or settings.modelo_sut
     temp = settings.temperatura if temperatura is None else temperatura
-    resp, tel = _chamar_ollama(PROMPT.format(catalogo=CATALOGO_ANTT, pergunta=pergunta),
-                               modelo, temp)
+    chamar = provedor or _chamar_ollama
+    resp, tel = chamar(PROMPT.format(catalogo=CATALOGO_ANTT, pergunta=pergunta), modelo, temp)
     if "ABSTENHO" in resp.upper():
         return Predicao.abster(modelo=modelo, raw=resp[:400], **tel)
     spec = _parse_spec(resp)
