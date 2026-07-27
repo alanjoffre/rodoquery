@@ -1,0 +1,15 @@
+# Override de GPU. Requer NVIDIA Container Toolkit no host.
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up
+#
+# Sem isto o Ollama roda em CPU: funciona, mas a latência sai da faixa do SLO medido na Fase 6
+# (p95 4,36 s foi com GPU). Um SLO medido em GPU não vale para CPU — por isso o override é
+# explícito, e não um default que mentiria sobre o número.
+services:
+  ollama:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

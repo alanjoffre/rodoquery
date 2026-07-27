@@ -24,9 +24,10 @@ import duckdb
 from rodoquery.canonizacao import canonicalizar, hash_resultado
 from rodoquery.config import settings
 
-# Diretório do dbt (onde vive o `mf`) e o binário do MetricFlow, derivados da fundação.
+# Diretório do dbt e o binário do MetricFlow. O `mf` vem de `settings` porque num container ele
+# está no PATH do sistema, não num venv — ver RODOQUERY_MF_BIN.
 _DBT_DIR = settings.toll_duckdb.parent
-_MF_BIN = _DBT_DIR / ".venv" / "bin" / "mf"
+_MF_BIN = settings.mf_bin
 # Remove o catálogo qualificado (`"<db>"."main"."x"` → `"main"."x"`), AGNÓSTICO ao nome do banco:
 # o build do test-suite clobbera o manifesto e o mf pode qualificar com `"toll_seed2"` etc.
 _RE_CATALOGO = re.compile(r'"[^"]+"\.(?="main"\.)')

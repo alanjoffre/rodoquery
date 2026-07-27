@@ -29,9 +29,17 @@ from fastapi import FastAPI, Response
 from pydantic import BaseModel, Field
 
 from rodoquery.config import settings
-from rodoquery.gold import Spec, compilar_spec
+from rodoquery.gold import FUNDACAO_ANTT, FUNDACAO_SINTETICA, Spec, compilar_spec
 from rodoquery.normalizacao_spec import normalizar_spec
 from rodoquery.sistema import tier_a
+from rodoquery.sistema_antt import tier_a_antt
+
+# Qual fundação este processo serve (RODOQUERY_FUNDACAO_ATIVA). O default é a sintética, para
+# não alterar nada do que já foi medido; o container sobe com "antt" (dado real).
+if settings.fundacao_ativa == "antt":
+    _TIER_A, _FUNDACAO, _BANCO = tier_a_antt, FUNDACAO_ANTT, settings.antt_duckdb
+else:
+    _TIER_A, _FUNDACAO, _BANCO = tier_a, FUNDACAO_SINTETICA, settings.toll_duckdb
 
 LIMITE_LINHAS = 1_000
 _MAX_AMOSTRAS = 2_000
@@ -86,7 +94,7 @@ def compilar_cacheado(spec: Spec) -> tuple[str, bool]:
         if k in _cache_sql:
             _contadores["cache_hit"] += 1
             return _cache_sql[k], True
-    sql = compilar_spec(spec)
+    sql = compilar_spec(spec, fundacao=_FUNDACAO)
     with _trava:
         _cache_sql[k] = sql
         _contadores["cache_miss"] += 1
@@ -119,7 +127,7 @@ def consulta(req: Consulta, resposta_http: Response) -> Resposta:
                         latencia_s={"total": round(time.perf_counter() - t0, 3)},
                         motivo="Serviço saturado (1 GPU não paraleliza). Tente novamente.")
     try:
-        pred = tier_a(req.pergunta)
+        pred = _TIER_A(req.pergunta)
         lat["llm"] = round(pred.meta.get("latencia_s", 0.0), 3)
 
         if pred.tipo == "abster":
@@ -151,7 +159,7 @@ def consulta(req: Consulta, resposta_http: Response) -> Resposta:
         lat["compilacao"] = round(time.perf_counter() - t1, 3)
 
         t2 = time.perf_counter()
-        colunas, linhas = _executar(sql, settings.toll_duckdb)
+        colunas, linhas = _executar(sql, _BANCO)
         lat["execucao"] = round(time.perf_counter() - t2, 3)
         lat["total"] = round(time.perf_counter() - t0, 3)
 
@@ -190,7 +198,8 @@ def _pct(vals: list[float], p: float) -> float | None:
 @app.get("/saude")
 def saude() -> dict:
     return {"status": "ok", "modelo": settings.modelo_sut, "temperatura": settings.temperatura,
-            "banco": settings.toll_duckdb.name, "specs_em_cache": len(_cache_sql),
+            "fundacao": settings.fundacao_ativa, "banco": _BANCO.name,
+            "specs_em_cache": len(_cache_sql),
             "max_inferencia_simultanea": MAX_INFERENCIA_SIMULTANEA,
             "espera_max_s": ESPERA_MAX_S}
 

@@ -21,7 +21,7 @@ import urllib.request
 from rodoquery.avaliacao import Predicao
 from rodoquery.config import settings
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_URL = settings.ollama_url   # era hardcoded; num container o LLM vive noutro host
 
 # Schema HONESTO das tabelas que o sandbox permite (dicionário de dados que um analista teria).
 # Descrições neutras — NÃO revelam as regras das métricas.

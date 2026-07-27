@@ -1,0 +1,52 @@
+# RodoQuery — stack completa: o serviço + o LLM local.
+#
+#   bash docker/preparar_contexto.sh     # materializa a fundação no contexto de build
+#   docker compose up --build
+#   curl localhost:8077/saude
+#   curl -X POST localhost:8077/consulta -H 'content-type: application/json' \
+#        -d '{"pergunta":"Quantos veículos passaram por concessionária?"}'
+#
+# GPU: por padrão o Ollama roda em CPU (funciona em qualquer máquina, porém lento — dezenas de
+# segundos por pergunta). Para usar a GPU, suba com o override:
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama_models:/root/.ollama
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  # Baixa o SUT uma vez e sai. O serviço só sobe depois que isto completa — senão o primeiro
+  # request morre esperando um modelo que ainda não existe.
+  puxar-modelo:
+    image: ollama/ollama:latest
+    depends_on:
+      ollama: {condition: service_healthy}
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    volumes:
+      - ollama_models:/root/.ollama
+    entrypoint: ["sh", "-c", "ollama pull qwen2.5-coder:7b"]
+    restart: "no"
+
+  rodoquery:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8077:8077"
+    environment:
+      RODOQUERY_OLLAMA_URL: http://ollama:11434/api/generate
+      RODOQUERY_FUNDACAO_ATIVA: antt
+    depends_on:
+      puxar-modelo: {condition: service_completed_successfully}
+    restart: unless-stopped
+
+volumes:
+  ollama_models:

@@ -4,9 +4,9 @@
 
 **Agente de Analytics (Text-to-SQL) sobre um lakehouse governado — pergunte em português, receba o número certo.**
 
-Data Engineering × AI Engineering · avaliação com rigor · R$0 · dados sintéticos.
+Data Engineering × AI Engineering · avaliação com rigor · R$0 · **dados públicos reais (ANTT, CC-BY)**.
 
-**Status: completo (fases 0–7).** Todos os números abaixo são medidos e reproduzíveis em `reports/`.
+**Fases 0–16.** Todos os números abaixo são medidos e reproduzíveis em `reports/`. Roda com `docker compose up`.
 
 </div>
 
@@ -22,13 +22,11 @@ Data Engineering × AI Engineering · avaliação com rigor · R$0 · dados sint
 | TEST-v2 sintético (n=167) | 73,7% [66,5; 79,8] | 15,0% | +58,7 pp | 104 × 6, p≈0 |
 | TEST-v1 sintético (n=42) | 97,6% [87,7; 99,6] | 42,9% | +54,8 pp | 23 × 0, p≈0 |
 
-Os três conjuntos têm dificuldades diferentes e **não são comparáveis entre si** — o que se repete nos três é a **vantagem da interface governada**: +54,8, +58,7 e +58,1 pp.
+Os três conjuntos têm dificuldades diferentes e **não são comparáveis entre si** — o que se repete nos três é a **vantagem da interface governada**: +54,8, +58,7 e +63,0 pp.
 
 **E o baseline não é um espantalho.** O mesmo modelo tira **43,4%** [39,1; 47,8] no [BIRD Mini-Dev](https://bird-bench.github.io/) — 500 perguntas e SQL de referência **humanos**, benchmark público. Ele sabe escrever SQL; o que muda o resultado é a **interface**, não a competência.
 
-Como o SUT é idêntico, o ganho é atribuível **à interface**, não ao modelo. A vantagem **cresce** com o conjunto maior.
-
-> ⚠️ **Leia o segundo número, não o primeiro.** O 97,6% da Fase 4 **não replica**: num conjunto 4× maior, cobrindo superfície do catálogo que a v1 nunca tocou, o Tier-A faz 73,7%. A tese sobrevive com folga; o valor absoluto, não. Ver [Fase 8](docs/FASE8_PODER.md).
+> ⚠️ **Leia o primeiro número, não o último.** O 97,6% da Fase 4 **não replica**: num conjunto 4× maior, cobrindo superfície do catálogo que a v1 nunca tocou, o Tier-A faz 73,7%. A tese sobrevive com folga; o valor absoluto, não. Ver [Fase 8](docs/FASE8_PODER.md).
 
 **Dois normalizadores determinísticos recuperam boa parte disso** — sem trocar de modelo, sem tocar no prompt (holdout v3, n=181, pareado):
 
@@ -79,6 +77,7 @@ O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com
 | **13** · Calibração externa | EX num benchmark público de perguntas **humanas** | ✅ **43,4%** [39,1; 47,8] no BIRD Mini-Dev · prova que o baseline **não é espantalho** · 75% dos erros são silenciosos |
 | **14** · Quitação do backlog | resolver as 4 dívidas declaradas | ✅ gold de ranking corrigido (→**88,7%**) · roteador medido (Tier-B off por evidência) · robustez dedicada **−29,4 pp** · instrumento de κ humano pronto |
 | **15** · Seleção + qualidade de label | Δ EX em holdout de ablação fresco | ✅ normalizador corrigido **+33,4 pp** · descrições **+5,5 pp** · ⚠️ **SUT 9B colapsa (5,6%)** · auditoria adversarial acha **7 labels ruins em 60** |
+| **16** · Empacotamento | a stack roda fora da minha máquina | ✅ imagem **624 MB**, loop completo testado no container · **4 acoplamentos hardcoded** removidos · ⚠️ **container não cumpre o SLO nativo** (~2× mais lento) |
 
 ## 🔬 Previsões que a medição **refutou**
 
@@ -137,7 +136,24 @@ Nenhum destes é surpresa: todos foram declarados na fase em que apareceram. A [
 - ~~Resíduo de ranking~~ — **defeito de gold** (empate na zona de corte) corrigido; EX 86,9% → 88,7%.
 - ~~Expandir N para ≥25/estrato~~ — feito na Fase 8 (223 itens no TEST-v2).
 
-## 🚀 Setup
+## 🐳 Rodar
+
+```bash
+bash docker/preparar_contexto.sh    # materializa a fundação no contexto de build
+docker compose up --build           # Ollama + SUT + serviço
+
+curl localhost:8077/saude
+curl -X POST localhost:8077/consulta -H 'content-type: application/json' \
+     -d '{"pergunta":"Quantos veículos passaram por concessionária?"}'
+```
+
+Imagem de **624 MB** com a fundação ANTT assada (dado público CC-BY), usuário não-root, healthcheck.
+Com GPU: `docker compose -f docker-compose.yml -f docker-compose.gpu.yml up`.
+
+> ⚠️ **O container não cumpre o SLO da Fase 6** (medido nativo, com GPU): a quente são ~7 s com
+> cache de spec e ~18 s sem, contra p50 4,5 s nativo. Não herdo o número — ver [Fase 16](docs/FASE16_DOCKER.md).
+
+## 🚀 Setup de desenvolvimento
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
@@ -149,7 +165,7 @@ uvicorn rodoquery.servico:app --port 8077 # serving do Tier-A
 
 Pré-requisito: a fundação de dados vem do **toll-analytics-platform** buildado (`dbt build` → DuckDB + `manifest.json`). Ver [`docs/FUNDACAO.md`](docs/FUNDACAO.md).
 
-**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md) · [calibração BIRD](docs/FASE13_BIRD.md) · [quitação do backlog](docs/FASE14_BACKLOG.md) · [seleção e qualidade de label](docs/FASE15_SELECAO.md)
+**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md) · [calibração BIRD](docs/FASE13_BIRD.md) · [quitação do backlog](docs/FASE14_BACKLOG.md) · [seleção e qualidade de label](docs/FASE15_SELECAO.md) · [empacotamento](docs/FASE16_DOCKER.md)
 
 ## 📄 Licença
 MIT. Dados sintéticos (nenhum dado real).

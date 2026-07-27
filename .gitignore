@@ -23,3 +23,6 @@ models/
 # golden/kappa_maquina_b.jsonl e golden/sonda_kappa_maquina_b.jsonl SÃO commitados.
 golden/anotador_*.jsonl
 _*.log
+
+# contexto de build do Docker (materializado por docker/preparar_contexto.sh)
+docker/_contexto/

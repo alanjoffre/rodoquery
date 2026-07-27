@@ -18,7 +18,7 @@ def test_chave_da_spec_e_estavel_e_discrimina():
 def test_cache_evita_recompilar(monkeypatch):
     chamadas = {"n": 0}
 
-    def falso_compilar(spec):
+    def falso_compilar(spec, fundacao=None):
         chamadas["n"] += 1
         return "SELECT 1"
 

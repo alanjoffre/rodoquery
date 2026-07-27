@@ -41,6 +41,19 @@ class Settings(BaseSettings):
     antt_semantic_manifest: Path = _ANTT / "target" / "semantic_manifest.json"
     antt_suite_dir: Path = Path.home() / "antt_suite"
 
+    # Binário do MetricFlow. O default é o venv da fundação sintética (como sempre foi); num
+    # container o `mf` está no PATH do sistema, então isto precisa ser sobrescrevível —
+    # caminho de venv hardcoded é o que impedia empacotar o serviço (RODOQUERY_MF_BIN).
+    mf_bin: Path = _TOLL / ".venv" / "bin" / "mf"
+
+    # Qual fundação o SERVIÇO expõe: "sintetica" (Fases 0–10) ou "antt" (dado real).
+    # Default sintética para não mudar o comportamento de nada que já foi medido.
+    fundacao_ativa: str = "sintetica"
+
+    # Endpoint do Ollama. Era hardcoded em `localhost` — num container o LLM vive noutro host
+    # (RODOQUERY_OLLAMA_URL=http://ollama:11434/api/generate).
+    ollama_url: str = "http://localhost:11434/api/generate"
+
     reports_dir: Path = REPO_ROOT / "reports"
 
 

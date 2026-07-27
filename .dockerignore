@@ -1,0 +1,37 @@
+# O contexto precisa ser pequeno: só o pacote + a fundação staged.
+.git/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Artefatos de pesquisa — não vão para a imagem do serviço.
+reports/
+golden/
+docs/
+tests/
+fundacao/
+*.log
+
+# scripts de fase (o serviço não os usa)
+avaliar_*.py
+rodar_*.py
+medir_*.py
+gerar_*.py
+preparar_*.py
+corrigir_*.py
+aplicar_*.py
+verificar_*.py
+validar_*.py
+canario*.py
+load_test.py
+provar_gate.py
+gate_regressao.py
+relatorio_*.py
+anotar_humano.py
+fase0_dados.py
+limpar_v3.py
+completar_v2.py
+_*.py
