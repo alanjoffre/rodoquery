@@ -78,7 +78,7 @@ O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com
 | **14** · Quitação do backlog | resolver as 4 dívidas declaradas | ✅ gold de ranking corrigido (→**88,7%**) · roteador medido (Tier-B off por evidência) · robustez dedicada **−29,4 pp** · instrumento de κ humano pronto |
 | **15** · Seleção + qualidade de label | Δ EX em holdout de ablação fresco | ✅ normalizador corrigido **+33,4 pp** · descrições **+5,5 pp** · ⚠️ **SUT 9B colapsa (5,6%)** · auditoria adversarial acha **7 labels ruins em 60** |
 | **16** · Empacotamento | a stack roda fora da minha máquina | ✅ imagem **624 MB**, loop completo testado no container · **4 acoplamentos hardcoded** removidos · ⚠️ **container não cumpre o SLO nativo** (~2× mais lento) |
-| **17** · Kubernetes | o deploy sobe e as probes passam | ✅ aplicado num cluster efêmero: 8/8 recursos, pod Ready, **MetricFlow compila com rootfs read-only**, **NetworkPolicy bloqueia (testado por diferença)** · **sem HPA — e o [porquê](k8s/README.md) é medido** |
+| **17** · Kubernetes | o deploy sobe e o sistema responde | ✅ cluster efêmero: 8/8 recursos, **MetricFlow compila com rootfs read-only**, **NetworkPolicy bloqueia (testado por diferença)**, **inferência ponta a ponta com o modelo real** · **sem HPA — e o [porquê](k8s/README.md) é medido** · ⚠️ GPU no `kind` **é impossível** no Docker Desktop (testado) |
 
 ## 🔬 Previsões que a medição **refutou**
 

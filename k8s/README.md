@@ -71,6 +71,8 @@ Num cluster `kind` efêmero (criado, usado e **destruído**):
 | **MetricFlow compila com rootfs read-only** | ✅ (era o risco real) |
 | **DuckDB executa no pod** | ✅ 190.982.244 + 200.630.733 |
 | **NetworkPolicy bloqueia egress** | ✅ ver abaixo |
+| **inferência ponta a ponta no cluster** | ✅ modelo de 4,7 GB no pod, resposta correta |
+| **abstenção no cluster** | ✅ 2,8 s, fora-do-catálogo recusado |
 
 O total por sentido fecha em **391.612.977** — exatamente o número que verifiquei contra SQL puro
 na Fase 11. O dado atravessa Docker → Kubernetes sem se corromper.
@@ -86,11 +88,56 @@ A primeira versão usava `commonLabels` (depreciado no Kustomize). Ele injeta o 
 `field is immutable`, e a correção só entra recriando os objetos. Trocado por `labels` com
 `includeSelectors: false`.
 
-## Limitações declaradas
+## Inferência ponta a ponta **dentro do cluster**
 
-- Testado em `kind` (control-plane único, **sem GPU**). O bloco `nvidia.com/gpu` está comentado e
-  **não foi exercitado** — requer o NVIDIA device plugin no cluster.
-- O Ollama subiu no cluster mas **sem o modelo baixado**: a inferência ponta a ponta foi validada
-  no Docker (Fase 16), não aqui. O que este teste prova é o *deploy*, não a latência.
+O primeiro teste provou o *deploy*, não o sistema. Refiz com o modelo de verdade: baixei o
+`qwen2.5-coder:7b` (4,7 GB) dentro do pod do Ollama e consultei pelo Service.
+
+```
+POST /consulta  {"pergunta": "Quantos veículos passaram por sentido?"}
+→ spec: {metrics:[traffic_volume], group_by:[plaza__sentido]}
+→ Decrescente 200.630.733 · Crescente 190.982.244
+→ latencia: llm 60,01s · compilacao 6,90s · execucao 0,03s · total 66,9s
+```
+
+**200.630.733 + 190.982.244 = 391.612.977** — o mesmo total que verifiquei contra SQL puro na
+Fase 11. O número atravessa nativo → Docker → Kubernetes sem se corromper.
+
+A abstenção também foi exercitada no cluster: *"Qual foi a receita de pedágio arrecadada?"* →
+`abstencao` em 2,8 s (o catálogo da ANTT não tem métrica de dinheiro). O caminho curto — o modelo
+recusa antes de compilar qualquer coisa — funciona igual em K8s.
+
+### Latência: 66,9 s, e por quê
+
+| Ambiente | LLM | Compilação | Total |
+|---|---|---|---|
+| Nativo + GPU (Fase 6) | — | 2,72 s | **4,5 s** |
+| Docker + GPU do host (Fase 16) | 7,3 s | 0,00 s (cache) | **7,3 s** |
+| **Kubernetes, CPU** | **60,0 s** | 6,90 s | **66,9 s** |
+
+Os 60 s são **inferência em CPU** — o `kind` roda sem GPU (ver abaixo). Isso **não** é um número de
+serving; é a prova de que a cadeia funciona. O SLO da Fase 6 continua valendo só para GPU nativo, e
+segue não herdado.
+
+## GPU: por que continua sem ser exercitada (testado, não presumido)
+
+Tentei e documento onde parou:
+
+1. `docker run --gpus all …` → **funciona**: a RTX 4050 (6141 MiB) aparece dentro do container.
+2. O runtime `nvidia` **está registrado** no daemon (`nvidia-container-runtime`).
+3. Mas o `kind` cria o nó **sem** `--gpus`, então o nó só vê GPU se o runtime nvidia for o
+   **padrão**. Configurei `"default-runtime": "nvidia"` no `~/.docker/daemon.json` e reiniciei.
+4. **O Docker Desktop ignora essa chave**: o arquivo tinha a mudança, `docker info` continuou
+   reportando `runc`, e um container sem `--gpus` não achou o `nvidia-smi`.
+
+Conclusão honesta: **é limitação do Docker Desktop no Windows**, não do manifesto. O bloco
+`nvidia.com/gpu` segue comentado e **não exercitado** — exercitá-lo exige um cluster com
+NVIDIA device plugin (k3s/kubeadm em Linux nativo, ou um managed com node pool de GPU). A config do
+daemon foi **restaurada ao original** depois do teste.
+
+## Outras limitações
+
 - `image: rodoquery:dev` é local (carregada via `kind load`). Para um cluster real, publique numa
   registry e troque a tag.
+- Control-plane único: `PodDisruptionBudget` e `RollingUpdate` estão declarados mas um cluster de
+  um nó não exercita drain/rebalance de verdade.
