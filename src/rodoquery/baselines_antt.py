@@ -62,6 +62,7 @@ def sql_cru_antt(pergunta: str, modelo: str | None = None,
     temp = settings.temperatura if temperatura is None else temperatura
     chamar = provedor or _chamar_ollama
     texto, tel = chamar(PROMPT_ANTT.format(schema=SCHEMA_ANTT, pergunta=pergunta), modelo, temp)
+    modelo = tel.get("modelo_efetivo", modelo)   # ver nota em `sistema_antt.tier_a_antt`
     if "ABSTENHO" in texto.upper():
         return Predicao.abster(modelo=modelo, raw=texto[:400], **tel)
     sql = _extrair_sql(texto)

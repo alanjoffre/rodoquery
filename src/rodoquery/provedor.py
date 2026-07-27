@@ -243,6 +243,11 @@ class ProvedorAnthropic:
             "tokens_cache_leitura": c_r,
             "custo_usd": round(custo, 6),
             "stop_reason": resp.stop_reason,
+            # QUEM de fato produziu isto. Sem este campo o chamador grava
+            # `settings.modelo_sut` (= qwen2.5-coder:7b) na predição congelada, e o artefato
+            # passa a mentir sobre a própria proveniência — foi o que aconteceu na 1ª corrida.
+            # O número de EX não depende disto; a auditabilidade do artefato, sim.
+            "modelo_efetivo": modelo,
         }
         return texto, telemetria
 

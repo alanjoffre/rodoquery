@@ -49,7 +49,7 @@ from rodoquery.sistema_antt import tier_a_antt
 
 REPO = Path(__file__).resolve().parent
 D12 = REPO / "reports" / "fase12"          # gold, catálogo e telemetria congelada do Qwen
-D17 = REPO / "reports" / "fase18"
+D18 = REPO / "reports" / "fase18"
 SISTEMAS = {"tier_a_antt": tier_a_antt, "sql_cru_antt": sql_cru_antt}
 
 # O prefixo cacheável = tudo até "\nPergunta: ". Medido nos prompts reais, não estimado — ver
@@ -140,21 +140,45 @@ def _coletar(itens, fn, provedor, teto: float, rotulo: str) -> dict:
     return preds
 
 
+def _custo_das_predicoes(preds: dict) -> dict:
+    """Reconstrói a conta a partir das PREDIÇÕES, não dos acumuladores da sessão.
+
+    O relatório tem de descrever o ARTEFATO, não a execução que o releu. Se eu somasse os
+    acumuladores do provedor, uma re-pontuação sobre predições congeladas (que é de graça e
+    acontece toda vez que se reprocessa) publicaria `custo_usd: 0` — o artefato passaria a
+    mentir para menos sobre o que custou produzi-lo. Mesma família do bug de `meta['modelo']`.
+    """
+    metas = [v["meta"] for d in preds.values() for v in d.values()]
+    modelos = sorted({m.get("modelo") for m in metas if m.get("modelo")})
+    return {
+        "modelos_nas_predicoes": modelos,
+        "chamadas": len(metas),
+        "tokens_cache_escrita": sum(m.get("tokens_cache_escrita", 0) for m in metas),
+        "tokens_cache_leitura": sum(m.get("tokens_cache_leitura", 0) for m in metas),
+        "tokens_saida": sum(m.get("tokens_saida", 0) or 0 for m in metas),
+        "custo_usd": round(sum(m.get("custo_usd", 0.0) for m in metas), 4),
+        "chamadas_com_cache_hit": sum(1 for m in metas if m.get("tokens_cache_leitura", 0) > 0),
+    }
+
+
 def _rodar(args, itens, sufixo: str) -> tuple[dict, dict]:
     """Roda o par (Tier-A, sql_cru) no MESMO provedor. Devolve (predições, relatório de custo)."""
-    D17.mkdir(parents=True, exist_ok=True)
-    prov = ProvedorAnthropic(modelo_padrao=args.modelo, pensar=args.pensar, esforco=args.esforco)
+    D18.mkdir(parents=True, exist_ok=True)
+    prov = None
     preds = {}
     for nome, fn in SISTEMAS.items():
-        fp = D17 / f"predicoes_{nome}_{sufixo}.json"
+        fp = D18 / f"predicoes_{nome}_{sufixo}.json"
         if fp.exists() and not args.refazer:
             preds[nome] = json.loads(fp.read_text(encoding="utf-8"))
             print(f"  {nome}: congeladas reusadas (não gastou)", flush=True)
             continue
+        if prov is None:   # só constrói (e só exige chave) se for MESMO chamar a API
+            prov = ProvedorAnthropic(modelo_padrao=args.modelo, pensar=args.pensar,
+                                     esforco=args.esforco)
         print(f"  {nome}: coletando via API...", flush=True)
         preds[nome] = _coletar(itens, fn, prov, args.teto_usd, nome)
         fp.write_text(json.dumps(preds[nome], ensure_ascii=False, indent=2), encoding="utf-8")
-    return preds, prov.relatorio()
+    return preds, _custo_das_predicoes(preds)
 
 
 def cmd_piloto(args) -> None:
@@ -168,7 +192,7 @@ def cmd_piloto(args) -> None:
     # leituras, então seu custo/chamada é um TETO do custo/chamada da corrida cheia.
     projecao = por_chamada * n_total * 2
 
-    (D17 / f"custo_piloto{args.n}.json").write_text(
+    (D18 / f"custo_piloto{args.n}.json").write_text(
         json.dumps(carimbar({"custo_piloto": custo, "n_total_par": n_total * 2,
                              "projecao_completo_usd": round(projecao, 4)}),
                    ensure_ascii=False, indent=2), encoding="utf-8")
@@ -233,7 +257,7 @@ def cmd_completo(args) -> None:
         "mcnemar_sqlcru_vs_tiera_respondiveis": mc,
         "resultados_por_item": {n: avals[n]["resultados"] for n in SISTEMAS},
     })
-    dest = D17 / "resultado_test_antt_api.json"
+    dest = D18 / "resultado_test_antt_api.json"
     dest.write_text(json.dumps(rel, ensure_ascii=False, indent=2), encoding="utf-8")
 
     print(f"\n== TEST-ANTT com {args.modelo} ==")

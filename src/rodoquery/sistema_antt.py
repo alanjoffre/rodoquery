@@ -56,6 +56,9 @@ def tier_a_antt(pergunta: str, modelo: str | None = None,
     temp = settings.temperatura if temperatura is None else temperatura
     chamar = provedor or _chamar_ollama
     resp, tel = chamar(PROMPT.format(catalogo=CATALOGO_ANTT, pergunta=pergunta), modelo, temp)
+    # O provedor pode ter usado outro modelo (a API ignora `settings.modelo_sut`). Sem isto a
+    # predição congelada seria gravada com o nome errado — artefato que mente sobre si mesmo.
+    modelo = tel.get("modelo_efetivo", modelo)
     if "ABSTENHO" in resp.upper():
         return Predicao.abster(modelo=modelo, raw=resp[:400], **tel)
     spec = _parse_spec(resp)

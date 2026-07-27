@@ -80,6 +80,42 @@ def test_provedor_injetado_substitui_o_ollama(monkeypatch):
     assert p.meta["tokens_prompt"] == 700          # a telemetria do provedor chega na Predicao
 
 
+# ------------------------------------------------- proveniencia: o artefato nao pode mentir
+# Bug real, pego DEPOIS da 1a corrida completa: as 342 predicoes ficaram gravadas com
+# `qwen2.5-coder:7b` porque `modelo or settings.modelo_sut` resolve para o default local e o
+# provedor nunca reportava qual modelo de fato usou. O EX nao depende disso; a auditabilidade
+# do artefato congelado depende inteiramente.
+@pytest.mark.parametrize("fn_nome, resposta", [
+    ("tier_a_antt", '{"metrics": ["traffic_volume"], "group_by": [], "where": null,'
+                    ' "order_by": [], "limit": null, "ordenado": false}'),
+    ("sql_cru_antt", "SELECT sum(volume) FROM fct_traffic_volume"),
+])
+def test_predicao_grava_o_modelo_que_de_fato_respondeu(fn_nome, resposta):
+    import rodoquery.baselines_antt as ba
+    import rodoquery.sistema_antt as sa
+
+    fn = sa.tier_a_antt if fn_nome == "tier_a_antt" else ba.sql_cru_antt
+    p = fn("Quantos veículos?",
+           provedor=lambda *a: (resposta, {"modelo_efetivo": "claude-opus-5"}))
+    assert p.meta["modelo"] == "claude-opus-5"
+    assert p.meta["modelo"] != "qwen2.5-coder:7b"
+
+
+def test_caminho_ollama_mantem_o_modelo_local(monkeypatch):
+    """Sem `modelo_efetivo` na telemetria, nada muda — as Fases 0–16 gravam o mesmo de sempre."""
+    from rodoquery import sistema_antt
+
+    monkeypatch.setattr(sistema_antt, "_chamar_ollama", lambda *a, **k: ("ABSTENHO", {}))
+    assert sistema_antt.tier_a_antt("Qual a receita?").meta["modelo"] == "qwen2.5-coder:7b"
+
+
+def test_provedor_anthropic_reporta_modelo_efetivo():
+    """Mesmo recebendo o nome do modelo LOCAL, a telemetria diz qual modelo da API respondeu."""
+    p = _provedor_com_resposta(_RespostaFalsa("ABSTENHO", ent=40, sai=5))
+    _, tel = p("a\nPergunta: b", "qwen2.5-coder:7b", 0.0)   # nome que a API nao conhece
+    assert tel["modelo_efetivo"] == "claude-opus-5"
+
+
 # --------------------------------------------------------------------- corte do prompt sem perda
 def _sem_cliente() -> ProvedorAnthropic:
     """Constrói o provedor sem SDK nem chave: `_cliente` preenchido pula o `__post_init__`."""

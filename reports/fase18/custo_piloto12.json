@@ -1,0 +1,30 @@
+{
+  "custo_piloto": {
+    "provedor": "anthropic",
+    "modelo": "claude-opus-5",
+    "chamadas": 24,
+    "tokens_entrada_frescos": 894,
+    "tokens_cache_escrita": 1808,
+    "tokens_cache_leitura": 19888,
+    "tokens_saida": 1503,
+    "custo_usd": 0.0633,
+    "custo_usd_por_chamada": 0.002637
+  },
+  "n_total_par": 342,
+  "projecao_completo_usd": 0.9019,
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "29ea0db",
+    "git_dirty": true,
+    "git_diff_sha1": "4311055ac709",
+    "timestamp_utc": "2026-07-27T22:43:36+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

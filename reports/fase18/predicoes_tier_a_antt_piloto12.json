@@ -1,0 +1,315 @@
+{
+  "coalesce_nulo_antt_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '6'",
+      "order_by": [
+        "metric_time__day"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"metric_time__day\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '6'\", \"order_by\": [\"metric_time__day\"], \"limit\": null, \"ordenado\": false}",
+      "latencia_s": 2.62,
+      "tokens_prompt": 1134,
+      "tokens_saida": 93,
+      "eval_s": 2.62,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 1095,
+      "tokens_cache_leitura": 0,
+      "custo_usd": 0.009364,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__concessionaria"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"metric_time__day\", \"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "latencia_s": 2.669,
+      "tokens_prompt": 1150,
+      "tokens_saida": 99,
+      "eval_s": 2.669,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 1095,
+      "custo_usd": 0.003298,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": "{{ Dimension('plaza__sentido') }} = 'Decrescente'",
+      "order_by": [
+        "metric_time__day"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"metric_time__day\"], \"where\": \"{{ Dimension('plaza__sentido') }} = 'Decrescente'\", \"order_by\": [\"metric_time__day\"], \"limit\": null, \"ordenado\": false}",
+      "latencia_s": 2.756,
+      "tokens_prompt": 1145,
+      "tokens_saida": 93,
+      "eval_s": 2.756,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 1095,
+      "custo_usd": 0.003122,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": "{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"metric_time__day\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "latencia_s": 2.955,
+      "tokens_prompt": 1136,
+      "tokens_saida": 91,
+      "eval_s": 2.955,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 1095,
+      "custo_usd": 0.003027,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__praca"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '7'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"metric_time__day\", \"plaza__praca\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '7'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "latencia_s": 2.217,
+      "tokens_prompt": 1143,
+      "tokens_saida": 92,
+      "eval_s": 2.217,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 1095,
+      "custo_usd": 0.003087,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_07": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__praca"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '2'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"metric_time__day\", \"plaza__praca\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '2'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "latencia_s": 2.387,
+      "tokens_prompt": 1145,
+      "tokens_saida": 92,
+      "eval_s": 2.387,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 1095,
+      "custo_usd": 0.003097,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_01": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.772,
+      "tokens_prompt": 1130,
+      "tokens_saida": 9,
+      "eval_s": 1.772,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 1095,
+      "custo_usd": 0.000947,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_02": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.981,
+      "tokens_prompt": 1125,
+      "tokens_saida": 9,
+      "eval_s": 1.981,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 1095,
+      "custo_usd": 0.000923,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_03": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 3.01,
+      "tokens_prompt": 1128,
+      "tokens_saida": 9,
+      "eval_s": 3.01,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 1095,
+      "custo_usd": 0.000937,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_04": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.858,
+      "tokens_prompt": 1128,
+      "tokens_saida": 9,
+      "eval_s": 1.858,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 1095,
+      "custo_usd": 0.000937,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_05": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.719,
+      "tokens_prompt": 1127,
+      "tokens_saida": 9,
+      "eval_s": 1.719,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 1095,
+      "custo_usd": 0.000932,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_06": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 2.021,
+      "tokens_prompt": 1126,
+      "tokens_saida": 9,
+      "eval_s": 2.021,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 1095,
+      "custo_usd": 0.000928,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  }
+}

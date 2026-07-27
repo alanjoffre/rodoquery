@@ -1,0 +1,3422 @@
+{
+  "abstencao_antt_01": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.859,
+      "tokens_prompt": 743,
+      "tokens_saida": 9,
+      "eval_s": 1.859,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 713,
+      "tokens_cache_leitura": 0,
+      "custo_usd": 0.004831,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_02": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.754,
+      "tokens_prompt": 738,
+      "tokens_saida": 9,
+      "eval_s": 1.754,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000706,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_03": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.915,
+      "tokens_prompt": 741,
+      "tokens_saida": 9,
+      "eval_s": 1.915,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000722,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_04": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.863,
+      "tokens_prompt": 741,
+      "tokens_saida": 9,
+      "eval_s": 1.863,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000722,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, AVG(volume) AS volume_medio FROM fct_traffic_volume GROUP BY plaza_key ORDER BY volume_medio DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, AVG(volume) AS volume_medio FROM fct_traffic_volume GROUP BY plaza_key ORDER BY volume_medio DESC",
+      "latencia_s": 3.005,
+      "tokens_prompt": 740,
+      "tokens_saida": 63,
+      "eval_s": 3.005,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002067,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT median(volume_diario) AS mediana_trafego_diario FROM (SELECT data, SUM(volume) AS volume_diario FROM fct_traffic_volume GROUP BY data)",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT median(volume_diario) AS mediana_trafego_diario FROM (SELECT data, SUM(volume) AS volume_diario FROM fct_traffic_volume GROUP BY data)",
+      "latencia_s": 3.366,
+      "tokens_prompt": 739,
+      "tokens_saida": 70,
+      "eval_s": 3.366,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002237,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_08": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.879,
+      "tokens_prompt": 740,
+      "tokens_saida": 9,
+      "eval_s": 1.879,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000717,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_09": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.901,
+      "tokens_prompt": 740,
+      "tokens_saida": 9,
+      "eval_s": 1.901,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000717,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT ano, SUM(volume) AS volume_total FROM fct_traffic_volume f JOIN dim_date d ON f.data = d.date_day GROUP BY ano ORDER BY ano",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT ano, SUM(volume) AS volume_total FROM fct_traffic_volume f JOIN dim_date d ON f.data = d.date_day GROUP BY ano ORDER BY ano",
+      "latencia_s": 4.057,
+      "tokens_prompt": 738,
+      "tokens_saida": 71,
+      "eval_s": 4.057,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002256,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_12": {
+    "tipo": "sql",
+    "sql": "WITH s AS (SELECT date_trunc('week', data) AS semana, SUM(volume) AS volume_total FROM fct_traffic_volume GROUP BY 1) SELECT semana, volume_total, 100.0 * (volume_total - LAG(volume_total) OVER (ORDER BY semana)) / LAG(volume_total) OVER (ORDER BY semana) AS variacao_pct FROM s ORDER BY semana",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "WITH s AS (SELECT date_trunc('week', data) AS semana, SUM(volume) AS volume_total FROM fct_traffic_volume GROUP BY 1) SELECT semana, volume_total, 100.0 * (volume_total - LAG(volume_total) OVER (ORDER BY semana)) / LAG(volume_total) OVER (ORDER BY semana) AS variacao_pct FROM s ORDER BY semana",
+      "latencia_s": 3.501,
+      "tokens_prompt": 742,
+      "tokens_saida": 152,
+      "eval_s": 3.501,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004301,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_13": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 3.314,
+      "tokens_prompt": 741,
+      "tokens_saida": 9,
+      "eval_s": 3.314,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000722,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_14": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 2.715,
+      "tokens_prompt": 746,
+      "tokens_saida": 9,
+      "eval_s": 2.715,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000746,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('quarter', data) AS trimestre, SUM(volume) AS volume_total FROM main.fct_traffic_volume GROUP BY 1 ORDER BY 1",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('quarter', data) AS trimestre, SUM(volume) AS volume_total FROM main.fct_traffic_volume GROUP BY 1 ORDER BY 1",
+      "latencia_s": 3.105,
+      "tokens_prompt": 736,
+      "tokens_saida": 69,
+      "eval_s": 3.105,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002197,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_17": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.843,
+      "tokens_prompt": 739,
+      "tokens_saida": 9,
+      "eval_s": 1.843,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000712,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_18": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.825,
+      "tokens_prompt": 735,
+      "tokens_saida": 9,
+      "eval_s": 1.825,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000691,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_19": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 2.121,
+      "tokens_prompt": 736,
+      "tokens_saida": 9,
+      "eval_s": 2.121,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000696,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_21": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.68,
+      "tokens_prompt": 739,
+      "tokens_saida": 9,
+      "eval_s": 1.68,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000712,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_22": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 3.368,
+      "tokens_prompt": 738,
+      "tokens_saida": 9,
+      "eval_s": 3.368,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000706,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_23": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.898,
+      "tokens_prompt": 738,
+      "tokens_saida": 9,
+      "eval_s": 1.898,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000706,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_24": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 2.326,
+      "tokens_prompt": 740,
+      "tokens_saida": 9,
+      "eval_s": 2.326,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000717,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_25": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.899,
+      "tokens_prompt": 744,
+      "tokens_saida": 9,
+      "eval_s": 1.899,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000736,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_26": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 2.299,
+      "tokens_prompt": 739,
+      "tokens_saida": 9,
+      "eval_s": 2.299,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000712,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_28": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 2.026,
+      "tokens_prompt": 738,
+      "tokens_saida": 9,
+      "eval_s": 2.026,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000706,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_29": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 3.33,
+      "tokens_prompt": 742,
+      "tokens_saida": 9,
+      "eval_s": 3.33,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000727,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "abstencao_antt_30": {
+    "tipo": "abster",
+    "sql": null,
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "ABSTENHO",
+      "latencia_s": 1.883,
+      "tokens_prompt": 744,
+      "tokens_saida": 9,
+      "eval_s": 1.883,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.000736,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_01": {
+    "tipo": "sql",
+    "sql": "SELECT data, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '6' GROUP BY data ORDER BY data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '6' GROUP BY data ORDER BY data",
+      "latencia_s": 3.226,
+      "tokens_prompt": 747,
+      "tokens_saida": 62,
+      "eval_s": 3.226,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002076,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'Automática' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'Automática' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+      "latencia_s": 3.47,
+      "tokens_prompt": 763,
+      "tokens_saida": 140,
+      "eval_s": 3.47,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004106,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_04": {
+    "tipo": "sql",
+    "sql": "SELECT data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY data ORDER BY data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY data ORDER BY data",
+      "latencia_s": 3.102,
+      "tokens_prompt": 758,
+      "tokens_saida": 119,
+      "eval_s": 3.102,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003557,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY data ORDER BY data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY data ORDER BY data",
+      "latencia_s": 2.972,
+      "tokens_prompt": 749,
+      "tokens_saida": 122,
+      "eval_s": 2.972,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003586,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY plaza_key, data ORDER BY plaza_key, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY plaza_key, data ORDER BY plaza_key, data",
+      "latencia_s": 3.818,
+      "tokens_prompt": 756,
+      "tokens_saida": 133,
+      "eval_s": 3.818,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003896,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY plaza_key, data ORDER BY plaza_key, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY plaza_key, data ORDER BY plaza_key, data",
+      "latencia_s": 3.31,
+      "tokens_prompt": 758,
+      "tokens_saida": 133,
+      "eval_s": 3.31,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003907,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT data, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY data ORDER BY data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY data ORDER BY data",
+      "latencia_s": 3.244,
+      "tokens_prompt": 747,
+      "tokens_saida": 62,
+      "eval_s": 3.244,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002076,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '3' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '3' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+      "latencia_s": 3.038,
+      "tokens_prompt": 758,
+      "tokens_saida": 133,
+      "eval_s": 3.038,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003907,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_11": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, date_trunc('day', data) AS dia, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '5' GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, date_trunc('day', data) AS dia, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '5' GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.375,
+      "tokens_prompt": 759,
+      "tokens_saida": 90,
+      "eval_s": 3.375,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002837,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_12": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+      "latencia_s": 3.228,
+      "tokens_prompt": 758,
+      "tokens_saida": 133,
+      "eval_s": 3.228,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003907,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_14": {
+    "tipo": "sql",
+    "sql": "SELECT data, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY data ORDER BY data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY data ORDER BY data",
+      "latencia_s": 3.212,
+      "tokens_prompt": 753,
+      "tokens_saida": 62,
+      "eval_s": 3.212,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002106,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+      "latencia_s": 3.169,
+      "tokens_prompt": 765,
+      "tokens_saida": 136,
+      "eval_s": 3.169,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004017,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, date_trunc('day', data) AS dia, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, date_trunc('day', data) AS dia, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.834,
+      "tokens_prompt": 754,
+      "tokens_saida": 96,
+      "eval_s": 3.834,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002962,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_17": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, date_trunc('day', data) AS dia, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, date_trunc('day', data) AS dia, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.495,
+      "tokens_prompt": 761,
+      "tokens_saida": 90,
+      "eval_s": 3.495,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002847,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_18": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY plaza_key, data ORDER BY plaza_key, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY plaza_key, data ORDER BY plaza_key, data",
+      "latencia_s": 3.38,
+      "tokens_prompt": 759,
+      "tokens_saida": 134,
+      "eval_s": 3.38,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003936,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'OCR/PLACA' GROUP BY plaza_key, data ORDER BY plaza_key, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'OCR/PLACA' GROUP BY plaza_key, data ORDER BY plaza_key, data",
+      "latencia_s": 3.446,
+      "tokens_prompt": 761,
+      "tokens_saida": 145,
+      "eval_s": 3.446,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004222,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_20": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY plaza_key, data ORDER BY plaza_key, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY plaza_key, data ORDER BY plaza_key, data",
+      "latencia_s": 3.078,
+      "tokens_prompt": 761,
+      "tokens_saida": 136,
+      "eval_s": 3.078,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003997,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_21": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+      "latencia_s": 3.712,
+      "tokens_prompt": 755,
+      "tokens_saida": 140,
+      "eval_s": 3.712,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004066,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_23": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, date_trunc('day', data) AS dia, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY concessionaria, date_trunc('day', data) ORDER BY concessionaria, dia",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, date_trunc('day', data) AS dia, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY concessionaria, date_trunc('day', data) ORDER BY concessionaria, dia",
+      "latencia_s": 3.852,
+      "tokens_prompt": 750,
+      "tokens_saida": 110,
+      "eval_s": 3.852,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003292,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY data ORDER BY data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY data ORDER BY data",
+      "latencia_s": 2.949,
+      "tokens_prompt": 749,
+      "tokens_saida": 122,
+      "eval_s": 2.949,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003586,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT data, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY data ORDER BY data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY data ORDER BY data",
+      "latencia_s": 2.923,
+      "tokens_prompt": 753,
+      "tokens_saida": 62,
+      "eval_s": 2.923,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002106,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_27": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+      "latencia_s": 3.337,
+      "tokens_prompt": 763,
+      "tokens_saida": 136,
+      "eval_s": 3.337,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004006,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_28": {
+    "tipo": "sql",
+    "sql": "SELECT data, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_cobranca = 'Manual' GROUP BY data ORDER BY data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_cobranca = 'Manual' GROUP BY data ORDER BY data",
+      "latencia_s": 2.939,
+      "tokens_prompt": 747,
+      "tokens_saida": 66,
+      "eval_s": 2.939,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002177,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_29": {
+    "tipo": "sql",
+    "sql": "SELECT praca, date_trunc('day', data) AS dia, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '5' GROUP BY praca, date_trunc('day', data) ORDER BY praca, dia",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT praca, date_trunc('day', data) AS dia, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '5' GROUP BY praca, date_trunc('day', data) ORDER BY praca, dia",
+      "latencia_s": 3.762,
+      "tokens_prompt": 759,
+      "tokens_saida": 94,
+      "eval_s": 3.762,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002936,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "coalesce_nulo_antt_30": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '5' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '5' GROUP BY concessionaria, data ORDER BY concessionaria, data",
+      "latencia_s": 3.021,
+      "tokens_prompt": 758,
+      "tokens_saida": 133,
+      "eval_s": 3.021,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003907,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "controle_trivial_antt_01": {
+    "tipo": "sql",
+    "sql": "SELECT categoria_eixo, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY categoria_eixo ORDER BY categoria_eixo",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT categoria_eixo, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY categoria_eixo ORDER BY categoria_eixo",
+      "latencia_s": 2.929,
+      "tokens_prompt": 743,
+      "tokens_saida": 65,
+      "eval_s": 2.929,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002132,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "controle_trivial_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY sentido ORDER BY total_volume DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT sentido, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY sentido ORDER BY total_volume DESC",
+      "latencia_s": 2.753,
+      "tokens_prompt": 739,
+      "tokens_saida": 57,
+      "eval_s": 2.753,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.001912,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "controle_trivial_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY plaza_key ORDER BY total_volume DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY plaza_key ORDER BY total_volume DESC",
+      "latencia_s": 2.986,
+      "tokens_prompt": 742,
+      "tokens_saida": 61,
+      "eval_s": 2.986,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002027,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "controle_trivial_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT data, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY data ORDER BY data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY data ORDER BY data",
+      "latencia_s": 2.65,
+      "tokens_prompt": 739,
+      "tokens_saida": 47,
+      "eval_s": 2.65,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.001661,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "controle_trivial_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('week', data) AS semana, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+      "latencia_s": 3.005,
+      "tokens_prompt": 738,
+      "tokens_saida": 63,
+      "eval_s": 3.005,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002057,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "controle_trivial_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY concessionaria ORDER BY total_volume DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY concessionaria ORDER BY total_volume DESC",
+      "latencia_s": 2.865,
+      "tokens_prompt": 741,
+      "tokens_saida": 61,
+      "eval_s": 2.865,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002021,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "controle_trivial_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT SUM(volume) AS total_volume FROM fct_traffic_volume",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT SUM(volume) AS total_volume FROM fct_traffic_volume",
+      "latencia_s": 2.478,
+      "tokens_prompt": 737,
+      "tokens_saida": 31,
+      "eval_s": 2.478,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.001252,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "controle_trivial_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(volume) AS total_volume FROM main.fct_traffic_volume GROUP BY tipo_cobranca ORDER BY total_volume DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT tipo_cobranca, SUM(volume) AS total_volume FROM main.fct_traffic_volume GROUP BY tipo_cobranca ORDER BY total_volume DESC",
+      "latencia_s": 3.719,
+      "tokens_prompt": 743,
+      "tokens_saida": 69,
+      "eval_s": 3.719,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002231,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, categoria_eixo, SUM(volume) AS volume_total FROM main.fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('week', data) AS semana, categoria_eixo, SUM(volume) AS volume_total FROM main.fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.855,
+      "tokens_prompt": 750,
+      "tokens_saida": 79,
+      "eval_s": 3.855,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002517,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT data, tipo_cobranca, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY data, tipo_cobranca ORDER BY data, tipo_cobranca",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, tipo_cobranca, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY data, tipo_cobranca ORDER BY data, tipo_cobranca",
+      "latencia_s": 3.186,
+      "tokens_prompt": 746,
+      "tokens_saida": 74,
+      "eval_s": 3.186,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002371,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_04": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY plaza_key, data ORDER BY plaza_key, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY plaza_key, data ORDER BY plaza_key, data",
+      "latencia_s": 3.417,
+      "tokens_prompt": 753,
+      "tokens_saida": 119,
+      "eval_s": 3.417,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003531,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('week', data) AS semana, plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.347,
+      "tokens_prompt": 751,
+      "tokens_saida": 131,
+      "eval_s": 3.347,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003821,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT data, sentido, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY data, sentido ORDER BY data, sentido",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, sentido, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY data, sentido ORDER BY data, sentido",
+      "latencia_s": 6.578,
+      "tokens_prompt": 754,
+      "tokens_saida": 113,
+      "eval_s": 6.578,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003387,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.019,
+      "tokens_prompt": 746,
+      "tokens_saida": 128,
+      "eval_s": 3.019,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003721,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('month', data) AS mes, categoria_eixo, SUM(volume) AS volume_total FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('month', data) AS mes, categoria_eixo, SUM(volume) AS volume_total FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.457,
+      "tokens_prompt": 748,
+      "tokens_saida": 77,
+      "eval_s": 3.457,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002456,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_11": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('week', data) AS semana, tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.325,
+      "tokens_prompt": 755,
+      "tokens_saida": 135,
+      "eval_s": 3.325,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003941,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_12": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('week', data) AS semana, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+      "latencia_s": 2.98,
+      "tokens_prompt": 737,
+      "tokens_saida": 63,
+      "eval_s": 2.98,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002051,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_13": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, categoria_eixo, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('week', data) AS semana, categoria_eixo, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 6.66,
+      "tokens_prompt": 752,
+      "tokens_saida": 134,
+      "eval_s": 6.66,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003902,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_14": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 2.98,
+      "tokens_prompt": 748,
+      "tokens_saida": 131,
+      "eval_s": 2.98,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003806,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+      "latencia_s": 4.072,
+      "tokens_prompt": 738,
+      "tokens_saida": 107,
+      "eval_s": 4.072,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003157,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.591,
+      "tokens_prompt": 751,
+      "tokens_saida": 132,
+      "eval_s": 3.591,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003847,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_18": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('month', data) AS mes, plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('month', data) AS mes, plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.469,
+      "tokens_prompt": 744,
+      "tokens_saida": 128,
+      "eval_s": 3.469,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003711,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('month', data) AS mes, tipo_cobranca, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('month', data) AS mes, tipo_cobranca, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.256,
+      "tokens_prompt": 748,
+      "tokens_saida": 78,
+      "eval_s": 3.256,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002482,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_20": {
+    "tipo": "sql",
+    "sql": "SELECT data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY data ORDER BY data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY data ORDER BY data",
+      "latencia_s": 3.4,
+      "tokens_prompt": 745,
+      "tokens_saida": 104,
+      "eval_s": 3.4,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003116,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_21": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('month', data) AS mes, tipo_de_veiculo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('month', data) AS mes, tipo_de_veiculo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 6.839,
+      "tokens_prompt": 760,
+      "tokens_saida": 134,
+      "eval_s": 6.839,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003941,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_22": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+      "latencia_s": 3.415,
+      "tokens_prompt": 743,
+      "tokens_saida": 120,
+      "eval_s": 3.415,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003507,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_23": {
+    "tipo": "sql",
+    "sql": "SELECT data, tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY data, tipo_cobranca ORDER BY data, tipo_cobranca",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY data, tipo_cobranca ORDER BY data, tipo_cobranca",
+      "latencia_s": 3.393,
+      "tokens_prompt": 754,
+      "tokens_saida": 131,
+      "eval_s": 3.393,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003837,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, categoria_eixo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('week', data) AS semana, categoria_eixo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.121,
+      "tokens_prompt": 756,
+      "tokens_saida": 131,
+      "eval_s": 3.121,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003847,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT data, categoria_eixo, SUM(volume) FILTER (WHERE tipo_de_veiculo = 'Comercial') / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY data, categoria_eixo ORDER BY data, categoria_eixo",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, categoria_eixo, SUM(volume) FILTER (WHERE tipo_de_veiculo = 'Comercial') / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY data, categoria_eixo ORDER BY data, categoria_eixo",
+      "latencia_s": 3.164,
+      "tokens_prompt": 749,
+      "tokens_saida": 118,
+      "eval_s": 3.164,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003487,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_26": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('month', data) AS mes, plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('month', data) AS mes, plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 4.159,
+      "tokens_prompt": 746,
+      "tokens_saida": 131,
+      "eval_s": 4.159,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003796,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_27": {
+    "tipo": "sql",
+    "sql": "SELECT data, tipo_de_veiculo, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY data, tipo_de_veiculo ORDER BY data, tipo_de_veiculo",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT data, tipo_de_veiculo, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY data, tipo_de_veiculo ORDER BY data, tipo_de_veiculo",
+      "latencia_s": 3.285,
+      "tokens_prompt": 746,
+      "tokens_saida": 80,
+      "eval_s": 3.285,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002521,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_28": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, sentido, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('week', data) AS semana, sentido, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 4.653,
+      "tokens_prompt": 745,
+      "tokens_saida": 73,
+      "eval_s": 4.653,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002341,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "grao_temporal_antt_29": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('month', data) AS mes, categoria_eixo, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('month', data) AS mes, categoria_eixo, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+      "latencia_s": 3.295,
+      "tokens_prompt": 752,
+      "tokens_saida": 134,
+      "eval_s": 3.295,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003902,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, tipo_cobranca, date_trunc('week', data) AS semana, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY plaza_key, tipo_cobranca, date_trunc('week', data) ORDER BY plaza_key, tipo_cobranca, semana",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, tipo_cobranca, date_trunc('week', data) AS semana, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY plaza_key, tipo_cobranca, date_trunc('week', data) ORDER BY plaza_key, tipo_cobranca, semana",
+      "latencia_s": 3.852,
+      "tokens_prompt": 753,
+      "tokens_saida": 115,
+      "eval_s": 3.852,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003432,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, categoria_eixo, date_trunc('month', data) AS mes, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY concessionaria, categoria_eixo, date_trunc('month', data) ORDER BY concessionaria, categoria_eixo, mes",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, categoria_eixo, date_trunc('month', data) AS mes, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY concessionaria, categoria_eixo, date_trunc('month', data) ORDER BY concessionaria, categoria_eixo, mes",
+      "latencia_s": 3.659,
+      "tokens_prompt": 751,
+      "tokens_saida": 112,
+      "eval_s": 3.659,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003347,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY concessionaria, tipo_cobranca ORDER BY concessionaria, tipo_cobranca",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY concessionaria, tipo_cobranca ORDER BY concessionaria, tipo_cobranca",
+      "latencia_s": 3.314,
+      "tokens_prompt": 755,
+      "tokens_saida": 142,
+      "eval_s": 3.314,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004117,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, sentido, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY concessionaria, sentido, data ORDER BY concessionaria, sentido, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, sentido, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY concessionaria, sentido, data ORDER BY concessionaria, sentido, data",
+      "latencia_s": 3.687,
+      "tokens_prompt": 764,
+      "tokens_saida": 131,
+      "eval_s": 3.687,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003887,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, tipo_cobranca, date_trunc('day', data) AS dia, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, tipo_cobranca, date_trunc('day', data) AS dia, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.219,
+      "tokens_prompt": 760,
+      "tokens_saida": 146,
+      "eval_s": 3.219,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004241,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_08": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, tipo_cobranca, date_trunc('day', data) AS dia, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nGROUP BY 1, 2, 3\nORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, tipo_cobranca, date_trunc('day', data) AS dia, SUM(volume) AS total_volume\nFROM fct_traffic_volume\nGROUP BY 1, 2, 3\nORDER BY 1, 2, 3",
+      "latencia_s": 3.578,
+      "tokens_prompt": 758,
+      "tokens_saida": 92,
+      "eval_s": 3.578,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002881,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, sentido, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY concessionaria, sentido ORDER BY concessionaria, sentido",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, sentido, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY concessionaria, sentido ORDER BY concessionaria, sentido",
+      "latencia_s": 2.864,
+      "tokens_prompt": 747,
+      "tokens_saida": 71,
+      "eval_s": 2.864,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002302,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, tipo_de_veiculo, date_trunc('day', data) AS dia, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, tipo_de_veiculo, date_trunc('day', data) AS dia, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.854,
+      "tokens_prompt": 764,
+      "tokens_saida": 146,
+      "eval_s": 3.854,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004261,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_11": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, tipo_cobranca, date_trunc('day', data) AS dia, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, tipo_cobranca, date_trunc('day', data) AS dia, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.168,
+      "tokens_prompt": 757,
+      "tokens_saida": 147,
+      "eval_s": 3.168,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004252,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_13": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, tipo_cobranca, date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, tipo_cobranca, date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.521,
+      "tokens_prompt": 758,
+      "tokens_saida": 146,
+      "eval_s": 3.521,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004232,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_14": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, tipo_cobranca, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, tipo_cobranca, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.303,
+      "tokens_prompt": 759,
+      "tokens_saida": 146,
+      "eval_s": 3.303,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004236,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, praca, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY concessionaria, praca ORDER BY concessionaria, praca",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, praca, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY concessionaria, praca ORDER BY concessionaria, praca",
+      "latencia_s": 3.106,
+      "tokens_prompt": 755,
+      "tokens_saida": 122,
+      "eval_s": 3.106,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003616,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, sentido, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, sentido, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.395,
+      "tokens_prompt": 749,
+      "tokens_saida": 138,
+      "eval_s": 3.395,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003986,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_17": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, tipo_de_veiculo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY concessionaria, tipo_de_veiculo ORDER BY concessionaria, tipo_de_veiculo",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, tipo_de_veiculo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY concessionaria, tipo_de_veiculo ORDER BY concessionaria, tipo_de_veiculo",
+      "latencia_s": 5.249,
+      "tokens_prompt": 749,
+      "tokens_saida": 145,
+      "eval_s": 5.249,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004162,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_18": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, tipo_de_veiculo, date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, tipo_de_veiculo, date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.266,
+      "tokens_prompt": 765,
+      "tokens_saida": 146,
+      "eval_s": 3.266,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004267,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, categoria_eixo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY plaza_key, categoria_eixo ORDER BY plaza_key, categoria_eixo",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, categoria_eixo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY plaza_key, categoria_eixo ORDER BY plaza_key, categoria_eixo",
+      "latencia_s": 3.108,
+      "tokens_prompt": 745,
+      "tokens_saida": 136,
+      "eval_s": 3.108,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003916,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_20": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, categoria_eixo, date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, categoria_eixo, date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.559,
+      "tokens_prompt": 753,
+      "tokens_saida": 142,
+      "eval_s": 3.559,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004106,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_22": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, tipo_de_veiculo, date_trunc('day', data) AS dia, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, tipo_de_veiculo, date_trunc('day', data) AS dia, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.497,
+      "tokens_prompt": 756,
+      "tokens_saida": 92,
+      "eval_s": 3.497,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002871,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_23": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, tipo_cobranca, date_trunc('month', data) AS mes, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY plaza_key, tipo_cobranca, date_trunc('month', data) ORDER BY plaza_key, tipo_cobranca, mes",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, tipo_cobranca, date_trunc('month', data) AS mes, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY plaza_key, tipo_cobranca, date_trunc('month', data) ORDER BY plaza_key, tipo_cobranca, mes",
+      "latencia_s": 3.123,
+      "tokens_prompt": 755,
+      "tokens_saida": 115,
+      "eval_s": 3.123,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003442,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, tipo_de_veiculo, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY plaza_key, tipo_de_veiculo, data",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, tipo_de_veiculo, data, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY plaza_key, tipo_de_veiculo, data",
+      "latencia_s": 4.024,
+      "tokens_prompt": 769,
+      "tokens_saida": 128,
+      "eval_s": 4.024,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003837,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, sentido, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY plaza_key, sentido, date_trunc('week', data) ORDER BY plaza_key, sentido, semana",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, sentido, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY plaza_key, sentido, date_trunc('week', data) ORDER BY plaza_key, sentido, semana",
+      "latencia_s": 4.893,
+      "tokens_prompt": 758,
+      "tokens_saida": 154,
+      "eval_s": 4.893,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004431,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_26": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, categoria_eixo, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, categoria_eixo, date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.344,
+      "tokens_prompt": 758,
+      "tokens_saida": 146,
+      "eval_s": 3.344,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004232,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_27": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, sentido, date_trunc('week', data) AS semana, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY plaza_key, sentido, date_trunc('week', data) ORDER BY plaza_key, sentido, semana",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, sentido, date_trunc('week', data) AS semana, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY plaza_key, sentido, date_trunc('week', data) ORDER BY plaza_key, sentido, semana",
+      "latencia_s": 3.485,
+      "tokens_prompt": 753,
+      "tokens_saida": 100,
+      "eval_s": 3.485,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003057,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_28": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, categoria_eixo, date_trunc('week', data) AS semana, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY concessionaria, categoria_eixo, date_trunc('week', data) ORDER BY concessionaria, categoria_eixo, semana",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, categoria_eixo, date_trunc('week', data) AS semana, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY concessionaria, categoria_eixo, date_trunc('week', data) ORDER BY concessionaria, categoria_eixo, semana",
+      "latencia_s": 4.614,
+      "tokens_prompt": 757,
+      "tokens_saida": 112,
+      "eval_s": 4.614,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003377,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_29": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, categoria_eixo, date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, categoria_eixo, date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.665,
+      "tokens_prompt": 755,
+      "tokens_saida": 142,
+      "eval_s": 3.665,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004117,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "join_grao_antt_30": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, categoria_eixo, date_trunc('month', data) AS mes, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, categoria_eixo, date_trunc('month', data) AS mes, SUM(volume) AS total_volume FROM fct_traffic_volume GROUP BY 1, 2, 3 ORDER BY 1, 2, 3",
+      "latencia_s": 3.349,
+      "tokens_prompt": 751,
+      "tokens_saida": 89,
+      "eval_s": 3.349,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002772,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_01": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '3' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '3' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+      "latencia_s": 3.02,
+      "tokens_prompt": 755,
+      "tokens_saida": 132,
+      "eval_s": 3.02,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003867,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'Manual' GROUP BY concessionaria ORDER BY participacao_comercial DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'Manual' GROUP BY concessionaria ORDER BY participacao_comercial DESC",
+      "latencia_s": 3.023,
+      "tokens_prompt": 759,
+      "tokens_saida": 130,
+      "eval_s": 3.023,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003837,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+      "latencia_s": 2.978,
+      "tokens_prompt": 750,
+      "tokens_saida": 123,
+      "eval_s": 2.978,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003616,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_04": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+      "latencia_s": 4.14,
+      "tokens_prompt": 752,
+      "tokens_saida": 132,
+      "eval_s": 4.14,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003851,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+      "latencia_s": 3.264,
+      "tokens_prompt": 754,
+      "tokens_saida": 138,
+      "eval_s": 3.264,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004012,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT sentido, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+      "latencia_s": 3.767,
+      "tokens_prompt": 750,
+      "tokens_saida": 98,
+      "eval_s": 3.767,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002991,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+      "latencia_s": 2.993,
+      "tokens_prompt": 740,
+      "tokens_saida": 117,
+      "eval_s": 2.993,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003416,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '6' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '6' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+      "latencia_s": 4.008,
+      "tokens_prompt": 755,
+      "tokens_saida": 132,
+      "eval_s": 4.008,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003867,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'OCR/PLACA' GROUP BY plaza_key ORDER BY plaza_key",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'OCR/PLACA' GROUP BY plaza_key ORDER BY plaza_key",
+      "latencia_s": 3.31,
+      "tokens_prompt": 757,
+      "tokens_saida": 139,
+      "eval_s": 3.31,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004052,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_11": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+      "latencia_s": 3.117,
+      "tokens_prompt": 753,
+      "tokens_saida": 133,
+      "eval_s": 3.117,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003881,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_12": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '6' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '6' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+      "latencia_s": 3.427,
+      "tokens_prompt": 754,
+      "tokens_saida": 132,
+      "eval_s": 3.427,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003861,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_13": {
+    "tipo": "sql",
+    "sql": "SELECT categoria_eixo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY categoria_eixo ORDER BY categoria_eixo",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT categoria_eixo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_automatica FROM fct_traffic_volume GROUP BY categoria_eixo ORDER BY categoria_eixo",
+      "latencia_s": 3.13,
+      "tokens_prompt": 752,
+      "tokens_saida": 119,
+      "eval_s": 3.13,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003527,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_14": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '5' GROUP BY plaza_key ORDER BY plaza_key",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '5' GROUP BY plaza_key ORDER BY plaza_key",
+      "latencia_s": 3.113,
+      "tokens_prompt": 755,
+      "tokens_saida": 130,
+      "eval_s": 3.113,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003817,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '3' GROUP BY concessionaria ORDER BY participacao_comercial DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '3' GROUP BY concessionaria ORDER BY participacao_comercial DESC",
+      "latencia_s": 3.285,
+      "tokens_prompt": 757,
+      "tokens_saida": 126,
+      "eval_s": 3.285,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003727,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY plaza_key ORDER BY plaza_key",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY plaza_key ORDER BY plaza_key",
+      "latencia_s": 3.269,
+      "tokens_prompt": 760,
+      "tokens_saida": 130,
+      "eval_s": 3.269,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003841,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_17": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY plaza_key ORDER BY plaza_key",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY plaza_key ORDER BY plaza_key",
+      "latencia_s": 3.105,
+      "tokens_prompt": 758,
+      "tokens_saida": 131,
+      "eval_s": 3.105,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003857,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_18": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY concessionaria ORDER BY participacao_comercial DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY concessionaria ORDER BY participacao_comercial DESC",
+      "latencia_s": 3.135,
+      "tokens_prompt": 758,
+      "tokens_saida": 127,
+      "eval_s": 3.135,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003756,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT sentido, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+      "latencia_s": 3.443,
+      "tokens_prompt": 743,
+      "tokens_saida": 100,
+      "eval_s": 3.443,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003007,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_20": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT sentido, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+      "latencia_s": 3.51,
+      "tokens_prompt": 751,
+      "tokens_saida": 158,
+      "eval_s": 3.51,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004496,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_21": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+      "latencia_s": 3.054,
+      "tokens_prompt": 754,
+      "tokens_saida": 132,
+      "eval_s": 3.054,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003861,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY plaza_key ORDER BY plaza_key",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY plaza_key ORDER BY plaza_key",
+      "latencia_s": 3.633,
+      "tokens_prompt": 750,
+      "tokens_saida": 182,
+      "eval_s": 3.633,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.005091,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+      "latencia_s": 3.273,
+      "tokens_prompt": 752,
+      "tokens_saida": 132,
+      "eval_s": 3.273,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003851,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_26": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+      "latencia_s": 3.767,
+      "tokens_prompt": 747,
+      "tokens_saida": 139,
+      "eval_s": 3.767,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004001,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_28": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('week', data) AS semana, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+      "latencia_s": 3.089,
+      "tokens_prompt": 740,
+      "tokens_saida": 116,
+      "eval_s": 3.089,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003391,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "metrica_derivada_antt_30": {
+    "tipo": "sql",
+    "sql": "SELECT date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT date_trunc('month', data) AS mes, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_automatica FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+      "latencia_s": 3.762,
+      "tokens_prompt": 751,
+      "tokens_saida": 108,
+      "eval_s": 3.762,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003246,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_04": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY tipo_cobranca ORDER BY participacao_comercial DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY tipo_cobranca ORDER BY participacao_comercial DESC LIMIT 3",
+      "latencia_s": 3.147,
+      "tokens_prompt": 766,
+      "tokens_saida": 139,
+      "eval_s": 3.147,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004097,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'OCR/PLACA' GROUP BY concessionaria ORDER BY participacao_comercial DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'OCR/PLACA' GROUP BY concessionaria ORDER BY participacao_comercial DESC LIMIT 3",
+      "latencia_s": 3.247,
+      "tokens_prompt": 764,
+      "tokens_saida": 142,
+      "eval_s": 3.247,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004162,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume GROUP BY concessionaria ORDER BY volume_total ASC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume GROUP BY concessionaria ORDER BY volume_total ASC LIMIT 3",
+      "latencia_s": 3.605,
+      "tokens_prompt": 747,
+      "tokens_saida": 68,
+      "eval_s": 3.605,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002227,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY plaza_key ORDER BY taxa_automacao DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY plaza_key ORDER BY taxa_automacao DESC LIMIT 3",
+      "latencia_s": 3.869,
+      "tokens_prompt": 757,
+      "tokens_saida": 139,
+      "eval_s": 3.869,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004052,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_17": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume GROUP BY concessionaria ORDER BY volume_total DESC LIMIT 5",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume GROUP BY concessionaria ORDER BY volume_total DESC LIMIT 5",
+      "latencia_s": 3.104,
+      "tokens_prompt": 747,
+      "tokens_saida": 68,
+      "eval_s": 3.104,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002227,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY concessionaria ORDER BY volume_total DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY concessionaria ORDER BY volume_total DESC LIMIT 3",
+      "latencia_s": 3.253,
+      "tokens_prompt": 761,
+      "tokens_saida": 83,
+      "eval_s": 3.253,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002671,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_22": {
+    "tipo": "sql",
+    "sql": "SELECT categoria_eixo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY categoria_eixo ORDER BY taxa_automacao DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT categoria_eixo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY categoria_eixo ORDER BY taxa_automacao DESC LIMIT 3",
+      "latencia_s": 3.211,
+      "tokens_prompt": 759,
+      "tokens_saida": 141,
+      "eval_s": 3.211,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004111,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '3' GROUP BY tipo_cobranca ORDER BY participacao_comercial DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE categoria_eixo = '3' GROUP BY tipo_cobranca ORDER BY participacao_comercial DESC LIMIT 3",
+      "latencia_s": 3.332,
+      "tokens_prompt": 766,
+      "tokens_saida": 139,
+      "eval_s": 3.332,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004097,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_cobranca = 'Automática' GROUP BY plaza_key ORDER BY volume_total DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_cobranca = 'Automática' GROUP BY plaza_key ORDER BY volume_total DESC LIMIT 3",
+      "latencia_s": 3.782,
+      "tokens_prompt": 758,
+      "tokens_saida": 87,
+      "eval_s": 3.782,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002756,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_26": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY tipo_cobranca ORDER BY volume_total DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT tipo_cobranca, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY tipo_cobranca ORDER BY volume_total DESC LIMIT 3",
+      "latencia_s": 3.461,
+      "tokens_prompt": 760,
+      "tokens_saida": 96,
+      "eval_s": 3.461,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002991,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_27": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY concessionaria ORDER BY volume_total DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY concessionaria ORDER BY volume_total DESC LIMIT 3",
+      "latencia_s": 3.313,
+      "tokens_prompt": 758,
+      "tokens_saida": 90,
+      "eval_s": 3.313,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002831,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "ranking_antt_29": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY plaza_key ORDER BY taxa_automacao DESC LIMIT 3",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '2' GROUP BY plaza_key ORDER BY taxa_automacao DESC LIMIT 3",
+      "latencia_s": 4.072,
+      "tokens_prompt": 757,
+      "tokens_saida": 130,
+      "eval_s": 4.072,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003827,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_02": {
+    "tipo": "sql",
+    "sql": "SELECT SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto'",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto'",
+      "latencia_s": 3.603,
+      "tokens_prompt": 747,
+      "tokens_saida": 52,
+      "eval_s": 3.603,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.001826,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_03": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY tipo_cobranca ORDER BY total_volume DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT tipo_cobranca, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY tipo_cobranca ORDER BY total_volume DESC",
+      "latencia_s": 3.183,
+      "tokens_prompt": 751,
+      "tokens_saida": 82,
+      "eval_s": 3.183,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002596,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_04": {
+    "tipo": "sql",
+    "sql": "SELECT SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Decrescente'",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Decrescente'",
+      "latencia_s": 3.436,
+      "tokens_prompt": 753,
+      "tokens_saida": 94,
+      "eval_s": 3.436,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002906,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_05": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY concessionaria ORDER BY total_volume DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' GROUP BY concessionaria ORDER BY total_volume DESC",
+      "latencia_s": 3.501,
+      "tokens_prompt": 744,
+      "tokens_saida": 83,
+      "eval_s": 3.501,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002586,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_06": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+      "latencia_s": 3.184,
+      "tokens_prompt": 754,
+      "tokens_saida": 132,
+      "eval_s": 3.184,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003861,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_07": {
+    "tipo": "sql",
+    "sql": "SELECT SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'Automática'",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'Automática'",
+      "latencia_s": 3.431,
+      "tokens_prompt": 752,
+      "tokens_saida": 97,
+      "eval_s": 3.431,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002976,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_08": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY tipo_cobranca ORDER BY tipo_cobranca",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT tipo_cobranca, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Decrescente' GROUP BY tipo_cobranca ORDER BY tipo_cobranca",
+      "latencia_s": 4.069,
+      "tokens_prompt": 762,
+      "tokens_saida": 131,
+      "eval_s": 4.069,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003877,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_09": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY plaza_key ORDER BY volume_total DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY plaza_key ORDER BY volume_total DESC",
+      "latencia_s": 3.594,
+      "tokens_prompt": 756,
+      "tokens_saida": 76,
+      "eval_s": 3.594,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002472,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_10": {
+    "tipo": "sql",
+    "sql": "SELECT SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'OCR/PLACA'",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'OCR/PLACA'",
+      "latencia_s": 3.915,
+      "tokens_prompt": 752,
+      "tokens_saida": 102,
+      "eval_s": 3.915,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003102,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_11": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY sentido ORDER BY volume_total DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT sentido, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY sentido ORDER BY volume_total DESC",
+      "latencia_s": 2.83,
+      "tokens_prompt": 752,
+      "tokens_saida": 72,
+      "eval_s": 2.83,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002351,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_13": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY sentido ORDER BY sentido",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT sentido, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY sentido ORDER BY sentido",
+      "latencia_s": 3.202,
+      "tokens_prompt": 745,
+      "tokens_saida": 74,
+      "eval_s": 3.202,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002367,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_14": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_de_veiculo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY tipo_de_veiculo ORDER BY tipo_de_veiculo",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT tipo_de_veiculo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY tipo_de_veiculo ORDER BY tipo_de_veiculo",
+      "latencia_s": 3.133,
+      "tokens_prompt": 755,
+      "tokens_saida": 133,
+      "eval_s": 3.133,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003891,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_15": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'OCR/PLACA' GROUP BY sentido",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT sentido, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE tipo_cobranca = 'OCR/PLACA' GROUP BY sentido",
+      "latencia_s": 3.279,
+      "tokens_prompt": 756,
+      "tokens_saida": 115,
+      "eval_s": 3.279,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003446,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_16": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '8' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+      "latencia_s": 3.193,
+      "tokens_prompt": 752,
+      "tokens_saida": 132,
+      "eval_s": 3.193,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003851,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_17": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(volume) AS volume_total FROM main.fct_traffic_volume WHERE tipo_cobranca = 'Automática' GROUP BY sentido ORDER BY volume_total DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT sentido, SUM(volume) AS volume_total FROM main.fct_traffic_volume WHERE tipo_cobranca = 'Automática' GROUP BY sentido ORDER BY volume_total DESC",
+      "latencia_s": 3.662,
+      "tokens_prompt": 752,
+      "tokens_saida": 78,
+      "eval_s": 3.662,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002501,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_18": {
+    "tipo": "sql",
+    "sql": "SELECT categoria_eixo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY categoria_eixo ORDER BY categoria_eixo",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT categoria_eixo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY categoria_eixo ORDER BY categoria_eixo",
+      "latencia_s": 3.6,
+      "tokens_prompt": 753,
+      "tokens_saida": 133,
+      "eval_s": 3.6,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003881,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_19": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY sentido ORDER BY sentido",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT sentido, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '7' GROUP BY sentido ORDER BY sentido",
+      "latencia_s": 3.803,
+      "tokens_prompt": 746,
+      "tokens_saida": 68,
+      "eval_s": 3.803,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002221,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_20": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY sentido",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT sentido, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY sentido",
+      "latencia_s": 3.515,
+      "tokens_prompt": 750,
+      "tokens_saida": 109,
+      "eval_s": 3.515,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003266,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_21": {
+    "tipo": "sql",
+    "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+      "latencia_s": 3.388,
+      "tokens_prompt": 749,
+      "tokens_saida": 139,
+      "eval_s": 3.388,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004012,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_22": {
+    "tipo": "sql",
+    "sql": "SELECT sentido, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY sentido ORDER BY sentido",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT sentido, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '4' GROUP BY sentido ORDER BY sentido",
+      "latencia_s": 3.522,
+      "tokens_prompt": 751,
+      "tokens_saida": 112,
+      "eval_s": 3.522,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003347,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_24": {
+    "tipo": "sql",
+    "sql": "SELECT SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '3'",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '3'",
+      "latencia_s": 3.68,
+      "tokens_prompt": 747,
+      "tokens_saida": 90,
+      "eval_s": 3.68,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002776,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_25": {
+    "tipo": "sql",
+    "sql": "SELECT categoria_eixo, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY categoria_eixo ORDER BY categoria_eixo",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT categoria_eixo, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY categoria_eixo ORDER BY categoria_eixo",
+      "latencia_s": 6.289,
+      "tokens_prompt": 748,
+      "tokens_saida": 80,
+      "eval_s": 6.289,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.002531,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_26": {
+    "tipo": "sql",
+    "sql": "SELECT tipo_de_veiculo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '3' GROUP BY tipo_de_veiculo ORDER BY tipo_de_veiculo",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT tipo_de_veiculo, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE categoria_eixo = '3' GROUP BY tipo_de_veiculo ORDER BY tipo_de_veiculo",
+      "latencia_s": 4.043,
+      "tokens_prompt": 754,
+      "tokens_saida": 142,
+      "eval_s": 4.043,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.004111,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_27": {
+    "tipo": "sql",
+    "sql": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT plaza_key, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY plaza_key ORDER BY taxa_automacao DESC",
+      "latencia_s": 3.095,
+      "tokens_prompt": 755,
+      "tokens_saida": 132,
+      "eval_s": 3.095,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003867,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  },
+  "valor_categorico_antt_28": {
+    "tipo": "sql",
+    "sql": "SELECT categoria_eixo, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY categoria_eixo ORDER BY categoria_eixo",
+    "spec": null,
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "SELECT categoria_eixo, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / SUM(volume) AS participacao_comercial FROM fct_traffic_volume WHERE sentido = 'Crescente' GROUP BY categoria_eixo ORDER BY categoria_eixo",
+      "latencia_s": 3.25,
+      "tokens_prompt": 758,
+      "tokens_saida": 127,
+      "eval_s": 3.25,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 713,
+      "custo_usd": 0.003756,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5",
+      "proveniencia_corrigida": "rotulo reescrito por corrigir_proveniencia_fase18.py; spec/sql/raw intocados (ver docstring)"
+    }
+  }
+}
