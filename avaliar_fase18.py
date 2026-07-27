@@ -1,4 +1,4 @@
-"""Fase 17 — a tese contra um SUT de fronteira (API da Anthropic).
+"""Fase 18 — a tese contra um SUT de fronteira (API da Anthropic).
 
 **A pergunta que sobrou.** A Fase 12 mediu Tier-A 89,7% × sql_cru 26,7% (+63,0 pp, p≈0) com
 `qwen2.5-coder:7b` nas duas pontas. A Fase 15 fechou o lado de baixo: um 9B generalista COLAPSA
@@ -17,9 +17,9 @@ que este projeto existe para evitar.
 
 ## Uso — a API NUNCA dispara sem `--confirmar`
 
-    python avaliar_fase17.py estimar                       # só a conta, zero chamadas
-    python avaliar_fase17.py piloto --n 12 --confirmar     # mede o custo real numa amostra
-    python avaliar_fase17.py completo --confirmar          # o TEST-ANTT inteiro
+    python avaliar_fase18.py estimar                       # só a conta, zero chamadas
+    python avaliar_fase18.py piloto --n 12 --confirmar     # mede o custo real numa amostra
+    python avaliar_fase18.py completo --confirmar          # o TEST-ANTT inteiro
 
 O `--teto-usd` (default 2,00) aborta ANTES de começar se a estimativa estourar, e aborta NO MEIO
 se o gasto acumulado passar do teto. Um orçamento que só é verificado no fim não é um orçamento.
@@ -49,7 +49,7 @@ from rodoquery.sistema_antt import tier_a_antt
 
 REPO = Path(__file__).resolve().parent
 D12 = REPO / "reports" / "fase12"          # gold, catálogo e telemetria congelada do Qwen
-D17 = REPO / "reports" / "fase17"
+D17 = REPO / "reports" / "fase18"
 SISTEMAS = {"tier_a_antt": tier_a_antt, "sql_cru_antt": sql_cru_antt}
 
 # O prefixo cacheável = tudo até "\nPergunta: ". Medido nos prompts reais, não estimado — ver
@@ -178,7 +178,7 @@ def cmd_piloto(args) -> None:
         print(f"  {k:26s} {v}")
     print(f"\n  projeção p/ o par completo ({n_total * 2} chamadas): "
           f"${projecao:.2f}  [teto — o cache amortiza mais na corrida longa]")
-    print("\nSe o número couber no orçamento: python avaliar_fase17.py completo --confirmar")
+    print("\nSe o número couber no orçamento: python avaliar_fase18.py completo --confirmar")
 
 
 def cmd_completo(args) -> None:
@@ -283,7 +283,7 @@ def main() -> None:
     args = ap.parse_args()
     if args.cmd != "estimar" and not args.confirmar:
         print("Recusado: '--confirmar' é obrigatório para gastar crédito da API.\n"
-              "Rode `python avaliar_fase17.py estimar` primeiro para ver a conta.",
+              "Rode `python avaliar_fase18.py estimar` primeiro para ver a conta.",
               file=sys.stderr)
         raise SystemExit(2)      # explícito: ver comentário em `_coletar`
     args.func(args)

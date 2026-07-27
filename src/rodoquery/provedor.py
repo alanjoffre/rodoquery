@@ -1,4 +1,4 @@
-"""Provedor de LLM plugável: Ollama local (default) ou API da Anthropic (Fase 17).
+"""Provedor de LLM plugável: Ollama local (default) ou API da Anthropic (Fase 18).
 
 **Por que isto existe.** Até a Fase 16 o SUT era sempre `qwen2.5-coder:7b` via Ollama em
 `localhost`. Isso amarrava a tese a um modelo de 7B rodando numa RTX 4050 — e deixava aberta a

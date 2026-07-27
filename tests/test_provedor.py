@@ -1,4 +1,4 @@
-"""Testes do provedor plugável (Fase 17). NENHUM toca a API — custo zero, sempre.
+"""Testes do provedor plugável (Fase 18). NENHUM toca a API — custo zero, sempre.
 
 O que estes testes protegem, em ordem de importância:
 
@@ -274,7 +274,7 @@ def test_temperatura_e_ignorada_sem_explodir():
 
 
 def test_predicoes_congeladas_da_fase12_continuam_legiveis():
-    """Guarda de regressão: o formato do congelamento não pode ter mudado com a Fase 17."""
+    """Guarda de regressão: o formato do congelamento não pode ter mudado com a Fase 18."""
     from pathlib import Path
 
     fp = (Path(__file__).resolve().parents[1] / "reports" / "fase12"

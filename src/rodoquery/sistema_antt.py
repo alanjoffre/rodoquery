@@ -48,7 +48,7 @@ def tier_a_antt(pergunta: str, modelo: str | None = None,
                 temperatura: float | None = None, provedor=None) -> Predicao:
     """Idêntico ao `tier_a` congelado, exceto pelo catálogo (a fundação entra na compilação).
 
-    `provedor` é a costura da Fase 17: `None` chama o Ollama exatamente como sempre — o caminho
+    `provedor` é a costura da Fase 18: `None` chama o Ollama exatamente como sempre — o caminho
     das Fases 11–16 segue byte a byte o mesmo. Passar um `ProvedorAnthropic` troca SÓ o SUT;
     prompt, catálogo e parsing ficam intocados, que é o que mantém a comparação honesta.
     """

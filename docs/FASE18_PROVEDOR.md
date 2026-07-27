@@ -1,4 +1,4 @@
-# Fase 17 — provedor plugável e a tese contra um SUT de fronteira
+# Fase 18 — provedor plugável e a tese contra um SUT de fronteira
 
 ## A pergunta que sobrou depois da Fase 15
 
@@ -47,7 +47,7 @@ responderia essa pergunta por decreto e tornaria o número incomparável com o d
 
 ### 2. O determinismo é mais fraco aqui, e isso fica declarado
 
-| | Ollama (Fases 0–16) | API (Fase 17) |
+| | Ollama (Fases 0–16) | API (Fase 18) |
 |---|---|---|
 | `temperature=0`, `seed=42`, `top_k=1` | sim | **rejeitado** (HTTP 400 no Claude ≥ 4.7) |
 | Variância medida | 0,0 pp em 5 execuções (Fase 5) | não medida |
@@ -123,9 +123,9 @@ Um orçamento verificado só no fim não é um orçamento. O código de saída �
 ## Fluxo
 
 ```bash
-python avaliar_fase17.py estimar                    # a conta, zero chamadas
-python avaliar_fase17.py piloto --n 12 --confirmar  # custo REAL numa amostra estratificada
-python avaliar_fase17.py completo --confirmar       # TEST-ANTT inteiro, os dois sistemas
+python avaliar_fase18.py estimar                    # a conta, zero chamadas
+python avaliar_fase18.py piloto --n 12 --confirmar  # custo REAL numa amostra estratificada
+python avaliar_fase18.py completo --confirmar       # TEST-ANTT inteiro, os dois sistemas
 ```
 
 O piloto é estratificado (metade respondíveis, metade abstenção) porque abstenção custa ~5 tokens
