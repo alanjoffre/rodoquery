@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rodoquery
+  namespace: rodoquery
+spec:
+  # replicas = réplicas de Ollama (1 pod : 1 GPU). NÃO escale isto sozinho: o serviço já limita
+  # 1 inferência simultânea por processo (semáforo da Fase 6); mais pods sobre a MESMA GPU só
+  # produzem contenção — medido: c=4 derruba a vazão para 0,75× e o p95 para 43 s.
+  replicas: 1
+  selector:
+    matchLabels: {app: rodoquery}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: {maxUnavailable: 0, maxSurge: 1}
+  template:
+    metadata:
+      labels: {app: rodoquery}
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: rodoquery
+          image: rodoquery:dev            # troque pela sua registry/tag
+          imagePullPolicy: IfNotPresent
+          ports:
+            - {name: http, containerPort: 8077}
+          env:
+            - {name: RODOQUERY_OLLAMA_URL, value: "http://ollama:11434/api/generate"}
+            - {name: RODOQUERY_FUNDACAO_ATIVA, value: "antt"}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          volumeMounts:
+            # o `mf` (subprocess do MetricFlow) escreve logs/target; com rootfs read-only
+            # ele precisa de um scratch gravável.
+            - {name: tmp, mountPath: /tmp}
+            - {name: dbt-logs, mountPath: /fundacao/dbt-antt/logs}
+          resources:
+            # O caminho quente é: 1 chamada HTTP ao Ollama + 1 subprocess `dbt`. O subprocess é
+            # o que pesa em CPU/memória aqui (8,65 s medidos na Fase 16), não o servidor web.
+            requests: {cpu: "250m", memory: 512Mi}
+            limits:   {cpu: "2",    memory: 2Gi}
+          # /saude não toca o LLM nem o banco — é liveness de verdade, não um health que mente.
+          livenessProbe:
+            httpGet: {path: /saude, port: http}
+            initialDelaySeconds: 10
+            periodSeconds: 20
+            timeoutSeconds: 5
+          # Readiness idem: o serviço está pronto para RECEBER. Se estiver saturado ele responde
+          # 503 por conta própria (controle de admissão), o que é a degradação honesta —
+          # tirar o pod do balanceador nesse caso só empurraria a fila para o vizinho.
+          readinessProbe:
+            httpGet: {path: /saude, port: http}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+          # startupProbe cobre o cold start: o primeiro request mede 88 s (Fase 16), mas /saude
+          # sobe rápido porque não depende do modelo. Margem generosa mesmo assim.
+          startupProbe:
+            httpGet: {path: /saude, port: http}
+            periodSeconds: 5
+            failureThreshold: 24        # até 120 s para subir
+      volumes:
+        - {name: tmp, emptyDir: {}}
+        - {name: dbt-logs, emptyDir: {}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rodoquery
+  namespace: rodoquery
+spec:
+  selector: {app: rodoquery}
+  ports:
+    - {name: http, port: 80, targetPort: http}
+---
+# PDB com 1 réplica é deliberadamente conservador: impede que um drain de nó derrube o único
+# pod sem substituto. Com replicas=1 ele bloqueia a evicção voluntária — que é o comportamento
+# desejado num serviço de GPU única, onde não há para onde escoar a carga.
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: rodoquery
+  namespace: rodoquery
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels: {app: rodoquery}

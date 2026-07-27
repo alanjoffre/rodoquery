@@ -1,0 +1,51 @@
+# A tese do projeto é que a segurança do Tier-A é ESTRUTURAL (vocabulário fechado → não há
+# superfície de injeção). A rede segue o mesmo princípio: em vez de confiar que o pod se comporta,
+# o cluster restringe o que ele CONSEGUE alcançar.
+#
+# O serviço só precisa de duas coisas: receber HTTP e falar com o Ollama. Não precisa de internet
+# — o DuckDB está assado na imagem e o `enable_external_access=false` do DuckDB já barra leitura
+# de arquivo remoto. Esta policy é a mesma decisão, um nível abaixo.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rodoquery-egress
+  namespace: rodoquery
+spec:
+  podSelector:
+    matchLabels: {app: rodoquery}
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - ports:
+        - {protocol: TCP, port: 8077}
+  egress:
+    # só o Ollama
+    - to:
+        - podSelector:
+            matchLabels: {app: ollama}
+      ports:
+        - {protocol: TCP, port: 11434}
+    # DNS (senão nem o nome `ollama` resolve)
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels: {k8s-app: kube-dns}
+      ports:
+        - {protocol: UDP, port: 53}
+        - {protocol: TCP, port: 53}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ollama-ingress
+  namespace: rodoquery
+spec:
+  podSelector:
+    matchLabels: {app: ollama}
+  policyTypes: [Ingress]
+  ingress:
+    # o Ollama só aceita conexão do serviço — não fica exposto no cluster
+    - from:
+        - podSelector:
+            matchLabels: {app: rodoquery}
+      ports:
+        - {protocol: TCP, port: 11434}

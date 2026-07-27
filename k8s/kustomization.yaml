@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: rodoquery
+
+resources:
+  - namespace.yaml
+  - ollama.yaml
+  - rodoquery.yaml
+  - networkpolicy.yaml
+
+labels:
+  - includeSelectors: false          # não injeta em selector (mudaria o matchLabels dos objetos)
+    pairs:
+      app.kubernetes.io/part-of: rodoquery

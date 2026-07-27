@@ -1,0 +1,56 @@
+# Ollama — o backend de inferência. É StatefulSet, não Deployment, por dois motivos medidos:
+#
+# 1. O modelo tem 4,7 GB. Sem volume persistente, todo restart re-baixa — e o `load_duration`
+#    medido na Fase 16 (79 s no primeiro request) viraria o custo de cada rollout.
+# 2. É a UNIDADE DE ESCALA REAL do sistema. A Fase 6 mediu que 1 GPU não paraleliza: em c=2 a
+#    vazão sobe só 1,11×, em c=4 CAI para 0,75× e o p95 vai de 4,4 s a 43 s. Logo replicar o
+#    serviço sem replicar GPU não compra nada — só enfileira. Ver o comentário no HPA.
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ollama
+  namespace: rodoquery
+spec:
+  serviceName: ollama
+  replicas: 1                     # = número de GPUs disponíveis. Ver k8s/README.md.
+  selector:
+    matchLabels: {app: ollama}
+  template:
+    metadata:
+      labels: {app: ollama}
+    spec:
+      containers:
+        - name: ollama
+          image: ollama/ollama:latest
+          ports:
+            - {name: http, containerPort: 11434}
+          volumeMounts:
+            - {name: modelos, mountPath: /root/.ollama}
+          resources:
+            requests: {cpu: "1", memory: 6Gi}
+            limits:   {cpu: "4", memory: 12Gi}
+            # Em nó com GPU, descomente (requer NVIDIA device plugin no cluster):
+            #   limits: {nvidia.com/gpu: 1}
+          readinessProbe:
+            httpGet: {path: /, port: http}
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: {path: /, port: http}
+            initialDelaySeconds: 30
+            periodSeconds: 30
+  volumeClaimTemplates:
+    - metadata: {name: modelos}
+      spec:
+        accessModes: [ReadWriteOnce]
+        resources: {requests: {storage: 20Gi}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama
+  namespace: rodoquery
+spec:
+  selector: {app: ollama}
+  ports:
+    - {name: http, port: 11434, targetPort: http}
