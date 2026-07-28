@@ -17,7 +17,14 @@ docs dizem "instrumento pronto, aguardando anotador humano". Nada é preenchido 
 
 Uso:
   python anotar_humano.py amostra [N]     # gera a folha de anotação (default 40 itens)
+  python anotar_humano.py anotar          # anotador GUIADO (recomendado — só digitar números)
   python anotar_humano.py kappa           # calcula κ depois que o humano preencheu a folha
+
+**O que o `anotar` faz e o que ele NÃO faz.** Ele monta o JSON a partir de escolhas numeradas,
+salva a cada item (é retomável) e nunca pré-seleciona nada — não há opção "sugerida", porque um
+default seria um viés silencioso empurrando o anotador. Ele **não** vê nem mostra a spec do
+autor-modelo: a cegueira é o que faz o κ medir concordância independente em vez de quanto o
+humano concorda com algo que acabou de ler.
 """
 import json
 import random
@@ -86,6 +93,146 @@ def amostra(n: int) -> None:
     print("Preencha 'spec_humano' em cada linha (cego), depois rode: python anotar_humano.py kappa")
 
 
+# ---------------------------------------------------------------------------------------------
+# Anotador guiado
+#
+# O vocabulário fica explícito aqui (e não parseado do catálogo) porque parsear texto livre é
+# frágil. O preço disso é risco de DRIFT: se o catálogo mudar e estas listas não, o anotador
+# ofereceria tokens que não existem mais. `tests/test_anotar_humano.py` trava isso — cada item
+# abaixo tem de aparecer literalmente em CATALOGO_ANTT.
+# ---------------------------------------------------------------------------------------------
+METRICAS = ["traffic_volume", "automation_rate", "commercial_share"]
+GROUP_BY = ["metric_time__day", "metric_time__week", "metric_time__month",
+            "plaza__praca", "plaza__concessionaria", "plaza__sentido",
+            "plaza__tipo_cobranca", "plaza__categoria_eixo", "plaza__tipo_de_veiculo"]
+VALORES = {
+    "plaza__tipo_cobranca": ["Automática", "Manual", "OCR/PLACA"],
+    "plaza__tipo_de_veiculo": ["Comercial", "Passeio", "Moto"],
+    "plaza__sentido": ["Crescente", "Decrescente"],
+    "plaza__categoria_eixo": [str(i) for i in range(2, 21)],
+}
+
+
+def _menu(titulo: str, opcoes: list[str], multi: bool, permite_vazio: bool) -> list[str]:
+    """Escolha numerada. NUNCA há opção pré-selecionada — default seria viés silencioso."""
+    print(f"\n  {titulo}")
+    for i, o in enumerate(opcoes, 1):
+        print(f"    {i}. {o}")
+    dica = "números separados por vírgula" if multi else "um número"
+    dica += ", ENTER para nenhum" if permite_vazio else ""
+    while True:
+        cru = input(f"  > ({dica}): ").strip()
+        if not cru:
+            if permite_vazio:
+                return []
+            print("    ! obrigatório")
+            continue
+        try:
+            idx = [int(x) for x in cru.replace(" ", "").split(",") if x]
+            if not multi and len(idx) != 1:
+                print("    ! escolha só um")
+                continue
+            if any(not 1 <= i <= len(opcoes) for i in idx):
+                print(f"    ! fora do intervalo 1..{len(opcoes)}")
+                continue
+            return [opcoes[i - 1] for i in idx]
+        except ValueError:
+            print("    ! digite números")
+
+
+def _sim(pergunta: str) -> bool:
+    while True:
+        r = input(f"  {pergunta} (s/n): ").strip().lower()
+        if r in ("s", "sim"):
+            return True
+        if r in ("n", "nao", "não"):
+            return False
+
+
+def _montar_where() -> str | None:
+    """Monta a sintaxe do MetricFlow, que é chata de digitar à mão e fácil de errar."""
+    dims = sorted(VALORES)
+    escolha = _menu("FILTRO (where) — dimensão:", [*dims, "(nenhum filtro)"], False, True)
+    if not escolha or escolha[0] == "(nenhum filtro)":
+        return None
+    d = escolha[0]
+    v = _menu(f"valor de {d}:", VALORES[d], False, False)[0]
+    return f"{{{{ Dimension('{d}') }}}} = '{v}'"
+
+
+def anotar() -> None:
+    """Coleta a spec do HUMANO item a item. Salva a cada resposta — retomável."""
+    if not FOLHA.exists():
+        raise SystemExit("folha ausente — rode `python anotar_humano.py amostra` primeiro")
+    texto = FOLHA.read_text(encoding="utf-8")
+    cab = [x for x in texto.splitlines() if x.startswith("#")]
+    linhas = [json.loads(x) for x in texto.splitlines() if x.strip() and not x.startswith("#")]
+
+    def salvar() -> None:
+        FOLHA.write_text("\n".join(cab) + "\n"
+                         + "\n".join(json.dumps(d, ensure_ascii=False) for d in linhas) + "\n",
+                         encoding="utf-8")
+
+    pendentes = [i for i, d in enumerate(linhas) if not d.get("spec_humano")]
+    if not pendentes:
+        print("Todos os itens já estão anotados. Rode: python anotar_humano.py kappa")
+        return
+
+    print(f"\n{'=' * 78}\nANOTACAO HUMANA — {len(pendentes)} de {len(linhas)} pendentes")
+    print("Você vê apenas a pergunta e o catálogo. A spec do autor-modelo NÃO é mostrada:")
+    print("é a cegueira que faz o κ medir concordância independente.")
+    print("A qualquer momento:  c = ver catálogo   p = pular item   q = sair (salva)")
+    print("=" * 78)
+
+    for n, i in enumerate(pendentes, 1):
+        d = linhas[i]
+        print(f"\n{'-' * 78}\n[{n}/{len(pendentes)}]  estrato: {d['estrato']}")
+        print(f"\n  PERGUNTA: {d['pergunta_nl']}\n")
+        acao = input("  ENTER p/ anotar | c=catálogo | p=pular | q=sair: ").strip().lower()
+        while acao == "c":
+            print("\n" + CATALOGO_ANTT + "\n")
+            acao = input("  ENTER p/ anotar | p=pular | q=sair: ").strip().lower()
+        if acao == "q":
+            salvar()
+            print(f"\nSalvo. {sum(1 for x in linhas if x.get('spec_humano'))}/{len(linhas)} "
+                  "anotados. Rode de novo para continuar.")
+            return
+        if acao == "p":
+            continue
+
+        met = _menu("MÉTRICA(S) — ou 'ABSTENHO' se nada no catálogo responde:",
+                    [*METRICAS, "ABSTENHO (nenhuma métrica responde)"], True, False)
+        if any(m.startswith("ABSTENHO") for m in met):
+            spec = {"metrics": [], "group_by": [], "where": None,
+                    "order_by": [], "limit": None, "ordenado": False}
+        else:
+            gb = _menu("AGRUPAR POR (group_by) — só o que a pergunta pede explicitamente:",
+                       GROUP_BY, True, True)
+            where = _montar_where()
+            ordenado, order_by, limite = False, [], None
+            if _sim("É RANKING? (a pergunta pede 'o maior', 'top N', 'que mais')"):
+                ordenado = True
+                campo = _menu("ordenar por:", [*met, *gb], False, False)[0]
+                order_by = [f"-{campo}" if _sim("decrescente (do maior p/ o menor)?")
+                            else campo]
+                cru = input("  limite (número, ENTER p/ nenhum): ").strip()
+                limite = int(cru) if cru.isdigit() else None
+            spec = {"metrics": met, "group_by": gb, "where": where,
+                    "order_by": order_by, "limit": limite, "ordenado": ordenado}
+
+        print(f"  → {json.dumps(spec, ensure_ascii=False)}")
+        if _sim("confirma?"):
+            linhas[i]["spec_humano"] = spec
+            salvar()
+        else:
+            print("  (descartado — o item fica pendente)")
+
+    salvar()
+    feitos = sum(1 for x in linhas if x.get("spec_humano"))
+    print(f"\n{'=' * 78}\n{feitos}/{len(linhas)} anotados.")
+    print("Agora: python anotar_humano.py kappa")
+
+
 def kappa() -> None:
     if not FOLHA.exists():
         raise SystemExit("folha ausente — rode `python anotar_humano.py amostra` primeiro")
@@ -136,6 +283,8 @@ if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "amostra"
     if cmd == "amostra":
         amostra(int(sys.argv[2]) if len(sys.argv) > 2 else 40)
+    elif cmd == "anotar":
+        anotar()
     elif cmd == "kappa":
         kappa()
     else:
