@@ -41,8 +41,26 @@ MODELO_SPEC = ('{"metrics": [...], "group_by": [...], "where": <str|null>, '
                '# metrics:[] = ABSTENHO')
 
 
+def _golden_selado() -> list[ItemGolden]:
+    """O golden SELADO ATUAL (test + dev), não o pool bruto `golden_antt.jsonl`.
+
+    Por quê: o pool ainda contém itens que as Fases 14 e 15 **removeram** — 10 rankings com
+    empate na zona de corte (gold não-determinístico) e 7 labels defeituosas achadas por
+    auditoria adversarial. Amostrar de lá faria o anotador humano gastar tempo em itens cuja
+    referência **já sabemos estar errada**, e o κ mediria defeito conhecido em vez de
+    discordância genuína. A 1ª folha (25/07) tinha 3 desses em 40.
+    """
+    itens, vistos = [], set()
+    for nome in ("golden_test_antt.jsonl", "golden_dev_antt.jsonl"):
+        for it in carregar(G / nome):
+            if it.id not in vistos:
+                vistos.add(it.id)
+                itens.append(it)
+    return itens
+
+
 def amostra(n: int) -> None:
-    itens = carregar(G / "golden_antt.jsonl")
+    itens = _golden_selado()
     porestrato: dict[str, list] = {}
     for it in itens:
         porestrato.setdefault(it.estrato, []).append(it)
@@ -81,7 +99,16 @@ def kappa() -> None:
     if len(preenchidos) < len(linhas):
         print(f"AVISO: {len(preenchidos)}/{len(linhas)} preenchidos; κ parcial.")
 
-    autor = {it.id: it for it in carregar(G / "golden_antt.jsonl")}
+    autor = {it.id: it for it in _golden_selado()}
+    # Guarda: um item fora do golden selado teria referência que as Fases 14/15 já descartaram.
+    # Falhar alto é melhor que publicar um κ silenciosamente contaminado.
+    orfaos = [d["id"] for d in preenchidos if d["id"] not in autor]
+    if orfaos:
+        raise SystemExit(
+            f"{len(orfaos)} item(ns) anotados NÃO estão no golden selado atual: {orfaos[:5]}\n"
+            "A folha é antiga (anterior às limpezas das Fases 14/15). Regenere com "
+            "`python anotar_humano.py amostra` e anote a nova — o κ contra referência "
+            "descartada mediria defeito conhecido, não discordância.")
     A, B = [], []
     for d in preenchidos:
         ref = autor[d["id"]]
