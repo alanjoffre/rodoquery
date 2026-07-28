@@ -69,11 +69,17 @@ def _traduzir(spec: Spec) -> Spec:
 
 
 def tier_a_antt_opaco(pergunta: str, modelo: str | None = None,
-                      temperatura: float | None = None) -> Predicao:
+                      temperatura: float | None = None, provedor=None) -> Predicao:
+    """`provedor=None` mantém o Ollama da Fase 14 — o −29,4 pp medido lá segue reproduzível.
+
+    Passar um provedor de API troca SÓ o SUT: catálogo opaco, descrições e a tradução de volta
+    ficam idênticos, que é o que mantém o delta atribuível à perturbação e não ao modelo.
+    """
     modelo = modelo or settings.modelo_sut
     temp = settings.temperatura if temperatura is None else temperatura
-    resp, tel = _chamar_ollama(PROMPT.format(catalogo=CATALOGO_OPACO, pergunta=pergunta),
-                               modelo, temp)
+    chamar = provedor or _chamar_ollama
+    resp, tel = chamar(PROMPT.format(catalogo=CATALOGO_OPACO, pergunta=pergunta), modelo, temp)
+    modelo = tel.get("modelo_efetivo", modelo)   # ver nota em `sistema_antt.tier_a_antt`
     if "ABSTENHO" in resp.upper():
         return Predicao.abster(modelo=modelo, raw=resp[:400], **tel)
     spec = _parse_spec(resp)
