@@ -37,9 +37,25 @@ from rodoquery.sistema_antt import tier_a_antt
 # Qual fundação este processo serve (RODOQUERY_FUNDACAO_ATIVA). O default é a sintética, para
 # não alterar nada do que já foi medido; o container sobe com "antt" (dado real).
 if settings.fundacao_ativa == "antt":
-    _TIER_A, _FUNDACAO, _BANCO = tier_a_antt, FUNDACAO_ANTT, settings.antt_duckdb
+    _SISTEMA, _FUNDACAO, _BANCO = tier_a_antt, FUNDACAO_ANTT, settings.antt_duckdb
 else:
-    _TIER_A, _FUNDACAO, _BANCO = tier_a, FUNDACAO_SINTETICA, settings.toll_duckdb
+    _SISTEMA, _FUNDACAO, _BANCO = tier_a, FUNDACAO_SINTETICA, settings.toll_duckdb
+
+# Qual SUT responde (RODOQUERY_PROVEDOR). Default "ollama" = o caminho de todas as fases; a API
+# entra por CONFIGURAÇÃO, nunca por acidente — um serviço que gasta dinheiro a cada request não
+# pode virar default sem alguém ter decidido isso. A construção acontece no IMPORT de propósito:
+# sem chave, o processo morre no START, não no primeiro request de um usuário.
+_PROVEDOR = None
+if settings.provedor == "anthropic":
+    from rodoquery.provedor import ProvedorAnthropic
+    _PROVEDOR = ProvedorAnthropic(modelo_padrao=settings.modelo_api)
+elif settings.provedor != "ollama":
+    raise ValueError(f"RODOQUERY_PROVEDOR invalido: {settings.provedor!r} "
+                     "(use 'ollama' ou 'anthropic')")
+
+
+def _TIER_A(pergunta: str):  # noqa: N802 — nome mantido: é assim desde a Fase 6
+    return _SISTEMA(pergunta, provedor=_PROVEDOR) if _PROVEDOR else _SISTEMA(pergunta)
 
 LIMITE_LINHAS = 1_000
 _MAX_AMOSTRAS = 2_000
@@ -53,7 +69,17 @@ _MAX_AMOSTRAS = 2_000
 #    6 s, o p95 das atendidas ficou em 11,4 s (violando o SLO).
 # 3) Em c=1 o p95 é 4,36 s, deixando ~5 s de fila dentro do SLO. Custa 11% de vazão (0,251 vs
 #    0,279) e compra previsibilidade. Para um serviço com SLO, previsibilidade vale mais.
-MAX_INFERENCIA_SIMULTANEA = 1
+# 4) **Esse raciocínio inteiro pressupõe UMA GPU local — e a premissa cai no caminho de API.**
+#    Lá o gargalo não é VRAM, é rate limit do provedor, e a inferência paraleliza de verdade.
+#    Manter 1 na API não seria conservador: seria aplicar uma medição a um sistema que não foi
+#    medido, e estrangular a vazão por um motivo que não existe mais.
+#    Por isso o default de API é maior — e vem declarado como **NÃO MEDIDO**. O SLO da Fase 6
+#    continua valendo só para GPU local, do mesmo jeito que não foi herdado no Docker (Fase 16)
+#    nem no Kubernetes (Fase 17b). Sobrescrevível por RODOQUERY_MAX_INFERENCIA_SIMULTANEA.
+_PADRAO_CONCORRENCIA = {"ollama": 1, "anthropic": 8}
+MAX_INFERENCIA_SIMULTANEA = (settings.max_inferencia_simultanea
+                             or _PADRAO_CONCORRENCIA[settings.provedor])
+CONCORRENCIA_MEDIDA = settings.provedor == "ollama"     # honestidade exposta em /saude
 ESPERA_MAX_S = 5.0          # 4,36 s (p95 da inferência) + 5 s de fila <= 10 s do SLO
 _vagas = threading.Semaphore(MAX_INFERENCIA_SIMULTANEA)
 
@@ -197,10 +223,18 @@ def _pct(vals: list[float], p: float) -> float | None:
 
 @app.get("/saude")
 def saude() -> dict:
-    return {"status": "ok", "modelo": settings.modelo_sut, "temperatura": settings.temperatura,
+    return {"status": "ok",
+            "provedor": settings.provedor,
+            # o modelo que de fato responde — não `settings.modelo_sut`, que no caminho de API
+            # seria o nome do modelo LOCAL. Foi exatamente esse descuido que fez as predições
+            # da Fase 18 nascerem rotuladas como qwen2.5-coder:7b.
+            "modelo": settings.modelo_api if _PROVEDOR else settings.modelo_sut,
+            "temperatura": settings.temperatura if not _PROVEDOR else None,
             "fundacao": settings.fundacao_ativa, "banco": _BANCO.name,
             "specs_em_cache": len(_cache_sql),
             "max_inferencia_simultanea": MAX_INFERENCIA_SIMULTANEA,
+            # se o limite acima veio de medição ou é só um default plausível
+            "concorrencia_medida": CONCORRENCIA_MEDIDA,
             "espera_max_s": ESPERA_MAX_S}
 
 
@@ -211,8 +245,18 @@ def metricas() -> dict:
         cont = dict(_contadores)
     tot = [a["total"] for a in amostras if a["total"] is not None]
     hits = cont["cache_hit"] + cont["cache_miss"]
+    # Custo é métrica de PRODUÇÃO quando o SUT é pago. Sem isto, a única forma de descobrir que
+    # o serviço está queimando crédito é a fatura no fim do mês — que é tarde demais.
+    custo = None
+    if _PROVEDOR is not None:
+        custo = {"usd_acumulado": round(_PROVEDOR.custo_usd, 4),
+                 "chamadas": _PROVEDOR.chamadas,
+                 "usd_por_chamada": round(_PROVEDOR.custo_usd / _PROVEDOR.chamadas, 6)
+                 if _PROVEDOR.chamadas else None,
+                 "tokens_cache_leitura": _PROVEDOR.tokens_cache_leitura}
     return {
         "contadores": cont,
+        "custo": custo,
         "taxa_abstencao": round(cont["abstencoes"] / cont["total"], 4) if cont["total"] else None,
         "taxa_erro": round(cont["erros"] / cont["total"], 4) if cont["total"] else None,
         "cache_hit_rate": round(cont["cache_hit"] / hits, 4) if hits else None,

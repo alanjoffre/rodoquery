@@ -54,6 +54,18 @@ class Settings(BaseSettings):
     # (RODOQUERY_OLLAMA_URL=http://ollama:11434/api/generate).
     ollama_url: str = "http://localhost:11434/api/generate"
 
+    # Qual SUT o SERVIÇO usa: "ollama" (local, default) ou "anthropic" (API, Fase 18).
+    # Default local de propósito: um serviço que gasta dinheiro por request não pode virar
+    # o default por acidente de configuração.
+    provedor: str = "ollama"
+    modelo_api: str = "claude-opus-5"
+
+    # Concorrência de inferência. `None` = deixa o serviço decidir pelo provedor, porque a
+    # premissa que fixou este número na Fase 6 ("1 GPU não paraleliza": c=4 derruba a vazão a
+    # 0,75× e o p95 a 43 s) **não vale para a API** — lá o gargalo é rate limit, não VRAM.
+    # Herdar 1 no caminho de API seria aplicar uma medição a um sistema que não foi medido.
+    max_inferencia_simultanea: int | None = None
+
     reports_dir: Path = REPO_ROOT / "reports"
 
 
