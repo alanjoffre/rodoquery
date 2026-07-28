@@ -123,6 +123,70 @@ def test_kappa_aborta_com_item_fora_do_golden_selado(tmp_path, monkeypatch):
         ah.kappa()
 
 
+def test_anotar_nao_mostra_o_estrato_do_autor(tmp_path, monkeypatch, capsys):
+    """O nome do estrato é metade da resposta — imprimi-lo infla o κ.
+
+    `abstencao` diz "não responda"; `ranking` diz "é um ranking"; `grao_temporal` diz "agrupe por
+    tempo". O anotador é cego à spec do autor, mas via o rótulo do autor logo acima da pergunta.
+    """
+    folha = tmp_path / "folha.jsonl"
+    folha.write_text(json.dumps({"id": "x1", "estrato": "abstencao", "pergunta_nl": "P?",
+                                 "spec_humano": None}, ensure_ascii=False) + "\n",
+                     encoding="utf-8")
+    monkeypatch.setattr(ah, "FOLHA", folha)
+    _com_entradas(monkeypatch, "", "4", "s")            # ENTER, ABSTENHO, confirma
+    ah.anotar()
+    assert "abstencao" not in capsys.readouterr().out
+
+
+def test_anotar_percorre_em_ordem_embaralhada(tmp_path, monkeypatch):
+    """A folha é escrita agrupada por estrato: a ORDEM sozinha entrega o rótulo.
+
+    Cinco abstenções seguidas e o 5º item se denuncia mesmo com o nome do estrato escondido.
+    """
+    folha = tmp_path / "folha.jsonl"
+    folha.write_text("".join(
+        json.dumps({"id": f"x{i}", "estrato": "abstencao", "pergunta_nl": f"P{i}?",
+                    "spec_humano": None}, ensure_ascii=False) + "\n" for i in range(20)),
+        encoding="utf-8")
+    monkeypatch.setattr(ah, "FOLHA", folha)
+    vistos = []
+    respostas = iter(["q"])
+    monkeypatch.setattr("builtins.input", lambda *a: next(respostas))
+    monkeypatch.setattr("builtins.print", lambda *a, **k: vistos.append(" ".join(map(str, a))))
+    ah.anotar()
+    primeira = next(v for v in vistos if "P" in v and "?" in v)
+    assert "P0?" not in primeira, "percorreu na ordem do arquivo — a ordem vaza o estrato"
+
+
+def test_kappa_registra_humano_respondendo_item_de_abstencao(tmp_path, monkeypatch):
+    """A discordância mais informativa não pode DERRUBAR o κ.
+
+    O humano responder um item que o autor marcou fora-de-escopo é exatamente o sinal que a
+    amostra existe para captar (5 dos 40 itens são do estrato `abstencao`). Herdar o estrato do
+    autor no lado B fazia o `ItemGolden` recusar essa spec ("abstencao ⟹ metrics vazio") e o
+    `kappa` estourava DEPOIS da hora de anotação — com o convite implícito de "consertar"
+    editando a label do humano, que é o único conserto que invalidaria a medição.
+    """
+    alvo = next(it for it in ah._golden_selado() if it.estrato == "abstencao")
+    spec = {"metrics": ["traffic_volume"], "group_by": [], "where": None,
+            "order_by": [], "limit": None, "ordenado": False}
+    folha = tmp_path / "folha.jsonl"
+    folha.write_text(json.dumps({"id": alvo.id, "estrato": alvo.estrato,
+                                 "pergunta_nl": alvo.pergunta_nl, "spec_humano": spec},
+                                ensure_ascii=False) + "\n", encoding="utf-8")
+    monkeypatch.setattr(ah, "FOLHA", folha)
+    monkeypatch.setattr(ah, "D", tmp_path)
+
+    ah.kappa()                                   # antes: ValueError e nenhum artefato
+
+    saida = json.loads((tmp_path / "kappa_humano.json").read_text(encoding="utf-8"))
+    assert saida["n_anotados_por_humano"] == 1
+    # e a discordância foi REGISTRADA, não engolida
+    assert saida["concordancia_spec"]["discordantes"] == [alvo.id]
+    assert saida["concordancia_spec"]["concordancia_metrica"] == 0.0
+
+
 def test_folha_atual_esta_toda_vazia_e_sem_orfaos():
     """Guarda viva: se isto falhar, ou alguém anotou, ou a folha ficou velha de novo."""
     if not ah.FOLHA.exists():

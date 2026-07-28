@@ -33,7 +33,13 @@ from pathlib import Path
 
 from rodoquery.estat import cohen_kappa
 from rodoquery.gold import Spec
-from rodoquery.golden import ItemGolden, carregar, concordancia_mapeamento
+from rodoquery.golden import (
+    ESTRATO_ABSTENCAO,
+    ESTRATOS_RESPONDIVEIS,
+    ItemGolden,
+    carregar,
+    concordancia_mapeamento,
+)
 from rodoquery.proveniencia import carimbar
 from rodoquery.sistema_antt import CATALOGO_ANTT
 
@@ -173,7 +179,12 @@ def anotar() -> None:
                          + "\n".join(json.dumps(d, ensure_ascii=False) for d in linhas) + "\n",
                          encoding="utf-8")
 
-    pendentes = [i for i, d in enumerate(linhas) if not d.get("spec_humano")]
+    # Ordem EMBARALHADA (semente fixa → retomável e auditável). A folha é escrita agrupada por
+    # estrato, e a ordem sozinha entrega o rótulo do autor: depois de abster 4 vezes seguidas, o
+    # 5º item se denuncia. Cegueira que o vizinho de linha desfaz não é cegueira.
+    ordem = list(range(len(linhas)))
+    random.Random(1337).shuffle(ordem)
+    pendentes = [i for i in ordem if not linhas[i].get("spec_humano")]
     if not pendentes:
         print("Todos os itens já estão anotados. Rode: python anotar_humano.py kappa")
         return
@@ -186,7 +197,10 @@ def anotar() -> None:
 
     for n, i in enumerate(pendentes, 1):
         d = linhas[i]
-        print(f"\n{'-' * 78}\n[{n}/{len(pendentes)}]  estrato: {d['estrato']}")
+        # O estrato NÃO é impresso: `abstencao` diz "não responda", `ranking` diz "é um ranking",
+        # `grao_temporal` diz "agrupe por tempo". É a classificação do autor — metade da resposta.
+        # Mostrá-la infla o κ, que passa a medir concordância com uma dica.
+        print(f"\n{'-' * 78}\n[{n}/{len(pendentes)}]")
         print(f"\n  PERGUNTA: {d['pergunta_nl']}\n")
         acao = input("  ENTER p/ anotar | c=catálogo | p=pular | q=sair: ").strip().lower()
         while acao == "c":
@@ -260,9 +274,17 @@ def kappa() -> None:
     for d in preenchidos:
         ref = autor[d["id"]]
         A.append(ref)
-        sh = d["spec_humano"]
-        B.append(ItemGolden(id=d["id"], pergunta_nl=ref.pergunta_nl, estrato=ref.estrato,
-                            spec=Spec(**sh), revisado_humano=True))
+        spec = Spec(**d["spec_humano"])
+        # O `estrato` do lado B é o julgamento DO HUMANO, não o rótulo do autor. O `ItemGolden`
+        # impõe "estrato=abstencao ⟹ spec vazia" — invariante correto para um GOLDEN, mas herdar
+        # `ref.estrato` aqui faria o κ ESTOURAR justamente quando o humano responde um item que o
+        # autor marcou como fora-de-escopo: a discordância mais informativa da amostra (5 dos 40
+        # itens são do estrato `abstencao`). Mesma convenção de `concordancia_opus5.py`;
+        # `concordancia_mapeamento` só lê `.id` e `.spec`.
+        estrato_b = ESTRATO_ABSTENCAO if not spec.metrics else (
+            ref.estrato if ref.estrato != ESTRATO_ABSTENCAO else ESTRATOS_RESPONDIVEIS[0])
+        B.append(ItemGolden(id=d["id"], pergunta_nl=ref.pergunta_nl, estrato=estrato_b,
+                            spec=spec, revisado_humano=True))
     rel = concordancia_mapeamento(A, B)
     dec_a = ["fora" if not a.spec.metrics else "resp" for a in A]
     dec_b = ["fora" if not b.spec.metrics else "resp" for b in B]
