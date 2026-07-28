@@ -72,7 +72,7 @@ O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com
 |---|---|---|
 | **0** · Fundação | harness reproduz; 0 objeto não-serving acessível | ✅ harness + canonicalizador em centavos + Test-Suite EX em 3 seeds |
 | **1** · Sandbox | **attack-block = 100%** (gate duro) | ✅ **39/39 bloqueados, 0 falso-positivo** |
-| **2** · Golden set | nº/estrato + IC · **κ do 2º anotador** | ⚠️ 76 itens, 8 estratos · **κ de máquina 1,0** (0,875 na sonda de ambiguidade) — **κ humano é backlog declarado** |
+| **2** · Golden set | nº/estrato + IC · **κ do 2º anotador** | ✅ 76 itens, 8 estratos · **κ de máquina 1,0** (0,875 na sonda de ambiguidade) · **κ humano 1,0** (n=40, IC95 [0,912; 1,0]) — dívida da Fase 2 [quitada](docs/FASE14_KAPPA_HUMANO.md) |
 | **3** · Baselines | Execution Accuracy + Wilson | ✅ SQL cru **26,3%** no DEV [11,8; 48,8] |
 | **4** · Sistema | Δ EX + **McNemar** | ✅ **97,6% × 42,9%, +54,8 pp, b=23/c=0, p≈0** |
 | **5** · MLOps | gate ativo comprovado | ✅ gate em 3 níveis **pega 6/6 regressões injetadas** · p50 4,5 s / p95 7,9 s · **R$ 0,12/1k** |
@@ -84,7 +84,7 @@ O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com
 | **11** · Dados reais | fundação ANTT verificada ponta a ponta | ✅ **1,5 M de linhas reais (CC-BY)** substituem 2 mil sintéticas · catálogo nasce com **3 métricas** · 2 armadilhas do dado real pegas antes de virarem número errado |
 | **12** · Tese sobre dado real | Δ EX + McNemar no TEST-ANTT selado | ✅ **86,9% × 28,8%, +58,1 pp, p≈0** · κ de máquina 0,977 · **2 bugs de harness pegos antes de virarem resultado** |
 | **13** · Calibração externa | EX num benchmark público de perguntas **humanas** | ✅ **43,4%** [39,1; 47,8] no BIRD Mini-Dev · prova que o baseline **não é espantalho** · 75% dos erros são silenciosos |
-| **14** · Quitação do backlog | resolver as 4 dívidas declaradas | ✅ gold de ranking corrigido (→**88,7%**) · roteador medido (Tier-B off por evidência) · robustez dedicada **−29,4 pp** · instrumento de κ humano pronto |
+| **14** · Quitação do backlog | resolver as 4 dívidas declaradas | ✅ gold de ranking corrigido (→**88,7%**) · roteador medido (Tier-B off por evidência) · robustez dedicada **−29,4 pp** · **κ humano 1,0** (n=40) — as 4 dívidas fechadas |
 | **15** · Seleção + qualidade de label | Δ EX em holdout de ablação fresco | ✅ normalizador corrigido **+33,4 pp** · descrições **+5,5 pp** · ⚠️ **SUT 9B colapsa (5,6%)** · auditoria adversarial acha **7 labels ruins em 60** |
 | **16** · Empacotamento | a stack roda fora da minha máquina | ✅ imagem **624 MB**, loop completo testado no container · **4 acoplamentos hardcoded** removidos · ⚠️ **container não cumpre o SLO nativo** (~2× mais lento) |
 | **17** · Kubernetes | o deploy sobe e o sistema responde | ✅ cluster efêmero: 8/8 recursos, **MetricFlow compila com rootfs read-only**, **NetworkPolicy bloqueia (testado por diferença)**, **inferência ponta a ponta com o modelo real** · **sem HPA — e o [porquê](k8s/README.md) é medido** · ⚠️ GPU no `kind` **é impossível** no Docker Desktop (testado) |

@@ -4,7 +4,7 @@ As quatro dívidas que o projeto vinha declarando, atacadas de uma vez. Três se
 medição e código; uma **não pode** ser resolvida por mim, e a resolução honesta é dizer por quê e
 entregar o instrumento.
 
-## #1 — κ humano do golden: **instrumento pronto, não fabricado**
+## #1 — κ humano do golden: **FECHADO** — κ = 1,0 (n=40)
 
 O κ humano é dívida desde a Fase 2. Eu **não posso produzi-lo**: gerar specs e chamá-las de humanas
 seria fabricar evidência — a fronteira que este projeto nunca cruza. O que eu posso fazer é reduzir
@@ -21,9 +21,26 @@ NENHUM item preenchido. O κ humano NÃO pode ser calculado por máquina —
 este script se recusa a inventar. Preencha 'spec_humano' à mão primeiro.
 ```
 
-**Status honesto:** `reports/fase14/kappa_humano.json` não existe. O item continua **aberto** até
-um humano preencher a folha — mas agora é uma tarefa de 1h, não de construção. Nada aqui é
-preenchido por máquina.
+**Fechado em 28/07/2026.** Um humano anotou os 40 itens — em **planilha**, não no terminal: o
+instrumento existia, mas só na forma que o anotador não usava, e essa distância era o que mantinha
+a dívida aberta. Contra o autor-modelo: **concordância de spec 1,0 (40/40), κ da métrica 1,0**,
+nenhum discordante, IC95 [0,912; 1,000].
+
+Escala do projeto: 0,977 (κ de máquina, qwen 7B) → 0,9921 (Opus 5 cego, n=171) → **1,0 (humano,
+n=40)**. O limiar pré-registrado era 0,8.
+
+Dois defeitos do instrumento foram achados **antes** de alguém anotar, e qualquer um dos dois teria
+custado o número: o κ **estourava** quando o humano responde um item que o autor marcou
+fora-de-escopo (5 dos 40 itens), e o `estrato` do autor era **impresso acima de cada pergunta** —
+com a folha ainda gravada em blocos de 5 por estrato, o que entregava o rótulo mesmo sem o nome.
+
+O 1,0 tem duas ressalvas declaradas: a amostra vem do golden **já limpo** pelas Fases 14/15 (os
+itens mais propensos a discordância saíram antes), e **1 dos 40 não foi cego**. Sem ele: 39/39.
+
+Detalhe do que o número cobre e do que **não** cobre (`order_by` não foi anotado de forma
+independente), mais o roteiro de anotação: **[FASE14_KAPPA_HUMANO.md](FASE14_KAPPA_HUMANO.md)**.
+
+Nada aqui foi preenchido por máquina — `kappa` continua se recusando a rodar sem input humano.
 
 ## #2 — Resíduo de `ranking`/`valor_categorico`: metade era **defeito de gold**
 
@@ -105,7 +122,7 @@ a acurácia.
 
 | # | Item | Status |
 |---|---|---|
-| 1 | κ humano | **instrumento pronto**; aberto até input humano (1h de trabalho, não de build) |
+| 1 | κ humano | **resolvido**: humano anotou 40/40 — spec 1,0, κ métrica 1,0, IC95 [0,912; 1,0] |
 | 2 | resíduo 72% | **defeito de gold resolvido** (→88,7%); resíduo caro caracterizado e aberto |
 | 3 | Tier-B no roteador | **resolvido**: medido, módulo pronto, off por escolha baseada em evidência |
 | 4 | robustez dedicada | **resolvido**: conjunto próprio selado; schema opaco −29,4 pp (p=0,006) |
