@@ -1,0 +1,2021 @@
+{
+  "fase": "19_fragilidade_lexical_com_sut_de_fronteira",
+  "pre_registro": "docs/FASE19_PREREGISTRO.md (commitado ANTES desta execucao)",
+  "previsao_registrada": {
+    "ex_orig": 0.97,
+    "ex_opaco": 0.88,
+    "delta_pp": -9.0,
+    "faixa_delta_pp": [
+      -18.0,
+      -2.0
+    ],
+    "afirmacao_falsificavel": "abs(delta_opus5) < 29.41"
+  },
+  "sut": "claude-opus-5",
+  "conjunto": "robustez_antt.jsonl — SELADO na Fase 14, nao regerado",
+  "perturbacao": "identificadores opacos (m1/c2...), MESMAS descricoes; gabarito inalterado",
+  "execution_accuracy": {
+    "original": {
+      "n": 34,
+      "acertos": 34,
+      "taxa": 1.0,
+      "wilson_ic95": [
+        0.8985,
+        1.0
+      ]
+    },
+    "schema_opaco": {
+      "n": 34,
+      "acertos": 34,
+      "taxa": 1.0,
+      "wilson_ic95": [
+        0.8985,
+        1.0
+      ]
+    },
+    "delta_pp": 0.0
+  },
+  "mcnemar_original_vs_opaco": {
+    "b_only": 0,
+    "c_only": 0,
+    "p_valor": 1.0,
+    "delta_acuracia": 0.0,
+    "n": 34
+  },
+  "referencia_qwen_fase14": {
+    "orig": 0.8529,
+    "opaco": 0.5588,
+    "delta_pp": -29.41
+  },
+  "veredito": {
+    "delta_encolheu_vs_qwen": true,
+    "dentro_da_faixa_prevista": false,
+    "lei_da_fase18_sustentada": true
+  },
+  "specs_normalizadas": {
+    "orig": 0,
+    "opaco": 0
+  },
+  "custo_usd": 0.1925,
+  "quebrou": [],
+  "consertou": [],
+  "resultados_por_item": {
+    "orig": [
+      {
+        "id": "metrica_derivada_rob_01",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '9'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.782,
+          "tokens_prompt": 1139,
+          "tokens_saida": 87,
+          "eval_s": 2.782,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 1095,
+          "tokens_cache_leitura": 0,
+          "custo_usd": 0.009239,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_derivada_rob_02",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__sentido') }} = 'Decrescente'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.98,
+          "tokens_prompt": 1142,
+          "tokens_saida": 88,
+          "eval_s": 2.98,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002982,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_derivada_rob_04",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.705,
+          "tokens_prompt": 1140,
+          "tokens_saida": 93,
+          "eval_s": 2.705,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003097,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_derivada_rob_05",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__praca\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '8'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.107,
+          "tokens_prompt": 1137,
+          "tokens_saida": 84,
+          "eval_s": 3.107,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002857,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_derivada_rob_06",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.729,
+          "tokens_prompt": 1129,
+          "tokens_saida": 61,
+          "eval_s": 2.729,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002243,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_01",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"metric_time__month\", \"plaza__concessionaria\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.617,
+          "tokens_prompt": 1144,
+          "tokens_saida": 69,
+          "eval_s": 2.617,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002518,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_02",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"metric_time__week\", \"plaza__concessionaria\"], \"where\": null, \"order_by\": [\"metric_time__week\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.697,
+          "tokens_prompt": 1134,
+          "tokens_saida": 78,
+          "eval_s": 2.697,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002693,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_03",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"metric_time__week\", \"plaza__sentido\"], \"where\": null, \"order_by\": [\"metric_time__week\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.682,
+          "tokens_prompt": 1141,
+          "tokens_saida": 75,
+          "eval_s": 2.682,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002652,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_04",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"metric_time__day\", \"plaza__categoria_eixo\"], \"where\": null, \"order_by\": [\"metric_time__day\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.843,
+          "tokens_prompt": 1133,
+          "tokens_saida": 80,
+          "eval_s": 2.843,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002737,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_05",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"metric_time__week\"], \"where\": null, \"order_by\": [\"metric_time__week\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.428,
+          "tokens_prompt": 1129,
+          "tokens_saida": 66,
+          "eval_s": 3.428,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002367,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_06",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"metric_time__month\", \"plaza__tipo_cobranca\"], \"where\": null, \"order_by\": [\"metric_time__month\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.823,
+          "tokens_prompt": 1139,
+          "tokens_saida": 80,
+          "eval_s": 2.823,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002767,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_01",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '8'\", \"order_by\": [\"-automation_rate\"], \"limit\": 3, \"ordenado\": true}",
+          "latencia_s": 2.949,
+          "tokens_prompt": 1147,
+          "tokens_saida": 96,
+          "eval_s": 2.949,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003207,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_02",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '4'\", \"order_by\": [\"-commercial_share\"], \"limit\": 3, \"ordenado\": true}",
+          "latencia_s": 2.832,
+          "tokens_prompt": 1151,
+          "tokens_saida": 96,
+          "eval_s": 2.832,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003227,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_03",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '7'\", \"order_by\": [\"-automation_rate\"], \"limit\": 3, \"ordenado\": true}",
+          "latencia_s": 3.224,
+          "tokens_prompt": 1147,
+          "tokens_saida": 96,
+          "eval_s": 3.224,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003207,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_04",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"plaza__praca\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '4'\", \"order_by\": [\"-commercial_share\"], \"limit\": 3, \"ordenado\": true}",
+          "latencia_s": 3.745,
+          "tokens_prompt": 1148,
+          "tokens_saida": 93,
+          "eval_s": 3.745,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003138,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_05",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__categoria_eixo\"], \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Manual'\", \"order_by\": [\"-traffic_volume\"], \"limit\": 3, \"ordenado\": true}",
+          "latencia_s": 2.788,
+          "tokens_prompt": 1150,
+          "tokens_saida": 104,
+          "eval_s": 2.788,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003423,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_06",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"plaza__praca\"], \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\", \"order_by\": [\"-commercial_share\"], \"limit\": 3, \"ordenado\": true}",
+          "latencia_s": 2.797,
+          "tokens_prompt": 1148,
+          "tokens_saida": 97,
+          "eval_s": 2.797,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003237,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_01",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__concessionaria\", \"plaza__tipo_cobranca\", \"metric_time__day\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.664,
+          "tokens_prompt": 1140,
+          "tokens_saida": 84,
+          "eval_s": 2.664,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002873,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_02",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__praca\", \"plaza__concessionaria\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.302,
+          "tokens_prompt": 1136,
+          "tokens_saida": 70,
+          "eval_s": 2.302,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002502,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_03",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"plaza__concessionaria\", \"plaza__tipo_cobranca\", \"metric_time__month\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.659,
+          "tokens_prompt": 1147,
+          "tokens_saida": 83,
+          "eval_s": 2.659,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002883,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_04",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"plaza__concessionaria\", \"plaza__sentido\", \"metric_time__month\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.53,
+          "tokens_prompt": 1144,
+          "tokens_saida": 78,
+          "eval_s": 2.53,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002743,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_05",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__praca\", \"plaza__tipo_de_veiculo\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.959,
+          "tokens_prompt": 1144,
+          "tokens_saida": 74,
+          "eval_s": 2.959,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002642,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_06",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__praca\", \"plaza__categoria_eixo\", \"metric_time__day\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.698,
+          "tokens_prompt": 1139,
+          "tokens_saida": 80,
+          "eval_s": 2.698,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002767,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_01",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"metric_time__day\", \"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.764,
+          "tokens_prompt": 1146,
+          "tokens_saida": 101,
+          "eval_s": 2.764,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003328,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_02",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"metric_time__day\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '9'\", \"order_by\": [\"metric_time__day\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.657,
+          "tokens_prompt": 1140,
+          "tokens_saida": 93,
+          "eval_s": 2.657,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003097,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_03",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"metric_time__day\"], \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\", \"order_by\": [\"metric_time__day\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.692,
+          "tokens_prompt": 1144,
+          "tokens_saida": 96,
+          "eval_s": 2.692,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003193,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_04",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"metric_time__day\", \"plaza__praca\"], \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Manual'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.616,
+          "tokens_prompt": 1153,
+          "tokens_saida": 96,
+          "eval_s": 2.616,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003237,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_05",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"metric_time__day\", \"plaza__praca\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.287,
+          "tokens_prompt": 1135,
+          "tokens_saida": 100,
+          "eval_s": 3.287,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003247,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_06",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"metric_time__day\"], \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\", \"order_by\": [\"metric_time__day\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.614,
+          "tokens_prompt": 1140,
+          "tokens_saida": 97,
+          "eval_s": 2.614,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003197,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "valor_categorico_rob_01",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__tipo_cobranca\"], \"where\": \"{{ Dimension('plaza__sentido') }} = 'Decrescente'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.866,
+          "tokens_prompt": 1139,
+          "tokens_saida": 92,
+          "eval_s": 2.866,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003067,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "valor_categorico_rob_02",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__sentido\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '3'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.567,
+          "tokens_prompt": 1138,
+          "tokens_saida": 85,
+          "eval_s": 2.567,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002887,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "valor_categorico_rob_04",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"plaza__praca\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '6'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.541,
+          "tokens_prompt": 1142,
+          "tokens_saida": 84,
+          "eval_s": 3.541,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002883,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "valor_categorico_rob_05",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '5'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.516,
+          "tokens_prompt": 1141,
+          "tokens_saida": 87,
+          "eval_s": 2.516,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002952,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "valor_categorico_rob_06",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"plaza__praca\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '7'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.666,
+          "tokens_prompt": 1147,
+          "tokens_saida": 84,
+          "eval_s": 2.666,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002907,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      }
+    ],
+    "opaco": [
+      {
+        "id": "metrica_derivada_rob_01",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c3') }} = '9'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.666,
+          "tokens_prompt": 1009,
+          "tokens_saida": 68,
+          "eval_s": 2.666,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 965,
+          "tokens_cache_leitura": 0,
+          "custo_usd": 0.007951,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_derivada_rob_02",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c1') }} = 'Decrescente'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.71,
+          "tokens_prompt": 1012,
+          "tokens_saida": 73,
+          "eval_s": 2.71,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002543,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_derivada_rob_04",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c4') }} = 'Moto'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.716,
+          "tokens_prompt": 1010,
+          "tokens_saida": 71,
+          "eval_s": 2.716,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002482,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_derivada_rob_05",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e1\"], \"where\": \"{{ Dimension('c3') }} = '8'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 3.063,
+          "tokens_prompt": 1007,
+          "tokens_saida": 68,
+          "eval_s": 3.063,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002393,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_derivada_rob_06",
+        "estrato": "metrica_derivada",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 3.289,
+          "tokens_prompt": 999,
+          "tokens_saida": 51,
+          "eval_s": 3.289,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.001927,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_01",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"t_m\", \"e2\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.571,
+          "tokens_prompt": 1014,
+          "tokens_saida": 56,
+          "eval_s": 2.571,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002128,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_02",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"t_s\", \"e2\"], \"where\": null, \"order_by\": [\"t_s\"], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 3.197,
+          "tokens_prompt": 1004,
+          "tokens_saida": 61,
+          "eval_s": 3.197,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002203,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_03",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"t_s\", \"c1\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.678,
+          "tokens_prompt": 1011,
+          "tokens_saida": 56,
+          "eval_s": 2.678,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002112,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_04",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"t_d\", \"c3\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 8.847,
+          "tokens_prompt": 1003,
+          "tokens_saida": 56,
+          "eval_s": 8.847,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002073,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_05",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"t_s\"], \"where\": null, \"order_by\": [\"t_s\"], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.723,
+          "tokens_prompt": 999,
+          "tokens_saida": 57,
+          "eval_s": 2.723,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002077,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "grao_temporal_rob_06",
+        "estrato": "grao_temporal",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"t_m\", \"c2\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.764,
+          "tokens_prompt": 1009,
+          "tokens_saida": 56,
+          "eval_s": 2.764,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002103,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_01",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c3') }} = '8'\", \"order_by\": [\"-m2\"], \"limit\": 3, \"ordenado\": true}",
+          "opaco": true,
+          "latencia_s": 3.277,
+          "tokens_prompt": 1017,
+          "tokens_saida": 74,
+          "eval_s": 3.277,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002593,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_02",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c3') }} = '4'\", \"order_by\": [\"-m3\"], \"limit\": 3, \"ordenado\": true}",
+          "opaco": true,
+          "latencia_s": 3.485,
+          "tokens_prompt": 1021,
+          "tokens_saida": 74,
+          "eval_s": 3.485,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002612,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_03",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c3') }} = '7'\", \"order_by\": [\"-m2\"], \"limit\": 3, \"ordenado\": true}",
+          "opaco": true,
+          "latencia_s": 2.886,
+          "tokens_prompt": 1017,
+          "tokens_saida": 74,
+          "eval_s": 2.886,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002593,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_04",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e1\"], \"where\": \"{{ Dimension('c3') }} = '4'\", \"order_by\": [\"-m3\"], \"limit\": 3, \"ordenado\": true}",
+          "opaco": true,
+          "latencia_s": 3.109,
+          "tokens_prompt": 1018,
+          "tokens_saida": 74,
+          "eval_s": 3.109,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002597,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_05",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"c3\"], \"where\": \"{{ Dimension('c2') }} = 'Manual'\", \"order_by\": [\"-m1\"], \"limit\": 3, \"ordenado\": true}",
+          "opaco": true,
+          "latencia_s": 2.853,
+          "tokens_prompt": 1020,
+          "tokens_saida": 77,
+          "eval_s": 2.853,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002682,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "ranking_rob_06",
+        "estrato": "ranking",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e1\"], \"where\": \"{{ Dimension('c2') }} = 'Automática'\", \"order_by\": [\"-m3\"], \"limit\": 3, \"ordenado\": true}",
+          "opaco": true,
+          "latencia_s": 2.96,
+          "tokens_prompt": 1018,
+          "tokens_saida": 77,
+          "eval_s": 2.96,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002672,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_01",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"e2\", \"c2\", \"t_d\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.776,
+          "tokens_prompt": 1010,
+          "tokens_saida": 60,
+          "eval_s": 2.776,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002207,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_02",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"e1\", \"e2\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.785,
+          "tokens_prompt": 1006,
+          "tokens_saida": 55,
+          "eval_s": 2.785,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002063,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_03",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e2\", \"c2\", \"t_m\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.873,
+          "tokens_prompt": 1017,
+          "tokens_saida": 60,
+          "eval_s": 2.873,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002243,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_04",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e2\", \"c1\", \"t_m\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 3.054,
+          "tokens_prompt": 1014,
+          "tokens_saida": 60,
+          "eval_s": 3.054,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002227,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_05",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e1\", \"c4\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.678,
+          "tokens_prompt": 1014,
+          "tokens_saida": 55,
+          "eval_s": 2.678,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002103,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "join_grao_rob_06",
+        "estrato": "join_grao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"e1\", \"c3\", \"t_d\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.823,
+          "tokens_prompt": 1009,
+          "tokens_saida": 60,
+          "eval_s": 2.823,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002203,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_01",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"t_d\", \"e2\"], \"where\": \"{{ Dimension('c4') }} = 'Moto'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.966,
+          "tokens_prompt": 1016,
+          "tokens_saida": 76,
+          "eval_s": 2.966,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002638,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_02",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"t_d\"], \"where\": \"{{ Dimension('c3') }} = '9'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 3.133,
+          "tokens_prompt": 1010,
+          "tokens_saida": 69,
+          "eval_s": 3.133,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002433,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_03",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"t_d\"], \"where\": \"{{ Dimension('c2') }} = 'Automática'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 3.189,
+          "tokens_prompt": 1014,
+          "tokens_saida": 72,
+          "eval_s": 3.189,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002527,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_04",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"t_d\", \"e1\"], \"where\": \"{{ Dimension('c2') }} = 'Manual'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.789,
+          "tokens_prompt": 1023,
+          "tokens_saida": 76,
+          "eval_s": 2.789,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002672,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_05",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"t_d\", \"e1\"], \"where\": \"{{ Dimension('c4') }} = 'Comercial'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.958,
+          "tokens_prompt": 1005,
+          "tokens_saida": 77,
+          "eval_s": 2.958,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002608,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "coalesce_nulo_rob_06",
+        "estrato": "coalesce_nulo",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"t_d\"], \"where\": \"{{ Dimension('c2') }} = 'Automática'\", \"order_by\": [\"t_d\"], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.824,
+          "tokens_prompt": 1010,
+          "tokens_saida": 77,
+          "eval_s": 2.824,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002632,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "valor_categorico_rob_01",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"c2\"], \"where\": \"{{ Dimension('c1') }} = 'Decrescente'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.795,
+          "tokens_prompt": 1009,
+          "tokens_saida": 73,
+          "eval_s": 2.795,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002527,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "valor_categorico_rob_02",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"c1\"], \"where\": \"{{ Dimension('c3') }} = '3'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 3.016,
+          "tokens_prompt": 1008,
+          "tokens_saida": 68,
+          "eval_s": 3.016,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002397,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "valor_categorico_rob_04",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e1\"], \"where\": \"{{ Dimension('c3') }} = '6'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.685,
+          "tokens_prompt": 1012,
+          "tokens_saida": 68,
+          "eval_s": 2.685,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002417,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "valor_categorico_rob_05",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c3') }} = '5'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.79,
+          "tokens_prompt": 1011,
+          "tokens_saida": 68,
+          "eval_s": 2.79,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002413,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "valor_categorico_rob_06",
+        "estrato": "valor_categorico",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e1\"], \"where\": \"{{ Dimension('c3') }} = '7'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "opaco": true,
+          "latencia_s": 2.886,
+          "tokens_prompt": 1017,
+          "tokens_saida": 68,
+          "eval_s": 2.886,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 965,
+          "custo_usd": 0.002442,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      }
+    ]
+  },
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "acaf471",
+    "git_dirty": true,
+    "git_diff_sha1": "11c58a1a7be7",
+    "timestamp_utc": "2026-07-28T18:45:16+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

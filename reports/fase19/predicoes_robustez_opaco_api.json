@@ -1,0 +1,1092 @@
+{
+  "metrica_derivada_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '9'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c3') }} = '9'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.666,
+      "tokens_prompt": 1009,
+      "tokens_saida": 68,
+      "eval_s": 2.666,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 965,
+      "tokens_cache_leitura": 0,
+      "custo_usd": 0.007951,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "metrica_derivada_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria"
+      ],
+      "where": "{{ Dimension('plaza__sentido') }} = 'Decrescente'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c1') }} = 'Decrescente'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.71,
+      "tokens_prompt": 1012,
+      "tokens_saida": 73,
+      "eval_s": 2.71,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002543,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "metrica_derivada_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria"
+      ],
+      "where": "{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c4') }} = 'Moto'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.716,
+      "tokens_prompt": 1010,
+      "tokens_saida": 71,
+      "eval_s": 2.716,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002482,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "metrica_derivada_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__praca"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '8'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e1\"], \"where\": \"{{ Dimension('c3') }} = '8'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 3.063,
+      "tokens_prompt": 1007,
+      "tokens_saida": 68,
+      "eval_s": 3.063,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002393,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "metrica_derivada_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 3.289,
+      "tokens_prompt": 999,
+      "tokens_saida": 51,
+      "eval_s": 3.289,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.001927,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "grao_temporal_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "plaza__concessionaria"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"t_m\", \"e2\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.571,
+      "tokens_prompt": 1014,
+      "tokens_saida": 56,
+      "eval_s": 2.571,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002128,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "grao_temporal_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "metric_time__week",
+        "plaza__concessionaria"
+      ],
+      "where": null,
+      "order_by": [
+        "metric_time__week"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"t_s\", \"e2\"], \"where\": null, \"order_by\": [\"t_s\"], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 3.197,
+      "tokens_prompt": 1004,
+      "tokens_saida": 61,
+      "eval_s": 3.197,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002203,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "grao_temporal_rob_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "metric_time__week",
+        "plaza__sentido"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"t_s\", \"c1\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.678,
+      "tokens_prompt": 1011,
+      "tokens_saida": 56,
+      "eval_s": 2.678,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002112,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "grao_temporal_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__categoria_eixo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"t_d\", \"c3\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 8.847,
+      "tokens_prompt": 1003,
+      "tokens_saida": 56,
+      "eval_s": 8.847,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002073,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "grao_temporal_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "metric_time__week"
+      ],
+      "where": null,
+      "order_by": [
+        "metric_time__week"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"t_s\"], \"where\": null, \"order_by\": [\"t_s\"], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.723,
+      "tokens_prompt": 999,
+      "tokens_saida": 57,
+      "eval_s": 2.723,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002077,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "grao_temporal_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "metric_time__month",
+        "plaza__tipo_cobranca"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"t_m\", \"c2\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.764,
+      "tokens_prompt": 1009,
+      "tokens_saida": 56,
+      "eval_s": 2.764,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002103,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "ranking_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '8'",
+      "order_by": [
+        "-automation_rate"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c3') }} = '8'\", \"order_by\": [\"-m2\"], \"limit\": 3, \"ordenado\": true}",
+      "opaco": true,
+      "latencia_s": 3.277,
+      "tokens_prompt": 1017,
+      "tokens_saida": 74,
+      "eval_s": 3.277,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002593,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "ranking_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__concessionaria"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '4'",
+      "order_by": [
+        "-commercial_share"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c3') }} = '4'\", \"order_by\": [\"-m3\"], \"limit\": 3, \"ordenado\": true}",
+      "opaco": true,
+      "latencia_s": 3.485,
+      "tokens_prompt": 1021,
+      "tokens_saida": 74,
+      "eval_s": 3.485,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002612,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "ranking_rob_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '7'",
+      "order_by": [
+        "-automation_rate"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c3') }} = '7'\", \"order_by\": [\"-m2\"], \"limit\": 3, \"ordenado\": true}",
+      "opaco": true,
+      "latencia_s": 2.886,
+      "tokens_prompt": 1017,
+      "tokens_saida": 74,
+      "eval_s": 2.886,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002593,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "ranking_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__praca"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '4'",
+      "order_by": [
+        "-commercial_share"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e1\"], \"where\": \"{{ Dimension('c3') }} = '4'\", \"order_by\": [\"-m3\"], \"limit\": 3, \"ordenado\": true}",
+      "opaco": true,
+      "latencia_s": 3.109,
+      "tokens_prompt": 1018,
+      "tokens_saida": 74,
+      "eval_s": 3.109,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002597,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "ranking_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__categoria_eixo"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Manual'",
+      "order_by": [
+        "-traffic_volume"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"c3\"], \"where\": \"{{ Dimension('c2') }} = 'Manual'\", \"order_by\": [\"-m1\"], \"limit\": 3, \"ordenado\": true}",
+      "opaco": true,
+      "latencia_s": 2.853,
+      "tokens_prompt": 1020,
+      "tokens_saida": 77,
+      "eval_s": 2.853,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002682,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "ranking_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__praca"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'",
+      "order_by": [
+        "-commercial_share"
+      ],
+      "limit": 3,
+      "ordenado": true
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e1\"], \"where\": \"{{ Dimension('c2') }} = 'Automática'\", \"order_by\": [\"-m3\"], \"limit\": 3, \"ordenado\": true}",
+      "opaco": true,
+      "latencia_s": 2.96,
+      "tokens_prompt": 1018,
+      "tokens_saida": 77,
+      "eval_s": 2.96,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002672,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "join_grao_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__tipo_cobranca",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"e2\", \"c2\", \"t_d\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.776,
+      "tokens_prompt": 1010,
+      "tokens_saida": 60,
+      "eval_s": 2.776,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002207,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "join_grao_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__concessionaria"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"e1\", \"e2\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.785,
+      "tokens_prompt": 1006,
+      "tokens_saida": 55,
+      "eval_s": 2.785,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002063,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "join_grao_rob_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__tipo_cobranca",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e2\", \"c2\", \"t_m\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.873,
+      "tokens_prompt": 1017,
+      "tokens_saida": 60,
+      "eval_s": 2.873,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002243,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "join_grao_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__concessionaria",
+        "plaza__sentido",
+        "metric_time__month"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e2\", \"c1\", \"t_m\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 3.054,
+      "tokens_prompt": 1014,
+      "tokens_saida": 60,
+      "eval_s": 3.054,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002227,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "join_grao_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__tipo_de_veiculo"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e1\", \"c4\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.678,
+      "tokens_prompt": 1014,
+      "tokens_saida": 55,
+      "eval_s": 2.678,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002103,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "join_grao_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__praca",
+        "plaza__categoria_eixo",
+        "metric_time__day"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"e1\", \"c3\", \"t_d\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.823,
+      "tokens_prompt": 1009,
+      "tokens_saida": 60,
+      "eval_s": 2.823,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002203,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "coalesce_nulo_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__concessionaria"
+      ],
+      "where": "{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"t_d\", \"e2\"], \"where\": \"{{ Dimension('c4') }} = 'Moto'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.966,
+      "tokens_prompt": 1016,
+      "tokens_saida": 76,
+      "eval_s": 2.966,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002638,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "coalesce_nulo_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '9'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"t_d\"], \"where\": \"{{ Dimension('c3') }} = '9'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 3.133,
+      "tokens_prompt": 1010,
+      "tokens_saida": 69,
+      "eval_s": 3.133,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002433,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "coalesce_nulo_rob_03": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"t_d\"], \"where\": \"{{ Dimension('c2') }} = 'Automática'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 3.189,
+      "tokens_prompt": 1014,
+      "tokens_saida": 72,
+      "eval_s": 3.189,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002527,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "coalesce_nulo_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__praca"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Manual'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"t_d\", \"e1\"], \"where\": \"{{ Dimension('c2') }} = 'Manual'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.789,
+      "tokens_prompt": 1023,
+      "tokens_saida": 76,
+      "eval_s": 2.789,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002672,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "coalesce_nulo_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "metric_time__day",
+        "plaza__praca"
+      ],
+      "where": "{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"t_d\", \"e1\"], \"where\": \"{{ Dimension('c4') }} = 'Comercial'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.958,
+      "tokens_prompt": 1005,
+      "tokens_saida": 77,
+      "eval_s": 2.958,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002608,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "coalesce_nulo_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "metric_time__day"
+      ],
+      "where": "{{ Dimension('plaza__tipo_cobranca') }} = 'Automática'",
+      "order_by": [
+        "metric_time__day"
+      ],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"t_d\"], \"where\": \"{{ Dimension('c2') }} = 'Automática'\", \"order_by\": [\"t_d\"], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.824,
+      "tokens_prompt": 1010,
+      "tokens_saida": 77,
+      "eval_s": 2.824,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002632,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "valor_categorico_rob_01": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__tipo_cobranca"
+      ],
+      "where": "{{ Dimension('plaza__sentido') }} = 'Decrescente'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m1\"], \"group_by\": [\"c2\"], \"where\": \"{{ Dimension('c1') }} = 'Decrescente'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.795,
+      "tokens_prompt": 1009,
+      "tokens_saida": 73,
+      "eval_s": 2.795,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002527,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "valor_categorico_rob_02": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__sentido"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '3'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"c1\"], \"where\": \"{{ Dimension('c3') }} = '3'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 3.016,
+      "tokens_prompt": 1008,
+      "tokens_saida": 68,
+      "eval_s": 3.016,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002397,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "valor_categorico_rob_04": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__praca"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '6'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e1\"], \"where\": \"{{ Dimension('c3') }} = '6'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.685,
+      "tokens_prompt": 1012,
+      "tokens_saida": 68,
+      "eval_s": 2.685,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002417,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "valor_categorico_rob_05": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "automation_rate"
+      ],
+      "group_by": [
+        "plaza__concessionaria"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '5'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m2\"], \"group_by\": [\"e2\"], \"where\": \"{{ Dimension('c3') }} = '5'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.79,
+      "tokens_prompt": 1011,
+      "tokens_saida": 68,
+      "eval_s": 2.79,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002413,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  },
+  "valor_categorico_rob_06": {
+    "tipo": "spec",
+    "sql": null,
+    "spec": {
+      "metrics": [
+        "commercial_share"
+      ],
+      "group_by": [
+        "plaza__praca"
+      ],
+      "where": "{{ Dimension('plaza__categoria_eixo') }} = '7'",
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "meta": {
+      "modelo": "claude-opus-5",
+      "raw": "{\"metrics\": [\"m3\"], \"group_by\": [\"e1\"], \"where\": \"{{ Dimension('c3') }} = '7'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+      "opaco": true,
+      "latencia_s": 2.886,
+      "tokens_prompt": 1017,
+      "tokens_saida": 68,
+      "eval_s": 2.886,
+      "carga_modelo_s": 0.0,
+      "tokens_cache_escrita": 0,
+      "tokens_cache_leitura": 965,
+      "custo_usd": 0.002442,
+      "stop_reason": "end_turn",
+      "modelo_efetivo": "claude-opus-5"
+    }
+  }
+}
