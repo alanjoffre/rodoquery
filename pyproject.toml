@@ -18,6 +18,9 @@ serve = ["fastapi>=0.115", "uvicorn>=0.30"]
 # SUT via API (fase 18). EXTRA de propósito: o caminho default é o Ollama local, e o import do
 # SDK é tardio — quem só reproduz as Fases 0–16 não precisa instalar nada disto.
 api = ["anthropic>=0.60"]
+# Planilha de anotação humana (fase 14). EXTRA: o import é tardio, dentro das funções de
+# export/import — quem não vai anotar em XLSX não precisa instalar.
+xlsx = ["openpyxl>=3.1"]
 dev = ["ruff>=0.6", "pytest>=8.0"]
 
 [build-system]

@@ -17,7 +17,9 @@ docs dizem "instrumento pronto, aguardando anotador humano". Nada é preenchido 
 
 Uso:
   python anotar_humano.py amostra [N]     # gera a folha de anotação (default 40 itens)
-  python anotar_humano.py anotar          # anotador GUIADO (recomendado — só digitar números)
+  python anotar_humano.py anotar          # anotador GUIADO no terminal (só digitar números)
+  python anotar_humano.py xlsx [destino]  # exporta PLANILHA para anotar fora do terminal
+  python anotar_humano.py importar <xlsx> # lê a planilha preenchida de volta para a folha
   python anotar_humano.py kappa           # calcula κ depois que o humano preencheu a folha
 
 **O que o `anotar` faz e o que ele NÃO faz.** Ele monta o JSON a partir de escolhas numeradas,
@@ -26,6 +28,7 @@ default seria um viés silencioso empurrando o anotador. Ele **não** vê nem mo
 autor-modelo: a cegueira é o que faz o κ medir concordância independente em vez de quanto o
 humano concorda com algo que acabou de ler.
 """
+import hashlib
 import json
 import random
 import sys
@@ -301,12 +304,250 @@ def kappa() -> None:
     print(f"-> {D / 'kappa_humano.json'}")
 
 
+# ---------------------------------------------------------------------------------------------
+# Planilha (XLSX) — o mesmo instrumento, para quem prefere anotar fora do terminal
+#
+# Vale as MESMAS garantias do anotador guiado, e cada uma custou código aqui:
+#   - sem `estrato` (nem em coluna, nem no `id`: os ids são prefixados pelo estrato, então a
+#     planilha carrega um `codigo` opaco e o mapa codigo->id nunca aparece para o anotador);
+#   - ordem embaralhada com a MESMA semente do `anotar` (a folha é gravada agrupada por estrato);
+#   - vocabulário fechado por validação de dados — o Excel só deixa escolher token que existe;
+#   - nenhuma célula pré-preenchida: default seria viés silencioso.
+# O `importar` revalida tudo contra as mesmas listas, porque validação de Excel é conselho, não
+# garantia: dá para colar por cima dela.
+# ---------------------------------------------------------------------------------------------
+XLSX = G / "anotacao_humana_antt.xlsx"
+COLUNAS = ["codigo", "#", "PERGUNTA", "METRICA_1", "METRICA_2", "AGRUPAR_1", "AGRUPAR_2",
+           "AGRUPAR_3", "FILTRO_DIM", "FILTRO_VALOR", "RANKING", "ORDENAR_POR", "DECRESCENTE",
+           "LIMITE"]
+ABSTENHO = "ABSTENHO"
+VAZIO = "(vazio)"
+
+
+def _codigo(item_id: str) -> str:
+    """Chave opaca da linha. NÃO pode ser o `id`: eles são prefixados pelo estrato
+    (`abstencao_antt_23`), e uma coluna com isso entregaria a resposta na planilha."""
+    return hashlib.sha1(item_id.encode()).hexdigest()[:8]
+
+
+def _ordem_embaralhada(linhas: list[dict]) -> list[int]:
+    ordem = list(range(len(linhas)))
+    random.Random(1337).shuffle(ordem)
+    return ordem
+
+
+def _linhas_da_folha() -> list[dict]:
+    if not FOLHA.exists():
+        raise SystemExit("folha ausente — rode `python anotar_humano.py amostra` primeiro")
+    return [json.loads(x) for x in FOLHA.read_text(encoding="utf-8").splitlines()
+            if x.strip() and not x.startswith("#")]
+
+
+def exportar_xlsx(destino: Path | None = None) -> None:
+    from openpyxl import Workbook
+    from openpyxl.styles import Alignment, Font, PatternFill
+    from openpyxl.utils import get_column_letter
+    from openpyxl.worksheet.datavalidation import DataValidation
+
+    destino = Path(destino) if destino else XLSX
+    linhas = _linhas_da_folha()
+    wb = Workbook()
+
+    # --- listas de vocabulário (aba oculta): validação por referência de intervalo não tem o
+    # limite de 255 caracteres da lista inline, e deixa o vocabulário auditável numa aba só.
+    lst = wb.create_sheet("Listas")
+    vocab = {
+        "metrica1": [ABSTENHO, *METRICAS],
+        "metrica2": [VAZIO, *METRICAS],
+        "agrupar": [VAZIO, *GROUP_BY],
+        "filtro_dim": [VAZIO, *sorted(VALORES)],
+        "filtro_valor": [VAZIO, *[v for d in sorted(VALORES) for v in VALORES[d]]],
+        "sim_nao": [VAZIO, "sim", "nao"],
+        "ordenar": [VAZIO, *METRICAS, *GROUP_BY],
+    }
+    ref = {}
+    for col, (nome, vals) in enumerate(vocab.items(), 1):
+        letra = get_column_letter(col)
+        lst.cell(row=1, column=col, value=nome)
+        for i, v in enumerate(vals, 2):
+            lst.cell(row=i, column=col, value=v)
+        ref[nome] = f"Listas!${letra}$2:${letra}${len(vals) + 1}"
+    lst.sheet_state = "hidden"
+
+    # --- aba de anotação
+    ws = wb.active
+    ws.title = "Anotacao"
+    cab = PatternFill("solid", fgColor="1F3864")
+    for c, nome in enumerate(COLUNAS, 1):
+        cel = ws.cell(row=1, column=c, value=nome)
+        cel.font = Font(bold=True, color="FFFFFF")
+        cel.fill = cab
+    for n, i in enumerate(_ordem_embaralhada(linhas), 1):
+        d = linhas[i]
+        ws.cell(row=n + 1, column=1, value=_codigo(d["id"]))
+        ws.cell(row=n + 1, column=2, value=n)
+        cel = ws.cell(row=n + 1, column=3, value=d["pergunta_nl"])
+        cel.alignment = Alignment(wrap_text=True, vertical="center")
+        # NENHUMA outra célula é escrita: a planilha sai em branco de propósito.
+
+    fim = len(linhas) + 1
+    for coluna, nome in (("D", "metrica1"), ("E", "metrica2"), ("F", "agrupar"), ("G", "agrupar"),
+                         ("H", "agrupar"), ("I", "filtro_dim"), ("J", "filtro_valor"),
+                         ("K", "sim_nao"), ("L", "ordenar"), ("M", "sim_nao")):
+        dv = DataValidation(type="list", formula1=ref[nome], allow_blank=True, showDropDown=False)
+        ws.add_data_validation(dv)
+        dv.add(f"{coluna}2:{coluna}{fim}")
+
+    for letra, larg in (("A", 10), ("B", 5), ("C", 62), ("D", 17), ("E", 17), ("F", 22),
+                        ("G", 22), ("H", 22), ("I", 22), ("J", 15), ("K", 10), ("L", 22),
+                        ("M", 13), ("N", 8)):
+        ws.column_dimensions[letra].width = larg
+    ws.freeze_panes = "D2"
+
+    # --- catálogo e instruções, para não precisar sair da planilha
+    cat = wb.create_sheet("Catalogo")
+    cat.column_dimensions["A"].width = 100
+    for i, ln in enumerate(CATALOGO_ANTT.splitlines(), 1):
+        cat.cell(row=i, column=1, value=ln)
+
+    ins = wb.create_sheet("Instrucoes")
+    ins.column_dimensions["A"].width = 100
+    texto = [
+        "COMO PREENCHER",
+        "",
+        "Uma linha por pergunta. Todas as colunas coloridas tem lista suspensa — clique e escolha.",
+        "",
+        "METRICA_1   qual metrica do catalogo responde. Se NENHUMA responde, escolha ABSTENHO",
+        "            e deixe o resto da linha em branco: o item acabou.",
+        "METRICA_2   so se a pergunta pedir DUAS metricas. Normalmente fica vazio.",
+        "AGRUPAR_1/2/3   'por X' = agrupar. So o que a pergunta pede EXPLICITAMENTE.",
+        "FILTRO_DIM + FILTRO_VALOR   'dos X' = filtrar por um valor especifico.",
+        "            Filtrar NAO e agrupar: 'veiculos comerciais' vai em FILTRO, nao em AGRUPAR.",
+        "RANKING     'sim' so se a pergunta pedir ordem explicita: 'o maior', 'top 5', 'que mais'.",
+        "            'por mes' e 'por praca' NAO sao ranking.",
+        "ORDENAR_POR / DECRESCENTE / LIMITE   so preencha se RANKING = sim.",
+        "",
+        "REGRA PRATICA:  'por X' agrupa  |  'dos X' filtra.",
+        "",
+        "NAO MEXA na coluna 'codigo' — e ela que devolve cada resposta ao item certo.",
+        "Nao acrescente nem apague linhas.",
+        "",
+        "EM DUVIDA, anote sua melhor leitura e siga. Discordar do outro anotador e o SINAL que",
+        "estamos medindo — nao e erro seu, e nao deve ser evitado. Nao tente adivinhar o que o",
+        "outro respondeu: uma concordancia obtida assim nao vale nada.",
+        "",
+        "NAO ABRA golden/golden_test_antt.jsonl — e onde estao as respostas do outro anotador.",
+        "",
+        "Pode parar no meio e continuar depois. O que ficar em branco continua pendente.",
+        "",
+        "AO TERMINAR, salve e rode:",
+        "    .venv/bin/python anotar_humano.py importar <caminho-da-planilha>",
+        "    .venv/bin/python anotar_humano.py kappa",
+    ]
+    for i, ln in enumerate(texto, 1):
+        cel = ins.cell(row=i, column=1, value=ln)
+        if i == 1 or ln.startswith(("REGRA", "NAO ABRA", "AO TERMINAR")):
+            cel.font = Font(bold=True)
+
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    wb.save(destino)
+    print(f"planilha gerada: {len(linhas)} itens (ordem embaralhada, sem estrato) -> {destino}")
+    print("Preencha e depois rode: python anotar_humano.py importar <caminho>")
+
+
+def importar_xlsx(origem: Path) -> None:
+    """Lê a planilha preenchida de volta para a folha. Revalida TUDO: a validação do Excel é
+    conselho (dá para colar por cima), e um token invalido viraria ruído dentro do κ."""
+    from openpyxl import load_workbook
+
+    origem = Path(origem)
+    if not origem.exists():
+        raise SystemExit(f"planilha não encontrada: {origem}")
+    linhas = _linhas_da_folha()
+    por_codigo = {_codigo(d["id"]): i for i, d in enumerate(linhas)}
+
+    ws = load_workbook(origem, data_only=True)["Anotacao"]
+    cabecalho = [c.value for c in ws[1]]
+    if cabecalho[:len(COLUNAS)] != COLUNAS:
+        raise SystemExit(f"cabeçalho inesperado — a planilha foi alterada?\n  {cabecalho}")
+
+    def txt(v: object) -> str:
+        return str(v).strip() if v is not None and str(v).strip() not in ("", VAZIO) else ""
+
+    novos, erros = 0, []
+    for n, linha in enumerate(ws.iter_rows(min_row=2, values_only=True), 2):
+        reg = dict(zip(COLUNAS, linha[:len(COLUNAS)], strict=False))
+        cod = txt(reg["codigo"])
+        if not cod:
+            continue
+        if cod not in por_codigo:
+            erros.append(f"linha {n}: codigo '{cod}' não corresponde a nenhum item da folha")
+            continue
+        m1 = txt(reg["METRICA_1"])
+        if not m1:
+            continue                      # em branco = ainda pendente, não é erro
+        if m1 == ABSTENHO:
+            spec = {"metrics": [], "group_by": [], "where": None,
+                    "order_by": [], "limit": None, "ordenado": False}
+        else:
+            met = [m for m in (m1, txt(reg["METRICA_2"])) if m]
+            gb = [g for g in (txt(reg["AGRUPAR_1"]), txt(reg["AGRUPAR_2"]),
+                              txt(reg["AGRUPAR_3"])) if g]
+            if any(m not in METRICAS for m in met):
+                erros.append(f"linha {n}: métrica fora do catálogo: {met}")
+                continue
+            if any(g not in GROUP_BY for g in gb):
+                erros.append(f"linha {n}: token de agrupamento fora do catálogo: {gb}")
+                continue
+            dim, val = txt(reg["FILTRO_DIM"]), txt(reg["FILTRO_VALOR"])
+            if bool(dim) != bool(val):
+                erros.append(f"linha {n}: FILTRO_DIM e FILTRO_VALOR têm de vir juntos")
+                continue
+            if dim and val not in VALORES.get(dim, []):
+                erros.append(f"linha {n}: '{val}' não é valor válido de {dim}")
+                continue
+            where = f"{{{{ Dimension('{dim}') }}}} = '{val}'" if dim else None
+            ordenado = txt(reg["RANKING"]).lower() == "sim"
+            order_by, limite = [], None
+            if ordenado:
+                campo = txt(reg["ORDENAR_POR"])
+                if campo not in [*met, *gb]:
+                    erros.append(f"linha {n}: ORDENAR_POR '{campo}' não está entre as métricas "
+                                 "nem os agrupamentos desta linha")
+                    continue
+                desc = txt(reg["DECRESCENTE"]).lower() != "nao"
+                order_by = [f"-{campo}" if desc else campo]
+                bruto = txt(reg["LIMITE"])
+                limite = int(float(bruto)) if bruto.replace(".", "").isdigit() else None
+            spec = {"metrics": met, "group_by": gb, "where": where,
+                    "order_by": order_by, "limit": limite, "ordenado": ordenado}
+        linhas[por_codigo[cod]]["spec_humano"] = spec
+        novos += 1
+
+    if erros:
+        raise SystemExit("planilha REJEITADA — nada foi gravado:\n  " + "\n  ".join(erros))
+
+    cab = [x for x in FOLHA.read_text(encoding="utf-8").splitlines() if x.startswith("#")]
+    FOLHA.write_text("\n".join(cab) + "\n"
+                     + "\n".join(json.dumps(d, ensure_ascii=False) for d in linhas) + "\n",
+                     encoding="utf-8")
+    print(f"importados {novos} itens; folha agora com "
+          f"{sum(1 for d in linhas if d.get('spec_humano'))}/{len(linhas)} anotados.")
+    print("Agora: python anotar_humano.py kappa")
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "amostra"
     if cmd == "amostra":
         amostra(int(sys.argv[2]) if len(sys.argv) > 2 else 40)
     elif cmd == "anotar":
         anotar()
+    elif cmd == "xlsx":
+        exportar_xlsx(Path(sys.argv[2]) if len(sys.argv) > 2 else None)
+    elif cmd == "importar":
+        if len(sys.argv) < 3:
+            raise SystemExit("uso: python anotar_humano.py importar <caminho-da-planilha>")
+        importar_xlsx(Path(sys.argv[2]))
     elif cmd == "kappa":
         kappa()
     else:

@@ -13,12 +13,19 @@ O que estes testes protegem:
 """
 from __future__ import annotations
 
+import importlib.util
 import json
 
 import pytest
 
 import anotar_humano as ah
+from rodoquery.gold import Spec
 from rodoquery.sistema_antt import CATALOGO_ANTT
+
+# openpyxl e' extra (`pip install -e .[xlsx]`): so o caminho da planilha depende dele, e pular
+# esses testes nao pode arrastar os do anotador guiado junto.
+precisa_xlsx = pytest.mark.skipif(importlib.util.find_spec("openpyxl") is None,
+                                  reason="openpyxl não instalado (extra `xlsx`)")
 
 
 # ------------------------------------------------------------------ drift contra o catalogo
@@ -187,17 +194,178 @@ def test_kappa_registra_humano_respondendo_item_de_abstencao(tmp_path, monkeypat
     assert saida["concordancia_spec"]["concordancia_metrica"] == 0.0
 
 
-def test_folha_atual_esta_toda_vazia_e_sem_orfaos():
-    """Guarda viva: se isto falhar, ou alguém anotou, ou a folha ficou velha de novo."""
+def test_folha_atual_esta_anotada_e_sem_orfaos():
+    """A guarda viva, virada.
+
+    Ate 28/07/2026 este teste exigia a folha VAZIA e o proprio autor escreveu no lugar: "se um
+    humano anotar de verdade, este assert cai — e ai e para trocar por um teste do kappa". Um
+    humano anotou os 40. O invariante agora e o oposto: a folha esta completa, sem orfaos, e as
+    specs sao carregaveis como `Spec` — se alguem a esvaziar ou corromper, isto cai.
+    """
     if not ah.FOLHA.exists():
         pytest.skip("folha ainda não gerada neste checkout")
     linhas = [json.loads(x) for x in ah.FOLHA.read_text(encoding="utf-8").splitlines()
               if x.strip() and not x.startswith("#")]
     selado = {it.id for it in ah._golden_selado()}
     assert [d["id"] for d in linhas if d["id"] not in selado] == []
-    # se um humano anotar de verdade, este assert cai — e aí é para trocar por um teste do κ
-    assert all(d["spec_humano"] is None for d in linhas), \
-        "há anotação humana na folha: rode `python anotar_humano.py kappa`"
+    faltando = [d["id"] for d in linhas if not d.get("spec_humano")]
+    assert not faltando, f"{len(faltando)} itens perderam a anotação humana: {faltando[:5]}"
+    for d in linhas:
+        Spec(**d["spec_humano"])          # spec malformada contaminaria o κ silenciosamente
+
+
+def test_kappa_humano_publicado_bate_com_a_folha():
+    """O artefato publicado nao pode divergir da folha que o gerou.
+
+    `reports/fase14/kappa_humano.json` e a evidencia que o README cita. Se a folha mudar e o
+    artefato nao for regerado, o projeto passa a publicar um numero que nao corresponde mais ao
+    dado — o tipo de deriva que so aparece quando alguem confere a mao.
+    """
+    art = ah.D / "kappa_humano.json"
+    if not art.exists():
+        pytest.skip("κ humano ainda não calculado neste checkout")
+    saida = json.loads(art.read_text(encoding="utf-8"))
+    linhas = [json.loads(x) for x in ah.FOLHA.read_text(encoding="utf-8").splitlines()
+              if x.strip() and not x.startswith("#")]
+    anotados = sum(1 for d in linhas if d.get("spec_humano"))
+    assert saida["n_anotados_por_humano"] == anotados
+    assert saida["concordancia_spec"]["n_pares"] == anotados
+
+
+# --------------------------------------------------------------------------- planilha (XLSX)
+def _folha_de_teste(tmp_path, monkeypatch, n=6):
+    """Folha temporaria com ids REAIS do golden selado (o import mapeia por hash do id)."""
+    itens = ah._golden_selado()[:n]
+    folha = tmp_path / "folha.jsonl"
+    folha.write_text("".join(
+        json.dumps({"id": it.id, "estrato": it.estrato, "pergunta_nl": it.pergunta_nl,
+                    "spec_humano": None}, ensure_ascii=False) + "\n" for it in itens),
+        encoding="utf-8")
+    monkeypatch.setattr(ah, "FOLHA", folha)
+    return itens
+
+
+@precisa_xlsx
+def test_xlsx_nao_vaza_o_estrato_em_lugar_nenhum(tmp_path, monkeypatch):
+    """Nem em coluna, nem no `id`.
+
+    Os ids do golden sao PREFIXADOS pelo estrato (`abstencao_antt_23`), entao uma coluna de id
+    entregaria a resposta tao bem quanto um rotulo. Por isso a planilha carrega um hash opaco.
+    """
+    from openpyxl import load_workbook
+    itens = _folha_de_teste(tmp_path, monkeypatch)
+    xl = tmp_path / "p.xlsx"
+    ah.exportar_xlsx(xl)
+    wb = load_workbook(xl)
+
+    # (a) nenhum id do golden, em aba nenhuma — o id sozinho ja' e' o estrato
+    todo = " ".join(str(c.value) for aba in wb.sheetnames for lin in wb[aba].iter_rows()
+                    for c in lin if c.value is not None)
+    for it in itens:
+        assert it.id not in todo, f"a planilha vaza o id '{it.id}' (prefixado pelo estrato)"
+
+    # (b) nenhum NOME de estrato na aba de anotação. A checagem e' aqui e nao no arquivo todo
+    # de proposito: a aba `Instrucoes` diz "'por mes' e 'por praca' NAO sao ranking", que e'
+    # REGRA DA TAREFA — vale para todos os itens e nao identifica nenhum. Vazamento e' o rotulo
+    # colado a UM item; regra geral e' o que o anotador tem direito de saber.
+    ws = wb["Anotacao"]
+    celulas = " ".join(str(c.value) for lin in ws.iter_rows() for c in lin if c.value is not None)
+    for estrato in ("abstencao", "ranking", "grao_temporal", "valor_categorico", "join_grao",
+                    "coalesce_nulo", "metrica_derivada", "controle_trivial"):
+        assert estrato not in celulas, f"a aba de anotação vaza o estrato '{estrato}'"
+
+
+@precisa_xlsx
+def test_xlsx_sai_sem_nenhuma_resposta_preenchida(tmp_path, monkeypatch):
+    """Uma celula pre-preenchida seria viés silencioso — a mesma regra dos menus do terminal."""
+    from openpyxl import load_workbook
+    itens = _folha_de_teste(tmp_path, monkeypatch)
+    xl = tmp_path / "p.xlsx"
+    ah.exportar_xlsx(xl)
+    ws = load_workbook(xl)["Anotacao"]
+    assert ws.max_row == len(itens) + 1
+    for r in range(2, ws.max_row + 1):
+        for c in range(4, len(ah.COLUNAS) + 1):        # da METRICA_1 em diante
+            assert ws.cell(row=r, column=c).value is None
+
+
+@precisa_xlsx
+def test_xlsx_ida_e_volta_preserva_a_spec(tmp_path, monkeypatch):
+    from openpyxl import load_workbook
+    _folha_de_teste(tmp_path, monkeypatch)
+    xl = tmp_path / "p.xlsx"
+    ah.exportar_xlsx(xl)
+    wb = load_workbook(xl)
+    ws = wb["Anotacao"]
+    ws.cell(row=2, column=4, value="ABSTENHO")
+    ws.cell(row=3, column=4, value="automation_rate")
+    ws.cell(row=3, column=6, value="plaza__praca")
+    ws.cell(row=3, column=9, value="plaza__categoria_eixo")
+    ws.cell(row=3, column=10, value="4")
+    ws.cell(row=3, column=11, value="sim")
+    ws.cell(row=3, column=12, value="automation_rate")
+    ws.cell(row=3, column=13, value="sim")
+    ws.cell(row=3, column=14, value=3)
+    wb.save(xl)
+    ah.importar_xlsx(xl)
+
+    feitas = [d["spec_humano"] for d in ah._linhas_da_folha() if d.get("spec_humano")]
+    assert {"metrics": [], "group_by": [], "where": None,
+            "order_by": [], "limit": None, "ordenado": False} in feitas
+    assert {"metrics": ["automation_rate"], "group_by": ["plaza__praca"],
+            "where": "{{ Dimension('plaza__categoria_eixo') }} = '4'",
+            "order_by": ["-automation_rate"], "limit": 3, "ordenado": True} in feitas
+    assert len(feitas) == 2                       # o resto continua pendente, nao virou spec vazia
+
+
+@precisa_xlsx
+def test_importar_rejeita_token_fora_do_catalogo_sem_gravar_nada(tmp_path, monkeypatch):
+    """A validação do Excel e' conselho, nao garantia: da' para colar por cima dela. Um token
+    invalido que passasse viraria ruido DENTRO do κ, indistinguivel de discordancia real."""
+    from openpyxl import load_workbook
+    _folha_de_teste(tmp_path, monkeypatch)
+    xl = tmp_path / "p.xlsx"
+    ah.exportar_xlsx(xl)
+    wb = load_workbook(xl)
+    ws = wb["Anotacao"]
+    ws.cell(row=2, column=4, value="traffic_volume")
+    ws.cell(row=2, column=6, value="plaza__municipio")        # nao existe no catalogo
+    ws.cell(row=3, column=4, value="traffic_volume")          # linha valida, na mesma planilha
+    wb.save(xl)
+    with pytest.raises(SystemExit, match="fora do catálogo"):
+        ah.importar_xlsx(xl)
+    # rejeicao e' TOTAL: nem a linha valida entra, para nao deixar import pela metade
+    assert all(d["spec_humano"] is None for d in ah._linhas_da_folha())
+
+
+@precisa_xlsx
+def test_importar_rejeita_filtro_pela_metade(tmp_path, monkeypatch):
+    from openpyxl import load_workbook
+    _folha_de_teste(tmp_path, monkeypatch)
+    xl = tmp_path / "p.xlsx"
+    ah.exportar_xlsx(xl)
+    wb = load_workbook(xl)
+    ws = wb["Anotacao"]
+    ws.cell(row=2, column=4, value="traffic_volume")
+    ws.cell(row=2, column=9, value="plaza__sentido")          # dimensao sem valor
+    wb.save(xl)
+    with pytest.raises(SystemExit, match="têm de vir juntos"):
+        ah.importar_xlsx(xl)
+
+
+@precisa_xlsx
+def test_xlsx_percorre_na_mesma_ordem_embaralhada_do_terminal(tmp_path, monkeypatch):
+    """Os dois caminhos tem de ver a mesma sequencia: se divergirem, dois anotadores 'cegos' em
+    meios diferentes teriam exposicoes diferentes, e o κ deixaria de ser comparavel."""
+    from openpyxl import load_workbook
+    _folha_de_teste(tmp_path, monkeypatch, n=12)
+    xl = tmp_path / "p.xlsx"
+    ah.exportar_xlsx(xl)
+    ws = load_workbook(xl)["Anotacao"]
+    na_planilha = [ws.cell(row=r, column=3).value for r in range(2, ws.max_row + 1)]
+    linhas = ah._linhas_da_folha()
+    esperado = [linhas[i]["pergunta_nl"] for i in ah._ordem_embaralhada(linhas)]
+    assert na_planilha == esperado
 
 
 def test_amostra_e_estratificada_e_deterministica(tmp_path, monkeypatch):
