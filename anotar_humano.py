@@ -12,8 +12,14 @@ uma, e este script:
   3. ao final, calcula o κ humano × autor-modelo com o MESMO `concordancia_mapeamento` usado no
      κ de máquina — então o número é comparável, não um cálculo ad-hoc.
 
-Status honesto enquanto ninguém rodou: `reports/fase14/kappa_humano.json` NÃO existe, e o README/
-docs dizem "instrumento pronto, aguardando anotador humano". Nada é preenchido por máquina aqui.
+**Status (28/07/2026): RODADO.** Um anotador humano preencheu os 40 itens e
+`reports/fase14/kappa_humano.json` existe — **κ = 1,0 (n=40, IC95 [0,912; 1,0])**, fechando a
+dívida aberta desde a Fase 2. Ver `docs/FASE14_KAPPA_HUMANO.md`, inclusive as duas ressalvas
+declaradas lá (1 item não foi cego; concordância perfeita com n=40 mede reprodutibilidade das
+convenções, não perfeição do golden inteiro).
+
+Nada aqui é preenchido por máquina — nem antes nem depois. O `kappa` continua abortando sem input
+humano, e é isso que faz o número acima valer alguma coisa.
 
 Uso:
   python anotar_humano.py amostra [N]     # gera a folha de anotação (default 40 itens)

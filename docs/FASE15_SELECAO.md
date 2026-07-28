@@ -98,10 +98,13 @@ própria fronteira não é auditável.
 **É:** evidência forte de qualidade de rótulo (88,3% correto, com mecanismo em cada defeito) e um
 processo que **encontrou erros reais** que três rodadas de κ de máquina não encontraram.
 
-**Não é κ humano.** Continua sendo máquina avaliando máquina. O instrumento de anotação humana
-(Fase 14) segue pronto e não preenchido; `reports/fase14/kappa_humano.json` não existe de propósito.
-O item permanece aberto — mas o golden agora passou por um crivo adversarial, o que é mais do que
-tinha antes.
+**Não é κ humano.** Esta auditoria é máquina avaliando máquina — o golden passou por um crivo
+adversarial, que é mais do que tinha antes, mas não substitui um segundo anotador humano.
+
+> **Atualização (28/07/2026):** o κ humano foi **medido** e a dívida da Fase 2 fechou —
+> **κ = 1,0 (n=40, IC95 [0,912; 1,0])**, com um item declaradamente não-cego. Ver
+> [Fase 14 · κ humano](FASE14_KAPPA_HUMANO.md). O que esta seção descreve segue valendo como
+> o estado **anterior** a ele.
 
 ## Limitações honestas
 

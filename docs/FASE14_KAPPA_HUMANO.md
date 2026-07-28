@@ -216,6 +216,19 @@ pergunta tudo.
 **Abstenções coincidem item a item.** Os 5 itens em que o humano absteve são os mesmos 5 que o autor
 marcou fora-de-escopo — não apenas a mesma contagem.
 
+### A evidência de que foi anotação, e não cópia
+
+A objeção óbvia a um κ = 1,0 é que o anotador pode ter visto a resposta. A cegueira do processo é
+argumento; isto aqui é medição.
+
+As 40 specs humanas são **canonicamente idênticas** às do autor — mas apenas **26 são idênticas
+byte a byte**. As outras 14 escrevem a mesma coisa de outro jeito (campos em ordem diferente,
+`order_by` ausente onde o autor traz um token de tempo, `limit: null` explícito × omitido).
+
+Cópia produz 40/40 byte a byte. Concordância genuína produz o que apareceu: **mesmo significado,
+superfície diferente** — que é também o motivo de o κ ser calculado sobre a forma canônica. É o
+único sinal disponível que separa as duas hipóteses sem depender da palavra de ninguém.
+
 ### Duas ressalvas honestas
 
 **A amostra vem do golden SELADO, já limpo.** As Fases 14 e 15 removeram 10 rankings com empate na

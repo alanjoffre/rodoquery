@@ -138,12 +138,16 @@ Nenhum destes é surpresa: todos foram declarados na fase em que apareceram. A [
 
 **Ainda aberto (honestamente):**
 - **Golden mais difícil** — *criado pela [Fase 18](docs/FASE18_PROVEDOR.md)*: com um SUT de fronteira o Tier-A faz **100%**, e o conjunto deixa de discriminar. O teto virou o do **instrumento**, não o do sistema. Medir o teto real exige um golden novo com o mesmo protocolo anti-vazamento das Fases 8/9 (specs inéditas, holdout selado antes de rodar). Enquanto isso, o +55,5 pp deve ser lido como **piso, não estimativa pontual**.
-- **κ humano do golden RodoQuery** — o único item que **não é fabricável por máquina**, por princípio. A [Fase 14](docs/FASE14_BACKLOG.md) entrega o instrumento (`anotar_humano.py`, que se recusa a calcular sem input humano) e a [Fase 15](docs/FASE15_SELECAO.md) submete as labels a uma **auditoria adversarial** (88,3% corretas, 7 defeitos reais achados e removidos). O instrumento tem um **anotador guiado** (`python anotar_humano.py anotar`) que monta a spec por escolhas numeradas, é retomável e **coleta sem nunca preencher**. Falta ~1h de um anotador humano; `reports/fase14/kappa_humano.json` não existe, de propósito.
-
-  **Terceira camada de máquina (o mais forte que dá para produzir sem humano):** o Opus 5, cego, concorda com o autor-modelo em **170 de 171 specs canônicas** (κ da métrica **0,992**; `group_by` e `where` em **100%**) — `concordancia_opus5.py`, custo **US$ 0,00** porque reusa as predições congeladas da Fase 18. Isso também explica o 100% de EX: não são caminhos diferentes chegando ao mesmo número, são **as mesmas specs**. O único discordante é *"Qual o volume acumulado no ano?"*, ambíguo de verdade (soma corrente × total simples) e **declarado sem ser corrigido** — o TEST está selado e a inspeção veio depois de medir. Continua sendo máquina auditando máquina.
+- **Concorrência do serving na API não foi medida** — o semáforo 1 veio de *"1 GPU não paraleliza"* (Fase 6), premissa que **não vale** para a API. O default lá é 8 e `/saude` expõe `concorrencia_medida: false` para não deixar ninguém confundir default com medição.
 - **Promover o catálogo v2 ao serving** — a Fase 15 mediu **+5,5 pp** em holdout fresco, mas promovê-lo troca o SUT de todas as fases anteriores. Decisão a tomar explicitamente, não de passagem.
 - **Fragilidade lexical do schema** — **medida** (−29,4 pp sob identificadores opacos, Fase 14); mitigar exige descrições mais ricas no semantic layer. Melhoria conhecida, não incógnita.
-- **Concorrência do serving na API não foi medida** — o semáforo 1 veio de *"1 GPU não paraleliza"* (Fase 6), premissa que **não vale** para a API. O default lá é 8 e `/saude` expõe `concorrencia_medida: false` para não deixar ninguém confundir default com medição.
+
+**Quitado — a dívida mais antiga do projeto (aberta desde a Fase 2):**
+- ~~**κ humano do golden**~~ — **κ = 1,0 (n=40, IC95 [0,912; 1,0])**, anotador humano cego, 5 itens por estrato. Ver [Fase 14 · κ humano](docs/FASE14_KAPPA_HUMANO.md). Duas ressalvas que o próprio doc declara: **1 dos 40 itens não foi cego** (a planilha expunha `estrato: abstencao` ao lado da pergunta) — excluindo-o, κ = 1,0 com IC [0,910; 1,0], e a conclusão não muda; e concordância perfeita com n=40 **não** prova que o golden inteiro é perfeito, prova que as convenções são reproduzíveis por outro anotador.
+
+  **Evidência de que a anotação foi independente, e não cópia:** as 40 specs humanas são **canonicamente idênticas** às do autor, mas só **26 são idênticas byte a byte**. As outras 14 escrevem a mesma coisa de forma diferente — que é o que uma anotação genuína produz e uma cópia não.
+
+  **Escala completa das três camadas:** κ de máquina **0,977** (qwen 7B × autor, Fase 12) → Opus 5 cego **0,992** (170/171, custo US$ 0,00) → **humano 1,0** (n=40). O projeto deixou de ser máquina auditando máquina.
 
 **Quitado na Fase 18:**
 - ~~O resíduo de seleção é falha sistêmica da interface?~~ — **não era.** Um SUT de fronteira faz **100%** nos mesmos estratos que travavam em 72–80% no 7B. O resíduo era **capacidade do SUT**, e agora está caracterizado como tal em vez de suspeito.

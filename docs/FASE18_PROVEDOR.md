@@ -231,4 +231,6 @@ partições disjuntas do fato.
 - ✅ Proveniência dos artefatos corrigida e verificada (`claude-opus-5` nos 342 registros)
 - ⚠️ **Benchmark saturado**: 100% é teto de instrumento. Golden mais difícil = trabalho aberto
 - ⚠️ Coleta **não** é bit-reproduzível (a API rejeita `temperature`/`seed`); predições congeladas
-- ⏸️ κ humano do golden continua **aberto** (Fase 14) — nada aqui o resolve
+- ✅ κ humano **fechado depois desta fase** (28/07): **1,0 (n=40)** — ver
+  [Fase 14 · κ humano](FASE14_KAPPA_HUMANO.md). Nada nesta fase o resolveu; o que ela contribuiu
+  foi a camada intermediária, o **Opus 5 cego a 0,992** (`concordancia_opus5.py`, custo US$ 0,00)
