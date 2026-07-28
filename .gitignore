@@ -24,5 +24,13 @@ models/
 golden/anotador_*.jsonl
 _*.log
 
+# Planilha de anotação humana (fase 14): a EM BRANCO é regenerável (`anotar_humano.py xlsx`) e a
+# PREENCHIDA já entrou no repo como dado, via `golden/anotacao_humana_antt.jsonl` (o `importar`
+# revalida cada célula antes de gravar). Versionar o .xlsx duplicaria a mesma anotação em formato
+# binário — diff ilegível, e duas cópias que podem divergir sem ninguém notar.
+# Só estas: um `*.xlsx` geral esconderia planilha futura que alguém queira versionar de propósito.
+docs/ANOTACAO_KAPPA_HUMANO.xlsx
+golden/anotacao_humana_antt.xlsx
+
 # contexto de build do Docker (materializado por docker/preparar_contexto.sh)
 docker/_contexto/
