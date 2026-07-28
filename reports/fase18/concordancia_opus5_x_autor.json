@@ -1,0 +1,73 @@
+{
+  "tipo": "concordancia_MAQUINA_opus5_x_autor_modelo",
+  "discordantes_detalhe": [
+    {
+      "id": "abstencao_antt_10",
+      "pergunta_nl": "Qual o volume acumulado no ano?",
+      "estrato_autor": "abstencao",
+      "spec_autor": {
+        "metrics": [],
+        "group_by": [],
+        "where": null
+      },
+      "spec_opus5": {
+        "metrics": [
+          "traffic_volume"
+        ],
+        "group_by": [],
+        "where": null
+      }
+    }
+  ],
+  "NAO_AJUSTADO_APOS_VER_O_RESULTADO": "O TEST esta selado e os discordantes foram inspecionados DEPOIS de medir. Corrigir label agora seria fitar (disciplina da Fase 8). Defeitos candidatos ficam DECLARADOS aqui para a proxima revisao de golden, e os numeros das Fases 12/15/18 seguem intactos.",
+  "NAO_E_KAPPA_HUMANO": "maquina auditando maquina. O kappa humano segue ABERTO; reports/fase14/kappa_humano.json nao existe de proposito.",
+  "anotador_b": "claude-opus-5 (cego: viu apenas pergunta + catalogo)",
+  "custo_usd": 0.0,
+  "fonte": "predicoes congeladas da Fase 18 (nenhuma chamada nova de API)",
+  "n_pares": 171,
+  "decisao_respondivel_x_fora_kappa": 0.9762,
+  "concordancia_spec": {
+    "n_pares": 171,
+    "concordancia_spec_canonica": 0.9942,
+    "cohen_kappa_metrica": 0.9921,
+    "concordancia_metrica": 0.9942,
+    "concordancia_group_by": 1.0,
+    "concordancia_where": 1.0,
+    "limiar_pre_registrado": {
+      "cohen_kappa_metrica": 0.8,
+      "concordancia_spec_canonica": 0.8
+    },
+    "discordantes": [
+      "abstencao_antt_10"
+    ]
+  },
+  "discordantes_por_estrato": {
+    "abstencao": 1
+  },
+  "itens_por_estrato": {
+    "abstencao": 25,
+    "coalesce_nulo": 25,
+    "controle_trivial": 8,
+    "grao_temporal": 25,
+    "join_grao": 26,
+    "metrica_derivada": 25,
+    "ranking": 12,
+    "valor_categorico": 25
+  },
+  "referencia_kappa_maquina_qwen_fase12": 0.977,
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "4c6160d",
+    "git_dirty": true,
+    "git_diff_sha1": "ccd00df7461a",
+    "timestamp_utc": "2026-07-28T13:46:31+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}
