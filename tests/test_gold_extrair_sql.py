@@ -5,11 +5,12 @@ MetricFlow emite CTE (o que acontece ao pedir uma métrica SIMPLES junto de uma 
 `SELECT` está DENTRO do `WITH x AS (` — o corte descartava o cabeçalho e devolvia SQL com um `)`
 órfão, que o DuckDB rejeita.
 
-**Por que isso importa mais do que parece.** A compilação levantava exceção, e os geradores de
-golden pulam item que não compila (`except: continue`). Resultado: a classe inteira de specs
-simples+razão foi **descartada em silêncio** de todos os conjuntos. Nenhum gold ficou errado — a
-falha era barulhenta —, mas o benchmark nasceu com um ponto cego, e ele é parte de por que os
-instrumentos saturaram nas Fases 18/19.
+**O impacto real, medido depois de eu ter exagerado.** Afirmei que os geradores tinham descartado
+a classe em silêncio e que isso explicava parte da saturação das Fases 18/19. A auditoria refutou:
+os 4 descartes do golden ANTT foram **todos** por gold degenerado, e em 291 itens autorados spec
+mista **nunca foi escrita**. O bug era **latente** — zero itens perdidos, zero medições afetadas.
+Estes testes existem porque ele deixaria de ser latente no minuto em que alguém autorasse essa
+classe, que é exatamente o próximo passo do projeto.
 
 Nenhum destes testes chama o `mf`: são sobre o PARSER, com saídas sintéticas.
 """

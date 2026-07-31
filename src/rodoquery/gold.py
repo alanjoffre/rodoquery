@@ -52,11 +52,17 @@ def _extrair_sql(saida: str) -> str:
     `SELECT` está DENTRO do CTE. Cortar no `SELECT` descartava o cabeçalho e devolvia SQL com um
     `)` órfão, que o DuckDB rejeita com `Parser Error: syntax error at or near ")"`.
 
-    A consequência é o que importa: como a compilação levantava exceção, os geradores de golden
-    (`except: continue`) **descartavam em silêncio a classe inteira** de specs simples+razão.
-    Nenhum gold ficou errado — a falha era barulhenta e o item era pulado —, mas o benchmark
-    nasceu com um ponto cego, e parte da saturação das Fases 18/19 vem de nunca ter sido
-    possível testar essas perguntas.
+    **O bug era LATENTE, não danoso — e isso foi verificado, não suposto.** Ao achá-lo eu afirmei
+    que os geradores (`except: continue`) tinham descartado a classe em silêncio e que isso
+    explicava parte da saturação das Fases 18/19. **Errado nas duas partes.** A auditoria mostrou:
+    dos 220 itens autorados no golden ANTT, 4 foram descartados — **todos** por gold degenerado,
+    nenhum por falha de compilação; e em **291 itens autorados** nos três conjuntos, spec mista
+    (simples + razão) **nunca foi escrita**. Zero itens perdidos, zero medições afetadas.
+
+    A lacuna real era **autoral**, não mecânica: ninguém jamais formulou uma pergunta que peça uma
+    contagem e uma razão juntas ("quantos veículos passaram e qual a taxa de automação, por
+    sentido?"). O bug era uma mina — inofensiva enquanto ninguém pisasse, e prestes a explodir no
+    momento em que eu fosse autorar exatamente essa classe para o golden mais difícil.
     """
     if "🔎 SQL" in saida:
         saida = saida.split("🔎 SQL", 1)[1]
