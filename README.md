@@ -6,7 +6,7 @@
 
 Data Engineering × AI Engineering · avaliação com rigor · R$0 · **dados públicos reais (ANTT, CC-BY)**.
 
-**Fases 0–19.** Todos os números abaixo são medidos e reproduzíveis em `reports/`. Roda com `docker compose up` ou `kubectl apply -k k8s`.
+**Fases 0–20.** Todos os números abaixo são medidos e reproduzíveis em `reports/`. Roda com `docker compose up` ou `kubectl apply -k k8s`.
 
 </div>
 
@@ -90,6 +90,7 @@ O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com
 | **17** · Kubernetes | o deploy sobe e o sistema responde | ✅ cluster efêmero: 8/8 recursos, **MetricFlow compila com rootfs read-only**, **NetworkPolicy bloqueia (testado por diferença)**, **inferência ponta a ponta com o modelo real** · **sem HPA — e o [porquê](k8s/README.md) é medido** · ⚠️ GPU no `kind` **é impossível** no Docker Desktop (testado) |
 | **18** · SUT de fronteira | Δ EX com o SUT trocado, mesmo conjunto | ✅ **100% × 44,5%, +55,5 pp** (US$ 0,96 de API) · **o gap encolhe: a vantagem é inversa à força do SUT** · normalizadores das F9/F10 valem **zero** aqui · ⚠️ **benchmark saturou** · 2 bugs de proveniência meus, pegos e corrigidos |
 | **19** · Fragilidade lexical | Δ EX sob schema opaco, **previsão pré-registrada** | ✅ **0,00 pp** (100%/100%, US$ 0,19) contra −29,4 pp do 7B — a fragilidade era **do SUT, não da interface** · ❌ **minha previsão pontual (−9 pp) refutada** · 3ª confirmação da lei da F18 · ⚠️ **3ª saturação: todos os instrumentos acabaram** |
+| **20** · Conjunto duro | o benchmark discrimina se atacar a superfície nunca coberta? | ⚠️ respondíveis **saturam de novo (35/35)** mesmo em filtro composto e métrica mista → **o teto é do CATÁLOGO, não do benchmark** · ✅ mas a abstenção near-miss cai de 96% para **50%**, com modo de falha **novo e uniforme**: pedem proporção, ele responde contagem · a guarda nova **G5 pegou um erro meu** |
 
 ## 🔬 Previsões que a medição **refutou**
 
@@ -142,7 +143,9 @@ Nenhum destes é surpresa: todos foram declarados na fase em que apareceram. A [
 - **Golden mais difícil** — *criado pela [Fase 18](docs/FASE18_PROVEDOR.md)*: com um SUT de fronteira o Tier-A faz **100%**, e o conjunto deixa de discriminar. O teto virou o do **instrumento**, não o do sistema. Medir o teto real exige um golden novo com o mesmo protocolo anti-vazamento das Fases 8/9 (specs inéditas, holdout selado antes de rodar). Enquanto isso, o +55,5 pp deve ser lido como **piso, não estimativa pontual**.
 - **Concorrência do serving na API não foi medida** — o semáforo 1 veio de *"1 GPU não paraleliza"* (Fase 6), premissa que **não vale** para a API. O default lá é 8 e `/saude` expõe `concorrencia_medida: false` para não deixar ninguém confundir default com medição.
 - **Promover o catálogo v2 ao serving** — a Fase 15 mediu **+5,5 pp** em holdout fresco, mas promovê-lo troca o SUT de todas as fases anteriores. Decisão a tomar explicitamente, não de passagem.
-- **Golden mais difícil — agora o gargalo do eixo inteiro.** Os **três** instrumentos saturaram contra um SUT de fronteira: TEST-ANTT 100%, conjunto de robustez 100%/100%, κ humano 1,0. Sem um conjunto mais duro, nenhuma medição nova sobre modelo forte produz informação. (Aparece duas vezes nesta lista de propósito: é o mesmo item, com peso diferente depois da [Fase 19](docs/FASE19_FRAGILIDADE.md).)
+- **Catálogo mais rico (não "golden mais difícil")** — a [Fase 20](docs/FASE20_DURO.md) reenunciou este item. Construí o conjunto duro contra as formas nunca cobertas (filtro composto, métrica mista, composição) e ele **saturou igual: 35/35**. Com 3 métricas e 9 dimensões não há perguntas mais difíceis a fazer — o teto é da **superfície semântica**, não do benchmark. Medir o teto real do Tier-A exige uma fundação mais rica (mais métricas, hierarquias, janelas), não mais itens.
+- **Rebaixamento de tipo na abstenção** — modo de falha **novo**, achado na Fase 20: pedem *proporção*, o Tier-A responde `traffic_volume` (contagem). Uniforme nos 6 casos que falharam; derruba a abstenção de 96% para **50%** no conjunto near-miss. Silencioso: compila, executa e devolve número plausível.
+- **Cobertura do catálogo** — os mesmos 6 itens expõem que parte do que eu contava como "abstenção correta" é o catálogo ser pequeno: `manual_share`, share por eixo e afins **poderiam** ser métricas governadas. Decisão de modelagem a tomar, não virtude a celebrar.
 
 **Quitado na Fase 19:**
 - ~~**Fragilidade lexical do schema**~~ — a Fase 14 mediu **−29,4 pp** sob identificadores opacos e tratou como defeito da interface, a mitigar com descrições mais ricas. **Diagnóstico errado.** Com `claude-opus-5` no mesmo conjunto selado: **0,00 pp** (100% nos dois braços, US$ 0,19). A fragilidade era **capacidade do SUT**, não estrutura do vocabulário fechado — descrições mais ricas viram otimização de custo, não correção. Ver [Fase 19](docs/FASE19_FRAGILIDADE.md).
@@ -215,7 +218,7 @@ um orçamento conferido só no fim não é um orçamento. Com o SUT pago, `/metr
 
 Pré-requisito: a fundação de dados vem do **toll-analytics-platform** buildado (`dbt build` → DuckDB + `manifest.json`). Ver [`docs/FUNDACAO.md`](docs/FUNDACAO.md).
 
-**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md) · [calibração BIRD](docs/FASE13_BIRD.md) · [quitação do backlog](docs/FASE14_BACKLOG.md) · [seleção e qualidade de label](docs/FASE15_SELECAO.md) · [empacotamento](docs/FASE16_DOCKER.md) · [Kubernetes](k8s/README.md) · [SUT de fronteira](docs/FASE18_PROVEDOR.md) · [κ humano](docs/FASE14_KAPPA_HUMANO.md) · [fragilidade lexical](docs/FASE19_FRAGILIDADE.md)
+**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md) · [calibração BIRD](docs/FASE13_BIRD.md) · [quitação do backlog](docs/FASE14_BACKLOG.md) · [seleção e qualidade de label](docs/FASE15_SELECAO.md) · [empacotamento](docs/FASE16_DOCKER.md) · [Kubernetes](k8s/README.md) · [SUT de fronteira](docs/FASE18_PROVEDOR.md) · [κ humano](docs/FASE14_KAPPA_HUMANO.md) · [fragilidade lexical](docs/FASE19_FRAGILIDADE.md) · [conjunto duro](docs/FASE20_DURO.md)
 
 ## 📄 Licença
 

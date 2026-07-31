@@ -37,6 +37,18 @@ from rodoquery.gold import Spec, compilar_spec, executar_gold
 ESTRATOS_RESPONDIVEIS = (
     "metrica_filtrada", "coalesce_nulo", "join_grao", "metrica_derivada",
     "grao_temporal", "valor_categorico", "controle_trivial", "ranking",
+    # --- Fase 20: estratos DUROS ---------------------------------------------------------------
+    # Os 8 acima saturaram em 100% contra um SUT de fronteira (Fases 18/19). Estes três cobrem
+    # FORMAS que nenhum conjunto anterior tocou — medido, não suposto: em 168 itens respondíveis,
+    # `where` composto aparecia 0 vezes, e specs com 2+ métricas apenas 2 (ambas só de razões).
+    #   filtro_composto — dois filtros de igualdade unidos por AND
+    #   metrica_mista   — métrica SIMPLES junto de uma RAZÃO na mesma spec
+    #   composicao      — combinações das duas com ranking / múltiplos group_by
+    # `metrica_mista` era IMPOSSÍVEL de compilar até a Fase 19 (o `_extrair_sql` destruía o CTE
+    # que o MetricFlow emite nessa forma). A lacuna, porém, era AUTORAL: ninguém tentou.
+    # Acrescentar aqui é seguro — `avaliar_sistema` pula estrato vazio (`if grupo:`), então
+    # relatório antigo regenerado sai idêntico.
+    "filtro_composto", "metrica_mista", "composicao",
 )
 # 8º estrato = eixo DIFERENTE: a pergunta NÃO é respondível com o catálogo → o certo é ABSTER.
 # É onde o vocabulário fechado do Semantic Layer vira vantagem (sabe dizer "não sei") e onde o SQL

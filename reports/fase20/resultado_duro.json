@@ -1,0 +1,2631 @@
+{
+  "fase": "20_conjunto_duro",
+  "desenho": "estratos novos contra a superficie nunca coberta: filtro composto (0 itens em 168), metrica mista (impossivel ate a F19), near-miss de abstencao",
+  "sut": "claude-opus-5",
+  "selo": "b10b297f314e332b6ac6ddeec017fffffa6052ccb6ffa62a1725fa03124df1b5",
+  "n": 47,
+  "specs_normalizadas": 0,
+  "custo_usd": 0.2965,
+  "sistemas": {
+    "tier_a_antt": {
+      "sistema": "tier_a_antt",
+      "n_total": 47,
+      "execution_accuracy_respondiveis": {
+        "n": 35,
+        "acertos": 35,
+        "taxa": 1.0,
+        "wilson_ic95": [
+          0.9011,
+          1.0
+        ]
+      },
+      "acuracia_abstencao": {
+        "n": 12,
+        "acertos": 6,
+        "taxa": 0.5,
+        "wilson_ic95": [
+          0.2538,
+          0.7462
+        ]
+      },
+      "ex_por_estrato": {
+        "filtro_composto": {
+          "n": 12,
+          "acertos": 12,
+          "taxa": 1.0,
+          "wilson_ic95": [
+            0.7575,
+            1.0
+          ]
+        },
+        "metrica_mista": {
+          "n": 12,
+          "acertos": 12,
+          "taxa": 1.0,
+          "wilson_ic95": [
+            0.7575,
+            1.0
+          ]
+        },
+        "composicao": {
+          "n": 11,
+          "acertos": 11,
+          "taxa": 1.0,
+          "wilson_ic95": [
+            0.7412,
+            1.0
+          ]
+        }
+      },
+      "abstencao_indevida_em_respondiveis": 0
+    },
+    "sql_cru_antt": {
+      "sistema": "sql_cru_antt",
+      "n_total": 47,
+      "execution_accuracy_respondiveis": {
+        "n": 35,
+        "acertos": 21,
+        "taxa": 0.6,
+        "wilson_ic95": [
+          0.4357,
+          0.7445
+        ]
+      },
+      "acuracia_abstencao": {
+        "n": 12,
+        "acertos": 0,
+        "taxa": 0.0,
+        "wilson_ic95": [
+          0.0,
+          0.2425
+        ]
+      },
+      "ex_por_estrato": {
+        "filtro_composto": {
+          "n": 12,
+          "acertos": 8,
+          "taxa": 0.6667,
+          "wilson_ic95": [
+            0.3906,
+            0.8619
+          ]
+        },
+        "metrica_mista": {
+          "n": 12,
+          "acertos": 8,
+          "taxa": 0.6667,
+          "wilson_ic95": [
+            0.3906,
+            0.8619
+          ]
+        },
+        "composicao": {
+          "n": 11,
+          "acertos": 5,
+          "taxa": 0.4545,
+          "wilson_ic95": [
+            0.2127,
+            0.7199
+          ]
+        }
+      },
+      "abstencao_indevida_em_respondiveis": 1
+    }
+  },
+  "mcnemar_sqlcru_vs_tiera": {
+    "b_only": 0,
+    "c_only": 14,
+    "p_valor": 0.0001,
+    "delta_acuracia": -0.4,
+    "n": 35
+  },
+  "referencia_8_estratos_antigos_mesmo_SUT": {
+    "tier_a": 1.0,
+    "sql_cru": 0.4452,
+    "abstencao_tier_a": 0.96
+  },
+  "saturou_de_novo": true,
+  "resultados_por_item": {
+    "tier_a_antt": [
+      {
+        "id": "filtro_composto_duro_01",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial' AND {{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 4.3,
+          "tokens_prompt": 1139,
+          "tokens_saida": 127,
+          "eval_s": 4.3,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 1095,
+          "tokens_cache_leitura": 0,
+          "custo_usd": 0.010239,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_02",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__praca\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto' AND {{ Dimension('plaza__sentido') }} = 'Crescente'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.819,
+          "tokens_prompt": 1132,
+          "tokens_saida": 119,
+          "eval_s": 3.819,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003707,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_03",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"metric_time__month\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Passeio' AND {{ Dimension('plaza__tipo_cobranca') }} = 'Manual'\", \"order_by\": [\"metric_time__month\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 4.905,
+          "tokens_prompt": 1132,
+          "tokens_saida": 132,
+          "eval_s": 4.905,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.004032,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_04",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '2' AND {{ Dimension('plaza__sentido') }} = 'Decrescente'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.222,
+          "tokens_prompt": 1137,
+          "tokens_saida": 106,
+          "eval_s": 3.222,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003407,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_05",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"metric_time__day\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial' AND {{ Dimension('plaza__tipo_cobranca') }} = 'OCR/PLACA'\", \"order_by\": [\"metric_time__day\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.517,
+          "tokens_prompt": 1138,
+          "tokens_saida": 137,
+          "eval_s": 3.517,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.004188,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_06",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial' AND {{ Dimension('plaza__sentido') }} = 'Crescente'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.401,
+          "tokens_prompt": 1144,
+          "tokens_saida": 122,
+          "eval_s": 3.401,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003842,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_07",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"plaza__sentido\"], \"where\": \"{{ Dimension('plaza__tipo_cobranca') }} = 'Manual'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.258,
+          "tokens_prompt": 1134,
+          "tokens_saida": 89,
+          "eval_s": 3.258,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002968,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_08",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"metric_time__month\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto' AND {{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\", \"order_by\": [\"metric_time__month\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 4.502,
+          "tokens_prompt": 1127,
+          "tokens_saida": 131,
+          "eval_s": 4.502,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003982,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_09",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '6' AND {{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.484,
+          "tokens_prompt": 1136,
+          "tokens_saida": 109,
+          "eval_s": 3.484,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003478,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_10",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__praca\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Passeio' AND {{ Dimension('plaza__sentido') }} = 'Decrescente'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.363,
+          "tokens_prompt": 1133,
+          "tokens_saida": 121,
+          "eval_s": 3.363,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003762,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_11",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.906,
+          "tokens_prompt": 1131,
+          "tokens_saida": 93,
+          "eval_s": 2.906,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003053,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_12",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial' AND {{ Dimension('plaza__categoria_eixo') }} = '5'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.43,
+          "tokens_prompt": 1134,
+          "tokens_saida": 123,
+          "eval_s": 3.43,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003818,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_01",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"automation_rate\"], \"group_by\": [\"plaza__sentido\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.083,
+          "tokens_prompt": 1137,
+          "tokens_saida": 67,
+          "eval_s": 3.083,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002433,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_02",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"commercial_share\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.156,
+          "tokens_prompt": 1135,
+          "tokens_saida": 69,
+          "eval_s": 3.156,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002472,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_03",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"automation_rate\"], \"group_by\": [\"metric_time__month\"], \"where\": null, \"order_by\": [\"metric_time__month\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.163,
+          "tokens_prompt": 1125,
+          "tokens_saida": 74,
+          "eval_s": 3.163,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002547,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_04",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"commercial_share\"], \"group_by\": [\"plaza__praca\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.857,
+          "tokens_prompt": 1134,
+          "tokens_saida": 66,
+          "eval_s": 2.857,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002393,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_05",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"automation_rate\"], \"group_by\": [\"plaza__tipo_cobranca\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.974,
+          "tokens_prompt": 1139,
+          "tokens_saida": 72,
+          "eval_s": 2.974,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002567,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_06",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"commercial_share\"], \"group_by\": [\"plaza__sentido\", \"metric_time__month\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.095,
+          "tokens_prompt": 1128,
+          "tokens_saida": 75,
+          "eval_s": 3.095,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002587,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_07",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"commercial_share\"], \"group_by\": [\"plaza__categoria_eixo\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 4.01,
+          "tokens_prompt": 1140,
+          "tokens_saida": 71,
+          "eval_s": 4.01,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002547,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_08",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"automation_rate\"], \"group_by\": [\"metric_time__week\"], \"where\": null, \"order_by\": [\"metric_time__week\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.983,
+          "tokens_prompt": 1131,
+          "tokens_saida": 74,
+          "eval_s": 2.983,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002577,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_09",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.187,
+          "tokens_prompt": 1136,
+          "tokens_saida": 102,
+          "eval_s": 3.187,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003302,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_10",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"commercial_share\"], \"group_by\": [\"plaza__sentido\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.259,
+          "tokens_prompt": 1136,
+          "tokens_saida": 67,
+          "eval_s": 3.259,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002427,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_11",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"automation_rate\"], \"group_by\": [\"metric_time__day\"], \"where\": null, \"order_by\": [\"metric_time__day\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.801,
+          "tokens_prompt": 1124,
+          "tokens_saida": 74,
+          "eval_s": 2.801,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002543,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_12",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 5.005,
+          "tokens_prompt": 1137,
+          "tokens_saida": 69,
+          "eval_s": 5.005,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002482,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_01",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__praca\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto' AND {{ Dimension('plaza__sentido') }} = 'Crescente'\", \"order_by\": [\"-traffic_volume\"], \"limit\": 5, \"ordenado\": true}",
+          "latencia_s": 3.435,
+          "tokens_prompt": 1136,
+          "tokens_saida": 129,
+          "eval_s": 3.435,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003978,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_02",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": null, \"order_by\": [\"-traffic_volume\"], \"limit\": 5, \"ordenado\": true}",
+          "latencia_s": 4.181,
+          "tokens_prompt": 1138,
+          "tokens_saida": 79,
+          "eval_s": 4.181,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002737,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_03",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__praca\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial' AND {{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\", \"order_by\": [\"-traffic_volume\"], \"limit\": 10, \"ordenado\": true}",
+          "latencia_s": 3.833,
+          "tokens_prompt": 1134,
+          "tokens_saida": 134,
+          "eval_s": 3.833,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.004092,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_04",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__concessionaria\", \"metric_time__month\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Passeio' AND {{ Dimension('plaza__tipo_cobranca') }} = 'Manual'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.539,
+          "tokens_prompt": 1139,
+          "tokens_saida": 135,
+          "eval_s": 3.539,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.004143,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_05",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"automation_rate\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial'\", \"order_by\": [\"automation_rate\"], \"limit\": 3, \"ordenado\": true}",
+          "latencia_s": 3.208,
+          "tokens_prompt": 1140,
+          "tokens_saida": 102,
+          "eval_s": 3.208,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003322,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_07",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"metric_time__month\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Comercial' AND {{ Dimension('plaza__sentido') }} = 'Decrescente'\", \"order_by\": [\"-traffic_volume\"], \"limit\": null, \"ordenado\": true}",
+          "latencia_s": 3.748,
+          "tokens_prompt": 1144,
+          "tokens_saida": 130,
+          "eval_s": 3.748,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.004043,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_08",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"commercial_share\"], \"group_by\": [\"plaza__sentido\", \"plaza__tipo_cobranca\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.124,
+          "tokens_prompt": 1139,
+          "tokens_saida": 81,
+          "eval_s": 3.124,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002792,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_09",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '6'\", \"order_by\": [\"-traffic_volume\"], \"limit\": 5, \"ordenado\": true}",
+          "latencia_s": 3.142,
+          "tokens_prompt": 1136,
+          "tokens_saida": 98,
+          "eval_s": 3.142,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003203,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_10",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\", \"automation_rate\"], \"group_by\": [\"plaza__praca\"], \"where\": null, \"order_by\": [\"-traffic_volume\"], \"limit\": 5, \"ordenado\": true}",
+          "latencia_s": 4.38,
+          "tokens_prompt": 1139,
+          "tokens_saida": 76,
+          "eval_s": 4.38,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002668,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_11",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"metric_time__day\", \"plaza__praca\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} = 'Moto' AND {{ Dimension('plaza__tipo_cobranca') }} = 'Automática'\", \"order_by\": [\"metric_time__day\"], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.642,
+          "tokens_prompt": 1132,
+          "tokens_saida": 139,
+          "eval_s": 3.642,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.004208,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_12",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"commercial_share\"], \"group_by\": [\"plaza__praca\"], \"where\": null, \"order_by\": [\"-commercial_share\"], \"limit\": 3, \"ordenado\": true}",
+          "latencia_s": 3.727,
+          "tokens_prompt": 1134,
+          "tokens_saida": 67,
+          "eval_s": 3.727,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002417,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": null,
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "abstencao_duro_01",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__tipo_cobranca\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.069,
+          "tokens_prompt": 1126,
+          "tokens_saida": 65,
+          "eval_s": 3.069,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002328,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_02",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "ABSTENHO",
+          "latencia_s": 2.742,
+          "tokens_prompt": 1132,
+          "tokens_saida": 9,
+          "eval_s": 2.742,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.000958,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "abstencao_duro_03",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "ABSTENHO",
+          "latencia_s": 2.583,
+          "tokens_prompt": 1127,
+          "tokens_saida": 9,
+          "eval_s": 2.583,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.000932,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "abstencao_duro_04",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "ABSTENHO",
+          "latencia_s": 2.797,
+          "tokens_prompt": 1127,
+          "tokens_saida": 9,
+          "eval_s": 2.797,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.000932,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "abstencao_duro_05",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '2'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.995,
+          "tokens_prompt": 1130,
+          "tokens_saida": 77,
+          "eval_s": 2.995,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002648,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_06",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__tipo_de_veiculo\"], \"where\": \"{{ Dimension('plaza__tipo_de_veiculo') }} IN ('Comercial', 'Passeio')\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.191,
+          "tokens_prompt": 1136,
+          "tokens_saida": 108,
+          "eval_s": 3.191,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.003452,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_07",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__sentido\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 2.858,
+          "tokens_prompt": 1130,
+          "tokens_saida": 60,
+          "eval_s": 2.858,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002223,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_08",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "ABSTENHO",
+          "latencia_s": 3.278,
+          "tokens_prompt": 1129,
+          "tokens_saida": 9,
+          "eval_s": 3.278,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.000942,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "abstencao_duro_09",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [\"plaza__concessionaria\"], \"where\": null, \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.188,
+          "tokens_prompt": 1133,
+          "tokens_saida": 62,
+          "eval_s": 3.188,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002288,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_10",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "ABSTENHO",
+          "latencia_s": 2.394,
+          "tokens_prompt": 1129,
+          "tokens_saida": 9,
+          "eval_s": 2.394,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.000942,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "abstencao_duro_11",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "ABSTENHO",
+          "latencia_s": 3.001,
+          "tokens_prompt": 1134,
+          "tokens_saida": 9,
+          "eval_s": 3.001,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.000968,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "absteve (correto)"
+      },
+      {
+        "id": "abstencao_duro_12",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "spec",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "{\"metrics\": [\"traffic_volume\"], \"group_by\": [], \"where\": \"{{ Dimension('plaza__categoria_eixo') }} = '7'\", \"order_by\": [], \"limit\": null, \"ordenado\": false}",
+          "latencia_s": 3.148,
+          "tokens_prompt": 1134,
+          "tokens_saida": 77,
+          "eval_s": 3.148,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 1095,
+          "custo_usd": 0.002668,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      }
+    ],
+    "sql_cru_antt": [
+      {
+        "id": "filtro_composto_duro_01",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' AND tipo_cobranca = 'Automática' GROUP BY concessionaria ORDER BY total_volume DESC",
+          "latencia_s": 5.471,
+          "tokens_prompt": 752,
+          "tokens_saida": 100,
+          "eval_s": 5.471,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 713,
+          "tokens_cache_leitura": 0,
+          "custo_usd": 0.007151,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT concessionaria, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' AND tipo_cobranca = 'Automática' GROUP BY concessionaria ORDER BY total_volume DESC",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_02",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT plaza_key, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' AND sentido = 'Crescente' GROUP BY plaza_key ORDER BY volume_total DESC",
+          "latencia_s": 3.552,
+          "tokens_prompt": 745,
+          "tokens_saida": 95,
+          "eval_s": 3.552,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002891,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT plaza_key, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' AND sentido = 'Crescente' GROUP BY plaza_key ORDER BY volume_total DESC",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "filtro_composto_duro_03",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT date_trunc('month', data) AS mes, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' AND tipo_cobranca = 'Manual' GROUP BY 1 ORDER BY 1",
+          "latencia_s": 3.642,
+          "tokens_prompt": 745,
+          "tokens_saida": 102,
+          "eval_s": 3.642,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003067,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT date_trunc('month', data) AS mes, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' AND tipo_cobranca = 'Manual' GROUP BY 1 ORDER BY 1",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_04",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '2' AND sentido = 'Decrescente'",
+          "latencia_s": 3.442,
+          "tokens_prompt": 750,
+          "tokens_saida": 60,
+          "eval_s": 3.442,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002041,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '2' AND sentido = 'Decrescente'",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_05",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT data, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' AND tipo_cobranca = 'OCR/PLACA' GROUP BY data ORDER BY data",
+          "latencia_s": 4.85,
+          "tokens_prompt": 751,
+          "tokens_saida": 91,
+          "eval_s": 4.85,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002821,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT data, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' AND tipo_cobranca = 'OCR/PLACA' GROUP BY data ORDER BY data",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "filtro_composto_duro_06",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' AND sentido = 'Crescente' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+          "latencia_s": 3.285,
+          "tokens_prompt": 757,
+          "tokens_saida": 143,
+          "eval_s": 3.285,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.004151,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' AND sentido = 'Crescente' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_07",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT sentido, SUM(volume) FILTER (WHERE tipo_de_veiculo = 'Comercial' AND tipo_cobranca = 'Manual') / SUM(volume) AS participacao FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+          "latencia_s": 3.873,
+          "tokens_prompt": 747,
+          "tokens_saida": 104,
+          "eval_s": 3.873,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003126,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT sentido, SUM(volume) FILTER (WHERE tipo_de_veiculo = 'Comercial' AND tipo_cobranca = 'Manual') / SUM(volume) AS participacao FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "filtro_composto_duro_08",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT date_trunc('month', data) AS mes, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' AND tipo_cobranca = 'Automática' GROUP BY 1 ORDER BY 1",
+          "latencia_s": 6.109,
+          "tokens_prompt": 740,
+          "tokens_saida": 101,
+          "eval_s": 6.109,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003017,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT date_trunc('month', data) AS mes, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' AND tipo_cobranca = 'Automática' GROUP BY 1 ORDER BY 1",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_09",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '6' AND tipo_cobranca = 'Automática'",
+          "latencia_s": 3.2,
+          "tokens_prompt": 749,
+          "tokens_saida": 63,
+          "eval_s": 3.2,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002112,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT SUM(volume) AS total_volume FROM fct_traffic_volume WHERE categoria_eixo = '6' AND tipo_cobranca = 'Automática'",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_10",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT plaza_key, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' AND sentido = 'Decrescente' GROUP BY plaza_key ORDER BY volume_total DESC",
+          "latencia_s": 3.805,
+          "tokens_prompt": 746,
+          "tokens_saida": 97,
+          "eval_s": 3.805,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002946,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT plaza_key, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' AND sentido = 'Decrescente' GROUP BY plaza_key ORDER BY volume_total DESC",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "filtro_composto_duro_11",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+          "latencia_s": 4.379,
+          "tokens_prompt": 744,
+          "tokens_saida": 138,
+          "eval_s": 4.379,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003961,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' GROUP BY concessionaria ORDER BY taxa_automacao DESC",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "filtro_composto_duro_12",
+        "estrato": "filtro_composto",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' AND categoria_eixo = '5' GROUP BY concessionaria ORDER BY volume_total DESC",
+          "latencia_s": 3.459,
+          "tokens_prompt": 747,
+          "tokens_saida": 96,
+          "eval_s": 3.459,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002926,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' AND categoria_eixo = '5' GROUP BY concessionaria ORDER BY volume_total DESC",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_01",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT sentido, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+          "latencia_s": 3.131,
+          "tokens_prompt": 750,
+          "tokens_saida": 120,
+          "eval_s": 3.131,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003541,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT sentido, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_02",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, SUM(volume) FILTER (WHERE tipo_de_veiculo = 'Comercial') AS volume_comercial, SUM(volume) AS volume_total, SUM(volume) FILTER (WHERE tipo_de_veiculo = 'Comercial') / NULLIF(SUM(volume), 0) AS participacao_comercial FROM main.fct_traffic_volume GROUP BY concessionaria ORDER BY participacao_comercial DESC",
+          "latencia_s": 3.765,
+          "tokens_prompt": 748,
+          "tokens_saida": 170,
+          "eval_s": 3.765,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.004782,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT concessionaria, SUM(volume) FILTER (WHERE tipo_de_veiculo = 'Comercial') AS volume_comercial, SUM(volume) AS volume_total, SUM(volume) FILTER (WHERE tipo_de_veiculo = 'Comercial') / NULLIF(SUM(volume), 0) AS participacao_comercial FROM main.fct_traffic_volume GROUP BY concessionaria ORDER BY participacao_comercial DESC",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "metrica_mista_duro_03",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT date_trunc('month', data) AS mes, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+          "latencia_s": 3.297,
+          "tokens_prompt": 738,
+          "tokens_saida": 130,
+          "eval_s": 3.297,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003732,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT date_trunc('month', data) AS mes, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_04",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT plaza_key, SUM(volume) AS total_volume, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS fracao_comercial FROM fct_traffic_volume GROUP BY plaza_key ORDER BY total_volume DESC",
+          "latencia_s": 3.309,
+          "tokens_prompt": 747,
+          "tokens_saida": 131,
+          "eval_s": 3.309,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003802,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT plaza_key, SUM(volume) AS total_volume, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS fracao_comercial FROM fct_traffic_volume GROUP BY plaza_key ORDER BY total_volume DESC",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "metrica_mista_duro_05",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "abster",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "ABSTENHO",
+          "latencia_s": 2.362,
+          "tokens_prompt": 752,
+          "tokens_saida": 9,
+          "eval_s": 2.362,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.000776,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "absteve numa pergunta respondível"
+      },
+      {
+        "id": "metrica_mista_duro_06",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT date_trunc('month', data) AS mes, sentido, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) AS volume_comercial, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+          "latencia_s": 4.087,
+          "tokens_prompt": 741,
+          "tokens_saida": 195,
+          "eval_s": 4.087,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.005372,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT date_trunc('month', data) AS mes, sentido, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) AS volume_comercial, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY 1, 2 ORDER BY 1, 2",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "metrica_mista_duro_07",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT categoria_eixo, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY categoria_eixo ORDER BY categoria_eixo",
+          "latencia_s": 3.15,
+          "tokens_prompt": 753,
+          "tokens_saida": 136,
+          "eval_s": 3.15,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003956,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT categoria_eixo, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS proporcao_comercial FROM fct_traffic_volume GROUP BY categoria_eixo ORDER BY categoria_eixo",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_08",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT date_trunc('week', data) AS semana, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+          "latencia_s": 3.297,
+          "tokens_prompt": 744,
+          "tokens_saida": 130,
+          "eval_s": 3.297,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003762,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT date_trunc('week', data) AS semana, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY 1 ORDER BY 1",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_09",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY concessionaria ORDER BY volume_total DESC",
+          "latencia_s": 3.275,
+          "tokens_prompt": 749,
+          "tokens_saida": 150,
+          "eval_s": 3.275,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.004287,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT concessionaria, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY concessionaria ORDER BY volume_total DESC",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_10",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT sentido, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+          "latencia_s": 3.132,
+          "tokens_prompt": 749,
+          "tokens_saida": 123,
+          "eval_s": 3.132,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003612,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT sentido, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM fct_traffic_volume GROUP BY sentido ORDER BY sentido",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_11",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT date_trunc('day', data) AS dia, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM main.fct_traffic_volume GROUP BY 1 ORDER BY 1",
+          "latencia_s": 3.218,
+          "tokens_prompt": 737,
+          "tokens_saida": 132,
+          "eval_s": 3.218,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003776,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT date_trunc('day', data) AS dia, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM main.fct_traffic_volume GROUP BY 1 ORDER BY 1",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "metrica_mista_duro_12",
+        "estrato": "metrica_mista",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS fracao_automatizada FROM fct_traffic_volume GROUP BY concessionaria ORDER BY volume_total DESC",
+          "latencia_s": 5.474,
+          "tokens_prompt": 750,
+          "tokens_saida": 129,
+          "eval_s": 5.474,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003766,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT concessionaria, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS fracao_automatizada FROM fct_traffic_volume GROUP BY concessionaria ORDER BY volume_total DESC",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_01",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT plaza_key, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' AND sentido = 'Crescente' GROUP BY plaza_key ORDER BY volume_total DESC LIMIT 5",
+          "latencia_s": 3.592,
+          "tokens_prompt": 749,
+          "tokens_saida": 102,
+          "eval_s": 3.592,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003086,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT plaza_key, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' AND sentido = 'Crescente' GROUP BY plaza_key ORDER BY volume_total DESC LIMIT 5",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "composicao_duro_02",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY concessionaria ORDER BY volume_total DESC LIMIT 5",
+          "latencia_s": 3.31,
+          "tokens_prompt": 751,
+          "tokens_saida": 135,
+          "eval_s": 3.31,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003921,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT concessionaria, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY concessionaria ORDER BY volume_total DESC LIMIT 5",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_03",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT plaza_key, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' AND tipo_cobranca = 'Automática' GROUP BY plaza_key ORDER BY total_volume DESC LIMIT 10",
+          "latencia_s": 3.882,
+          "tokens_prompt": 747,
+          "tokens_saida": 107,
+          "eval_s": 3.882,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003201,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT plaza_key, SUM(volume) AS total_volume FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' AND tipo_cobranca = 'Automática' GROUP BY plaza_key ORDER BY total_volume DESC LIMIT 10",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "composicao_duro_04",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, date_trunc('month', data) AS mes, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' AND tipo_cobranca = 'Manual' GROUP BY 1, 2 ORDER BY 1, 2",
+          "latencia_s": 3.151,
+          "tokens_prompt": 752,
+          "tokens_saida": 114,
+          "eval_s": 3.151,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003402,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT concessionaria, date_trunc('month', data) AS mes, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Passeio' AND tipo_cobranca = 'Manual' GROUP BY 1, 2 ORDER BY 1, 2",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "composicao_duro_05",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY concessionaria ORDER BY taxa_automacao ASC LIMIT 3",
+          "latencia_s": 3.665,
+          "tokens_prompt": 753,
+          "tokens_saida": 137,
+          "eval_s": 3.665,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003981,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT concessionaria, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_automacao FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Comercial' GROUP BY concessionaria ORDER BY taxa_automacao ASC LIMIT 3",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_07",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT date_trunc('month', data) AS mes, SUM(volume) AS volume_total\nFROM fct_traffic_volume\nWHERE tipo_de_veiculo = 'Comercial' AND sentido = 'Decrescente'\nGROUP BY 1\nORDER BY volume_total DESC",
+          "latencia_s": 4.298,
+          "tokens_prompt": 757,
+          "tokens_saida": 107,
+          "eval_s": 4.298,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003252,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT date_trunc('month', data) AS mes, SUM(volume) AS volume_total\nFROM fct_traffic_volume\nWHERE tipo_de_veiculo = 'Comercial' AND sentido = 'Decrescente'\nGROUP BY 1\nORDER BY volume_total DESC",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_08",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT sentido, tipo_cobranca, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM main.fct_traffic_volume GROUP BY sentido, tipo_cobranca ORDER BY sentido, tipo_cobranca",
+          "latencia_s": 4.153,
+          "tokens_prompt": 752,
+          "tokens_saida": 152,
+          "eval_s": 4.153,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.004352,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT sentido, tipo_cobranca, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS participacao_comercial FROM main.fct_traffic_volume GROUP BY sentido, tipo_cobranca ORDER BY sentido, tipo_cobranca",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_09",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '6' GROUP BY concessionaria ORDER BY volume_total DESC LIMIT 5",
+          "latencia_s": 3.321,
+          "tokens_prompt": 749,
+          "tokens_saida": 83,
+          "eval_s": 3.321,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002612,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": true,
+        "motivo": "EX em todas as variantes",
+        "sql": "SELECT concessionaria, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE categoria_eixo = '6' GROUP BY concessionaria ORDER BY volume_total DESC LIMIT 5",
+        "variantes_batem": {
+          "p0": true,
+          "p1": true,
+          "p2": true
+        }
+      },
+      {
+        "id": "composicao_duro_10",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT plaza_key, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY plaza_key ORDER BY volume_total DESC LIMIT 5",
+          "latencia_s": 3.269,
+          "tokens_prompt": 752,
+          "tokens_saida": 135,
+          "eval_s": 3.269,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003927,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT plaza_key, SUM(volume) AS volume_total, SUM(CASE WHEN tipo_cobranca = 'Automática' THEN volume ELSE 0 END) / NULLIF(SUM(volume), 0) AS taxa_automacao FROM fct_traffic_volume GROUP BY plaza_key ORDER BY volume_total DESC LIMIT 5",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "composicao_duro_11",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT plaza_key, date_trunc('day', data) AS dia, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' AND tipo_cobranca = 'Automática' GROUP BY 1, 2 ORDER BY 1, 2",
+          "latencia_s": 3.029,
+          "tokens_prompt": 745,
+          "tokens_saida": 113,
+          "eval_s": 3.029,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003341,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT plaza_key, date_trunc('day', data) AS dia, SUM(volume) AS volume_total FROM fct_traffic_volume WHERE tipo_de_veiculo = 'Moto' AND tipo_cobranca = 'Automática' GROUP BY 1, 2 ORDER BY 1, 2",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "composicao_duro_12",
+        "estrato": "composicao",
+        "abstencao": false,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT plaza_key, SUM(volume) FILTER (WHERE tipo_de_veiculo = 'Comercial') / SUM(volume) AS participacao_comercial FROM fct_traffic_volume GROUP BY plaza_key ORDER BY participacao_comercial DESC LIMIT 3",
+          "latencia_s": 3.026,
+          "tokens_prompt": 747,
+          "tokens_saida": 109,
+          "eval_s": 3.026,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003252,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "bateu 0/3 variantes",
+        "sql": "SELECT plaza_key, SUM(volume) FILTER (WHERE tipo_de_veiculo = 'Comercial') / SUM(volume) AS participacao_comercial FROM fct_traffic_volume GROUP BY plaza_key ORDER BY participacao_comercial DESC LIMIT 3",
+        "variantes_batem": {
+          "p0": false,
+          "p1": false,
+          "p2": false
+        }
+      },
+      {
+        "id": "abstencao_duro_01",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(CASE WHEN tipo_cobranca = 'Manual' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_manual FROM main.fct_traffic_volume",
+          "latencia_s": 3.62,
+          "tokens_prompt": 739,
+          "tokens_saida": 77,
+          "eval_s": 3.62,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002412,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_02",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(CASE WHEN tipo_cobranca = 'OCR/PLACA' THEN volume ELSE 0 END) / SUM(volume) * 100 AS pct_ocr_placa FROM fct_traffic_volume",
+          "latencia_s": 3.846,
+          "tokens_prompt": 745,
+          "tokens_saida": 86,
+          "eval_s": 3.846,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002667,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_03",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(CASE WHEN tipo_de_veiculo = 'Moto' THEN volume ELSE 0 END) / SUM(volume) AS participacao_motos FROM fct_traffic_volume",
+          "latencia_s": 3.048,
+          "tokens_prompt": 740,
+          "tokens_saida": 76,
+          "eval_s": 3.048,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002391,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_04",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(CASE WHEN tipo_de_veiculo = 'Passeio' THEN volume ELSE 0 END) / SUM(volume) AS proporcao_passeio FROM fct_traffic_volume",
+          "latencia_s": 3.134,
+          "tokens_prompt": 740,
+          "tokens_saida": 79,
+          "eval_s": 3.134,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002466,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_05",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(CASE WHEN categoria_eixo = '2' THEN volume ELSE 0 END) / SUM(volume) * 100 AS percentual_2_eixos FROM fct_traffic_volume",
+          "latencia_s": 3.167,
+          "tokens_prompt": 743,
+          "tokens_saida": 77,
+          "eval_s": 3.167,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002432,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_06",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(CASE WHEN tipo_de_veiculo = 'Passeio' THEN volume ELSE 0 END), 0) AS razao_comercial_passeio FROM fct_traffic_volume",
+          "latencia_s": 3.826,
+          "tokens_prompt": 749,
+          "tokens_saida": 126,
+          "eval_s": 3.826,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003687,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_07",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(CASE WHEN sentido = 'Crescente' THEN volume ELSE 0 END) / SUM(volume) AS fracao_crescente FROM fct_traffic_volume",
+          "latencia_s": 2.973,
+          "tokens_prompt": 743,
+          "tokens_saida": 71,
+          "eval_s": 2.973,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002282,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_08",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(CASE WHEN tipo_cobranca <> 'Automática' THEN volume ELSE 0 END) / SUM(volume) AS taxa_nao_automatizada FROM fct_traffic_volume",
+          "latencia_s": 3.827,
+          "tokens_prompt": 742,
+          "tokens_saida": 80,
+          "eval_s": 3.827,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002501,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_09",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT concessionaria, SUM(volume) / (SELECT SUM(volume) FROM fct_traffic_volume) AS participacao FROM fct_traffic_volume GROUP BY concessionaria ORDER BY participacao DESC",
+          "latencia_s": 3.336,
+          "tokens_prompt": 746,
+          "tokens_saida": 85,
+          "eval_s": 3.336,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002646,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_10",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT COUNT(DISTINCT CASE WHEN tipo_cobranca = 'Automática' THEN plaza_key END) * 100.0 / COUNT(DISTINCT plaza_key) AS pct_pracas_automatica FROM fct_traffic_volume",
+          "latencia_s": 3.747,
+          "tokens_prompt": 742,
+          "tokens_saida": 97,
+          "eval_s": 3.747,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002926,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_11",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(CASE WHEN tipo_de_veiculo = 'Comercial' THEN volume ELSE 0 END) / NULLIF(SUM(CASE WHEN tipo_de_veiculo = 'Moto' THEN volume ELSE 0 END), 0) AS proporcao_comercial_moto FROM fct_traffic_volume",
+          "latencia_s": 3.092,
+          "tokens_prompt": 747,
+          "tokens_saida": 126,
+          "eval_s": 3.092,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.003677,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      },
+      {
+        "id": "abstencao_duro_12",
+        "estrato": "abstencao",
+        "abstencao": true,
+        "predicao": "sql",
+        "meta": {
+          "modelo": "claude-opus-5",
+          "raw": "SELECT SUM(CASE WHEN categoria_eixo = '7' THEN volume ELSE 0 END) / SUM(volume) * 100 AS pct_7_eixos FROM fct_traffic_volume",
+          "latencia_s": 3.415,
+          "tokens_prompt": 747,
+          "tokens_saida": 76,
+          "eval_s": 3.415,
+          "carga_modelo_s": 0.0,
+          "tokens_cache_escrita": 0,
+          "tokens_cache_leitura": 713,
+          "custo_usd": 0.002426,
+          "stop_reason": "end_turn",
+          "modelo_efetivo": "claude-opus-5"
+        },
+        "correto": false,
+        "motivo": "respondeu pergunta fora-de-escopo (alucinou)"
+      }
+    ]
+  },
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "63e0e77",
+    "git_dirty": true,
+    "git_diff_sha1": "e9ec875390a6",
+    "timestamp_utc": "2026-07-31T20:39:50+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}
