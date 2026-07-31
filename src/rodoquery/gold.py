@@ -45,13 +45,28 @@ class Spec:
 
 
 def _extrair_sql(saida: str) -> str:
-    """Pega o bloco SQL da saída de `mf query --explain`."""
+    """Pega o bloco SQL da saída de `mf query --explain`.
+
+    **Corta no `WITH`, não no `SELECT`.** Quando o MetricFlow emite CTE — o que acontece ao pedir
+    uma métrica SIMPLES junto de uma RAZÃO — a saída começa em `WITH x AS (` e o primeiro
+    `SELECT` está DENTRO do CTE. Cortar no `SELECT` descartava o cabeçalho e devolvia SQL com um
+    `)` órfão, que o DuckDB rejeita com `Parser Error: syntax error at or near ")"`.
+
+    A consequência é o que importa: como a compilação levantava exceção, os geradores de golden
+    (`except: continue`) **descartavam em silêncio a classe inteira** de specs simples+razão.
+    Nenhum gold ficou errado — a falha era barulhenta e o item era pulado —, mas o benchmark
+    nasceu com um ponto cego, e parte da saturação das Fases 18/19 vem de nunca ter sido
+    possível testar essas perguntas.
+    """
     if "🔎 SQL" in saida:
         saida = saida.split("🔎 SQL", 1)[1]
-    idx = saida.find("SELECT")
-    if idx == -1:
+    # Âncora em INÍCIO DE LINHA: evita casar um "WITH"/"SELECT" que apareça dentro de literal.
+    linhas = saida.splitlines()
+    inicio = next((i for i, ln in enumerate(linhas)
+                   if ln.lstrip().upper().startswith(("WITH ", "SELECT"))), -1)
+    if inicio == -1:
         raise RuntimeError(f"mf --explain não retornou SQL:\n{saida[:500]}")
-    return saida[idx:].strip()
+    return "\n".join(linhas[inicio:]).strip()
 
 
 def portabilizar(sql: str) -> str:
