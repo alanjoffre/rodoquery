@@ -43,6 +43,12 @@ where = ["src"]
 # Só coleta a suíte em tests/. Sem isto, scripts de raiz como `load_test.py` casam com o padrão
 # `*_test.py` e o pytest tenta importá-los (eles leem sys.argv e quebram a coleta).
 testpaths = ["tests"]
+# A raiz do repo no sys.path, EXPLICITAMENTE. Sem isto, `pytest` (console script) não importa os
+# scripts de raiz — `tests/test_anotar_humano.py` faz `import anotar_humano` —, enquanto
+# `python -m pytest` importa, porque o `-m` põe o cwd no sys.path sozinho. Era essa diferença de
+# INVOCAÇÃO que separava a minha máquina do runner: eu rodava `python -m pytest` e o CI, `pytest`.
+# Declarar aqui faz as duas formas concordarem, em vez de depender de como cada um digita.
+pythonpath = ["."]
 
 [tool.ruff]
 line-length = 100
