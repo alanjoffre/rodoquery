@@ -14,9 +14,12 @@ jobs:
   qualidade:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # v5/v6 rodam em Node 24. As versões anteriores (checkout@v4, setup-python@v5) ainda
+      # funcionam, mas o runner emite anotação de depreciação — e anotação amarela na página do
+      # Actions é exatamente o tipo de ruído que faz ninguém mais olhar para o CI (F22).
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
