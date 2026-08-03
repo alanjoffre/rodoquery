@@ -59,9 +59,8 @@ def main() -> int:
 
     problemas = []
     if r.returncode != 0:
-        cauda = [ln for ln in saida.splitlines() if ln.strip()][-6:]
-        problemas.append("a coleta terminou com erro (rc=%d):\n      %s"
-                         % (r.returncode, "\n      ".join(cauda)))
+        cauda = "\n      ".join([ln for ln in saida.splitlines() if ln.strip()][-6:])
+        problemas.append(f"a coleta terminou com erro (rc={r.returncode}):\n      {cauda}")
     if vazios:
         problemas += [f"arquivo coletou ZERO testes (import quebrado? extra faltando?) -> {a}"
                       for a in vazios]
