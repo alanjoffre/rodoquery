@@ -4,9 +4,17 @@
 
 **Agente de Analytics (Text-to-SQL) sobre um lakehouse governado — pergunte em português, receba o número certo.**
 
-Data Engineering × AI Engineering · avaliação com rigor · R$0 · **dados públicos reais (ANTT, CC-BY)**.
+Data Engineering × AI Engineering · avaliação com rigor · **dados públicos reais da ANTT (CC BY)**
 
-**Fases 0–20.** Todos os números abaixo são medidos e reproduzíveis em `reports/`. Roda com `docker compose up` ou `kubectl apply -k k8s`.
+[![CI](https://github.com/alanjoffre/rodoquery/actions/workflows/ci.yml/badge.svg)](https://github.com/alanjoffre/rodoquery/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.12-blue.svg)
+![Testes](https://img.shields.io/badge/testes-199%20passando-brightgreen.svg)
+![Gate](https://img.shields.io/badge/gate%20de%20regressão-7%2F7-brightgreen.svg)
+![Fases](https://img.shields.io/badge/fases-0–20-e0a326.svg)
+![Sandbox](https://img.shields.io/badge/attack--block-39%2F39%20·%20FP%200%25-brightgreen.svg)
+![Custo](https://img.shields.io/badge/custo%20de%20API-US%24%201%2C45-blue.svg)
+
+[**🗺️ Fases**](#️-fases--previsto--medido) · [**🔬 O que a medição refutou**](#-o-que-a-medição-refutou) · [**🏗️ Arquitetura**](#️-arquitetura--o-que-de-fato-está-servido) · [**✅ Rastreabilidade**](#-rastreabilidade-requisito--fase) · [**🚀 Rodar**](#-rodar) · [**🎯 Backlog**](#-backlog-declarado)
 
 </div>
 
@@ -14,40 +22,80 @@ Data Engineering × AI Engineering · avaliação com rigor · R$0 · **dados p�
 
 > **Tese:** o valor não é *"LLM gera SQL"*. É provar, **com número e intervalo de confiança**, que servir sobre o **Semantic Layer governado** (dbt/MetricFlow) dá a resposta **certa** onde o SQL cru dá uma resposta **plausível e errada**.
 
-**A tese foi comprovada — em dado sintético, replicada em DADO REAL e testada contra dois SUTs de portes opostos.** Mesmo modelo nas duas pontas de cada linha; muda só a interface:
+O LLM **nunca escreve SQL**. Ele escolhe métricas e dimensões de um **vocabulário fechado** e devolve uma *spec*; quem gera o SQL é o MetricFlow. Fora do catálogo, **abstém**.
+
+## 📊 O número
+
+Mesmo modelo nas duas pontas de cada linha — muda só a interface:
 
 | Conjunto selado | SUT | Tier-A (spec → MetricFlow) | Baseline SQL cru | Δ | McNemar |
 |---|---|---|---|---|---|
-| **TEST-ANTT (n=146, dados REAIS)** | `claude-opus-5` | **100%** [97,4; 100] | 44,5% | **+55,5 pp** | 81 × 0, p≈0 |
-| **TEST-ANTT (n=146, dados REAIS)** | `qwen2.5-coder:7b` | **89,7%** [83,7; 93,7] | 26,7% | **+63,0 pp** | 95 × 3, p≈0 |
+| **TEST-ANTT** (n=146, dado REAL) | `claude-opus-5` | **100%** [97,4; 100] | 44,5% | **+55,5 pp** | 81 × 0, p≈0 |
+| **TEST-ANTT** (n=146, dado REAL) | `qwen2.5-coder:7b` | **89,7%** [83,7; 93,7] | 26,7% | **+63,0 pp** | 95 × 3, p≈0 |
 | TEST-v2 sintético (n=167) | `qwen2.5-coder:7b` | 73,7% [66,5; 79,8] | 15,0% | +58,7 pp | 104 × 6, p≈0 |
 | TEST-v1 sintético (n=42) | `qwen2.5-coder:7b` | 97,6% [87,7; 99,6] | 42,9% | +54,8 pp | 23 × 0, p≈0 |
 
-Os conjuntos têm dificuldades diferentes e **não são comparáveis entre si** — o que se repete em todos é a **vantagem da interface governada**.
-
-**Mas as duas primeiras linhas são comparáveis entre si** (mesmo conjunto, mesmo dia, só o SUT muda), e é delas que sai o achado mais útil do projeto:
+**As duas primeiras linhas são comparáveis entre si** — mesmo conjunto, só o SUT muda — e é delas que sai o achado mais útil do projeto:
 
 > **A vantagem do Semantic Layer é inversamente proporcional à força do SUT: +63,0 pp com um 7B local, +55,5 pp com um modelo de fronteira.**
 
-O gap **encolheu** porque o baseline quase dobrou (26,7% → 44,5%): um modelo de fronteira escreve SQL cru bem melhor. Esse é o número que um cético usaria contra a versão forte da tese — então ele está aqui em cima, não no anexo. O que sobra é um argumento **econômico e concreto**: o Semantic Layer vale mais justamente para quem roda modelo barato. Ver [Fase 18](docs/FASE18_PROVEDOR.md).
+O gap **encolheu** porque o baseline quase dobrou (26,7% → 44,5%). Esse é o número que um cético usaria contra a versão forte da tese, então está aqui em cima. O que sobra é um argumento econômico concreto: **o Semantic Layer vale mais justamente para quem roda modelo barato.**
 
-⚠️ **E o 100% é teto de instrumento, não do sistema:** este golden saturou para um SUT de fronteira. Com o Tier-A em 100%, o McNemar perde poder (`b=0` vira trivial) e o Δ real contra um golden mais duro seria **menor ou igual** a +55,5 pp. Golden mais difícil está no [backlog](#-backlog-declarado-o-que-não-está-feito).
+**E o baseline não é espantalho.** O mesmo modelo tira **43,4%** [39,1; 47,8] no [BIRD Mini-Dev](https://bird-bench.github.io/) — 500 perguntas e SQL de referência **humanos**. Ele sabe escrever SQL; o que muda o resultado é a **interface**.
 
-**E o baseline não é um espantalho.** O mesmo modelo tira **43,4%** [39,1; 47,8] no [BIRD Mini-Dev](https://bird-bench.github.io/) — 500 perguntas e SQL de referência **humanos**, benchmark público. Ele sabe escrever SQL; o que muda o resultado é a **interface**, não a competência.
+> ⚠️ **Os três limites deste número, declarados.** (1) O **100% é teto de instrumento**: com o Tier-A saturado, o McNemar perde poder (`b=0` vira trivial) e o Δ real contra um conjunto mais duro seria **menor ou igual**. (2) A [Fase 20](docs/FASE20_DURO.md) construiu esse conjunto mais duro e ele **saturou igual** — o teto é da **superfície do catálogo** (3 métricas), não do benchmark. (3) No mesmo conjunto duro a **abstenção caiu para 50%**, com um modo de falha novo: pedem *proporção*, o sistema responde *contagem*.
 
-> ⚠️ **Leia o primeiro número, não o último.** O 97,6% da Fase 4 **não replica**: num conjunto 4× maior, cobrindo superfície do catálogo que a v1 nunca tocou, o Tier-A faz 73,7%. A tese sobrevive com folga; o valor absoluto, não. Ver [Fase 8](docs/FASE8_PODER.md).
+## 🗺️ Fases — previsto × medido
 
-**Dois normalizadores determinísticos recuperam boa parte disso** — sem trocar de modelo, sem tocar no prompt (holdout v3, n=181, pareado):
+**21 fases (0–20) · 199 testes · gate 7/7 · custo total de API US$ 1,45.** Cada número aponta para um relatório versionado em `reports/` com carimbo de proveniência (seed, git_sha, modelo, versões).
 
-| Sistema | EX |
-|---|---|
-| Tier-A cru (Fase 4, congelado) | 66,9% |
-| + normalizar ordenação (`["x","DESC"]` → `["-x"]`) | 71,8% |
-| **+ normalizar `group_by` (remover dimensão já filtrada)** | **84,5%** |
+| Fase | Métrica dura | **Resultado medido** |
+|:---:|---|---|
+| **0** · Fundação | harness reproduz; 0 objeto não-serving acessível | ✅ Test-Suite EX em 3 seeds + canonicalizador em centavos |
+| **1** · Sandbox | **attack-block = 100%** (gate duro) | ✅ **39/39 bloqueados, falso-positivo 0%** (10/10 legítimas passam) |
+| **2** · Golden set | nº/estrato + IC · **κ do 2º anotador** | ✅ 76 itens, 8 estratos · κ de máquina 1,0 · **κ humano 1,0** (n=40, IC [0,912; 1,0]) — dívida [quitada](docs/FASE14_KAPPA_HUMANO.md) |
+| **3** · Baselines | Execution Accuracy + Wilson | ✅ SQL cru **26,3%** no DEV [11,8; 48,8] |
+| **4** · Sistema | Δ EX + **McNemar** | ✅ **97,6% × 42,9%, +54,8 pp**, b=23/c=0, p≈0 |
+| **5** · MLOps | gate ativo comprovado | ✅ gate em 3 níveis **pega 6/6 regressões injetadas** · p50 4,5 s / p95 7,9 s |
+| **6** · Serving + SLO | p95, vazão em 1 GPU, canário | ✅ SLO atendido (p95 4,36 s em c=1) · canário 10/10 · capacidade **~0,25 req/s** |
+| **7** · Robustez | quanto o EX cai (com IC) | ⚠️ paráfrase −7,7 pp (**p=0,375, não significativo**) · schema opaco −14,3 pp (p=0,031) |
+| **8** · Poder estatístico | **≥25 itens/estrato** | ✅ 223 no TEST-v2 · ⚠️ **o 97,6% não replica: 73,7%** · 3 modos de falha novos |
+| **9** · Conserto | Δ EX no holdout v3 (pareado) | ⚠️ reescrever o prompt **empatou** (p=0,89) · ✅ **normalizar em código: +5 pp, p=0,004, zero regressões** |
+| **10** · Catálogo | Δ EX (pareado, determinístico) | ⚠️ limpar o catálogo **empatou** (p=1,0) · ✅ o gargalo real era outro: **+12,7 pp, p≈0** |
+| **11** · Dados reais | fundação ANTT verificada ponta a ponta | ✅ **1,5 M de linhas reais (CC BY)** · catálogo nasce com 3 métricas · 2 armadilhas pegas antes de virarem número errado |
+| **12** · Tese sobre dado real | Δ EX + McNemar no TEST-ANTT selado | ✅ **86,9% × 28,8%, +58,1 pp** na medição original¹ · **2 bugs de harness pegos antes de virarem resultado** |
+| **13** · Calibração externa | EX num benchmark de perguntas **humanas** | ✅ **43,4%** [39,1; 47,8] no BIRD Mini-Dev · **74,9% dos erros são silenciosos** |
+| **14** · Quitação do backlog | as 4 dívidas declaradas | ✅ gold de ranking corrigido · roteador medido (Tier-B off **por evidência**) · robustez dedicada **−29,4 pp** |
+| **15** · Seleção + qualidade de label | Δ EX em holdout de ablação fresco | ✅ normalizador corrigido **+33,4 pp** · ⚠️ **SUT 9B colapsa (5,6%)** · auditoria adversarial acha **7 labels ruins em 60** |
+| **16** · Empacotamento | a stack roda fora da minha máquina | ✅ imagem **624 MB**, loop completo no container · 4 acoplamentos hardcoded removidos · ⚠️ **não herda o SLO nativo** |
+| **17** · Kubernetes | o deploy sobe e o sistema responde | ✅ cluster efêmero: 8/8 recursos · rootfs read-only · **NetworkPolicy testada por diferença** · inferência ponta a ponta · **sem HPA, [e o porquê é medido](k8s/README.md)** |
+| **18** · SUT de fronteira | Δ EX com o SUT trocado, mesmo conjunto | ✅ **100% × 44,5%, +55,5 pp** (US$ 0,96) · **o gap encolhe** · normalizadores valem **zero** aqui · ⚠️ **benchmark saturou** |
+| **19** · Fragilidade lexical | Δ EX sob schema opaco, **previsão pré-registrada** | ✅ **0,00 pp** contra −29,4 pp do 7B — era **do SUT, não da interface** · ❌ **minha previsão pontual refutada** |
+| **20** · Conjunto duro | o benchmark discrimina atacando a superfície nunca coberta? | ⚠️ respondíveis **saturam de novo (35/35)** → o teto é do **catálogo** · ✅ abstenção near-miss cai para **50%**, modo de falha novo · guarda nova **pegou um erro meu** |
 
-**+17,7 pp em código**, ambos com **zero regressões**. As duas tentativas de ensinar as mesmas regras *pelo prompt* empataram — ver [Fase 9](docs/FASE9_CONSERTO.md) e [Fase 10](docs/FASE10_CATALOGO.md).
+<sub>¹ As Fases 14 e 15 corrigiram defeitos de gold e **re-pontuaram as mesmas predições**: 86,9% → 88,7% → **89,7%**. O artefato em `reports/fase12/` guarda o valor re-pontuado (89,7%), que é o usado na tabela da tese. Os dois números são verdadeiros em momentos diferentes.</sub>
 
-RodoQuery é o irmão de [**RodoIA**](https://github.com/alanjoffre/rodoia) no eixo de dados: um agente que traduz linguagem natural em consultas **seguras** sobre a plataforma [**toll-analytics-platform**](https://github.com/alanjoffre/toll-analytics-platform) (lakehouse de auditoria de pedágio, dados sintéticos, DuckDB dev → Databricks prod), reusando o **dbt Semantic Layer** já modelado.
+## 🔬 O que a medição refutou
+
+O diferencial não são os números altos — é **o rigor ter corrigido os próprios números**. Cada fase pré-registrou um achado esperado; estas são as vezes em que a evidência contrariou a narrativa e a narrativa cedeu.
+
+- **O EX de 97,6% não descreve o sistema** *(F4 → F8)*. Com N 4× maior e superfície nova, o Tier-A faz **73,7%**. A tese sobrevive com folga (a vantagem sobe para +58,7 pp); o valor absoluto, não. Três buracos que o conjunto pequeno escondia — e a abstenção de 100% era artefato de perguntas óbvias: com *near-miss* cai para **55,6%**.
+
+- **Consertar falha mecânica é código, não prompt** *(F9, F10)*. Reescrever o prompt para ensinar a sintaxe de ranking **empatou** (p=0,89) — consertou ranking e causou 18 erros novos de seleção. O mesmo conserto em **código** (normalizar `["x","DESC"]` → `["-x"]`) deu **+5 pp, p=0,004, zero regressões**. Repetido na F10: **+12,7 pp**. Acumulado **+17,7 pp em código, sem tocar no modelo nem no prompt**.
+
+- **"SUT maior" é falso; "SUT mais capaz" é verdadeiro** *(F15 → F18)*. Trocar o 7B *coder* por um 9B generalista derruba o EX de 86,1% para **5,6%** — o 9B emite `"entidades"`/`"tempo"` (os *rótulos das seções* do catálogo) como se fossem tokens: **23 de 39 specs com vocabulário inválido**, contra **zero** do 7B. Em vocabulário fechado, **aderência ao formato vence tamanho**. Mas um SUT genuinamente mais capaz (`claude-opus-5`) zera o resíduo: 100% nos mesmos estratos que travavam em 72–80%.
+
+- **A vantagem da interface não é constante** *(F18)*. Com o SUT trocado no mesmo conjunto, o Δ cai de **+63,0 para +55,5 pp**, porque o baseline quase dobra. Corolário medido: os dois normalizadores que valem +17,7 pp no 7B tocaram **0 de 146 specs** no Opus 5. **A camada determinística é uma muleta cuja altura é exatamente a fraqueza do SUT.**
+
+- **Minha própria previsão, pré-registrada e refutada** *(F19)*. Registrei em [pré-registro commitado](docs/FASE19_PREREGISTRO.md) que a fragilidade lexical encolheria mas deixaria resíduo (Δ ≈ −9 pp, faixa −18 a −2). Medi **0,00 pp**. A afirmação falsificável central (`|Δ| < 29,4`) confirmou; a previsão pontual **caiu** — apostei num piso que não existe. A fragilidade lexical **não é estrutural da interface: era capacidade do SUT**.
+
+- **O teto era do catálogo, não do benchmark** *(F20)*. Construí um conjunto duro contra as formas que **medi** nunca terem sido cobertas (`where` composto: 0 de 168 itens; métrica mista: impossível de compilar até a F19). Saturou igual — **35/35**. Com 3 métricas e 9 dimensões, um SUT de fronteira não erra composição.
+
+- **Um bug de 19 fases, e a retratação do impacto que atribuí a ele** *(F20)*. O extrator de SQL cortava no primeiro `SELECT`, destruindo o `WITH` do CTE. Afirmei que isso tinha descartado itens em silêncio e explicava parte da saturação. **A auditoria me refutou:** dos 220 autorados, os 4 descartes foram todos por gold degenerado, e em 291 itens autorados a forma **nunca foi escrita**. O bug era **latente**. Errei por inferir consequência a partir do mecanismo em vez de **medir** o impacto.
+
+- **Duas guardas que pegaram erros meus.** A **G5 (razão viva)** descartou um item em que eu tinha *escrito no código* que não haveria problema — filtrando só motos, `commercial_share` = 0 em toda linha, porque moto nunca é comercial. E a auditoria de proveniência achou as 342 predições da API gravadas como `qwen2.5-coder:7b`: o EX não dependia do campo, mas **artefato que mente sobre a própria origem não é auditável**.
+
+**Heurística que ficou:** *um zero limpo demais é bug, não resultado* — modelo ruim erra variado, harness quebrado erra tudo igual. E o simétrico: **um 100% exige mais prova que um 89%**. Os dois resultados saturados deste README passaram por auditoria de 4–5 hipóteses de falso positivo antes de serem reportados.
 
 ## 🏗️ Arquitetura — o que de fato está servido
 
@@ -56,175 +104,133 @@ NL do usuário
    │
    ▼
 [Tier A] LLM escolhe {métricas, dimensões, filtros} de um VOCABULÁRIO FECHADO
-   │        → validado contra o catálogo → MetricFlow compila o SQL → executa (read-only)
+   │        → valida contra o catálogo → MetricFlow compila o SQL → executa (read-only)
    │        → fora do catálogo? ABSTÉM (não inventa)
    │
-   └─ [Tier B] SQL cru + sandbox AST — construído e testado, DESLIGADO no roteador (ver backlog)
+   └─ [Tier B] SQL cru + sandbox AST — construído e testado, DESLIGADO por evidência (F14)
+
+SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI → Docker → Kubernetes
 ```
 
-**Por que o Tier-A dispensa o sandbox:** o LLM nunca emite SQL. Ele emite uma *spec* sobre um vocabulário fechado; quem gera SQL é o MetricFlow. **Não há superfície de injeção** — a segurança é estrutural, não um filtro depois do fato.
+**Por que o Tier-A dispensa o sandbox:** o LLM nunca emite SQL. Ele emite uma *spec* sobre vocabulário fechado, e quem gera SQL é o MetricFlow. **Não há superfície de injeção** — a segurança é estrutural, não um filtro depois do fato. O sandbox existe para o Tier-B e foi validado com as **duas** métricas juntas: attack-block 100% (39/39) **e** falso-positivo 0% (10/10) — bloquear tudo daria 100% de block e seria inútil.
 
-O sandbox existe para o Tier-B e foi validado: **attack-block 100% (39/39)** com **falso-positivo 0% (10/10 consultas legítimas passam)** — as duas métricas juntas, porque bloquear tudo daria 100% de block e seria inútil.
+## ✅ Rastreabilidade requisito → fase
 
-## 📋 Fases — previsto × medido
+<details>
+<summary><b>Cada requisito de uma vaga de Engenharia de Dados/IA rastreado até a fase que o prova com código e evidência (clique para expandir)</b></summary>
 
-| Fase | Métrica dura | **Resultado medido** |
+<br>
+
+| Requisito | Onde é provado | Evidência |
 |---|---|---|
-| **0** · Fundação | harness reproduz; 0 objeto não-serving acessível | ✅ harness + canonicalizador em centavos + Test-Suite EX em 3 seeds |
-| **1** · Sandbox | **attack-block = 100%** (gate duro) | ✅ **39/39 bloqueados, 0 falso-positivo** |
-| **2** · Golden set | nº/estrato + IC · **κ do 2º anotador** | ✅ 76 itens, 8 estratos · **κ de máquina 1,0** (0,875 na sonda de ambiguidade) · **κ humano 1,0** (n=40, IC95 [0,912; 1,0]) — dívida da Fase 2 [quitada](docs/FASE14_KAPPA_HUMANO.md) |
-| **3** · Baselines | Execution Accuracy + Wilson | ✅ SQL cru **26,3%** no DEV [11,8; 48,8] |
-| **4** · Sistema | Δ EX + **McNemar** | ✅ **97,6% × 42,9%, +54,8 pp, b=23/c=0, p≈0** |
-| **5** · MLOps | gate ativo comprovado | ✅ gate em 3 níveis **pega 6/6 regressões injetadas** · p50 4,5 s / p95 7,9 s · **R$ 0,12/1k** |
-| **6** · Serving + SLO | p95, throughput em 1 GPU, EX de canário | ✅ SLO atendido (p95 4,36 s em c=1) · canário 10/10 · capacidade real **~0,25 req/s** |
-| **7** · Robustez | quanto o EX cai (com IC) | ⚠️ paráfrase −7,7 pp (**p=0,375, não significativo**) · **schema opaco −14,3 pp (p=0,031)** |
-| **8** · Poder estatístico | **≥25 itens/estrato** (meta da Fase 2) | ✅ 223 no TEST-v2, 26–29/estrato · ⚠️ **o EX de 97,6% não replica: 73,7%** · 3 modos de falha novos |
-| **9** · Conserto | Δ EX no holdout v3 (pareado) | ⚠️ reescrever o prompt **empatou** (p=0,89) · ✅ **normalizar em código: +5 pp, p=0,004, zero regressões** |
-| **10** · Catálogo | Δ EX (pareado, determinístico) | ⚠️ limpar o catálogo **empatou** (p=1,0) · ✅ o gargalo real era outro: **+12,7 pp, p≈0, zero regressões** |
-| **11** · Dados reais | fundação ANTT verificada ponta a ponta | ✅ **1,5 M de linhas reais (CC-BY)** substituem 2 mil sintéticas · catálogo nasce com **3 métricas** · 2 armadilhas do dado real pegas antes de virarem número errado |
-| **12** · Tese sobre dado real | Δ EX + McNemar no TEST-ANTT selado | ✅ **86,9% × 28,8%, +58,1 pp, p≈0** · κ de máquina 0,977 · **2 bugs de harness pegos antes de virarem resultado** |
-| **13** · Calibração externa | EX num benchmark público de perguntas **humanas** | ✅ **43,4%** [39,1; 47,8] no BIRD Mini-Dev · prova que o baseline **não é espantalho** · 75% dos erros são silenciosos |
-| **14** · Quitação do backlog | resolver as 4 dívidas declaradas | ✅ gold de ranking corrigido (→**88,7%**) · roteador medido (Tier-B off por evidência) · robustez dedicada **−29,4 pp** · **κ humano 1,0** (n=40) — as 4 dívidas fechadas |
-| **15** · Seleção + qualidade de label | Δ EX em holdout de ablação fresco | ✅ normalizador corrigido **+33,4 pp** · descrições **+5,5 pp** · ⚠️ **SUT 9B colapsa (5,6%)** · auditoria adversarial acha **7 labels ruins em 60** |
-| **16** · Empacotamento | a stack roda fora da minha máquina | ✅ imagem **624 MB**, loop completo testado no container · **4 acoplamentos hardcoded** removidos · ⚠️ **container não cumpre o SLO nativo** (~2× mais lento) |
-| **17** · Kubernetes | o deploy sobe e o sistema responde | ✅ cluster efêmero: 8/8 recursos, **MetricFlow compila com rootfs read-only**, **NetworkPolicy bloqueia (testado por diferença)**, **inferência ponta a ponta com o modelo real** · **sem HPA — e o [porquê](k8s/README.md) é medido** · ⚠️ GPU no `kind` **é impossível** no Docker Desktop (testado) |
-| **18** · SUT de fronteira | Δ EX com o SUT trocado, mesmo conjunto | ✅ **100% × 44,5%, +55,5 pp** (US$ 0,96 de API) · **o gap encolhe: a vantagem é inversa à força do SUT** · normalizadores das F9/F10 valem **zero** aqui · ⚠️ **benchmark saturou** · 2 bugs de proveniência meus, pegos e corrigidos |
-| **19** · Fragilidade lexical | Δ EX sob schema opaco, **previsão pré-registrada** | ✅ **0,00 pp** (100%/100%, US$ 0,19) contra −29,4 pp do 7B — a fragilidade era **do SUT, não da interface** · ❌ **minha previsão pontual (−9 pp) refutada** · 3ª confirmação da lei da F18 · ⚠️ **3ª saturação: todos os instrumentos acabaram** |
-| **20** · Conjunto duro | o benchmark discrimina se atacar a superfície nunca coberta? | ⚠️ respondíveis **saturam de novo (35/35)** mesmo em filtro composto e métrica mista → **o teto é do CATÁLOGO, não do benchmark** · ✅ mas a abstenção near-miss cai de 96% para **50%**, com modo de falha **novo e uniforme**: pedem proporção, ele responde contagem · a guarda nova **G5 pegou um erro meu** |
+| SQL avançado e modelagem dimensional | F11 · fundação | dbt + **MetricFlow** sobre 1,5 M linhas reais; razões declaradas na *measure*, não no filtro da métrica |
+| Semantic Layer / métricas governadas | F10–F12 | catálogo de 3 métricas com curadoria auditável (`meta: {catalogo_usuario: false}` nos numeradores) |
+| Python de produção | todas | 199 testes · `ruff` limpo · gate bloqueante no CI |
+| Avaliação de LLM com rigor estatístico | F3–F20 | Wilson em toda taxa · **McNemar** pareado · **Test-Suite EX** em 3 variantes de banco |
+| Qualidade de rótulo | F2 · F12 · F14 · F15 · F18 | κ de máquina 0,977 → **Opus 5 cego 0,992** → **κ humano 1,0** · auditoria adversarial acha 7/60 defeitos |
+| Benchmark externo | F13 | **BIRD Mini-Dev**: 500 perguntas e SQL humanos, CC BY-SA |
+| Segurança de LLM | F1 | sandbox AST com attack-block **e** falso-positivo medidos juntos |
+| MLOps / CI | F5 | gate em 3 níveis, **comprovado ativo** (pega 6/6 regressões injetadas) |
+| Serving + SLO | F6 | FastAPI, cache spec→SQL, **controle de admissão decidido por medição** (semáforo 1 + 503) |
+| Containers | F16 | imagem 624 MB, não-root, healthcheck, fundação assada |
+| Kubernetes | F17 | Deployment/Service/PDB/StatefulSet/NetworkPolicy · **sem HPA, com o número que justifica** |
+| API de LLM (provider plugável) | F18 | `RODOQUERY_PROVEDOR=ollama\|anthropic` · prompt caching (341/342 hits) · custo em `/metricas` |
+| Custo sob controle | F18–F20 | teto verificado **a cada item** · `--confirmar` obrigatório · projeto inteiro custou **US$ 1,45** |
 
-## 🔬 Previsões que a medição **refutou**
+</details>
 
-Este é o item de que mais me orgulho no projeto. Cada fase tinha um "achado honesto esperado" **pré-registrado**. Três não se confirmaram — e o repositório registra isso em vez de esconder:
-
-| Previsão da Fase 0 | O que a medição disse |
-|---|---|
-| *"flakiness do LLM desestabiliza o gate"* (F5) | **Refutada.** 5 execuções com greedy + `top_k=1` e modelo quente deram EX **idêntico** (amplitude 0,0 pp). Eu havia escrito na doc da Fase 4 que uma falha vinha de não-determinismo de GPU — **sem ter medido**. Medi, estava errado, e **corrigi a doc**. |
-| *"o held-out de paráfrase derruba memorização"* (F7) | **Não confirmada.** Queda de 7,7 pp com **p=0,375**: com n=39 não dá para rejeitar "não houve diferença". O que **de fato** quebra é trocar `revenue` por `m03` mantendo a mesma descrição: **−14,3 pp, p=0,031**. A fragilidade é **lexical nos identificadores**, não no fraseado. |
-| *"em 6 GB a inferência serializa"* (F6) | **Confirmada — e pior.** Vazão cai 25% em c=4/8 e o p95 vai de 4,4 s para **43 s**. O ótimo de vazão (c=2) **não** é o ótimo de SLO: o controle de admissão certo foi semáforo **1** + espera 5 s, recusando o excesso com 503 em vez de enfileirar. |
-| *"o EX de 97,6% descreve o sistema"* (implícito, F4) | **Refutada pela Fase 8.** Com N 4× maior e superfície nova, o EX é **73,7%**. Três buracos que o conjunto pequeno escondia: a regra `where`-vs-`group_by` **não compõe** com agrupamento (`coalesce_nulo` 15%); a regra de ranking **nunca fora avaliada** e não funciona (17%, sintaxe SQL em vez de MetricFlow); e a abstenção de 100% era artefato de perguntas óbvias — com *near-miss* cai para **55,6%**, errando por **substituição semântica silenciosa** ("taxa de estorno" → `suspect_rate`). |
-| *"consertar a falha de ranking = melhorar o prompt"* (F9) | **Refutada pela medição.** Reescrever o prompt **empatou** no holdout (p=0,89): consertou ranking mas a prosa extra causou 18 erros novos de seleção de métrica. O **mesmo conserto em código** (normalizar `["x","DESC"]` → `["-x"]`) deu **+5 pp, p=0,004, zero regressões**. Falha mecânica se conserta em código, não com mais texto no prompt. |
-| *"o resíduo de seleção exige um SUT maior"* (F14) | **Refutada como enunciada — e depois refinada.** *Maior* não basta: trocar `qwen2.5-coder:7b` por `gemma2:9b` (9B) derruba o EX de 86,1% para **5,6%**, com **23 de 39 specs de vocabulário inválido** contra **zero** do 7B — em vocabulário fechado, **aderência ao formato vence tamanho** (F15). Parte do resíduo era bug meu no normalizador (**+33,4 pp** ao corrigir). Mas a [Fase 18](docs/FASE18_PROVEDOR.md) fecha a nuance: um SUT genuinamente **mais capaz** (`claude-opus-5`) zera o resíduo — 100% nos mesmos estratos que travavam em 72–80%. O enunciado correto é **"não é tamanho, é capacidade"**. |
-| *"a fragilidade lexical encolhe mas deixa resíduo"* (**pré-registrada**, F19) | **Refutada — a minha própria previsão.** Registrei Δ ≈ −9 pp (faixa −18 a −2) **antes de rodar** ([pré-registro](docs/FASE19_PREREGISTRO.md), commit `acaf471`). Medi **0,00 pp**: 100% nos dois braços. Estava direcionalmente certo (a afirmação falsificável central, `\|Δ\| < 29,4`, se confirmou) e **quantitativamente errado** — apostei num piso que não existe. A fragilidade lexical **não é estrutural da interface: era capacidade do SUT**. Terceira confirmação da lei da Fase 18, e a **terceira saturação** de instrumento. |
-| *"a vantagem da interface é uma constante do sistema"* (implícito, F4–F15) | **Refutada pela Fase 18.** Com o SUT trocado por um modelo de fronteira no **mesmo conjunto**, o Δ cai de **+63,0 para +55,5 pp** — porque o baseline quase dobra (26,7% → 44,5%). A vantagem não é constante: é **inversamente proporcional à força do SUT**. Corolário que a mesma fase mede: os dois normalizadores determinísticos, que valem **+17,7 pp** sobre o 7B e tocaram 78/160 specs, tocam **0 de 146** no Opus 5. **A camada determinística é uma muleta cuja altura é exatamente a fraqueza do SUT.** |
-| *"o gargalo é seleção de métrica; limpar o catálogo resolve"* (F10) | **Refutada.** Expor `revenue` e `revenue_cents` (a mesma grandeza) é desenho ruim, mas respondia por só **19%** dos erros — remover empatou (p=1,0). O diagnóstico revelou o gargalo real: em **81%** dos erros a métrica estava **certa** e o modelo **agrupava pela dimensão que já havia filtrado**. Corrigir isso em código deu **+12,7 pp, p≈0, zero regressões** — o maior ganho isolado do projeto. |
-
-Bônus: **a abstenção ficou 100% intacta** sob perturbação de schema. Reconhecer "não existe métrica para isto" depende de o catálogo **não ter** algo, não do nome que as métricas têm — duas competências separadas, e a de segurança é a robusta.
-
-## ⚖️ Princípios
-
-- Toda métrica com **intervalo de confiança** (Wilson/bootstrap); n pequeno assumido e declarado.
-- **Execução como oráculo** — nada de LLM-juiz para acurácia.
-- **Test-suite EX**: a predição precisa bater o gold em **todas** as seeds de DB, o que mata acerto por coincidência.
-- **Anti-circularidade:** o gold sai **sempre** do MetricFlow, nunca de SQL escrito à mão.
-- Comparação de sistemas é **pareada** → **McNemar**.
-- **Predições congeladas** em disco: o SUT é estocástico, a pontuação é determinística e auditável.
-- Tudo em `reports/<fase>/*.json` carimbado (seed, git_sha, modelo, temperatura, versões).
-- **O artefato não pode mentir sobre si mesmo.** O relatório descreve o *artefato*, não a execução que o releu — e a predição congelada grava **qual modelo de fato respondeu**. As duas regras nasceram de bugs meus na [Fase 18](docs/FASE18_PROVEDOR.md): as 342 predições da API ficaram rotuladas como `qwen2.5-coder:7b`, e re-pontuar sobre predições congeladas publicaria `custo_usd: 0`.
-- **Dados públicos reais** (ANTT, CC-BY) desde a Fase 11; sintéticos nas Fases 0–10.
-- **SUT local por padrão** (Qwen2.5-Coder-7B em 6 GB — teto declarado): custo **R$ 0**. O caminho de API existe, é opcional e **nunca é default** — o experimento inteiro da Fase 18 custou **US$ 0,96**.
-
-## 🚫 O que eu decidi **não** medir — e por quê
-
-**[Spider 2.0](https://spider2-sql.github.io/) (ICLR 2025) é o benchmark mais alinhado a esta tese** — tem inclusive uma trilha `Spider2-DBT`, com tarefas em nível de repositório dbt. Seria o alvo natural. Ficou de fora, e a razão é aritmética:
-
-> Modelos de fronteira fazem **17–21%** no Spider 2.0. Este projeto roda um **Qwen2.5-Coder-7B em 6 GB de VRAM**. O resultado esperado é indistinguível de zero.
-
-Um zero não separa "o Semantic Layer ajuda" de "o modelo não dá conta" — não mede a tese, mede o teto de hardware que já declarei na Fase 0. Rodá-lo renderia uma linha bonita no README (*"avaliado no Spider 2.0"*) e **nenhuma informação**.
-
-A escolha honesta foi um benchmark onde o SUT tem sinal mensurável: o **BIRD Mini-Dev**, com 500 perguntas e SQL de referência **humanos** — que é também o que ataca o backlog de κ humano. Ver [Fase 13](docs/FASE13_BIRD.md).
-
-Se o teto de hardware subir, Spider2-DBT é o próximo alvo natural.
-
-## 🎯 Backlog declarado (o que **não** está feito)
-
-Nenhum destes é surpresa: todos foram declarados na fase em que apareceram. A [Fase 14](docs/FASE14_BACKLOG.md) quitou as quatro dívidas abertas — ficou o que é genuinamente caro ou depende de humano.
-
-**Ainda aberto (honestamente):**
-- **Golden mais difícil** — *criado pela [Fase 18](docs/FASE18_PROVEDOR.md)*: com um SUT de fronteira o Tier-A faz **100%**, e o conjunto deixa de discriminar. O teto virou o do **instrumento**, não o do sistema. Medir o teto real exige um golden novo com o mesmo protocolo anti-vazamento das Fases 8/9 (specs inéditas, holdout selado antes de rodar). Enquanto isso, o +55,5 pp deve ser lido como **piso, não estimativa pontual**.
-- **Concorrência do serving na API não foi medida** — o semáforo 1 veio de *"1 GPU não paraleliza"* (Fase 6), premissa que **não vale** para a API. O default lá é 8 e `/saude` expõe `concorrencia_medida: false` para não deixar ninguém confundir default com medição.
-- **Promover o catálogo v2 ao serving** — a Fase 15 mediu **+5,5 pp** em holdout fresco, mas promovê-lo troca o SUT de todas as fases anteriores. Decisão a tomar explicitamente, não de passagem.
-- **Catálogo mais rico (não "golden mais difícil")** — a [Fase 20](docs/FASE20_DURO.md) reenunciou este item. Construí o conjunto duro contra as formas nunca cobertas (filtro composto, métrica mista, composição) e ele **saturou igual: 35/35**. Com 3 métricas e 9 dimensões não há perguntas mais difíceis a fazer — o teto é da **superfície semântica**, não do benchmark. Medir o teto real do Tier-A exige uma fundação mais rica (mais métricas, hierarquias, janelas), não mais itens.
-- **Rebaixamento de tipo na abstenção** — modo de falha **novo**, achado na Fase 20: pedem *proporção*, o Tier-A responde `traffic_volume` (contagem). Uniforme nos 6 casos que falharam; derruba a abstenção de 96% para **50%** no conjunto near-miss. Silencioso: compila, executa e devolve número plausível.
-- **Cobertura do catálogo** — os mesmos 6 itens expõem que parte do que eu contava como "abstenção correta" é o catálogo ser pequeno: `manual_share`, share por eixo e afins **poderiam** ser métricas governadas. Decisão de modelagem a tomar, não virtude a celebrar.
-
-**Quitado na Fase 19:**
-- ~~**Fragilidade lexical do schema**~~ — a Fase 14 mediu **−29,4 pp** sob identificadores opacos e tratou como defeito da interface, a mitigar com descrições mais ricas. **Diagnóstico errado.** Com `claude-opus-5` no mesmo conjunto selado: **0,00 pp** (100% nos dois braços, US$ 0,19). A fragilidade era **capacidade do SUT**, não estrutura do vocabulário fechado — descrições mais ricas viram otimização de custo, não correção. Ver [Fase 19](docs/FASE19_FRAGILIDADE.md).
-
-**Quitado — a dívida mais antiga do projeto (aberta desde a Fase 2):**
-- ~~**κ humano do golden**~~ — **κ = 1,0 (n=40, IC95 [0,912; 1,0])**, anotador humano cego, 5 itens por estrato. Ver [Fase 14 · κ humano](docs/FASE14_KAPPA_HUMANO.md). Duas ressalvas que o próprio doc declara: **1 dos 40 itens não foi cego** (a planilha expunha `estrato: abstencao` ao lado da pergunta) — excluindo-o, κ = 1,0 com IC [0,910; 1,0], e a conclusão não muda; e concordância perfeita com n=40 **não** prova que o golden inteiro é perfeito, prova que as convenções são reproduzíveis por outro anotador.
-
-  **Evidência de que a anotação foi independente, e não cópia:** as 40 specs humanas são **canonicamente idênticas** às do autor, mas só **26 são idênticas byte a byte**. As outras 14 escrevem a mesma coisa de forma diferente — que é o que uma anotação genuína produz e uma cópia não.
-
-  **Escala completa das três camadas:** κ de máquina **0,977** (qwen 7B × autor, Fase 12) → Opus 5 cego **0,992** (170/171, custo US$ 0,00) → **humano 1,0** (n=40). O projeto deixou de ser máquina auditando máquina.
-
-**Quitado na Fase 18:**
-- ~~O resíduo de seleção é falha sistêmica da interface?~~ — **não era.** Um SUT de fronteira faz **100%** nos mesmos estratos que travavam em 72–80% no 7B. O resíduo era **capacidade do SUT**, e agora está caracterizado como tal em vez de suspeito.
-
-**Quitado na Fase 15:**
-- ~~Seleção de métrica/dimensão~~ — era **em boa parte bug meu**: o normalizador contradizia a convenção do próprio gold (**+33,4 pp** ao corrigir). Descrições melhores somam **+5,5 pp**. E "SUT **maior**" foi **refutado**: um 9B generalista colapsa (5,6%) onde o 7B *coder* faz 86,1%.
-
-**Quitado:**
-- ~~Ligar o Tier-B / roteador~~ — **medido na Fase 14**: fallback conservador captura o ganho sem custo, ingênuo derruba abstenção. Módulo `roteador.py` pronto; off no serving por **escolha baseada em evidência**.
-- ~~Conjunto de robustez próprio~~ — **feito** (Fase 14): conjunto dedicado e selado, disjunto do TEST.
-- ~~Resíduo de ranking~~ — **defeito de gold** (empate na zona de corte) corrigido; EX 86,9% → 88,7%.
-- ~~Expandir N para ≥25/estrato~~ — feito na Fase 8 (223 itens no TEST-v2).
-
-## 🐳 Rodar
+## 🚀 Rodar
 
 ```bash
-bash docker/preparar_contexto.sh    # materializa a fundação no contexto de build
-docker compose up --build           # Ollama + SUT + serviço
-
-curl localhost:8077/saude
-curl -X POST localhost:8077/consulta -H 'content-type: application/json' \
-     -d '{"pergunta":"Quantos veículos passaram por concessionária?"}'
-```
-
-Imagem de **624 MB** com a fundação ANTT assada (dado público CC-BY), usuário não-root, healthcheck.
-Com GPU: `docker compose -f docker-compose.yml -f docker-compose.gpu.yml up`.
-
-Em Kubernetes: `kubectl apply -k k8s` — manifestos testados num cluster efêmero, com
-`NetworkPolicy` restringindo o egress e **sem HPA de propósito** (a unidade de escala é a GPU, não
-a CPU — [o porquê, com número](k8s/README.md)).
-
-> ⚠️ **O container não cumpre o SLO da Fase 6** (medido nativo, com GPU): a quente são ~7 s com
-> cache de spec e ~18 s sem, contra p50 4,5 s nativo. Não herdo o número — ver [Fase 16](docs/FASE16_DOCKER.md).
-
-## 🚀 Setup de desenvolvimento
-
-```bash
+git clone https://github.com/alanjoffre/rodoquery && cd rodoquery
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev,llm,serve]"
-pytest                                    # 148 testes
-python gate_regressao.py                  # gate nível A (contrato, sem GPU)
-uvicorn rodoquery.servico:app --port 8077 # serving do Tier-A (SUT local)
+pytest                                     # 199 testes
+python gate_regressao.py                   # gate nível A (contrato, sem GPU)
+uvicorn rodoquery.servico:app --port 8077  # serving do Tier-A (SUT local)
 ```
 
-**Trocar o SUT por API** (opcional; extra `api`, chave em `.env`, gitignorado):
+**Container / Kubernetes:**
+
+```bash
+bash docker/preparar_contexto.sh && docker compose up --build   # Ollama + SUT + serviço
+kubectl apply -k k8s                                            # manifestos testados em cluster efêmero
+```
+
+**Trocar o SUT por API** (opcional; extra `api`, chave em `.env`, **gitignorado**):
 
 ```bash
 pip install -e ".[api]"
-echo 'ANTHROPIC_API_KEY=sk-ant-...' >> .env      # nunca versionado
 RODOQUERY_PROVEDOR=anthropic uvicorn rodoquery.servico:app --port 8077
-
-python avaliar_fase18.py estimar                 # a conta ANTES de gastar, zero chamadas
-python avaliar_fase18.py piloto --n 12 --confirmar
+python avaliar_fase18.py estimar           # a conta ANTES de gastar, zero chamadas
 ```
 
-Nenhum caminho gasta crédito por acidente: o default é o SUT local, `--confirmar` é obrigatório
-(sem ele o script sai com código 2 sem uma chamada), e `--teto-usd` é verificado **a cada item** —
-um orçamento conferido só no fim não é um orçamento. Com o SUT pago, `/metricas` passa a expor
-`custo.usd_acumulado`: descobrir o gasto pela fatura é tarde demais.
+Nenhum caminho gasta crédito por acidente: o default é o SUT **local**, `--confirmar` é obrigatório (sem ele o script sai com código 2 **sem uma chamada**), e `--teto-usd` é verificado **a cada item** — orçamento conferido só no fim não é orçamento.
 
-Pré-requisito: a fundação de dados vem do **toll-analytics-platform** buildado (`dbt build` → DuckDB + `manifest.json`). Ver [`docs/FUNDACAO.md`](docs/FUNDACAO.md).
+> ⚠️ **O container não cumpre o SLO nativo** (medido com GPU): ~7 s a quente com cache contra p50 4,5 s. **Não herdo o número** — ver [Fase 16](docs/FASE16_DOCKER.md). O mesmo vale para K8s (66,9 s em CPU) e para a concorrência do serving na API (default 8, **não medido**, e `/saude` admite isso em `concorrencia_medida: false`).
 
-**Documentação por fase:** [golden set](docs/GUIA_GOLDEN.md) · [baselines](docs/FASE3_BASELINES.md) · [sistema](docs/FASE4_SISTEMA.md) · [MLOps](docs/FASE5_MLOPS.md) · [serving/SLO](docs/FASE6_SERVING_SLO.md) · [robustez](docs/FASE7_ROBUSTEZ.md) · [poder estatístico](docs/FASE8_PODER.md) · [conserto](docs/FASE9_CONSERTO.md) · [catálogo](docs/FASE10_CATALOGO.md) · [dados reais ANTT](docs/FASE11_ANTT.md) · [tese sobre dado real](docs/FASE12_TESE_REAL.md) · [calibração BIRD](docs/FASE13_BIRD.md) · [quitação do backlog](docs/FASE14_BACKLOG.md) · [seleção e qualidade de label](docs/FASE15_SELECAO.md) · [empacotamento](docs/FASE16_DOCKER.md) · [Kubernetes](k8s/README.md) · [SUT de fronteira](docs/FASE18_PROVEDOR.md) · [κ humano](docs/FASE14_KAPPA_HUMANO.md) · [fragilidade lexical](docs/FASE19_FRAGILIDADE.md) · [conjunto duro](docs/FASE20_DURO.md)
+## 🎯 Backlog declarado
+
+Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
+
+**Aberto:**
+- **Catálogo mais rico** *(não "golden mais difícil")* — a F20 reenunciou este item: o teto é da **superfície semântica** (3 métricas, 9 dimensões), não do benchmark. Medir o teto real do Tier-A exige mais métricas, hierarquias e janelas — não mais perguntas.
+- **Rebaixamento de tipo** — modo de falha **novo** (F20): pedem *proporção*, o Tier-A responde `traffic_volume`. Uniforme nos 6 casos que falharam; silencioso (compila, executa, devolve número plausível).
+- **Cobertura do catálogo** — os mesmos 6 itens mostram que parte do que eu contava como "abstenção correta" é o catálogo ser pequeno: `manual_share` e afins **poderiam** ser métricas governadas. Decisão de modelagem a tomar, não virtude a celebrar.
+- **Conjunto duro sem κ de 2º anotador** — as guardas G0/G4/G5 são automáticas e pegaram 1 defeito, mas não substituem uma segunda leitura.
+- **Concorrência do serving na API** — default 8 escolhido por raciocínio, **não medido**.
+- **Promover o catálogo v2 ao serving** — +5,5 pp medidos no 7B; a lei da F18 prevê que evaporam num SUT forte. Decisão a tomar explicitamente.
+- **GPU no Kubernetes** — bloqueada pelo Docker Desktop no Windows (testado, não presumido); exige Linux nativo ou cluster gerenciado.
+
+**Quitado:**
+- ~~**κ humano do golden**~~ — a dívida mais antiga (Fase 2): **κ = 1,0** (n=40, IC [0,912; 1,0]), anotador humano cego. Duas ressalvas declaradas em [docs/FASE14_KAPPA_HUMANO.md](docs/FASE14_KAPPA_HUMANO.md): **1 dos 40 itens não foi cego** (excluindo, 39/39, IC [0,910; 1,0]) e concordância perfeita com n=40 mede **reprodutibilidade das convenções**, não perfeição do golden. Evidência de que foi anotação e não cópia: as specs são **canonicamente idênticas** mas só **26 de 40 são idênticas byte a byte**.
+- ~~**Fragilidade lexical**~~ — era do SUT, não da interface (F19: **0,00 pp**).
+- ~~**Resíduo de seleção**~~ — era capacidade do SUT (F18: 100% nos estratos que travavam).
+- ~~Tier-B / roteador~~ — medido na F14: fallback ingênuo **derruba** a abstenção; off por evidência.
+- ~~Conjunto de robustez próprio~~ · ~~resíduo de ranking~~ · ~~N ≥ 25/estrato~~ — F8 e F14.
+
+## 🚫 O que decidi **não** medir — e por quê
+
+**[Spider 2.0](https://spider2-sql.github.io/) é o benchmark mais alinhado a esta tese** — tem até uma trilha `Spider2-DBT`. Ficou de fora, e a razão é aritmética: modelos de fronteira fazem **17–21%** ali, e este projeto nasceu num **Qwen2.5-Coder-7B em 6 GB**. O resultado esperado era indistinguível de zero — e um zero não separa *"o Semantic Layer ajuda"* de *"o modelo não dá conta"*. Renderia uma linha bonita no README e **nenhuma informação**. A escolha honesta foi o **BIRD Mini-Dev**, onde o SUT tem sinal mensurável.
+
+## 📚 Documentação
+
+| Documento | Para quê |
+|---|---|
+| [docs/GUIA_GOLDEN.md](docs/GUIA_GOLDEN.md) | Como o golden é autorado, validado e **selado** (anti-vazamento) |
+| [docs/FASE12_TESE_REAL.md](docs/FASE12_TESE_REAL.md) | A tese sobre dado real + os 2 bugs de harness pegos a tempo |
+| [docs/FASE13_BIRD.md](docs/FASE13_BIRD.md) | Calibração externa: o baseline não é espantalho |
+| [docs/FASE14_KAPPA_HUMANO.md](docs/FASE14_KAPPA_HUMANO.md) | O κ humano: instrumento, roteiro, resultado e as ressalvas |
+| [docs/FASE18_PROVEDOR.md](docs/FASE18_PROVEDOR.md) | Provider plugável, prompt caching e a lei da muleta |
+| [docs/FASE19_PREREGISTRO.md](docs/FASE19_PREREGISTRO.md) · [FASE19_FRAGILIDADE.md](docs/FASE19_FRAGILIDADE.md) | Pré-registro **e** o resultado que refutou minha previsão |
+| [docs/FASE20_DURO.md](docs/FASE20_DURO.md) | O conjunto duro, o teto do catálogo e o modo de falha novo |
+| [k8s/README.md](k8s/README.md) | O deploy — e **por que não há HPA**, com o número |
+| [docs/FUNDACAO.md](docs/FUNDACAO.md) | A fundação dbt/MetricFlow e as armadilhas do dado real |
+
+Auditoria de fidelidade dos números: **`python auditar_documentacao.py`** — confere cada valor citado aqui contra os artefatos em `reports/`.
+
+## 🔒 Higiene do repositório
+
+- **Sem segredos** — `.env` no `.gitignore` desde sempre; a chave de API nunca foi versionada (verificado a cada commit).
+- **Dados públicos** — sintéticos nas Fases 0–10; **ANTT sob CC BY** a partir da F11 (1,5 M linhas, jan–mai/2026, sem PII). BIRD Mini-Dev sob CC BY-SA, fora do repo.
+- **Anti-vazamento** — todo conjunto de teste é **selado com sha256 antes** de qualquer sistema rodar; predições **congeladas** em disco para que a pontuação seja determinística.
+- **Anti-circularidade** — o gold sai **sempre** do MetricFlow, nunca de SQL escrito à mão.
+
+## 👤 Autor
+
+**Alan Joffre** — Engenharia de Dados / IA
+[GitHub](https://github.com/alanjoffre) · [LinkedIn](https://www.linkedin.com/in/alanjoffre/)
 
 ## 📄 Licença
 
-Código: **MIT**.
+**MIT** para o código.
 
-Dados: **públicos e reais** desde a Fase 11 — volume de tráfego nas praças de pedágio federais,
-publicado pela **ANTT** sob **CC-BY** (1,5 M de linhas, jan–mai/2026, sem PII). As Fases 0–10 usam
-dados **sintéticos** gerados pelo [toll-analytics-platform](https://github.com/alanjoffre/toll-analytics-platform).
-Nenhum dado pessoal ou proprietário em nenhuma fase.
+Dados: **públicos e reais** desde a Fase 11 — volume de tráfego nas praças de pedágio federais, publicado pela **ANTT** sob **CC BY** (1,5 M linhas, jan–mai/2026, sem PII). As Fases 0–10 usam dados **sintéticos** gerados pelo [toll-analytics-platform](https://github.com/alanjoffre/toll-analytics-platform). O [BIRD Mini-Dev](https://bird-bench.github.io/) (F13) é CC BY-SA e não está versionado aqui. Nenhum dado pessoal ou proprietário em nenhuma fase.
+
+---
+
+<div align="center">
+
+<sub>21 fases · 199 testes · gate 7/7 · custo total de API US$ 1,45 · cada número em <code>reports/</code> com carimbo de proveniência.</sub>
+
+</div>
