@@ -1,0 +1,219 @@
+{
+  "medido_em": "2026-08-03T10:28:22Z",
+  "repositorio": "alanjoffre/rodoquery",
+  "n_execucoes": 33,
+  "n_verdes": 1,
+  "n_vermelhas": 32,
+  "vermelhas_consecutivas_ate_a_ultima": 32,
+  "dias_vermelho": 12,
+  "primeira_verde": {
+    "sha": "d5701540",
+    "em": "2026-07-22T17:45:01Z",
+    "titulo": "feat(fase5): MLOps — gate de regressao ativo, observabilidade e custo…"
+  },
+  "primeira_vermelha": {
+    "sha": "528387c9",
+    "em": "2026-07-22T18:15:16Z",
+    "titulo": "feat(fase6): serving FastAPI + SLO — hipotese \"6GB serializa\" CONFIRMADA"
+  },
+  "execucoes": [
+    {
+      "em": "2026-07-22T17:45",
+      "conclusao": "success",
+      "sha": "d5701540",
+      "titulo": "feat(fase5): MLOps — gate de regressao ativo, observabilidade e custo…"
+    },
+    {
+      "em": "2026-07-22T18:15",
+      "conclusao": "failure",
+      "sha": "528387c9",
+      "titulo": "feat(fase6): serving FastAPI + SLO — hipotese \"6GB serializa\" CONFIRMADA"
+    },
+    {
+      "em": "2026-07-22T18:39",
+      "conclusao": "failure",
+      "sha": "2e2b5bac",
+      "titulo": "feat(fase7): robustez — parafrase, schema opaco e volume (o que quebr…"
+    },
+    {
+      "em": "2026-07-22T19:03",
+      "conclusao": "failure",
+      "sha": "36cbcba9",
+      "titulo": "docs(readme): README vira registro do MEDIDO, nao do planejado"
+    },
+    {
+      "em": "2026-07-22T20:52",
+      "conclusao": "failure",
+      "sha": "7c5019fd",
+      "titulo": "feat(fase8): poder estatistico — o EX de 97,6% NAO replica (73,7% com…"
+    },
+    {
+      "em": "2026-07-22T20:53",
+      "conclusao": "failure",
+      "sha": "56a6e470",
+      "titulo": "feat(fase8): poder estatistico — o EX de 97,6% NAO replica (73,7% com…"
+    },
+    {
+      "em": "2026-07-23T00:22",
+      "conclusao": "failure",
+      "sha": "be38dbf9",
+      "titulo": "feat(fase9): conserto — falha mecanica se conserta em CODIGO, nao no …"
+    },
+    {
+      "em": "2026-07-24T12:23",
+      "conclusao": "failure",
+      "sha": "0c01923b",
+      "titulo": "feat(fase10): hipotese do catalogo REFUTADA; o gargalo real rendeu +1…"
+    },
+    {
+      "em": "2026-07-24T13:30",
+      "conclusao": "failure",
+      "sha": "bb4781b1",
+      "titulo": "feat(fase11): migracao para dados REAIS da ANTT — fundacao verificada"
+    },
+    {
+      "em": "2026-07-24T15:13",
+      "conclusao": "failure",
+      "sha": "1a8e4389",
+      "titulo": "feat(fase12): a tese sobre DADO REAL — 86,9% x 28,8%, +58,1pp, p~0"
+    },
+    {
+      "em": "2026-07-24T17:27",
+      "conclusao": "failure",
+      "sha": "a23c3073",
+      "titulo": "feat(fase13): calibracao externa no BIRD Mini-Dev — o baseline NAO e …"
+    },
+    {
+      "em": "2026-07-25T14:44",
+      "conclusao": "failure",
+      "sha": "0c3ee0d4",
+      "titulo": "feat(fase14): quita as 4 dividas do backlog declarado"
+    },
+    {
+      "em": "2026-07-25T15:59",
+      "conclusao": "failure",
+      "sha": "67f67e9f",
+      "titulo": "feat(fase15): residuo de selecao era bug MEU (+33,4pp); SUT maior REF…"
+    },
+    {
+      "em": "2026-07-27T11:18",
+      "conclusao": "failure",
+      "sha": "59688364",
+      "titulo": "feat(fase16): empacotamento — a stack roda fora da minha maquina"
+    },
+    {
+      "em": "2026-07-27T19:36",
+      "conclusao": "failure",
+      "sha": "1fd7d766",
+      "titulo": "feat(fase17): Kubernetes — deploy testado, e a decisao de NAO ter HPA"
+    },
+    {
+      "em": "2026-07-27T21:55",
+      "conclusao": "failure",
+      "sha": "92e0f41c",
+      "titulo": "test(fase17): resolve as 2 limitacoes do K8s — uma virou prova, a out…"
+    },
+    {
+      "em": "2026-07-27T22:29",
+      "conclusao": "failure",
+      "sha": "42ad7c43",
+      "titulo": "Fase 17: provedor de LLM plugavel (Ollama local | API Anthropic)"
+    },
+    {
+      "em": "2026-07-27T22:30",
+      "conclusao": "failure",
+      "sha": "29ea0db3",
+      "titulo": "fix: renumera o provedor para Fase 18 (17 e 17b ja eram o Kubernetes)"
+    },
+    {
+      "em": "2026-07-27T23:56",
+      "conclusao": "failure",
+      "sha": "8b6fbefa",
+      "titulo": "Fase 18: o gap ENCOLHE com SUT de fronteira (+63,0pp -> +55,5pp)"
+    },
+    {
+      "em": "2026-07-28T00:14",
+      "conclusao": "failure",
+      "sha": "c2ac0184",
+      "titulo": "feat: provedor plugavel chega ao SERVING + README cobre as Fases 17/1…"
+    },
+    {
+      "em": "2026-07-28T00:22",
+      "conclusao": "failure",
+      "sha": "feb46dd6",
+      "titulo": "fix(kappa humano): amostrar do golden SELADO, nao do pool bruto"
+    },
+    {
+      "em": "2026-07-28T13:12",
+      "conclusao": "failure",
+      "sha": "4c6160d6",
+      "titulo": "feat(kappa humano): anotador guiado — encurta a hora sem produzir uma…"
+    },
+    {
+      "em": "2026-07-28T13:47",
+      "conclusao": "failure",
+      "sha": "7ba59351",
+      "titulo": "feat: terceira camada de auditoria de label — Opus 5 cego x autor, cu…"
+    },
+    {
+      "em": "2026-07-28T15:22",
+      "conclusao": "failure",
+      "sha": "62172548",
+      "titulo": "fix(kappa humano): o instrumento vazava a resposta e quebrava na disc…"
+    },
+    {
+      "em": "2026-07-28T18:03",
+      "conclusao": "failure",
+      "sha": "6515d03d",
+      "titulo": "Fase 14 (#1): kappa humano = 1,0 (n=40) — a divida da Fase 2 fecha"
+    },
+    {
+      "em": "2026-07-28T18:16",
+      "conclusao": "failure",
+      "sha": "5c1b6a8d",
+      "titulo": "chore: ignora a planilha de anotacao humana (o dado ja vive no .jsonl)"
+    },
+    {
+      "em": "2026-07-28T18:24",
+      "conclusao": "failure",
+      "sha": "381ddc60",
+      "titulo": "docs: alinha o repositorio ao kappa humano fechado + evidencia de nao…"
+    },
+    {
+      "em": "2026-07-28T18:48",
+      "conclusao": "failure",
+      "sha": "7a2a1095",
+      "titulo": "Fase 19: a fragilidade lexical era do SUT, nao da interface (delta 0,…"
+    },
+    {
+      "em": "2026-07-31T12:01",
+      "conclusao": "failure",
+      "sha": "27dbc9c2",
+      "titulo": "fix(gold): _extrair_sql cortava no SELECT e destruia o CTE — ponto ce…"
+    },
+    {
+      "em": "2026-07-31T20:10",
+      "conclusao": "failure",
+      "sha": "63e0e778",
+      "titulo": "fix(docs): retrata o impacto que atribui ao bug do CTE — era latente,…"
+    },
+    {
+      "em": "2026-07-31T20:43",
+      "conclusao": "failure",
+      "sha": "7ccc21d8",
+      "titulo": "Fase 20: conjunto duro — o teto era do CATALOGO, e a abstencao e que …"
+    },
+    {
+      "em": "2026-08-03T09:55",
+      "conclusao": "failure",
+      "sha": "1c6f22ff",
+      "titulo": "docs: README no padrao do RodoIA + auditoria de fidelidade + LICENSE"
+    },
+    {
+      "em": "2026-08-03T10:28",
+      "conclusao": "failure",
+      "sha": "72ffc063",
+      "titulo": "Fase 21: fecha os 7 itens do backlog — o defeito era do catalogo, e o…"
+    }
+  ]
+}

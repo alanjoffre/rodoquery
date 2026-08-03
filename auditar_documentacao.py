@@ -115,6 +115,23 @@ if cc:
     checa("F21 melhor nivel (doc diz 8)", cc["melhor_nivel"], 8)
     checa("F21 criterio pre-declarado atendido", cc["escala"], True)
 
+print("\n=== FASE 22 (historico do CI) ===")
+# SNAPSHOT congelado no dia do conserto (03/08/2026). O README afirma o passado — "1 verde em 33"
+# — entao a fonte tem de ser o snapshot, nao uma nova consulta: re-medir depois do conserto daria
+# outro numero e o README, que fala de antes, pareceria mentir. Regravar so com
+# `medir_historico_ci.py`, e de proposito.
+ci = _j("fase22/historico_ci.json")
+if ci:
+    checa("F22 execucoes ate o conserto (README diz 33)", ci["n_execucoes"], 33)
+    checa("F22 verdes (README diz 1)", ci["n_verdes"], 1)
+    checa("F22 vermelhas seguidas (README diz 32)",
+          ci["vermelhas_consecutivas_ate_a_ultima"], 32)
+    checa("F22 dias vermelho (doc diz 12)", ci["dias_vermelho"], 12)
+    checa("F22 unica verde = commit que criou o CI (F5)",
+          ci["primeira_verde"]["sha"], "d5701540")
+    checa("F22 quebrou no commit da F6 (serving/FastAPI)",
+          ci["primeira_vermelha"]["sha"], "528387c9")
+
 print("\n=== KAPPA HUMANO ===")
 kh = _j("fase14/kappa_humano.json")
 if kh:

@@ -10,7 +10,7 @@ Data Engineering × AI Engineering · avaliação com rigor · **dados públicos
 ![Python](https://img.shields.io/badge/python-3.12-blue.svg)
 ![Testes](https://img.shields.io/badge/testes-216%20passando-brightgreen.svg)
 ![Gate](https://img.shields.io/badge/gate%20de%20regressão-7%2F7-brightgreen.svg)
-![Fases](https://img.shields.io/badge/fases-0–21-e0a326.svg)
+![Fases](https://img.shields.io/badge/fases-0–22-e0a326.svg)
 ![Sandbox](https://img.shields.io/badge/attack--block-39%2F39%20·%20FP%200%25-brightgreen.svg)
 ![Custo](https://img.shields.io/badge/custo%20de%20API-US%24%201%2C82-blue.svg)
 
@@ -75,6 +75,7 @@ O gap **encolheu** porque o baseline quase dobrou (26,7% → 44,5%). Esse é o n
 | **19** · Fragilidade lexical | Δ EX sob schema opaco, **previsão pré-registrada** | ✅ **0,00 pp** contra −29,4 pp do 7B — era **do SUT, não da interface** · ❌ **minha previsão pontual refutada** |
 | **20** · Conjunto duro | o benchmark discrimina atacando a superfície nunca coberta? | ⚠️ respondíveis **saturam de novo (35/35)** → o teto é do **catálogo** · ✅ abstenção near-miss cai para **50%**, modo de falha novo · guarda nova **pegou um erro meu** |
 | **21** · Catálogo enriquecido | completar as partições conserta o rebaixamento de tipo? | ✅ **rebaixamento 6/6 → 1/8**, abstenção 50% → **75%**, total **41/47 → 44/47** · ⚠️ **1 regressão** (contagem × proporção): é troca, não ganho grátis · auditoria adversarial **44/47 (93,6%)** · **concorrência da API medida: 5,74× em c=8** |
+| **22** · CI de verdade | o pipeline que eu já declarava ter **de fato roda a suíte**? | ❌ **não rodava desde a Fase 6**: 1 verde em 33 execuções, 32 vermelhas em 12 dias — `[dev]` não instalava `fastapi` e a **coleta** quebrava · ✅ extra `[test]` + **trava de coleta** (0 erros · 0 arquivo vazio · piso 216) |
 
 <sub>¹ As Fases 14 e 15 corrigiram defeitos de gold e **re-pontuaram as mesmas predições**: 86,9% → 88,7% → **89,7%**. O artefato em `reports/fase12/` guarda o valor re-pontuado (89,7%), que é o usado na tabela da tese. Os dois números são verdadeiros em momentos diferentes.</sub>
 
@@ -95,6 +96,8 @@ O diferencial não são os números altos — é **o rigor ter corrigido os pró
 - **O teto era do catálogo, não do benchmark** *(F20)*. Construí um conjunto duro contra as formas que **medi** nunca terem sido cobertas (`where` composto: 0 de 168 itens; métrica mista: impossível de compilar até a F19). Saturou igual — **35/35**. Com 3 métricas e 9 dimensões, um SUT de fronteira não erra composição.
 
 - **O defeito era do catálogo, e o conserto tem preço** *(F21)*. Registrei o rebaixamento de tipo como falha do modelo. Era **assimetria do catálogo**: expunha `automation_rate` e escondia os irmãos da mesma partição, então "proporção de cobrança manual" era uma pergunta legítima sem resposta. Completando as partições, o rebaixamento cai de **6/6 para 1/8** — mas **um item que acertava passou a errar**: com `motorcycle_share` disponível, *"as 5 praças com maior **volume** de motos"* virou `motorcycle_share` em vez da contagem filtrada. Catálogo maior compra cobertura e paga em ambiguidade. **A troca líquida é +3 em 47, e ela tem os dois lados.**
+
+- **Eu tinha CI; eu não tinha CI verde** *(F22)*. Contei "CI/CD" como entregue porque o `ci.yml` existia e o gate rodava na minha máquina. O histórico do Actions diz outra coisa: **1 execução verde em 33**, e a única foi o commit que criou o workflow. O commit seguinte trouxe `tests/test_servico.py`, que importa `fastapi` — extra `[serve]`, ausente do `pip install -e ".[dev]"` do runner. A **coleta** do pytest quebrava, e o build ficou vermelho por **32 execuções, 12 dias e 16 fases**, com o badge estampado no topo deste README. O CI funcionou perfeitamente; **eu é que não li**. Consertado com um extra `[test]` nomeado e uma [trava de coleta](verificar_coleta.py) — porque o modo de falha pior seria *pular* os dois arquivos e ficar **verde com 26 testes a menos**. Ver [Fase 22](docs/FASE22_CI.md).
 
 - **Um bug de 19 fases, e a retratação do impacto que atribuí a ele** *(F20)*. O extrator de SQL cortava no primeiro `SELECT`, destruindo o `WITH` do CTE. Afirmei que isso tinha descartado itens em silêncio e explicava parte da saturação. **A auditoria me refutou:** dos 220 autorados, os 4 descartes foram todos por gold degenerado, e em 291 itens autorados a forma **nunca foi escrita**. O bug era **latente**. Errei por inferir consequência a partir do mecanismo em vez de **medir** o impacto.
 
@@ -149,8 +152,9 @@ SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI �
 ```bash
 git clone https://github.com/alanjoffre/rodoquery && cd rodoquery
 python -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev,llm,serve]"
+pip install -e ".[test]"                   # o mesmo extra que o CI usa — ver Fase 22
 pytest                                     # 216 testes
+python verificar_coleta.py                 # nenhum teste some por falta de extra
 python gate_regressao.py                   # gate nível A (contrato, sem GPU)
 uvicorn rodoquery.servico:app --port 8077  # serving do Tier-A (SUT local)
 ```
@@ -172,15 +176,19 @@ python avaliar_fase18.py estimar           # a conta ANTES de gastar, zero chama
 
 Nenhum caminho gasta crédito por acidente: o default é o SUT **local**, `--confirmar` é obrigatório (sem ele o script sai com código 2 **sem uma chamada**), e `--teto-usd` é verificado **a cada item** — orçamento conferido só no fim não é orçamento.
 
-> ⚠️ **O container não cumpre o SLO nativo** (medido com GPU): ~7 s a quente com cache contra p50 4,5 s. **Não herdo o número** — ver [Fase 16](docs/FASE16_DOCKER.md). O mesmo vale para K8s (66,9 s em CPU) e para a concorrência do serving na API (default 8, **não medido**, e `/saude` admite isso em `concorrencia_medida: false`).
+> ⚠️ **O container não cumpre o SLO nativo** (medido com GPU): ~7 s a quente com cache contra p50 4,5 s. **Não herdo o número** — ver [Fase 16](docs/FASE16_DOCKER.md). O mesmo vale para K8s (66,9 s em CPU). Já a concorrência do serving na API **deixou de ser dívida na F21**: medida em 5,74× a c=8 com p95 plano, e `/saude` reporta `concorrencia_medida: true` nos dois caminhos.
 
 ## 🎯 Backlog declarado
 
 Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
 
-**Aberto — dois itens, os dois com o custo declarado:**
+**Aberto — três itens, todos com o custo declarado:**
+- **O extra `llm` é metadado morto** — nada em `src/` importa `httpx` ou `ollama` (o cliente do Ollama fala HTTP por `urllib` da stdlib); achado na F22. **Não removido ainda de propósito:** o `Dockerfile` instala `.[serve,llm]`, e os **624 MB** de imagem medidos na F16 incluem esses pacotes. Removê-lo sem reconstruir e re-medir tornaria aquele número falso. Sai no mesmo commit que re-mede a imagem.
 - **Os 3 defeitos que a auditoria adversarial da F21 achou**, todos `abstencao_errada`: completar as partições tornou perguntas respondíveis **por composição** (`manual_share + ocr_share`), e o meu gold não antecipou isso. **Não corrigidos de propósito** — o conjunto está selado e a auditoria veio depois de medir; ajustar seria fitar. Ficam para a próxima revisão de golden, e implicam que a abstenção de 6/8 é **piso, não estimativa**.
 - **GPU no Kubernetes** — **bloqueio de hardware, não falta de trabalho.** Diagnosticado na F17b: `docker run --gpus all` funciona e o runtime `nvidia` está registrado, mas o `kind` cria o nó sem `--gpus` e o **Docker Desktop ignora `"default-runtime": "nvidia"`** no `daemon.json` (testado; config restaurada depois). Exercitar `nvidia.com/gpu` exige k3s/kubeadm em Linux nativo ou cluster gerenciado com node pool de GPU. **Nenhuma quantidade de código resolve isto nesta máquina** — o bloco no manifesto segue comentado e declarado.
+
+**Quitado na Fase 22:**
+- ~~**"CI/CD real"**~~ — eu contava como entregue porque o `ci.yml` existia. **1 execução verde em 33**: quebrou no commit seguinte ao que criou o CI e ficou vermelho **12 dias**. Causa: a suíte importa `fastapi` (extra `[serve]`) e o runner instalava só `[dev]` — a **coleta** do pytest morria. Conserto: extra `[test]` nomeado no `pyproject.toml` + [`verificar_coleta.py`](verificar_coleta.py) (0 erro de coleta · 0 arquivo vazio · piso de 216), validado em **venv limpo** rodando a sequência exata do CI. Ver [Fase 22](docs/FASE22_CI.md).
 
 **Quitado na Fase 21:**
 - ~~**Catálogo mais rico**~~ · ~~**Rebaixamento de tipo**~~ · ~~**Cobertura do catálogo**~~ — eram **um problema só**: o catálogo era **assimétrico** (expunha `automation_rate` e escondia Manual/OCR; expunha `commercial_share` e escondia Passeio/Moto). Regra aplicada: **completar a partição onde um membro já estava exposto** — não "expor tudo" (`categoria_eixo` tem 19 valores; `sentido` não tinha membro exposto). 3 → 7 métricas, com as partições somando **exatamente 1,0** (testado). Rebaixamento de tipo **6/6 → 1/8**, abstenção **50% → 75%**, total **41/47 → 44/47** — e **1 regressão** declarada. Ver [Fase 21](docs/FASE21_CATALOGO_RICO.md).
