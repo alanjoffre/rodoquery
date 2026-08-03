@@ -90,6 +90,31 @@ if g20:
     checa("F20 itens selados (doc diz 47)", g20["n_validos"], 47)
     checa("F20 descartados (doc diz 1)", g20["n_descartados"], 1)
 
+print("\n=== FASE 21 ===")
+f21 = _j("fase21/resultado_duro_rico.json")
+if f21:
+    ex, ab = f21["execution_accuracy_respondiveis"], f21["acuracia_abstencao"]
+    checa("F21 respondiveis (README diz 38/39)", ex["acertos"], 38)
+    checa("F21 n respondiveis (README diz 39)", ex["n"], 39)
+    checa("F21 abstencao (README diz 6/8 = 75%)", ab["taxa"], 0.75)
+    checa("F21 rebaixamento remanescente (doc diz 1)",
+          f21["rebaixamento_de_tipo_remanescente"], 1)
+    checa("F21 custo (doc diz US$ 0,142)", f21["custo_usd"], 0.1424, 0.0001)
+g21 = _j("fase21/gold_duro_rico.json")
+if g21:
+    checa("F21 itens selados (doc diz 47)", g21["n_validos"], 47)
+    checa("F21 viraram respondiveis (doc diz 4)", len(g21["viraram_respondiveis"]), 4)
+aud = _j("fase21/auditoria_adversarial.json")
+if aud:
+    checa("F21 auditoria corretas (README diz 44/47)", aud["n"] - aud["n_defeitos"], 44)
+    checa("F21 taxa correta (doc diz 93,6%)", aud["taxa_correta"], 0.9362, 0.001)
+    checa("F21 defeitos (doc diz 3)", aud["n_defeitos"], 3)
+cc = _j("fase21/concorrencia_api.json")
+if cc:
+    checa("F21 vazao relativa em c=8 (doc diz 5,74x)", cc["vazao_relativa"]["8"], 5.74, 0.01)
+    checa("F21 melhor nivel (doc diz 8)", cc["melhor_nivel"], 8)
+    checa("F21 criterio pre-declarado atendido", cc["escala"], True)
+
 print("\n=== KAPPA HUMANO ===")
 kh = _j("fase14/kappa_humano.json")
 if kh:

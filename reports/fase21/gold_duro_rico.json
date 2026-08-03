@@ -1,0 +1,460 @@
+{
+  "tipo": "gold_conjunto_duro_catalogo_ENRIQUECIDO",
+  "derivado_de": "duro_antt.jsonl (Fase 20)",
+  "viraram_respondiveis": {
+    "abstencao_duro_01": "manual_share",
+    "abstencao_duro_02": "ocr_share",
+    "abstencao_duro_03": "motorcycle_share",
+    "abstencao_duro_04": "passenger_share"
+  },
+  "n_validos": 47,
+  "n_descartados": 0,
+  "descartados": [],
+  "sha256": "5a2d80483bd4ba8d6cd1870e038fd9427f428dd159479af7032ac6e4ea330091",
+  "respostas": [
+    {
+      "id": "filtro_composto_duro_01",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    concessionaria AS plaza__concessionaria\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Comercial' AND plaza__tipo_cobranca = 'Automática'\nGROUP BY\n  plaza__concessionaria",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "c19c06fc6eb63cbe",
+        "p1": "8760de20a0490e7a",
+        "p2": "74ea095323f4332d"
+      }
+    },
+    {
+      "id": "filtro_composto_duro_02",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    praca AS plaza__praca\n    , sentido AS plaza__sentido\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Moto' AND plaza__sentido = 'Crescente'\nGROUP BY\n  plaza__praca",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "0cf4aae64b0c80ee",
+        "p1": "3377780588e3c2cf",
+        "p2": "e58fdcf0010b980c"
+      }
+    },
+    {
+      "id": "filtro_composto_duro_03",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('month', data) AS metric_time__month\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Passeio' AND plaza__tipo_cobranca = 'Manual'\nGROUP BY\n  metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "3be0df77433eb9ef",
+        "p1": "9d27fa347cff0685",
+        "p2": "e5a8145e3c4ae4f2"
+      }
+    },
+    {
+      "id": "filtro_composto_duro_04",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    sentido AS plaza__sentido\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '2' AND plaza__sentido = 'Decrescente'",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "347e1e309a409bbb",
+        "p1": "41bec895c633d36b",
+        "p2": "a578b61f6bf71d94"
+      }
+    },
+    {
+      "id": "filtro_composto_duro_05",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Comercial' AND plaza__tipo_cobranca = 'OCR/PLACA'\nGROUP BY\n  metric_time__day",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "e56b46461b472e09",
+        "p1": "df3cbc80de8305a6",
+        "p2": "e4d149181d378ec9"
+      }
+    },
+    {
+      "id": "filtro_composto_duro_06",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , sentido AS plaza__sentido\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n      , volume AS traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Comercial' AND plaza__sentido = 'Crescente'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "76581fdad906fd35",
+        "p1": "1fd2efc8c1c9d252",
+        "p2": "31c0f5a7ade6fc06"
+      }
+    },
+    {
+      "id": "filtro_composto_duro_07",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  plaza__sentido\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__sentido\n    , SUM(commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      sentido AS plaza__sentido\n      , tipo_cobranca AS plaza__tipo_cobranca\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS commercial_traffic_volume\n      , volume AS traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_cobranca = 'Manual'\n  GROUP BY\n    plaza__sentido\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "cca17ba1df755ca5",
+        "p1": "bc1e8a36e28abedc",
+        "p2": "388d163e8cc66b99"
+      }
+    },
+    {
+      "id": "filtro_composto_duro_08",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('month', data) AS metric_time__month\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Moto' AND plaza__tipo_cobranca = 'Automática'\nGROUP BY\n  metric_time__month",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "d6245c04741cd84e",
+        "p1": "2b61658f22ff969a",
+        "p2": "c5db63928567a73b"
+      }
+    },
+    {
+      "id": "filtro_composto_duro_09",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    tipo_cobranca AS plaza__tipo_cobranca\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '6' AND plaza__tipo_cobranca = 'Automática'",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "4355b8121597616a",
+        "p1": "90363bb19439cb0f",
+        "p2": "e544da67d96fde79"
+      }
+    },
+    {
+      "id": "filtro_composto_duro_10",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    praca AS plaza__praca\n    , sentido AS plaza__sentido\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Passeio' AND plaza__sentido = 'Decrescente'\nGROUP BY\n  plaza__praca",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "1c4b4b882ee52d97",
+        "p1": "43c7eb4fa1ac2d46",
+        "p2": "c95a35bfa0546cb2"
+      }
+    },
+    {
+      "id": "filtro_composto_duro_11",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n      , volume AS traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Moto'\n  GROUP BY\n    plaza__concessionaria\n) subq_6",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "8e3fa6ef7014f792",
+        "p1": "89c8a13c009cc031",
+        "p2": "e0222a16a83ca673"
+      }
+    },
+    {
+      "id": "filtro_composto_duro_12",
+      "estrato": "filtro_composto",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    concessionaria AS plaza__concessionaria\n    , categoria_eixo AS plaza__categoria_eixo\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Comercial' AND plaza__categoria_eixo = '5'\nGROUP BY\n  plaza__concessionaria",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "dd1064d79cb48507",
+        "p1": "47b724cbdafe94b1",
+        "p2": "98911655f86295de"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_01",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    sentido AS plaza__sentido\n    , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.plaza__sentido, subq_10.plaza__sentido) AS plaza__sentido\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.automated_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS automation_rate\nFROM (\n  SELECT\n    plaza__sentido\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__sentido\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    plaza__sentido\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__sentido\n) subq_10\nON\n  subq_5.plaza__sentido = subq_10.plaza__sentido\nGROUP BY\n  COALESCE(subq_5.plaza__sentido, subq_10.plaza__sentido)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "f04df9aed7af28d5",
+        "p1": "58ba3e327388d8b4",
+        "p2": "dc61bdd98099f1fc"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_02",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    concessionaria AS plaza__concessionaria\n    , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.plaza__concessionaria, subq_10.plaza__concessionaria) AS plaza__concessionaria\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS commercial_share\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__concessionaria\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    plaza__concessionaria\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__concessionaria\n) subq_10\nON\n  subq_5.plaza__concessionaria = subq_10.plaza__concessionaria\nGROUP BY\n  COALESCE(subq_5.plaza__concessionaria, subq_10.plaza__concessionaria)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "f791282bb8be88d4",
+        "p1": "ab01f4648a8bc04f",
+        "p2": "43376c8346b95acb"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_03",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    DATE_TRUNC('month', data) AS metric_time__month\n    , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.metric_time__month, subq_10.metric_time__month) AS metric_time__month\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.automated_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS automation_rate\nFROM (\n  SELECT\n    metric_time__month\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    metric_time__month\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    metric_time__month\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    metric_time__month\n) subq_10\nON\n  subq_5.metric_time__month = subq_10.metric_time__month\nGROUP BY\n  COALESCE(subq_5.metric_time__month, subq_10.metric_time__month)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "10b65b4b1cced94e",
+        "p1": "ca2fb065dfb7bb5a",
+        "p2": "792cb3c0d3558f8f"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_04",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    praca AS plaza__praca\n    , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.plaza__praca, subq_10.plaza__praca) AS plaza__praca\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS commercial_share\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__praca\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    plaza__praca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__praca\n) subq_10\nON\n  subq_5.plaza__praca = subq_10.plaza__praca\nGROUP BY\n  COALESCE(subq_5.plaza__praca, subq_10.plaza__praca)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "3851b5abc39df15c",
+        "p1": "5b3da4d749abfc5f",
+        "p2": "efa7983ba84495fe"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_05",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    tipo_cobranca AS plaza__tipo_cobranca\n    , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.plaza__tipo_cobranca, subq_10.plaza__tipo_cobranca) AS plaza__tipo_cobranca\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.automated_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS automation_rate\nFROM (\n  SELECT\n    plaza__tipo_cobranca\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__tipo_cobranca\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    plaza__tipo_cobranca\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__tipo_cobranca\n) subq_10\nON\n  subq_5.plaza__tipo_cobranca = subq_10.plaza__tipo_cobranca\nGROUP BY\n  COALESCE(subq_5.plaza__tipo_cobranca, subq_10.plaza__tipo_cobranca)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "13b5ec7189855364",
+        "p1": "a178b1de8c58b739",
+        "p2": "e7211e9c81da75d7"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_06",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    DATE_TRUNC('month', data) AS metric_time__month\n    , sentido AS plaza__sentido\n    , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.metric_time__month, subq_10.metric_time__month) AS metric_time__month\n  , COALESCE(subq_5.plaza__sentido, subq_10.plaza__sentido) AS plaza__sentido\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS commercial_share\nFROM (\n  SELECT\n    metric_time__month\n    , plaza__sentido\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    metric_time__month\n    , plaza__sentido\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    metric_time__month\n    , plaza__sentido\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    metric_time__month\n    , plaza__sentido\n) subq_10\nON\n  (\n    subq_5.plaza__sentido = subq_10.plaza__sentido\n  ) AND (\n    subq_5.metric_time__month = subq_10.metric_time__month\n  )\nGROUP BY\n  COALESCE(subq_5.metric_time__month, subq_10.metric_time__month)\n  , COALESCE(subq_5.plaza__sentido, subq_10.plaza__sentido)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "fd302f94fe9dab1c",
+        "p1": "6101683b23eeef2c",
+        "p2": "a0522c10de769ae9"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_07",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    categoria_eixo AS plaza__categoria_eixo\n    , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.plaza__categoria_eixo, subq_10.plaza__categoria_eixo) AS plaza__categoria_eixo\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS commercial_share\nFROM (\n  SELECT\n    plaza__categoria_eixo\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__categoria_eixo\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    plaza__categoria_eixo\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__categoria_eixo\n) subq_10\nON\n  subq_5.plaza__categoria_eixo = subq_10.plaza__categoria_eixo\nGROUP BY\n  COALESCE(subq_5.plaza__categoria_eixo, subq_10.plaza__categoria_eixo)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "f6cc6fd3bf67f84c",
+        "p1": "e13409741ddc0563",
+        "p2": "9dee9e7e7243d464"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_08",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    DATE_TRUNC('week', data) AS metric_time__week\n    , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.metric_time__week, subq_10.metric_time__week) AS metric_time__week\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.automated_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS automation_rate\nFROM (\n  SELECT\n    metric_time__week\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    metric_time__week\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    metric_time__week\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    metric_time__week\n) subq_10\nON\n  subq_5.metric_time__week = subq_10.metric_time__week\nGROUP BY\n  COALESCE(subq_5.metric_time__week, subq_10.metric_time__week)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "2dd5b85b932ab392",
+        "p1": "b53d168b9014ae5a",
+        "p2": "e0dbca74a0d581d7"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_09",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    concessionaria AS plaza__concessionaria\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_6.plaza__concessionaria, subq_12.plaza__concessionaria) AS plaza__concessionaria\n  , MAX(subq_6.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_12.automated_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_12.traffic_volume, 0) AS DOUBLE)) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      plaza__concessionaria\n      , plaza__tipo_de_veiculo\n      , __traffic_volume AS traffic_volume\n    FROM sma_10001_cte\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Comercial'\n  GROUP BY\n    plaza__concessionaria\n) subq_6\nFULL OUTER JOIN (\n  SELECT\n    plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      plaza__concessionaria\n      , plaza__tipo_de_veiculo\n      , __automated_traffic_volume AS automated_traffic_volume\n      , __traffic_volume AS traffic_volume\n    FROM sma_10001_cte\n  ) subq_8\n  WHERE plaza__tipo_de_veiculo = 'Comercial'\n  GROUP BY\n    plaza__concessionaria\n) subq_12\nON\n  subq_6.plaza__concessionaria = subq_12.plaza__concessionaria\nGROUP BY\n  COALESCE(subq_6.plaza__concessionaria, subq_12.plaza__concessionaria)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "e5bc3f413f3f5d89",
+        "p1": "513d7093b92cc2e1",
+        "p2": "4a8828ab197150b7"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_10",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    sentido AS plaza__sentido\n    , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.plaza__sentido, subq_10.plaza__sentido) AS plaza__sentido\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS commercial_share\nFROM (\n  SELECT\n    plaza__sentido\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__sentido\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    plaza__sentido\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__sentido\n) subq_10\nON\n  subq_5.plaza__sentido = subq_10.plaza__sentido\nGROUP BY\n  COALESCE(subq_5.plaza__sentido, subq_10.plaza__sentido)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "0ea7284054113dad",
+        "p1": "552d9d1a31e83c99",
+        "p2": "c369f54606b0dd2c"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_11",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.metric_time__day, subq_10.metric_time__day) AS metric_time__day\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.automated_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS automation_rate\nFROM (\n  SELECT\n    metric_time__day\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    metric_time__day\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    metric_time__day\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    metric_time__day\n) subq_10\nON\n  subq_5.metric_time__day = subq_10.metric_time__day\nGROUP BY\n  COALESCE(subq_5.metric_time__day, subq_10.metric_time__day)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "b7044f7a4a111fc4",
+        "p1": "6ad35bb0f9a91b70",
+        "p2": "c46ccf15ace04240"
+      }
+    },
+    {
+      "id": "metrica_mista_duro_12",
+      "estrato": "metrica_mista",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    concessionaria AS plaza__concessionaria\n    , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.plaza__concessionaria, subq_10.plaza__concessionaria) AS plaza__concessionaria\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.automated_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__concessionaria\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    plaza__concessionaria\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__concessionaria\n) subq_10\nON\n  subq_5.plaza__concessionaria = subq_10.plaza__concessionaria\nGROUP BY\n  COALESCE(subq_5.plaza__concessionaria, subq_10.plaza__concessionaria)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "f855d8d2f08f28f6",
+        "p1": "baab3b07870e92f7",
+        "p2": "cf44552e9631b407"
+      }
+    },
+    {
+      "id": "composicao_duro_01",
+      "estrato": "composicao",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    praca AS plaza__praca\n    , sentido AS plaza__sentido\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Moto' AND plaza__sentido = 'Crescente'\nGROUP BY\n  plaza__praca\nORDER BY traffic_volume DESC\nLIMIT 5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "e01bcd0432a28dc8",
+        "p1": "46899f8901e0e7e3",
+        "p2": "eff046251a009587"
+      }
+    },
+    {
+      "id": "composicao_duro_02",
+      "estrato": "composicao",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    concessionaria AS plaza__concessionaria\n    , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.plaza__concessionaria, subq_10.plaza__concessionaria) AS plaza__concessionaria\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.automated_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__concessionaria\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    plaza__concessionaria\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__concessionaria\n) subq_10\nON\n  subq_5.plaza__concessionaria = subq_10.plaza__concessionaria\nGROUP BY\n  COALESCE(subq_5.plaza__concessionaria, subq_10.plaza__concessionaria)\nORDER BY traffic_volume DESC\nLIMIT 5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "63d6aeab6d40c846",
+        "p1": "3284945ec4871035",
+        "p2": "11a279263f65de8d"
+      }
+    },
+    {
+      "id": "composicao_duro_03",
+      "estrato": "composicao",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    praca AS plaza__praca\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Comercial' AND plaza__tipo_cobranca = 'Automática'\nGROUP BY\n  plaza__praca\nORDER BY traffic_volume DESC\nLIMIT 10",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "0189dd9e49986105",
+        "p1": "e1817c84561014b4",
+        "p2": "6589559da4ef2a12"
+      }
+    },
+    {
+      "id": "composicao_duro_04",
+      "estrato": "composicao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('month', data) AS metric_time__month\n    , concessionaria AS plaza__concessionaria\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Passeio' AND plaza__tipo_cobranca = 'Manual'\nGROUP BY\n  metric_time__month\n  , plaza__concessionaria",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "6695b187d4fb38e2",
+        "p1": "f833b99e30432292",
+        "p2": "7e8cbdcd13765edb"
+      }
+    },
+    {
+      "id": "composicao_duro_05",
+      "estrato": "composicao",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , CAST(automated_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS automation_rate\nFROM (\n  SELECT\n    plaza__concessionaria\n    , SUM(automated_traffic_volume) AS automated_traffic_volume\n    , SUM(traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      concessionaria AS plaza__concessionaria\n      , tipo_de_veiculo AS plaza__tipo_de_veiculo\n      , case when tipo_cobranca = 'Automática' then volume else 0 end AS automated_traffic_volume\n      , volume AS traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_2\n  WHERE plaza__tipo_de_veiculo = 'Comercial'\n  GROUP BY\n    plaza__concessionaria\n) subq_6\nORDER BY automation_rate\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "3b3156e91b83f6ec",
+        "p1": "28db7aeab7a9933f",
+        "p2": "f18f808819f00e14"
+      }
+    },
+    {
+      "id": "composicao_duro_07",
+      "estrato": "composicao",
+      "sql_metricflow": "SELECT\n  metric_time__month\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('month', data) AS metric_time__month\n    , sentido AS plaza__sentido\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Comercial' AND plaza__sentido = 'Decrescente'\nGROUP BY\n  metric_time__month\nORDER BY traffic_volume DESC",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "57b7e6f165ca40a2",
+        "p1": "a5a73b6a1e69dcd3",
+        "p2": "50382c5bf594d7fb"
+      }
+    },
+    {
+      "id": "composicao_duro_08",
+      "estrato": "composicao",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    sentido AS plaza__sentido\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.plaza__sentido, subq_10.plaza__sentido) AS plaza__sentido\n  , COALESCE(subq_5.plaza__tipo_cobranca, subq_10.plaza__tipo_cobranca) AS plaza__tipo_cobranca\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS commercial_share\nFROM (\n  SELECT\n    plaza__sentido\n    , plaza__tipo_cobranca\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__sentido\n    , plaza__tipo_cobranca\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    plaza__sentido\n    , plaza__tipo_cobranca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__sentido\n    , plaza__tipo_cobranca\n) subq_10\nON\n  (\n    subq_5.plaza__sentido = subq_10.plaza__sentido\n  ) AND (\n    subq_5.plaza__tipo_cobranca = subq_10.plaza__tipo_cobranca\n  )\nGROUP BY\n  COALESCE(subq_5.plaza__sentido, subq_10.plaza__sentido)\n  , COALESCE(subq_5.plaza__tipo_cobranca, subq_10.plaza__tipo_cobranca)",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "b6db0c4ac35f6247",
+        "p1": "db4617f7530d4bb8",
+        "p2": "8d5569d0d8fd2793"
+      }
+    },
+    {
+      "id": "composicao_duro_09",
+      "estrato": "composicao",
+      "sql_metricflow": "SELECT\n  plaza__concessionaria\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    concessionaria AS plaza__concessionaria\n    , categoria_eixo AS plaza__categoria_eixo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__categoria_eixo = '6'\nGROUP BY\n  plaza__concessionaria\nORDER BY traffic_volume DESC\nLIMIT 5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "fdcfe2b82fd90969",
+        "p1": "1c12538e6f0eb72f",
+        "p2": "d794e8103a903194"
+      }
+    },
+    {
+      "id": "composicao_duro_10",
+      "estrato": "composicao",
+      "sql_metricflow": "WITH sma_10001_cte AS (\n  SELECT\n    praca AS plaza__praca\n    , case when tipo_cobranca = 'Automática' then volume else 0 end AS __automated_traffic_volume\n    , volume AS __traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n)\n\nSELECT\n  COALESCE(subq_5.plaza__praca, subq_10.plaza__praca) AS plaza__praca\n  , MAX(subq_5.traffic_volume) AS traffic_volume\n  , MAX(CAST(subq_10.automated_traffic_volume AS DOUBLE) / CAST(NULLIF(subq_10.traffic_volume, 0) AS DOUBLE)) AS automation_rate\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__praca\n) subq_5\nFULL OUTER JOIN (\n  SELECT\n    plaza__praca\n    , SUM(__automated_traffic_volume) AS automated_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM sma_10001_cte\n  GROUP BY\n    plaza__praca\n) subq_10\nON\n  subq_5.plaza__praca = subq_10.plaza__praca\nGROUP BY\n  COALESCE(subq_5.plaza__praca, subq_10.plaza__praca)\nORDER BY traffic_volume DESC\nLIMIT 5",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "aef4f0e015a209ea",
+        "p1": "93274d9a519ffe10",
+        "p2": "e862ffce12610f72"
+      }
+    },
+    {
+      "id": "composicao_duro_11",
+      "estrato": "composicao",
+      "sql_metricflow": "SELECT\n  metric_time__day\n  , plaza__praca\n  , SUM(traffic_volume) AS traffic_volume\nFROM (\n  SELECT\n    DATE_TRUNC('day', data) AS metric_time__day\n    , praca AS plaza__praca\n    , tipo_cobranca AS plaza__tipo_cobranca\n    , tipo_de_veiculo AS plaza__tipo_de_veiculo\n    , volume AS traffic_volume\n  FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n) subq_2\nWHERE plaza__tipo_de_veiculo = 'Moto' AND plaza__tipo_cobranca = 'Automática'\nGROUP BY\n  metric_time__day\n  , plaza__praca",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "cf43b087c0a9d9e4",
+        "p1": "aa434b9f65fcbe78",
+        "p2": "3441e7769498ebf8"
+      }
+    },
+    {
+      "id": "composicao_duro_12",
+      "estrato": "composicao",
+      "sql_metricflow": "SELECT\n  plaza__praca\n  , CAST(commercial_traffic_volume AS DOUBLE) / CAST(NULLIF(traffic_volume, 0) AS DOUBLE) AS commercial_share\nFROM (\n  SELECT\n    plaza__praca\n    , SUM(__commercial_traffic_volume) AS commercial_traffic_volume\n    , SUM(__traffic_volume) AS traffic_volume\n  FROM (\n    SELECT\n      praca AS plaza__praca\n      , case when tipo_de_veiculo = 'Comercial' then volume else 0 end AS __commercial_traffic_volume\n      , volume AS __traffic_volume\n    FROM \"main\".\"fct_traffic_volume\" traffic_src_10000\n  ) subq_3\n  GROUP BY\n    plaza__praca\n) subq_5\nORDER BY commercial_share DESC\nLIMIT 3",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "4f08a83f3d0842a1",
+        "p1": "021f29ff36163acd",
+        "p2": "219f79fd533710c9"
+      }
+    },
+    {
+      "id": "particao_duro_01",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  CAST(SUM(case when tipo_cobranca = 'Manual' then volume else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(volume), 0) AS DOUBLE) AS manual_share\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "d38bce9c3e7d0827",
+        "p1": "f7ccf8b3741b7348",
+        "p2": "94aba9343678e886"
+      }
+    },
+    {
+      "id": "particao_duro_02",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  CAST(SUM(case when tipo_cobranca = 'OCR/PLACA' then volume else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(volume), 0) AS DOUBLE) AS ocr_share\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "afe7d17e675c806a",
+        "p1": "dc00e17389745a80",
+        "p2": "23d3fe147e38f806"
+      }
+    },
+    {
+      "id": "particao_duro_03",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  CAST(SUM(case when tipo_de_veiculo = 'Moto' then volume else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(volume), 0) AS DOUBLE) AS motorcycle_share\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "870d4970b8e4806f",
+        "p1": "ddbaa13547c43eca",
+        "p2": "aa90ebeaa8997f68"
+      }
+    },
+    {
+      "id": "particao_duro_04",
+      "estrato": "metrica_derivada",
+      "sql_metricflow": "SELECT\n  CAST(SUM(case when tipo_de_veiculo = 'Passeio' then volume else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(volume), 0) AS DOUBLE) AS passenger_share\nFROM \"main\".\"fct_traffic_volume\" traffic_src_10000",
+      "n_variantes": 3,
+      "hashes_por_variante": {
+        "p0": "33effd7b6b24b9e8",
+        "p1": "33a88b24c3d0ba1c",
+        "p2": "9ee5a493ee2e18ef"
+      }
+    }
+  ],
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "1c6f22f",
+    "git_dirty": true,
+    "git_diff_sha1": "e716ec9d507f",
+    "timestamp_utc": "2026-08-03T10:04:33+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

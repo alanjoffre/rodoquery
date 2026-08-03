@@ -73,13 +73,21 @@ _MAX_AMOSTRAS = 2_000
 #    Lá o gargalo não é VRAM, é rate limit do provedor, e a inferência paraleliza de verdade.
 #    Manter 1 na API não seria conservador: seria aplicar uma medição a um sistema que não foi
 #    medido, e estrangular a vazão por um motivo que não existe mais.
-#    Por isso o default de API é maior — e vem declarado como **NÃO MEDIDO**. O SLO da Fase 6
-#    continua valendo só para GPU local, do mesmo jeito que não foi herdado no Docker (Fase 16)
-#    nem no Kubernetes (Fase 17b). Sobrescrevível por RODOQUERY_MAX_INFERENCIA_SIMULTANEA.
+#    O SLO da Fase 6 continua valendo só para GPU local, do mesmo jeito que não foi herdado no
+#    Docker (Fase 16) nem no Kubernetes (Fase 17b).
+# 5) **O 8 da API agora é MEDIDO** (Fase 21, `reports/fase21/concorrencia_api.json`). O critério
+#    foi declarado ANTES de olhar — manter 8 só se a vazão em c=8 passasse de 1,5× a de c=1 — e
+#    passou com folga. A curva é o oposto exato da GPU local:
+#        c=       1      2      4      8
+#        API      1,00×  1,94×  3,10×  5,74×   e o p95 fica PLANO (~3,3 s)
+#        GPU      1,00×  1,11×  0,75×  0,76×   e o p95 vai a 43 s
+#    Escala quase linear e sem penalidade de latência — 8 é conservador, não agressivo.
+#    Sobrescrevível por RODOQUERY_MAX_INFERENCIA_SIMULTANEA.
 _PADRAO_CONCORRENCIA = {"ollama": 1, "anthropic": 8}
 MAX_INFERENCIA_SIMULTANEA = (settings.max_inferencia_simultanea
                              or _PADRAO_CONCORRENCIA[settings.provedor])
-CONCORRENCIA_MEDIDA = settings.provedor == "ollama"     # honestidade exposta em /saude
+# Os DOIS caminhos agora vêm de medição (Fase 6 para o local, Fase 21 para a API).
+CONCORRENCIA_MEDIDA = True
 ESPERA_MAX_S = 5.0          # 4,36 s (p95 da inferência) + 5 s de fila <= 10 s do SLO
 _vagas = threading.Semaphore(MAX_INFERENCIA_SIMULTANEA)
 

@@ -89,11 +89,15 @@ def test_provedor_anthropic_entra_por_configuracao(servico_com):
 
 
 def test_concorrencia_da_api_nao_herda_a_medida_da_gpu(servico_com):
-    """1 veio de 'uma GPU nao paraleliza'. Na API o gargalo e rate limit — herdar estrangularia."""
+    """1 veio de 'uma GPU nao paraleliza'. Na API o gargalo e rate limit — herdar estrangularia.
+
+    O 8 nasceu como default declarado NAO MEDIDO; a Fase 21 mediu (vazao 5,74x em c=8, p95
+    plano) e confirmou. Agora os dois caminhos vem de medicao, e `/saude` diz isso.
+    """
     s = servico_com(provedor="anthropic")
     assert s.MAX_INFERENCIA_SIMULTANEA == 8
-    assert s.CONCORRENCIA_MEDIDA is False          # e /saude admite que NAO foi medido
-    assert TestClient(s.app).get("/saude").json()["concorrencia_medida"] is False
+    assert s.CONCORRENCIA_MEDIDA is True
+    assert TestClient(s.app).get("/saude").json()["concorrencia_medida"] is True
 
 
 def test_saude_reporta_o_modelo_que_de_fato_responde(servico_com):

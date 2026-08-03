@@ -1,0 +1,68 @@
+{
+  "fase": "21_concorrencia_do_caminho_de_api",
+  "quita": "o default 8 do serving na API era raciocinio, nao medicao",
+  "modelo": "claude-opus-5",
+  "n_por_nivel": 6,
+  "medidas": {
+    "1": {
+      "n": 6,
+      "parede_s": 19.18,
+      "vazao_req_s": 0.3128,
+      "p50_s": 2.93,
+      "p95_s": 4.59
+    },
+    "2": {
+      "n": 6,
+      "parede_s": 9.91,
+      "vazao_req_s": 0.6055,
+      "p50_s": 3.32,
+      "p95_s": 3.37
+    },
+    "4": {
+      "n": 6,
+      "parede_s": 6.18,
+      "vazao_req_s": 0.9707,
+      "p50_s": 3.08,
+      "p95_s": 3.17
+    },
+    "8": {
+      "n": 6,
+      "parede_s": 3.34,
+      "vazao_req_s": 1.7959,
+      "p50_s": 2.98,
+      "p95_s": 3.33
+    }
+  },
+  "vazao_relativa": {
+    "1": 1.0,
+    "2": 1.94,
+    "4": 3.1,
+    "8": 5.74
+  },
+  "melhor_nivel": 8,
+  "criterio_pre_declarado": "manter 8 se a vazao em c=8 for > 1,5x a de c=1",
+  "escala": true,
+  "referencia_gpu_local_fase6": {
+    "1": 1.0,
+    "2": 1.11,
+    "4": 0.75,
+    "8": 0.76
+  },
+  "custo_usd": 0.0643,
+  "chamadas": 25,
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "1c6f22f",
+    "git_dirty": true,
+    "git_diff_sha1": "c4a056c0882a",
+    "timestamp_utc": "2026-08-03T10:20:30+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

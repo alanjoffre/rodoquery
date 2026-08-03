@@ -8,11 +8,11 @@ Data Engineering × AI Engineering · avaliação com rigor · **dados públicos
 
 [![CI](https://github.com/alanjoffre/rodoquery/actions/workflows/ci.yml/badge.svg)](https://github.com/alanjoffre/rodoquery/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.12-blue.svg)
-![Testes](https://img.shields.io/badge/testes-199%20passando-brightgreen.svg)
+![Testes](https://img.shields.io/badge/testes-216%20passando-brightgreen.svg)
 ![Gate](https://img.shields.io/badge/gate%20de%20regressão-7%2F7-brightgreen.svg)
-![Fases](https://img.shields.io/badge/fases-0–20-e0a326.svg)
+![Fases](https://img.shields.io/badge/fases-0–21-e0a326.svg)
 ![Sandbox](https://img.shields.io/badge/attack--block-39%2F39%20·%20FP%200%25-brightgreen.svg)
-![Custo](https://img.shields.io/badge/custo%20de%20API-US%24%201%2C45-blue.svg)
+![Custo](https://img.shields.io/badge/custo%20de%20API-US%24%201%2C82-blue.svg)
 
 [**🗺️ Fases**](#️-fases--previsto--medido) · [**🔬 O que a medição refutou**](#-o-que-a-medição-refutou) · [**🏗️ Arquitetura**](#️-arquitetura--o-que-de-fato-está-servido) · [**✅ Rastreabilidade**](#-rastreabilidade-requisito--fase) · [**🚀 Rodar**](#-rodar) · [**🎯 Backlog**](#-backlog-declarado)
 
@@ -43,11 +43,13 @@ O gap **encolheu** porque o baseline quase dobrou (26,7% → 44,5%). Esse é o n
 
 **E o baseline não é espantalho.** O mesmo modelo tira **43,4%** [39,1; 47,8] no [BIRD Mini-Dev](https://bird-bench.github.io/) — 500 perguntas e SQL de referência **humanos**. Ele sabe escrever SQL; o que muda o resultado é a **interface**.
 
-> ⚠️ **Os três limites deste número, declarados.** (1) O **100% é teto de instrumento**: com o Tier-A saturado, o McNemar perde poder (`b=0` vira trivial) e o Δ real contra um conjunto mais duro seria **menor ou igual**. (2) A [Fase 20](docs/FASE20_DURO.md) construiu esse conjunto mais duro e ele **saturou igual** — o teto é da **superfície do catálogo** (3 métricas), não do benchmark. (3) No mesmo conjunto duro a **abstenção caiu para 50%**, com um modo de falha novo: pedem *proporção*, o sistema responde *contagem*.
+> ⚠️ **Os três limites deste número, declarados.** (1) O **100% é teto de instrumento**: com o Tier-A saturado, o McNemar perde poder (`b=0` vira trivial) e o Δ real contra um conjunto mais duro seria **menor ou igual**. (2) A [Fase 20](docs/FASE20_DURO.md) construiu esse conjunto mais duro e ele **saturou igual** — o teto é da **superfície do catálogo**, não do benchmark. (3) No mesmo conjunto duro a **abstenção caiu para 50%**, com um modo de falha novo: pedem *proporção*, o sistema responde *contagem*.
+>
+> A [Fase 21](docs/FASE21_CATALOGO_RICO.md) atacou o (3) e mostrou que o defeito era **do catálogo**, não do modelo: ele expunha `automation_rate` e escondia os irmãos da mesma partição. Completando as partições (3 → 7 métricas), o rebaixamento de tipo cai de **6 de 6 falhas para 1 de 8** e a abstenção sobe para **75%** — ao custo de **1 regressão** nova (contagem × proporção). É uma troca medida, não um ganho grátis.
 
 ## 🗺️ Fases — previsto × medido
 
-**21 fases (0–20) · 199 testes · gate 7/7 · custo total de API US$ 1,45.** Cada número aponta para um relatório versionado em `reports/` com carimbo de proveniência (seed, git_sha, modelo, versões).
+**22 fases (0–21) · 216 testes · gate 7/7 · custo total de API US$ 1,82.** Cada número aponta para um relatório versionado em `reports/` com carimbo de proveniência (seed, git_sha, modelo, versões) — e é conferido por `python auditar_documentacao.py`.
 
 | Fase | Métrica dura | **Resultado medido** |
 |:---:|---|---|
@@ -72,6 +74,7 @@ O gap **encolheu** porque o baseline quase dobrou (26,7% → 44,5%). Esse é o n
 | **18** · SUT de fronteira | Δ EX com o SUT trocado, mesmo conjunto | ✅ **100% × 44,5%, +55,5 pp** (US$ 0,96) · **o gap encolhe** · normalizadores valem **zero** aqui · ⚠️ **benchmark saturou** |
 | **19** · Fragilidade lexical | Δ EX sob schema opaco, **previsão pré-registrada** | ✅ **0,00 pp** contra −29,4 pp do 7B — era **do SUT, não da interface** · ❌ **minha previsão pontual refutada** |
 | **20** · Conjunto duro | o benchmark discrimina atacando a superfície nunca coberta? | ⚠️ respondíveis **saturam de novo (35/35)** → o teto é do **catálogo** · ✅ abstenção near-miss cai para **50%**, modo de falha novo · guarda nova **pegou um erro meu** |
+| **21** · Catálogo enriquecido | completar as partições conserta o rebaixamento de tipo? | ✅ **rebaixamento 6/6 → 1/8**, abstenção 50% → **75%**, total **41/47 → 44/47** · ⚠️ **1 regressão** (contagem × proporção): é troca, não ganho grátis · auditoria adversarial **44/47 (93,6%)** · **concorrência da API medida: 5,74× em c=8** |
 
 <sub>¹ As Fases 14 e 15 corrigiram defeitos de gold e **re-pontuaram as mesmas predições**: 86,9% → 88,7% → **89,7%**. O artefato em `reports/fase12/` guarda o valor re-pontuado (89,7%), que é o usado na tabela da tese. Os dois números são verdadeiros em momentos diferentes.</sub>
 
@@ -90,6 +93,8 @@ O diferencial não são os números altos — é **o rigor ter corrigido os pró
 - **Minha própria previsão, pré-registrada e refutada** *(F19)*. Registrei em [pré-registro commitado](docs/FASE19_PREREGISTRO.md) que a fragilidade lexical encolheria mas deixaria resíduo (Δ ≈ −9 pp, faixa −18 a −2). Medi **0,00 pp**. A afirmação falsificável central (`|Δ| < 29,4`) confirmou; a previsão pontual **caiu** — apostei num piso que não existe. A fragilidade lexical **não é estrutural da interface: era capacidade do SUT**.
 
 - **O teto era do catálogo, não do benchmark** *(F20)*. Construí um conjunto duro contra as formas que **medi** nunca terem sido cobertas (`where` composto: 0 de 168 itens; métrica mista: impossível de compilar até a F19). Saturou igual — **35/35**. Com 3 métricas e 9 dimensões, um SUT de fronteira não erra composição.
+
+- **O defeito era do catálogo, e o conserto tem preço** *(F21)*. Registrei o rebaixamento de tipo como falha do modelo. Era **assimetria do catálogo**: expunha `automation_rate` e escondia os irmãos da mesma partição, então "proporção de cobrança manual" era uma pergunta legítima sem resposta. Completando as partições, o rebaixamento cai de **6/6 para 1/8** — mas **um item que acertava passou a errar**: com `motorcycle_share` disponível, *"as 5 praças com maior **volume** de motos"* virou `motorcycle_share` em vez da contagem filtrada. Catálogo maior compra cobertura e paga em ambiguidade. **A troca líquida é +3 em 47, e ela tem os dois lados.**
 
 - **Um bug de 19 fases, e a retratação do impacto que atribuí a ele** *(F20)*. O extrator de SQL cortava no primeiro `SELECT`, destruindo o `WITH` do CTE. Afirmei que isso tinha descartado itens em silêncio e explicava parte da saturação. **A auditoria me refutou:** dos 220 autorados, os 4 descartes foram todos por gold degenerado, e em 291 itens autorados a forma **nunca foi escrita**. O bug era **latente**. Errei por inferir consequência a partir do mecanismo em vez de **medir** o impacto.
 
@@ -135,7 +140,7 @@ SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI �
 | Containers | F16 | imagem 624 MB, não-root, healthcheck, fundação assada |
 | Kubernetes | F17 | Deployment/Service/PDB/StatefulSet/NetworkPolicy · **sem HPA, com o número que justifica** |
 | API de LLM (provider plugável) | F18 | `RODOQUERY_PROVEDOR=ollama\|anthropic` · prompt caching (341/342 hits) · custo em `/metricas` |
-| Custo sob controle | F18–F20 | teto verificado **a cada item** · `--confirmar` obrigatório · projeto inteiro custou **US$ 1,45** |
+| Custo sob controle | F18–F20 | teto verificado **a cada item** · `--confirmar` obrigatório · projeto inteiro custou **US$ 1,82** |
 
 </details>
 
@@ -145,7 +150,7 @@ SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI �
 git clone https://github.com/alanjoffre/rodoquery && cd rodoquery
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev,llm,serve]"
-pytest                                     # 199 testes
+pytest                                     # 216 testes
 python gate_regressao.py                   # gate nível A (contrato, sem GPU)
 uvicorn rodoquery.servico:app --port 8077  # serving do Tier-A (SUT local)
 ```
@@ -173,16 +178,17 @@ Nenhum caminho gasta crédito por acidente: o default é o SUT **local**, `--con
 
 Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
 
-**Aberto:**
-- **Catálogo mais rico** *(não "golden mais difícil")* — a F20 reenunciou este item: o teto é da **superfície semântica** (3 métricas, 9 dimensões), não do benchmark. Medir o teto real do Tier-A exige mais métricas, hierarquias e janelas — não mais perguntas.
-- **Rebaixamento de tipo** — modo de falha **novo** (F20): pedem *proporção*, o Tier-A responde `traffic_volume`. Uniforme nos 6 casos que falharam; silencioso (compila, executa, devolve número plausível).
-- **Cobertura do catálogo** — os mesmos 6 itens mostram que parte do que eu contava como "abstenção correta" é o catálogo ser pequeno: `manual_share` e afins **poderiam** ser métricas governadas. Decisão de modelagem a tomar, não virtude a celebrar.
-- **Conjunto duro sem κ de 2º anotador** — as guardas G0/G4/G5 são automáticas e pegaram 1 defeito, mas não substituem uma segunda leitura.
-- **Concorrência do serving na API** — default 8 escolhido por raciocínio, **não medido**.
-- **Promover o catálogo v2 ao serving** — +5,5 pp medidos no 7B; a lei da F18 prevê que evaporam num SUT forte. Decisão a tomar explicitamente.
-- **GPU no Kubernetes** — bloqueada pelo Docker Desktop no Windows (testado, não presumido); exige Linux nativo ou cluster gerenciado.
+**Aberto — dois itens, os dois com o custo declarado:**
+- **Os 3 defeitos que a auditoria adversarial da F21 achou**, todos `abstencao_errada`: completar as partições tornou perguntas respondíveis **por composição** (`manual_share + ocr_share`), e o meu gold não antecipou isso. **Não corrigidos de propósito** — o conjunto está selado e a auditoria veio depois de medir; ajustar seria fitar. Ficam para a próxima revisão de golden, e implicam que a abstenção de 6/8 é **piso, não estimativa**.
+- **GPU no Kubernetes** — **bloqueio de hardware, não falta de trabalho.** Diagnosticado na F17b: `docker run --gpus all` funciona e o runtime `nvidia` está registrado, mas o `kind` cria o nó sem `--gpus` e o **Docker Desktop ignora `"default-runtime": "nvidia"`** no `daemon.json` (testado; config restaurada depois). Exercitar `nvidia.com/gpu` exige k3s/kubeadm em Linux nativo ou cluster gerenciado com node pool de GPU. **Nenhuma quantidade de código resolve isto nesta máquina** — o bloco no manifesto segue comentado e declarado.
 
-**Quitado:**
+**Quitado na Fase 21:**
+- ~~**Catálogo mais rico**~~ · ~~**Rebaixamento de tipo**~~ · ~~**Cobertura do catálogo**~~ — eram **um problema só**: o catálogo era **assimétrico** (expunha `automation_rate` e escondia Manual/OCR; expunha `commercial_share` e escondia Passeio/Moto). Regra aplicada: **completar a partição onde um membro já estava exposto** — não "expor tudo" (`categoria_eixo` tem 19 valores; `sentido` não tinha membro exposto). 3 → 7 métricas, com as partições somando **exatamente 1,0** (testado). Rebaixamento de tipo **6/6 → 1/8**, abstenção **50% → 75%**, total **41/47 → 44/47** — e **1 regressão** declarada. Ver [Fase 21](docs/FASE21_CATALOGO_RICO.md).
+- ~~**Conjunto duro sem κ de 2º anotador**~~ — resolvido com **auditoria adversarial** (método da F15), que é mais forte que re-anotação cega e mais adequado que κ de máquina aqui: nas formas duras um 7B erraria por incompetência e a discordância mediria o anotador, não o rótulo. **44/47 corretas (93,6%)**.
+- ~~**Concorrência do serving na API**~~ — **medida**, com critério declarado antes de olhar (manter 8 só se c=8 > 1,5× c=1). Deu **5,74×** com p95 **plano** — o oposto exato da GPU local, onde a vazão colapsa para 0,75× e o p95 vai a 43 s. `/saude` agora reporta `concorrencia_medida: true` nos dois caminhos.
+- ~~**Promover o catálogo v2 ao serving**~~ — **não promover, e o item está superado.** O v2 era um experimento sobre o catálogo de 3 métricas (+5,5 pp no Qwen), e a lei da F18 prevê que esse ganho evapora num SUT forte — como os normalizadores (+17,7 pp → 0) e a fragilidade lexical (−29,4 pp → 0). O caminho adiante é o catálogo enriquecido, que ataca um **defeito medido** em vez de uma diferença de redação.
+
+**Quitado antes:**
 - ~~**κ humano do golden**~~ — a dívida mais antiga (Fase 2): **κ = 1,0** (n=40, IC [0,912; 1,0]), anotador humano cego. Duas ressalvas declaradas em [docs/FASE14_KAPPA_HUMANO.md](docs/FASE14_KAPPA_HUMANO.md): **1 dos 40 itens não foi cego** (excluindo, 39/39, IC [0,910; 1,0]) e concordância perfeita com n=40 mede **reprodutibilidade das convenções**, não perfeição do golden. Evidência de que foi anotação e não cópia: as specs são **canonicamente idênticas** mas só **26 de 40 são idênticas byte a byte**.
 - ~~**Fragilidade lexical**~~ — era do SUT, não da interface (F19: **0,00 pp**).
 - ~~**Resíduo de seleção**~~ — era capacidade do SUT (F18: 100% nos estratos que travavam).
@@ -204,6 +210,7 @@ Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
 | [docs/FASE18_PROVEDOR.md](docs/FASE18_PROVEDOR.md) | Provider plugável, prompt caching e a lei da muleta |
 | [docs/FASE19_PREREGISTRO.md](docs/FASE19_PREREGISTRO.md) · [FASE19_FRAGILIDADE.md](docs/FASE19_FRAGILIDADE.md) | Pré-registro **e** o resultado que refutou minha previsão |
 | [docs/FASE20_DURO.md](docs/FASE20_DURO.md) | O conjunto duro, o teto do catálogo e o modo de falha novo |
+| [docs/FASE21_CATALOGO_RICO.md](docs/FASE21_CATALOGO_RICO.md) | Partições completas, a troca medida, auditoria adversarial e concorrência |
 | [k8s/README.md](k8s/README.md) | O deploy — e **por que não há HPA**, com o número |
 | [docs/FUNDACAO.md](docs/FUNDACAO.md) | A fundação dbt/MetricFlow e as armadilhas do dado real |
 
@@ -231,6 +238,6 @@ Dados: **públicos e reais** desde a Fase 11 — volume de tráfego nas praças 
 
 <div align="center">
 
-<sub>21 fases · 199 testes · gate 7/7 · custo total de API US$ 1,45 · cada número em <code>reports/</code> com carimbo de proveniência.</sub>
+<sub>22 fases · 216 testes · gate 7/7 · custo total de API US$ 1,82 · cada número em <code>reports/</code> com carimbo de proveniência.</sub>
 
 </div>
