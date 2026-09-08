@@ -264,7 +264,7 @@ Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
 | [docs/FASE19_PREREGISTRO.md](docs/FASE19_PREREGISTRO.md) · [FASE19_FRAGILIDADE.md](docs/FASE19_FRAGILIDADE.md) | Pré-registro **e** o resultado que refutou minha previsão |
 | [docs/FASE20_DURO.md](docs/FASE20_DURO.md) | O conjunto duro, o teto do catálogo e o modo de falha novo |
 | [docs/FASE21_CATALOGO_RICO.md](docs/FASE21_CATALOGO_RICO.md) | Partições completas, a troca medida, auditoria adversarial e concorrência |
-| [k8s/README.md](k8s/README.md) | O deploy — e **por que não há HPA**, com o número |
+| [k8s/README.md](k8s/README.md) · [docs/FASE17_KUBERNETES.md](docs/FASE17_KUBERNETES.md) | O deploy — e **por que não há HPA**, com o número |
 | [docs/FUNDACAO.md](docs/FUNDACAO.md) | A fundação dbt/MetricFlow e as armadilhas do dado real |
 
 Auditoria de fidelidade dos números: **`python auditar_documentacao.py`** — confere **96 valores** citados aqui contra os artefatos versionados, cobrindo as Fases **1–22** (95 saem de `reports/`; o veredito da auditoria de labels da F15 sai de `golden/_auditoria_veredito.jsonl`, que é a fonte que o próprio script de aplicação consome).
