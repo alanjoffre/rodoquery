@@ -1,17 +1,27 @@
 # A fundação de dados — o que o RodoQuery consome (e como reproduzir)
 
-O RodoQuery **não gera dados**: ele serve perguntas sobre o lakehouse da
-[**toll-analytics-platform**](https://github.com/alanjoffre/toll-analytics-platform) (dados
-**sintéticos** de pedágio, DuckDB em dev). Este doc fixa o contrato e como reproduzir do zero.
+O RodoQuery **não gera dados**. Ele serve perguntas sobre **duas** fundações, e a distinção
+importa porque metade dos números deste repositório vem de cada uma:
+
+| Fases | Fundação | Dado |
+|---|---|---|
+| **0–10** | [toll-analytics-platform](https://github.com/alanjoffre/toll-analytics-platform) | **sintético** de pedágio |
+| **11–22** | [**antt-foundation**](https://github.com/alanjoffre/antt-foundation) | **real**, ANTT sob CC BY — 1,5 M linhas |
+
+> ⚠️ **Este documento descreve a fundação SINTÉTICA.** A tese que o README exibe no topo foi medida
+> sobre a **ANTT**, cuja reconstrução está no README daquele repositório e na seção *Rodar* do
+> README daqui. As duas vivem separadas de propósito: mexer na sintética invalidaria a
+> reprodutibilidade de dez fases.
 
 ## O que é vendorizado aqui (e o que não é — decisão honesta)
 
 | Artefato | Vendorizado? | Por quê |
 |---|:---:|---|
-| `fundacao/semantic_manifest.json` (9 KB) | ✅ | É o **contrato semântico** (métricas/dimensões/entidades). Pequeno, e seu **hash detecta drift**: se o Semantic Layer muda, a avaliação precisa rodar de novo e os exemplares few-shot são invalidados. |
-| `reports/fase0/catalog.json` | ✅ | O **destilado** que o agente consome (allowlist + métricas + valores categóricos). Auto-suficiente. |
+| `fundacao/semantic_manifest.json` (9 KB) | ✅ | Contrato semântico da fundação **sintética** (métricas/dimensões/entidades). Pequeno, e seu **hash detecta drift**: se o Semantic Layer muda, a avaliação precisa rodar de novo e os exemplares few-shot são invalidados. |
+| `fundacao/semantic_manifest_antt.json` (16 KB) | ✅ | O mesmo contrato para a fundação **ANTT** — as **13 métricas** (7 expostas + 6 numeradores com `meta: {catalogo_usuario: false}`). Vendorizado para que quem clona possa **ver** o catálogo sobre o qual a tese foi medida, sem precisar buildar a fundação inteira. |
+| `reports/fase0/catalog.json` · `reports/fase12/catalog_antt.json` | ✅ | O **destilado** que o agente consome (allowlist + métricas + valores categóricos). Auto-suficiente. |
 | `manifest.json` (3,6 MB) | ❌ | Peso sem ganho — o catálogo já extrai o necessário. |
-| `toll_analytics.duckdb` (21 MB) | ❌ | **Regenerável** pelo build abaixo (dados sintéticos). Binário grande não vai pro Git. |
+| `toll_analytics.duckdb` (21 MB) · `antt_analytics.duckdb` (27 MB) | ❌ | **Regeneráveis** pelos builds. Binário grande não vai pro Git. |
 
 ## Reproduzir a fundação do zero
 

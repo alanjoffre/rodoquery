@@ -163,6 +163,40 @@ python gate_regressao.py --replay          # gate nível B (precisa das fundaç�
 uvicorn rodoquery.servico:app --port 8077  # serving do Tier-A (SUT local)
 ```
 
+### A fundação de dados — pré-requisito das Fases 11–22
+
+Este repositório é a metade **agente** do experimento. A metade **dados** vive em
+[**alanjoffre/antt-foundation**](https://github.com/alanjoffre/antt-foundation) (dbt + MetricFlow
+sobre o dado real da ANTT) e é ela que compila cada `spec` em SQL. Sem ela, tudo da **Fase 11 em
+diante** — incluindo a tese no topo desta página — não reproduz, e
+`docker/preparar_contexto.sh` aborta.
+
+```bash
+git clone https://github.com/alanjoffre/antt-foundation ~/antt-foundation
+cd ~/antt-foundation && python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
+# 1) baixe o CSV (143 MB, CC BY) do portal da ANTT para ~/antt_dados/volume_2026_diario.csv
+#    https://dados.antt.gov.br/dataset/volume-trafego-praca-pedagio
+python carregar_landing.py              # CSV -> landing
+cd dbt-antt && dbt build                # staging -> marts -> semantic layer (17/17 testes)
+cd .. && python construir_variantes.py  # 3 partições disjuntas p/ o Test-Suite EX
+```
+
+> **O CSV e o `.duckdb` não vêm no clone** (143 MB e 27 MB, gitignorados) — eles se reconstroem
+> com os comandos acima. Três armadilhas do arquivo bruto, já medidas e tratadas no
+> `carregar_landing.py`: separador `;`, **encoding `latin-1`** (não UTF-8) e decimal por vírgula,
+> com `volume_total` chegando como **TEXTO**. E `praca` **não é chave** — 5 nomes se repetem entre
+> concessionárias; a entidade é `(concessionaria, praca)`.
+>
+> Rode em filesystem **nativo**: em WSL sobre `/mnt/`, o I/O 9P faz o `mf query` sair de ~2 s para
+> ~200 s. Sempre com `DO_NOT_TRACK=1`.
+
+A fundação **sintética** das Fases 0–10 é outra
+([toll-analytics-platform](https://github.com/alanjoffre/toll-analytics-platform)) e não foi tocada
+na migração — mexer nela invalidaria dez fases. Detalhes em
+[docs/FASE11_ANTT.md](docs/FASE11_ANTT.md) e [docs/FUNDACAO.md](docs/FUNDACAO.md).
+
 **Container / Kubernetes:**
 
 ```bash
@@ -188,9 +222,10 @@ Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
 
 > 📋 **Levantamento completo e datado em [docs/PENDENCIAS.md](docs/PENDENCIAS.md)** — auditoria de
 > 25/08/2026 contra o repositório (não contra a memória do projeto), com evidência e custo por item.
-> Ela achou o que esta seção **não** cobria: a fundação ANTT das Fases 11–22 não está publicada, o
-> gate que bloqueia o CI ainda protege o alvo sintético da Fase 4, e o catálogo enriquecido da F21
-> não chegou ao serving.
+> Ela achou três coisas que esta seção **não** cobria: a fundação ANTT das Fases 11–22 não estava
+> publicada em lugar nenhum, o gate que bloqueia o CI ainda protegia o alvo **sintético** da Fase 4,
+> e o catálogo enriquecido da F21 não chegou ao serving. **Os três foram fechados** — ver o
+> [placar de fechamento](docs/PENDENCIAS.md#placar-de-fechamento) no fim daquele documento.
 
 **Aberto — três itens, todos com o custo declarado:**
 - **O extra `llm` é metadado morto** — nada em `src/` importa `httpx` ou `ollama` (o cliente do Ollama fala HTTP por `urllib` da stdlib); achado na F22. **Não removido ainda de propósito:** o `Dockerfile` instala `.[serve,llm]`, e os **624 MB** de imagem medidos na F16 incluem esses pacotes. Removê-lo sem reconstruir e re-medir tornaria aquele número falso. Sai no mesmo commit que re-mede a imagem.

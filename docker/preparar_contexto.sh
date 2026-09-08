@@ -12,8 +12,29 @@ RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 FUND="${ANTT_FOUNDATION:-$HOME/antt-foundation}"
 DEST="$RAIZ/docker/_contexto"
 
-[ -d "$FUND/dbt-antt" ] || { echo "ERRO: projeto dbt não encontrado em $FUND/dbt-antt"; exit 1; }
-[ -f "$FUND/antt_analytics.duckdb" ] || { echo "ERRO: DuckDB não encontrado em $FUND"; exit 1; }
+_como_obter() {
+  cat >&2 <<'AJUDA'
+
+A fundação de dados vive num repositório PRÓPRIO (ela é a metade "dados" do experimento):
+
+    git clone https://github.com/alanjoffre/antt-foundation ~/antt-foundation
+
+Depois siga o README de lá para reconstruir o `.duckdb` — ele NÃO vem no clone (27 MB,
+gitignorado), assim como o CSV de origem (143 MB, CC BY, baixado do portal da ANTT):
+
+    cd ~/antt-foundation && python -m venv .venv && source .venv/bin/activate
+    pip install -r requirements.txt
+    python carregar_landing.py && (cd dbt-antt && dbt build)
+
+Se a fundação estiver noutro caminho, aponte ANTT_FOUNDATION para ele.
+AJUDA
+}
+
+[ -d "$FUND/dbt-antt" ] || {
+  echo "ERRO: projeto dbt não encontrado em $FUND/dbt-antt" >&2; _como_obter; exit 1; }
+[ -f "$FUND/antt_analytics.duckdb" ] || {
+  echo "ERRO: DuckDB não encontrado em $FUND (o projeto dbt está lá, mas o banco não foi construído)" >&2
+  _como_obter; exit 1; }
 
 rm -rf "$DEST"
 mkdir -p "$DEST"
