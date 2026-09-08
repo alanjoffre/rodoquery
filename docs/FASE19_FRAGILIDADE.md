@@ -98,6 +98,20 @@ Verificado nas predições congeladas:
 | Specs do opaco traduzidas de volta aos nomes reais | 34/34 |
 | Modelo em ambos os braços | `claude-opus-5` |
 
+## Reprodução
+
+O pré-registro em [FASE19_PREREGISTRO.md](FASE19_PREREGISTRO.md) foi commitado (`acaf471`) **antes**
+da execução (`7a2a109`) — o git prova a ordem, que é o ponto do pré-registro.
+
+```bash
+python rodar_robustez_api.py --confirmar --teto-usd 0.50   # os 2 braços, mesmo SUT — US$ 0,1925
+```
+
+O conjunto está selado desde a Fase 14 e **não** foi regerado. Artefatos:
+`reports/fase19/{robustez_schema_opaco_api,predicoes_robustez_orig_api,predicoes_robustez_opaco_api}.json`.
+
+---
+
 O braço opaco emitiu `{"metrics": ["m2"], "group_by": ["e2"], "where": "… Dimension('c3') … = '9'"}`
 onde o original emitiu `automation_rate` / `plaza__concessionaria` / `plaza__categoria_eixo`.
 Mesma resposta, vocabulário opaco.

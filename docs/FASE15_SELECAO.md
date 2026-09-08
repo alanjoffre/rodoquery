@@ -122,6 +122,14 @@ adversarial, que é mais do que tinha antes, mas não substitui um segundo anota
 - **O catálogo v2 (C) ainda não está no serving.** O ganho foi medido em holdout fresco, mas
   promovê-lo ao sistema principal muda o SUT de todas as fases anteriores — decisão para tomar
   explicitamente, não de passagem.
+- **O conjunto de ablação rodou SEM selo anti-vazamento.** Os outros oito conjuntos de medição do
+  projeto são selados com sha256 **antes** de qualquer sistema rodar; `golden/ablacao_antt.jsonl`
+  não foi — e ele produziu o maior ganho isolado do projeto. O arquivo ganhou um
+  `.sha256` depois (e agora há teste automático conferindo os nove), mas é preciso ser exato sobre
+  o que esse selo é e o que não é: **é um checksum de integridade pós-hoc**, que impede modificação
+  silenciosa daqui para frente, e **não** um selo de pré-registro, que é o que sustentaria "o
+  número não foi obtido depois de olhar o conjunto". Para a ablação, essa garantia não existe
+  retroativamente e nenhum arquivo criado hoje a cria.
 
 ## Reprodução
 

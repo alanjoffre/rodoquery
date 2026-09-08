@@ -116,3 +116,18 @@ bate deduzir**.
   não substituem uma segunda leitura.
 - **Autorado por mim**, que também escrevi as guardas. A auditoria adversarial da Fase 15 seria o
   próximo crivo.
+
+## Reprodução
+
+O conjunto está selado e as predições, **congeladas** — re-pontuar não gasta crédito. O que gasta é
+recoletar, e por isso `--confirmar` é obrigatório (sem ele o script sai com código 2 **antes** de
+qualquer chamada) e o teto de gasto é verificado a cada item.
+
+```bash
+python gerar_autor_duro.py                           # autora contra a superfície nunca coberta
+python preparar_duro.py                              # guardas G0/G4/G5 + gold via MetricFlow + SELA
+python avaliar_duro.py --confirmar --teto-usd 0.60   # mede — custo real: US$ 0,2965
+```
+
+Artefatos: `reports/fase20/{gold_duro,resultado_duro,predicoes_*}.json`; conjunto selado em
+`golden/duro_antt.jsonl` + `.sha256`.

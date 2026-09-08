@@ -29,9 +29,10 @@ from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent
-# Piso medido em 2026-08-03 (Fase 22). Só desça este número deliberadamente, no mesmo commit que
-# remove os testes, explicando no corpo da mensagem por quê.
-PISO_TOTAL = 216
+# Piso medido em 2026-08-03 (Fase 22); subido para 226 em 2026-09-08 com os 10 testes de selo
+# (tests/test_selos.py). Só desça este número deliberadamente, no mesmo commit que remove os
+# testes, explicando no corpo da mensagem por quê.
+PISO_TOTAL = 226
 _ITEM = re.compile(r"^(tests[/\\][\w.]+\.py)::")
 
 

@@ -8,7 +8,7 @@ Data Engineering × AI Engineering · avaliação com rigor · **dados públicos
 
 [![CI](https://github.com/alanjoffre/rodoquery/actions/workflows/ci.yml/badge.svg)](https://github.com/alanjoffre/rodoquery/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.12-blue.svg)
-![Testes](https://img.shields.io/badge/testes-216%20passando-brightgreen.svg)
+![Testes](https://img.shields.io/badge/testes-226%20passando-brightgreen.svg)
 ![Gate](https://img.shields.io/badge/gate%20de%20regressão-7%2F7-brightgreen.svg)
 ![Fases](https://img.shields.io/badge/fases-0–22-e0a326.svg)
 ![Sandbox](https://img.shields.io/badge/attack--block-39%2F39%20·%20FP%200%25-brightgreen.svg)
@@ -49,7 +49,7 @@ O gap **encolheu** porque o baseline quase dobrou (26,7% → 44,5%). Esse é o n
 
 ## 🗺️ Fases — previsto × medido
 
-**23 fases (0–22, mais a 17b) · 216 testes · gate 7/7 · custo total de API US$ 1,82.** Cada número aponta para um relatório versionado em `reports/` com carimbo de proveniência (seed, git_sha, modelo, versões) — e **96 deles** são conferidos automaticamente por `python auditar_documentacao.py`.
+**23 fases (0–22, mais a 17b) · 226 testes · gate em 3 alvos · custo total de API US$ 1,82.** Cada número aponta para um relatório versionado em `reports/` com carimbo de proveniência (seed, git_sha, modelo, versões) — e **96 deles** são conferidos automaticamente por `python auditar_documentacao.py`.
 
 | Fase | Métrica dura | **Resultado medido** |
 |:---:|---|---|
@@ -135,7 +135,7 @@ SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI �
 |---|---|---|
 | SQL avançado e modelagem dimensional | F11 · fundação | dbt + **MetricFlow** sobre 1,5 M linhas reais; razões declaradas na *measure*, não no filtro da métrica |
 | Semantic Layer / métricas governadas | F10–F12 | catálogo de 3 métricas com curadoria auditável (`meta: {catalogo_usuario: false}` nos numeradores) |
-| Python de produção | todas | 216 testes · `ruff` limpo · gate bloqueante no CI |
+| Python de produção | todas | 226 testes · `ruff` limpo · gate bloqueante no CI, em 3 alvos |
 | Avaliação de LLM com rigor estatístico | F3–F20 | Wilson em toda taxa · **McNemar** pareado · **Test-Suite EX** em 3 variantes de banco |
 | Qualidade de rótulo | F2 · F12 · F14 · F15 · F18 | κ de máquina 0,977 → **Opus 5 cego 0,992** → **κ humano 1,0** · auditoria adversarial acha 7/60 defeitos |
 | Benchmark externo | F13 | **BIRD Mini-Dev**: 500 perguntas e SQL humanos, CC BY-SA |
@@ -155,10 +155,11 @@ SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI �
 git clone https://github.com/alanjoffre/rodoquery && cd rodoquery
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[test]"                   # o mesmo extra que o CI usa — ver Fase 22
-pytest                                     # 216 testes
+pytest                                     # 226 testes
 python verificar_coleta.py                 # nenhum teste some por falta de extra
 bash ensaiar_ci.sh --negativo              # ensaia o CI num clone limpo, com controle negativo
-python gate_regressao.py                   # gate nível A (contrato, sem GPU)
+python gate_regressao.py                   # gate nível A (contrato, sem GPU) — 3 alvos
+python gate_regressao.py --replay          # gate nível B (precisa das fundações em disco)
 uvicorn rodoquery.servico:app --port 8077  # serving do Tier-A (SUT local)
 ```
 
@@ -197,7 +198,7 @@ Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
 - **GPU no Kubernetes** — **bloqueio de hardware, não falta de trabalho.** Diagnosticado na F17b: `docker run --gpus all` funciona e o runtime `nvidia` está registrado, mas o `kind` cria o nó sem `--gpus` e o **Docker Desktop ignora `"default-runtime": "nvidia"`** no `daemon.json` (testado; config restaurada depois). Exercitar `nvidia.com/gpu` exige k3s/kubeadm em Linux nativo ou cluster gerenciado com node pool de GPU. **Nenhuma quantidade de código resolve isto nesta máquina** — o bloco no manifesto segue comentado e declarado.
 
 **Quitado na Fase 22:**
-- ~~**"CI/CD real"**~~ — eu contava como entregue porque o `ci.yml` existia. **1 execução verde em 33**: quebrou no commit seguinte ao que criou o CI e ficou vermelho **12 dias**. **Duas** causas: (1) a suíte importa `fastapi` (extra `[serve]`) e o runner instalava só `[dev]` — a **coleta** morria; (2) `pytest` (console script) não põe a raiz no `sys.path`, e a suíte importa um script de raiz. Conserto: extra `[test]` nomeado + `pythonpath = ["."]` + [`verificar_coleta.py`](verificar_coleta.py) **em subprocesso** (0 erro · 0 arquivo vazio · piso 216) + [`ensaiar_ci.sh`](ensaiar_ci.sh) com controle negativo. **Verde em 23 s**, confirmado no Actions. Ver [Fase 22](docs/FASE22_CI.md).
+- ~~**"CI/CD real"**~~ — eu contava como entregue porque o `ci.yml` existia. **1 execução verde em 33**: quebrou no commit seguinte ao que criou o CI e ficou vermelho **12 dias**. **Duas** causas: (1) a suíte importa `fastapi` (extra `[serve]`) e o runner instalava só `[dev]` — a **coleta** morria; (2) `pytest` (console script) não põe a raiz no `sys.path`, e a suíte importa um script de raiz. Conserto: extra `[test]` nomeado + `pythonpath = ["."]` + [`verificar_coleta.py`](verificar_coleta.py) **em subprocesso** (0 erro · 0 arquivo vazio · piso 226) + [`ensaiar_ci.sh`](ensaiar_ci.sh) com controle negativo. **Verde em 23 s**, confirmado no Actions. Ver [Fase 22](docs/FASE22_CI.md).
 
 **Quitado na Fase 21:**
 - ~~**Catálogo mais rico**~~ · ~~**Rebaixamento de tipo**~~ · ~~**Cobertura do catálogo**~~ — eram **um problema só**: o catálogo era **assimétrico** (expunha `automation_rate` e escondia Manual/OCR; expunha `commercial_share` e escondia Passeio/Moto). Regra aplicada: **completar a partição onde um membro já estava exposto** — não "expor tudo" (`categoria_eixo` tem 19 valores; `sentido` não tinha membro exposto). 3 → 7 métricas, com as partições somando **exatamente 1,0** (testado). Rebaixamento de tipo **6/6 → 1/8**, abstenção **50% → 75%**, total **41/47 → 44/47** — e **1 regressão** declarada. Ver [Fase 21](docs/FASE21_CATALOGO_RICO.md).
@@ -262,6 +263,6 @@ Dados: **públicos e reais** desde a Fase 11 — volume de tráfego nas praças 
 
 <div align="center">
 
-<sub>23 fases · 216 testes · gate 7/7 · custo total de API US$ 1,82 · 96 números travados por auditoria automática.</sub>
+<sub>23 fases · 226 testes · gate em 3 alvos · custo total de API US$ 1,82 · 96 números travados por auditoria automática.</sub>
 
 </div>

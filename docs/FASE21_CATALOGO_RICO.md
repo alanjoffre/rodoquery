@@ -150,3 +150,24 @@ nenhum artefato foi produzido. Fica registrado aqui.
   semáforo e rede à medição, e o semáforo é justamente o que se queria dimensionar.
 - **A vazão absoluta depende do tier da conta e do horário.** O que se afirma aqui é a **forma da
   curva** (escala vs. colapsa), que é o que decide o parâmetro.
+
+## Reprodução
+
+O catálogo enriquecido vive na fundação ANTT (`~/antt-foundation`, commit `2c32d05`): as 4 métricas
+novas completam as duas partições, e há teste (`test_particoes_somam_um`) exigindo que cada partição
+some exatamente 1,0 **no dado**, não no papel.
+
+```bash
+python preparar_duro_rico.py                              # re-gera o gold sob o catálogo de 7 e RE-SELA
+python avaliar_duro_rico.py --confirmar --teto-usd 0.40   # mesmas 47 perguntas — US$ 0,1424
+python auditar_duro_adversarial.py --confirmar --teto-usd 0.40   # crítico adversarial — US$ 0,1592
+python medir_concorrencia_api.py --confirmar --n 6        # curva de concorrência — US$ 0,0643
+```
+
+> **Por que `preparar_duro_rico.py` re-sela.** Trocar o catálogo **muda o gabarito**, e isso não é
+> trapaça: uma pergunta é abstenção porque o catálogo não tem como respondê-la; quando ele passa a
+> ter, ela vira respondível e o gold dela precisa ser gerado (4 itens mudaram). Fingir que o
+> conjunto antigo ainda se aplica é que seria errado.
+
+Artefatos: `reports/fase21/{gold_duro_rico,resultado_duro_rico,auditoria_adversarial,concorrencia_api}.json`;
+conjunto selado em `golden/duro_rico_antt.jsonl` + `.sha256`.
