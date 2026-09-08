@@ -45,6 +45,13 @@ do JSON, o gate pega.
 predições congeladas contra o gold reproduziu **53/53 vereditos idênticos** em ambos os sistemas,
 confirmando que canonização, scorer, gold e variantes do test-suite não regrediram.
 
+> **Ampliado depois (pendência P3.1).** Os números acima são da Fase 5 e continuam corretos **para
+> o alvo desta fase** — a fundação sintética. O que estava errado era o *escopo*: o gate lia esse
+> único relatório, então uma regressão no caminho **ANTT** (a tese que o README exibe no topo)
+> passava verde. Hoje ele cobre três alvos, com limiares próprios: F4 sintética, F12 (ANTT/qwen) e
+> F18 (ANTT/Opus 5). Nível A: **24 checagens**; nível B: **53/53 · 171/171 · 171/171** vereditos
+> idênticos — a primeira vez que o replay ANTT foi executado, e ele reproduz.
+
 ## 3. "Gate ativo comprovado" — a prova
 
 Um gate que só fica verde é decoração. `provar_gate.py` injeta regressões no relatório **real** e

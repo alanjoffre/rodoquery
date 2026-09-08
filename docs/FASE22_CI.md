@@ -175,3 +175,27 @@ que seria trocar um defeito de metadado por um defeito de evidência. Fica no ba
 - **O piso de 216 é manual.** Ele impede queda silenciosa, não garante qualidade dos testes.
 - **Nada aqui testa o caminho de API** de verdade: o `anthropic` é instalado para a coleta, mas
   nenhuma chamada paga roda no CI — e nem deve.
+
+> **Superado em parte (pendência P3.1).** A primeira limitação acima dizia que o CI roda só o nível
+> A — e isso continua verdade. O que mudou é **para onde o nível A olha**: ele lia um único
+> relatório, o da Fase 4 **sintética**, de modo que uma regressão no caminho ANTT (a tese que o
+> README exibe no topo) passava verde. Agora cobre três alvos — F4 sintética, F12 e F18 na ANTT —
+> com limiares próprios. É a lição desta fase aplicada a ela mesma: *ter pipeline não é ter pipeline
+> no alvo certo*.
+
+## Reprodução
+
+```bash
+python medir_historico_ci.py        # consulta a API pública do Actions e congela o snapshot
+python verificar_coleta.py          # a trava de coleta, em SUBPROCESSO (rc != 0 se algo sumir)
+bash ensaiar_ci.sh                  # ensaio fiel: clone do commit + venv novo + `pytest`
+bash ensaiar_ci.sh --negativo       # controle: remove o `pythonpath` e EXIGE que a trava reprove
+```
+
+> **`medir_historico_ci.py` grava um SNAPSHOT congelado, e não deve ser re-rodado à toa.** O README
+> afirma o **passado** ("1 verde em 33"); re-medir depois do conserto daria outro número e faria o
+> README, que fala de antes, parecer mentira. O auditor de fidelidade confere contra o snapshot.
+>
+> `ensaiar_ci.sh --negativo` existe porque eu **ensaiei errado três vezes seguidas** (invocação,
+> árvore de trabalho em vez de checkout, clone sem o conserto). Um ensaio que não reprova o estado
+> quebrado não é ensaio — é o mesmo falso negativo que esta fase inteira documenta.

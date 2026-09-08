@@ -65,11 +65,17 @@ def _agregar(resultados: list[dict]) -> tuple[int, int, int, int]:
             sum(r["correto"] for r in abst), len(abst))
 
 
-def gate_contrato(relatorio: dict, limiares: Limiares, selo: dict | None = None) -> Resultado:
+def gate_contrato(relatorio: dict, limiares: Limiares, selo: dict | None = None,
+                  nome_sistema: str = "tier_a", nome_baseline: str = "sql_cru") -> Resultado:
     """Nível A (CI, sem GPU): coerência interna do relatório + limiares + selo.
 
     Recomputa os agregados A PARTIR dos itens: se alguém editar só o número bonito no topo do JSON,
-    o gate pega. É barato e não flaka."""
+    o gate pega. É barato e não flaka.
+
+    `nome_sistema`/`nome_baseline` são parâmetros porque o mesmo contrato precisa valer para a
+    fundação sintética (`tier_a`/`sql_cru`) **e** para a ANTT (`tier_a_antt`/`sql_cru_antt`).
+    Estavam fixos no código, e o efeito era que o gate do CI só sabia olhar para o alvo da Fase 4:
+    uma regressão no caminho ANTT — que é a tese que o README exibe no topo — passava verde."""
     checagens = [selo] if selo else []
     sistemas = relatorio["sistemas"]
     por_item = relatorio["resultados_por_item"]
@@ -84,9 +90,9 @@ def gate_contrato(relatorio: dict, limiares: Limiares, selo: dict | None = None)
             f"coerencia[{nome}]", coerente,
             f"relatorio {ex_rep['acertos']}/{ex_rep['n']} vs itens {ac}/{n}"))
 
-    ex_sis = sistemas["tier_a"]["execution_accuracy_respondiveis"]["taxa"]
-    ab_sis = sistemas["tier_a"]["acuracia_abstencao"]["taxa"]
-    ex_base = sistemas["sql_cru"]["execution_accuracy_respondiveis"]["taxa"]
+    ex_sis = sistemas[nome_sistema]["execution_accuracy_respondiveis"]["taxa"]
+    ab_sis = sistemas[nome_sistema]["acuracia_abstencao"]["taxa"]
+    ex_base = sistemas[nome_baseline]["execution_accuracy_respondiveis"]["taxa"]
     vantagem_pp = (ex_sis - ex_base) * 100
 
     checagens += [
@@ -97,7 +103,14 @@ def gate_contrato(relatorio: dict, limiares: Limiares, selo: dict | None = None)
         _chk("vantagem_sobre_baseline", vantagem_pp >= limiares.vantagem_minima_pp,
              f"+{vantagem_pp:.1f}pp (min {limiares.vantagem_minima_pp}pp)"),
     ]
-    mc = relatorio.get("mcnemar_tier_a_vs_sql_cru_respondiveis", {})
+    # A chave do McNemar mudou de nome entre as fases (`mcnemar_tier_a_vs_sql_cru_respondiveis` na
+    # F4, `mcnemar_sqlcru_vs_tiera_respondiveis` na F12/F18). Procurar pela chave em vez de fixá-la
+    # evita que o gate fique SILENCIOSAMENTE sem esta checagem num alvo novo — que é o modo de
+    # falha que este commit inteiro está consertando.
+    mc = next((v for k, v in relatorio.items()
+               if "mcnemar" in k.lower() and isinstance(v, dict)), {})
+    checagens.append(_chk("mcnemar_presente", bool(mc),
+                          "relatorio traz o teste pareado" if mc else "NENHUMA chave mcnemar"))
     if mc:
         checagens.append(_chk("mcnemar_significante", mc.get("p_valor", 1.0) < 0.05,
                               f"p={mc.get('p_valor')}"))
