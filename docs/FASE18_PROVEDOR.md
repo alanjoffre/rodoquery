@@ -139,9 +139,15 @@ Eu poderia pedir no prompt para não fazer isso — mas aí o prompt deixaria de
 mesmo que o Qwen recebeu, e a comparação morre. Então normalizo na borda de transporte
 (`_limpar_tags`).
 
-É a mesma lição da Fase 9 (+33,4 pp ao consertar o normalizador) e da Fase 15 (duas tentativas de
-ensinar regra por prosa EMPATARAM; duas implementações em código deram ganho estrito):
-**falha mecânica se conserta em código.**
+É a mesma lição das Fases 9, 10 e 15: **falha mecânica se conserta em código.** Duas tentativas de
+ensinar a regra por **prosa** empataram (reescrever o prompt na F9, `p=0,89`; limpar o catálogo na
+F10, `p=1,0`), enquanto as três implementações em **código** deram ganho estrito — normalizador de
+ordem **+5 pp** (F9), `normalizar_group_by` **+12,7 pp** (F10) e o conserto do bug do normalizador
+**+33,3 pp** (F15).
+
+> **Correção:** este parágrafo atribuía os "+33,4 pp" à **Fase 9** e os empates à **Fase 15** — as
+> fases estavam trocadas, e o número estava arredondado errado (é +33,3 pp, 12/36). Corrigido ao
+> estender a auditoria de fidelidade às Fases 1–10 e 15.
 
 O risco concreto que isso mata: raciocínio contendo a palavra `ABSTENHO` dispararia uma
 **abstenção falsa**, porque a checagem é `"ABSTENHO" in resp.upper()`. Há teste para isso.

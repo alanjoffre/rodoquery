@@ -49,7 +49,7 @@ O gap **encolheu** porque o baseline quase dobrou (26,7% → 44,5%). Esse é o n
 
 ## 🗺️ Fases — previsto × medido
 
-**22 fases (0–21) · 216 testes · gate 7/7 · custo total de API US$ 1,82.** Cada número aponta para um relatório versionado em `reports/` com carimbo de proveniência (seed, git_sha, modelo, versões) — e é conferido por `python auditar_documentacao.py`.
+**23 fases (0–22, mais a 17b) · 216 testes · gate 7/7 · custo total de API US$ 1,82.** Cada número aponta para um relatório versionado em `reports/` com carimbo de proveniência (seed, git_sha, modelo, versões) — e **96 deles** são conferidos automaticamente por `python auditar_documentacao.py`.
 
 | Fase | Métrica dura | **Resultado medido** |
 |:---:|---|---|
@@ -68,7 +68,7 @@ O gap **encolheu** porque o baseline quase dobrou (26,7% → 44,5%). Esse é o n
 | **12** · Tese sobre dado real | Δ EX + McNemar no TEST-ANTT selado | ✅ **86,9% × 28,8%, +58,1 pp** na medição original¹ · **2 bugs de harness pegos antes de virarem resultado** |
 | **13** · Calibração externa | EX num benchmark de perguntas **humanas** | ✅ **43,4%** [39,1; 47,8] no BIRD Mini-Dev · **74,9% dos erros são silenciosos** |
 | **14** · Quitação do backlog | as 4 dívidas declaradas | ✅ gold de ranking corrigido · roteador medido (Tier-B off **por evidência**) · robustez dedicada **−29,4 pp** |
-| **15** · Seleção + qualidade de label | Δ EX em holdout de ablação fresco | ✅ normalizador corrigido **+33,4 pp** · ⚠️ **SUT 9B colapsa (5,6%)** · auditoria adversarial acha **7 labels ruins em 60** |
+| **15** · Seleção + qualidade de label | Δ EX em holdout de ablação fresco | ✅ normalizador corrigido **+33,3 pp** · ⚠️ **SUT 9B colapsa (5,6%)** · auditoria adversarial acha **7 labels ruins em 60** |
 | **16** · Empacotamento | a stack roda fora da minha máquina | ✅ imagem **624 MB**, loop completo no container · 4 acoplamentos hardcoded removidos · ⚠️ **não herda o SLO nativo** |
 | **17** · Kubernetes | o deploy sobe e o sistema responde | ✅ cluster efêmero: 8/8 recursos · rootfs read-only · **NetworkPolicy testada por diferença** · inferência ponta a ponta · **sem HPA, [e o porquê é medido](k8s/README.md)** |
 | **18** · SUT de fronteira | Δ EX com o SUT trocado, mesmo conjunto | ✅ **100% × 44,5%, +55,5 pp** (US$ 0,96) · **o gap encolhe** · normalizadores valem **zero** aqui · ⚠️ **benchmark saturou** |
@@ -135,7 +135,7 @@ SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI �
 |---|---|---|
 | SQL avançado e modelagem dimensional | F11 · fundação | dbt + **MetricFlow** sobre 1,5 M linhas reais; razões declaradas na *measure*, não no filtro da métrica |
 | Semantic Layer / métricas governadas | F10–F12 | catálogo de 3 métricas com curadoria auditável (`meta: {catalogo_usuario: false}` nos numeradores) |
-| Python de produção | todas | 199 testes · `ruff` limpo · gate bloqueante no CI |
+| Python de produção | todas | 216 testes · `ruff` limpo · gate bloqueante no CI |
 | Avaliação de LLM com rigor estatístico | F3–F20 | Wilson em toda taxa · **McNemar** pareado · **Test-Suite EX** em 3 variantes de banco |
 | Qualidade de rótulo | F2 · F12 · F14 · F15 · F18 | κ de máquina 0,977 → **Opus 5 cego 0,992** → **κ humano 1,0** · auditoria adversarial acha 7/60 defeitos |
 | Benchmark externo | F13 | **BIRD Mini-Dev**: 500 perguntas e SQL humanos, CC BY-SA |
@@ -231,7 +231,14 @@ Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
 | [k8s/README.md](k8s/README.md) | O deploy — e **por que não há HPA**, com o número |
 | [docs/FUNDACAO.md](docs/FUNDACAO.md) | A fundação dbt/MetricFlow e as armadilhas do dado real |
 
-Auditoria de fidelidade dos números: **`python auditar_documentacao.py`** — confere cada valor citado aqui contra os artefatos em `reports/`.
+Auditoria de fidelidade dos números: **`python auditar_documentacao.py`** — confere **96 valores** citados aqui contra os artefatos versionados, cobrindo as Fases **1–22** (95 saem de `reports/`; o veredito da auditoria de labels da F15 sai de `golden/_auditoria_veredito.jsonl`, que é a fonte que o próprio script de aplicação consome).
+
+> **O que a trava ainda não cobre, dito de propósito:** os **624 MB** da imagem Docker (F16) são o
+> único número do README **sem artefato versionado** — foi medido uma vez, na mão. Ele sai junto com
+> a remoção do extra `llm`, que exige reconstruir e re-medir a imagem no mesmo commit (ver *Aberto*).
+> Esta seção prometia conferir "cada valor citado aqui" enquanto o auditor lia só 8 fases; a
+> promessa foi corrigida **e** a cobertura ampliada de 43 para 96 checagens — a trava passou a
+> alcançar as Fases 1–10, que eram justamente as que ninguém reabre.
 
 ## 🔒 Higiene do repositório
 
@@ -255,6 +262,6 @@ Dados: **públicos e reais** desde a Fase 11 — volume de tráfego nas praças 
 
 <div align="center">
 
-<sub>22 fases · 216 testes · gate 7/7 · custo total de API US$ 1,82 · cada número em <code>reports/</code> com carimbo de proveniência.</sub>
+<sub>23 fases · 216 testes · gate 7/7 · custo total de API US$ 1,82 · 96 números travados por auditoria automática.</sub>
 
 </div>

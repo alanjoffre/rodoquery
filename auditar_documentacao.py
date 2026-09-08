@@ -55,6 +55,164 @@ if f12:
     checa("F12 artefato = valor RE-PONTUADO (README explica em nota)",
           f12["sistemas"]["tier_a_antt"]["execution_accuracy_respondiveis"]["taxa"], 0.8973, 0.001)
 
+# =====================================================================================
+# FASES 1-10 e 15 — a fundação SINTÉTICA.
+#
+# Estas travas nasceram do P2.3 do levantamento de pendências: o README prometia conferir
+# "cada valor citado aqui", e o auditor lia só 8 fases (12, 13, 14, 18–22). Os números das
+# fases antigas ficavam sem lastro automático — justamente os que ninguém reabre, e por isso
+# os mais fáceis de apodrecer. Promessa e trava passam a coincidir.
+#
+# Os artefatos já estavam todos em disco: nenhuma medição nova foi feita para escrever isto.
+# =====================================================================================
+print("\n=== FASE 1 (sandbox) ===")
+f1 = _j("fase1/security_redteam.json")
+if f1:
+    checa("F1 attack-block (README diz 100%)", f1["attack_block_rate"], 1.0)
+    checa("F1 bloqueados (README diz 39/39)", f1["n_bloqueados"], 39)
+    checa("F1 n ataques (README diz 39)", f1["n_ataques"], 39)
+    checa("F1 falso-positivo (README diz 0%)", f1["falso_positivo_rate"], 0.0)
+    checa("F1 legitimas passam (README diz 10/10)", f1["n_passaram"], 10)
+
+print("\n=== FASE 3 (baselines) ===")
+f3 = _j("fase3/baselines.json")
+if f3:
+    ex3 = f3["sistemas"]["sql_cru"]["execution_accuracy_respondiveis"]
+    checa("F3 sql_cru EX no DEV (README diz 26,3%)", ex3["taxa"], 0.2632, 0.0001)
+    checa("F3 n respondiveis no DEV", ex3["n"], 19)
+    # O piso "sempre abster" existe para provar que o EX nao e artefato do denominador.
+    checa("F3 piso sempre_abster EX (doc diz 0%)",
+          f3["sistemas"]["sempre_abster"]["execution_accuracy_respondiveis"]["taxa"], 0.0)
+
+print("\n=== FASE 4 (tese na fundacao sintetica) ===")
+f4 = _j("fase4/resultado_test.json")
+if f4:
+    s4 = f4["sistemas"]
+    m4 = f4["mcnemar_tier_a_vs_sql_cru_respondiveis"]
+    checa("F4 tier_a EX (README diz 97,6%)",
+          s4["tier_a"]["execution_accuracy_respondiveis"]["taxa"], 0.9762, 0.0001)
+    checa("F4 sql_cru EX (README diz 42,9%)",
+          s4["sql_cru"]["execution_accuracy_respondiveis"]["taxa"], 0.4286, 0.0001)
+    checa("F4 vantagem (README diz +54,8 pp)", m4["delta_acuracia"], 0.5476, 0.0001)
+    checa("F4 McNemar b (README diz 23)", m4["b_only"], 23)
+    checa("F4 McNemar c (README diz 0)", m4["c_only"], 0)
+    checa("F4 n do TEST selado (doc diz 53)", f4["n"], 53)
+
+print("\n=== FASE 5 (MLOps: o gate reprova de verdade?) ===")
+f5g = _j("fase5/gate_ativo.json")
+if f5g:
+    # 7 cenarios = 1 integro (deve passar) + 6 regressoes injetadas (devem reprovar).
+    injetadas = [c for c in f5g["cenarios"] if not c["esperado"]]
+    checa("F5 regressoes injetadas (README diz 6)", len(injetadas), 6)
+    checa("F5 gate pegou todas (README diz 6/6)",
+          sum(1 for c in injetadas if c["gate_se_comportou"]), 6)
+    checa("F5 gate ativo comprovado", f5g["gate_ativo_comprovado"], True)
+f5f = _j("fase5/flakiness.json")
+if f5f:
+    checa("F5 latencia p50 (README diz 4,5 s)", f5f["latencia_s"]["p50"], 4.507, 0.001)
+    checa("F5 latencia p95 (README diz 7,9 s)", f5f["latencia_s"]["p95"], 7.935, 0.001)
+    # O achado honesto da fase: a flakiness PREVISTA nao se confirmou.
+    checa("F5 amplitude entre 5 runs (doc diz 0,0 pp)", f5f["amplitude_pp"], 0.0)
+
+print("\n=== FASE 6 (serving + SLO) ===")
+f6s = _j("fase6/slo.json")
+if f6s:
+    checa("F6 p95 em c=1 (README diz 4,36 s)", f6s["medido"]["p95_c1_s"], 4.36, 0.001)
+    checa("F6 capacidade (README diz ~0,25 req/s)",
+          f6s["medido"]["vazao_c1_req_s"], 0.251, 0.001)
+    checa("F6 SLO atendido", f6s["slo_atendido"], True)
+f6c = _j("fase6/canario.json")
+if f6c:
+    checa("F6 canario (README diz 10/10)", f6c["acertos"], 10)
+    checa("F6 canario n", f6c["n"], 10)
+f6l = _j("fase6/load_test.json")
+if f6l:
+    # A hipotese "6 GB serializa": em c=4 a vazao CAI. E o que justifica o semaforo 1 e a
+    # ausencia de HPA na Fase 17 — um numero que sustenta uma decisao de arquitetura.
+    checa("F6 vazao relativa em c=4 (doc diz 0,75x)",
+          f6l["ganho_de_vazao_vs_c1"]["4"], 0.75, 0.01)
+    checa("F6 hipotese 'serializa' confirmada", f6l["hipotese_confirmada"], True)
+
+print("\n=== FASE 7 (robustez na fundacao sintetica) ===")
+f7p = _j("fase7/heldout_parafrase.json")
+if f7p:
+    checa("F7 parafrase delta (README diz -7,7 pp)",
+          f7p["execution_accuracy"]["delta_pp"], -7.7, 0.01)
+    checa("F7 parafrase p (README diz 0,375 = NAO significativo)",
+          f7p["mcnemar_original_vs_parafrase"]["p_valor"], 0.375, 0.001)
+f7s = _j("fase7/perturbacao_schema.json")
+if f7s:
+    checa("F7 schema opaco delta (README diz -14,3 pp)",
+          f7s["execution_accuracy"]["delta_pp"], -14.29, 0.01)
+    checa("F7 schema opaco p (README diz 0,031)",
+          f7s["mcnemar_reais_vs_opaco"]["p_valor"], 0.0312, 0.0001)
+
+print("\n=== FASE 8 (poder estatistico: o 97,6% replica?) ===")
+f8 = _j("fase8/resultado_test_v2.json")
+if f8:
+    checa("F8 n do TEST-v2 selado (README diz 223)", f8["n"], 223)
+a8 = _j("fase8/analise.json")
+if a8:
+    r8 = a8["replicacao_7_estratos_originais"]
+    checa("F8 valor original da F4 (README diz 97,6%)",
+          r8["fase4_v1"]["tier_a"]["execution_accuracy"]["taxa"], 0.9762, 0.0001)
+    checa("F8 replicacao nos MESMOS 7 estratos (README diz 73,7%)",
+          r8["fase8_v2"]["tier_a"]["execution_accuracy"]["taxa"], 0.7365, 0.0001)
+    checa("F8 vantagem no v2 (README diz +58,7 pp)", r8["fase8_v2"]["delta_pp"], 58.68, 0.01)
+
+print("\n=== FASE 9 (conserto: prompt x codigo) ===")
+f9p = _j("fase9/resultado_test_v3.json")
+if f9p:
+    # Resultado NEGATIVO documentado: reescrever o prompt EMPATOU.
+    checa("F9 prompt v2 empatou (README diz p=0,89)",
+          f9p["execution_accuracy"]["mcnemar"]["p_valor"], 0.8877, 0.0001)
+f9n = _j("fase9/resultado_normalizador_v3.json")
+if f9n:
+    e9 = f9n["execution_accuracy"]
+    checa("F9 EX antes do normalizador (doc diz 66,9%)", e9["cru"]["taxa"], 0.6685, 0.0001)
+    checa("F9 EX depois (doc diz 71,8%)", e9["com_normalizador"]["taxa"], 0.7182, 0.0001)
+    checa("F9 ganho (README diz +5 pp)", e9["mcnemar"]["delta_acuracia"], -0.0497, 0.0001)
+    checa("F9 p (README diz 0,004)", e9["mcnemar"]["p_valor"], 0.0039, 0.0001)
+    checa("F9 zero regressoes (README diz zero)", e9["mcnemar"]["b_only"], 0)
+
+print("\n=== FASE 10 (catalogo: hipotese refutada + o gargalo real) ===")
+f10c = _j("fase10/resultado_catalogo_limpo.json")
+if f10c:
+    # Minha hipotese foi REFUTADA e o numero fica travado igual aos que deram certo.
+    checa("F10 limpar catalogo empatou (README diz p=1,0)",
+          f10c["execution_accuracy"]["mcnemar"]["p_valor"], 1.0)
+f10n = _j("fase10/resultado_normalizador_groupby.json")
+if f10n:
+    e10 = f10n["execution_accuracy"]
+    checa("F10 EX antes (doc diz 71,8%)", e10["so_ordem"]["taxa"], 0.7182, 0.0001)
+    checa("F10 EX depois (doc diz 84,5%)", e10["ordem_e_groupby"]["taxa"], 0.8453, 0.0001)
+    checa("F10 ganho (README diz +12,7 pp)", e10["mcnemar"]["delta_acuracia"], -0.1271, 0.0001)
+    checa("F10 zero regressoes", e10["mcnemar"]["b_only"], 0)
+
+print("\n=== FASE 15 (ablacao: o maior ganho isolado do projeto) ===")
+f15 = _j("fase15/resultado_ablacao.json")
+if f15:
+    e15 = f15["execution_accuracy"]
+    checa("F15 A baseline (doc diz 47,2%)", e15["A_baseline_normF10"]["taxa"], 0.4722, 0.0001)
+    checa("F15 B normalizador corrigido (doc diz 80,6%)",
+          e15["B_norm_corrigido"]["taxa"], 0.8056, 0.0001)
+    # +33,3 pp, nao +33,4: sao 12 itens em 36 = 1/3 exato. O README dizia 33,4 porque a conta
+    # foi feita sobre as taxas JA arredondadas (0,8056 - 0,4722). Achado ao escrever esta trava.
+    checa("F15 ganho B vs A (README diz +33,3 pp)",
+          f15["mcnemar_vs_baseline"]["B_norm_corrigido"]["delta_acuracia"], -0.3333, 0.0001)
+    checa("F15 B zero regressoes", f15["mcnemar_vs_baseline"]["B_norm_corrigido"]["b_only"], 0)
+    checa("F15 SUT 9B colapsa (README diz 5,6%)", e15["D_sut_gemma9b"]["taxa"], 0.0556, 0.0001)
+    checa("F15 gemma perde em 15 itens, ganha em 0",
+          f15["mcnemar_vs_baseline"]["D_sut_gemma9b"]["c_only"], 0)
+
+# A auditoria adversarial de labels da F15 nao vive em reports/ — o veredito e o proprio
+# arquivo que `aplicar_auditoria.py` consome para remover os itens do golden. E versionado,
+# entao e travavel: e o unico numero desta lista cuja fonte fica fora de reports/.
+ver15 = REPO / "golden" / "_auditoria_veredito.jsonl"
+checa("F15 defeitos de label achados (README diz 7)",
+      len([x for x in ver15.read_text(encoding="utf-8").splitlines() if x.strip()])
+      if ver15.exists() else None, 7)
+
 print("\n=== FASE 19 ===")
 f19 = _j("fase19/robustez_schema_opaco_api.json")
 if f19:

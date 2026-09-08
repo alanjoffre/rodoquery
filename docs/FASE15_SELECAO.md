@@ -24,8 +24,14 @@ um filtro sozinho ("volume dos veículos tipo moto") é um **agregado** (`group_
 linha rotulada com o valor constante. Como os itens ambíguos "entre os X, por X" já saem do golden
 na geração, esvaziar é o comportamento correto.
 
-**+33,4 pp, zero regressões (b=0).** O maior ganho isolado do projeto — e não era um problema do
+**+33,3 pp, zero regressões (b=0).** O maior ganho isolado do projeto — e não era um problema do
 modelo, era uma inconsistência entre duas peças minhas.
+
+> **Correção de arredondamento (posterior).** Esta linha dizia **+33,4 pp**. O valor certo é
+> **+33,3 pp**: são **12 itens em 36**, ou seja 1/3 exato = 33,33 pp. O 33,4 saiu de subtrair as
+> taxas **já arredondadas** (0,8056 − 0,4722 = 0,3334) em vez de ler o `delta_acuracia` do
+> artefato. Achado ao estender `auditar_documentacao.py` para cobrir esta fase — que é exatamente
+> para isso que a trava serve.
 
 ### C — descrições melhores funcionam, mas o retorno é menor
 
