@@ -279,7 +279,7 @@ Auditoria de fidelidade dos números: **`python auditar_documentacao.py`** — c
 ## 🔒 Higiene do repositório
 
 - **Sem segredos** — `.env` no `.gitignore` desde sempre; a chave de API nunca foi versionada (verificado a cada commit).
-- **Dados públicos** — sintéticos nas Fases 0–10; **ANTT sob CC BY** a partir da F11 (1,5 M linhas, jan–mai/2026, sem PII). BIRD Mini-Dev sob CC BY-SA, fora do repo.
+- **Dados públicos** — sintéticos nas Fases 0–10; **ANTT sob CC BY** a partir da F11 (1,5 M linhas, jan–mai/2026, sem PII). BIRD Mini-Dev sob CC BY-SA, fora do repo. Atribuição completa em [LICENSE-DADOS.md](LICENSE-DADOS.md); o [LICENSE](LICENSE) (MIT) cobre o código.
 - **Anti-vazamento** — todo conjunto de teste é **selado com sha256 antes** de qualquer sistema rodar; predições **congeladas** em disco para que a pontuação seja determinística.
 - **Anti-circularidade** — o gold sai **sempre** do MetricFlow, nunca de SQL escrito à mão.
 
