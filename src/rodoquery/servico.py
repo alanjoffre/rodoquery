@@ -33,11 +33,25 @@ from rodoquery.gold import FUNDACAO_ANTT, FUNDACAO_SINTETICA, Spec, compilar_spe
 from rodoquery.normalizacao_spec import normalizar_spec
 from rodoquery.sistema import tier_a
 from rodoquery.sistema_antt import tier_a_antt
+from rodoquery.sistema_antt_rico import METRICAS_RICAS, tier_a_antt_rico
 
 # Qual fundação este processo serve (RODOQUERY_FUNDACAO_ATIVA). O default é a sintética, para
 # não alterar nada do que já foi medido; o container sobe com "antt" (dado real).
+#
+# No caminho ANTT há ainda a escolha do CATÁLOGO (RODOQUERY_CATALOGO_ANTT), e o default é o
+# **rico** (7 métricas) por MEDIÇÃO: a Fase 23 rodou-o no TEST-ANTT selado, mesmo SUT e mesmo
+# gold das predições congeladas da F18, e ele saiu estatisticamente indistinguível do básico
+# (145/146 × 146/146; McNemar b=1, c=0, p=1,0) — enquanto no conjunto duro da F21 corrige uma
+# classe inteira de erro SILENCIOSO (pedem proporção, o de 3 responde contagem: 6/6 → 1/8).
+#
+# Só o SERVING muda. `tier_a_antt` continua sendo o sistema avaliado nas Fases 12–21 e não foi
+# tocado — trocá-lo mudaria o SUT de dez fases já medidas.
 if settings.fundacao_ativa == "antt":
-    _SISTEMA, _FUNDACAO, _BANCO = tier_a_antt, FUNDACAO_ANTT, settings.antt_duckdb
+    if settings.catalogo_antt not in ("rico", "basico"):
+        raise ValueError(f"RODOQUERY_CATALOGO_ANTT invalido: {settings.catalogo_antt!r} "
+                         "(use 'rico' ou 'basico')")
+    _SISTEMA = tier_a_antt_rico if settings.catalogo_antt == "rico" else tier_a_antt
+    _FUNDACAO, _BANCO = FUNDACAO_ANTT, settings.antt_duckdb
 else:
     _SISTEMA, _FUNDACAO, _BANCO = tier_a, FUNDACAO_SINTETICA, settings.toll_duckdb
 
@@ -239,6 +253,15 @@ def saude() -> dict:
             "modelo": settings.modelo_api if _PROVEDOR else settings.modelo_sut,
             "temperatura": settings.temperatura if not _PROVEDOR else None,
             "fundacao": settings.fundacao_ativa, "banco": _BANCO.name,
+            # Qual catálogo está no ar. Só faz sentido no caminho ANTT; na fundação sintética o
+            # campo é None em vez de mentir um valor que não governa nada. Sem isto, a troca de
+            # catálogo — que muda o vocabulário que o agente pode usar — seria invisível em
+            # produção, e "qual catálogo respondeu isso?" viraria arqueologia de deploy.
+            "catalogo_antt": (settings.catalogo_antt
+                              if settings.fundacao_ativa == "antt" else None),
+            "n_metricas_expostas": (len(METRICAS_RICAS) if settings.fundacao_ativa == "antt"
+                                    and settings.catalogo_antt == "rico"
+                                    else 3 if settings.fundacao_ativa == "antt" else None),
             "specs_em_cache": len(_cache_sql),
             "max_inferencia_simultanea": MAX_INFERENCIA_SIMULTANEA,
             # se o limite acima veio de medição ou é só um default plausível

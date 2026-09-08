@@ -50,6 +50,14 @@ class Settings(BaseSettings):
     # Default sintética para não mudar o comportamento de nada que já foi medido.
     fundacao_ativa: str = "sintetica"
 
+    # Qual catálogo o SERVIÇO usa no caminho ANTT: "rico" (7 métricas, default) ou "basico" (3).
+    # O default é "rico" por MEDIÇÃO, não por preferência (Fase 23): no TEST-ANTT selado, mesmo
+    # SUT e mesmo gold, o rico é estatisticamente indistinguível do básico (McNemar b=1/c=0,
+    # p=1,0), e no conjunto duro da F21 ele corrige uma classe inteira de resposta silenciosamente
+    # errada (rebaixamento de tipo 6/6 -> 1/8). Só o SERVING muda: `tier_a_antt` segue intacto e
+    # as Fases 12–21 continuam reproduzindo byte a byte.
+    catalogo_antt: str = "rico"
+
     # Endpoint do Ollama. Era hardcoded em `localhost` — num container o LLM vive noutro host
     # (RODOQUERY_OLLAMA_URL=http://ollama:11434/api/generate).
     ollama_url: str = "http://localhost:11434/api/generate"

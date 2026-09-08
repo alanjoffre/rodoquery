@@ -243,3 +243,50 @@ Estes três já estão no README e **continuam corretos como estão**. Verificad
 **Leitura:** o projeto está tecnicamente completo e verde. O que falta para **entregar** é quase tudo
 de distribuição e coerência — com uma exceção real de engenharia (**P3.1**, o gate no alvo errado) e
 uma decisão de produto em aberto (**P3.2**, o catálogo rico).
+
+---
+
+## Placar de fechamento
+
+Fechado em **08/09/2026**. Tudo abaixo foi verificado contra o repositório, não afirmado.
+
+| # | Pendência | Estado | Onde |
+|---|---|---|---|
+| P0.1 | Fundação ANTT não publicada | ✅ **fechado** | [alanjoffre/antt-foundation](https://github.com/alanjoffre/antt-foundation) — pública, MIT |
+| P0.2 | Cadeia de reconstrução fora do README | ✅ **fechado** | seção *Rodar* + mensagem de erro do `preparar_contexto.sh` |
+| P1.1 | Artefato afirmava que o κ humano não existe | ✅ **fechado** | fonte corrigida e artefato **regerado**; só o rótulo mudou |
+| P1.2 | `FASE13_BIRD.md` com a dívida aberta | ✅ **fechado** | nota de superação |
+| P1.3 | `FASE14_BACKLOG.md` conclui o que a F19 refutou | ✅ **fechado** | carimbo com a tabela dos dois SUTs |
+| P2.1 | README dizia 199 testes | ✅ **fechado** | são 231 hoje |
+| P2.2 | README dizia 22 fases (0–21) | ✅ **fechado** | são 24 (0–23, mais a 17b) |
+| P2.3 | "confere cada valor" era overclaim | ✅ **fechado** | auditor foi de **43 → 106** checagens, cobrindo F1–F23 |
+| P3.1 | Gate do CI no alvo sintético da F4 | ✅ **fechado** | 3 alvos; nível A 7 → **24** checagens; replay **53/53 · 171/171 · 171/171** |
+| P3.2 | Catálogo rico não chegou ao serving | ✅ **fechado** | medido (p=1,0) e **promovido** — [Fase 23](FASE23_CATALOGO_SERVING.md) |
+| P3.3 | Manifesto vendorizado era o sintético | ✅ **fechado** | `fundacao/semantic_manifest_antt.json` |
+| P4 | Repro F19–F22 · `.env.example` · selo · topics · licença | ✅ **fechado** | scripts órfãos **8 → 0**; licença detectada como MIT |
+| — | Extra `llm` · 3 defeitos da F21 · GPU no K8s | 🔵 **abertos, como estavam** | com motivo declarado; nenhum é falta de trabalho |
+
+### O que o levantamento errou, e que o fechamento corrigiu
+
+Auditoria também erra, e registrar isso vale mais que o placar:
+
+- **Três coisas que ele não viu.** A frase do κ estava numa **terceira** posição (a docstring do
+  `concordancia_opus5.py`); `FASE10_CATALOGO.md` tinha um quarto caso de status obsoleto — mas esse
+  **não** foi fechado, porque fala da base sintética, que nunca foi re-medida com SUT de fronteira;
+  e o README dizia **+33,4 pp** onde o artefato diz **33,33** (12/36), erro de arredondamento sobre
+  arredondamento que o auditor estendido pegou.
+- **Um erro factual dele.** O levantamento afirmava que os **624 MB** da imagem eram a única
+  afirmação sem lastro versionado. Os 7 defeitos de label da F15 também pareciam não ter — mas têm:
+  vivem em `golden/_auditoria_veredito.jsonl`, fora de `reports/`. Hoje estão travados.
+- **Um erro meu, ao fechar.** Meu primeiro levantamento de scripts órfãos deu **zero**, e estava
+  errado: eu grepava `README.md` + `docs/`, e **este arquivo cita os 8 scripts justamente para
+  chamá-los de órfãos**. A denúncia fazia o denunciado parecer documentado. Excluindo-a: 8,
+  exatamente os que ele nomeava. *Um teste que inclui a própria denúncia no corpus mede a si mesmo.*
+
+### O que o fechamento produziu além do previsto
+
+- **Os selos deixaram de ser ritual** (`tests/test_selos.py`): os 9 conjuntos selados passaram a ser
+  conferidos no CI. Antes, `sha256sum` na mão, quando alguém lembrava.
+- **O replay ANTT rodou pela primeira vez** e reproduz — 171/171 vereditos idênticos nos dois
+  sistemas, nos dois alvos ANTT.
+- **A Fase 23 existe** porque o P3.2 exigia medir em vez de opinar.

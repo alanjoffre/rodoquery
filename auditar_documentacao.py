@@ -273,6 +273,25 @@ if cc:
     checa("F21 melhor nivel (doc diz 8)", cc["melhor_nivel"], 8)
     checa("F21 criterio pre-declarado atendido", cc["escala"], True)
 
+print("\n=== FASE 23 (catalogo rico no benchmark principal) ===")
+f23 = _j("fase23/resultado_rico_test_antt.json")
+if f23:
+    ex23 = f23["execution_accuracy_respondiveis"]
+    checa("F23 rico EX (doc diz 145/146)", ex23["acertos"], 145)
+    checa("F23 n respondiveis (mesmos 146 da F18)", ex23["n"], 146)
+    checa("F23 rico abstencao (doc diz 25/25 = 100%)",
+          f23["acuracia_abstencao_NAO_COMPARAVEL"]["taxa"], 1.0)
+    mc23 = f23["mcnemar_vs_fase18_respondiveis"]
+    checa("F23 McNemar b (doc diz 1)", mc23["b_only"], 1)
+    checa("F23 McNemar c (doc diz 0)", mc23["c_only"], 0)
+    checa("F23 p (doc diz 1,0 = NAO significativo)", mc23["p_valor"], 1.0)
+    checa("F23 regressoes (doc diz 1)", len(f23["regressoes"]), 1)
+    checa("F23 ganhos (doc diz 0)", len(f23["ganhos"]), 0)
+    # A precaucao metodologica que se mostrou desnecessaria — e que so se sabe medindo.
+    checa("F23 abstencoes que viraram respondiveis (doc diz 0)",
+          f23["abstencoes_respondidas_com_metrica_nova"], 0)
+    checa("F23 custo (doc diz US$ 0,4632)", f23["custo_usd"], 0.4632, 0.0001)
+
 print("\n=== FASE 22 (historico do CI) ===")
 # SNAPSHOT congelado no dia do conserto (03/08/2026). O README afirma o passado — "1 verde em 33"
 # — entao a fonte tem de ser o snapshot, nao uma nova consulta: re-medir depois do conserto daria
