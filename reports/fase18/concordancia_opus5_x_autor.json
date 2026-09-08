@@ -20,7 +20,7 @@
     }
   ],
   "NAO_AJUSTADO_APOS_VER_O_RESULTADO": "O TEST esta selado e os discordantes foram inspecionados DEPOIS de medir. Corrigir label agora seria fitar (disciplina da Fase 8). Defeitos candidatos ficam DECLARADOS aqui para a proxima revisao de golden, e os numeros das Fases 12/15/18 seguem intactos.",
-  "NAO_E_KAPPA_HUMANO": "maquina auditando maquina. O kappa humano segue ABERTO; reports/fase14/kappa_humano.json nao existe de proposito.",
+  "NAO_E_KAPPA_HUMANO": "maquina auditando maquina — NAO substitui anotacao humana. O kappa humano FOI fechado em 28/07/2026 com anotacao humana real (n=40, kappa=1,0, IC95 [0,912; 1,0]) e vive em reports/fase14/kappa_humano.json. Este artefato e a camada do MEIO de uma escala de tres: maquina qwen 0,977 (F12) -> opus5 cego (aqui) -> humano 1,0.",
   "anotador_b": "claude-opus-5 (cego: viu apenas pergunta + catalogo)",
   "custo_usd": 0.0,
   "fonte": "predicoes congeladas da Fase 18 (nenhuma chamada nova de API)",
@@ -59,10 +59,10 @@
     "seed": 42,
     "modelo_sut": "qwen2.5-coder:7b",
     "temperatura": 0.0,
-    "git_sha": "4c6160d",
+    "git_sha": "eece540",
     "git_dirty": true,
-    "git_diff_sha1": "ccd00df7461a",
-    "timestamp_utc": "2026-07-28T13:46:31+00:00",
+    "git_diff_sha1": "0d9dc4d43104",
+    "timestamp_utc": "2026-09-08T14:37:24+00:00",
     "versoes": {
       "duckdb": "1.5.4",
       "sqlglot": "30.12.0",

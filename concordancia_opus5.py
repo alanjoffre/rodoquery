@@ -3,7 +3,12 @@
 ## O que isto é — e o que NÃO é
 
 **NÃO é o κ humano.** É máquina auditando máquina, e o arquivo de saída diz isso no nome e no
-campo `tipo`. `reports/fase14/kappa_humano.json` continua não existindo, e o item segue aberto.
+campo `tipo`. Isso continua valendo: nenhum número produzido aqui substitui anotação humana.
+
+O que mudou desde a redação original: o κ humano **foi fechado** em 28/07/2026, com anotação
+humana real (n=40, κ=1,0, IC95 [0,912; 1,0]), e vive em `reports/fase14/kappa_humano.json`.
+Este script deixou de ser "o melhor que dá para fazer sem humano" e passou a ser a camada do
+**meio** de uma escala de três: máquina `qwen` 0,977 (F12) → Opus 5 cego 0,992 (aqui) → humano 1,0.
 
 **É a camada mais forte de auditoria de máquina que este projeto consegue produzir**, e por um
 motivo específico: o κ de máquina existente (0,977, Fase 12) é `qwen2.5-coder:7b` × autor-modelo
@@ -110,8 +115,12 @@ def main() -> None:
             "Corrigir label agora seria fitar (disciplina da Fase 8). Defeitos candidatos "
             "ficam DECLARADOS aqui para a proxima revisao de golden, e os numeros das "
             "Fases 12/15/18 seguem intactos."),
-        "NAO_E_KAPPA_HUMANO": ("maquina auditando maquina. O kappa humano segue ABERTO; "
-                               "reports/fase14/kappa_humano.json nao existe de proposito."),
+        "NAO_E_KAPPA_HUMANO": ("maquina auditando maquina — NAO substitui anotacao humana. "
+                               "O kappa humano FOI fechado em 28/07/2026 com anotacao humana "
+                               "real (n=40, kappa=1,0, IC95 [0,912; 1,0]) e vive em "
+                               "reports/fase14/kappa_humano.json. Este artefato e a camada do "
+                               "MEIO de uma escala de tres: maquina qwen 0,977 (F12) -> opus5 "
+                               "cego (aqui) -> humano 1,0."),
         "anotador_b": "claude-opus-5 (cego: viu apenas pergunta + catalogo)",
         "custo_usd": 0.0,
         "fonte": "predicoes congeladas da Fase 18 (nenhuma chamada nova de API)",

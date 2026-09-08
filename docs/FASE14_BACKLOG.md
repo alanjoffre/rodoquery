@@ -75,6 +75,12 @@ Isto **não** tem conserto mecânico, e eu **não** o persegui com um ajuste de 
 TEST-ANTT já foi visto, e ajustar contra ele seria fitar ao teste. Fica caracterizado e aberto: o
 caminho é descrição melhor ou SUT maior, medido em holdout novo.
 
+> **Fechado na Fase 18.** Dos dois caminhos previstos acima, o de "SUT maior" acertou pela metade:
+> *maior* foi **refutado** (`gemma2:9b` colapsa em 5,6%, F15), mas *mais capaz* **zerou o resíduo**
+> — o Opus 5 fez **100% (146/146)** neste mesmo TEST-ANTT, incluindo os estratos que travavam em
+> 72–80%. O resíduo não era falha sistêmica da interface: era **capacidade do SUT**. Enunciado
+> correto, registrado no README: **"não é tamanho, é capacidade"**.
+
 ## #3 — Tier-B no roteador: desligado por **medição**, não por suposição
 
 O roteador "Tier-A primário; Tier-B fallback" sempre esteve no README, com o Tier-B construído
@@ -118,14 +124,32 @@ Fase 7 se fortalece: **a competência do Tier-A depende fortemente das pistas le
 identificadores** — investir em descrições boas no semantic layer não é cosmético, é o que sustenta
 a acurácia.
 
+> **REFUTADO na Fase 19**, com pré-registro commitado *antes* de medir (`acaf471` → `7a2a109`).
+> O parágrafo acima atribui a fragilidade à **interface**, e esse diagnóstico estava errado.
+> Mesmo conjunto selado (estes 34 itens), mesma perturbação, trocando **só** o SUT:
+>
+> | SUT | catálogo original | schema opaco | Δ |
+> |---|---|---|---|
+> | `qwen2.5-coder:7b` | 85,29% | 55,88% | **−29,41 pp** |
+> | `claude-opus-5` | 100% | 100% | **0,00 pp** |
+>
+> A fragilidade lexical era **do SUT, não da interface**: o Tier-A nunca precisou de identificador
+> semântico — o Qwen 7B é que precisava. "Investir em descrições boas" vale como conserto para
+> **SUT fraco**, e não como propriedade do semantic layer. É a terceira confirmação da lei da
+> F18 (a muleta determinística vale ≈ 1 / força do SUT). Ver
+> [FASE19_FRAGILIDADE.md](FASE19_FRAGILIDADE.md).
+
 ## Placar do backlog
 
 | # | Item | Status |
 |---|---|---|
 | 1 | κ humano | **resolvido**: humano anotou 40/40 — spec 1,0, κ métrica 1,0, IC95 [0,912; 1,0] |
-| 2 | resíduo 72% | **defeito de gold resolvido** (→88,7%); resíduo caro caracterizado e aberto |
+| 2 | resíduo 72% | **defeito de gold resolvido** (→88,7%); o resíduo caro foi **zerado na F18** — Opus 5 fez 100% (146/146) |
 | 3 | Tier-B no roteador | **resolvido**: medido, módulo pronto, off por escolha baseada em evidência |
-| 4 | robustez dedicada | **resolvido**: conjunto próprio selado; schema opaco −29,4 pp (p=0,006) |
+| 4 | robustez dedicada | **resolvido**: conjunto próprio selado; −29,4 pp no Qwen — mas **0,00 pp no Opus 5 (F19)**: era do SUT, não da interface |
+
+> As linhas 2 e 4 trazem carimbo de superação no corpo do documento. O que este doc mediu continua
+> válido; o que ele **concluiu** sobre as causas foi corrigido pelas Fases 18 e 19.
 
 ## Reprodução
 

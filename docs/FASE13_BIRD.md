@@ -55,9 +55,16 @@ de "perguntas de template" que venho declarando desde a Fase 2.
 - **O Tier-A não roda aqui.** O BIRD não tem semantic layer — são 11 bancos arbitrários, sem
   catálogo governado. Só o caminho de SQL cru é mensurável. Este número calibra o **modelo**, não
   o sistema.
-- **κ humano do golden set do RodoQuery continua no backlog.** O BIRD traz anotação humana *dele*,
-  não do *meu* conjunto. A afirmação honesta é: "o SUT foi avaliado contra anotação humana", e
+- **O BIRD não dá κ humano ao golden set do RodoQuery.** O BIRD traz anotação humana *dele*, não
+  do *meu* conjunto. A afirmação honesta é: "o SUT foi avaliado contra anotação humana", e
   **não** "o golden set do RodoQuery tem κ humano".
+
+  > **Superado em 28/07/2026 (Fase 14, item #1).** Quando esta seção foi escrita, a linha acima
+  > dizia que o κ humano "continua no backlog" — e era verdade na época. Ele **foi fechado** desde
+  > então, com anotação humana real sobre o golden do RodoQuery: n=40, κ=1,0, IC95 [0,912; 1,0]
+  > (`reports/fase14/kappa_humano.json`, método em [FASE14_KAPPA_HUMANO.md](FASE14_KAPPA_HUMANO.md)).
+  > O que esta seção afirma sobre o **BIRD** segue valendo integralmente: o κ veio de anotação
+  > dedicada, não deste benchmark.
 
 ## O achado que confirma o mecanismo da tese
 
