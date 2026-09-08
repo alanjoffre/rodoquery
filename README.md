@@ -185,6 +185,12 @@ Nenhum caminho gasta crédito por acidente: o default é o SUT **local**, `--con
 
 Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
 
+> 📋 **Levantamento completo e datado em [docs/PENDENCIAS.md](docs/PENDENCIAS.md)** — auditoria de
+> 25/08/2026 contra o repositório (não contra a memória do projeto), com evidência e custo por item.
+> Ela achou o que esta seção **não** cobria: a fundação ANTT das Fases 11–22 não está publicada, o
+> gate que bloqueia o CI ainda protege o alvo sintético da Fase 4, e o catálogo enriquecido da F21
+> não chegou ao serving.
+
 **Aberto — três itens, todos com o custo declarado:**
 - **O extra `llm` é metadado morto** — nada em `src/` importa `httpx` ou `ollama` (o cliente do Ollama fala HTTP por `urllib` da stdlib); achado na F22. **Não removido ainda de propósito:** o `Dockerfile` instala `.[serve,llm]`, e os **624 MB** de imagem medidos na F16 incluem esses pacotes. Removê-lo sem reconstruir e re-medir tornaria aquele número falso. Sai no mesmo commit que re-mede a imagem.
 - **Os 3 defeitos que a auditoria adversarial da F21 achou**, todos `abstencao_errada`: completar as partições tornou perguntas respondíveis **por composição** (`manual_share + ocr_share`), e o meu gold não antecipou isso. **Não corrigidos de propósito** — o conjunto está selado e a auditoria veio depois de medir; ajustar seria fitar. Ficam para a próxima revisão de golden, e implicam que a abstenção de 6/8 é **piso, não estimativa**.
