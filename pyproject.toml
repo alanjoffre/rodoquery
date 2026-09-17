@@ -23,7 +23,9 @@ api = ["anthropic>=0.60"]
 # Planilha de anotação humana (fase 14). EXTRA: o import é tardio, dentro das funções de
 # export/import — quem não vai anotar em XLSX não precisa instalar.
 xlsx = ["openpyxl>=3.1"]
-dev = ["ruff>=0.6", "pytest>=8.0"]
+# pyyaml: tests/test_k8s_manifestos.py lê os manifestos. Estava no venv local instalado À MÃO, sem
+# nenhum pacote dependendo dele — num checkout limpo do CI não existiria, e a coleta quebraria.
+dev = ["ruff>=0.6", "pytest>=8.0", "pyyaml>=6.0"]
 # Tudo que a SUÍTE precisa para COLETAR. Existe porque o CI instalava só [dev] e
 # tests/test_servico*.py importam `fastapi` (extra [serve]): a coleta explodia, o build ficou
 # vermelho por 32 execuções seguidas (12 dias) e ninguém olhou. Um extra NOMEADO é melhor que uma

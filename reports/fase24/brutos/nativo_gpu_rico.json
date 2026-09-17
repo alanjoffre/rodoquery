@@ -1,0 +1,188 @@
+{
+  "rotulo": "nativo-gpu-rico",
+  "pergunta": "Quantos veículos passaram por sentido?",
+  "saude": {
+    "status": "ok",
+    "provedor": "ollama",
+    "modelo": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "fundacao": "antt",
+    "banco": "antt_analytics.duckdb",
+    "catalogo_antt": "rico",
+    "n_metricas_expostas": 7,
+    "specs_em_cache": 0,
+    "max_inferencia_simultanea": 1,
+    "concorrencia_medida": true,
+    "espera_max_s": 5.0
+  },
+  "fria": {
+    "parede_s": 4.845,
+    "latencia_s": {
+      "llm": 3.157,
+      "compilacao": 1.671,
+      "execucao": 0.014,
+      "total": 4.842
+    },
+    "confere": true,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__sentido"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "linhas": [
+      [
+        "Decrescente",
+        200630733.0
+      ],
+      [
+        "Crescente",
+        190982244.0
+      ]
+    ]
+  },
+  "quentes": {
+    "n": 12,
+    "todas_conferem": true,
+    "parede_p50_s": 2.02,
+    "parede_p95_s": 2.1,
+    "parede_media_s": 2.025,
+    "llm_p50_s": 2.005,
+    "llm_p95_s": 2.086,
+    "amostras": [
+      {
+        "parede_s": 2.1,
+        "latencia_s": {
+          "llm": 2.086,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.099
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.02,
+        "latencia_s": {
+          "llm": 2.005,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.018
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.012,
+        "latencia_s": {
+          "llm": 1.997,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.01
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.006,
+        "latencia_s": {
+          "llm": 1.991,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.004
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.014,
+        "latencia_s": {
+          "llm": 1.999,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.012
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.005,
+        "latencia_s": {
+          "llm": 1.99,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.003
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.02,
+        "latencia_s": {
+          "llm": 2.005,
+          "compilacao": 0.0,
+          "execucao": 0.012,
+          "total": 2.017
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.011,
+        "latencia_s": {
+          "llm": 1.995,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.008
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.025,
+        "latencia_s": {
+          "llm": 2.01,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.023
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.029,
+        "latencia_s": {
+          "llm": 2.014,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.027
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.02,
+        "latencia_s": {
+          "llm": 2.004,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.017
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.037,
+        "latencia_s": {
+          "llm": 2.022,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.035
+        },
+        "confere": true
+      }
+    ]
+  },
+  "abstencao": {
+    "pergunta": "Qual foi a receita de pedágio arrecadada?",
+    "tipo": "abstencao",
+    "correta": true,
+    "parede_s": 0.465
+  },
+  "timestamp_utc": "2026-09-17T15:07:20+00:00"
+}

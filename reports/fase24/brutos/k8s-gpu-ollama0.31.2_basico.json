@@ -1,0 +1,188 @@
+{
+  "rotulo": "k8s-gpu-ollama0.31.2-basico",
+  "pergunta": "Quantos veículos passaram por sentido?",
+  "saude": {
+    "status": "ok",
+    "provedor": "ollama",
+    "modelo": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "fundacao": "antt",
+    "banco": "antt_analytics.duckdb",
+    "catalogo_antt": "basico",
+    "n_metricas_expostas": 3,
+    "specs_em_cache": 0,
+    "max_inferencia_simultanea": 1,
+    "concorrencia_medida": true,
+    "espera_max_s": 5.0
+  },
+  "fria": {
+    "parede_s": 41.284,
+    "latencia_s": {
+      "llm": 38.871,
+      "compilacao": 2.385,
+      "execucao": 0.021,
+      "total": 41.277
+    },
+    "confere": true,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__sentido"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "linhas": [
+      [
+        "Crescente",
+        190982244.0
+      ],
+      [
+        "Decrescente",
+        200630733.0
+      ]
+    ]
+  },
+  "quentes": {
+    "n": 12,
+    "todas_conferem": true,
+    "parede_p50_s": 2.048,
+    "parede_p95_s": 2.343,
+    "parede_media_s": 2.071,
+    "llm_p50_s": 2.028,
+    "llm_p95_s": 2.323,
+    "amostras": [
+      {
+        "parede_s": 2.343,
+        "latencia_s": {
+          "llm": 2.323,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.338
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.041,
+        "latencia_s": {
+          "llm": 2.02,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.035
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.048,
+        "latencia_s": {
+          "llm": 2.028,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.043
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.058,
+        "latencia_s": {
+          "llm": 2.036,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.051
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.05,
+        "latencia_s": {
+          "llm": 2.028,
+          "compilacao": 0.0,
+          "execucao": 0.016,
+          "total": 2.044
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.044,
+        "latencia_s": {
+          "llm": 2.023,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.038
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.04,
+        "latencia_s": {
+          "llm": 2.019,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.034
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.044,
+        "latencia_s": {
+          "llm": 2.023,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.038
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.05,
+        "latencia_s": {
+          "llm": 2.028,
+          "compilacao": 0.0,
+          "execucao": 0.016,
+          "total": 2.044
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.034,
+        "latencia_s": {
+          "llm": 2.013,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.028
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.051,
+        "latencia_s": {
+          "llm": 2.03,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.045
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.045,
+        "latencia_s": {
+          "llm": 2.025,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.04
+        },
+        "confere": true
+      }
+    ]
+  },
+  "abstencao": {
+    "pergunta": "Qual foi a receita de pedágio arrecadada?",
+    "tipo": "abstencao",
+    "correta": true,
+    "parede_s": 0.519
+  },
+  "timestamp_utc": "2026-09-17T15:19:13+00:00"
+}

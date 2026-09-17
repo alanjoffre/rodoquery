@@ -21,7 +21,11 @@ spec:
     spec:
       containers:
         - name: ollama
-          image: ollama/ollama:latest
+          # FIXADA por medição (Fase 24), não por hábito. Com `:latest` — que em 17/09/2026 resolvia
+          # para 0.34.1 — a mesma consulta, no mesmo pod e na mesma GPU, levou 3,97 s (p50) contra
+          # 2,05 s da 0.31.2: uma troca de versão silenciosa DOBRAVA a latência sem nenhum aviso.
+          # Suba esta tag de propósito, e re-meça com k8s/gpu-wsl/07_medir_k8s.sh.
+          image: ollama/ollama:0.31.2
           ports:
             - {name: http, containerPort: 11434}
           volumeMounts:
@@ -29,8 +33,10 @@ spec:
           resources:
             requests: {cpu: "1", memory: 6Gi}
             limits:   {cpu: "4", memory: 12Gi}
-            # Em nó com GPU, descomente (requer NVIDIA device plugin no cluster):
-            #   limits: {nvidia.com/gpu: 1}
+            # GPU: NÃO edite aqui — use `kubectl apply -k k8s/gpu`. A instrução antiga mandava
+            # descomentar um segundo `limits:`: com `apply -k` isso dá erro, e com `apply -f` o
+            # kubectl aceita calado e o pod perde os limites de CPU e memória (testado, Fase 24).
+            # O overlay ACRESCENTA nvidia.com/gpu a este mapa.
           readinessProbe:
             httpGet: {path: /, port: http}
             initialDelaySeconds: 10

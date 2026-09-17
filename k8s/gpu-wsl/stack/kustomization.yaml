@@ -1,0 +1,18 @@
+# A stack do RodoQuery com GPU no k3s dentro do WSL — o overlay que foi de fato exercitado.
+#
+#   k3s kubectl apply -k k8s/gpu-wsl/stack
+#
+# Em cima do overlay portável (k8s/gpu), só o que é específico do k3s: `runtimeClassName: nvidia`.
+# O k3s detecta o nvidia-container-runtime ao subir e cria a RuntimeClass sozinho, mas NÃO o torna
+# o runtime padrão — sem pedi-lo pelo nome, o pod recebe o recurso `nvidia.com/gpu` do scheduler e
+# sobe num runc que não injeta /dev/dxg nem a NVML: GPU alocada e invisível.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../gpu
+patches:
+  - target: {kind: StatefulSet, name: ollama}
+    patch: |-
+      - op: add
+        path: /spec/template/spec/runtimeClassName
+        value: nvidia

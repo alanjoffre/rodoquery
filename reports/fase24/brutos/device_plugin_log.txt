@@ -1,0 +1,3 @@
+I0917 15:01:51.357849       1 plugin-manager.go:101] Detected platform: wsl
+I0917 15:01:51.357882       1 plugin-manager.go:50] Using device discovery strategy: nvml
+I0917 15:01:51.373343       1 server.go:149] Registered device plugin for 'nvidia.com/gpu' with Kubelet

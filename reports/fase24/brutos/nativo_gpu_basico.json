@@ -1,0 +1,188 @@
+{
+  "rotulo": "nativo-gpu-basico",
+  "pergunta": "Quantos veículos passaram por sentido?",
+  "saude": {
+    "status": "ok",
+    "provedor": "ollama",
+    "modelo": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "fundacao": "antt",
+    "banco": "antt_analytics.duckdb",
+    "catalogo_antt": "basico",
+    "n_metricas_expostas": 3,
+    "specs_em_cache": 0,
+    "max_inferencia_simultanea": 1,
+    "concorrencia_medida": true,
+    "espera_max_s": 5.0
+  },
+  "fria": {
+    "parede_s": 41.876,
+    "latencia_s": {
+      "llm": 39.5,
+      "compilacao": 2.341,
+      "execucao": 0.032,
+      "total": 41.873
+    },
+    "confere": true,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__sentido"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "linhas": [
+      [
+        "Decrescente",
+        200630733.0
+      ],
+      [
+        "Crescente",
+        190982244.0
+      ]
+    ]
+  },
+  "quentes": {
+    "n": 12,
+    "todas_conferem": true,
+    "parede_p50_s": 1.988,
+    "parede_p95_s": 2.157,
+    "parede_media_s": 2.004,
+    "llm_p50_s": 1.973,
+    "llm_p95_s": 2.142,
+    "amostras": [
+      {
+        "parede_s": 2.157,
+        "latencia_s": {
+          "llm": 2.142,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 2.156
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 1.986,
+        "latencia_s": {
+          "llm": 1.972,
+          "compilacao": 0.0,
+          "execucao": 0.012,
+          "total": 1.984
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 1.985,
+        "latencia_s": {
+          "llm": 1.971,
+          "compilacao": 0.0,
+          "execucao": 0.012,
+          "total": 1.983
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 1.978,
+        "latencia_s": {
+          "llm": 1.963,
+          "compilacao": 0.0,
+          "execucao": 0.012,
+          "total": 1.976
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.007,
+        "latencia_s": {
+          "llm": 1.992,
+          "compilacao": 0.0,
+          "execucao": 0.012,
+          "total": 2.005
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 1.998,
+        "latencia_s": {
+          "llm": 1.983,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 1.996
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 1.986,
+        "latencia_s": {
+          "llm": 1.971,
+          "compilacao": 0.0,
+          "execucao": 0.012,
+          "total": 1.984
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 1.999,
+        "latencia_s": {
+          "llm": 1.984,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 1.997
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 1.986,
+        "latencia_s": {
+          "llm": 1.971,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 1.984
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 1.995,
+        "latencia_s": {
+          "llm": 1.981,
+          "compilacao": 0.0,
+          "execucao": 0.012,
+          "total": 1.993
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 1.988,
+        "latencia_s": {
+          "llm": 1.973,
+          "compilacao": 0.0,
+          "execucao": 0.013,
+          "total": 1.986
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 1.979,
+        "latencia_s": {
+          "llm": 1.964,
+          "compilacao": 0.0,
+          "execucao": 0.012,
+          "total": 1.977
+        },
+        "confere": true
+      }
+    ]
+  },
+  "abstencao": {
+    "pergunta": "Qual foi a receita de pedágio arrecadada?",
+    "tipo": "abstencao",
+    "correta": true,
+    "parede_s": 0.441
+  },
+  "timestamp_utc": "2026-09-17T15:06:48+00:00"
+}

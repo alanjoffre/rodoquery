@@ -1,0 +1,188 @@
+{
+  "rotulo": "k8s-gpu-ollama0.31.2-rico",
+  "pergunta": "Quantos veículos passaram por sentido?",
+  "saude": {
+    "status": "ok",
+    "provedor": "ollama",
+    "modelo": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "fundacao": "antt",
+    "banco": "antt_analytics.duckdb",
+    "catalogo_antt": "rico",
+    "n_metricas_expostas": 7,
+    "specs_em_cache": 0,
+    "max_inferencia_simultanea": 1,
+    "concorrencia_medida": true,
+    "espera_max_s": 5.0
+  },
+  "fria": {
+    "parede_s": 4.959,
+    "latencia_s": {
+      "llm": 2.833,
+      "compilacao": 2.088,
+      "execucao": 0.032,
+      "total": 4.954
+    },
+    "confere": true,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__sentido"
+      ],
+      "where": null,
+      "order_by": [],
+      "limit": null,
+      "ordenado": false
+    },
+    "linhas": [
+      [
+        "Decrescente",
+        200630733.0
+      ],
+      [
+        "Crescente",
+        190982244.0
+      ]
+    ]
+  },
+  "quentes": {
+    "n": 12,
+    "todas_conferem": true,
+    "parede_p50_s": 2.06,
+    "parede_p95_s": 2.244,
+    "parede_media_s": 2.071,
+    "llm_p50_s": 2.039,
+    "llm_p95_s": 2.222,
+    "amostras": [
+      {
+        "parede_s": 2.244,
+        "latencia_s": {
+          "llm": 2.222,
+          "compilacao": 0.0,
+          "execucao": 0.016,
+          "total": 2.238
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.046,
+        "latencia_s": {
+          "llm": 2.025,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.041
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.036,
+        "latencia_s": {
+          "llm": 2.015,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.03
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.068,
+        "latencia_s": {
+          "llm": 2.045,
+          "compilacao": 0.0,
+          "execucao": 0.017,
+          "total": 2.062
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.051,
+        "latencia_s": {
+          "llm": 2.03,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.045
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.061,
+        "latencia_s": {
+          "llm": 2.039,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.055
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.055,
+        "latencia_s": {
+          "llm": 2.034,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.049
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.051,
+        "latencia_s": {
+          "llm": 2.03,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.045
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.064,
+        "latencia_s": {
+          "llm": 2.043,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.058
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.062,
+        "latencia_s": {
+          "llm": 2.042,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.057
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.06,
+        "latencia_s": {
+          "llm": 2.039,
+          "compilacao": 0.0,
+          "execucao": 0.016,
+          "total": 2.055
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 2.051,
+        "latencia_s": {
+          "llm": 2.03,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 2.045
+        },
+        "confere": true
+      }
+    ]
+  },
+  "abstencao": {
+    "pergunta": "Qual foi a receita de pedágio arrecadada?",
+    "tipo": "abstencao",
+    "correta": true,
+    "parede_s": 0.544
+  },
+  "timestamp_utc": "2026-09-17T15:19:52+00:00"
+}

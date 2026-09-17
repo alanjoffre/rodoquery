@@ -1,0 +1,9 @@
+driver_windows=616.92
+gpu=NVIDIA GeForce RTX 4050 Laptop GPU
+vram_total=6141 MiB
+cuda_driver=13.4
+toolkit=1.20.0
+k3s=v1.36.4+k3s1
+containerd=containerd://2.3.4-k3s1.36
+kernel=6.6.114.1-microsoft-standard-WSL2
+device_plugin_imagem=nvcr.io/nvidia/k8s-device-plugin:v0.20.0

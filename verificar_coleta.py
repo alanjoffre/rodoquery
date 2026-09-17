@@ -29,10 +29,11 @@ from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent
-# Piso medido em 2026-08-03 (Fase 22). Subido para 235 em 2026-09-08: +10 de tests/test_selos.py,
-# +5 de tests/test_servico_catalogo.py e +4 de tests/test_higiene_segredos.py. Só desça este
-# número deliberadamente, no mesmo commit que remove os testes, explicando no corpo por quê.
-PISO_TOTAL = 235
+# Piso medido em 2026-08-03 (Fase 22). Subido para 235 em 2026-09-08 (+10 test_selos, +5
+# test_servico_catalogo, +4 test_higiene_segredos) e para 251 em 2026-09-17 (+16
+# test_k8s_manifestos). Só desça este número deliberadamente, no mesmo commit que remove os
+# testes, explicando no corpo por quê.
+PISO_TOTAL = 251
 _ITEM = re.compile(r"^(tests[/\\][\w.]+\.py)::")
 
 

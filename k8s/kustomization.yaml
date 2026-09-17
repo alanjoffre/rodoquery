@@ -1,15 +1,13 @@
+# Ponto de entrada padrão — CPU, exatamente o que a Fase 17 validou:
+#
+#   kubectl apply -k k8s          # base, sem GPU
+#   kubectl apply -k k8s/gpu      # + nvidia.com/gpu (qualquer cluster com o device plugin)
+#
+# Os manifestos moram em base/ desde que a GPU foi exercitada: o kustomize recusa uma overlay
+# DENTRO do diretório da base que ela referencia ("cycle detected"), então base e overlays
+# precisam ser irmãs. A mudança foi aceita só depois de provar que a renderização deste
+# diretório saiu idêntica, byte a byte, à de antes da mudança.
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
-namespace: rodoquery
-
 resources:
-  - namespace.yaml
-  - ollama.yaml
-  - rodoquery.yaml
-  - networkpolicy.yaml
-
-labels:
-  - includeSelectors: false          # não injeta em selector (mudaria o matchLabels dos objetos)
-    pairs:
-      app.kubernetes.io/part-of: rodoquery
+  - base

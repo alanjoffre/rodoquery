@@ -8,9 +8,9 @@ Data Engineering × AI Engineering · avaliação com rigor · **dados públicos
 
 [![CI](https://github.com/alanjoffre/rodoquery/actions/workflows/ci.yml/badge.svg)](https://github.com/alanjoffre/rodoquery/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.12-blue.svg)
-![Testes](https://img.shields.io/badge/testes-235%20passando-brightgreen.svg)
+![Testes](https://img.shields.io/badge/testes-251%20passando-brightgreen.svg)
 ![Gate](https://img.shields.io/badge/gate%20de%20regressão-3%20alvos%20·%2024%20checagens-brightgreen.svg)
-![Fases](https://img.shields.io/badge/fases-0–23-e0a326.svg)
+![Fases](https://img.shields.io/badge/fases-0–24-e0a326.svg)
 ![Sandbox](https://img.shields.io/badge/attack--block-39%2F39%20·%20FP%200%25-brightgreen.svg)
 ![Custo](https://img.shields.io/badge/custo%20de%20API-US%24%202%2C28-blue.svg)
 
@@ -49,7 +49,7 @@ O gap **encolheu** porque o baseline quase dobrou (26,7% → 44,5%). Esse é o n
 
 ## 🗺️ Fases — previsto × medido
 
-**24 fases (0–23, mais a 17b) · 235 testes · gate em 3 alvos · custo total de API US$ 2,28.** Cada número aponta para um relatório versionado em `reports/` com carimbo de proveniência (seed, git_sha, modelo, versões) — e **113 deles** são conferidos automaticamente por `python auditar_documentacao.py`.
+**25 fases (0–24, mais a 17b) · 251 testes · gate em 3 alvos · custo total de API US$ 2,28.** Cada número aponta para um relatório versionado em `reports/` com carimbo de proveniência (seed, git_sha, modelo, versões) — e **122 deles** são conferidos automaticamente por `python auditar_documentacao.py`.
 
 | Fase | Métrica dura | **Resultado medido** |
 |:---:|---|---|
@@ -77,6 +77,7 @@ O gap **encolheu** porque o baseline quase dobrou (26,7% → 44,5%). Esse é o n
 | **21** · Catálogo enriquecido | completar as partições conserta o rebaixamento de tipo? | ✅ **rebaixamento 6/6 → 1/8**, abstenção 50% → **75%**, total **41/47 → 44/47** · ⚠️ **1 regressão** (contagem × proporção): é troca, não ganho grátis · auditoria adversarial **44/47 (93,6%)** · **concorrência da API medida: 5,74× em c=8** |
 | **22** · CI de verdade | o pipeline que eu já declarava ter **de fato roda a suíte**? | ❌ **não rodava desde a Fase 6**: 1 verde em 33 execuções, 32 vermelhas em 12 dias · **duas** causas — `[dev]` sem `fastapi` (coleta) e `pytest` × `python -m pytest` (`sys.path`) · ❌ **a minha trava de coleta deu falso negativo** por rodar in-process · ✅ **verde em 23 s**, com [ensaio fiel](ensaiar_ci.sh) e controle negativo |
 | **23** · [Catálogo no serving](docs/FASE23_CATALOGO_SERVING.md) | o catálogo de 7 métricas custa acurácia no benchmark principal? | ✅ **não custa: 145/146 × 146/146, McNemar b=1/c=0, p=1,0** (US$ 0,46) · abstenção **96% → 100%** · ⚠️ a regressão **não foi o erro que eu previa** — o sistema **absteve**, não errou: com 7 métricas ele fica **mais abstêmio** · **promovido ao serving**, e `tier_a_antt` segue intacto |
+| **24** · [GPU no Kubernetes](docs/FASE24_GPU_K8S.md) | "impossível nesta máquina" era verdade? | ❌ **não era**: k3s no WSL passa nos 5 degraus — o nó anuncia `nvidia.com/gpu`, o Ollama infere na GPU · ✅ **mesma versão do Ollama: o cluster custa 2–3%** sobre o nativo (2,05 s × 1,99 s) · ⚠️ o 1º número saiu **o dobro** e não era o K8s: era o `:latest` · ❌ **minha hipótese do limite de CPU, refutada** · defeito de manifesto achado |
 
 <sub>¹ As Fases 14 e 15 corrigiram defeitos de gold e **re-pontuaram as mesmas predições**: 86,9% → 88,7% → **89,7%**. O artefato em `reports/fase12/` guarda o valor re-pontuado (89,7%), que é o usado na tabela da tese. Os dois números são verdadeiros em momentos diferentes.</sub>
 
@@ -101,6 +102,8 @@ O diferencial não são os números altos — é **o rigor ter corrigido os pró
 - **Eu tinha CI; eu não tinha CI verde** *(F22)*. Contei "CI/CD" como entregue porque o `ci.yml` existia e o gate rodava na minha máquina. O histórico do Actions diz outra coisa: **1 execução verde em 33**, e a única foi o commit que criou o workflow. O commit seguinte trouxe `tests/test_servico.py`, que importa `fastapi` — extra `[serve]`, ausente do `pip install -e ".[dev]"` do runner. A **coleta** do pytest quebrava, e o build ficou vermelho por **32 execuções, 12 dias e 16 fases**, com o badge estampado no topo deste README. O CI funcionou perfeitamente; **eu é que não li**. Ver [Fase 22](docs/FASE22_CI.md).
 
 - **A trava que escrevi contra falsa segurança produziu falsa segurança** *(F22)*. Consertada a primeira causa, apareceu a segunda: a suíte importa um script de raiz, e quem punha a raiz no `sys.path` era **a forma de invocar** — `python -m pytest` (minha) põe, `pytest` (do CI) não. Uma letra de comando separava a minha máquina do runner. **E a minha `verificar_coleta.py` passou nesse mesmo job**, dizendo "216 testes, 0 arquivos vazios", enquanto o passo seguinte morria de erro de coleta: ela rodava `pytest.main()` *in-process*, e o interpretador põe a raiz no `sys.path` de graça. Reescrita para invocar o **mesmo executável, em subprocesso**, ela reprova o estado quebrado (rc=2, **176** itens, não 216). **Trava que não reproduz a invocação do alvo é pior que trava nenhuma — parece prova.** Eu ainda ensaiei errado **três vezes** antes de acertar (`-m`, árvore de trabalho, clone sem o commit); por isso o ensaio virou ferramenta versionada com controle negativo.
+
+- **"Impossível nesta máquina" — e o dobro de latência que não era do Kubernetes** *(F24)*. Este README afirmava que nenhuma quantidade de código exercitaria GPU no cluster aqui. A F17b tinha testado **um** caminho (`kind` sobre o Docker Desktop) e generalizado. Testando k3s dentro do WSL, os 5 degraus passaram. E a primeira medição no cluster saiu **o dobro** do nativo — a conclusão fácil seria "K8s dobra a latência". Havia duas diferenças entre os ambientes. Apostei no **limite de CPU do pod** (4 núcleos para as camadas que não cabem na GPU) e **errei**: com o limite mantido e só a **versão do Ollama** igualada, o pod empatou com o nativo (2,05 s × 1,99 s). Era o `ollama/ollama:latest`, que resolveu para uma versão 1,9–2,8× mais lenta aqui. A imagem agora é fixada.
 
 - **A regressão existiu, mas não era a que eu previa** *(F23)*. Ao levar o catálogo de 7 métricas ao benchmark principal, previ que o item perdido seria a ambiguidade medida na F21 — com `passenger_share` disponível, *"entre os veículos de passeio…"* viraria `share` no lugar do filtro. **Fui abrir a spec em vez de presumir, e era outra coisa:** o sistema **absteve** (`ABSTENHO`, abstenção genuína, não falha de parse). E na outra ponta absteve **corretamente** num item que o catálogo de 3 tinha alucinado. Os dois movimentos são o mesmo: **com 7 métricas o sistema fica mais abstêmio** (24 → 26 abstenções). É a segunda vez que inferir consequência a partir do mecanismo me daria a conclusão errada — a primeira foi a retratação abaixo.
 
@@ -138,7 +141,7 @@ SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI �
 |---|---|---|
 | SQL avançado e modelagem dimensional | F11 · fundação | dbt + **MetricFlow** sobre 1,5 M linhas reais; razões declaradas na *measure*, não no filtro da métrica |
 | Semantic Layer / métricas governadas | F10–F12 | catálogo de 3 métricas com curadoria auditável (`meta: {catalogo_usuario: false}` nos numeradores) |
-| Python de produção | todas | 235 testes · `ruff` limpo · gate bloqueante no CI, em 3 alvos |
+| Python de produção | todas | 251 testes · `ruff` limpo · gate bloqueante no CI, em 3 alvos |
 | Avaliação de LLM com rigor estatístico | F3–F20 | Wilson em toda taxa · **McNemar** pareado · **Test-Suite EX** em 3 variantes de banco |
 | Qualidade de rótulo | F2 · F12 · F14 · F15 · F18 | κ de máquina 0,977 → **Opus 5 cego 0,992** → **κ humano 1,0** · auditoria adversarial acha 7/60 defeitos |
 | Benchmark externo | F13 | **BIRD Mini-Dev**: 500 perguntas e SQL humanos, CC BY-SA |
@@ -146,7 +149,7 @@ SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI �
 | MLOps / CI | F5 | gate em 3 níveis, **comprovado ativo** (pega 6/6 regressões injetadas) |
 | Serving + SLO | F6 | FastAPI, cache spec→SQL, **controle de admissão decidido por medição** (semáforo 1 + 503) |
 | Containers | F16 | imagem **635 MB** (medida, com artefato), não-root, healthcheck, fundação assada |
-| Kubernetes | F17 | Deployment/Service/PDB/StatefulSet/NetworkPolicy · **sem HPA, com o número que justifica** |
+| Kubernetes | F17 · F24 | Deployment/Service/PDB/StatefulSet/NetworkPolicy · **sem HPA, com o número que justifica** · **GPU exercitada** via device plugin, overlay kustomize |
 | API de LLM (provider plugável) | F18 | `RODOQUERY_PROVEDOR=ollama\|anthropic` · prompt caching (341/342 hits) · custo em `/metricas` |
 | Custo sob controle | F18–F20 | teto verificado **a cada item** · `--confirmar` obrigatório · projeto inteiro custou **US$ 2,28** |
 
@@ -158,7 +161,7 @@ SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI �
 git clone https://github.com/alanjoffre/rodoquery && cd rodoquery
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[test]"                   # o mesmo extra que o CI usa — ver Fase 22
-pytest                                     # 235 testes
+pytest                                     # 251 testes
 python verificar_coleta.py                 # nenhum teste some por falta de extra
 bash ensaiar_ci.sh --negativo              # ensaia o CI num clone limpo, com controle negativo
 python gate_regressao.py                   # gate nível A (contrato, sem GPU) — 3 alvos
@@ -205,6 +208,7 @@ na migração — mexer nela invalidaria dez fases. Detalhes em
 ```bash
 bash docker/preparar_contexto.sh && docker compose up --build   # Ollama + SUT + serviço
 kubectl apply -k k8s                                            # manifestos testados em cluster efêmero
+kubectl apply -k k8s/gpu                                        # + nvidia.com/gpu (exercitado no k3s, F24)
 ```
 
 **Trocar o SUT por API** (opcional; extra `api`, chave em `.env`, **gitignorado**):
@@ -230,8 +234,10 @@ Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
 > e o catálogo enriquecido da F21 não chegou ao serving. **Os três foram fechados** — ver o
 > [placar de fechamento](docs/PENDENCIAS.md#placar-de-fechamento) no fim daquele documento.
 
-**Aberto — um item, em teste:**
-- **GPU no Kubernetes.** O que a F17b provou é mais estreito do que este README dizia: **com `kind` sobre o Docker Desktop** não dá — `docker run --gpus all` funciona, mas o `kind` cria o nó sem `--gpus` e o **Docker Desktop ignora `"default-runtime": "nvidia"`** no `daemon.json` (testado; config restaurada depois). A frase anterior, "nenhuma quantidade de código resolve isto nesta máquina", afirmava mais do que foi testado: o Kubernetes **dentro do WSL** nunca foi tentado, e o WSL enxerga a GPU (`nvidia-smi` mostra a RTX 4050). Esse caminho está em teste agora.
+**Aberto — nenhum item.** Tudo que foi declarado ao longo das fases foi medido e fechado, ou retratado.
+
+**Quitado na Fase 24:**
+- ~~**GPU no Kubernetes**~~ — **exercitada, e a frase que dizia ser impossível saiu.** A F17b provou só que `kind` sobre o Docker Desktop não serve (ele ignora `"default-runtime": "nvidia"`). k3s **dentro do WSL**, sem systemd e com versões fixadas, passou nos 5 degraus: toolkit enxerga a GPU → `RuntimeClass nvidia` → o nó anuncia `nvidia.com/gpu: 1` (device plugin v0.20.0, `platform: wsl`) → `nvidia-smi` dentro de um pod → o Ollama do manifesto infere na GPU (`offloaded 25/29 layers`). Medido com a pergunta da F17b e resposta conferida nas 72 requisições: **cluster 2,05 s × nativo 1,99 s** (p50, mesma versão do Ollama), e **29,6×** mais rápido que os 60 s em CPU da F17b. Dois achados viraram código: o `:latest` do Ollama dobrava a latência (imagem fixada) e a instrução "descomente `limits`" duplicava a chave, fazendo o pod perder os limites de CPU e memória com `apply -f` (overlay `k8s/gpu` + teste com controle negativo). Ver [Fase 24](docs/FASE24_GPU_K8S.md).
 
 **Quitado depois da Fase 23:**
 - ~~**Os 3 defeitos que a auditoria adversarial da F21 achou**~~ — **adjudicados e rejeitados; os rótulos ficam.** Os três eram a mesma alegação: a pergunta seria respondível **combinando** métricas (`manual_share + ocr_share`, comercial ÷ passeio, volume por concessionária "para calcular a participação"). O critério aplicado aos três: **a spec tem de devolver o número pedido**, e aritmética entre colunas não existe na linguagem dela. Não é critério de ocasião — é a promessa deste README e a definição de *rebaixamento de tipo* da F20, ambas anteriores à auditoria. O critério oposto mudaria a F21 **e** a F20: pelo menos dois dos seis rebaixamentos da F20 viriam a ser acertos, e o modo de falha que a F20 achou deixaria de existir por definição. **Nenhum número muda**, então a adjudicação não pode ter favorecido o sistema; muda a leitura — a abstenção de **6/8 deixa de ser piso e vira a estimativa** (IC95 [40,9%; 92,9%]). Ver [Fase 21](docs/FASE21_CATALOGO_RICO.md).
@@ -241,7 +247,7 @@ Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
 - ~~**O catálogo enriquecido não chegou ao serving**~~ — **medido e promovido.** O item estava no limbo: a F21 provou o ganho em **47 itens** de um conjunto desenhado contra as fraquezas do catálogo antigo, e ninguém tinha medido o custo no **benchmark principal**. Medido: **145/146 × 146/146, McNemar b=1/c=0, p=1,0** — estatisticamente indistinguível, com a abstenção subindo de **96% para 100%** (US$ 0,46). O que decide não é o empate: é que o conjunto principal **não consegue mostrar o lado bom por construção** (as perguntas foram autoradas contra o catálogo de 3, e nenhuma exige as 4 métricas novas — verificado no gold), então o que ele pode dizer é se o rico *atrapalha*. Não atrapalha. `RODOQUERY_CATALOGO_ANTT=rico` é o default do serving, reversível por configuração, e **`tier_a_antt` não foi tocado** — há teste travando isso. Ver [Fase 23](docs/FASE23_CATALOGO_SERVING.md).
 
 **Quitado na Fase 22:**
-- ~~**"CI/CD real"**~~ — eu contava como entregue porque o `ci.yml` existia. **1 execução verde em 33**: quebrou no commit seguinte ao que criou o CI e ficou vermelho **12 dias**. **Duas** causas: (1) a suíte importa `fastapi` (extra `[serve]`) e o runner instalava só `[dev]` — a **coleta** morria; (2) `pytest` (console script) não põe a raiz no `sys.path`, e a suíte importa um script de raiz. Conserto: extra `[test]` nomeado + `pythonpath = ["."]` + [`verificar_coleta.py`](verificar_coleta.py) **em subprocesso** (0 erro · 0 arquivo vazio · piso 235) + [`ensaiar_ci.sh`](ensaiar_ci.sh) com controle negativo. **Verde em 23 s**, confirmado no Actions. Ver [Fase 22](docs/FASE22_CI.md).
+- ~~**"CI/CD real"**~~ — eu contava como entregue porque o `ci.yml` existia. **1 execução verde em 33**: quebrou no commit seguinte ao que criou o CI e ficou vermelho **12 dias**. **Duas** causas: (1) a suíte importa `fastapi` (extra `[serve]`) e o runner instalava só `[dev]` — a **coleta** morria; (2) `pytest` (console script) não põe a raiz no `sys.path`, e a suíte importa um script de raiz. Conserto: extra `[test]` nomeado + `pythonpath = ["."]` + [`verificar_coleta.py`](verificar_coleta.py) **em subprocesso** (0 erro · 0 arquivo vazio · piso 251) + [`ensaiar_ci.sh`](ensaiar_ci.sh) com controle negativo. **Verde em 23 s**, confirmado no Actions. Ver [Fase 22](docs/FASE22_CI.md).
 
 **Quitado na Fase 21:**
 - ~~**Catálogo mais rico**~~ · ~~**Rebaixamento de tipo**~~ · ~~**Cobertura do catálogo**~~ — eram **um problema só**: o catálogo era **assimétrico** (expunha `automation_rate` e escondia Manual/OCR; expunha `commercial_share` e escondia Passeio/Moto). Regra aplicada: **completar a partição onde um membro já estava exposto** — não "expor tudo" (`categoria_eixo` tem 19 valores; `sentido` não tinha membro exposto). 3 → 7 métricas, com as partições somando **exatamente 1,0** (testado). Rebaixamento de tipo **6/6 → 1/8**, abstenção **50% → 75%**, total **41/47 → 44/47** — e **1 regressão** declarada. Ver [Fase 21](docs/FASE21_CATALOGO_RICO.md).
@@ -272,17 +278,18 @@ Nenhum item é surpresa: todos foram declarados na fase em que apareceram.
 | [docs/FASE19_PREREGISTRO.md](docs/FASE19_PREREGISTRO.md) · [FASE19_FRAGILIDADE.md](docs/FASE19_FRAGILIDADE.md) | Pré-registro **e** o resultado que refutou minha previsão |
 | [docs/FASE20_DURO.md](docs/FASE20_DURO.md) | O conjunto duro, o teto do catálogo e o modo de falha novo |
 | [docs/FASE21_CATALOGO_RICO.md](docs/FASE21_CATALOGO_RICO.md) | Partições completas, a troca medida, auditoria adversarial e concorrência |
+| [docs/FASE24_GPU_K8S.md](docs/FASE24_GPU_K8S.md) | GPU no Kubernetes: os 5 degraus, a ablação de versão e o defeito de manifesto |
 | [docs/FASE23_CATALOGO_SERVING.md](docs/FASE23_CATALOGO_SERVING.md) | O catálogo rico no benchmark principal — e por que "empate" bastou para promover |
 | [docs/PENDENCIAS.md](docs/PENDENCIAS.md) | Auditoria do repositório contra si mesmo, com o placar de fechamento |
 | [k8s/README.md](k8s/README.md) · [docs/FASE17_KUBERNETES.md](docs/FASE17_KUBERNETES.md) | O deploy — e **por que não há HPA**, com o número |
 | [docs/FUNDACAO.md](docs/FUNDACAO.md) | A fundação dbt/MetricFlow e as armadilhas do dado real |
 
-Auditoria de fidelidade dos números: **`python auditar_documentacao.py`** — confere **113 valores** citados aqui contra os artefatos versionados, cobrindo as Fases **1–23** (112 saem de `reports/`; o veredito da auditoria de labels da F15 sai de `golden/_auditoria_veredito.jsonl`, que é a fonte que o próprio script de aplicação consome).
+Auditoria de fidelidade dos números: **`python auditar_documentacao.py`** — confere **122 valores** citados aqui contra os artefatos versionados, cobrindo as Fases **1–24** (121 saem de `reports/`; o veredito da auditoria de labels da F15 sai de `golden/_auditoria_veredito.jsonl`, que é a fonte que o próprio script de aplicação consome).
 
 > **Os 624 MB da imagem Docker (F16) foram o último número do README sem artefato**, medido uma vez
 > à mão. Hoje estão re-medidos e travados (635,1 MB, `reports/fase16/imagem_docker.json`).
 > Esta seção prometia conferir "cada valor citado aqui" enquanto o auditor lia só 8 fases; a
-> promessa foi corrigida **e** a cobertura ampliada de 43 para 113 checagens — a trava passou a
+> promessa foi corrigida **e** a cobertura ampliada de 43 para 122 checagens — a trava passou a
 > alcançar as Fases 1–10, que eram justamente as que ninguém reabre.
 
 ## 🔒 Higiene do repositório
@@ -307,6 +314,6 @@ Dados: **públicos e reais** desde a Fase 11 — volume de tráfego nas praças 
 
 <div align="center">
 
-<sub>24 fases · 235 testes · gate em 3 alvos · custo total de API US$ 2,28 · 113 números travados por auditoria automática.</sub>
+<sub>25 fases · 251 testes · gate em 3 alvos · custo total de API US$ 2,28 · 122 números travados por auditoria automática.</sub>
 
 </div>

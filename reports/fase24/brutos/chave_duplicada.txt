@@ -1,0 +1,19 @@
+# Instrucao antiga aplicada: segundo 'limits:' no mesmo mapa (k3s v1.36.4+k3s1)
+## kubectl apply -f --dry-run=server
+pod/dup-teste created (server dry run)
+resources resultantes: {"limits":{"nvidia.com/gpu":"1"},"requests":{"cpu":"1","memory":"6Gi","nvidia.com/gpu":"1"}}
+## kubectl kustomize (caminho de apply -k)
+error: map[string]interface {}(nil): yaml: unmarshal errors:
+  line 11: mapping key "limits" already defined at line 10
+## manifesto usado
+apiVersion: v1
+kind: Pod
+metadata: {name: dup-teste, namespace: default}
+spec:
+  containers:
+    - name: c
+      image: busybox:1.36
+      resources:
+        requests: {cpu: "1", memory: 6Gi}
+        limits:   {cpu: "4", memory: 12Gi}
+        limits: {nvidia.com/gpu: 1}

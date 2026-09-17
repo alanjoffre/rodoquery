@@ -1,0 +1,199 @@
+{
+  "fase": "24_gpu_no_kubernetes_wsl",
+  "pergunta": "o README afirmava que GPU no K8s era impossivel nesta maquina; e?",
+  "resposta": "possivel: todos os 5 degraus passaram",
+  "consulta_medida": "Quantos veículos passaram por sentido? (a mesma da F17b)",
+  "ambiente": {
+    "driver_windows": "616.92",
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "vram_total": "6141 MiB",
+    "cuda_driver": "13.4",
+    "toolkit": "1.20.0",
+    "k3s": "v1.36.4+k3s1",
+    "containerd": "containerd://2.3.4-k3s1.36",
+    "kernel": "6.6.114.1-microsoft-standard-WSL2",
+    "device_plugin_imagem": "nvcr.io/nvidia/k8s-device-plugin:v0.20.0"
+  },
+  "degraus": [
+    {
+      "n": 1,
+      "o_que": "NVIDIA Container Toolkit enxerga a GPU no WSL",
+      "ok": true,
+      "evidencia": "CUDA 13.4"
+    },
+    {
+      "n": 2,
+      "o_que": "k3s sobe sem systemd e cria a RuntimeClass nvidia",
+      "ok": true,
+      "evidencia": "handler=nvidia"
+    },
+    {
+      "n": 3,
+      "o_que": "o no anuncia nvidia.com/gpu (a pergunta central)",
+      "ok": true,
+      "evidencia": [
+        "I0917 15:01:51.357849       1 plugin-manager.go:101] Detected platform: wsl",
+        "I0917 15:01:51.357882       1 plugin-manager.go:50] Using device discovery strategy: nvml",
+        "I0917 15:01:51.373343       1 server.go:149] Registered device plugin for 'nvidia.com/gpu' with Kubelet"
+      ]
+    },
+    {
+      "n": 4,
+      "o_que": "um pod que PEDE a GPU a enxerga",
+      "ok": true,
+      "evidencia": [
+        "name, driver_version, memory.total [MiB], memory.used [MiB]",
+        "NVIDIA GeForce RTX 4050 Laptop GPU, 616.92, 6141 MiB, 0 MiB"
+      ]
+    },
+    {
+      "n": 5,
+      "o_que": "a stack do projeto infere na GPU, com a resposta certa",
+      "ok": true,
+      "evidencia": {
+        "offload": "25/29 layers to GPU",
+        "divisao_cpu_gpu": "18%/82%",
+        "pod": "nvidia {\"cpu\":\"4\",\"memory\":\"12Gi\",\"nvidia.com/gpu\":\"1\"}"
+      }
+    }
+  ],
+  "series": {
+    "nativo_gpu_basico": {
+      "catalogo": "basico",
+      "modelo": "qwen2.5-coder:7b",
+      "n_quentes": 12,
+      "todas_conferem": true,
+      "p50_s": 1.988,
+      "p95_s": 2.157,
+      "llm_p50_s": 1.973,
+      "llm_p95_s": 2.142,
+      "fria_s": 41.876,
+      "abstencao_correta": true,
+      "abstencao_s": 0.441
+    },
+    "nativo_gpu_rico": {
+      "catalogo": "rico",
+      "modelo": "qwen2.5-coder:7b",
+      "n_quentes": 12,
+      "todas_conferem": true,
+      "p50_s": 2.02,
+      "p95_s": 2.1,
+      "llm_p50_s": 2.005,
+      "llm_p95_s": 2.086,
+      "fria_s": 4.845,
+      "abstencao_correta": true,
+      "abstencao_s": 0.465
+    },
+    "k8s_gpu_ollama0.34.1_basico": {
+      "catalogo": "basico",
+      "modelo": "qwen2.5-coder:7b",
+      "n_quentes": 12,
+      "todas_conferem": true,
+      "p50_s": 3.971,
+      "p95_s": 4.07,
+      "llm_p50_s": 3.948,
+      "llm_p95_s": 4.047,
+      "fria_s": 43.58,
+      "abstencao_correta": true,
+      "abstencao_s": 0.719
+    },
+    "k8s_gpu_ollama0.34.1_rico": {
+      "catalogo": "rico",
+      "modelo": "qwen2.5-coder:7b",
+      "n_quentes": 12,
+      "todas_conferem": true,
+      "p50_s": 5.802,
+      "p95_s": 5.897,
+      "llm_p50_s": 5.778,
+      "llm_p95_s": 5.873,
+      "fria_s": 6.358,
+      "abstencao_correta": true,
+      "abstencao_s": 0.783
+    },
+    "k8s_gpu_ollama0.31.2_basico": {
+      "catalogo": "basico",
+      "modelo": "qwen2.5-coder:7b",
+      "n_quentes": 12,
+      "todas_conferem": true,
+      "p50_s": 2.048,
+      "p95_s": 2.343,
+      "llm_p50_s": 2.028,
+      "llm_p95_s": 2.323,
+      "fria_s": 41.284,
+      "abstencao_correta": true,
+      "abstencao_s": 0.519
+    },
+    "k8s_gpu_ollama0.31.2_rico": {
+      "catalogo": "rico",
+      "modelo": "qwen2.5-coder:7b",
+      "n_quentes": 12,
+      "todas_conferem": true,
+      "p50_s": 2.06,
+      "p95_s": 2.244,
+      "llm_p50_s": 2.039,
+      "llm_p95_s": 2.222,
+      "fria_s": 4.959,
+      "abstencao_correta": true,
+      "abstencao_s": 0.544
+    }
+  },
+  "referencia_f17b_k8s_cpu": {
+    "llm_s": 60.01,
+    "total_s": 66.9,
+    "catalogo": "basico",
+    "fonte": "k8s/README.md, secao 'Inferencia ponta a ponta dentro do cluster' (F17b)",
+    "ressalva": "versao do Ollama NAO registrada na F17b (imagem :latest de julho/2026)"
+  },
+  "comparacoes": {
+    "k8s_sobre_nativo_mesma_versao_basico": 1.03,
+    "k8s_sobre_nativo_mesma_versao_rico": 1.02,
+    "ollama_0341_sobre_0312_no_pod_basico": 1.939,
+    "ollama_0341_sobre_0312_no_pod_rico": 2.817,
+    "llm_cpu_f17b_sobre_llm_gpu_k8s": 29.6
+  },
+  "hipoteses": [
+    {
+      "hipotese": "GPU no K8s e impossivel nesta maquina (README ate 17/09)",
+      "veredito": "REFUTADA",
+      "nota": "a F17b testou so kind sobre o Docker Desktop; k3s no WSL nunca foi tentado"
+    },
+    {
+      "hipotese": "o limite cpu:4 do pod explica a lentidao no cluster",
+      "veredito": "REFUTADA",
+      "nota": "com cpu:4 mantido e Ollama 0.31.2, o pod igualou o nativo"
+    },
+    {
+      "hipotese": "a versao do Ollama explica a lentidao no cluster",
+      "veredito": "CONFIRMADA NO POD",
+      "nota": "0.34.1 x 0.31.2 no mesmo pod; 0.34.1 NATIVO nao foi medido, entao nao se separa regressao da versao de interacao versao x container"
+    }
+  ],
+  "consequencia_no_manifesto": "k8s/base/ollama.yaml: ollama/ollama:latest -> 0.31.2 (renderizacao da base muda exatamente essa linha)",
+  "defeito_de_manifesto_achado": {
+    "instrucao_antiga": "descomente `limits: {nvidia.com/gpu: 1}` (segundo limits no mapa)",
+    "via_apply_k": "kustomize RECUSA: mapping key already defined",
+    "via_apply_f": "kubectl ACEITA sem aviso; o pod sai com limits={nvidia.com/gpu: 1}, sem CPU e memoria (dry-run no servidor, k3s v1.36)",
+    "conserto": "overlay k8s/gpu ACRESCENTA a chave ao mapa existente"
+  },
+  "ressalvas": [
+    "offload PARCIAL: o modelo de 5,1 GB nao cabe inteiro em 6 GB; nativo e pod mostram a mesma divisao, entao a comparacao e justa, mas nao e GPU pura",
+    "uma maquina, uma GPU, um no; 12 requisicoes quentes por serie, sequenciais (c=1)",
+    "a F17b nao registrou a versao do Ollama, entao a razao CPU/GPU contra ela mistura hardware e versao",
+    "WSL nao e Linux nativo: o caminho testado usa /dev/dxg e a NVML do driver Windows"
+  ],
+  "_proveniencia": {
+    "seed": 42,
+    "modelo_sut": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "git_sha": "2e1eff5",
+    "git_dirty": true,
+    "git_diff_sha1": "49db4baea0ae",
+    "timestamp_utc": "2026-09-17T15:24:51+00:00",
+    "versoes": {
+      "duckdb": "1.5.4",
+      "sqlglot": "30.12.0",
+      "numpy": "2.5.1",
+      "pydantic-settings": "2.14.2"
+    }
+  }
+}

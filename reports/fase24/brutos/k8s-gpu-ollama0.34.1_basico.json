@@ -1,0 +1,190 @@
+{
+  "rotulo": "k8s-gpu-ollama0.34.1-basico",
+  "pergunta": "Quantos veículos passaram por sentido?",
+  "saude": {
+    "status": "ok",
+    "provedor": "ollama",
+    "modelo": "qwen2.5-coder:7b",
+    "temperatura": 0.0,
+    "fundacao": "antt",
+    "banco": "antt_analytics.duckdb",
+    "catalogo_antt": "basico",
+    "n_metricas_expostas": 3,
+    "specs_em_cache": 0,
+    "max_inferencia_simultanea": 1,
+    "concorrencia_medida": true,
+    "espera_max_s": 5.0
+  },
+  "fria": {
+    "parede_s": 43.58,
+    "latencia_s": {
+      "llm": 40.844,
+      "compilacao": 2.695,
+      "execucao": 0.035,
+      "total": 43.575
+    },
+    "confere": true,
+    "spec": {
+      "metrics": [
+        "traffic_volume"
+      ],
+      "group_by": [
+        "plaza__sentido"
+      ],
+      "where": null,
+      "order_by": [
+        "-traffic_volume"
+      ],
+      "limit": null,
+      "ordenado": true
+    },
+    "linhas": [
+      [
+        "Decrescente",
+        200630733.0
+      ],
+      [
+        "Crescente",
+        190982244.0
+      ]
+    ]
+  },
+  "quentes": {
+    "n": 12,
+    "todas_conferem": true,
+    "parede_p50_s": 3.971,
+    "parede_p95_s": 4.07,
+    "parede_media_s": 3.972,
+    "llm_p50_s": 3.948,
+    "llm_p95_s": 4.047,
+    "amostras": [
+      {
+        "parede_s": 3.999,
+        "latencia_s": {
+          "llm": 3.976,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 3.992
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 3.962,
+        "latencia_s": {
+          "llm": 3.94,
+          "compilacao": 0.0,
+          "execucao": 0.017,
+          "total": 3.957
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 3.929,
+        "latencia_s": {
+          "llm": 3.904,
+          "compilacao": 0.0,
+          "execucao": 0.016,
+          "total": 3.92
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 4.002,
+        "latencia_s": {
+          "llm": 3.979,
+          "compilacao": 0.0,
+          "execucao": 0.016,
+          "total": 3.996
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 4.07,
+        "latencia_s": {
+          "llm": 4.047,
+          "compilacao": 0.0,
+          "execucao": 0.016,
+          "total": 4.063
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 3.929,
+        "latencia_s": {
+          "llm": 3.908,
+          "compilacao": 0.0,
+          "execucao": 0.015,
+          "total": 3.923
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 3.909,
+        "latencia_s": {
+          "llm": 3.887,
+          "compilacao": 0.0,
+          "execucao": 0.016,
+          "total": 3.903
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 3.961,
+        "latencia_s": {
+          "llm": 3.939,
+          "compilacao": 0.0,
+          "execucao": 0.017,
+          "total": 3.956
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 3.929,
+        "latencia_s": {
+          "llm": 3.906,
+          "compilacao": 0.0,
+          "execucao": 0.017,
+          "total": 3.923
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 4.009,
+        "latencia_s": {
+          "llm": 3.986,
+          "compilacao": 0.0,
+          "execucao": 0.018,
+          "total": 4.004
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 3.99,
+        "latencia_s": {
+          "llm": 3.969,
+          "compilacao": 0.0,
+          "execucao": 0.016,
+          "total": 3.985
+        },
+        "confere": true
+      },
+      {
+        "parede_s": 3.971,
+        "latencia_s": {
+          "llm": 3.948,
+          "compilacao": 0.0,
+          "execucao": 0.016,
+          "total": 3.964
+        },
+        "confere": true
+      }
+    ]
+  },
+  "abstencao": {
+    "pergunta": "Qual foi a receita de pedágio arrecadada?",
+    "tipo": "abstencao",
+    "correta": true,
+    "parede_s": 0.719
+  },
+  "timestamp_utc": "2026-09-17T15:14:37+00:00"
+}

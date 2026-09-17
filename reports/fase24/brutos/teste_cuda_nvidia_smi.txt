@@ -1,0 +1,2 @@
+name, driver_version, memory.total [MiB], memory.used [MiB]
+NVIDIA GeForce RTX 4050 Laptop GPU, 616.92, 6141 MiB, 0 MiB

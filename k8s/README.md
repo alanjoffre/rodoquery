@@ -1,10 +1,21 @@
 # Kubernetes — e por que **não** há HPA aqui
 
 ```bash
-kubectl apply -k k8s
+kubectl apply -k k8s          # base, CPU — o que a Fase 17 validou
+kubectl apply -k k8s/gpu      # + nvidia.com/gpu no Ollama (qualquer cluster com o device plugin)
 kubectl -n rodoquery rollout status deployment/rodoquery
 kubectl -n rodoquery port-forward svc/rodoquery 8077:80
 ```
+
+| Diretório | O que é |
+|---|---|
+| `base/` | os manifestos (namespace, Ollama, RodoQuery, NetworkPolicy) |
+| `gpu/` | overlay portável: acrescenta `nvidia.com/gpu: 1` ao Ollama |
+| `gpu-wsl/` | o experimento da Fase 24: k3s no WSL com GPU, scripts, overlay com `runtimeClassName` e medição |
+
+> Os manifestos foram para `base/` na Fase 24: o kustomize recusa uma overlay **dentro** do diretório
+> da base que ela referencia. `kubectl apply -k k8s` continua funcionando, e a mudança só entrou depois
+> de a renderização sair **idêntica, byte a byte**, à de antes.
 
 ## A decisão que define este deploy: a unidade de escala é a GPU, não a CPU
 
@@ -135,9 +146,28 @@ Conclusão honesta: **é limitação do Docker Desktop no Windows**, não do man
 NVIDIA device plugin (k3s/kubeadm em Linux nativo, ou um managed com node pool de GPU). A config do
 daemon foi **restaurada ao original** depois do teste.
 
+> **Superado na Fase 24 — a conclusão acima generalizou demais.** O que ela provou é que **`kind`
+> sobre o Docker Desktop** não exercita a GPU. Um caminho nunca foi tentado nesta máquina: **k3s
+> dentro do WSL**. Tentado, ele funcionou em todos os degraus:
+>
+> - o device plugin v0.20.0 detecta `platform: wsl` e o nó anuncia `nvidia.com/gpu: 1`;
+> - um pod que pede a GPU roda `nvidia-smi` e enxerga a RTX 4050;
+> - o Ollama do manifesto infere na GPU (`offloaded 25/29 layers to GPU`), e as 72 respostas
+>   medidas conferem com o total 391.612.977.
+>
+> **Com a mesma versão do Ollama, o cluster custa 2–3% sobre o nativo** (2,05 s × 1,99 s, p50), e a
+> inferência ficou 29,6× mais rápida que os 60 s em CPU desta seção. O primeiro número no cluster
+> saiu **o dobro** do nativo, e não era o Kubernetes: era o `ollama/ollama:latest`, que resolveu para
+> uma versão mais lenta — por isso a base agora fixa a imagem.
+>
+> O teste também achou um defeito na instrução "descomente `limits: {nvidia.com/gpu: 1}`": ela
+> duplicava a chave `limits`. Com `apply -f` o kubectl aceita calado e o pod perde os limites de CPU
+> e memória; o overlay `k8s/gpu` substituiu a instrução. Ver
+> [docs/FASE24_GPU_K8S.md](../docs/FASE24_GPU_K8S.md).
+
 ## Outras limitações
 
-- `image: rodoquery:dev` é local (carregada via `kind load`). Para um cluster real, publique numa
-  registry e troque a tag.
+- `image: rodoquery:dev` é local (carregada via `kind load` na F17, ou `k3s ctr images import` na
+  F24). Para um cluster real, publique numa registry e troque a tag.
 - Control-plane único: `PodDisruptionBudget` e `RollingUpdate` estão declarados mas um cluster de
   um nó não exercita drain/rebalance de verdade.

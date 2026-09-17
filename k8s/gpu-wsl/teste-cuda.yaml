@@ -1,0 +1,24 @@
+# Degrau 4 — um pod que PEDE a GPU pelo recurso do Kubernetes e a usa.
+#
+# Anunciar `nvidia.com/gpu` (degrau 3) não prova que um container a recebe: o scheduler pode
+# alocar e o runtime falhar ao injetar /dev/dxg e a NVML. Este pod só termina com sucesso se o
+# `nvidia-smi` DENTRO dele enxergar a placa.
+#
+# CUDA 13.3.1: a mais nova disponível no Docker Hub, abaixo do CUDA 13.4 que o driver 616.92
+# expõe (`nvidia-container-cli info`). Imagem `base`, a menor — não é preciso compilar nada.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: teste-cuda
+  namespace: default
+spec:
+  restartPolicy: Never
+  runtimeClassName: nvidia
+  containers:
+    - name: nvidia-smi
+      image: docker.io/nvidia/cuda:13.3.1-base-ubuntu24.04
+      command: ["nvidia-smi", "--query-gpu=name,driver_version,memory.total,memory.used",
+                "--format=csv"]
+      resources:
+        limits:
+          nvidia.com/gpu: 1

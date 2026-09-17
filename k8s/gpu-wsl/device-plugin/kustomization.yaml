@@ -1,0 +1,18 @@
+# NVIDIA k8s-device-plugin v0.20.0 — manifesto estático OFICIAL, vendorizado sem edição.
+#
+# Origem: https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.20.0/deployments/static/nvidia-device-plugin.yml
+# O arquivo ao lado é byte a byte o da tag; `03_device_plugin.sh` confere o sha256 antes de aplicar.
+#
+# A ÚNICA mudança vem por patch, e não por edição do arquivo, para ficar auditável:
+# `runtimeClassName: nvidia`. No k3s o runtime padrão é o runc; sem esta linha o plugin sobe num
+# container que não recebe a biblioteca NVML nem o /dev/dxg do WSL, e não enxerga GPU nenhuma.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - nvidia-device-plugin.yml
+patches:
+  - target: {kind: DaemonSet, name: nvidia-device-plugin-daemonset}
+    patch: |-
+      - op: add
+        path: /spec/template/spec/runtimeClassName
+        value: nvidia

@@ -310,6 +310,29 @@ if f23:
           f23["abstencoes_respondidas_com_metrica_nova"], 0)
     checa("F23 custo (doc diz US$ 0,4632)", f23["custo_usd"], 0.4632, 0.0001)
 
+print("\n=== FASE 24 (GPU no Kubernetes, k3s no WSL) ===")
+g24 = _j("fase24/gpu_k8s_wsl.json")
+if g24:
+    checa("F24 os 5 degraus passaram", all(d["ok"] for d in g24["degraus"]), True)
+    s24 = g24["series"]
+    checa("F24 nativo GPU p50 basico (doc diz 1,99 s)",
+          s24["nativo_gpu_basico"]["p50_s"], 1.988, 0.001)
+    checa("F24 K8s GPU mesma versao p50 basico (doc diz 2,05 s)",
+          s24["k8s_gpu_ollama0.31.2_basico"]["p50_s"], 2.048, 0.001)
+    checa("F24 K8s GPU com :latest p50 basico (doc diz 3,97 s)",
+          s24["k8s_gpu_ollama0.34.1_basico"]["p50_s"], 3.971, 0.001)
+    checa("F24 todas as series com resposta conferida",
+          all(s["todas_conferem"] for s in s24.values()), True)
+    c24 = g24["comparacoes"]
+    checa("F24 custo do K8s sobre o nativo, mesma versao (doc diz 1,03x)",
+          c24["k8s_sobre_nativo_mesma_versao_basico"], 1.03, 0.001)
+    checa("F24 efeito da versao no pod, rico (doc diz 2,8x)",
+          c24["ollama_0341_sobre_0312_no_pod_rico"], 2.817, 0.001)
+    checa("F24 LLM CPU (F17b) sobre LLM GPU (doc diz 29,6x)",
+          c24["llm_cpu_f17b_sobre_llm_gpu_k8s"], 29.6, 0.05)
+    checa("F24 hipotese do limite de CPU (doc diz REFUTADA)",
+          g24["hipoteses"][1]["veredito"], "REFUTADA")
+
 print("\n=== FASE 22 (historico do CI) ===")
 # SNAPSHOT congelado no dia do conserto (03/08/2026). O README afirma o passado — "1 verde em 33"
 # — entao a fonte tem de ser o snapshot, nao uma nova consulta: re-medir depois do conserto daria

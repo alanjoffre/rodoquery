@@ -1,0 +1,1 @@
+nvidia {"cpu":"4","memory":"12Gi","nvidia.com/gpu":"1"}

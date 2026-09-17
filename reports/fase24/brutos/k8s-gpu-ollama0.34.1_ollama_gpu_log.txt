@@ -1,0 +1,5 @@
+time=2026-09-17T15:11:13.519Z level=INFO source=types.go:32 msg="inference compute" id=0 filter_id=0 library=CUDA compute=8.9 name=CUDA0 description="NVIDIA GeForce RTX 4050 Laptop GPU" libdirs=ollama,cuda_v13 driver=13.4 pci_id=0000:01:00.0 type=discrete total="6.0 GiB" available="5.0 GiB"
+time=2026-09-17T15:13:07.885Z level=INFO source=sched.go:625 msg="gpu memory" id=0 library=CUDA available="4.5 GiB" free="5.0 GiB" minimum="457.0 MiB" overhead="0 B"
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 24 repeating layers to GPU
+load_tensors: offloaded 25/29 layers to GPU

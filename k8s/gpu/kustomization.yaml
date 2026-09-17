@@ -1,0 +1,29 @@
+# Overlay de GPU — PORTÁVEL: vale para qualquer cluster com o NVIDIA device plugin.
+#
+#   kubectl apply -k k8s/gpu
+#
+# Substitui a instrução antiga do ollama.yaml ("descomente `limits: {nvidia.com/gpu: 1}`"), que
+# estava ERRADA: o container já declara `limits: {cpu: "4", memory: 12Gi}` duas linhas acima, e
+# descomentar criaria uma segunda chave `limits` no mesmo mapa. O efeito depende de como se aplica,
+# e foi TESTADO no k3s v1.36, não presumido:
+#   - `kubectl apply -k` (o caminho documentado): o kustomize RECUSA — "mapping key already defined";
+#   - `kubectl apply -f` no arquivo: o kubectl ACEITA sem aviso, a última chave vence, e o pod sai
+#     com `limits: {nvidia.com/gpu: 1}` — sem os limites de CPU e memória.
+# Achado ao exercitar a GPU pela primeira vez (Fase 24).
+#
+# O patch ACRESCENTA a chave ao mapa existente: CPU e memória continuam limitados.
+#
+# O que este overlay NÃO faz: `runtimeClassName`. Ela depende do cluster — no k3s o runtime da
+# NVIDIA não é o padrão e precisa ser pedido pelo nome; em clusters gerenciados costuma ser o
+# padrão, e pedir uma RuntimeClass inexistente impede o pod de agendar. Isso fica em overlays
+# específicos, como k8s/gpu-wsl/stack.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../base
+patches:
+  - target: {kind: StatefulSet, name: ollama}
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/resources/limits/nvidia.com~1gpu
+        value: 1
