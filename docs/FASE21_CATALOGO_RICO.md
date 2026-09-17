@@ -88,6 +88,34 @@ resposta é defensável. **A abstenção de 6/8 é um piso, não uma estimativa.
 **Nada foi corrigido.** O conjunto está selado e a auditoria veio depois de medir; ajustar agora
 seria fitar (disciplina da Fase 8). Os 3 ficam declarados para a próxima revisão.
 
+> **Adjudicado depois (17/09/2026): os 3 achados foram REJEITADOS, e os rótulos ficam.** O parágrafo
+> acima tratava os dois primeiros como fortes. O erro estava em não fixar o critério antes de julgar.
+>
+> **Critério aplicado, igual para os 3:** uma pergunta só é respondível se a spec devolve **o número
+> pedido**. Aritmética entre colunas — somar, dividir, normalizar pelo total — não existe na
+> linguagem da spec, e entregar as parcelas para o usuário calcular não é entregar a resposta. O
+> critério não foi inventado para a ocasião: é a promessa do README ("receba o número certo") e a
+> definição de *rebaixamento de tipo* da Fase 20, as duas anteriores à auditoria.
+>
+> | Item | O que o crítico propôs | Por que não é resposta |
+> |---|---|---|
+> | razão comercial / passeio | `commercial_share ÷ passenger_share` | a spec devolve as duas proporções; a razão exige uma divisão fora dela |
+> | taxa não automatizada | `manual_share + ocr_share` | devolve duas taxas; a pedida é a soma, que a spec não faz |
+> | participação por concessionária | `traffic_volume` por concessionária | devolve volumes, não participação — é o rebaixamento da F20 |
+>
+> Com o critério B (aceitar as parcelas), os três mudariam de classificação na F21, e pelo menos dois
+> dos seis rebaixamentos da **Fase 20** virariam acertos: o modo de falha que a F20 descobriu e a
+> F21 consertou deixaria de existir por definição. Isso não é corrigir rótulo, é redefinir o
+> benchmark.
+>
+> **Nenhum número muda** — nem da F20, nem da F21 —, então a adjudicação não pode ter favorecido o
+> sistema. O que muda é a leitura: a abstenção de **6/8 deixa de ser piso e passa a ser a
+> estimativa**. E ela é pequena: n=8, IC95 [40,9%; 92,9%].
+>
+> Uma nota que a adjudicação torna visível: o crítico **não viu** as respostas do sistema (o prompt
+> recebe só pergunta, catálogo e spec), então a lista de defeitos não foi contaminada pelo
+> resultado. O que falhou foi o critério dele, não a cegueira.
+
 ## Concorrência da API: medida, e o default estava certo
 
 O semáforo do serving era 1 por medição (Fase 6: *uma GPU não paraleliza*). No caminho de API o
@@ -145,7 +173,8 @@ nenhum artefato foi produzido. Fica registrado aqui.
 
 - **n pequeno na abstenção** (8 itens): o valor está no **mecanismo** — o rebaixamento de tipo
   caiu de 6/6 para 1/8 —, não na taxa pontual.
-- **Os 3 defeitos da auditoria não foram corrigidos**, por disciplina de selo.
+- **Os 3 defeitos da auditoria não foram corrigidos**, por disciplina de selo. *(Adjudicados depois:
+  rejeitados sob o critério "a spec tem de devolver o número pedido" — ver a seção da auditoria.)*
 - **A concorrência foi medida no provedor, não via HTTP**: subir o uvicorn acrescentaria FastAPI,
   semáforo e rede à medição, e o semáforo é justamente o que se queria dimensionar.
 - **A vazão absoluta depende do tier da conta e do horário.** O que se afirma aqui é a **forma da

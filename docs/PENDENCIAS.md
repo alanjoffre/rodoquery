@@ -266,7 +266,8 @@ Fechado em **08/09/2026**. Tudo abaixo foi verificado contra o repositório, nã
 | P4 | Repro F19–F22 · `.env.example` · selo · topics · licença | ✅ **fechado** | scripts órfãos **8 → 0**; licença detectada como MIT |
 | — | Extra `llm` sem uso (e os 624 MB sem artefato) | ✅ **fechado depois** (17/09) | removido **com** a imagem re-medida: 637,4 → 635,1 MB, `reports/fase16/imagem_docker.json` |
 | — | Cópia local da chave de API no reflog (`a3d7800`) | ✅ **fechado** (17/09) | reflog expirado + `gc --prune=now`; 0 de 832 objetos com formato de chave |
-| — | 3 defeitos de label da F21 · GPU no K8s | 🔵 **abertos, como estavam** | com motivo declarado; nenhum é falta de trabalho |
+| — | 3 defeitos de label da F21 | ✅ **fechado** (17/09) | adjudicados sob critério declarado e **rejeitados**; nenhum número muda — [F21](FASE21_CATALOGO_RICO.md) |
+| — | GPU no K8s | 🟡 **em teste** (17/09) | a F17b só testou `kind` sobre o Docker Desktop; o caminho k3s no WSL nunca foi tentado |
 
 ### O que o levantamento errou, e que o fechamento corrigiu
 
