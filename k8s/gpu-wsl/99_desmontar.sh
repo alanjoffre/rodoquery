@@ -17,12 +17,18 @@ for _ in $(seq 1 30); do pgrep -f "k3s server" >/dev/null || break; sleep 1; don
 # Os containers sobrevivem ao servidor: os shims são processos próprios.
 sudo pkill -f "containerd-shim-runc" 2>/dev/null
 sleep 3
-# `pgrep -x` compara o NOME do processo. Com `pgrep -f` o padrão casava com a linha de comando de
-# quem chamou o script (quando ela continha "k3s server"), e contava um processo que não existia.
-echo "processos k3s restantes: $(( $(pgrep -xc k3s-server || true) + $(pgrep -xc containerd-shim-runc-v2 || true) ))"
+# Contagem sem falso positivo NEM falso negativo, e as duas formas ingênuas falham:
+#   - `pgrep -f 'containerd-shim'` casa com a linha de comando de QUEM CHAMOU o script;
+#   - `pgrep -x containerd-shim-runc-v2` nunca casa: o nome tem mais de 15 caracteres, e o `-x`
+#     compara com /proc/PID/comm, que é truncado nesse limite (o próprio pgrep avisa).
+# Ancorar no caminho do binário resolve: nenhum chamador tem isso na linha de comando.
+echo "processos k3s restantes: $(( $(pgrep -xc k3s-server || true) + $(pgrep -cf '^/var/lib/rancher/k3s/data/.*containerd-shim' || true) ))"
 
 echo "--- montagens ---"
-for alvo in /run/k3s /var/lib/kubelet/pods /var/lib/kubelet/plugins /run/netns/cni-; do
+# /var/lib/kubelet ENTRA na lista, e por último: o kubelet monta o diretório sobre si mesmo (para
+# ter propagação compartilhada), então ele fica "Device or resource busy" mesmo vazio, e o
+# `rm -rf` do final falha sem isso. Ordem inversa (`sort -r`) desmonta os filhos primeiro.
+for alvo in /run/k3s /var/lib/kubelet/pods /var/lib/kubelet/plugins /run/netns/cni- /var/lib/kubelet; do
   awk -v a="$alvo" '$2 ~ "^"a {print $2}' /proc/self/mounts | sort -r | xargs -r -n1 sudo umount -l 2>/dev/null
 done
 
@@ -41,8 +47,15 @@ for t in iptables ip6tables; do
 done
 
 if [ "$APAGAR" = "--apagar-dados" ]; then
-  sudo rm -rf /var/lib/rancher/k3s /etc/rancher/k3s /var/lib/kubelet
+  # /etc/rancher/node guarda a credencial do nó — some junto, senão fica um segredo órfão.
+  sudo rm -rf /var/lib/rancher/k3s /etc/rancher/k3s /etc/rancher/node /var/lib/kubelet
+  # `rmdir` e não `rm -rf`: só remove se estiver vazio. Se outra coisa usar estes diretórios, eles
+  # ficam — apagar o pai por hábito é como se perde dado de terceiro.
+  sudo rmdir /var/lib/rancher /etc/rancher 2>/dev/null
   echo "dados do k3s apagados"
+  for d in /var/lib/rancher/k3s /etc/rancher/k3s /var/lib/kubelet; do
+    [ -e "$d" ] && echo "AINDA EXISTE: $d"
+  done
 else
   echo "dados mantidos: $(sudo du -sh /var/lib/rancher/k3s 2>/dev/null | cut -f1) em /var/lib/rancher/k3s"
   echo "para apagar tudo: bash $0 --apagar-dados"

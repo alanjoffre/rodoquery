@@ -145,6 +145,16 @@ python k8s/gpu-wsl/consolidar.py /tmp/gpu_k8s  # -> reports/fase24/gpu_k8s_wsl.j
 bash k8s/gpu-wsl/99_desmontar.sh               # para o k3s e limpa a rede (mantém os dados)
 ```
 
+> **O desmonte só conta com verificação independente.** Depois do `99_desmontar.sh`: 0 processos,
+> 0 interfaces `cni0`/`flannel`, 0 regras `KUBE-`/`CNI-` no iptables, VRAM livre, e — com
+> `--apagar-dados` — `/var/lib/rancher`, `/var/lib/kubelet` e `/etc/rancher` inexistentes (23 GB
+> liberados). Rodá-lo de verdade achou **três defeitos nele mesmo**, que a leitura do código não
+> pegaria: `pgrep -x` nunca casa com `containerd-shim-runc-v2` (nome acima de 15 caracteres, o
+> limite do `/proc/PID/comm`); o kubelet monta `/var/lib/kubelet` **sobre si mesmo**, então o
+> diretório fica ocupado mesmo vazio e o `rm -rf` falha; e `/etc/rancher/node/password` — uma
+> credencial de nó — sobrevivia à remoção. Ficam o binário do k3s e o toolkit instalados, de
+> propósito: sem eles, repetir o experimento exige baixar tudo de novo.
+
 A ablação de versão é `08_versao_ollama.sh 0.34.1` / `0.31.2` seguida de `07_medir_k8s.sh`. A imagem
 `rodoquery:dev` é construída no Docker Desktop (`docker build` + `docker save`) e importada no
 containerd do k3s, porque os dois não compartilham *image store*.
