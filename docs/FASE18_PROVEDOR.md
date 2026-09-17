@@ -146,8 +146,9 @@ ordem **+5 pp** (F9), `normalizar_group_by` **+12,7 pp** (F10) e o conserto do b
 **+33,3 pp** (F15).
 
 > **Correção:** este parágrafo atribuía os "+33,4 pp" à **Fase 9** e os empates à **Fase 15** — as
-> fases estavam trocadas, e o número estava arredondado errado (é +33,3 pp, 12/36). Corrigido ao
-> estender a auditoria de fidelidade às Fases 1–10 e 15.
+> fases estavam trocadas, e o número estava arredondado errado (é +33,3 pp, 12/36). Achado por um
+> `grep` pelo valor errado, feito depois de encontrá-lo no doc da F15 — nenhuma trava automática
+> lê este arquivo.
 
 O risco concreto que isso mata: raciocínio contendo a palavra `ABSTENHO` dispararia uma
 **abstenção falsa**, porque a checagem é `"ABSTENHO" in resp.upper()`. Há teste para isso.

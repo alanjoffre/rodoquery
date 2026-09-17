@@ -30,8 +30,9 @@ modelo, era uma inconsistência entre duas peças minhas.
 > **Correção de arredondamento (posterior).** Esta linha dizia **+33,4 pp**. O valor certo é
 > **+33,3 pp**: são **12 itens em 36**, ou seja 1/3 exato = 33,33 pp. O 33,4 saiu de subtrair as
 > taxas **já arredondadas** (0,8056 − 0,4722 = 0,3334) em vez de ler o `delta_acuracia` do
-> artefato. Achado ao estender `auditar_documentacao.py` para cobrir esta fase — que é exatamente
-> para isso que a trava serve.
+> artefato. Achado ao **ler o artefato** para escrever a trava desta fase em
+> `auditar_documentacao.py` — não pela trava rodando: ela já nasceu com o valor certo e passou na
+> primeira execução.
 
 ### C — descrições melhores funcionam, mas o retorno é menor
 

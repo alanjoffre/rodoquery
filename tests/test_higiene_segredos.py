@@ -3,8 +3,11 @@
 O README afirma "sem segredos — `.env` no `.gitignore` desde sempre; a chave de API nunca foi
 versionada". Era verdade, e mesmo assim quase deixou de ser: o `.gitignore` cobria o nome **exato**
 `.env`, e o `nano` cria vizinhos que carregam o mesmo segredo (`.env.save`, backup de emergência).
-Um `git add -A` capturou um desses. Foi pego na revisão do que estava *staged*, antes de qualquer
-push — ou seja, por atenção humana, que é exatamente o que não escala.
+Um `git add -A` capturou um desses, e o **commit foi criado com ele dentro** — `git add`, `git
+status` e `git commit` rodaram no mesmo comando, então não houve revisão entre o staging e o
+commit. Só foi notado na saída, **depois** do commit e **antes** do push, e removido com amend.
+Nada foi publicado. Mas quem segurou foi a sorte da ordem das operações e uma leitura posterior,
+não uma trava — e isso é exatamente o que não escala.
 
 Este arquivo troca a atenção por uma trava, e é a mesma lição da Fase 22 aplicada a segredo:
 *a existência da regra não é evidência do comportamento da regra.*

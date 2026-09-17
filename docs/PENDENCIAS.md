@@ -274,14 +274,32 @@ Auditoria também erra, e registrar isso vale mais que o placar:
   `concordancia_opus5.py`); `FASE10_CATALOGO.md` tinha um quarto caso de status obsoleto — mas esse
   **não** foi fechado, porque fala da base sintética, que nunca foi re-medida com SUT de fronteira;
   e o README dizia **+33,4 pp** onde o artefato diz **33,33** (12/36), erro de arredondamento sobre
-  arredondamento que o auditor estendido pegou.
-- **Um erro factual dele.** O levantamento afirmava que os **624 MB** da imagem eram a única
-  afirmação sem lastro versionado. Os 7 defeitos de label da F15 também pareciam não ter — mas têm:
-  vivem em `golden/_auditoria_veredito.jsonl`, fora de `reports/`. Hoje estão travados.
-- **Um erro meu, ao fechar.** Meu primeiro levantamento de scripts órfãos deu **zero**, e estava
+  arredondamento. Esse eu achei **lendo o artefato** para escrever a trava, não com a trava rodando
+  (o auditor estendido passou 96/0 na primeira execução). A troca de fases no
+  `FASE18_PROVEDOR.md` saiu de um `grep` pelo mesmo número.
+
+### Os erros que eu cometi ao fechar
+
+Não foi "um erro". Foram estes, todos pegos antes do push:
+
+- **Committei um segredo.** `git add -A`, `git status` e `git commit` rodaram num comando só. O
+  `.env.save` (backup de emergência do `nano`, com uma chave de API) entrou no commit `a3d7800`.
+  Só vi na saída, **depois** do commit, e removi com amend. Nada foi publicado — a primeira
+  versão deste registro dizia que eu tinha pegado "antes de aceitar o commit", e isso era falso.
+- **Acusei o levantamento de um erro que era meu.** Escrevi que ele errava ao dizer que os
+  **624 MB** eram a única afirmação sem lastro versionado. Ele estava certo: os 7 defeitos de label
+  da F15 **têm** lastro, em `golden/_auditoria_veredito.jsonl`. O falso alarme foi meu, ao procurar
+  esse lastro só em `reports/`.
+- **Levantamento de scripts órfãos com resultado zero**, e estava
   errado: eu grepava `README.md` + `docs/`, e **este arquivo cita os 8 scripts justamente para
   chamá-los de órfãos**. A denúncia fazia o denunciado parecer documentado. Excluindo-a: 8,
   exatamente os que ele nomeava. *Um teste que inclui a própria denúncia no corpus mede a si mesmo.*
+- **Previ o mecanismo errado na Fase 23.** Apostei que a regressão seria ambiguidade de
+  `passenger_share`; abrindo a spec, era uma abstenção. Está registrado na
+  [Fase 23](FASE23_CATALOGO_SERVING.md).
+- **Dois imports para módulos que não existem** (`rodoquery.modelos` no gate, `rodoquery.estatistica`
+  no script da F23). O primeiro quebrou o replay; o segundo foi pego num teste a seco, antes de
+  qualquer chamada paga.
 
 ### O que o fechamento produziu além do previsto
 

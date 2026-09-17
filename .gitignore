@@ -14,8 +14,9 @@ models/
 
 # Ambiente. `.env` sempre esteve aqui — mas ele cobria SÓ o nome exato, e editores criam vizinhos
 # que carregam o mesmo segredo: `.env.save` (backup de emergência do nano), `.env.bak`, `.env.swp`.
-# Um desses entrou num `git add -A` e foi pego na revisão do que estava staged, antes de qualquer
-# push. A regra correta é ignorar a FAMÍLIA e liberar só o exemplo, que é público por construção.
+# Um desses entrou num `git add -A` e chegou a ser COMMITADO; foi notado depois do commit e removido
+# com amend antes de qualquer push. A regra correta é ignorar a FAMÍLIA e liberar só o exemplo, que
+# é público por construção.
 .env
 .env.*
 !.env.example
