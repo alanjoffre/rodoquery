@@ -11,12 +11,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# LLM local (agente) — adicionado nas fases 3+.
-# ⚠️ NÃO É MAIS IMPORTADO: o cliente do Ollama fala HTTP por `urllib` da stdlib (medido na F22 —
-# `grep` por `import httpx|ollama` em src/ e na raiz não acha nada). Fica declarado porque o
-# Dockerfile o instala e os 624 MB de imagem medidos na F16 INCLUEM estes pacotes; remover sem
-# re-medir tornaria aquele número falso. Backlog: remover e re-medir a imagem no mesmo commit.
-llm = ["httpx>=0.27", "ollama>=0.3"]
+# O extra `llm` (httpx, ollama) foi REMOVIDO: nada o importava desde a F22 — o cliente do Ollama
+# fala HTTP por `urllib` da stdlib. Ficou declarado até a imagem Docker ser medida de novo, porque
+# os 624 MB da F16 o incluíam; medido antes e depois no mesmo daemon, custava 2,2 MB (637,4 -> 635,1).
+# Ver reports/fase16/imagem_docker.json.
 # Serving (fase 6)
 serve = ["fastapi>=0.115", "uvicorn>=0.30"]
 # SUT via API (fase 18). EXTRA de propósito: o caminho default é o Ollama local, e o import do

@@ -205,6 +205,24 @@ if f15:
     checa("F15 gemma perde em 15 itens, ganha em 0",
           f15["mcnemar_vs_baseline"]["D_sut_gemma9b"]["c_only"], 0)
 
+print("\n=== FASE 16 (imagem Docker, re-medida) ===")
+# Os 624 MB da F16 eram o unico numero do README sem artefato (medido a mao, metodo nao
+# registrado). Re-medido antes e depois da remocao do extra `llm`, no mesmo daemon e mesma base.
+img = _j("fase16/imagem_docker.json")
+if img:
+    checa("F16 imagem com extra llm (doc diz 637,4 MB)",
+          img["antes"]["tamanho_mb_image_inspect"], 637.4, 0.05)
+    checa("F16 imagem sem extra llm (README diz 635 MB)",
+          img["depois"]["tamanho_mb_image_inspect"], 635.1, 0.05)
+    checa("F16 delta atribuivel ao extra (doc diz -2,2 MB)", img["delta_mb_image_inspect"], -2.2)
+    checa("F16 mesma imagem base nas duas medicoes", img["mesma_imagem_base_nas_duas_medicoes"],
+          True)
+    checa("F16 pacotes que sairam (doc diz httpcore, httpx, ollama)",
+          img["pacotes_que_sairam"], ["httpcore", "httpx", "ollama"])
+    checa("F16 nenhum pacote entrou", img["pacotes_que_entraram"], [])
+    checa("F16 fumaca: total da Fase 11 confere na imagem nova (391.612.977)",
+          img["fumaca_da_imagem_nova"]["total_confere"], True)
+
 # A auditoria adversarial de labels da F15 nao vive em reports/ — o veredito e o proprio
 # arquivo que `aplicar_auditoria.py` consome para remover os itens do golden. E versionado,
 # entao e travavel: e o unico numero desta lista cuja fonte fica fora de reports/.

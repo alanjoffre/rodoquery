@@ -25,7 +25,10 @@ RUN pip install --no-cache-dir \
 
 COPY pyproject.toml README.md ./
 COPY src/ ./src/
-RUN pip install --no-cache-dir ".[serve,llm]"
+# Só `serve`. O extra `llm` (httpx, ollama) saiu: nada o importa desde a F22 — o cliente do Ollama
+# fala HTTP por `urllib`. A remoção foi MEDIDA antes de entrar: 637,4 -> 635,1 MB, e a imagem nova
+# passou na fumaça (/saude, compilação e o total 391.612.977). Ver reports/fase16/imagem_docker.json.
+RUN pip install --no-cache-dir ".[serve]"
 
 # Fundação: projeto dbt + banco (materializados por docker/preparar_contexto.sh).
 COPY docker/_contexto/dbt-antt/ /fundacao/dbt-antt/

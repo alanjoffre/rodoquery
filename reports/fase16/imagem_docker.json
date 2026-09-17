@@ -1,0 +1,95 @@
+{
+  "fase": "16b_imagem_docker_medida",
+  "motivo": "os 624 MB da F16 eram o unico numero do README sem artefato, e travavam a remocao do extra `llm` (sem uso desde a F22)",
+  "unidade": "MB decimal (1 MB = 1.000.000 bytes), a mesma que o Docker exibe",
+  "metodo": "`docker image inspect --format {{.Size}}` e `docker image ls`, no mesmo daemon, mesma imagem base, antes e depois da mudanca de uma linha no Dockerfile",
+  "referencia_fase16": {
+    "valor_afirmado": "624 MB",
+    "metodo": "NAO REGISTRADO — o doc da F16 nao diz qual comando produziu o numero",
+    "artefato": null
+  },
+  "mesma_imagem_base_nas_duas_medicoes": true,
+  "antes": {
+    "rotulo": "antes",
+    "tag": "rodoquery:medir-antes",
+    "linha_pip_install_do_dockerfile": "RUN pip install --no-cache-dir \".[serve,llm]\"",
+    "tamanho_bytes_image_inspect": 637365499,
+    "tamanho_mb_image_inspect": 637.4,
+    "tamanho_docker_image_ls": "637MB",
+    "base": {
+      "imagem": "python:3.12-slim",
+      "id": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "repo_digests": [
+        "python@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea"
+      ]
+    },
+    "duracao_build_s": 0.5
+  },
+  "depois": {
+    "rotulo": "depois",
+    "tag": "rodoquery:medir-depois",
+    "linha_pip_install_do_dockerfile": "RUN pip install --no-cache-dir \".[serve]\"",
+    "tamanho_bytes_image_inspect": 635138067,
+    "tamanho_mb_image_inspect": 635.1,
+    "tamanho_docker_image_ls": "635MB",
+    "base": {
+      "imagem": "python:3.12-slim",
+      "id": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "repo_digests": [
+        "python@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea"
+      ]
+    },
+    "duracao_build_s": 16.0
+  },
+  "delta_bytes_image_inspect": -2227432,
+  "delta_mb_image_inspect": -2.2,
+  "pacotes_que_sairam": [
+    "httpcore",
+    "httpx",
+    "ollama"
+  ],
+  "pacotes_que_entraram": [],
+  "n_pacotes": {
+    "antes": 78,
+    "depois": 75
+  },
+  "fumaca_da_imagem_nova": {
+    "tag": "rodoquery:medir-depois",
+    "saude": {
+      "status": "ok",
+      "provedor": "ollama",
+      "modelo": "qwen2.5-coder:7b",
+      "temperatura": 0.0,
+      "fundacao": "antt",
+      "banco": "antt_analytics.duckdb",
+      "catalogo_antt": "rico",
+      "n_metricas_expostas": 7,
+      "specs_em_cache": 0,
+      "max_inferencia_simultanea": 1,
+      "concorrencia_medida": true,
+      "espera_max_s": 5.0
+    },
+    "saude_ok": true,
+    "compilacao_e_execucao": {
+      "linhas": [
+        [
+          "Decrescente",
+          "200630733.0"
+        ],
+        [
+          "Crescente",
+          "190982244.0"
+        ]
+      ],
+      "total": 391612977
+    },
+    "total_esperado_fase11": 391612977,
+    "total_confere": true,
+    "modulos_llm_presentes_na_imagem": "[]"
+  },
+  "_proveniencia": {
+    "git_sha": "19de117 (contextos via git archive) + remocao do extra llm",
+    "docker_server": "29.8.0",
+    "timestamp_utc": "2026-09-17T14:36:53+00:00"
+  }
+}

@@ -22,6 +22,14 @@ Os defaults **não mudaram**: `fundacao_ativa="sintetica"` e os caminhos origina
 
 **624 MB**, `python:3.12-slim`, usuário não-root (uid 10001), healthcheck em `/saude`.
 
+> **Re-medido depois, com artefato** (`reports/fase16/imagem_docker.json`). Os 624 MB acima foram
+> medidos uma vez, à mão, e este documento não registrou **qual** comando os produziu — o
+> `docker image inspect` e o `docker image ls` contam coisas diferentes. Era o último número do
+> README sem lastro versionado. A re-medição, pelo `medir_imagem.py`, no mesmo daemon e sobre a
+> mesma imagem base: **637,4 MB** com o extra `llm` e **635,1 MB** sem ele, que é a imagem atual.
+> A diferença para os 624 MB não tem explicação que eu possa dar sem inventar — o código mudou em
+> 30 dias, a `python:3.12-slim` é republicada, e o método original é desconhecido.
+
 Duas decisões que valem explicação:
 
 **O `dbt parse` roda no BUILD, não no runtime.** O manifesto semântico é determinístico; assá-lo

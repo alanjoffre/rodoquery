@@ -167,6 +167,12 @@ Não removi. O `Dockerfile` instala `.[serve,llm]`, e os **624 MB** de imagem me
 que seria trocar um defeito de metadado por um defeito de evidência. Fica no backlog para sair no
 **mesmo commit** que re-mede a imagem.
 
+> **Fechado depois, do jeito combinado.** O extra saiu no mesmo commit que re-mediu a imagem, com as
+> duas versões construídas no mesmo daemon e sobre a mesma base: **637,4 → 635,1 MB**, saíram
+> `httpx`, `httpcore` e `ollama`, não entrou nada, e a imagem nova passou na fumaça (inclusive o
+> total 391.612.977 da Fase 11). O `[test]` continua recebendo `httpx` — que o `TestClient` do
+> FastAPI usa — por dependência do `anthropic`, e o ensaio fiel do CI confirmou isso.
+
 ## Limitações declaradas
 
 - **O CI continua rodando só o nível A** do gate (contrato). Os níveis B (replay contra o gold) e
