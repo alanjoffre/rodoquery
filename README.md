@@ -299,6 +299,10 @@ Auditoria de fidelidade dos números: **`python auditar_documentacao.py`** — c
 - **Anti-vazamento** — todo conjunto de teste é **selado com sha256 antes** de qualquer sistema rodar; predições **congeladas** em disco para que a pontuação seja determinística.
 - **Anti-circularidade** — o gold sai **sempre** do MetricFlow, nunca de SQL escrito à mão.
 
+## 🤖 Como foi feito
+
+Projeto de portfólio desenvolvido por mim, com apoio de um assistente de IA (Claude) para código, testes e documentação; o apoio é visível nos commits. Eu defini o escopo, as decisões de arquitetura, as medições e revisei o resultado. Dados públicos da ANTT, sem código de empregador ou cliente.
+
 ## 👤 Autor
 
 **Alan Joffre** — Engenharia de Dados / IA
