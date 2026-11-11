@@ -35,6 +35,8 @@ Mesmo modelo nas duas pontas de cada linha — muda só a interface:
 | TEST-v2 sintético (n=167) | `qwen2.5-coder:7b` | 73,7% [66,5; 79,8] | 15,0% | +58,7 pp | 104 × 6, p≈0 |
 | TEST-v1 sintético (n=42) | `qwen2.5-coder:7b` | 97,6% [87,7; 99,6] | 42,9% | +54,8 pp | 23 × 0, p≈0 |
 
+*Nota: `claude-opus-5` e `qwen2.5-coder:7b` entram aqui como sistemas avaliados (objeto do experimento), não como descrição de como o projeto foi escrito.*
+
 **As duas primeiras linhas são comparáveis entre si** — mesmo conjunto, só o SUT muda — e é delas que sai o achado mais útil do projeto:
 
 > **A vantagem do Semantic Layer é inversamente proporcional à força do SUT: +63,0 pp com um 7B local, +55,5 pp com um modelo de fronteira.**
@@ -301,7 +303,7 @@ Auditoria de fidelidade dos números: **`python auditar_documentacao.py`** — c
 
 ## 🤖 Como foi feito
 
-Projeto de portfólio desenvolvido por mim, com apoio de um assistente de IA (Claude) para código, testes e documentação; o apoio é visível nos commits. Eu defini o escopo, as decisões de arquitetura, as medições e revisei o resultado. Dados públicos da ANTT, sem código de empregador ou cliente.
+Projeto de portfólio desenvolvido por mim, com apoio de um assistente de IA para código, testes e documentação; o apoio é visível nos commits. Eu defini o escopo, as decisões de arquitetura, as medições e revisei o resultado. Dados públicos da ANTT, sem código de empregador ou cliente.
 
 ## 👤 Autor
 
