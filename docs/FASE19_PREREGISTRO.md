@@ -25,21 +25,21 @@ A Fase 18 formou uma generalização a partir de dois pontos:
 
 > A ajuda de uma muleta é **inversamente proporcional à força do SUT**.
 
-Ela acertou duas vezes: os normalizadores das Fases 9/10 valem +17,7 pp no Qwen e **0** no Opus 5
+Ela acertou duas vezes: os normalizadores das Fases 9/10 valem +17,7 pp no Qwen e **0** no LLM de fronteira
 (tocaram 0 de 146 specs); o resíduo de seleção travava em 72–80% no Qwen e virou **100%**.
 
-Se a fragilidade lexical for da mesma família, ela deve **encolher muito** com o Opus 5.
+Se a fragilidade lexical for da mesma família, ela deve **encolher muito** com o LLM de fronteira.
 
 ## Minha previsão (pontual, para poder errar)
 
 | Quantidade | Previsão | Faixa que eu aceito como "acertei" |
 |---|---|---|
-| EX original (Opus 5) | **97%** | ≥ 91% (31/34) |
-| EX opaco (Opus 5) | **88%** | 79–97% |
+| EX original (LLM de fronteira) | **97%** | ≥ 91% (31/34) |
+| EX opaco (LLM de fronteira) | **88%** | 79–97% |
 | **Δ (pp)** | **−9** | **−2 a −18** |
 | McNemar | provavelmente **não significativo** (p > 0,05) | — |
 
-**A afirmação falsificável central:** `|Δ_opus5| < |Δ_qwen| = 29,4 pp`.
+**A afirmação falsificável central:** `|Δ_fronteira| < |Δ_qwen| = 29,4 pp`.
 
 ## O que cada resultado significa
 
@@ -52,14 +52,14 @@ que esta fase pode dar. Significaria que a fragilidade lexical é **estrutural d
 falta de capacidade: o vocabulário fechado só é seguro se os identificadores carregarem semântica.
 Isso é um limite real da abordagem, e nenhum modelo maior resolve.
 
-**Se Δ ficar maior que −29 pp** (o Opus 5 sofrer *mais*) — eu não tenho hipótese para isso, e
+**Se Δ ficar maior que −29 pp** (o LLM de fronteira sofrer *mais*) — eu não tenho hipótese para isso, e
 suspeitaria de bug de harness antes de acreditar. Nesse caso a ação é auditar, não publicar.
 
 ## Compromissos
 
 1. **Não ajusto nada depois de ver o número.** O conjunto de robustez está selado desde a Fase 14
    (`golden/robustez_antt.jsonl`, hash commitado). Mexer depois é fitar — disciplina da Fase 8.
-2. **Os dois braços rodam no mesmo SUT, na mesma execução.** Comparar Opus 5 opaco contra Qwen
+2. **Os dois braços rodam no mesmo SUT, na mesma execução.** Comparar LLM de fronteira opaco contra Qwen
    original mediria o modelo, não a perturbação.
 3. **Predições congeladas em disco**, como em toda fase desde a 4.
 4. **Publico os dois resultados.** Se a minha previsão furar, ela vira linha na tabela de previsões

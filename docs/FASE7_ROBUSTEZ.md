@@ -22,7 +22,7 @@ fases 2 e 3). Se o sistema aprendeu o *fraseado* em vez da *semântica*, reescre
 analista real falaria derruba o EX.
 
 **Protocolo anti-viés** (sem isto, o teste não vale nada):
-1. Paráfrases escritas por um **LLM diferente** (Claude) — rotuladas como geradas por máquina.
+1. Paráfrases escritas por um **LLM diferente** (de outro provedor) — rotuladas como geradas por máquina.
 2. Um **2º LLM revisor, cego ao desempenho**, validou equivalência semântica **antes** de qualquer
    execução. Aprovou 50/53 e reprovou 3 — que foram **excluídas**:
 

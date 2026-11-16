@@ -2,7 +2,7 @@
 
 ## O desenho, e por que ele não é palpite
 
-Os 8 estratos das Fases 2–19 fizeram **100%** contra `claude-opus-5`. Antes de escrever mais
+Os 8 estratos das Fases 2–19 fizeram **100%** contra LLM de fronteira (API). Antes de escrever mais
 perguntas, medi qual superfície do catálogo nunca tinha sido tocada:
 
 | Forma | Itens nos conjuntos antigos (168 respondíveis) |
@@ -16,7 +16,7 @@ Daí os quatro grupos: `filtro_composto`, `metrica_mista`, `composicao` e `abste
 
 ## O resultado
 
-`claude-opus-5` nas duas pontas, US$ 0,2965:
+LLM de fronteira (API) nas duas pontas, US$ 0,2965:
 
 | Eixo | Tier-A | `sql_cru` |
 |---|---|---|

@@ -18,7 +18,7 @@ este script se recusa a inventar. Preencha 'spec_humano' à mão primeiro.
 ```
 
 O número sai com o **mesmo** `concordancia_mapeamento` do κ de máquina — então é comparável com o
-0,977 da Fase 12 (qwen 7B × autor-modelo) e com o 0,992 do Opus 5 cego, não um cálculo ad-hoc.
+0,977 da Fase 12 (qwen 7B × autor-modelo) e com o 0,992 do LLM de fronteira cego, não um cálculo ad-hoc.
 
 ## Como anotar
 
@@ -190,7 +190,7 @@ Um humano anotou os **40 itens**. Contra o autor-modelo:
 `reports/fase14/kappa_humano.json` · IC95 exato (Clopper-Pearson) para 40/40: **[0,912; 1,000]** —
 o resultado exclui concordância abaixo de ~91%, não prova igualdade perfeita na população.
 
-**Onde ficou na escala do projeto:** κ de máquina 0,977 (Fase 12, qwen 7B × autor) → Opus 5 cego
+**Onde ficou na escala do projeto:** κ de máquina 0,977 (Fase 12, qwen 7B × autor) → LLM de fronteira cego
 0,9921 (n=171, 1 discordante) → **humano 1,0** (n=40). Concordância quase perfeita já era o padrão
 estabelecido neste golden; com ~0,6% de discordância por item, o número esperado de discordâncias em
 40 itens é 0,23. **Zero é o desfecho mais provável, não uma anomalia** — mas também é o menos

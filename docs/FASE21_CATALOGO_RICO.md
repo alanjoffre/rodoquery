@@ -40,7 +40,7 @@ sistema for melhor, o mérito é do catálogo.
 
 ## O resultado: uma troca, não um ganho grátis
 
-Mesmas 47 perguntas, mesmo SUT (`claude-opus-5`), muda só o catálogo:
+Mesmas 47 perguntas, mesmo SUT (LLM de fronteira (API)), muda só o catálogo:
 
 | | Catálogo de 3 (F20) | Catálogo de 7 (F21) |
 |---|---|---|

@@ -26,7 +26,7 @@ instrumento existia, mas só na forma que o anotador não usava, e essa distânc
 a dívida aberta. Contra o autor-modelo: **concordância de spec 1,0 (40/40), κ da métrica 1,0**,
 nenhum discordante, IC95 [0,912; 1,000].
 
-Escala do projeto: 0,977 (κ de máquina, qwen 7B) → 0,9921 (Opus 5 cego, n=171) → **1,0 (humano,
+Escala do projeto: 0,977 (κ de máquina, qwen 7B) → 0,9921 (LLM de fronteira cego, n=171) → **1,0 (humano,
 n=40)**. O limiar pré-registrado era 0,8.
 
 Dois defeitos do instrumento foram achados **antes** de alguém anotar, e qualquer um dos dois teria
@@ -77,7 +77,7 @@ caminho é descrição melhor ou SUT maior, medido em holdout novo.
 
 > **Fechado na Fase 18.** Dos dois caminhos previstos acima, o de "SUT maior" acertou pela metade:
 > *maior* foi **refutado** (`gemma2:9b` colapsa em 5,6%, F15), mas *mais capaz* **zerou o resíduo**
-> — o Opus 5 fez **100% (146/146)** neste mesmo TEST-ANTT, incluindo os estratos que travavam em
+> — o LLM de fronteira fez **100% (146/146)** neste mesmo TEST-ANTT, incluindo os estratos que travavam em
 > 72–80%. O resíduo não era falha sistêmica da interface: era **capacidade do SUT**. Enunciado
 > correto, registrado no README: **"não é tamanho, é capacidade"**.
 
@@ -131,7 +131,7 @@ a acurácia.
 > | SUT | catálogo original | schema opaco | Δ |
 > |---|---|---|---|
 > | `qwen2.5-coder:7b` | 85,29% | 55,88% | **−29,41 pp** |
-> | `claude-opus-5` | 100% | 100% | **0,00 pp** |
+> | LLM de fronteira (API) | 100% | 100% | **0,00 pp** |
 >
 > A fragilidade lexical era **do SUT, não da interface**: o Tier-A nunca precisou de identificador
 > semântico — o Qwen 7B é que precisava. "Investir em descrições boas" vale como conserto para
@@ -144,9 +144,9 @@ a acurácia.
 | # | Item | Status |
 |---|---|---|
 | 1 | κ humano | **resolvido**: humano anotou 40/40 — spec 1,0, κ métrica 1,0, IC95 [0,912; 1,0] |
-| 2 | resíduo 72% | **defeito de gold resolvido** (→88,7%); o resíduo caro foi **zerado na F18** — Opus 5 fez 100% (146/146) |
+| 2 | resíduo 72% | **defeito de gold resolvido** (→88,7%); o resíduo caro foi **zerado na F18** — LLM de fronteira fez 100% (146/146) |
 | 3 | Tier-B no roteador | **resolvido**: medido, módulo pronto, off por escolha baseada em evidência |
-| 4 | robustez dedicada | **resolvido**: conjunto próprio selado; −29,4 pp no Qwen — mas **0,00 pp no Opus 5 (F19)**: era do SUT, não da interface |
+| 4 | robustez dedicada | **resolvido**: conjunto próprio selado; −29,4 pp no Qwen — mas **0,00 pp no LLM de fronteira (F19)**: era do SUT, não da interface |
 
 > As linhas 2 e 4 trazem carimbo de superação no corpo do documento. O que este doc mediu continua
 > válido; o que ele **concluiu** sobre as causas foi corrigido pelas Fases 18 e 19.

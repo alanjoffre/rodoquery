@@ -11,7 +11,7 @@ Mesmo conjunto selado da Fase 14 (34 itens, disjunto do TEST-ANTT), mesma pertur
 | SUT | Catálogo original | Catálogo opaco | Δ | McNemar |
 |---|---|---|---|---|
 | `qwen2.5-coder:7b` (Fase 14) | 85,29% (29/34) | 55,88% (19/34) | **−29,41 pp** | b=11/c=1, **p=0,0063** |
-| **`claude-opus-5` (Fase 19)** | **100%** (34/34) | **100%** (34/34) | **0,00 pp** | b=0/c=0, p=1,0 |
+| **LLM de fronteira (API) (Fase 19)** | **100%** (34/34) | **100%** (34/34) | **0,00 pp** | b=0/c=0, p=1,0 |
 
 Custo: **US$ 0,1925**.
 
@@ -23,7 +23,7 @@ Eu registrei Δ ≈ **−9 pp**, faixa aceitável **−18 a −2**. O medido foi
 
 | Afirmação pré-registrada | Veredito |
 |---|---|
-| `\|Δ_opus5\| < 29,41 pp` (a central, falsificável) | ✅ **confirmada** |
+| `\|Δ_fronteira\| < 29,41 pp` (a central, falsificável) | ✅ **confirmada** |
 | Δ ≈ −9 pp, entre −18 e −2 (previsão pontual) | ❌ **refutada** |
 | McNemar não significativo | ✅ confirmada (p=1,0) |
 
@@ -49,7 +49,7 @@ defeito**. Vale se você roda modelo barato — exatamente o mesmo formato do ac
 
 > A ajuda de uma muleta é **inversamente proporcional à força do SUT**.
 
-| Muleta | Vale no Qwen 7B | Vale no Opus 5 |
+| Muleta | Vale no Qwen 7B | Vale no LLM de fronteira |
 |---|---|---|
 | Normalizadores F9/F10 | +17,7 pp | **0** (0 de 146 specs tocadas) |
 | Resíduo de seleção métrica/dimensão | trava em 72–80% | **100%** |
@@ -66,7 +66,7 @@ Wilson vai a [0,8985; 1,0] nos dois lados — com 95% de confiança a fragilidad
 
 Some-se às anteriores:
 
-| Instrumento | Contra Qwen 7B | Contra Opus 5 |
+| Instrumento | Contra Qwen 7B | Contra LLM de fronteira |
 |---|---|---|
 | TEST-ANTT (171 itens) | 89,7% — discrimina | **100% — saturou** |
 | Conjunto de robustez (34 itens) | 85,3% / 55,9% — discrimina | **100% / 100% — saturou** |
@@ -83,7 +83,7 @@ cumpriu o papel dele. Mas é a próxima coisa a construir, e agora está claro p
 
 O conjunto está selado desde a Fase 14 (`golden/robustez_antt.jsonl`, hash commitado). Nada foi
 regerado, nenhum item removido, o gold é o mesmo. Os dois braços rodaram no **mesmo SUT, na mesma
-execução** — comparar Opus 5 opaco contra Qwen original mediria o modelo, não a perturbação.
+execução** — comparar LLM de fronteira opaco contra Qwen original mediria o modelo, não a perturbação.
 
 ## Como sei que a perturbação de fato aplicou
 
@@ -96,7 +96,7 @@ Verificado nas predições congeladas:
 | `raw` do braço original citando nome real | 34/34 |
 | Marcador `opaco: true` na telemetria | 34/34 |
 | Specs do opaco traduzidas de volta aos nomes reais | 34/34 |
-| Modelo em ambos os braços | `claude-opus-5` |
+| Modelo em ambos os braços | LLM de fronteira (API) |
 
 ## Reprodução
 

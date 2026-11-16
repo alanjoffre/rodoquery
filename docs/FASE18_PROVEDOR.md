@@ -29,13 +29,13 @@ Nenhum dos dois é fracasso. É por isso que vale medir.
 
 ## O resultado: o gap ENCOLHEU, e a tese fica mais precisa
 
-TEST-ANTT selado, 171 itens (146 respondíveis + 25 abstenções), `claude-opus-5` nas duas pontas,
+TEST-ANTT selado, 171 itens (146 respondíveis + 25 abstenções), LLM de fronteira (API) nas duas pontas,
 US$ 0,96 de API:
 
 | SUT | Tier-A | `sql_cru` | Δ | Abstenção (Tier-A) |
 |---|---|---|---|---|
 | `qwen2.5-coder:7b` (Fase 15) | 89,7% | 26,7% | **+63,0 pp** | 88% |
-| **`claude-opus-5` (Fase 18)** | **100% (146/146)** | **44,5%** | **+55,5 pp** | 96% |
+| **LLM de fronteira (API) (Fase 18)** | **100% (146/146)** | **44,5%** | **+55,5 pp** | 96% |
 
 IC95 do Tier-A: [97,44%; 100%]. McNemar b=0 / c=81, p≈0.
 
@@ -52,7 +52,7 @@ estar em destaque, não no anexo.
 ### O achado que eu não esperava: os normalizadores valem ZERO aqui
 
 Os dois normalizadores determinísticos das Fases 9/10 valem **+17,7 pp acumulados** sobre o Qwen e
-tocaram 78 de 160 specs na Fase 12. Sobre o Opus 5 tocaram **0 de 146** — o modelo já emite a spec
+tocaram 78 de 160 specs na Fase 12. Sobre o LLM de fronteira tocaram **0 de 146** — o modelo já emite a spec
 na forma canônica.
 
 É a mesma lei por outro ângulo: **a camada determinística é uma muleta cuja altura é exatamente a
@@ -82,7 +82,7 @@ As 342 predições foram congeladas com `meta['modelo'] = "qwen2.5-coder:7b"`. A
 na API — `custo_usd` e tokens de cache em todos os registros, `carga_modelo_s = 0`, soma batendo
 em US$ 0,9627 — mas o rótulo mentia: quem abrisse `reports/fase18/` concluiria que um 7B local
 fez 146/146. Causa: `modelo = modelo or settings.modelo_sut` resolve para o default local, e o
-provedor trocava para `claude-opus-5` só internamente.
+provedor trocava para LLM de fronteira (API) só internamente.
 
 **O EX não depende desse campo; a auditabilidade do artefato depende inteiramente.** Corrigido na
 fonte (`modelo_efetivo` na telemetria) e migrado com `corrigir_proveniencia_fase18.py`, que só
@@ -124,7 +124,7 @@ responderia essa pergunta por decreto e tornaria o número incomparável com o d
 
 | | Ollama (Fases 0–16) | API (Fase 18) |
 |---|---|---|
-| `temperature=0`, `seed=42`, `top_k=1` | sim | **rejeitado** (HTTP 400 no Claude ≥ 4.7) |
+| `temperature=0`, `seed=42`, `top_k=1` | sim | **rejeitado** (HTTP 400 nos modelos mais novos do provedor) |
 | Variância medida | 0,0 pp em 5 execuções (Fase 5) | não medida |
 | Predições congeladas | sim | sim |
 
@@ -134,7 +134,7 @@ ponto; esconder seria o problema.
 
 ### 3. Tag vazada se conserta em código, não em prosa no prompt
 
-Com o thinking desligado, modelos Claude ocasionalmente escrevem `<thinking>` no texto visível.
+Com o thinking desligado, os modelos do provedor ocasionalmente escrevem `<thinking>` no texto visível.
 Eu poderia pedir no prompt para não fazer isso — mas aí o prompt deixaria de ser byte a byte o
 mesmo que o Qwen recebeu, e a comparação morre. Então normalizo na borda de transporte
 (`_limpar_tags`).
@@ -173,16 +173,16 @@ Telemetria **medida** nas predições congeladas da Fase 12 (não estimada):
 | `tier_a_antt` | 186 | 789 tok | 61 tok | ~599 tok |
 | `sql_cru_antt` | 186 | 483 tok | 71 tok | ~368 tok |
 
-Com fator **1,35×** de segurança para o tokenizer da Claude (pior caso documentado):
+Com fator **1,35×** de segurança para o tokenizer do provedor (pior caso documentado):
 
 | Modelo | Cacheia? | Par completo (372 chamadas) |
 |---|---|---|
-| `claude-opus-5` | parcial¹ | **US$ 1,76** |
-| `claude-opus-4-8` | não | US$ 2,43 |
-| `claude-sonnet-5` | não | US$ 1,46 |
-| `claude-haiku-4-5` | não | US$ 0,49 |
+| LLM de fronteira A (o usado) | parcial¹ | **US$ 1,76** |
+| LLM de fronteira B (geração anterior) | não | US$ 2,43 |
+| LLM intermediário do mesmo provedor | não | US$ 1,46 |
+| LLM leve do mesmo provedor | não | US$ 0,49 |
 
-¹ O prefixo do Tier-A (~599 tok) passa do mínimo de 512 do Opus 5; o do `sql_cru` (~368 tok) não.
+¹ O prefixo do Tier-A (~599 tok) passa do mínimo de 512 do modelo usado; o do `sql_cru` (~368 tok) não.
 O baseline tem prompt mais curto, então não cacheia — e é por isso que o par custa mais que o
 dobro do Tier-A sozinho. O número real de cache sai do `cache_read_input_tokens` que a API
 devolve, medido no piloto.
@@ -235,9 +235,9 @@ partições disjuntas do fato.
 
 - ✅ Provedor, travas, testes (31 do módulo; 140 no total), ruff limpo, gate PASSOU
 - ✅ Par completo medido: **Tier-A 100% × `sql_cru` 44,5%, +55,5 pp**, US$ 0,9627
-- ✅ Proveniência dos artefatos corrigida e verificada (`claude-opus-5` nos 342 registros)
+- ✅ Proveniência dos artefatos corrigida e verificada (LLM de fronteira (API) nos 342 registros)
 - ⚠️ **Benchmark saturado**: 100% é teto de instrumento. Golden mais difícil = trabalho aberto
 - ⚠️ Coleta **não** é bit-reproduzível (a API rejeita `temperature`/`seed`); predições congeladas
 - ✅ κ humano **fechado depois desta fase** (28/07): **1,0 (n=40)** — ver
   [Fase 14 · κ humano](FASE14_KAPPA_HUMANO.md). Nada nesta fase o resolveu; o que ela contribuiu
-  foi a camada intermediária, o **Opus 5 cego a 0,992** (`concordancia_opus5.py`, custo US$ 0,00)
+  foi a camada intermediária, o **LLM de fronteira cego a 0,992** (`concordancia_opus5.py`, custo US$ 0,00)

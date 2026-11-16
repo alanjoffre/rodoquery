@@ -128,7 +128,7 @@ prompt. O prompt é para o que exige julgamento.
   mais estrutural. Esse é o problema caro, e segue aberto.
 
   > **Nota posterior (Fases 18/19), sem fechar o item:** o resíduo *análogo* na base **ANTT** foi
-  > zerado por SUT mais capaz (Opus 5, 100%), o que indica que a causa era **capacidade do modelo**,
+  > zerado por SUT mais capaz (LLM de fronteira, 100%), o que indica que a causa era **capacidade do modelo**,
   > não limite estrutural da interface. Isso **não** fecha a linha acima: ela fala do TEST-v3 sobre
   > a fundação **sintética**, com `qwen2.5-coder:7b`, e essa combinação **nunca foi re-medida** com
   > SUT de fronteira. A evidência é direcional, não substituta — os números das Fases 4–10 não

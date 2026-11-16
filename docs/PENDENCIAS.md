@@ -99,7 +99,7 @@ Fechando o item #4:
 > descrições boas no semantic layer não é cosmético, é o que sustenta a acurácia."
 
 A **Fase 19 refutou isso**, com pré-registro commitado: o schema opaco custou **−29,4 pp no Qwen 7B
-e 0,00 pp no Opus 5**. A fragilidade era **do SUT, não da interface** — o diagnóstico da F14 estava
+e 0,00 pp no LLM de fronteira**. A fragilidade era **do SUT, não da interface** — o diagnóstico da F14 estava
 errado, e o doc não diz. Menor, no mesmo arquivo: o item #2 deixa o resíduo "caracterizado e aberto"
 (linhas 75 e 126) sem apontar que a F18 o zerou.
 

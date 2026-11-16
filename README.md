@@ -30,12 +30,12 @@ Mesmo modelo nas duas pontas de cada linha — muda só a interface:
 
 | Conjunto selado | SUT | Tier-A (spec → MetricFlow) | Baseline SQL cru | Δ | McNemar |
 |---|---|---|---|---|---|
-| **TEST-ANTT** (n=146, dado REAL) | `claude-opus-5` | **100%** [97,4; 100] | 44,5% | **+55,5 pp** | 81 × 0, p≈0 |
+| **TEST-ANTT** (n=146, dado REAL) | LLM de fronteira (API) | **100%** [97,4; 100] | 44,5% | **+55,5 pp** | 81 × 0, p≈0 |
 | **TEST-ANTT** (n=146, dado REAL) | `qwen2.5-coder:7b` | **89,7%** [83,7; 93,7] | 26,7% | **+63,0 pp** | 95 × 3, p≈0 |
 | TEST-v2 sintético (n=167) | `qwen2.5-coder:7b` | 73,7% [66,5; 79,8] | 15,0% | +58,7 pp | 104 × 6, p≈0 |
 | TEST-v1 sintético (n=42) | `qwen2.5-coder:7b` | 97,6% [87,7; 99,6] | 42,9% | +54,8 pp | 23 × 0, p≈0 |
 
-*Nota: `claude-opus-5` e `qwen2.5-coder:7b` entram aqui como sistemas avaliados (objeto do experimento), não como descrição de como o projeto foi escrito.*
+*Nota: o LLM de fronteira (via API) e o `qwen2.5-coder:7b` (local) entram aqui como sistemas avaliados, o objeto do experimento. O identificador exato de cada modelo fica registrado nos relatórios em `reports/`, para reprodução.*
 
 **As duas primeiras linhas são comparáveis entre si** — mesmo conjunto, só o SUT muda — e é delas que sai o achado mais útil do projeto:
 
@@ -91,9 +91,9 @@ O diferencial não são os números altos — é **o rigor ter corrigido os pró
 
 - **Consertar falha mecânica é código, não prompt** *(F9, F10)*. Reescrever o prompt para ensinar a sintaxe de ranking **empatou** (p=0,89) — consertou ranking e causou 18 erros novos de seleção. O mesmo conserto em **código** (normalizar `["x","DESC"]` → `["-x"]`) deu **+5 pp, p=0,004, zero regressões**. Repetido na F10: **+12,7 pp**. Acumulado **+17,7 pp em código, sem tocar no modelo nem no prompt**.
 
-- **"SUT maior" é falso; "SUT mais capaz" é verdadeiro** *(F15 → F18)*. Trocar o 7B *coder* por um 9B generalista derruba o EX de 86,1% para **5,6%** — o 9B emite `"entidades"`/`"tempo"` (os *rótulos das seções* do catálogo) como se fossem tokens: **23 de 39 specs com vocabulário inválido**, contra **zero** do 7B. Em vocabulário fechado, **aderência ao formato vence tamanho**. Mas um SUT genuinamente mais capaz (`claude-opus-5`) zera o resíduo: 100% nos mesmos estratos que travavam em 72–80%.
+- **"SUT maior" é falso; "SUT mais capaz" é verdadeiro** *(F15 → F18)*. Trocar o 7B *coder* por um 9B generalista derruba o EX de 86,1% para **5,6%** — o 9B emite `"entidades"`/`"tempo"` (os *rótulos das seções* do catálogo) como se fossem tokens: **23 de 39 specs com vocabulário inválido**, contra **zero** do 7B. Em vocabulário fechado, **aderência ao formato vence tamanho**. Mas um SUT genuinamente mais capaz (LLM de fronteira (API)) zera o resíduo: 100% nos mesmos estratos que travavam em 72–80%.
 
-- **A vantagem da interface não é constante** *(F18)*. Com o SUT trocado no mesmo conjunto, o Δ cai de **+63,0 para +55,5 pp**, porque o baseline quase dobra. Corolário medido: os dois normalizadores que valem +17,7 pp no 7B tocaram **0 de 146 specs** no Opus 5. **A camada determinística é uma muleta cuja altura é exatamente a fraqueza do SUT.**
+- **A vantagem da interface não é constante** *(F18)*. Com o SUT trocado no mesmo conjunto, o Δ cai de **+63,0 para +55,5 pp**, porque o baseline quase dobra. Corolário medido: os dois normalizadores que valem +17,7 pp no 7B tocaram **0 de 146 specs** no LLM de fronteira. **A camada determinística é uma muleta cuja altura é exatamente a fraqueza do SUT.**
 
 - **Minha própria previsão, pré-registrada e refutada** *(F19)*. Registrei em [pré-registro commitado](docs/FASE19_PREREGISTRO.md) que a fragilidade lexical encolheria mas deixaria resíduo (Δ ≈ −9 pp, faixa −18 a −2). Medi **0,00 pp**. A afirmação falsificável central (`|Δ| < 29,4`) confirmou; a previsão pontual **caiu** — apostei num piso que não existe. A fragilidade lexical **não é estrutural da interface: era capacidade do SUT**.
 
@@ -145,7 +145,7 @@ SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI �
 | Semantic Layer / métricas governadas | F10–F12 | catálogo de 3 métricas com curadoria auditável (`meta: {catalogo_usuario: false}` nos numeradores) |
 | Python de produção | todas | 251 testes · `ruff` limpo · gate bloqueante no CI, em 3 alvos |
 | Avaliação de LLM com rigor estatístico | F3–F20 | Wilson em toda taxa · **McNemar** pareado · **Test-Suite EX** em 3 variantes de banco |
-| Qualidade de rótulo | F2 · F12 · F14 · F15 · F18 | κ de máquina 0,977 → **Opus 5 cego 0,992** → **κ humano 1,0** · auditoria adversarial acha 7/60 defeitos |
+| Qualidade de rótulo | F2 · F12 · F14 · F15 · F18 | κ de máquina 0,977 → **LLM de fronteira cego 0,992** → **κ humano 1,0** · auditoria adversarial acha 7/60 defeitos |
 | Benchmark externo | F13 | **BIRD Mini-Dev**: 500 perguntas e SQL humanos, CC BY-SA |
 | Segurança de LLM | F1 | sandbox AST com attack-block **e** falso-positivo medidos juntos |
 | MLOps / CI | F5 | gate em 3 níveis, **comprovado ativo** (pega 6/6 regressões injetadas) |
@@ -303,7 +303,7 @@ Auditoria de fidelidade dos números: **`python auditar_documentacao.py`** — c
 
 ## 🤖 Como foi feito
 
-Projeto de portfólio desenvolvido por mim, com apoio de um assistente de IA para código, testes e documentação; o apoio é visível nos commits. Eu defini o escopo, as decisões de arquitetura, as medições e revisei o resultado. Dados públicos da ANTT, sem código de empregador ou cliente.
+Desenvolvo com assistente de IA no fluxo de trabalho, para ganhar velocidade em código, testes e documentação. O que sustenta o resultado está versionado aqui: escopo e decisões registrados, testes e medições. Dados públicos da ANTT, sem código de empregador ou cliente.
 
 ## 👤 Autor
 

@@ -11,7 +11,7 @@ acurácia no conjunto principal ninguém tinha medido.
 
 ## O desenho, e por que ele é válido
 
-Comparação **pareada** contra as predições **congeladas** da Fase 18: mesmo SUT (`claude-opus-5`),
+Comparação **pareada** contra as predições **congeladas** da Fase 18: mesmo SUT (LLM de fronteira (API)),
 mesmo conjunto selado (TEST-ANTT, 171 itens), mesmo gold. Muda **só o catálogo** — o `PROMPT` é
 byte a byte o mesmo.
 
@@ -93,7 +93,7 @@ troca para um serviço.
 ## Limitações declaradas
 
 - **A diferença é de 1 item para cada lado, e o SUT não é determinístico.** Desde a F18 está dito
-  que Claude ≥ 4.7 rejeita `temperature`/`seed`, então o número publicado é reproduzível
+  que os modelos mais novos do provedor rejeitam `temperature`/`seed`, então o número publicado é reproduzível
   (predições congeladas) mas a **coleta** não é. Duas execuções independentes diferirem em 2 de 171
   itens está dentro do esperado. O que sustenta a leitura de "mais abstêmio" não é a significância
   — não há — é o fato de os dois movimentos apontarem para o **mesmo lado**, com mecanismo
