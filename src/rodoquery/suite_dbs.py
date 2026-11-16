@@ -2,7 +2,7 @@
 
 **O problema.** Num único banco sintético, uma query ERRADA pode devolver o mesmo resultado da
 gold por coincidência (ex.: um filtro a mais que, *nestes dados*, não muda nada). Isso **infla** o
-EX. Um revisor staff pergunta isso em 10 segundos.
+EX. É a primeira pergunta de quem revisa.
 
 **A solução (estilo Spider Test-Suite).** Como os dados são sintéticos e o gerador aceita `--seed`,
 geramos **N bancos variantes** e só contamos acerto se o predito bater a gold em **TODOS**. Uma

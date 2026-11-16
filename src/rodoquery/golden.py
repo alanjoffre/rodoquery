@@ -1,6 +1,6 @@
 """Golden set governado — o núcleo da Fase 2 (e o risco existencial do projeto).
 
-**Regra anti-circularidade** (auditoria staff): o *gold* de cada item é o RESULTADO de uma spec
+**Regra anti-circularidade** (auditoria interna): o *gold* de cada item é o RESULTADO de uma spec
 compilada pelo MetricFlow — nunca SQL escrito à mão. O humano escreve só a **pergunta em NL** e o
 **mapeamento** pergunta→spec; um 2º anotador refaz o mapeamento independente (κ de Cohen ≥ 0,8).
 
@@ -174,7 +174,7 @@ def concordancia_mapeamento(anotador_a: list[ItemGolden], anotador_b: list[ItemG
     """κ do 2º anotador: dois humanos mapeiam as MESMAS perguntas → spec, independentes.
 
     Reporta concordância bruta (mesma spec canônica), κ de Cohen sobre a métrica primária e a
-    concordância por campo. O especialista alertou: com marginais enviesadas (quase tudo cai em
+    concordância por campo. Atenção: com marginais enviesadas (quase tudo cai em
     1-2 métricas), o κ deflaciona — por isso a concordância bruta também é reportada.
     """
     a = {it.id: it for it in anotador_a}

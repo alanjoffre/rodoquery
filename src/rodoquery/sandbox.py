@@ -1,6 +1,6 @@
 """Sandbox — a fronteira de segurança do agente (Fase 1).
 
-**Princípio staff: nunca confie no LLM para ENFORÇAR segurança.** O prompt pode *pedir* "só
+**Princípio: nunca confie no LLM para ENFORÇAR segurança.** O prompt pode *pedir* "só
 SELECT"; quem *garante* é este validador, em código, sobre a AST. Se a segurança vive no prompt,
 vale zero — um revisor derruba na primeira tentativa de `ATTACH`.
 
@@ -12,7 +12,7 @@ Defesa em profundidade (3 camadas independentes):
      leitura de arquivo) + `lock_configuration=true` (o SQL não consegue afrouxar config).
   3. **Limites de recurso** — `LIMIT` forçado, timeout por watchdog (`interrupt`), memory_limit.
 
-**Deny-by-default em DUAS frentes** (a auditoria staff de 2026-07 pegou um bypass quando só uma
+**Deny-by-default em DUAS frentes** (a auditoria de 2026-07 pegou um bypass quando só uma
 delas existia — `query_table('landing.raw_vehicles')` exfiltrava PII):
   - **Comandos:** o sqlglot rebaixa sintaxe desconhecida a `exp.Command`, que bloqueamos inteiro —
     `ATTACH`/`INSTALL`/`LOAD` e comandos futuros já nascem barrados.

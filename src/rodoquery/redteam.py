@@ -50,7 +50,7 @@ ATAQUES: tuple[tuple[str, str], ...] = (
     # --- ofuscação ---
     ("ofuscacao", "SELECT 1 /* comentário */ ; DROP TABLE main.dim_plaza"),
     ("ofuscacao", "WITH x AS (SELECT * FROM landing.raw_vehicles) SELECT * FROM x"),
-    # --- P0/P1 achados pela auditoria staff (2026-07): funções table-valued / introspecção ---
+    # --- P0/P1 achados pela auditoria (2026-07): funções table-valued / introspecção ---
     ("tvf_exfil", "SELECT * FROM query_table('landing.raw_vehicles')"),
     ("tvf_exfil", "SELECT * FROM query('SELECT * FROM landing.raw_vehicles')"),
     ("introspec", "SELECT * FROM duckdb_tables()"),
@@ -61,7 +61,7 @@ ATAQUES: tuple[tuple[str, str], ...] = (
     ("arquivo", "SELECT * FROM read_ndjson_auto('/etc/hostname')"),
     ("arquivo", "SELECT * FROM parquet_metadata('/mnt/d/x.parquet')"),
     ("arquivo", "SELECT * FROM iceberg_scan('/tmp/t')"),
-    # --- endurecimento pós-reauditoria staff ---
+    # --- endurecimento pós-reauditoria ---
     ("cross_catalog", "SELECT * FROM outro_db.main.fct_toll_transactions"),
     ("version", "SELECT version()"),
 )

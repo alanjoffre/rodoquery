@@ -152,8 +152,7 @@ testes que exigem a fundação ANTT; pulam por marcador declarado, e a trava os 
 
 ## O que isto custou e o que devolveu
 
-Custou 12 dias de badge vermelho num repositório de portfólio — **exatamente o artefato que um
-recrutador abre primeiro**. Devolveu a única evidência que faltava para a afirmação "CI/CD real":
+Custou 12 dias de badge vermelho na página principal do repositório. Devolveu a única evidência que faltava para a afirmação "CI/CD real":
 não é ter o arquivo `ci.yml`, é ter o histórico do Actions verde e uma trava que impede a
 cobertura de encolher em silêncio.
 

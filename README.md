@@ -14,7 +14,7 @@ Data Engineering × AI Engineering · avaliação com rigor · **dados públicos
 ![Sandbox](https://img.shields.io/badge/attack--block-39%2F39%20·%20FP%200%25-brightgreen.svg)
 ![Custo](https://img.shields.io/badge/custo%20de%20API-US%24%202%2C28-blue.svg)
 
-[**🗺️ Fases**](#️-fases--previsto--medido) · [**🔬 O que a medição refutou**](#-o-que-a-medição-refutou) · [**🏗️ Arquitetura**](#️-arquitetura--o-que-de-fato-está-servido) · [**✅ Rastreabilidade**](#-rastreabilidade-requisito--fase) · [**🚀 Rodar**](#-rodar) · [**🎯 Backlog**](#-backlog-declarado)
+[**🗺️ Fases**](#️-fases--previsto--medido) · [**🔬 O que a medição refutou**](#-o-que-a-medição-refutou) · [**🏗️ Arquitetura**](#️-arquitetura--o-que-de-fato-está-servido) · [**✅ Rastreabilidade**](#-rastreabilidade-capacidade--fase) · [**🚀 Rodar**](#-rodar) · [**🎯 Backlog**](#-backlog-declarado)
 
 </div>
 
@@ -132,14 +132,14 @@ SUT plugável: Ollama local (default) │ API Anthropic  ·  Serving: FastAPI �
 
 **Por que o Tier-A dispensa o sandbox:** o LLM nunca emite SQL. Ele emite uma *spec* sobre vocabulário fechado, e quem gera SQL é o MetricFlow. **Não há superfície de injeção** — a segurança é estrutural, não um filtro depois do fato. O sandbox existe para o Tier-B e foi validado com as **duas** métricas juntas: attack-block 100% (39/39) **e** falso-positivo 0% (10/10) — bloquear tudo daria 100% de block e seria inútil.
 
-## ✅ Rastreabilidade requisito → fase
+## ✅ Rastreabilidade capacidade → fase
 
 <details>
-<summary><b>Cada requisito de uma vaga de Engenharia de Dados/IA rastreado até a fase que o prova com código e evidência (clique para expandir)</b></summary>
+<summary><b>Cada capacidade listada aponta para a fase, o código e a evidência que a provam (clique para expandir)</b></summary>
 
 <br>
 
-| Requisito | Onde é provado | Evidência |
+| Capacidade | Onde é provada | Evidência |
 |---|---|---|
 | SQL avançado e modelagem dimensional | F11 · fundação | dbt + **MetricFlow** sobre 1,5 M linhas reais; razões declaradas na *measure*, não no filtro da métrica |
 | Semantic Layer / métricas governadas | F10–F12 | catálogo de 3 métricas com curadoria auditável (`meta: {catalogo_usuario: false}` nos numeradores) |
@@ -307,7 +307,7 @@ Dados públicos da ANTT, sem código de empregador ou cliente. Escopo, decisões
 
 ## 👤 Autor
 
-**Alan Joffre** — Engenharia de Dados / IA
+**Alan Joffre** — Engenheiro de Dados, com foco em IA aplicada
 [GitHub](https://github.com/alanjoffre) · [LinkedIn](https://www.linkedin.com/in/alanjoffre/)
 
 ## 📄 Licença

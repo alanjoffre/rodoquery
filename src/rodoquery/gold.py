@@ -1,6 +1,6 @@
 """Gerador do GOLD via Semantic Layer — o mecanismo anti-circularidade da Fase 2.
 
-**O ponto que quebra a circularidade** (auditoria staff): o gold NUNCA é SQL escrito à mão. Cada
+**O ponto que quebra a circularidade** (auditoria interna): o gold NUNCA é SQL escrito à mão. Cada
 item do golden set é uma **spec semântica** `{metrics, group_by, where, order_by}` — o MetricFlow
 compila o SQL correto (join/filtro/grão certos, por construção). O agente **nunca vê a spec**: só a
 pergunta em NL + o catálogo. Ele tem de MAPEAR pergunta→métrica sozinho; o gold mede se a resposta

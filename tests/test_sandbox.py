@@ -62,7 +62,7 @@ def test_bloqueia_raw_escondido_em_cte():
 
 
 @pytest.mark.parametrize("sql", [
-    # P0 achado pela auditoria staff: table-valued functions leem o banco in-process (exfil PII)
+    # P0 achado pela auditoria: table-valued functions leem o banco in-process (exfil PII)
     "SELECT * FROM query_table('landing.raw_vehicles')",
     "SELECT * FROM query('SELECT * FROM landing.raw_vehicles')",
     # P1: introspecção (schema/config/path) — funções anônimas fora da allowlist

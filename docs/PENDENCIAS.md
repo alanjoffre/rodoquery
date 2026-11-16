@@ -185,7 +185,7 @@ catálogo sobre o qual a tese do topo do README foi medida. Fecha junto com o **
 
 ---
 
-## P4 — Higiene de entrega (barato, e é o que um recrutador vê)
+## P4 — Higiene de entrega (barato, e é o que aparece na página principal)
 
 - **Fases 20 e 21 não têm seção de Reprodução.** Os outros docs de fase têm. Consequência medida:
   **8 scripts de raiz não são citados em documentação nenhuma** — `avaliar_duro.py`,

@@ -6,11 +6,11 @@ perguntas** e **mapeá-las para uma spec** — sem nunca escrever SQL à mão.
 
 > **A circularidade que importa** é o *gold*: se quem escreve a pergunta também escreve o SQL-gold, o
 > benchmark mede "o agente reproduz meu SQL", não "acerta a resposta". Aqui isso **não acontece** — o
-> gold sai do MetricFlow a partir da spec, nunca de SQL escrito à mão. Ver a auditoria staff da fase.
+> gold sai do MetricFlow a partir da spec, nunca de SQL escrito à mão. Ver a auditoria da fase.
 
 ## Estado atual (v1) — o que foi feito, sem maquiagem
 
-> Esta seção é deliberadamente explícita porque o portfólio é sobre **rigor**, e rigor inclui não
+> Esta seção é deliberadamente explícita porque o projeto é sobre **rigor**, e rigor inclui não
 > vender evidência que não existe.
 
 | Etapa | Padrão documentado (ideal) | O que a v1 realmente fez |
